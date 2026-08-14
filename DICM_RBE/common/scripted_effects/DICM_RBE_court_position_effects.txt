@@ -10,6 +10,12 @@ DICM_RBE_add_court_position_languages_effect = {
 DICM_RBE_prepare_akolouthos_court_position_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_add_chivalry_tree_perks_effect = yes
+	DICM_RBE_add_unyielding_defender_commander_trait_max_xp_effect = yes
+	DICM_RBE_add_loyal_aptitude_trait_effect = yes
+	DICM_RBE_add_physique_good_3_aptitude_trait_effect = yes
+	DICM_RBE_add_strong_aptitude_trait_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = shieldmaiden }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = varangian }
 }
 
 # Antiquarian
@@ -24,6 +30,7 @@ DICM_RBE_prepare_archer_captain_camp_officer_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
+	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
 }
 
 # Bodyguard
@@ -32,6 +39,9 @@ DICM_RBE_prepare_bodyguard_court_position_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_chivalry_tree_perks_effect = yes
 	DICM_RBE_add_majesty_tree_perks_effect = yes
+	DICM_RBE_add_lifestyle_blademaster_max_xp_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = shieldmaiden }
+	DICM_RBE_add_bodyguard_varangian_aptitude_trait_effect = yes
 }
 
 # Boyan
@@ -40,6 +50,7 @@ DICM_RBE_prepare_boyan_court_position_effect = {
 	DICM_RBE_add_strategy_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
 	DICM_RBE_add_majesty_tree_perks_effect = yes
+	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
 }
 
 # Camelry Captain
@@ -47,6 +58,7 @@ DICM_RBE_prepare_camelry_captain_camp_officer_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
+	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
 }
 
 # Camp Priest
@@ -54,6 +66,7 @@ DICM_RBE_prepare_camp_priest_camp_officer_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_theology_tree_perks_effect = yes
+	DICM_RBE_add_lifestyle_mystic_max_xp_effect = yes
 }
 
 # Cherbi
@@ -62,6 +75,8 @@ DICM_RBE_prepare_cherbi_court_position_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_chivalry_tree_perks_effect = yes
 	DICM_RBE_add_majesty_tree_perks_effect = yes
+	DICM_RBE_add_lifestyle_blademaster_max_xp_effect = yes
+	DICM_RBE_add_loyal_aptitude_trait_effect = yes
 }
 
 # Chief Engineer
@@ -80,6 +95,7 @@ DICM_RBE_prepare_chief_qadi_court_position_effect = {
 DICM_RBE_prepare_chronicler_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
+	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
 }
 
 # Court Brahmin
@@ -87,12 +103,15 @@ DICM_RBE_prepare_court_brahmin_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_wealth_tree_perks_effect = yes
 	DICM_RBE_add_theology_tree_perks_effect = yes
+	DICM_RBE_add_devoted_aptitude_trait_effect = yes
 }
 
 # Court Gardener
 DICM_RBE_prepare_court_gardener_court_position_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_domain_tree_perks_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_gardener }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
 }
 
 # Court Guru
@@ -100,12 +119,16 @@ DICM_RBE_prepare_court_guru_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_theology_tree_perks_effect = yes
+	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
+	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
 }
 
 # Court Poet
 DICM_RBE_prepare_court_poet_court_position_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
+	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
+	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
 }
 
 # Court Scholar
@@ -113,12 +136,17 @@ DICM_RBE_prepare_court_scholar_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_theology_tree_perks_effect = yes
+	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
+	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
+	DICM_RBE_add_lifestyle_physician_max_xp_effect = yes
 }
 
 # Court Tutor
 DICM_RBE_prepare_court_tutor_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
+	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
+	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
 }
 
 # Cultural Emissary
@@ -132,6 +160,7 @@ DICM_RBE_prepare_elephantry_captain_camp_officer_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
+	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
 }
 
 # Eparch
@@ -143,6 +172,7 @@ DICM_RBE_prepare_eparch_court_position_effect = {
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_skulduggery_tree_perks_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
+	DICM_RBE_add_governor_max_xp_effect = yes
 }
 
 # Executioner
@@ -163,6 +193,7 @@ DICM_RBE_prepare_fire_dragon_engineer_court_position_effect = {
 DICM_RBE_prepare_foreign_emissary_court_position_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
+	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
 }
 
 # Grand Guardian
@@ -170,6 +201,8 @@ DICM_RBE_prepare_grand_guardian_court_position_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
+	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
+	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
 }
 
 # Grand Mentor
@@ -177,6 +210,8 @@ DICM_RBE_prepare_grand_mentor_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
+	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
+	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
 }
 
 # Grand Preceptor
@@ -184,6 +219,8 @@ DICM_RBE_prepare_grand_preceptor_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
+	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
+	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
 }
 
 # Heavy Cavalry Captain
@@ -191,6 +228,7 @@ DICM_RBE_prepare_heavy_cavalry_captain_camp_officer_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
+	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
 }
 
 # Heavy Infantry Captain
@@ -198,6 +236,7 @@ DICM_RBE_prepare_heavy_infantry_captain_camp_officer_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
+	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
 }
 
 # High Almoner
@@ -205,6 +244,7 @@ DICM_RBE_prepare_high_almoner_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_wealth_tree_perks_effect = yes
 	DICM_RBE_add_theology_tree_perks_effect = yes
+	DICM_RBE_add_devoted_aptitude_trait_effect = yes
 }
 
 # Horse Archer Captain
@@ -212,6 +252,7 @@ DICM_RBE_prepare_horse_archer_captain_camp_officer_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
+	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
 }
 
 # Keeper of the Horses
@@ -219,6 +260,7 @@ DICM_RBE_prepare_keeper_of_the_horses_court_position_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_family_tree_perks_effect = yes
+	DICM_RBE_add_lifestyle_traveler_max_xp_effect = yes
 }
 
 # Khlon Glan
@@ -226,6 +268,7 @@ DICM_RBE_prepare_khlon_glan_court_position_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
+	DICM_RBE_add_organizer_commander_trait_max_xp_effect = yes
 }
 
 # Light Cavalry Captain
@@ -233,6 +276,7 @@ DICM_RBE_prepare_light_cavalry_captain_camp_officer_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
+	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
 }
 
 # Light Infantry Captain
@@ -240,12 +284,15 @@ DICM_RBE_prepare_light_infantry_captain_camp_officer_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
+	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
 }
 
 # Master Bard
 DICM_RBE_prepare_master_bard_camp_officer_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_temptation_tree_perks_effect = yes
+	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
+	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
 }
 
 # Master of Arms
@@ -253,6 +300,7 @@ DICM_RBE_prepare_master_of_arms_camp_officer_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
+	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
 }
 
 # Master of Horse
@@ -267,6 +315,7 @@ DICM_RBE_prepare_master_of_horse_court_position_effect = {
 DICM_RBE_prepare_master_of_spoils_camp_officer_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_wealth_tree_perks_effect = yes
+	DICM_RBE_add_reaver_commander_trait_max_xp_effect = yes
 }
 
 # Master Thief
@@ -281,6 +330,7 @@ DICM_RBE_prepare_pike_captain_camp_officer_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
+	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
 }
 
 # Quartermaster
@@ -288,6 +338,7 @@ DICM_RBE_prepare_quartermaster_camp_officer_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_wealth_tree_perks_effect = yes
+	DICM_RBE_add_logistician_commander_trait_max_xp_effect = yes
 }
 
 # Royal Architect
@@ -301,6 +352,7 @@ DICM_RBE_prepare_second_camp_officer_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
+	DICM_RBE_add_loyal_aptitude_trait_effect = yes
 }
 
 # Seneschal
@@ -308,6 +360,7 @@ DICM_RBE_prepare_seneschal_court_position_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
+	DICM_RBE_add_organizer_commander_trait_max_xp_effect = yes
 }
 
 # Siege Engineer
@@ -323,12 +376,20 @@ DICM_RBE_prepare_travel_leader_court_position_effect = {
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_wayfarer_tree_perks_effect = yes
+	DICM_RBE_add_travel_leader_commander_traits_max_xp_effect = yes
+	DICM_RBE_add_adventurer_aptitude_trait_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
+	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
+	DICM_RBE_add_lifestyle_physician_max_xp_effect = yes
+	DICM_RBE_add_lifestyle_traveler_max_xp_effect = yes
 }
 
 # Witness
 DICM_RBE_prepare_witness_camp_officer_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
+	DICM_RBE_add_loyal_aptitude_trait_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = flagellant }
 }
 
 # Yeke Jarquchi
@@ -360,24 +421,57 @@ DICM_RBE_prepare_bookmaker_court_position_effect = {
 # Camp Cook
 DICM_RBE_prepare_camp_cook_camp_officer_effect = {
 	DICM_RBE_retrain_intrigue_education_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = comfort_eater }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
+	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
 }
 
 # Cave Hermit
 DICM_RBE_prepare_cave_hermit_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_gardener }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
+	DICM_RBE_add_lifestyle_mystic_max_xp_effect = yes
 }
 
-# Charioteer
-DICM_RBE_prepare_charioteer_court_position_effect = {
+# Blue Charioteer
+DICM_RBE_prepare_charioteer_blue_court_position_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
+	DICM_RBE_set_charioteer_blue_max_xp_effect = yes
+}
+
+# Green Charioteer
+DICM_RBE_prepare_charioteer_green_court_position_effect = {
+	DICM_RBE_retrain_martial_education_effect = yes
+	DICM_RBE_retrain_prowess_education_effect = yes
+	DICM_RBE_retrain_confucian_education_effect = yes
+	DICM_RBE_set_charioteer_green_max_xp_effect = yes
+}
+
+# White Charioteer
+DICM_RBE_prepare_charioteer_white_court_position_effect = {
+	DICM_RBE_retrain_martial_education_effect = yes
+	DICM_RBE_retrain_prowess_education_effect = yes
+	DICM_RBE_retrain_confucian_education_effect = yes
+	DICM_RBE_set_charioteer_white_max_xp_effect = yes
+}
+
+# Red Charioteer
+DICM_RBE_prepare_charioteer_red_court_position_effect = {
+	DICM_RBE_retrain_martial_education_effect = yes
+	DICM_RBE_retrain_prowess_education_effect = yes
+	DICM_RBE_retrain_confucian_education_effect = yes
+	DICM_RBE_set_charioteer_red_max_xp_effect = yes
 }
 
 # Champion
 DICM_RBE_prepare_champion_court_position_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
+	DICM_RBE_add_lifestyle_blademaster_max_xp_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = shieldmaiden }
 }
 
 # Chief Eunuch
@@ -389,6 +483,9 @@ DICM_RBE_prepare_chief_eunuch_court_position_effect = {
 DICM_RBE_prepare_chief_forager_camp_officer_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
+	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
+	DICM_RBE_add_lifestyle_traveler_max_xp_effect = yes
 }
 
 # Court Artificer
@@ -399,68 +496,94 @@ DICM_RBE_prepare_court_artificer_court_position_effect = {
 # Court Astrologer
 DICM_RBE_prepare_court_astrologer_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
+	DICM_RBE_add_lifestyle_mystic_max_xp_effect = yes
 }
 
 # Court Brewmaster
 DICM_RBE_prepare_court_brewmaster_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
+	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
 }
 
 # Court Jester
 DICM_RBE_prepare_court_jester_court_position_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
+	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
+	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = athletic }
 }
 
 # Court Musician
 DICM_RBE_prepare_court_musician_court_position_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
+	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
+	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
+	DICM_RBE_add_beardless_eunuch_aptitude_trait_effect = yes
 }
 
 # Court Physician
 DICM_RBE_prepare_court_physician_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
+	DICM_RBE_add_lifestyle_mystic_max_xp_effect = yes
+	DICM_RBE_add_lifestyle_physician_max_xp_effect = yes
 }
 
 # Cupbearer
 DICM_RBE_prepare_cupbearer_court_position_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
+	DICM_RBE_add_loyal_aptitude_trait_effect = yes
 }
 
 # Food Taster
 DICM_RBE_prepare_food_taster_court_position_effect = {
 	DICM_RBE_retrain_intrigue_education_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = comfort_eater }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_gardener }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
+	DICM_RBE_add_loyal_aptitude_trait_effect = yes
 }
 
 # Garuda
 DICM_RBE_prepare_garuda_court_position_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
+	DICM_RBE_add_lifestyle_blademaster_max_xp_effect = yes
 }
 
 # Head Groom
 DICM_RBE_prepare_head_groom_camp_officer_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
+	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
+	DICM_RBE_add_lifestyle_traveler_max_xp_effect = yes
 }
 
 # Head Porter
 DICM_RBE_prepare_head_porter_camp_officer_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
+	DICM_RBE_add_logistician_commander_trait_max_xp_effect = yes
 }
 
 # Huntperson
 DICM_RBE_prepare_huntperson_camp_officer_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
+	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
 }
 
 # Keeper of the Harem
 DICM_RBE_prepare_keeper_of_the_harem_court_position_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
+	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
+	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
 }
 
 # Keeper of Swans
 DICM_RBE_prepare_keeper_of_swans_court_position_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
+	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
 }
 
 # Kennelperson
@@ -477,18 +600,24 @@ DICM_RBE_prepare_lady_in_waiting_court_position_effect = {
 # Laureate
 DICM_RBE_prepare_laureate_camp_officer_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
+	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
 }
 
 # Master Assassin
 DICM_RBE_prepare_master_assassin_court_position_effect = {
 	DICM_RBE_retrain_intrigue_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
+	DICM_RBE_add_lifestyle_blademaster_max_xp_effect = yes
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = murderer }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = order_member }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = faith_warrior }
 }
 
 # Master of Hunt
 DICM_RBE_prepare_master_of_hunt_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
+	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
 }
 
 # Person Haggler
@@ -500,4 +629,7 @@ DICM_RBE_prepare_person_haggler_camp_officer_effect = {
 # Wet Nurse
 DICM_RBE_prepare_wet_nurse_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
+	DICM_RBE_add_physique_good_3_aptitude_trait_effect = yes
+	DICM_RBE_add_strong_aptitude_trait_effect = yes
+	DICM_RBE_add_loyal_aptitude_trait_effect = yes
 }

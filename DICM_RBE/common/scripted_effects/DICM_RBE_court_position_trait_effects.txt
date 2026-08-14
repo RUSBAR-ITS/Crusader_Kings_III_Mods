@@ -1,0 +1,188 @@
+# Adds one requested non-personality aptitude trait when it is missing.
+DICM_RBE_add_court_position_trait_if_missing_effect = {
+	if = {
+		limit = { NOT = { has_trait = $TRAIT$ } }
+		add_trait = $TRAIT$
+	}
+}
+
+# Replaces the follower status with the Adventurer trait when necessary.
+DICM_RBE_add_adventurer_aptitude_trait_effect = {
+	if = { limit = { has_trait = adventurer_follower } remove_trait = adventurer_follower }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = adventurer }
+}
+
+# Replaces the incompatible eunuch trait and adds Beardless Eunuch.
+DICM_RBE_add_beardless_eunuch_aptitude_trait_effect = {
+	if = { limit = { has_trait = eunuch_1 } remove_trait = eunuch_1 }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = beardless_eunuch }
+}
+
+# Adds Devoted only when the character's culture grants its aptitude bonus.
+DICM_RBE_add_devoted_aptitude_trait_effect = {
+	if = {
+		limit = {
+			culture = { has_cultural_parameter = devoted_trait_bonuses }
+			NOT = { has_trait = devoted }
+		}
+		add_trait = devoted
+	}
+}
+
+# Replaces Disloyal with Loyal.
+DICM_RBE_add_loyal_aptitude_trait_effect = {
+	if = { limit = { has_trait = disloyal } remove_trait = disloyal }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = loyal }
+}
+
+# Replaces lower and negative intellect traits with the highest positive tier.
+DICM_RBE_add_intellect_good_3_aptitude_trait_effect = {
+	if = { limit = { has_trait = intellect_bad_1 } remove_trait = intellect_bad_1 }
+	if = { limit = { has_trait = intellect_bad_2 } remove_trait = intellect_bad_2 }
+	if = { limit = { has_trait = intellect_bad_3 } remove_trait = intellect_bad_3 }
+	if = { limit = { has_trait = intellect_good_1 } remove_trait = intellect_good_1 }
+	if = { limit = { has_trait = intellect_good_2 } remove_trait = intellect_good_2 }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = intellect_good_3 }
+}
+
+# Replaces lower and negative physique traits with the highest positive tier.
+DICM_RBE_add_physique_good_3_aptitude_trait_effect = {
+	if = { limit = { has_trait = physique_bad_1 } remove_trait = physique_bad_1 }
+	if = { limit = { has_trait = physique_bad_2 } remove_trait = physique_bad_2 }
+	if = { limit = { has_trait = physique_bad_3 } remove_trait = physique_bad_3 }
+	if = { limit = { has_trait = physique_good_1 } remove_trait = physique_good_1 }
+	if = { limit = { has_trait = physique_good_2 } remove_trait = physique_good_2 }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = physique_good_3 }
+}
+
+# Replaces Weak with Strong.
+DICM_RBE_add_strong_aptitude_trait_effect = {
+	if = { limit = { has_trait = weak } remove_trait = weak }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = strong }
+}
+
+# Replaces Dull with Shrewd.
+DICM_RBE_add_shrewd_aptitude_trait_effect = {
+	if = { limit = { has_trait = dull } remove_trait = dull }
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = shrewd }
+}
+
+# Adds Varangian to a Bodyguard only when the vanilla conditional bonus can apply.
+DICM_RBE_add_bodyguard_varangian_aptitude_trait_effect = {
+	if = {
+		limit = {
+			employer ?= {
+				has_title = title:e_byzantium
+				employs_court_position = akolouthos_court_position
+			}
+			NOT = { has_trait = varangian }
+		}
+		add_trait = varangian
+	}
+}
+
+# Adds Blademaster and raises its XP to exactly 100.
+DICM_RBE_add_lifestyle_blademaster_max_xp_effect = {
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_blademaster }
+	save_scope_as = DICM_RBE_court_position_trait_target
+	if = {
+		limit = { has_trait_xp = { trait = lifestyle_blademaster value < 100 } }
+		add_trait_xp = { trait = lifestyle_blademaster value = { value = 100 subtract = "scope:DICM_RBE_court_position_trait_target.has_trait_xp(lifestyle_blademaster)" } }
+	}
+}
+
+# Adds Mystic and raises its XP to exactly 100.
+DICM_RBE_add_lifestyle_mystic_max_xp_effect = {
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_mystic }
+	save_scope_as = DICM_RBE_court_position_trait_target
+	if = {
+		limit = { has_trait_xp = { trait = lifestyle_mystic value < 100 } }
+		add_trait_xp = { trait = lifestyle_mystic value = { value = 100 subtract = "scope:DICM_RBE_court_position_trait_target.has_trait_xp(lifestyle_mystic)" } }
+	}
+}
+
+# Adds Physician and raises its XP to exactly 100.
+DICM_RBE_add_lifestyle_physician_max_xp_effect = {
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_physician }
+	save_scope_as = DICM_RBE_court_position_trait_target
+	if = {
+		limit = { has_trait_xp = { trait = lifestyle_physician value < 100 } }
+		add_trait_xp = { trait = lifestyle_physician value = { value = 100 subtract = "scope:DICM_RBE_court_position_trait_target.has_trait_xp(lifestyle_physician)" } }
+	}
+}
+
+# Adds Poet and raises its XP to exactly 100.
+DICM_RBE_add_lifestyle_poet_max_xp_effect = {
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_poet }
+	save_scope_as = DICM_RBE_court_position_trait_target
+	if = {
+		limit = { has_trait_xp = { trait = lifestyle_poet value < 100 } }
+		add_trait_xp = { trait = lifestyle_poet value = { value = 100 subtract = "scope:DICM_RBE_court_position_trait_target.has_trait_xp(lifestyle_poet)" } }
+	}
+}
+
+# Adds Reveler and raises its XP to exactly 100.
+DICM_RBE_add_lifestyle_reveler_max_xp_effect = {
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_reveler }
+	save_scope_as = DICM_RBE_court_position_trait_target
+	if = {
+		limit = { has_trait_xp = { trait = lifestyle_reveler value < 100 } }
+		add_trait_xp = { trait = lifestyle_reveler value = { value = 100 subtract = "scope:DICM_RBE_court_position_trait_target.has_trait_xp(lifestyle_reveler)" } }
+	}
+}
+
+# Rebuilds Hunter and maximizes both of its tracks.
+DICM_RBE_add_lifestyle_hunter_max_xp_effect = {
+	if = { limit = { has_trait = lifestyle_hunter } remove_trait = lifestyle_hunter }
+	add_trait = lifestyle_hunter
+	add_trait_xp = { trait = lifestyle_hunter track = hunter value = 100 }
+	add_trait_xp = { trait = lifestyle_hunter track = falconer value = 100 }
+}
+
+# Rebuilds Traveler and maximizes both of its tracks.
+DICM_RBE_add_lifestyle_traveler_max_xp_effect = {
+	if = { limit = { has_trait = lifestyle_traveler } remove_trait = lifestyle_traveler }
+	add_trait = lifestyle_traveler
+	add_trait_xp = { trait = lifestyle_traveler track = travel value = 100 }
+	add_trait_xp = { trait = lifestyle_traveler track = danger value = 100 }
+}
+
+# Adds Governor and raises its XP to exactly 100.
+DICM_RBE_add_governor_max_xp_effect = {
+	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = governor }
+	save_scope_as = DICM_RBE_court_position_trait_target
+	if = {
+		limit = { has_trait_xp = { trait = governor value < 100 } }
+		add_trait_xp = { trait = governor value = { value = 100 subtract = "scope:DICM_RBE_court_position_trait_target.has_trait_xp(governor)" } }
+	}
+}
+
+# Replaces any charioteer faction with the requested faction and sets its XP to exactly 100.
+DICM_RBE_set_charioteer_faction_max_xp_effect = {
+	if = { limit = { has_trait = charioteer_blue } remove_trait = charioteer_blue }
+	if = { limit = { has_trait = charioteer_green } remove_trait = charioteer_green }
+	if = { limit = { has_trait = charioteer_white } remove_trait = charioteer_white }
+	if = { limit = { has_trait = charioteer_red } remove_trait = charioteer_red }
+	add_trait = $TRAIT$
+	add_trait_xp = { trait = $TRAIT$ value = 100 }
+}
+
+# Creates a maximally experienced Blue charioteer.
+DICM_RBE_set_charioteer_blue_max_xp_effect = {
+	DICM_RBE_set_charioteer_faction_max_xp_effect = { TRAIT = charioteer_blue }
+}
+
+# Creates a maximally experienced Green charioteer.
+DICM_RBE_set_charioteer_green_max_xp_effect = {
+	DICM_RBE_set_charioteer_faction_max_xp_effect = { TRAIT = charioteer_green }
+}
+
+# Creates a maximally experienced White charioteer.
+DICM_RBE_set_charioteer_white_max_xp_effect = {
+	DICM_RBE_set_charioteer_faction_max_xp_effect = { TRAIT = charioteer_white }
+}
+
+# Creates a maximally experienced Red charioteer.
+DICM_RBE_set_charioteer_red_max_xp_effect = {
+	DICM_RBE_set_charioteer_faction_max_xp_effect = { TRAIT = charioteer_red }
+}

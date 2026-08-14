@@ -1,5 +1,6 @@
 ﻿# Adds every compatible standard commander trait at zero XP without changing XP on existing traits.
 # Reckless is preferred when neither mutually exclusive leadership trait is present.
+
 DICM_RBE_add_all_commander_traits_zero_xp_effect = {
 	if = { limit = { NOT = { has_trait = logistician } } add_trait = logistician }
 	if = { limit = { NOT = { has_trait = military_engineer } } add_trait = military_engineer }
@@ -25,6 +26,95 @@ DICM_RBE_add_all_commander_traits_zero_xp_effect = {
 	if = { limit = { NOT = { has_trait = forest_fighter } } add_trait = forest_fighter }
 	if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
 	if = { limit = { NOT = { has_trait = winter_soldier } } add_trait = winter_soldier }
+}
+
+# Adds one requested commander trait without changing its XP when already present.
+DICM_RBE_add_commander_trait_if_missing_effect = {
+	if = {
+		limit = { NOT = { has_trait = $TRAIT$ } }
+		add_trait = $TRAIT$
+	}
+}
+
+# Adds Logistician and raises its XP to exactly 100.
+DICM_RBE_add_logistician_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = logistician }
+	save_scope_as = DICM_RBE_commander_trait_target
+	if = {
+		limit = { has_trait_xp = { trait = logistician value < 100 } }
+		add_trait_xp = { trait = logistician value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(logistician)" } }
+	}
+}
+
+# Adds Unyielding Defender and raises its XP to exactly 100.
+DICM_RBE_add_unyielding_defender_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = unyielding_defender }
+	save_scope_as = DICM_RBE_commander_trait_target
+	if = {
+		limit = { has_trait_xp = { trait = unyielding_defender value < 100 } }
+		add_trait_xp = { trait = unyielding_defender value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(unyielding_defender)" } }
+	}
+}
+
+# Adds Organizer and raises its XP to exactly 100.
+DICM_RBE_add_organizer_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = organizer }
+	save_scope_as = DICM_RBE_commander_trait_target
+	if = {
+		limit = { has_trait_xp = { trait = organizer value < 100 } }
+		add_trait_xp = { trait = organizer value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(organizer)" } }
+	}
+}
+
+# Adds Reaver and raises its XP to exactly 100.
+DICM_RBE_add_reaver_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = reaver }
+	save_scope_as = DICM_RBE_commander_trait_target
+	if = {
+		limit = { has_trait_xp = { trait = reaver value < 100 } }
+		add_trait_xp = { trait = reaver value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(reaver)" } }
+	}
+}
+
+# Adds all commander traits used by Travel Leader aptitude and raises their XP to exactly 100.
+DICM_RBE_add_travel_leader_commander_traits_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = flexible_leader }
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = forest_fighter }
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = open_terrain_expert }
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = rough_terrain_expert }
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = desert_warrior }
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = jungle_stalker }
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = winter_soldier }
+	save_scope_as = DICM_RBE_commander_trait_target
+
+	if = {
+		limit = { has_trait_xp = { trait = flexible_leader value < 100 } }
+		add_trait_xp = { trait = flexible_leader value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(flexible_leader)" } }
+	}
+	if = {
+		limit = { has_trait_xp = { trait = forest_fighter value < 100 } }
+		add_trait_xp = { trait = forest_fighter value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(forest_fighter)" } }
+	}
+	if = {
+		limit = { has_trait_xp = { trait = open_terrain_expert value < 100 } }
+		add_trait_xp = { trait = open_terrain_expert value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(open_terrain_expert)" } }
+	}
+	if = {
+		limit = { has_trait_xp = { trait = rough_terrain_expert value < 100 } }
+		add_trait_xp = { trait = rough_terrain_expert value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(rough_terrain_expert)" } }
+	}
+	if = {
+		limit = { has_trait_xp = { trait = desert_warrior value < 100 } }
+		add_trait_xp = { trait = desert_warrior value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(desert_warrior)" } }
+	}
+	if = {
+		limit = { has_trait_xp = { trait = jungle_stalker value < 100 } }
+		add_trait_xp = { trait = jungle_stalker value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(jungle_stalker)" } }
+	}
+	if = {
+		limit = { has_trait_xp = { trait = winter_soldier value < 100 } }
+		add_trait_xp = { trait = winter_soldier value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(winter_soldier)" } }
+	}
 }
 
 # Adds every compatible standard commander trait and raises each present trait to exactly 100 XP.
