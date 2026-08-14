@@ -1,0 +1,45 @@
+# Enables monthly completion of the current cultural fascination for this character.
+DICM_RBE_enable_instant_fascination_progress_effect = {
+	if = {
+		limit = {
+			NOT = {
+				has_character_flag = DICM_RBE_instant_fascination_progress_enabled
+			}
+		}
+
+		add_character_flag = DICM_RBE_instant_fascination_progress_enabled
+
+		# Keep a single maintenance loop even after rapid disable and enable operations.
+		if = {
+			limit = {
+				NOT = {
+					has_character_flag = DICM_RBE_instant_fascination_progress_loop_active
+				}
+			}
+
+			add_character_flag = DICM_RBE_instant_fascination_progress_loop_active
+			trigger_event = {
+				id = DICM_RBE_innovation.0001
+				months = 1
+			}
+		}
+	}
+}
+
+# Disables monthly completion after the already scheduled maintenance event checks the flag.
+DICM_RBE_disable_instant_fascination_progress_effect = {
+	remove_character_flag = DICM_RBE_instant_fascination_progress_enabled
+}
+
+# Entry point intended for the future cheat-menu setting.
+DICM_RBE_toggle_instant_fascination_progress_effect = {
+	if = {
+		limit = {
+			has_character_flag = DICM_RBE_instant_fascination_progress_enabled
+		}
+		DICM_RBE_disable_instant_fascination_progress_effect = yes
+	}
+	else = {
+		DICM_RBE_enable_instant_fascination_progress_effect = yes
+	}
+}

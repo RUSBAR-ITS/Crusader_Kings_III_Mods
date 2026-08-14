@@ -1,0 +1,30 @@
+# Extends the vanilla birth on-action without replacing its existing effect block.
+on_birth_child = {
+	on_actions = {
+		DICM_RBE_on_birth_child_ceasar_inheritance
+	}
+}
+
+# Grants the child modifier when inheritance is enabled and both biological parents belong to the Caesar line.
+DICM_RBE_on_birth_child_ceasar_inheritance = {
+	trigger = {
+		DICM_RBE_ceasar_child_inheritance_enabled_trigger = yes
+		exists = scope:mother
+		exists = scope:real_father
+		scope:mother = {
+			DICM_RBE_is_ceasar_lineage_parent_trigger = yes
+		}
+		scope:real_father = {
+			DICM_RBE_is_ceasar_lineage_parent_trigger = yes
+		}
+		NOT = {
+			has_character_modifier = DICM_RBE_Ceasar_Child
+		}
+	}
+
+	effect = {
+		add_character_modifier = {
+			modifier = DICM_RBE_Ceasar_Child
+		}
+	}
+}

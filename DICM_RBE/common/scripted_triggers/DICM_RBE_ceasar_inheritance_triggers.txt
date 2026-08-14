@@ -1,0 +1,23 @@
+# Returns true while Caesar-line inheritance is enabled globally for the current game.
+DICM_RBE_ceasar_child_inheritance_enabled_trigger = {
+	has_global_variable = DICM_RBE_ceasar_child_inheritance_enabled
+}
+
+# Returns true for a parent carrying one of this extension's Caesar-line modifiers.
+DICM_RBE_is_ceasar_lineage_parent_trigger = {
+	OR = {
+		has_character_modifier = DICM_RBE_Ceasar
+		has_character_modifier = DICM_RBE_Ceasar_Female
+		has_character_modifier = DICM_RBE_Ceasar_Wife
+		has_character_modifier = DICM_RBE_Ceasar_Husband
+		has_character_modifier = DICM_RBE_Ceasar_Child
+	}
+}
+
+# Returns true for either gender-specific sovereign modifier.
+DICM_RBE_is_ceasar_ruler_trigger = {
+	OR = {
+		has_character_modifier = DICM_RBE_Ceasar
+		has_character_modifier = DICM_RBE_Ceasar_Female
+	}
+}

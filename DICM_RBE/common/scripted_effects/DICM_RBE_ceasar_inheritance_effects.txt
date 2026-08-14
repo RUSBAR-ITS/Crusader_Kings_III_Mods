@@ -1,0 +1,104 @@
+# Enables Caesar-line inheritance for all future births in the current game.
+DICM_RBE_enable_ceasar_child_inheritance_effect = {
+	if = {
+		limit = {
+			NOT = {
+				has_global_variable = DICM_RBE_ceasar_child_inheritance_enabled
+			}
+		}
+
+		set_global_variable = {
+			name = DICM_RBE_ceasar_child_inheritance_enabled
+			value = yes
+		}
+	}
+}
+
+# Disables inheritance without removing modifiers already granted to existing children.
+DICM_RBE_disable_ceasar_child_inheritance_effect = {
+	remove_global_variable = DICM_RBE_ceasar_child_inheritance_enabled
+}
+
+# Entry point intended for the future cheat-menu setting.
+DICM_RBE_toggle_ceasar_child_inheritance_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_ceasar_child_inheritance_enabled
+		}
+		DICM_RBE_disable_ceasar_child_inheritance_effect = yes
+	}
+	else = {
+		DICM_RBE_enable_ceasar_child_inheritance_effect = yes
+	}
+}
+
+# Assigns the consort modifier used for the spouse of the True Imperator.
+DICM_RBE_assign_imperator_consort_modifier_effect = {
+	if = {
+		limit = {
+			has_character_modifier = DICM_RBE_Ceasar_Child
+		}
+		remove_character_modifier = DICM_RBE_Ceasar_Child
+	}
+	if = {
+		limit = {
+			has_character_modifier = DICM_RBE_Ceasar_Husband
+		}
+		remove_character_modifier = DICM_RBE_Ceasar_Husband
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_character_modifier = DICM_RBE_Ceasar_Wife
+			}
+		}
+		add_character_modifier = {
+			modifier = DICM_RBE_Ceasar_Wife
+		}
+	}
+}
+
+# Assigns the consort modifier used for the spouse of the True Imperatrix.
+DICM_RBE_assign_imperatrix_consort_modifier_effect = {
+	if = {
+		limit = {
+			has_character_modifier = DICM_RBE_Ceasar_Child
+		}
+		remove_character_modifier = DICM_RBE_Ceasar_Child
+	}
+	if = {
+		limit = {
+			has_character_modifier = DICM_RBE_Ceasar_Wife
+		}
+		remove_character_modifier = DICM_RBE_Ceasar_Wife
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_character_modifier = DICM_RBE_Ceasar_Husband
+			}
+		}
+		add_character_modifier = {
+			modifier = DICM_RBE_Ceasar_Husband
+		}
+	}
+}
+
+# Promotes a Caesar-line child to the gender-appropriate sovereign modifier.
+DICM_RBE_promote_ceasar_child_to_ruler_effect = {
+	remove_character_modifier = DICM_RBE_Ceasar_Child
+
+	if = {
+		limit = {
+			is_female = yes
+		}
+		add_character_modifier = {
+			modifier = DICM_RBE_Ceasar_Female
+		}
+	}
+	else = {
+		add_character_modifier = {
+			modifier = DICM_RBE_Ceasar
+		}
+	}
+}

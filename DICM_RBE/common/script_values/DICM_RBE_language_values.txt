@@ -1,0 +1,71 @@
+# Extends the vanilla language soft-cap formula for the holder of the Caesar modifier.
+# Keep this definition synchronized with the vanilla language_soft_cap script value.
+language_soft_cap = {
+	value = 2
+	if = {
+		limit = {
+			learning >= language_learning_divide_value
+		}
+		add = {
+			add = learning
+			divide = language_learning_divide_value
+		}
+	}
+	if = {
+		limit = {
+			has_perk = open_minded_perk
+		}
+		add = 2
+	}
+	if = {
+		limit = {
+			has_perk = smooth_operator_perk
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_perk = been_there_done_that_perk
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			government_has_flag = government_is_nomadic
+			domicile ?= { has_domicile_parameter = nomad_yurt_language_cap }
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			dynasty ?= {
+				has_dynasty_perk = ep1_culture_legacy_1
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			culture = {
+				has_cultural_parameter = extra_language_cap
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			culture = {
+				has_cultural_parameter = extra_language_cap_2
+			}
+		}
+		add = 1
+	}
+
+	# Allows the modifier holder to retain every currently defined vanilla language.
+	if = {
+		limit = {
+			has_character_modifier = DICM_RBE_Ceasar
+		}
+		add = 100
+	}
+}

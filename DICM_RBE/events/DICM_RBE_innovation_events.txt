@@ -1,0 +1,36 @@
+namespace = DICM_RBE_innovation
+
+# Applies progress to the current fascination and maintains the character-specific monthly loop.
+DICM_RBE_innovation.0001 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_character_flag = DICM_RBE_instant_fascination_progress_enabled
+			}
+
+			if = {
+				limit = {
+					culture.culture_head = root
+					culture = {
+						culture_has_any_fascination = yes
+					}
+				}
+
+				culture = {
+					add_fascination_progress = 100
+				}
+			}
+
+			trigger_event = {
+				id = DICM_RBE_innovation.0001
+				months = 1
+			}
+		}
+		else = {
+			remove_character_flag = DICM_RBE_instant_fascination_progress_loop_active
+		}
+	}
+}

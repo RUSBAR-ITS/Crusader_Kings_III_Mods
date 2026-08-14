@@ -1,0 +1,92 @@
+# Extends the vanilla marriage on-action without replacing its existing effect block.
+on_marriage = {
+	on_actions = {
+		DICM_RBE_on_marriage_assign_ceasar_consort
+	}
+}
+
+# Extends the succession confirmation on-action without replacing its existing effect block.
+on_player_select_destiny_confirmed = {
+	on_actions = {
+		DICM_RBE_on_player_heir_promote_ceasar_child
+	}
+}
+
+# Assigns the appropriate consort modifier when exactly one spouse is a Caesar-line sovereign.
+DICM_RBE_on_marriage_assign_ceasar_consort = {
+	trigger = {
+		DICM_RBE_ceasar_child_inheritance_enabled_trigger = yes
+		exists = scope:spouse
+		OR = {
+			AND = {
+				DICM_RBE_is_ceasar_ruler_trigger = yes
+				scope:spouse = {
+					DICM_RBE_is_ceasar_ruler_trigger = no
+				}
+			}
+			AND = {
+				DICM_RBE_is_ceasar_ruler_trigger = no
+				scope:spouse = {
+					DICM_RBE_is_ceasar_ruler_trigger = yes
+				}
+			}
+		}
+	}
+
+	effect = {
+		if = {
+			limit = {
+				has_character_modifier = DICM_RBE_Ceasar
+				scope:spouse = {
+					DICM_RBE_is_ceasar_ruler_trigger = no
+				}
+			}
+			scope:spouse = {
+				DICM_RBE_assign_imperator_consort_modifier_effect = yes
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = DICM_RBE_Ceasar_Female
+				scope:spouse = {
+					DICM_RBE_is_ceasar_ruler_trigger = no
+				}
+			}
+			scope:spouse = {
+				DICM_RBE_assign_imperatrix_consort_modifier_effect = yes
+			}
+		}
+		else_if = {
+			limit = {
+				DICM_RBE_is_ceasar_ruler_trigger = no
+				scope:spouse = {
+					has_character_modifier = DICM_RBE_Ceasar
+				}
+			}
+			DICM_RBE_assign_imperator_consort_modifier_effect = yes
+		}
+		else_if = {
+			limit = {
+				DICM_RBE_is_ceasar_ruler_trigger = no
+				scope:spouse = {
+					has_character_modifier = DICM_RBE_Ceasar_Female
+				}
+			}
+			DICM_RBE_assign_imperatrix_consort_modifier_effect = yes
+		}
+	}
+}
+
+# Promotes the inherited child modifier only when the confirmed player is the previous player's actual heir.
+DICM_RBE_on_player_heir_promote_ceasar_child = {
+	trigger = {
+		DICM_RBE_ceasar_child_inheritance_enabled_trigger = yes
+		exists = scope:previous_player_heir
+		this = scope:previous_player_heir
+		has_character_modifier = DICM_RBE_Ceasar_Child
+	}
+
+	effect = {
+		DICM_RBE_promote_ceasar_child_to_ruler_effect = yes
+	}
+}
