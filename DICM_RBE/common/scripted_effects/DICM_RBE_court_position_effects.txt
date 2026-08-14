@@ -50,11 +50,45 @@ DICM_RBE_add_court_position_languages_effect = {
 	}
 }
 
+# Add the permanent travel aptitude modifier used by specialized scouts.
+DICM_RBE_add_ceasar_scout_modifier_effect = {
+	if = {
+		limit = {
+			NOT = { has_character_modifier = DICM_RBE_Ceasar_Scout }
+		}
+		add_character_modifier = {
+			modifier = DICM_RBE_Ceasar_Scout
+		}
+	}
+}
+
+# Raise influence to the threshold for the highest vanilla influence level.
+DICM_RBE_raise_influence_to_maximum_level_effect = {
+	if = {
+		limit = { influence < 16000 }
+		change_influence = {
+			value = 16000
+			subtract = influence
+		}
+	}
+}
+
+# Raise merit to the threshold for the highest vanilla merit level.
+DICM_RBE_raise_merit_to_maximum_level_effect = {
+	if = {
+		limit = { merit < 23000 }
+		change_merit = {
+			value = 23000
+			subtract = merit
+		}
+	}
+}
+
 # Court position preparation effects are assembled in independent layers.
 # Each effect applies general bad-trait removal, aptitude-positive personality traits,
 # soft positive traits, and removal of aptitude-negative personality traits, in that order.
 # Every profile also ensures Loyal without duplicating an earlier aptitude grant.
-# Modifiers will be added separately.
+# Position-specific modifiers are added only where aptitude directly requires them.
 
 # Akolouthos
 DICM_RBE_prepare_akolouthos_court_position_effect = {
@@ -312,6 +346,7 @@ DICM_RBE_prepare_elephantry_captain_camp_officer_effect = {
 
 # Eparch
 DICM_RBE_prepare_eparch_court_position_effect = {
+	DICM_RBE_raise_influence_to_maximum_level_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_retrain_republican_education_effect = yes
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
@@ -373,6 +408,7 @@ DICM_RBE_prepare_foreign_emissary_court_position_effect = {
 
 # Grand Guardian
 DICM_RBE_prepare_grand_guardian_court_position_effect = {
+	DICM_RBE_raise_merit_to_maximum_level_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
@@ -390,6 +426,7 @@ DICM_RBE_prepare_grand_guardian_court_position_effect = {
 
 # Grand Mentor
 DICM_RBE_prepare_grand_mentor_court_position_effect = {
+	DICM_RBE_raise_merit_to_maximum_level_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
@@ -407,6 +444,7 @@ DICM_RBE_prepare_grand_mentor_court_position_effect = {
 
 # Grand Preceptor
 DICM_RBE_prepare_grand_preceptor_court_position_effect = {
+	DICM_RBE_raise_merit_to_maximum_level_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
@@ -653,6 +691,7 @@ DICM_RBE_prepare_siege_engineer_court_position_effect = {
 
 # Travel Leader
 DICM_RBE_prepare_travel_leader_court_position_effect = {
+	DICM_RBE_add_ceasar_scout_modifier_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
@@ -839,6 +878,10 @@ DICM_RBE_prepare_chief_forager_camp_officer_effect = {
 
 # Court Artificer
 DICM_RBE_prepare_court_artificer_court_position_effect = {
+	if = {
+		limit = { has_character_modifier = local_artisan_modifier }
+		remove_character_modifier = local_artisan_modifier
+	}
 	DICM_RBE_retrain_random_standard_education_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
 	DICM_RBE_add_good_personality_traits_soft_effect = yes
@@ -942,6 +985,7 @@ DICM_RBE_prepare_garuda_court_position_effect = {
 
 # Head Groom
 DICM_RBE_prepare_head_groom_camp_officer_effect = {
+	DICM_RBE_add_ceasar_scout_modifier_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
 	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
@@ -1002,6 +1046,25 @@ DICM_RBE_prepare_keeper_of_swans_court_position_effect = {
 
 # Kennelperson
 DICM_RBE_prepare_kennelperson_camp_officer_effect = {
+	if = {
+		limit = { any_owned_story = { type = story_cycle_pet_cat } }
+		random_owned_story = {
+			type = story_cycle_pet_cat
+			end_story = yes
+		}
+	}
+	if = {
+		limit = { has_character_flag = cat_person }
+		remove_character_flag = cat_person
+	}
+	if = {
+		limit = { has_character_modifier = cat_story_modifier }
+		remove_character_modifier = cat_story_modifier
+	}
+	if = {
+		limit = { NOT = { has_character_flag = dog_person } }
+		add_character_flag = dog_person
+	}
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes

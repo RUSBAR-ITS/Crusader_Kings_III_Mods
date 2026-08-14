@@ -24,13 +24,10 @@ DICM_RBE_add_comfort_eater_aptitude_trait_effect = {
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = comfort_eater }
 }
 
-# Adds Devoted only when the character's culture grants its aptitude bonus.
+# Adds Devoted to guarantee clergy status for clergy-dependent court positions.
 DICM_RBE_add_devoted_aptitude_trait_effect = {
 	if = {
-		limit = {
-			culture = { has_cultural_parameter = devoted_trait_bonuses }
-			NOT = { has_trait = devoted }
-		}
+		limit = { NOT = { has_trait = devoted } }
 		add_trait = devoted
 	}
 }

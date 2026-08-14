@@ -3,11 +3,11 @@
 
 	# Personal resilience and longevity
 	# Values use a single order-of-magnitude safety margin against stacked vanilla penalties.
-	health = 100
+	health = 10
 	life_expectancy = 200
 	fertility = 1000
 	years_of_fertility = 200
-	negate_health_penalty_add = 100
+	negate_health_penalty_add = 5
 	negate_fertility_penalty_add = 10
 	stress_gain_mult = -30
 
@@ -239,11 +239,11 @@ DICM_RBE_Ceasar_Female = {
 
 	# Personal resilience and longevity
 	# Values use a single order-of-magnitude safety margin against stacked vanilla penalties.
-	health = 100
+	health = 10
 	life_expectancy = 200
 	fertility = 1000
 	years_of_fertility = 200
-	negate_health_penalty_add = 100
+	negate_health_penalty_add = 5
 	negate_fertility_penalty_add = 10
 	stress_gain_mult = -30
 
@@ -475,11 +475,11 @@ DICM_RBE_Ceasar_Wife = {
 	icon = DICM_RBE_ceasar_wife
 
 	# Personal resilience and longevity
-	health = 100
+	health = 10
 	life_expectancy = 200
 	fertility = 1000
 	years_of_fertility = 200
-	negate_health_penalty_add = 100
+	negate_health_penalty_add = 5
 	negate_fertility_penalty_add = 10
 	stress_gain_mult = -30
 
@@ -493,11 +493,11 @@ DICM_RBE_Ceasar_Husband = {
 	icon = DICM_RBE_ceasar_husband
 
 	# Personal resilience and longevity
-	health = 100
+	health = 10
 	life_expectancy = 200
 	fertility = 1000
 	years_of_fertility = 200
-	negate_health_penalty_add = 100
+	negate_health_penalty_add = 5
 	negate_fertility_penalty_add = 10
 	stress_gain_mult = -30
 
@@ -511,9 +511,9 @@ DICM_RBE_Ceasar_Child = {
 	icon = DICM_RBE_ceasar_child
 
 	# Personal resilience
-	health = 100
+	health = 10
 	fertility = 1000
-	negate_health_penalty_add = 100
+	negate_health_penalty_add = 5
 	negate_fertility_penalty_add = 10
 	stress_gain_mult = -30
 
@@ -527,14 +527,21 @@ DICM_RBE_Ceasar_Squad = {
 	icon = DICM_RBE_ceasar_squad
 
 	# Personal resilience and suppressed fertility
-	health = 100
-	fertility = -1000
-	negate_health_penalty_add = 100
+	health = 10
+	fertility = -10000
+	negate_health_penalty_add = 5
 	stress_gain_mult = -30
+}
+
+DICM_RBE_Ceasar_Scout = {
+	icon = travel_positive
+	character_travel_speed = 100
+	character_travel_safety = 100
 }
 
 DICM_RBE_Ideal_Stooge = {
 	icon = DICM_RBE_ideal_stooge
+	fertility = -10000
 	diplomacy = -100
 	martial = -100
 	stewardship = -100
