@@ -1,0 +1,124 @@
+﻿# Adds every compatible standard commander trait at zero XP without changing XP on existing traits.
+# Reckless is preferred when neither mutually exclusive leadership trait is present.
+DICM_RBE_add_all_commander_traits_zero_xp_effect = {
+	if = { limit = { NOT = { has_trait = logistician } } add_trait = logistician }
+	if = { limit = { NOT = { has_trait = military_engineer } } add_trait = military_engineer }
+	if = { limit = { NOT = { has_trait = aggressive_attacker } } add_trait = aggressive_attacker }
+	if = { limit = { NOT = { has_trait = unyielding_defender } } add_trait = unyielding_defender }
+	if = { limit = { NOT = { has_trait = forder } } add_trait = forder }
+	if = { limit = { NOT = { has_trait = flexible_leader } } add_trait = flexible_leader }
+	if = { limit = { NOT = { has_trait = desert_warrior } } add_trait = desert_warrior }
+	if = { limit = { NOT = { has_trait = jungle_stalker } } add_trait = jungle_stalker }
+	if = { limit = { NOT = { has_trait = reaver } } add_trait = reaver }
+	if = {
+		limit = {
+			NOR = {
+				has_trait = reckless
+				has_trait = cautious_leader
+			}
+		}
+		add_trait = reckless
+	}
+	if = { limit = { NOT = { has_trait = holy_warrior } } add_trait = holy_warrior }
+	if = { limit = { NOT = { has_trait = open_terrain_expert } } add_trait = open_terrain_expert }
+	if = { limit = { NOT = { has_trait = rough_terrain_expert } } add_trait = rough_terrain_expert }
+	if = { limit = { NOT = { has_trait = forest_fighter } } add_trait = forest_fighter }
+	if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
+	if = { limit = { NOT = { has_trait = winter_soldier } } add_trait = winter_soldier }
+}
+
+# Adds every compatible standard commander trait and raises each present trait to exactly 100 XP.
+DICM_RBE_add_all_commander_traits_max_xp_effect = {
+	DICM_RBE_add_all_commander_traits_zero_xp_effect = yes
+	save_scope_as = DICM_RBE_commander_trait_target
+
+	if = {
+		limit = { has_trait = logistician has_trait_xp = { trait = logistician value < 100 } }
+		add_trait_xp = { trait = logistician value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(logistician)" } }
+	}
+	if = {
+		limit = { has_trait = military_engineer has_trait_xp = { trait = military_engineer value < 100 } }
+		add_trait_xp = { trait = military_engineer value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(military_engineer)" } }
+	}
+	if = {
+		limit = { has_trait = aggressive_attacker has_trait_xp = { trait = aggressive_attacker value < 100 } }
+		add_trait_xp = { trait = aggressive_attacker value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(aggressive_attacker)" } }
+	}
+	if = {
+		limit = { has_trait = unyielding_defender has_trait_xp = { trait = unyielding_defender value < 100 } }
+		add_trait_xp = { trait = unyielding_defender value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(unyielding_defender)" } }
+	}
+	if = {
+		limit = { has_trait = forder has_trait_xp = { trait = forder value < 100 } }
+		add_trait_xp = { trait = forder value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(forder)" } }
+	}
+	if = {
+		limit = { has_trait = flexible_leader has_trait_xp = { trait = flexible_leader value < 100 } }
+		add_trait_xp = { trait = flexible_leader value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(flexible_leader)" } }
+	}
+	if = {
+		limit = { has_trait = desert_warrior has_trait_xp = { trait = desert_warrior value < 100 } }
+		add_trait_xp = { trait = desert_warrior value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(desert_warrior)" } }
+	}
+	if = {
+		limit = { has_trait = jungle_stalker has_trait_xp = { trait = jungle_stalker value < 100 } }
+		add_trait_xp = { trait = jungle_stalker value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(jungle_stalker)" } }
+	}
+	if = {
+		limit = { has_trait = reaver has_trait_xp = { trait = reaver value < 100 } }
+		add_trait_xp = { trait = reaver value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(reaver)" } }
+	}
+	if = {
+		limit = { has_trait = reckless has_trait_xp = { trait = reckless value < 100 } }
+		add_trait_xp = { trait = reckless value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(reckless)" } }
+	}
+	if = {
+		limit = { has_trait = holy_warrior has_trait_xp = { trait = holy_warrior value < 100 } }
+		add_trait_xp = { trait = holy_warrior value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(holy_warrior)" } }
+	}
+	if = {
+		limit = { has_trait = open_terrain_expert has_trait_xp = { trait = open_terrain_expert value < 100 } }
+		add_trait_xp = { trait = open_terrain_expert value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(open_terrain_expert)" } }
+	}
+	if = {
+		limit = { has_trait = rough_terrain_expert has_trait_xp = { trait = rough_terrain_expert value < 100 } }
+		add_trait_xp = { trait = rough_terrain_expert value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(rough_terrain_expert)" } }
+	}
+	if = {
+		limit = { has_trait = forest_fighter has_trait_xp = { trait = forest_fighter value < 100 } }
+		add_trait_xp = { trait = forest_fighter value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(forest_fighter)" } }
+	}
+	if = {
+		limit = { has_trait = cautious_leader has_trait_xp = { trait = cautious_leader value < 100 } }
+		add_trait_xp = { trait = cautious_leader value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(cautious_leader)" } }
+	}
+	if = {
+		limit = { has_trait = organizer has_trait_xp = { trait = organizer value < 100 } }
+		add_trait_xp = { trait = organizer value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(organizer)" } }
+	}
+	if = {
+		limit = { has_trait = winter_soldier has_trait_xp = { trait = winter_soldier value < 100 } }
+		add_trait_xp = { trait = winter_soldier value = { value = 100 subtract = "scope:DICM_RBE_commander_trait_target.has_trait_xp(winter_soldier)" } }
+	}
+}
+
+# Removes every standard commander trait when it is present.
+DICM_RBE_remove_all_commander_traits_effect = {
+	if = { limit = { has_trait = logistician } remove_trait = logistician }
+	if = { limit = { has_trait = military_engineer } remove_trait = military_engineer }
+	if = { limit = { has_trait = aggressive_attacker } remove_trait = aggressive_attacker }
+	if = { limit = { has_trait = unyielding_defender } remove_trait = unyielding_defender }
+	if = { limit = { has_trait = forder } remove_trait = forder }
+	if = { limit = { has_trait = flexible_leader } remove_trait = flexible_leader }
+	if = { limit = { has_trait = desert_warrior } remove_trait = desert_warrior }
+	if = { limit = { has_trait = jungle_stalker } remove_trait = jungle_stalker }
+	if = { limit = { has_trait = reaver } remove_trait = reaver }
+	if = { limit = { has_trait = reckless } remove_trait = reckless }
+	if = { limit = { has_trait = holy_warrior } remove_trait = holy_warrior }
+	if = { limit = { has_trait = open_terrain_expert } remove_trait = open_terrain_expert }
+	if = { limit = { has_trait = rough_terrain_expert } remove_trait = rough_terrain_expert }
+	if = { limit = { has_trait = forest_fighter } remove_trait = forest_fighter }
+	if = { limit = { has_trait = cautious_leader } remove_trait = cautious_leader }
+	if = { limit = { has_trait = organizer } remove_trait = organizer }
+	if = { limit = { has_trait = winter_soldier } remove_trait = winter_soldier }
+}
