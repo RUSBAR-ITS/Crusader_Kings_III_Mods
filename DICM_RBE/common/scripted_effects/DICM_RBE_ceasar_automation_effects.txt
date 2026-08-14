@@ -145,3 +145,14 @@ DICM_RBE_loyalty_curse_departure_automation_effect = {
 # Extension point for actions applied when a non-child character becomes a landholder below a Caesar sovereign.
 DICM_RBE_administrative_retraining_automation_effect = {
 }
+
+# Rolls an eligible Eternal Wet Nurse's chronological age back by exactly twenty-nine years.
+DICM_RBE_eternal_wet_nurse_age_rollback_effect = {
+	if = {
+		limit = {
+			DICM_RBE_eternal_wet_nurse_age_rollback_trigger = yes
+		}
+		change_age = -29
+		debug_log = "DICM_RBE: Eternal Wet Nurse age rolled back by 29 years"
+	}
+}

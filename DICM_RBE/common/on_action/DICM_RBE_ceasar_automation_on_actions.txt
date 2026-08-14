@@ -19,6 +19,13 @@ on_16th_birthday = {
 	}
 }
 
+# Extends every birthday without replacing vanilla birthday handling.
+on_birthday = {
+	on_actions = {
+		DICM_RBE_on_eternal_wet_nurse_forty_fifth_birthday
+	}
+}
+
 # Extends court departure handling without replacing its existing events or effects.
 on_leave_court = {
 	on_actions = {
@@ -137,6 +144,18 @@ DICM_RBE_on_ceasar_child_came_of_age = {
 	events = {
 		delay = { days = 1 }
 		DICM_RBE_ceasar_automation.0001
+	}
+}
+
+# Schedules the rollback one day after an eligible wet nurse reaches age forty-five.
+DICM_RBE_on_eternal_wet_nurse_forty_fifth_birthday = {
+	trigger = {
+		DICM_RBE_eternal_wet_nurse_age_rollback_trigger = yes
+	}
+
+	events = {
+		delay = { days = 1 }
+		DICM_RBE_ceasar_automation.0004
 	}
 }
 

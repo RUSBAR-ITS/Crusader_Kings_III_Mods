@@ -61,6 +61,24 @@ DICM_RBE_administrative_retraining_setting_enabled = {
 	}
 }
 
+# Toggles Eternal Wet Nurse automation globally.
+DICM_RBE_toggle_eternal_wet_nurse_setting = {
+	scope = character
+
+	effect = {
+		DICM_RBE_toggle_eternal_wet_nurse_effect = yes
+	}
+}
+
+# Reports whether Eternal Wet Nurse automation is enabled globally.
+DICM_RBE_eternal_wet_nurse_setting_enabled = {
+	scope = character
+
+	is_valid = {
+		DICM_RBE_eternal_wet_nurse_enabled_trigger = yes
+	}
+}
+
 # Toggles Sodom and Gomorrah globally.
 DICM_RBE_toggle_sodom_and_gomorrah_setting = {
 	scope = character

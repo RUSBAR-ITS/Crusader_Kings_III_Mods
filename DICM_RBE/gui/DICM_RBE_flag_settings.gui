@@ -103,6 +103,20 @@ window = {
 
 						button_checkbox_label = {
 							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_toggle_eternal_wet_nurse_setting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = DICM_RBE_eternal_wet_nurse_setting_tt
+
+							blockoverride "checkbox" {
+								checked = "[GetScriptedGui('DICM_RBE_eternal_wet_nurse_setting_enabled').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_eternal_wet_nurse_setting
+							}
+						}
+
+						button_checkbox_label = {
+							layoutpolicy_horizontal = expanding
 							onclick = "[GetScriptedGui('DICM_RBE_toggle_sodom_and_gomorrah_setting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 							tooltip = DICM_RBE_sodom_and_gomorrah_setting_tt
 

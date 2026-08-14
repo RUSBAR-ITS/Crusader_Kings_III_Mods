@@ -61,3 +61,19 @@ DICM_RBE_ceasar_automation.0003 = {
 		}
 	}
 }
+
+# Rolls an eligible wet nurse back from forty-five years and one day to sixteen years and one day.
+DICM_RBE_ceasar_automation.0004 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				DICM_RBE_eternal_wet_nurse_age_rollback_trigger = yes
+			}
+
+			DICM_RBE_eternal_wet_nurse_age_rollback_effect = yes
+		}
+	}
+}

@@ -50,6 +50,30 @@ DICM_RBE_add_court_position_languages_effect = {
 	}
 }
 
+# Ensures the wet nurse has the vanilla motherhood aptitude bonus without adding a living dependent.
+DICM_RBE_ensure_wet_nurse_has_child_effect = {
+	if = {
+		limit = {
+			NOT = { any_child = { } }
+		}
+		hidden_effect = {
+			create_character = {
+				age = 0
+				gender_female_chance = 50
+				location = root.location
+				culture = root.culture
+				faith = root.faith
+				mother = root
+				dynasty = none
+				trait = sickly
+				after_creation = {
+					death = { death_reason = death_sickly }
+				}
+			}
+		}
+	}
+}
+
 # Add the permanent travel aptitude modifier used by specialized scouts.
 DICM_RBE_add_ceasar_scout_modifier_effect = {
 	if = {
@@ -1137,6 +1161,7 @@ DICM_RBE_prepare_person_haggler_camp_officer_effect = {
 
 # Wet Nurse
 DICM_RBE_prepare_wet_nurse_court_position_effect = {
+	DICM_RBE_ensure_wet_nurse_has_child_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_physique_good_3_aptitude_trait_effect = yes
 	DICM_RBE_add_strong_aptitude_trait_effect = yes

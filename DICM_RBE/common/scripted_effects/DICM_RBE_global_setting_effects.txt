@@ -161,3 +161,43 @@ DICM_RBE_toggle_never_too_many_bastards_effect = {
 		DICM_RBE_enable_never_too_many_bastards_effect = yes
 	}
 }
+
+# Enables Eternal Wet Nurse automation for future forty-fifth birthdays.
+DICM_RBE_enable_eternal_wet_nurse_effect = {
+	if = {
+		limit = {
+			NOT = {
+				has_global_variable = DICM_RBE_eternal_wet_nurse_enabled
+			}
+		}
+		set_global_variable = {
+			name = DICM_RBE_eternal_wet_nurse_enabled
+			value = yes
+		}
+		debug_log = "DICM_RBE: DICM_RBE_eternal_wet_nurse_enabled = yes"
+	}
+}
+
+# Disables Eternal Wet Nurse automation without changing ages already rolled back.
+DICM_RBE_disable_eternal_wet_nurse_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_eternal_wet_nurse_enabled
+		}
+		remove_global_variable = DICM_RBE_eternal_wet_nurse_enabled
+		debug_log = "DICM_RBE: DICM_RBE_eternal_wet_nurse_enabled = no"
+	}
+}
+
+# Toggles Eternal Wet Nurse automation globally.
+DICM_RBE_toggle_eternal_wet_nurse_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_eternal_wet_nurse_enabled
+		}
+		DICM_RBE_disable_eternal_wet_nurse_effect = yes
+	}
+	else = {
+		DICM_RBE_enable_eternal_wet_nurse_effect = yes
+	}
+}

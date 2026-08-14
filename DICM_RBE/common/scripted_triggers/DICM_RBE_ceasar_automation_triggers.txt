@@ -8,6 +8,15 @@ DICM_RBE_administrative_retraining_enabled_trigger = {
 	has_global_variable = DICM_RBE_administrative_retraining_enabled
 }
 
+# Returns true when an Eternal Wet Nurse is ready for the delayed age rollback.
+DICM_RBE_eternal_wet_nurse_age_rollback_trigger = {
+	is_alive = yes
+	DICM_RBE_eternal_wet_nurse_enabled_trigger = yes
+	has_character_modifier = DICM_RBE_Ceasar_Wet_Nurse
+	age >= 45
+	age < 46
+}
+
 # Returns true while the character remains either a realm landholder or a direct courtier of the specified Caesar sovereign.
 DICM_RBE_is_still_in_ceasar_service_trigger = {
 	OR = {
