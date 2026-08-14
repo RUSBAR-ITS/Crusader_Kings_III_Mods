@@ -1,0 +1,133 @@
+# Enables loyalty-curse automation for future departures from a Caesar sovereign's court.
+DICM_RBE_enable_loyalty_curse_effect = {
+	if = {
+		limit = {
+			NOT = {
+				has_global_variable = DICM_RBE_loyalty_curse_enabled
+			}
+		}
+
+		set_global_variable = {
+			name = DICM_RBE_loyalty_curse_enabled
+			value = yes
+		}
+	}
+}
+
+# Disables loyalty-curse automation without changing characters processed earlier.
+DICM_RBE_disable_loyalty_curse_effect = {
+	remove_global_variable = DICM_RBE_loyalty_curse_enabled
+}
+
+# Entry point intended for the future cheat-menu setting.
+DICM_RBE_toggle_loyalty_curse_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_loyalty_curse_enabled
+		}
+		DICM_RBE_disable_loyalty_curse_effect = yes
+	}
+	else = {
+		DICM_RBE_enable_loyalty_curse_effect = yes
+	}
+}
+
+# Enables administrative retraining for characters who become landholders in a Caesar realm.
+DICM_RBE_enable_administrative_retraining_effect = {
+	if = {
+		limit = {
+			NOT = {
+				has_global_variable = DICM_RBE_administrative_retraining_enabled
+			}
+		}
+
+		set_global_variable = {
+			name = DICM_RBE_administrative_retraining_enabled
+			value = yes
+		}
+	}
+}
+
+# Disables administrative retraining without changing characters processed earlier.
+DICM_RBE_disable_administrative_retraining_effect = {
+	remove_global_variable = DICM_RBE_administrative_retraining_enabled
+}
+
+# Entry point intended for the future cheat-menu setting.
+DICM_RBE_toggle_administrative_retraining_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_administrative_retraining_enabled
+		}
+		DICM_RBE_disable_administrative_retraining_effect = yes
+	}
+	else = {
+		DICM_RBE_enable_administrative_retraining_effect = yes
+	}
+}
+
+# Schedules one stabilized loyalty-curse departure check for a non-child character.
+DICM_RBE_schedule_loyalty_curse_departure_check_effect = {
+	if = {
+		limit = {
+			DICM_RBE_loyalty_curse_enabled_trigger = yes
+			NOT = {
+				has_character_modifier = DICM_RBE_Ceasar_Child
+			}
+			NOT = {
+				has_character_flag = DICM_RBE_loyalty_curse_departure_check_pending
+			}
+		}
+
+		add_character_flag = {
+			flag = DICM_RBE_loyalty_curse_departure_check_pending
+			days = 3
+		}
+		$DICM_RBE_CEASAR$ = {
+			save_scope_as = DICM_RBE_loyalty_curse_ceasar
+		}
+		trigger_event = {
+			id = DICM_RBE_ceasar_automation.0002
+			days = 1
+		}
+	}
+}
+
+# Schedules one stabilized administrative-retraining check for a non-child character.
+DICM_RBE_schedule_administrative_retraining_check_effect = {
+	if = {
+		limit = {
+			DICM_RBE_administrative_retraining_enabled_trigger = yes
+			NOT = {
+				has_character_modifier = DICM_RBE_Ceasar_Child
+			}
+			NOT = {
+				has_character_flag = DICM_RBE_administrative_retraining_check_pending
+			}
+		}
+
+		add_character_flag = {
+			flag = DICM_RBE_administrative_retraining_check_pending
+			days = 3
+		}
+		$DICM_RBE_CEASAR$ = {
+			save_scope_as = DICM_RBE_administrative_retraining_ceasar
+		}
+		trigger_event = {
+			id = DICM_RBE_ceasar_automation.0003
+			days = 1
+		}
+	}
+}
+
+# Extension point for actions applied one day after a Caesar child reaches adulthood.
+DICM_RBE_ceasar_child_adulthood_automation_effect = {
+}
+
+# Extension point for actions applied when a character leaves a Caesar sovereign's court.
+DICM_RBE_loyalty_curse_departure_automation_effect = {
+}
+
+# Extension point for actions applied when a non-child character becomes a landholder below a Caesar sovereign.
+DICM_RBE_administrative_retraining_automation_effect = {
+}

@@ -12,6 +12,42 @@ on_player_select_destiny_confirmed = {
 	}
 }
 
+# Extends the coming-of-age birthday without replacing its existing events or effects.
+on_16th_birthday = {
+	on_actions = {
+		DICM_RBE_on_ceasar_child_came_of_age
+	}
+}
+
+# Extends court departure handling without replacing its existing events or effects.
+on_leave_court = {
+	on_actions = {
+		DICM_RBE_on_character_left_ceasar_court
+	}
+}
+
+# Extends title-loss handling without replacing its existing events or effects.
+on_title_lost = {
+	on_actions = {
+		DICM_RBE_on_loyalty_curse_title_lost
+	}
+}
+
+# Extends title-gain handling without replacing its existing events or effects.
+on_title_gain = {
+	on_actions = {
+		DICM_RBE_on_administrative_retraining_title_gain
+	}
+}
+
+# Extends vassal-transfer handling without replacing its existing events or effects.
+on_vassal_change = {
+	on_actions = {
+		DICM_RBE_on_loyalty_curse_vassal_change
+		DICM_RBE_on_administrative_retraining_vassal_change
+	}
+}
+
 # Assigns the appropriate consort modifier when exactly one spouse is a Caesar-line sovereign.
 DICM_RBE_on_marriage_assign_ceasar_consort = {
 	trigger = {
@@ -88,5 +124,181 @@ DICM_RBE_on_player_heir_promote_ceasar_child = {
 
 	effect = {
 		DICM_RBE_promote_ceasar_child_to_ruler_effect = yes
+	}
+}
+
+# Schedules Caesar-child adulthood automation after the vanilla coming-of-age sequence has finished.
+DICM_RBE_on_ceasar_child_came_of_age = {
+	trigger = {
+		DICM_RBE_ceasar_child_inheritance_enabled_trigger = yes
+		has_character_modifier = DICM_RBE_Ceasar_Child
+	}
+
+	events = {
+		delay = { days = 1 }
+		DICM_RBE_ceasar_automation.0001
+	}
+}
+
+# Schedules a stabilized loyalty-curse check for a character leaving a Caesar sovereign's court.
+DICM_RBE_on_character_left_ceasar_court = {
+	trigger = {
+		DICM_RBE_loyalty_curse_enabled_trigger = yes
+		NOT = {
+			has_character_modifier = DICM_RBE_Ceasar_Child
+		}
+		exists = scope:old_employer
+		scope:old_employer = {
+			DICM_RBE_is_ceasar_ruler_trigger = yes
+		}
+	}
+
+	effect = {
+		DICM_RBE_schedule_loyalty_curse_departure_check_effect = {
+			DICM_RBE_CEASAR = scope:old_employer
+		}
+	}
+}
+
+# Schedules a stabilized check when a realm landholder loses a real landed title.
+DICM_RBE_on_loyalty_curse_title_lost = {
+	trigger = {
+		DICM_RBE_loyalty_curse_enabled_trigger = yes
+		NOT = {
+			has_character_modifier = DICM_RBE_Ceasar_Child
+		}
+		DICM_RBE_is_ceasar_ruler_trigger = no
+		top_liege = {
+			DICM_RBE_is_ceasar_ruler_trigger = yes
+		}
+		scope:title = {
+			NOR = {
+				is_noble_family_title = yes
+				is_landless_type_title = yes
+				has_variable = adventurer_creation_reason
+			}
+		}
+	}
+
+	effect = {
+		top_liege = {
+			save_scope_as = DICM_RBE_loyalty_curse_previous_ceasar
+		}
+		DICM_RBE_schedule_loyalty_curse_departure_check_effect = {
+			DICM_RBE_CEASAR = scope:DICM_RBE_loyalty_curse_previous_ceasar
+		}
+	}
+}
+
+# Schedules checks for an entire former Caesar vassal branch after its direct liege changes.
+DICM_RBE_on_loyalty_curse_vassal_change = {
+	trigger = {
+		DICM_RBE_loyalty_curse_enabled_trigger = yes
+		exists = scope:old_liege
+		scope:old_liege = {
+			top_liege = {
+				DICM_RBE_is_ceasar_ruler_trigger = yes
+			}
+		}
+	}
+
+	effect = {
+		scope:old_liege = {
+			top_liege = {
+				save_scope_as = DICM_RBE_loyalty_curse_previous_ceasar
+			}
+		}
+
+		DICM_RBE_schedule_loyalty_curse_departure_check_effect = {
+			DICM_RBE_CEASAR = scope:DICM_RBE_loyalty_curse_previous_ceasar
+		}
+		every_vassal_or_below = {
+			limit = {
+				has_any_landed_title_trigger = yes
+			}
+			DICM_RBE_schedule_loyalty_curse_departure_check_effect = {
+				DICM_RBE_CEASAR = scope:DICM_RBE_loyalty_curse_previous_ceasar
+			}
+		}
+	}
+}
+
+# Schedules retraining when a previously landless character receives their first real landed title in a Caesar realm.
+DICM_RBE_on_administrative_retraining_title_gain = {
+	trigger = {
+		DICM_RBE_administrative_retraining_enabled_trigger = yes
+		NOT = {
+			has_character_modifier = DICM_RBE_Ceasar_Child
+		}
+		DICM_RBE_is_ceasar_ruler_trigger = no
+		top_liege = {
+			DICM_RBE_is_ceasar_ruler_trigger = yes
+		}
+		scope:title = {
+			NOR = {
+				is_noble_family_title = yes
+				is_landless_type_title = yes
+				has_variable = adventurer_creation_reason
+			}
+		}
+		NOT = {
+			any_held_title = {
+				this != scope:title
+				NOR = {
+					is_noble_family_title = yes
+					is_landless_type_title = yes
+					has_variable = adventurer_creation_reason
+				}
+			}
+		}
+	}
+
+	effect = {
+		top_liege = {
+			save_scope_as = DICM_RBE_administrative_retraining_current_ceasar
+		}
+		DICM_RBE_schedule_administrative_retraining_check_effect = {
+			DICM_RBE_CEASAR = scope:DICM_RBE_administrative_retraining_current_ceasar
+		}
+	}
+}
+
+# Schedules retraining for an existing landed branch entering a Caesar realm from another realm.
+DICM_RBE_on_administrative_retraining_vassal_change = {
+	trigger = {
+		DICM_RBE_administrative_retraining_enabled_trigger = yes
+		has_any_landed_title_trigger = yes
+		NOT = {
+			has_character_modifier = DICM_RBE_Ceasar_Child
+		}
+		DICM_RBE_is_ceasar_ruler_trigger = no
+		top_liege = {
+			DICM_RBE_is_ceasar_ruler_trigger = yes
+		}
+		OR = {
+			NOT = {
+				exists = scope:old_liege
+			}
+			scope:old_liege = root
+			scope:old_liege.top_liege != root.top_liege
+		}
+	}
+
+	effect = {
+		top_liege = {
+			save_scope_as = DICM_RBE_administrative_retraining_current_ceasar
+		}
+
+		DICM_RBE_schedule_administrative_retraining_check_effect = {
+			DICM_RBE_CEASAR = scope:DICM_RBE_administrative_retraining_current_ceasar
+		}
+		every_vassal_or_below = {
+			limit = {
+				has_any_landed_title_trigger = yes
+			}
+			DICM_RBE_schedule_administrative_retraining_check_effect = {
+				DICM_RBE_CEASAR = scope:DICM_RBE_administrative_retraining_current_ceasar
+			}
+		}
 	}
 }

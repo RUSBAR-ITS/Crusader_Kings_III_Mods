@@ -1,0 +1,198 @@
+# Adds every requested positive personality trait that the character does not already have.
+DICM_RBE_add_good_personality_traits_effect = {
+	if = { limit = { has_trait = gluttonous } remove_trait = gluttonous }
+	if = { limit = { NOT = { has_trait = temperate } } add_trait = temperate }
+	if = { limit = { has_trait = greedy } remove_trait = greedy }
+	if = { limit = { NOT = { has_trait = generous } } add_trait = generous }
+	if = { limit = { has_trait = lazy } remove_trait = lazy }
+	if = { limit = { NOT = { has_trait = diligent } } add_trait = diligent }
+	if = { limit = { has_trait = wrathful } remove_trait = wrathful }
+	if = { limit = { NOT = { has_trait = calm } } add_trait = calm }
+	if = { limit = { has_trait = impatient } remove_trait = impatient }
+	if = { limit = { NOT = { has_trait = patient } } add_trait = patient }
+	if = { limit = { has_trait = arrogant } remove_trait = arrogant }
+	if = { limit = { NOT = { has_trait = humble } } add_trait = humble }
+	if = { limit = { has_trait = deceitful } remove_trait = deceitful }
+	if = { limit = { NOT = { has_trait = honest } } add_trait = honest }
+	if = { limit = { has_trait = craven } remove_trait = craven }
+	if = { limit = { NOT = { has_trait = brave } } add_trait = brave }
+	if = { limit = { has_trait = shy } remove_trait = shy }
+	if = { limit = { NOT = { has_trait = gregarious } } add_trait = gregarious }
+	if = { limit = { has_trait = ambitious } remove_trait = ambitious }
+	if = { limit = { NOT = { has_trait = content } } add_trait = content }
+	if = { limit = { has_trait = arbitrary } remove_trait = arbitrary }
+	if = { limit = { NOT = { has_trait = just } } add_trait = just }
+	if = { limit = { has_trait = cynical } remove_trait = cynical }
+	if = { limit = { NOT = { has_trait = zealous } } add_trait = zealous }
+	if = { limit = { has_trait = trusting } remove_trait = trusting }
+	if = { limit = { NOT = { has_trait = paranoid } } add_trait = paranoid }
+	if = { limit = { has_trait = callous } remove_trait = callous }
+	if = { limit = { has_trait = sadistic } remove_trait = sadistic }
+	if = { limit = { NOT = { has_trait = compassionate } } add_trait = compassionate }
+	if = { limit = { has_trait = vengeful } remove_trait = vengeful }
+	if = { limit = { NOT = { has_trait = forgiving } } add_trait = forgiving }
+}
+
+# Adds positive personality traits only when neither the trait nor any of its opposites is present.
+DICM_RBE_add_good_personality_traits_soft_effect = {
+	if = { limit = { NOR = { has_trait = temperate has_trait = gluttonous } } add_trait = temperate }
+	if = { limit = { NOR = { has_trait = generous has_trait = greedy } } add_trait = generous }
+	if = { limit = { NOR = { has_trait = diligent has_trait = lazy } } add_trait = diligent }
+	if = { limit = { NOR = { has_trait = calm has_trait = wrathful } } add_trait = calm }
+	if = { limit = { NOR = { has_trait = patient has_trait = impatient } } add_trait = patient }
+	if = { limit = { NOR = { has_trait = humble has_trait = arrogant } } add_trait = humble }
+	if = { limit = { NOR = { has_trait = honest has_trait = deceitful } } add_trait = honest }
+	if = { limit = { NOR = { has_trait = brave has_trait = craven } } add_trait = brave }
+	if = { limit = { NOR = { has_trait = gregarious has_trait = shy } } add_trait = gregarious }
+	if = { limit = { NOR = { has_trait = content has_trait = ambitious } } add_trait = content }
+	if = { limit = { NOR = { has_trait = just has_trait = arbitrary } } add_trait = just }
+	if = { limit = { NOR = { has_trait = zealous has_trait = cynical } } add_trait = zealous }
+	if = { limit = { NOR = { has_trait = paranoid has_trait = trusting } } add_trait = paranoid }
+	if = {
+		limit = {
+			NOR = {
+				has_trait = compassionate
+				has_trait = callous
+				has_trait = sadistic
+			}
+		}
+		add_trait = compassionate
+	}
+	if = { limit = { NOR = { has_trait = forgiving has_trait = vengeful } } add_trait = forgiving }
+}
+
+# Removes every requested positive personality trait that the character currently has.
+DICM_RBE_remove_good_personality_traits_effect = {
+	if = { limit = { has_trait = temperate } remove_trait = temperate }
+	if = { limit = { has_trait = generous } remove_trait = generous }
+	if = { limit = { has_trait = diligent } remove_trait = diligent }
+	if = { limit = { has_trait = calm } remove_trait = calm }
+	if = { limit = { has_trait = patient } remove_trait = patient }
+	if = { limit = { has_trait = humble } remove_trait = humble }
+	if = { limit = { has_trait = honest } remove_trait = honest }
+	if = { limit = { has_trait = brave } remove_trait = brave }
+	if = { limit = { has_trait = gregarious } remove_trait = gregarious }
+	if = { limit = { has_trait = content } remove_trait = content }
+	if = { limit = { has_trait = just } remove_trait = just }
+	if = { limit = { has_trait = zealous } remove_trait = zealous }
+	if = { limit = { has_trait = paranoid } remove_trait = paranoid }
+	if = { limit = { has_trait = compassionate } remove_trait = compassionate }
+	if = { limit = { has_trait = forgiving } remove_trait = forgiving }
+}
+
+# Adds every requested negative personality trait that the character does not already have.
+# Eccentric, Fickle, and Sadistic are handled by separate effects below.
+DICM_RBE_add_bad_personality_traits_effect = {
+	if = { limit = { has_trait = forgiving } remove_trait = forgiving }
+	if = { limit = { NOT = { has_trait = vengeful } } add_trait = vengeful }
+	if = { limit = { has_trait = fickle } remove_trait = fickle }
+	if = { limit = { has_trait = eccentric } remove_trait = eccentric }
+	if = { limit = { NOT = { has_trait = stubborn } } add_trait = stubborn }
+	if = { limit = { has_trait = compassionate } remove_trait = compassionate }
+	if = { limit = { has_trait = sadistic } remove_trait = sadistic }
+	if = { limit = { NOT = { has_trait = callous } } add_trait = callous }
+	if = { limit = { has_trait = paranoid } remove_trait = paranoid }
+	if = { limit = { NOT = { has_trait = trusting } } add_trait = trusting }
+	if = { limit = { has_trait = zealous } remove_trait = zealous }
+	if = { limit = { NOT = { has_trait = cynical } } add_trait = cynical }
+	if = { limit = { has_trait = just } remove_trait = just }
+	if = { limit = { NOT = { has_trait = arbitrary } } add_trait = arbitrary }
+	if = { limit = { has_trait = content } remove_trait = content }
+	if = { limit = { NOT = { has_trait = ambitious } } add_trait = ambitious }
+	if = { limit = { has_trait = gregarious } remove_trait = gregarious }
+	if = { limit = { NOT = { has_trait = shy } } add_trait = shy }
+	if = { limit = { has_trait = brave } remove_trait = brave }
+	if = { limit = { NOT = { has_trait = craven } } add_trait = craven }
+	if = { limit = { has_trait = honest } remove_trait = honest }
+	if = { limit = { NOT = { has_trait = deceitful } } add_trait = deceitful }
+	if = { limit = { has_trait = humble } remove_trait = humble }
+	if = { limit = { NOT = { has_trait = arrogant } } add_trait = arrogant }
+	if = { limit = { has_trait = patient } remove_trait = patient }
+	if = { limit = { NOT = { has_trait = impatient } } add_trait = impatient }
+	if = { limit = { has_trait = calm } remove_trait = calm }
+	if = { limit = { NOT = { has_trait = wrathful } } add_trait = wrathful }
+	if = { limit = { has_trait = diligent } remove_trait = diligent }
+	if = { limit = { NOT = { has_trait = lazy } } add_trait = lazy }
+	if = { limit = { has_trait = generous } remove_trait = generous }
+	if = { limit = { NOT = { has_trait = greedy } } add_trait = greedy }
+	if = { limit = { has_trait = temperate } remove_trait = temperate }
+	if = { limit = { NOT = { has_trait = gluttonous } } add_trait = gluttonous }
+}
+
+# Removes every requested negative personality trait that the character currently has.
+DICM_RBE_remove_bad_personality_traits_effect = {
+	if = { limit = { has_trait = vengeful } remove_trait = vengeful }
+	if = { limit = { has_trait = stubborn } remove_trait = stubborn }
+	if = { limit = { has_trait = callous } remove_trait = callous }
+	if = { limit = { has_trait = trusting } remove_trait = trusting }
+	if = { limit = { has_trait = cynical } remove_trait = cynical }
+	if = { limit = { has_trait = arbitrary } remove_trait = arbitrary }
+	if = { limit = { has_trait = ambitious } remove_trait = ambitious }
+	if = { limit = { has_trait = shy } remove_trait = shy }
+	if = { limit = { has_trait = craven } remove_trait = craven }
+	if = { limit = { has_trait = deceitful } remove_trait = deceitful }
+	if = { limit = { has_trait = arrogant } remove_trait = arrogant }
+	if = { limit = { has_trait = impatient } remove_trait = impatient }
+	if = { limit = { has_trait = wrathful } remove_trait = wrathful }
+	if = { limit = { has_trait = lazy } remove_trait = lazy }
+	if = { limit = { has_trait = greedy } remove_trait = greedy }
+	if = { limit = { has_trait = gluttonous } remove_trait = gluttonous }
+}
+
+# Adds Lustful when it is absent.
+DICM_RBE_add_lustful_trait_effect = {
+	if = { limit = { has_trait = chaste } remove_trait = chaste }
+	if = { limit = { NOT = { has_trait = lustful } } add_trait = lustful }
+}
+
+# Removes Lustful when it is present.
+DICM_RBE_remove_lustful_trait_effect = {
+	if = { limit = { has_trait = lustful } remove_trait = lustful }
+}
+
+# Adds Chaste when it is absent.
+DICM_RBE_add_chaste_trait_effect = {
+	if = { limit = { has_trait = lustful } remove_trait = lustful }
+	if = { limit = { NOT = { has_trait = chaste } } add_trait = chaste }
+}
+
+# Removes Chaste when it is present.
+DICM_RBE_remove_chaste_trait_effect = {
+	if = { limit = { has_trait = chaste } remove_trait = chaste }
+}
+
+# Adds Eccentric after removing both of its opposite traits.
+DICM_RBE_add_eccentric_trait_effect = {
+	if = { limit = { has_trait = stubborn } remove_trait = stubborn }
+	if = { limit = { has_trait = fickle } remove_trait = fickle }
+	if = { limit = { NOT = { has_trait = eccentric } } add_trait = eccentric }
+}
+
+# Removes Eccentric when it is present.
+DICM_RBE_remove_eccentric_trait_effect = {
+	if = { limit = { has_trait = eccentric } remove_trait = eccentric }
+}
+
+# Adds Fickle after removing both of its opposite traits.
+DICM_RBE_add_fickle_trait_effect = {
+	if = { limit = { has_trait = stubborn } remove_trait = stubborn }
+	if = { limit = { has_trait = eccentric } remove_trait = eccentric }
+	if = { limit = { NOT = { has_trait = fickle } } add_trait = fickle }
+}
+
+# Removes Fickle when it is present.
+DICM_RBE_remove_fickle_trait_effect = {
+	if = { limit = { has_trait = fickle } remove_trait = fickle }
+}
+
+# Adds Sadistic after removing both of its opposite traits.
+DICM_RBE_add_sadistic_trait_effect = {
+	if = { limit = { has_trait = compassionate } remove_trait = compassionate }
+	if = { limit = { has_trait = callous } remove_trait = callous }
+	if = { limit = { NOT = { has_trait = sadistic } } add_trait = sadistic }
+}
+
+# Removes Sadistic when it is present.
+DICM_RBE_remove_sadistic_trait_effect = {
+	if = { limit = { has_trait = sadistic } remove_trait = sadistic }
+}

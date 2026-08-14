@@ -1,0 +1,17 @@
+# Applies two ordered deltas to every base skill.
+# The first delta can force engine clamping before the second delta sets the desired value.
+DICM_RBE_adjust_all_base_skills_effect = {
+	add_diplomacy_skill = $DICM_RBE_DECREASE_DELTA$
+	add_martial_skill = $DICM_RBE_DECREASE_DELTA$
+	add_stewardship_skill = $DICM_RBE_DECREASE_DELTA$
+	add_intrigue_skill = $DICM_RBE_DECREASE_DELTA$
+	add_learning_skill = $DICM_RBE_DECREASE_DELTA$
+	add_prowess_skill = $DICM_RBE_DECREASE_DELTA$
+
+	add_diplomacy_skill = $DICM_RBE_INCREASE_DELTA$
+	add_martial_skill = $DICM_RBE_INCREASE_DELTA$
+	add_stewardship_skill = $DICM_RBE_INCREASE_DELTA$
+	add_intrigue_skill = $DICM_RBE_INCREASE_DELTA$
+	add_learning_skill = $DICM_RBE_INCREASE_DELTA$
+	add_prowess_skill = $DICM_RBE_INCREASE_DELTA$
+}

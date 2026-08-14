@@ -1,0 +1,63 @@
+namespace = DICM_RBE_ceasar_automation
+
+# Runs Caesar-child automation one day after the sixteenth birthday.
+DICM_RBE_ceasar_automation.0001 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				DICM_RBE_ceasar_child_inheritance_enabled_trigger = yes
+			}
+
+			DICM_RBE_ceasar_child_adulthood_automation_effect = yes
+		}
+	}
+}
+
+# Evaluates loyalty-curse departure only after title, liege, and court transitions have stabilized.
+DICM_RBE_ceasar_automation.0002 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		remove_character_flag = DICM_RBE_loyalty_curse_departure_check_pending
+
+		if = {
+			limit = {
+				DICM_RBE_loyalty_curse_enabled_trigger = yes
+				exists = scope:DICM_RBE_loyalty_curse_ceasar
+				DICM_RBE_has_left_ceasar_service_trigger = {
+					DICM_RBE_CEASAR = scope:DICM_RBE_loyalty_curse_ceasar
+				}
+			}
+
+			DICM_RBE_loyalty_curse_departure_automation_effect = yes
+		}
+	}
+}
+
+# Evaluates administrative retraining after title and liege transitions have stabilized.
+DICM_RBE_ceasar_automation.0003 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		remove_character_flag = DICM_RBE_administrative_retraining_check_pending
+
+		if = {
+			limit = {
+				DICM_RBE_administrative_retraining_enabled_trigger = yes
+				exists = scope:DICM_RBE_administrative_retraining_ceasar
+				DICM_RBE_is_ceasar_realm_landholder_trigger = {
+					DICM_RBE_CEASAR = scope:DICM_RBE_administrative_retraining_ceasar
+				}
+			}
+
+			DICM_RBE_administrative_retraining_automation_effect = yes
+		}
+	}
+}

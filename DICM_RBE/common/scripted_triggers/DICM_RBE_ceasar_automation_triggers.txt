@@ -1,0 +1,44 @@
+# Returns true while loyalty-curse automation is enabled globally for the current game.
+DICM_RBE_loyalty_curse_enabled_trigger = {
+	has_global_variable = DICM_RBE_loyalty_curse_enabled
+}
+
+# Returns true while administrative-retraining automation is enabled globally for the current game.
+DICM_RBE_administrative_retraining_enabled_trigger = {
+	has_global_variable = DICM_RBE_administrative_retraining_enabled
+}
+
+# Returns true while the character remains either a realm landholder or a direct courtier of the specified Caesar sovereign.
+DICM_RBE_is_still_in_ceasar_service_trigger = {
+	OR = {
+		AND = {
+			has_any_landed_title_trigger = yes
+			top_liege = $DICM_RBE_CEASAR$
+		}
+		employer ?= $DICM_RBE_CEASAR$
+	}
+}
+
+# Returns true only after a non-child character has completely left the specified Caesar sovereign's service.
+DICM_RBE_has_left_ceasar_service_trigger = {
+	is_alive = yes
+	NOT = {
+		has_character_modifier = DICM_RBE_Ceasar_Child
+	}
+	NOT = {
+		DICM_RBE_is_still_in_ceasar_service_trigger = {
+			DICM_RBE_CEASAR = $DICM_RBE_CEASAR$
+		}
+	}
+}
+
+# Returns true for a non-child landholder serving below the specified Caesar sovereign.
+DICM_RBE_is_ceasar_realm_landholder_trigger = {
+	is_alive = yes
+	NOT = {
+		has_character_modifier = DICM_RBE_Ceasar_Child
+	}
+	has_any_landed_title_trigger = yes
+	this != $DICM_RBE_CEASAR$
+	top_liege = $DICM_RBE_CEASAR$
+}

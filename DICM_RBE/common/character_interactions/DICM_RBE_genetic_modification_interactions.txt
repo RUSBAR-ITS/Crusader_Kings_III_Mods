@@ -1,0 +1,89 @@
+# Provides extension-specific genetic modification actions inside the Divine Intervention interaction category.
+DICM_RBE_genetic_modification_interaction = {
+	interface_priority = 250
+	category = interaction_category_cheat_menu
+	desc = DICM_RBE_genetic_modification_interaction_desc
+	common_interaction = no
+
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+
+	is_shown = {
+		scope:actor = {
+			is_ai = no
+			any_owned_story = {
+				story_type = DI_misc_variables_story
+				has_variable = DI_cheat_menu
+			}
+		}
+	}
+
+	send_option = {
+		flag = DICM_RBE_test_skills_down
+		localization = DICM_RBE_test_skills_down
+	}
+	send_option = {
+		flag = DICM_RBE_test_skills_up
+		localization = DICM_RBE_test_skills_up
+	}
+	send_option = {
+		flag = DICM_RBE_test_skills_upper_limit
+		localization = DICM_RBE_test_skills_upper_limit
+	}
+	send_option = {
+		flag = DICM_RBE_test_skills_below_upper_limit
+		localization = DICM_RBE_test_skills_below_upper_limit
+	}
+
+	on_accept = {
+		if = {
+			limit = {
+				scope:DICM_RBE_test_skills_down = yes
+			}
+
+			scope:recipient = {
+				DICM_RBE_adjust_all_base_skills_effect = {
+					DICM_RBE_DECREASE_DELTA = -500
+					DICM_RBE_INCREASE_DELTA = 0
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:DICM_RBE_test_skills_up = yes
+			}
+
+			scope:recipient = {
+				DICM_RBE_adjust_all_base_skills_effect = {
+					DICM_RBE_DECREASE_DELTA = 0
+					DICM_RBE_INCREASE_DELTA = 10
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:DICM_RBE_test_skills_upper_limit = yes
+			}
+
+			scope:recipient = {
+				DICM_RBE_adjust_all_base_skills_effect = {
+					DICM_RBE_DECREASE_DELTA = 0
+					DICM_RBE_INCREASE_DELTA = 500
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:DICM_RBE_test_skills_below_upper_limit = yes
+			}
+
+			scope:recipient = {
+				DICM_RBE_adjust_all_base_skills_effect = {
+					DICM_RBE_DECREASE_DELTA = -10
+					DICM_RBE_INCREASE_DELTA = 0
+				}
+			}
+		}
+	}
+}
