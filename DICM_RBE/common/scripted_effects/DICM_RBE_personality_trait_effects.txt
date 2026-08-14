@@ -61,6 +61,24 @@ DICM_RBE_add_good_personality_traits_soft_effect = {
 	if = { limit = { NOR = { has_trait = forgiving has_trait = vengeful } } add_trait = forgiving }
 }
 
+# Replaces one vanilla opposite before adding the requested personality trait.
+DICM_RBE_add_personality_trait_with_one_opposite_effect = {
+	if = { limit = { has_trait = $OPPOSITE$ } remove_trait = $OPPOSITE$ }
+	if = { limit = { NOT = { has_trait = $TRAIT$ } } add_trait = $TRAIT$ }
+}
+
+# Replaces two vanilla opposites before adding the requested personality trait.
+DICM_RBE_add_personality_trait_with_two_opposites_effect = {
+	if = { limit = { has_trait = $OPPOSITE_1$ } remove_trait = $OPPOSITE_1$ }
+	if = { limit = { has_trait = $OPPOSITE_2$ } remove_trait = $OPPOSITE_2$ }
+	if = { limit = { NOT = { has_trait = $TRAIT$ } } add_trait = $TRAIT$ }
+}
+
+# Removes one requested personality trait when it is present.
+DICM_RBE_remove_personality_trait_if_present_effect = {
+	if = { limit = { has_trait = $TRAIT$ } remove_trait = $TRAIT$ }
+}
+
 # Removes every requested positive personality trait that the character currently has.
 DICM_RBE_remove_good_personality_traits_effect = {
 	if = { limit = { has_trait = temperate } remove_trait = temperate }

@@ -4,7 +4,9 @@ DICM_RBE_add_court_position_languages_effect = {
 }
 
 # Court position preparation effects are assembled in independent layers.
-# Other traits, languages, and modifiers will be added separately.
+# Each effect ends with general bad-trait removal, aptitude-positive personality traits,
+# soft positive traits, and removal of aptitude-negative personality traits, in that order.
+# Languages and modifiers will be added separately.
 
 # Akolouthos
 DICM_RBE_prepare_akolouthos_court_position_effect = {
@@ -16,6 +18,14 @@ DICM_RBE_prepare_akolouthos_court_position_effect = {
 	DICM_RBE_add_strong_aptitude_trait_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = shieldmaiden }
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = varangian }
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = brave OPPOSITE = craven }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = honest OPPOSITE = deceitful }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = just OPPOSITE = arbitrary }
+	DICM_RBE_add_personality_trait_with_two_opposites_effect = { TRAIT = stubborn OPPOSITE_1 = eccentric OPPOSITE_2 = fickle }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = craven }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = fickle }
 }
 
 # Antiquarian
@@ -23,6 +33,10 @@ DICM_RBE_prepare_antiquarian_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = shy OPPOSITE = gregarious }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Archer Captain
@@ -31,6 +45,8 @@ DICM_RBE_prepare_archer_captain_camp_officer_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
 	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Bodyguard
@@ -42,6 +58,11 @@ DICM_RBE_prepare_bodyguard_court_position_effect = {
 	DICM_RBE_add_lifestyle_blademaster_max_xp_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = shieldmaiden }
 	DICM_RBE_add_bodyguard_varangian_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = brave OPPOSITE = craven }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = paranoid OPPOSITE = trusting }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = craven }
 }
 
 # Boyan
@@ -51,6 +72,16 @@ DICM_RBE_prepare_boyan_court_position_effect = {
 	DICM_RBE_add_authority_tree_perks_effect = yes
 	DICM_RBE_add_majesty_tree_perks_effect = yes
 	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = ambitious OPPOSITE = content }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = brave OPPOSITE = craven }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = patient OPPOSITE = impatient }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = craven }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = lazy }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = paranoid }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = shy }
 }
 
 # Camelry Captain
@@ -59,6 +90,8 @@ DICM_RBE_prepare_camelry_captain_camp_officer_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
 	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Camp Priest
@@ -67,6 +100,8 @@ DICM_RBE_prepare_camp_priest_camp_officer_effect = {
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_theology_tree_perks_effect = yes
 	DICM_RBE_add_lifestyle_mystic_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Cherbi
@@ -77,18 +112,33 @@ DICM_RBE_prepare_cherbi_court_position_effect = {
 	DICM_RBE_add_majesty_tree_perks_effect = yes
 	DICM_RBE_add_lifestyle_blademaster_max_xp_effect = yes
 	DICM_RBE_add_loyal_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = brave OPPOSITE = craven }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = craven }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = lazy }
 }
 
 # Chief Engineer
 DICM_RBE_prepare_chief_engineer_camp_officer_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Chief Qadi
 DICM_RBE_prepare_chief_qadi_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = generous OPPOSITE = greedy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = just OPPOSITE = arbitrary }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = temperate OPPOSITE = gluttonous }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = arbitrary }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = greedy }
 }
 
 # Chronicler
@@ -96,6 +146,9 @@ DICM_RBE_prepare_chronicler_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
 	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = gregarious OPPOSITE = shy }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Court Brahmin
@@ -104,6 +157,11 @@ DICM_RBE_prepare_court_brahmin_court_position_effect = {
 	DICM_RBE_add_wealth_tree_perks_effect = yes
 	DICM_RBE_add_theology_tree_perks_effect = yes
 	DICM_RBE_add_devoted_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_two_opposites_effect = { TRAIT = compassionate OPPOSITE_1 = callous OPPOSITE_2 = sadistic }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = generous OPPOSITE = greedy }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = greedy }
 }
 
 # Court Gardener
@@ -112,6 +170,9 @@ DICM_RBE_prepare_court_gardener_court_position_effect = {
 	DICM_RBE_add_domain_tree_perks_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_gardener }
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = patient OPPOSITE = impatient }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Court Guru
@@ -121,6 +182,10 @@ DICM_RBE_prepare_court_guru_court_position_effect = {
 	DICM_RBE_add_theology_tree_perks_effect = yes
 	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
 	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = calm OPPOSITE = wrathful }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = patient OPPOSITE = impatient }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Court Poet
@@ -129,6 +194,9 @@ DICM_RBE_prepare_court_poet_court_position_effect = {
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
 	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
 	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = gregarious OPPOSITE = shy }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Court Scholar
@@ -139,6 +207,8 @@ DICM_RBE_prepare_court_scholar_court_position_effect = {
 	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
 	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
 	DICM_RBE_add_lifestyle_physician_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Court Tutor
@@ -147,12 +217,21 @@ DICM_RBE_prepare_court_tutor_court_position_effect = {
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
 	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = calm OPPOSITE = wrathful }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = patient OPPOSITE = impatient }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = shy }
 }
 
 # Cultural Emissary
 DICM_RBE_prepare_cultural_emissary_court_position_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = gregarious OPPOSITE = shy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = just OPPOSITE = arbitrary }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Elephantry Captain
@@ -161,6 +240,8 @@ DICM_RBE_prepare_elephantry_captain_camp_officer_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
 	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Eparch
@@ -173,6 +254,13 @@ DICM_RBE_prepare_eparch_court_position_effect = {
 	DICM_RBE_add_skulduggery_tree_perks_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_governor_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = just OPPOSITE = arbitrary }
+	DICM_RBE_add_personality_trait_with_two_opposites_effect = { TRAIT = stubborn OPPOSITE_1 = eccentric OPPOSITE_2 = fickle }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = fickle }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = impatient }
 }
 
 # Executioner
@@ -180,6 +268,9 @@ DICM_RBE_prepare_executioner_court_position_effect = {
 	DICM_RBE_retrain_intrigue_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_intimidation_tree_perks_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_two_opposites_effect = { TRAIT = sadistic OPPOSITE_1 = callous OPPOSITE_2 = compassionate }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Fire Dragon Engineer
@@ -187,6 +278,12 @@ DICM_RBE_prepare_fire_dragon_engineer_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_domain_tree_perks_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = patient OPPOSITE = impatient }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = impatient }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = lazy }
 }
 
 # Foreign Emissary
@@ -194,6 +291,14 @@ DICM_RBE_prepare_foreign_emissary_court_position_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
 	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = calm OPPOSITE = wrathful }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = humble OPPOSITE = arrogant }
+	DICM_RBE_add_personality_trait_with_two_opposites_effect = { TRAIT = stubborn OPPOSITE_1 = eccentric OPPOSITE_2 = fickle }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = arrogant }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = fickle }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = impatient }
 }
 
 # Grand Guardian
@@ -203,6 +308,13 @@ DICM_RBE_prepare_grand_guardian_court_position_effect = {
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
 	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = calm OPPOSITE = wrathful }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = patient OPPOSITE = impatient }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = lazy }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = shy }
 }
 
 # Grand Mentor
@@ -212,6 +324,13 @@ DICM_RBE_prepare_grand_mentor_court_position_effect = {
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
 	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = calm OPPOSITE = wrathful }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = patient OPPOSITE = impatient }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = lazy }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = shy }
 }
 
 # Grand Preceptor
@@ -221,6 +340,13 @@ DICM_RBE_prepare_grand_preceptor_court_position_effect = {
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
 	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = calm OPPOSITE = wrathful }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = patient OPPOSITE = impatient }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = lazy }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = shy }
 }
 
 # Heavy Cavalry Captain
@@ -229,6 +355,8 @@ DICM_RBE_prepare_heavy_cavalry_captain_camp_officer_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
 	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Heavy Infantry Captain
@@ -237,6 +365,8 @@ DICM_RBE_prepare_heavy_infantry_captain_camp_officer_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
 	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # High Almoner
@@ -245,6 +375,11 @@ DICM_RBE_prepare_high_almoner_court_position_effect = {
 	DICM_RBE_add_wealth_tree_perks_effect = yes
 	DICM_RBE_add_theology_tree_perks_effect = yes
 	DICM_RBE_add_devoted_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_two_opposites_effect = { TRAIT = compassionate OPPOSITE_1 = callous OPPOSITE_2 = sadistic }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = generous OPPOSITE = greedy }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = greedy }
 }
 
 # Horse Archer Captain
@@ -253,6 +388,8 @@ DICM_RBE_prepare_horse_archer_captain_camp_officer_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
 	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Keeper of the Horses
@@ -261,6 +398,15 @@ DICM_RBE_prepare_keeper_of_the_horses_court_position_effect = {
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_family_tree_perks_effect = yes
 	DICM_RBE_add_lifestyle_traveler_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = calm OPPOSITE = wrathful }
+	DICM_RBE_add_personality_trait_with_two_opposites_effect = { TRAIT = compassionate OPPOSITE_1 = callous OPPOSITE_2 = sadistic }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = patient OPPOSITE = impatient }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = callous }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = impatient }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = sadistic }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = wrathful }
 }
 
 # Khlon Glan
@@ -269,6 +415,8 @@ DICM_RBE_prepare_khlon_glan_court_position_effect = {
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
 	DICM_RBE_add_organizer_commander_trait_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Light Cavalry Captain
@@ -277,6 +425,8 @@ DICM_RBE_prepare_light_cavalry_captain_camp_officer_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
 	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Light Infantry Captain
@@ -285,6 +435,8 @@ DICM_RBE_prepare_light_infantry_captain_camp_officer_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
 	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Master Bard
@@ -293,6 +445,10 @@ DICM_RBE_prepare_master_bard_camp_officer_effect = {
 	DICM_RBE_add_temptation_tree_perks_effect = yes
 	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
 	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = gregarious OPPOSITE = shy }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = shy }
 }
 
 # Master of Arms
@@ -301,6 +457,8 @@ DICM_RBE_prepare_master_of_arms_camp_officer_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
 	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Master of Horse
@@ -309,6 +467,9 @@ DICM_RBE_prepare_master_of_horse_court_position_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_chivalry_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = calm OPPOSITE = wrathful }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Master of Spoils
@@ -316,6 +477,9 @@ DICM_RBE_prepare_master_of_spoils_camp_officer_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_wealth_tree_perks_effect = yes
 	DICM_RBE_add_reaver_commander_trait_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = greedy OPPOSITE = generous }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Master Thief
@@ -323,6 +487,10 @@ DICM_RBE_prepare_master_thief_camp_officer_effect = {
 	DICM_RBE_retrain_intrigue_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_skulduggery_tree_perks_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = deceitful OPPOSITE = honest }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = honest }
 }
 
 # Pike Captain
@@ -331,6 +499,8 @@ DICM_RBE_prepare_pike_captain_camp_officer_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
 	DICM_RBE_add_all_commander_traits_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Quartermaster
@@ -339,12 +509,18 @@ DICM_RBE_prepare_quartermaster_camp_officer_effect = {
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_wealth_tree_perks_effect = yes
 	DICM_RBE_add_logistician_commander_trait_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = greedy OPPOSITE = generous }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = generous }
 }
 
 # Royal Architect
 DICM_RBE_prepare_royal_architect_court_position_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_domain_tree_perks_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Second
@@ -353,6 +529,12 @@ DICM_RBE_prepare_second_camp_officer_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
 	DICM_RBE_add_loyal_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	# Sadistic is preferred because the equally valuable Callous trait is its vanilla opposite.
+	DICM_RBE_add_personality_trait_with_two_opposites_effect = { TRAIT = sadistic OPPOSITE_1 = callous OPPOSITE_2 = compassionate }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = craven }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = fickle }
 }
 
 # Seneschal
@@ -361,6 +543,8 @@ DICM_RBE_prepare_seneschal_court_position_effect = {
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
 	DICM_RBE_add_organizer_commander_trait_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Siege Engineer
@@ -368,6 +552,12 @@ DICM_RBE_prepare_siege_engineer_court_position_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_add_domain_tree_perks_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = patient OPPOSITE = impatient }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = impatient }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = lazy }
 }
 
 # Travel Leader
@@ -382,6 +572,12 @@ DICM_RBE_prepare_travel_leader_court_position_effect = {
 	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
 	DICM_RBE_add_lifestyle_physician_max_xp_effect = yes
 	DICM_RBE_add_lifestyle_traveler_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = brave OPPOSITE = craven }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = craven }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = lazy }
 }
 
 # Witness
@@ -390,6 +586,13 @@ DICM_RBE_prepare_witness_camp_officer_effect = {
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
 	DICM_RBE_add_loyal_aptitude_trait_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = flagellant }
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = gregarious OPPOSITE = shy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = humble OPPOSITE = arrogant }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = trusting OPPOSITE = paranoid }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = arrogant }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = shy }
 }
 
 # Yeke Jarquchi
@@ -397,6 +600,15 @@ DICM_RBE_prepare_yeke_jarquchi_court_position_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = honest OPPOSITE = deceitful }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = just OPPOSITE = arbitrary }
+	DICM_RBE_add_personality_trait_with_two_opposites_effect = { TRAIT = stubborn OPPOSITE_1 = eccentric OPPOSITE_2 = fickle }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = callous }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = deceitful }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = fickle }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = sadistic }
 }
 
 # Yurtchi
@@ -404,6 +616,12 @@ DICM_RBE_prepare_yurtchi_court_position_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = greedy OPPOSITE = generous }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = generous }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = lazy }
 }
 
 # The following positions currently require standard education only.
@@ -411,19 +629,26 @@ DICM_RBE_prepare_yurtchi_court_position_effect = {
 # Armorer
 DICM_RBE_prepare_armorer_camp_officer_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Bookmaker
 DICM_RBE_prepare_bookmaker_court_position_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Camp Cook
 DICM_RBE_prepare_camp_cook_camp_officer_effect = {
 	DICM_RBE_retrain_intrigue_education_effect = yes
-	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = comfort_eater }
+	DICM_RBE_add_comfort_eater_aptitude_trait_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
 	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = gluttonous OPPOSITE = temperate }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Cave Hermit
@@ -432,6 +657,8 @@ DICM_RBE_prepare_cave_hermit_court_position_effect = {
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_gardener }
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
 	DICM_RBE_add_lifestyle_mystic_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Blue Charioteer
@@ -440,6 +667,8 @@ DICM_RBE_prepare_charioteer_blue_court_position_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
 	DICM_RBE_set_charioteer_blue_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Green Charioteer
@@ -448,6 +677,8 @@ DICM_RBE_prepare_charioteer_green_court_position_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
 	DICM_RBE_set_charioteer_green_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # White Charioteer
@@ -456,6 +687,8 @@ DICM_RBE_prepare_charioteer_white_court_position_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
 	DICM_RBE_set_charioteer_white_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Red Charioteer
@@ -464,6 +697,8 @@ DICM_RBE_prepare_charioteer_red_court_position_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
 	DICM_RBE_set_charioteer_red_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Champion
@@ -472,11 +707,17 @@ DICM_RBE_prepare_champion_court_position_effect = {
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_lifestyle_blademaster_max_xp_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = shieldmaiden }
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = brave OPPOSITE = craven }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = craven }
 }
 
 # Chief Eunuch
 DICM_RBE_prepare_chief_eunuch_court_position_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Chief Forager
@@ -486,11 +727,15 @@ DICM_RBE_prepare_chief_forager_camp_officer_effect = {
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
 	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
 	DICM_RBE_add_lifestyle_traveler_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Court Artificer
 DICM_RBE_prepare_court_artificer_court_position_effect = {
 	DICM_RBE_retrain_random_standard_education_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Court Astrologer
@@ -498,12 +743,21 @@ DICM_RBE_prepare_court_astrologer_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
 	DICM_RBE_add_lifestyle_mystic_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Court Brewmaster
 DICM_RBE_prepare_court_brewmaster_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = humble OPPOSITE = arrogant }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = patient OPPOSITE = impatient }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = impatient }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = lazy }
 }
 
 # Court Jester
@@ -512,6 +766,10 @@ DICM_RBE_prepare_court_jester_court_position_effect = {
 	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
 	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = athletic }
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = gregarious OPPOSITE = shy }
+	DICM_RBE_add_personality_trait_with_two_opposites_effect = { TRAIT = stubborn OPPOSITE_1 = eccentric OPPOSITE_2 = fickle }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Court Musician
@@ -520,6 +778,10 @@ DICM_RBE_prepare_court_musician_court_position_effect = {
 	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
 	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
 	DICM_RBE_add_beardless_eunuch_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = gregarious OPPOSITE = shy }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = shy }
 }
 
 # Court Physician
@@ -528,21 +790,32 @@ DICM_RBE_prepare_court_physician_court_position_effect = {
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
 	DICM_RBE_add_lifestyle_mystic_max_xp_effect = yes
 	DICM_RBE_add_lifestyle_physician_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Cupbearer
 DICM_RBE_prepare_cupbearer_court_position_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_loyal_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = honest OPPOSITE = deceitful }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = trusting OPPOSITE = paranoid }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = deceitful }
 }
 
 # Food Taster
 DICM_RBE_prepare_food_taster_court_position_effect = {
 	DICM_RBE_retrain_intrigue_education_effect = yes
-	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = comfort_eater }
+	DICM_RBE_add_comfort_eater_aptitude_trait_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_gardener }
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
 	DICM_RBE_add_loyal_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = gluttonous OPPOSITE = temperate }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = trusting OPPOSITE = paranoid }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Garuda
@@ -550,6 +823,8 @@ DICM_RBE_prepare_garuda_court_position_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_lifestyle_blademaster_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Head Groom
@@ -558,12 +833,20 @@ DICM_RBE_prepare_head_groom_camp_officer_effect = {
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
 	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
 	DICM_RBE_add_lifestyle_traveler_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = brave OPPOSITE = craven }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = craven }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = lazy }
 }
 
 # Head Porter
 DICM_RBE_prepare_head_porter_camp_officer_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_logistician_commander_trait_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Huntperson
@@ -571,6 +854,10 @@ DICM_RBE_prepare_huntperson_camp_officer_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = brave OPPOSITE = craven }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = craven }
 }
 
 # Keeper of the Harem
@@ -578,29 +865,46 @@ DICM_RBE_prepare_keeper_of_the_harem_court_position_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
 	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = calm OPPOSITE = wrathful }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = diligent OPPOSITE = lazy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = patient OPPOSITE = impatient }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = lazy }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = shy }
 }
 
 # Keeper of Swans
 DICM_RBE_prepare_keeper_of_swans_court_position_effect = {
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Kennelperson
 DICM_RBE_prepare_kennelperson_camp_officer_effect = {
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Lady-in-Waiting
 DICM_RBE_prepare_lady_in_waiting_court_position_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = gregarious OPPOSITE = shy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = honest OPPOSITE = deceitful }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Laureate
 DICM_RBE_prepare_laureate_camp_officer_effect = {
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }
 
 # Master Assassin
@@ -611,6 +915,14 @@ DICM_RBE_prepare_master_assassin_court_position_effect = {
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = murderer }
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = order_member }
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = faith_warrior }
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = brave OPPOSITE = craven }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = deceitful OPPOSITE = honest }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = zealous OPPOSITE = cynical }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = compassionate }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = honest }
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = just }
 }
 
 # Master of Hunt
@@ -618,12 +930,22 @@ DICM_RBE_prepare_master_of_hunt_court_position_effect = {
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = brave OPPOSITE = craven }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = craven }
 }
 
 # Person Haggler
 DICM_RBE_prepare_person_haggler_camp_officer_effect = {
 	DICM_RBE_retrain_intrigue_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = deceitful OPPOSITE = honest }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = gregarious OPPOSITE = shy }
+	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = patient OPPOSITE = impatient }
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_remove_personality_trait_if_present_effect = { TRAIT = honest }
 }
 
 # Wet Nurse
@@ -632,4 +954,6 @@ DICM_RBE_prepare_wet_nurse_court_position_effect = {
 	DICM_RBE_add_physique_good_3_aptitude_trait_effect = yes
 	DICM_RBE_add_strong_aptitude_trait_effect = yes
 	DICM_RBE_add_loyal_aptitude_trait_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_soft_effect = yes
 }

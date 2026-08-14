@@ -1,5 +1,5 @@
 ﻿# Adds every compatible standard commander trait at zero XP without changing XP on existing traits.
-# Reckless is preferred when neither mutually exclusive leadership trait is present.
+# Reckless replaces its mutually exclusive Cautious Leader trait.
 
 DICM_RBE_add_all_commander_traits_zero_xp_effect = {
 	if = { limit = { NOT = { has_trait = logistician } } add_trait = logistician }
@@ -11,15 +11,8 @@ DICM_RBE_add_all_commander_traits_zero_xp_effect = {
 	if = { limit = { NOT = { has_trait = desert_warrior } } add_trait = desert_warrior }
 	if = { limit = { NOT = { has_trait = jungle_stalker } } add_trait = jungle_stalker }
 	if = { limit = { NOT = { has_trait = reaver } } add_trait = reaver }
-	if = {
-		limit = {
-			NOR = {
-				has_trait = reckless
-				has_trait = cautious_leader
-			}
-		}
-		add_trait = reckless
-	}
+	if = { limit = { has_trait = cautious_leader } remove_trait = cautious_leader }
+	if = { limit = { NOT = { has_trait = reckless } } add_trait = reckless }
 	if = { limit = { NOT = { has_trait = holy_warrior } } add_trait = holy_warrior }
 	if = { limit = { NOT = { has_trait = open_terrain_expert } } add_trait = open_terrain_expert }
 	if = { limit = { NOT = { has_trait = rough_terrain_expert } } add_trait = rough_terrain_expert }

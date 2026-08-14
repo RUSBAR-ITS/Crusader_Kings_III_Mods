@@ -39,11 +39,13 @@ DICM_RBE_genetic_modification_effect = {
 	if = { limit = { has_trait = intellect_bad_3 } remove_trait = intellect_bad_3 }
 	if = { limit = { has_trait = intellect_good_1 } remove_trait = intellect_good_1 }
 	if = { limit = { has_trait = intellect_good_2 } remove_trait = intellect_good_2 }
+	if = { limit = { has_trait = dull } remove_trait = dull }
 	if = { limit = { has_trait = physique_bad_1 } remove_trait = physique_bad_1 }
 	if = { limit = { has_trait = physique_bad_2 } remove_trait = physique_bad_2 }
 	if = { limit = { has_trait = physique_bad_3 } remove_trait = physique_bad_3 }
 	if = { limit = { has_trait = physique_good_1 } remove_trait = physique_good_1 }
 	if = { limit = { has_trait = physique_good_2 } remove_trait = physique_good_2 }
+	if = { limit = { has_trait = weak } remove_trait = weak }
 	if = { limit = { has_trait = depressed_genetic } remove_trait = depressed_genetic }
 	if = { limit = { has_trait = lunatic_genetic } remove_trait = lunatic_genetic }
 	if = { limit = { has_trait = possessed_genetic } remove_trait = possessed_genetic }
@@ -68,9 +70,15 @@ DICM_RBE_genetic_modification_effect = {
 	if = { limit = { NOT = { has_trait = pure_blooded } } add_trait = pure_blooded }
 }
 
-# Gives the requested mentor traits after removing their direct opposites.
+# Gives the requested mentor traits after removing all of their vanilla opposites.
 DICM_RBE_genius_mentors_effect = {
+	if = { limit = { has_trait = physique_bad_1 } remove_trait = physique_bad_1 }
+	if = { limit = { has_trait = physique_bad_2 } remove_trait = physique_bad_2 }
+	if = { limit = { has_trait = physique_bad_3 } remove_trait = physique_bad_3 }
 	if = { limit = { has_trait = weak } remove_trait = weak }
+	if = { limit = { has_trait = intellect_bad_1 } remove_trait = intellect_bad_1 }
+	if = { limit = { has_trait = intellect_bad_2 } remove_trait = intellect_bad_2 }
+	if = { limit = { has_trait = intellect_bad_3 } remove_trait = intellect_bad_3 }
 	if = { limit = { has_trait = dull } remove_trait = dull }
 	if = { limit = { has_trait = disloyal } remove_trait = disloyal }
 	if = { limit = { NOT = { has_trait = strong } } add_trait = strong }
