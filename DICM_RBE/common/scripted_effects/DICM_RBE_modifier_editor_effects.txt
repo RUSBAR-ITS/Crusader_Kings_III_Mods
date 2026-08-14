@@ -1,0 +1,61 @@
+# Applies a character modifier to the same selection used by the DICM character editor.
+# DICM_RBE_MODIFIER: Character modifier to add.
+DICM_RBE_add_modifier_to_DI_editor_selection_effect = {
+	random_owned_story = {
+		limit = {
+			story_type = DI_misc_variables_story
+		}
+		save_scope_as = DICM_RBE_DI_story
+	}
+
+	if = {
+		limit = {
+			exists = scope:DICM_RBE_DI_story
+			scope:DICM_RBE_DI_story = {
+				has_variable = DI_pinned_char_var
+			}
+		}
+
+		every_living_character = {
+			limit = {
+				has_character_flag = pinned_for_edit
+			}
+
+			add_character_modifier = $DICM_RBE_MODIFIER$
+		}
+	}
+	else = {
+		add_character_modifier = $DICM_RBE_MODIFIER$
+	}
+}
+
+# Removes a character modifier from the same selection used by the DICM character editor.
+# DICM_RBE_MODIFIER: Character modifier to remove.
+DICM_RBE_remove_modifier_from_DI_editor_selection_effect = {
+	random_owned_story = {
+		limit = {
+			story_type = DI_misc_variables_story
+		}
+		save_scope_as = DICM_RBE_DI_story
+	}
+
+	if = {
+		limit = {
+			exists = scope:DICM_RBE_DI_story
+			scope:DICM_RBE_DI_story = {
+				has_variable = DI_pinned_char_var
+			}
+		}
+
+		every_living_character = {
+			limit = {
+				has_character_flag = pinned_for_edit
+			}
+
+			remove_character_modifier = $DICM_RBE_MODIFIER$
+		}
+	}
+	else = {
+		remove_character_modifier = $DICM_RBE_MODIFIER$
+	}
+}
