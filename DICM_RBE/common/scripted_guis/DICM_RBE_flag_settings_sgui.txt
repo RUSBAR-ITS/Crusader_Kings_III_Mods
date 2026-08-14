@@ -1,0 +1,80 @@
+﻿# Closes the extension flag settings window without changing any setting.
+DICM_RBE_close_flag_settings_window = {
+	scope = character
+
+	effect = {
+		remove_variable = DICM_RBE_flag_settings_window_open
+	}
+}
+
+# Toggles Caesar-line child inheritance globally.
+DICM_RBE_toggle_ceasar_child_inheritance_setting = {
+	scope = character
+
+	effect = {
+		DICM_RBE_toggle_ceasar_child_inheritance_effect = yes
+	}
+}
+
+# Reports whether Caesar-line child inheritance is enabled globally.
+DICM_RBE_ceasar_child_inheritance_setting_enabled = {
+	scope = character
+
+	is_valid = {
+		DICM_RBE_ceasar_child_inheritance_enabled_trigger = yes
+	}
+}
+
+# Toggles loyalty-curse automation globally.
+DICM_RBE_toggle_loyalty_curse_setting = {
+	scope = character
+
+	effect = {
+		DICM_RBE_toggle_loyalty_curse_effect = yes
+	}
+}
+
+# Reports whether loyalty-curse automation is enabled globally.
+DICM_RBE_loyalty_curse_setting_enabled = {
+	scope = character
+
+	is_valid = {
+		DICM_RBE_loyalty_curse_enabled_trigger = yes
+	}
+}
+
+# Toggles administrative-retraining automation globally.
+DICM_RBE_toggle_administrative_retraining_setting = {
+	scope = character
+
+	effect = {
+		DICM_RBE_toggle_administrative_retraining_effect = yes
+	}
+}
+
+# Reports whether administrative-retraining automation is enabled globally.
+DICM_RBE_administrative_retraining_setting_enabled = {
+	scope = character
+
+	is_valid = {
+		DICM_RBE_administrative_retraining_enabled_trigger = yes
+	}
+}
+
+# Toggles instant fascination progress for the current player character.
+DICM_RBE_toggle_instant_fascination_progress_setting = {
+	scope = character
+
+	effect = {
+		DICM_RBE_toggle_instant_fascination_progress_effect = yes
+	}
+}
+
+# Reports whether instant fascination progress is enabled for the current player character.
+DICM_RBE_instant_fascination_progress_setting_enabled = {
+	scope = character
+
+	is_valid = {
+		DICM_RBE_instant_fascination_progress_enabled_trigger = yes
+	}
+}

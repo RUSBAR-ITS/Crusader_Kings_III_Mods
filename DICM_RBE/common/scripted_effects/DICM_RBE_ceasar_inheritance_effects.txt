@@ -1,4 +1,4 @@
-# Enables Caesar-line inheritance for all future births in the current game.
+﻿# Enables Caesar-line inheritance for all future births in the current game.
 DICM_RBE_enable_ceasar_child_inheritance_effect = {
 	if = {
 		limit = {
@@ -11,12 +11,19 @@ DICM_RBE_enable_ceasar_child_inheritance_effect = {
 			name = DICM_RBE_ceasar_child_inheritance_enabled
 			value = yes
 		}
+	debug_log = "DICM_RBE: DICM_RBE_ceasar_child_inheritance_enabled = yes"
 	}
 }
 
 # Disables inheritance without removing modifiers already granted to existing children.
 DICM_RBE_disable_ceasar_child_inheritance_effect = {
-	remove_global_variable = DICM_RBE_ceasar_child_inheritance_enabled
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_ceasar_child_inheritance_enabled
+		}
+		remove_global_variable = DICM_RBE_ceasar_child_inheritance_enabled
+	debug_log = "DICM_RBE: DICM_RBE_ceasar_child_inheritance_enabled = no"
+	}
 }
 
 # Entry point intended for the future cheat-menu setting.

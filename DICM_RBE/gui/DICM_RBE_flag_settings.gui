@@ -1,0 +1,128 @@
+window = {
+	name = "DICM_RBE_flag_settings_window"
+	parentanchor = center
+	layer = windows_layer
+	filter_mouse = all
+	allow_outside = yes
+	alwaystransparent = no
+
+	using = Window_Background
+	using = Window_Decoration
+	movable = yes
+	visible = "[GetPlayer.MakeScope.Var('DICM_RBE_flag_settings_window_open').IsSet]"
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+		on_finish = "[PdxGuiWidget.StackTop]"
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+	}
+
+	vbox = {
+		set_parent_size_to_minimum = yes
+		using = Window_Margins
+
+		header_pattern = {
+			layoutpolicy_horizontal = expanding
+
+			blockoverride "header_text" {
+				text = DICM_RBE_flag_settings_window_title
+			}
+
+			blockoverride "button_close" {
+				onclick = "[GetScriptedGui('DICM_RBE_close_flag_settings_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+			}
+		}
+
+		vbox = {
+			margin = { 0 8 }
+			spacing = 8
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+
+			scrollbox = {
+				size = { 560 360 }
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+
+				blockoverride "scrollbox_content" {
+					vbox = {
+						spacing = 10
+						layoutpolicy_horizontal = expanding
+
+						text_single = {
+							text = DICM_RBE_flag_settings_global_heading
+							default_format = "#high"
+						}
+
+						button_checkbox_label = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_toggle_ceasar_child_inheritance_setting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = DICM_RBE_ceasar_child_inheritance_setting_tt
+
+							blockoverride "checkbox" {
+								checked = "[GetScriptedGui('DICM_RBE_ceasar_child_inheritance_setting_enabled').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_ceasar_child_inheritance_setting
+							}
+						}
+
+						button_checkbox_label = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_toggle_loyalty_curse_setting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = DICM_RBE_loyalty_curse_setting_tt
+
+							blockoverride "checkbox" {
+								checked = "[GetScriptedGui('DICM_RBE_loyalty_curse_setting_enabled').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_loyalty_curse_setting
+							}
+						}
+
+						button_checkbox_label = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_toggle_administrative_retraining_setting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = DICM_RBE_administrative_retraining_setting_tt
+
+							blockoverride "checkbox" {
+								checked = "[GetScriptedGui('DICM_RBE_administrative_retraining_setting_enabled').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_administrative_retraining_setting
+							}
+						}
+
+						text_single = {
+							text = DICM_RBE_flag_settings_character_heading
+							default_format = "#high"
+							margin_top = 8
+						}
+
+						button_checkbox_label = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_toggle_instant_fascination_progress_setting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = DICM_RBE_instant_fascination_progress_setting_tt
+
+							blockoverride "checkbox" {
+								checked = "[GetScriptedGui('DICM_RBE_instant_fascination_progress_setting_enabled').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_instant_fascination_progress_setting
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

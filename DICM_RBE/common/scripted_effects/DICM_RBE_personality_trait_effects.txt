@@ -1,4 +1,4 @@
-# Adds every requested positive personality trait that the character does not already have.
+﻿# Adds every requested positive personality trait that the character does not already have.
 DICM_RBE_add_good_personality_traits_effect = {
 	if = { limit = { has_trait = gluttonous } remove_trait = gluttonous }
 	if = { limit = { NOT = { has_trait = temperate } } add_trait = temperate }

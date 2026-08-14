@@ -1,0 +1,29 @@
+﻿# Opens the extension flag settings window from the main interaction list.
+DICM_RBE_flag_settings_interaction = {
+	interface_priority = 225
+	category = interaction_category_cheat_menu
+	desc = DICM_RBE_flag_settings_interaction_desc
+	common_interaction = yes
+
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+
+	is_shown = {
+		scope:recipient = scope:actor
+		scope:actor = {
+			is_ai = no
+			any_owned_story = {
+				story_type = DI_misc_variables_story
+				has_variable = DI_cheat_menu
+			}
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			set_variable = DICM_RBE_flag_settings_window_open
+			debug_log = "DICM_RBE: DICM_RBE_flag_settings_window_open = yes for [THIS.Char.GetLogName]"
+		}
+	}
+}

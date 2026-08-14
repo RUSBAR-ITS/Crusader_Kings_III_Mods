@@ -1,4 +1,4 @@
-# Enables loyalty-curse automation for future departures from a Caesar sovereign's court.
+﻿# Enables loyalty-curse automation for future departures from a Caesar sovereign's court.
 DICM_RBE_enable_loyalty_curse_effect = {
 	if = {
 		limit = {
@@ -11,12 +11,19 @@ DICM_RBE_enable_loyalty_curse_effect = {
 			name = DICM_RBE_loyalty_curse_enabled
 			value = yes
 		}
+	debug_log = "DICM_RBE: DICM_RBE_loyalty_curse_enabled = yes"
 	}
 }
 
 # Disables loyalty-curse automation without changing characters processed earlier.
 DICM_RBE_disable_loyalty_curse_effect = {
-	remove_global_variable = DICM_RBE_loyalty_curse_enabled
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_loyalty_curse_enabled
+		}
+		remove_global_variable = DICM_RBE_loyalty_curse_enabled
+	debug_log = "DICM_RBE: DICM_RBE_loyalty_curse_enabled = no"
+	}
 }
 
 # Entry point intended for the future cheat-menu setting.
@@ -45,12 +52,19 @@ DICM_RBE_enable_administrative_retraining_effect = {
 			name = DICM_RBE_administrative_retraining_enabled
 			value = yes
 		}
+	debug_log = "DICM_RBE: DICM_RBE_administrative_retraining_enabled = yes"
 	}
 }
 
 # Disables administrative retraining without changing characters processed earlier.
 DICM_RBE_disable_administrative_retraining_effect = {
-	remove_global_variable = DICM_RBE_administrative_retraining_enabled
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_administrative_retraining_enabled
+		}
+		remove_global_variable = DICM_RBE_administrative_retraining_enabled
+	debug_log = "DICM_RBE: DICM_RBE_administrative_retraining_enabled = no"
+	}
 }
 
 # Entry point intended for the future cheat-menu setting.
