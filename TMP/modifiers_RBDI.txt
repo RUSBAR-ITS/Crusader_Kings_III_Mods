@@ -1,0 +1,94 @@
+DICM_RBE_Ceasar = {
+	# Personal resilience and longevity
+	# Values use a single order-of-magnitude safety margin against stacked vanilla penalties.
+	health = 100
+	life_expectancy = 200
+	fertility = 1000
+	years_of_fertility = 200
+	negate_health_penalty_add = 100
+	negate_fertility_penalty_add = 10
+	stress_gain_mult = -30
+
+	# Heredity and inbreeding
+	# These modifiers affect the genetic outcome of this character's children.
+	# A full inbreeding reduction on either prospective parent suppresses the risk.
+	positive_inactive_inheritance_chance = 3
+	negative_inactive_inheritance_chance = -1
+	negative_random_genetic_chance = -1
+	genetic_trait_strengthen_chance = 1
+	inbreeding_chance = -1
+
+	# Experience modifiers
+	# General and track-specific modifiers stack; paired values preserve the requested total multiplier.
+
+	# Lifestyles, crafts, and spiritual experience
+	lifestyle_reveler_xp_gain_mult = 999
+	lifestyle_blademaster_xp_gain_mult = 499.5
+	trait_track_lifestyle_blademaster_xp_gain_mult = 499.5
+	lifestyle_hunter_xp_gain_mult = 499.5
+	trait_track_hunter_xp_gain_mult = 499.5
+	trait_track_falconer_xp_gain_mult = 499.5
+	lifestyle_mystic_xp_gain_mult = 999
+	lifestyle_physician_xp_gain_mult = 999
+	lifestyle_poet_xp_gain_mult = 499.5
+	trait_track_lifestyle_poet_xp_gain_mult = 499.5
+	pilgrim_xp_gain_mult = 999
+	lifestyle_traveler_xp_gain_mult = 499.5
+	trait_track_travel_xp_gain_mult = 499.5
+	trait_track_danger_xp_gain_mult = 499.5
+
+	# Military experience and command
+	trait_track_peasant_leader_xp_gain_mult = 999
+	logistician_xp_gain_mult = 999
+	military_engineer_xp_gain_mult = 999
+	aggressive_attacker_xp_gain_mult = 999
+	unyielding_defender_xp_gain_mult = 999
+	forder_xp_gain_mult = 999
+	flexible_leader_xp_gain_mult = 999
+	desert_warrior_xp_gain_mult = 999
+	jungle_stalker_xp_gain_mult = 999
+	reaver_xp_gain_mult = 999
+	reckless_xp_gain_mult = 999
+	holy_warrior_xp_gain_mult = 999
+	open_terrain_expert_xp_gain_mult = 999
+	rough_terrain_expert_xp_gain_mult = 999
+	forest_fighter_xp_gain_mult = 999
+	cautious_leader_xp_gain_mult = 999
+	organizer_xp_gain_mult = 999
+	winter_soldier_xp_gain_mult = 999
+
+	# Health, ageing, and injury consequences
+	infirm_xp_gain_mult = -0.4995
+	trait_track_infirm_xp_gain_mult = -0.4995
+	withering_mind_xp_gain_mult = -0.4995
+	trait_track_withering_mind_xp_gain_mult = -0.4995
+	clouded_eyes_xp_gain_mult = -0.4995
+	trait_track_clouded_eyes_xp_gain_mult = -0.4995
+	faltering_heart_xp_gain_mult = -0.4995
+	trait_track_faltering_heart_xp_gain_mult = -0.4995
+	fragile_bones_xp_gain_mult = -0.4995
+	trait_track_fragile_bones_xp_gain_mult = -0.4995
+
+	# Tournaments and chariot racing
+	tourney_participant_xp_gain_mult = 499.5
+	trait_track_foot_xp_gain_mult = 499.5
+	trait_track_bow_xp_gain_mult = 499.5
+	trait_track_horse_xp_gain_mult = 499.5
+	trait_track_wit_xp_gain_mult = 499.5
+	charioteer_blue_xp_gain_mult = 999
+	charioteer_green_xp_gain_mult = 999
+	charioteer_white_xp_gain_mult = 999
+	charioteer_red_xp_gain_mult = 999
+
+	# Criminal experience
+	gallowsbait_xp_gain_mult = -0.4995
+	trait_track_bandit_xp_gain_mult = -0.4995
+	trait_track_trickster_xp_gain_mult = -0.4995
+	trait_track_thief_xp_gain_mult = -0.4995
+	trait_track_poacher_xp_gain_mult = -0.4995
+	trait_track_marauder_xp_gain_mult = -0.4995
+
+	# Knight-errant and Confucian education
+	knight_errant_xp_gain_mult = 999
+	confucian_education_xp_gain_mult = 999
+}
