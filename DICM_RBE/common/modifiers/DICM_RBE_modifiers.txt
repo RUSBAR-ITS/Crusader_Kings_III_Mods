@@ -533,8 +533,28 @@ DICM_RBE_Ceasar_Squad = {
 	stress_gain_mult = -30
 }
 
+DICM_RBE_Ceasar_Master = {
+	icon = DICM_RBE_ceasar_master
+
+	# Personal resilience and suppressed fertility
+	health = 10
+	fertility = -10000
+	negate_health_penalty_add = 5
+	stress_gain_mult = -30
+}
+
+DICM_RBE_Ceasar_Official = {
+	icon = DICM_RBE_ceasar_official
+
+	# Personal resilience and suppressed fertility
+	health = 10
+	fertility = -10000
+	negate_health_penalty_add = 5
+	stress_gain_mult = -30
+}
+
 DICM_RBE_Ceasar_Scout = {
-	icon = travel_positive
+	icon = DICM_RBE_ceasar_scout
 	character_travel_speed = 100
 	character_travel_safety = 100
 }
