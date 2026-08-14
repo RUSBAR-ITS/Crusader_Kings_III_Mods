@@ -1,0 +1,163 @@
+# Enables Sodom and Gomorrah and disables its mutually exclusive setting.
+DICM_RBE_enable_sodom_and_gomorrah_effect = {
+	DICM_RBE_disable_chemical_sterilization_effect = yes
+	if = {
+		limit = {
+			NOT = {
+				has_global_variable = DICM_RBE_sodom_and_gomorrah_enabled
+			}
+		}
+		set_global_variable = {
+			name = DICM_RBE_sodom_and_gomorrah_enabled
+			value = yes
+		}
+		debug_log = "DICM_RBE: DICM_RBE_sodom_and_gomorrah_enabled = yes"
+	}
+}
+
+# Disables Sodom and Gomorrah without changing characters processed earlier.
+DICM_RBE_disable_sodom_and_gomorrah_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_sodom_and_gomorrah_enabled
+		}
+		remove_global_variable = DICM_RBE_sodom_and_gomorrah_enabled
+		debug_log = "DICM_RBE: DICM_RBE_sodom_and_gomorrah_enabled = no"
+	}
+}
+
+# Toggles Sodom and Gomorrah globally.
+DICM_RBE_toggle_sodom_and_gomorrah_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_sodom_and_gomorrah_enabled
+		}
+		DICM_RBE_disable_sodom_and_gomorrah_effect = yes
+	}
+	else = {
+		DICM_RBE_enable_sodom_and_gomorrah_effect = yes
+	}
+}
+
+# Enables Chemical Sterilization and disables its mutually exclusive setting.
+DICM_RBE_enable_chemical_sterilization_effect = {
+	DICM_RBE_disable_sodom_and_gomorrah_effect = yes
+	if = {
+		limit = {
+			NOT = {
+				has_global_variable = DICM_RBE_chemical_sterilization_enabled
+			}
+		}
+		set_global_variable = {
+			name = DICM_RBE_chemical_sterilization_enabled
+			value = yes
+		}
+		debug_log = "DICM_RBE: DICM_RBE_chemical_sterilization_enabled = yes"
+	}
+}
+
+# Disables Chemical Sterilization without changing characters processed earlier.
+DICM_RBE_disable_chemical_sterilization_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_chemical_sterilization_enabled
+		}
+		remove_global_variable = DICM_RBE_chemical_sterilization_enabled
+		debug_log = "DICM_RBE: DICM_RBE_chemical_sterilization_enabled = no"
+	}
+}
+
+# Toggles Chemical Sterilization globally.
+DICM_RBE_toggle_chemical_sterilization_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_chemical_sterilization_enabled
+		}
+		DICM_RBE_disable_chemical_sterilization_effect = yes
+	}
+	else = {
+		DICM_RBE_enable_chemical_sterilization_effect = yes
+	}
+}
+
+# Enables Pious Dynasty and disables its mutually exclusive setting.
+DICM_RBE_enable_pious_dynasty_effect = {
+	DICM_RBE_disable_never_too_many_bastards_effect = yes
+	if = {
+		limit = {
+			NOT = {
+				has_global_variable = DICM_RBE_pious_dynasty_enabled
+			}
+		}
+		set_global_variable = {
+			name = DICM_RBE_pious_dynasty_enabled
+			value = yes
+		}
+		debug_log = "DICM_RBE: DICM_RBE_pious_dynasty_enabled = yes"
+	}
+}
+
+# Disables Pious Dynasty without changing characters processed earlier.
+DICM_RBE_disable_pious_dynasty_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_pious_dynasty_enabled
+		}
+		remove_global_variable = DICM_RBE_pious_dynasty_enabled
+		debug_log = "DICM_RBE: DICM_RBE_pious_dynasty_enabled = no"
+	}
+}
+
+# Toggles Pious Dynasty globally.
+DICM_RBE_toggle_pious_dynasty_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_pious_dynasty_enabled
+		}
+		DICM_RBE_disable_pious_dynasty_effect = yes
+	}
+	else = {
+		DICM_RBE_enable_pious_dynasty_effect = yes
+	}
+}
+
+# Enables There Are Never Too Many Bastards and disables its mutually exclusive setting.
+DICM_RBE_enable_never_too_many_bastards_effect = {
+	DICM_RBE_disable_pious_dynasty_effect = yes
+	if = {
+		limit = {
+			NOT = {
+				has_global_variable = DICM_RBE_never_too_many_bastards_enabled
+			}
+		}
+		set_global_variable = {
+			name = DICM_RBE_never_too_many_bastards_enabled
+			value = yes
+		}
+		debug_log = "DICM_RBE: DICM_RBE_never_too_many_bastards_enabled = yes"
+	}
+}
+
+# Disables There Are Never Too Many Bastards without changing characters processed earlier.
+DICM_RBE_disable_never_too_many_bastards_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_never_too_many_bastards_enabled
+		}
+		remove_global_variable = DICM_RBE_never_too_many_bastards_enabled
+		debug_log = "DICM_RBE: DICM_RBE_never_too_many_bastards_enabled = no"
+	}
+}
+
+# Toggles There Are Never Too Many Bastards globally.
+DICM_RBE_toggle_never_too_many_bastards_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_never_too_many_bastards_enabled
+		}
+		DICM_RBE_disable_never_too_many_bastards_effect = yes
+	}
+	else = {
+		DICM_RBE_enable_never_too_many_bastards_effect = yes
+	}
+}

@@ -61,6 +61,78 @@ DICM_RBE_administrative_retraining_setting_enabled = {
 	}
 }
 
+# Toggles Sodom and Gomorrah globally.
+DICM_RBE_toggle_sodom_and_gomorrah_setting = {
+	scope = character
+
+	effect = {
+		DICM_RBE_toggle_sodom_and_gomorrah_effect = yes
+	}
+}
+
+# Reports whether Sodom and Gomorrah is enabled globally.
+DICM_RBE_sodom_and_gomorrah_setting_enabled = {
+	scope = character
+
+	is_valid = {
+		DICM_RBE_sodom_and_gomorrah_enabled_trigger = yes
+	}
+}
+
+# Toggles Chemical Sterilization globally.
+DICM_RBE_toggle_chemical_sterilization_setting = {
+	scope = character
+
+	effect = {
+		DICM_RBE_toggle_chemical_sterilization_effect = yes
+	}
+}
+
+# Reports whether Chemical Sterilization is enabled globally.
+DICM_RBE_chemical_sterilization_setting_enabled = {
+	scope = character
+
+	is_valid = {
+		DICM_RBE_chemical_sterilization_enabled_trigger = yes
+	}
+}
+
+# Toggles Pious Dynasty globally.
+DICM_RBE_toggle_pious_dynasty_setting = {
+	scope = character
+
+	effect = {
+		DICM_RBE_toggle_pious_dynasty_effect = yes
+	}
+}
+
+# Reports whether Pious Dynasty is enabled globally.
+DICM_RBE_pious_dynasty_setting_enabled = {
+	scope = character
+
+	is_valid = {
+		DICM_RBE_pious_dynasty_enabled_trigger = yes
+	}
+}
+
+# Toggles There Are Never Too Many Bastards globally.
+DICM_RBE_toggle_never_too_many_bastards_setting = {
+	scope = character
+
+	effect = {
+		DICM_RBE_toggle_never_too_many_bastards_effect = yes
+	}
+}
+
+# Reports whether There Are Never Too Many Bastards is enabled globally.
+DICM_RBE_never_too_many_bastards_setting_enabled = {
+	scope = character
+
+	is_valid = {
+		DICM_RBE_never_too_many_bastards_enabled_trigger = yes
+	}
+}
+
 # Toggles instant fascination progress for the current player character.
 DICM_RBE_toggle_instant_fascination_progress_setting = {
 	scope = character

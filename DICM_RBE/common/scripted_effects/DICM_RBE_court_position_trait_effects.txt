@@ -35,10 +35,27 @@ DICM_RBE_add_devoted_aptitude_trait_effect = {
 	}
 }
 
-# Replaces Disloyal with Loyal.
+# Applies the selected global sexuality setting to a court-position candidate.
+DICM_RBE_apply_court_position_sexuality_setting_effect = {
+	if = {
+		limit = {
+			DICM_RBE_sodom_and_gomorrah_enabled_trigger = yes
+		}
+		DICM_RBE_add_lustful_trait_effect = yes
+	}
+	else_if = {
+		limit = {
+			DICM_RBE_chemical_sterilization_enabled_trigger = yes
+		}
+		DICM_RBE_add_chaste_trait_effect = yes
+	}
+}
+
+# Replaces Disloyal with Loyal and applies the selected global sexuality setting.
 DICM_RBE_add_loyal_aptitude_trait_effect = {
 	if = { limit = { has_trait = disloyal } remove_trait = disloyal }
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = loyal }
+	DICM_RBE_apply_court_position_sexuality_setting_effect = yes
 }
 
 # Replaces lower and negative intellect traits with the highest positive tier.

@@ -101,6 +101,62 @@ window = {
 							}
 						}
 
+						button_checkbox_label = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_toggle_sodom_and_gomorrah_setting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = DICM_RBE_sodom_and_gomorrah_setting_tt
+
+							blockoverride "checkbox" {
+								checked = "[GetScriptedGui('DICM_RBE_sodom_and_gomorrah_setting_enabled').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_sodom_and_gomorrah_setting
+							}
+						}
+
+						button_checkbox_label = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_toggle_chemical_sterilization_setting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = DICM_RBE_chemical_sterilization_setting_tt
+
+							blockoverride "checkbox" {
+								checked = "[GetScriptedGui('DICM_RBE_chemical_sterilization_setting_enabled').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_chemical_sterilization_setting
+							}
+						}
+
+						button_checkbox_label = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_toggle_pious_dynasty_setting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = DICM_RBE_pious_dynasty_setting_tt
+
+							blockoverride "checkbox" {
+								checked = "[GetScriptedGui('DICM_RBE_pious_dynasty_setting_enabled').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_pious_dynasty_setting
+							}
+						}
+
+						button_checkbox_label = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_toggle_never_too_many_bastards_setting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = DICM_RBE_never_too_many_bastards_setting_tt
+
+							blockoverride "checkbox" {
+								checked = "[GetScriptedGui('DICM_RBE_never_too_many_bastards_setting_enabled').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_never_too_many_bastards_setting
+							}
+						}
+
 						text_single = {
 							text = DICM_RBE_flag_settings_character_heading
 							default_format = "#high"
