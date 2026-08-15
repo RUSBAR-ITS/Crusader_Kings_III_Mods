@@ -62,6 +62,7 @@ DICM_RBE_prepare_true_sovereign_retraining_effect = {
 		DICM_RBE_INCREASE_DELTA = 500
 	}
 	DICM_RBE_develop_standard_education_effect = yes
+	DICM_RBE_genius_mentors_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
 	DICM_RBE_add_good_personality_traits_effect = yes
 	DICM_RBE_assign_true_sovereign_retraining_modifier_effect = yes
@@ -74,6 +75,7 @@ DICM_RBE_prepare_true_sovereign_consort_retraining_effect = {
 		DICM_RBE_INCREASE_DELTA = 50
 	}
 	DICM_RBE_develop_standard_education_effect = yes
+	DICM_RBE_genius_mentors_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
 	DICM_RBE_add_good_personality_traits_effect = yes
 	DICM_RBE_assign_true_sovereign_consort_retraining_modifier_effect = yes
@@ -86,8 +88,15 @@ DICM_RBE_prepare_ceasar_child_retraining_effect = {
 		DICM_RBE_INCREASE_DELTA = 20
 	}
 	DICM_RBE_develop_standard_education_effect = yes
+	DICM_RBE_genius_mentors_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
 	DICM_RBE_add_good_personality_traits_effect = yes
+	DICM_RBE_assign_ceasar_child_retraining_modifier_effect = yes
+}
+
+# Gives a minor Caesar Child the mentor traits and protected family modifier without changing skills or education.
+DICM_RBE_prepare_minor_ceasar_child_retraining_effect = {
+	DICM_RBE_genius_mentors_effect = yes
 	DICM_RBE_assign_ceasar_child_retraining_modifier_effect = yes
 }
 
@@ -152,7 +161,7 @@ DICM_RBE_apply_selected_retraining_profile_effect = {
 			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_ceasar_child_retraining_effect = yes }
 		}
 		flag:DICM_RBE_retraining_minor_ceasar_child_profile = {
-			var:DICM_RBE_retraining_target = { DICM_RBE_assign_ceasar_child_retraining_modifier_effect = yes }
+			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_minor_ceasar_child_retraining_effect = yes }
 		}
 		flag:DICM_RBE_retraining_charioteer_blue_profile = {
 			var:DICM_RBE_retraining_target = {
