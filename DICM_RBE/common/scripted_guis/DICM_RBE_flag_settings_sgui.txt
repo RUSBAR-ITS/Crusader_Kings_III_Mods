@@ -186,3 +186,21 @@ DICM_RBE_custom_character_generation_setting_enabled = {
 		DICM_RBE_custom_character_generation_enabled_trigger = yes
 	}
 }
+
+# Toggles Outstanding People processing globally.
+DICM_RBE_toggle_outstanding_people_setting = {
+	scope = character
+
+	effect = {
+		DICM_RBE_toggle_outstanding_people_effect = yes
+	}
+}
+
+# Reports whether Outstanding People processing is enabled globally.
+DICM_RBE_outstanding_people_setting_enabled = {
+	scope = character
+
+	is_valid = {
+		DICM_RBE_outstanding_people_enabled_trigger = yes
+	}
+}

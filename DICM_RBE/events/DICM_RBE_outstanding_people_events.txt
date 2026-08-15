@@ -1,0 +1,28 @@
+namespace = DICM_RBE_outstanding_people
+
+# Processes completed lifestyles and maintains the player-only monthly loop.
+DICM_RBE_outstanding_people.0001 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				DICM_RBE_outstanding_people_enabled_trigger = yes
+				is_ai = no
+				is_alive = yes
+			}
+
+			debug_log = "DICM_RBE: Outstanding People monthly check for [THIS.Char.GetLogName]"
+			DICM_RBE_process_outstanding_people_effect = yes
+			trigger_event = {
+				id = DICM_RBE_outstanding_people.0001
+				months = 1
+			}
+		}
+		else = {
+			remove_character_flag = DICM_RBE_outstanding_people_loop_active
+			debug_log = "DICM_RBE: Outstanding People monthly loop stopped for [THIS.Char.GetLogName]"
+		}
+	}
+}

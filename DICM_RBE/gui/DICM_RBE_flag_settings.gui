@@ -75,6 +75,20 @@
 
 						button_checkbox_label = {
 							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_toggle_outstanding_people_setting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = DICM_RBE_outstanding_people_setting_tt
+
+							blockoverride "checkbox" {
+								checked = "[GetScriptedGui('DICM_RBE_outstanding_people_setting_enabled').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_outstanding_people_setting
+							}
+						}
+
+						button_checkbox_label = {
+							layoutpolicy_horizontal = expanding
 							onclick = "[GetScriptedGui('DICM_RBE_toggle_ceasar_child_inheritance_setting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 							tooltip = DICM_RBE_ceasar_child_inheritance_setting_tt
 

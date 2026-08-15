@@ -161,6 +161,7 @@
 
 	# Experience modifiers
 	# General and track-specific modifiers stack; paired values preserve the requested total multiplier.
+	monthly_lifestyle_xp_gain_mult = 999
 
 	# Lifestyles, crafts, and spiritual experience
 	lifestyle_reveler_xp_gain_mult = 999
@@ -397,6 +398,7 @@ DICM_RBE_Ceasar_Female = {
 
 	# Experience modifiers
 	# General and track-specific modifiers stack; paired values preserve the requested total multiplier.
+	monthly_lifestyle_xp_gain_mult = 999
 
 	# Lifestyles, crafts, and spiritual experience
 	lifestyle_reveler_xp_gain_mult = 999
@@ -578,4 +580,46 @@ DICM_RBE_Ideal_Stooge = {
 	intrigue = -100
 	learning = -100
 	prowess = -100
+}
+
+# Prevents further Diplomacy lifestyle experience after complete mastery.
+DICM_RBE_Greatest_Diplomat = {
+	icon = DICM_RBE_greatest_diplomat
+	monthly_diplomacy_lifestyle_xp_gain_mult = -100000
+	diplomacy_lifestyle_xp_gain_mult = -100000
+}
+
+# Prevents further Martial lifestyle experience after complete mastery.
+DICM_RBE_Archstrategos = {
+	icon = DICM_RBE_archstrategos
+	monthly_martial_lifestyle_xp_gain_mult = -100000
+	martial_lifestyle_xp_gain_mult = -100000
+}
+
+# Prevents further Stewardship lifestyle experience after complete mastery.
+DICM_RBE_Progressive_Steward = {
+	icon = DICM_RBE_progressive_steward
+	monthly_stewardship_lifestyle_xp_gain_mult = -100000
+	stewardship_lifestyle_xp_gain_mult = -100000
+}
+
+# Prevents further Intrigue lifestyle experience after complete mastery.
+DICM_RBE_Cunning_Courtier = {
+	icon = DICM_RBE_cunning_courtier
+	monthly_intrigue_lifestyle_xp_gain_mult = -100000
+	intrigue_lifestyle_xp_gain_mult = -100000
+}
+
+# Prevents further Learning lifestyle experience after complete mastery.
+DICM_RBE_Wisest_Philosopher = {
+	icon = DICM_RBE_wisest_philosopher
+	monthly_learning_lifestyle_xp_gain_mult = -100000
+	learning_lifestyle_xp_gain_mult = -100000
+}
+
+# Prevents further Wanderer lifestyle experience after complete mastery.
+DICM_RBE_Legendary_Traveler = {
+	icon = DICM_RBE_legendary_traveler
+	monthly_wanderer_lifestyle_xp_gain_mult = -100000
+	wanderer_lifestyle_xp_gain_mult = -100000
 }

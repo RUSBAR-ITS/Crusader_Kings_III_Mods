@@ -241,3 +241,47 @@ DICM_RBE_toggle_custom_character_generation_effect = {
 		DICM_RBE_enable_custom_character_generation_effect = yes
 	}
 }
+
+# Enables monthly outstanding-people processing for player characters.
+DICM_RBE_enable_outstanding_people_effect = {
+	if = {
+		limit = {
+			NOT = {
+				has_global_variable = DICM_RBE_outstanding_people_enabled
+			}
+		}
+		set_global_variable = {
+			name = DICM_RBE_outstanding_people_enabled
+			value = yes
+		}
+		debug_log = "DICM_RBE: DICM_RBE_outstanding_people_enabled = yes"
+	}
+
+	every_player = {
+		DICM_RBE_start_outstanding_people_loop_effect = yes
+	}
+}
+
+# Disables future outstanding-people checks without removing earned distinctions.
+DICM_RBE_disable_outstanding_people_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_outstanding_people_enabled
+		}
+		remove_global_variable = DICM_RBE_outstanding_people_enabled
+		debug_log = "DICM_RBE: DICM_RBE_outstanding_people_enabled = no"
+	}
+}
+
+# Toggles monthly outstanding-people processing globally.
+DICM_RBE_toggle_outstanding_people_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_outstanding_people_enabled
+		}
+		DICM_RBE_disable_outstanding_people_effect = yes
+	}
+	else = {
+		DICM_RBE_enable_outstanding_people_effect = yes
+	}
+}

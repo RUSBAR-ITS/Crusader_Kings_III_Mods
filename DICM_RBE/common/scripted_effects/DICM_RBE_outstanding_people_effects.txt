@@ -1,0 +1,131 @@
+# Starts one monthly outstanding-people loop for this player character.
+DICM_RBE_start_outstanding_people_loop_effect = {
+	if = {
+		limit = {
+			DICM_RBE_outstanding_people_enabled_trigger = yes
+			is_ai = no
+			is_alive = yes
+			NOT = {
+				has_character_flag = DICM_RBE_outstanding_people_loop_active
+			}
+		}
+
+		add_character_flag = DICM_RBE_outstanding_people_loop_active
+		trigger_event = {
+			id = DICM_RBE_outstanding_people.0001
+			months = 1
+		}
+		debug_log = "DICM_RBE: Outstanding People monthly loop started for [THIS.Char.GetLogName]"
+	}
+}
+
+# Awards every completed lifestyle distinction and removes surplus perk points.
+DICM_RBE_process_outstanding_people_effect = {
+	if = {
+		limit = {
+			DICM_RBE_diplomacy_lifestyle_completed_trigger = yes
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_character_modifier = DICM_RBE_Greatest_Diplomat
+				}
+			}
+			add_character_modifier = {
+				modifier = DICM_RBE_Greatest_Diplomat
+			}
+			debug_log = "DICM_RBE: Awarded DICM_RBE_Greatest_Diplomat to [THIS.Char.GetLogName]"
+		}
+		add_diplomacy_lifestyle_perk_points = -1000000
+	}
+
+	if = {
+		limit = {
+			DICM_RBE_martial_lifestyle_completed_trigger = yes
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_character_modifier = DICM_RBE_Archstrategos
+				}
+			}
+			add_character_modifier = {
+				modifier = DICM_RBE_Archstrategos
+			}
+			debug_log = "DICM_RBE: Awarded DICM_RBE_Archstrategos to [THIS.Char.GetLogName]"
+		}
+		add_martial_lifestyle_perk_points = -1000000
+	}
+
+	if = {
+		limit = {
+			DICM_RBE_stewardship_lifestyle_completed_trigger = yes
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_character_modifier = DICM_RBE_Progressive_Steward
+				}
+			}
+			add_character_modifier = {
+				modifier = DICM_RBE_Progressive_Steward
+			}
+			debug_log = "DICM_RBE: Awarded DICM_RBE_Progressive_Steward to [THIS.Char.GetLogName]"
+		}
+		add_stewardship_lifestyle_perk_points = -1000000
+	}
+
+	if = {
+		limit = {
+			DICM_RBE_intrigue_lifestyle_completed_trigger = yes
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_character_modifier = DICM_RBE_Cunning_Courtier
+				}
+			}
+			add_character_modifier = {
+				modifier = DICM_RBE_Cunning_Courtier
+			}
+			debug_log = "DICM_RBE: Awarded DICM_RBE_Cunning_Courtier to [THIS.Char.GetLogName]"
+		}
+		add_intrigue_lifestyle_perk_points = -1000000
+	}
+
+	if = {
+		limit = {
+			DICM_RBE_learning_lifestyle_completed_trigger = yes
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_character_modifier = DICM_RBE_Wisest_Philosopher
+				}
+			}
+			add_character_modifier = {
+				modifier = DICM_RBE_Wisest_Philosopher
+			}
+			debug_log = "DICM_RBE: Awarded DICM_RBE_Wisest_Philosopher to [THIS.Char.GetLogName]"
+		}
+		add_learning_lifestyle_perk_points = -1000000
+	}
+
+	if = {
+		limit = {
+			DICM_RBE_wanderer_lifestyle_completed_trigger = yes
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_character_modifier = DICM_RBE_Legendary_Traveler
+				}
+			}
+			add_character_modifier = {
+				modifier = DICM_RBE_Legendary_Traveler
+			}
+			debug_log = "DICM_RBE: Awarded DICM_RBE_Legendary_Traveler to [THIS.Char.GetLogName]"
+		}
+		add_wanderer_lifestyle_perk_points = -1000000
+	}
+}

@@ -9,6 +9,14 @@ on_marriage = {
 on_player_select_destiny_confirmed = {
 	on_actions = {
 		DICM_RBE_on_player_heir_promote_ceasar_child
+		DICM_RBE_on_outstanding_people_player_changed
+	}
+}
+
+# Provides a low-frequency fallback that starts a missing player loop after loading or hot-joining.
+quarterly_playable_pulse = {
+	on_actions = {
+		DICM_RBE_outstanding_people_player_loop_maintenance
 	}
 }
 
@@ -131,6 +139,30 @@ DICM_RBE_on_player_heir_promote_ceasar_child = {
 
 	effect = {
 		DICM_RBE_promote_ceasar_child_to_ruler_effect = yes
+	}
+}
+
+# Starts Outstanding People processing for a newly selected player character.
+DICM_RBE_on_outstanding_people_player_changed = {
+	trigger = {
+		DICM_RBE_outstanding_people_enabled_trigger = yes
+		is_ai = no
+	}
+
+	effect = {
+		DICM_RBE_start_outstanding_people_loop_effect = yes
+	}
+}
+
+# Restores a missing loop for a player after a load, hot-join, or unusual player-character switch.
+DICM_RBE_outstanding_people_player_loop_maintenance = {
+	trigger = {
+		DICM_RBE_outstanding_people_enabled_trigger = yes
+		is_ai = no
+	}
+
+	effect = {
+		DICM_RBE_start_outstanding_people_loop_effect = yes
 	}
 }
 

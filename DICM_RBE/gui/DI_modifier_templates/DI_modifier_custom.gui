@@ -317,12 +317,88 @@ template DI_CE_Modifiers_Custom
                 onrightclick = "[GetScriptedGui('DICM_RBE_remove_modifier_ceasar_squad').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
             }
 
-            # DICM_RBE_Ideal_Stooge (Row 3)(Column 6)
+            # DICM_RBE_Ceasar_Master (Row 3)(Column 6)
+            DI_Modifier_Button = {
+                datacontext = "[GetModifier('DICM_RBE_Ceasar_Master')]"
+
+                onclick = "[GetScriptedGui('DICM_RBE_add_modifier_ceasar_master').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                onrightclick = "[GetScriptedGui('DICM_RBE_remove_modifier_ceasar_master').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+            }
+
+            # DICM_RBE_Ceasar_Official (Row 3)(Column 7)
+            DI_Modifier_Button = {
+                datacontext = "[GetModifier('DICM_RBE_Ceasar_Official')]"
+
+                onclick = "[GetScriptedGui('DICM_RBE_add_modifier_ceasar_official').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                onrightclick = "[GetScriptedGui('DICM_RBE_remove_modifier_ceasar_official').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+            }
+
+            # DICM_RBE_Ideal_Stooge (Row 3)(Column 8)
             DI_Modifier_Button = {
                 datacontext = "[GetModifier('DICM_RBE_Ideal_Stooge')]"
 
                 onclick = "[GetScriptedGui('DICM_RBE_add_modifier_ideal_stooge').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
                 onrightclick = "[GetScriptedGui('DICM_RBE_remove_modifier_ideal_stooge').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+            }
+
+            expand = {}
+        }
+
+        # RUSBAR Extension lifestyle mastery modifiers (Row 4)
+        hbox = {
+            layoutpolicy_horizontal = expanding
+            spacing = 5
+            margin_top = 5
+            margin_bottom = 0
+
+            expand = {}
+
+            # DICM_RBE_Greatest_Diplomat (Row 4)(Column 0)
+            DI_Modifier_Button = {
+                datacontext = "[GetModifier('DICM_RBE_Greatest_Diplomat')]"
+
+                onclick = "[GetScriptedGui('DICM_RBE_add_modifier_greatest_diplomat').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                onrightclick = "[GetScriptedGui('DICM_RBE_remove_modifier_greatest_diplomat').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+            }
+
+            # DICM_RBE_Archstrategos (Row 4)(Column 1)
+            DI_Modifier_Button = {
+                datacontext = "[GetModifier('DICM_RBE_Archstrategos')]"
+
+                onclick = "[GetScriptedGui('DICM_RBE_add_modifier_archstrategos').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                onrightclick = "[GetScriptedGui('DICM_RBE_remove_modifier_archstrategos').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+            }
+
+            # DICM_RBE_Progressive_Steward (Row 4)(Column 2)
+            DI_Modifier_Button = {
+                datacontext = "[GetModifier('DICM_RBE_Progressive_Steward')]"
+
+                onclick = "[GetScriptedGui('DICM_RBE_add_modifier_progressive_steward').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                onrightclick = "[GetScriptedGui('DICM_RBE_remove_modifier_progressive_steward').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+            }
+
+            # DICM_RBE_Cunning_Courtier (Row 4)(Column 3)
+            DI_Modifier_Button = {
+                datacontext = "[GetModifier('DICM_RBE_Cunning_Courtier')]"
+
+                onclick = "[GetScriptedGui('DICM_RBE_add_modifier_cunning_courtier').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                onrightclick = "[GetScriptedGui('DICM_RBE_remove_modifier_cunning_courtier').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+            }
+
+            # DICM_RBE_Wisest_Philosopher (Row 4)(Column 4)
+            DI_Modifier_Button = {
+                datacontext = "[GetModifier('DICM_RBE_Wisest_Philosopher')]"
+
+                onclick = "[GetScriptedGui('DICM_RBE_add_modifier_wisest_philosopher').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                onrightclick = "[GetScriptedGui('DICM_RBE_remove_modifier_wisest_philosopher').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+            }
+
+            # DICM_RBE_Legendary_Traveler (Row 4)(Column 5)
+            DI_Modifier_Button = {
+                datacontext = "[GetModifier('DICM_RBE_Legendary_Traveler')]"
+
+                onclick = "[GetScriptedGui('DICM_RBE_add_modifier_legendary_traveler').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                onrightclick = "[GetScriptedGui('DICM_RBE_remove_modifier_legendary_traveler').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
             }
 
             expand = {}
@@ -344,7 +420,7 @@ template DI_CE_Modifiers_Custom
             margin_bottom = 0
             ignoreinvisible = yes
 
-            # legacy_of_piracy  (Row 4)(Collumn 0)
+            # legacy_of_piracy  (Row 5)(Collumn 0)
             DI_Modifier_Button = {
                 datacontext = "[GetModifier('fp1_legacy_of_piracy_modifier')]"
 
