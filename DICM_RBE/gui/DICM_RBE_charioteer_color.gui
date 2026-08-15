@@ -1,0 +1,111 @@
+window = {
+	name = "DICM_RBE_charioteer_color_window"
+	parentanchor = center
+	layer = windows_layer
+	filter_mouse = all
+	allow_outside = yes
+	alwaystransparent = no
+
+	using = Window_Background
+	using = Window_Decoration
+	movable = yes
+	visible = "[GetPlayer.MakeScope.Var('DICM_RBE_charioteer_color_window_open').IsSet]"
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+		on_finish = "[PdxGuiWidget.StackTop]"
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+	}
+
+	vbox = {
+		set_parent_size_to_minimum = yes
+		using = Window_Margins
+
+		header_pattern = {
+			layoutpolicy_horizontal = expanding
+
+			blockoverride "header_text" {
+				text = DICM_RBE_charioteer_color_window_title
+			}
+
+			blockoverride "button_close" {
+				onclick = "[GetScriptedGui('DICM_RBE_close_charioteer_color_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+			}
+		}
+
+		vbox = {
+			minimumsize = { 420 0 }
+			margin = { 8 12 }
+			spacing = 10
+			layoutpolicy_horizontal = expanding
+
+			text_single = {
+				text = DICM_RBE_charioteer_color_prompt
+				default_format = "#high"
+			}
+
+			button_radio_label = {
+				layoutpolicy_horizontal = expanding
+				onclick = "[GetScriptedGui('DICM_RBE_select_charioteer_blue').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+				blockoverride "radio" {
+					frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_charioteer_blue_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+				}
+
+				blockoverride "text" {
+					text = DICM_RBE_charioteer_blue
+				}
+			}
+
+			button_radio_label = {
+				layoutpolicy_horizontal = expanding
+				onclick = "[GetScriptedGui('DICM_RBE_select_charioteer_green').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+				blockoverride "radio" {
+					frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_charioteer_green_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+				}
+
+				blockoverride "text" {
+					text = DICM_RBE_charioteer_green
+				}
+			}
+
+			button_radio_label = {
+				layoutpolicy_horizontal = expanding
+				onclick = "[GetScriptedGui('DICM_RBE_select_charioteer_white').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+				blockoverride "radio" {
+					frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_charioteer_white_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+				}
+
+				blockoverride "text" {
+					text = DICM_RBE_charioteer_white
+				}
+			}
+
+			button_radio_label = {
+				layoutpolicy_horizontal = expanding
+				onclick = "[GetScriptedGui('DICM_RBE_select_charioteer_red').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+				blockoverride "radio" {
+					frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_charioteer_red_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+				}
+
+				blockoverride "text" {
+					text = DICM_RBE_charioteer_red
+				}
+			}
+
+			button_standard = {
+				margin_top = 8
+				text = DICM_RBE_charioteer_spawn_confirm
+				onclick = "[GetScriptedGui('DICM_RBE_confirm_charioteer_spawn').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+			}
+		}
+	}
+}

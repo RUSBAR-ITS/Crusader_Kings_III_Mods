@@ -1,4 +1,4 @@
-# Ensures the twelve selected languages for language-dependent court positions.
+﻿# Ensures the twelve selected languages for language-dependent court positions.
 DICM_RBE_add_court_position_languages_effect = {
 	if = {
 		limit = { NOT = { knows_language = language_latin } }
@@ -57,18 +57,22 @@ DICM_RBE_ensure_wet_nurse_has_child_effect = {
 			NOT = { any_child = { } }
 		}
 		hidden_effect = {
+			save_scope_as = DICM_RBE_wet_nurse
 			create_character = {
 				age = 0
 				gender_female_chance = 50
 				location = root.location
 				culture = root.culture
 				faith = root.faith
-				mother = root
 				dynasty = none
 				trait = sickly
 				after_creation = {
-					death = { death_reason = death_sickly }
+					set_mother = scope:DICM_RBE_wet_nurse
 				}
+				save_scope_as = DICM_RBE_wet_nurse_child
+			}
+			scope:DICM_RBE_wet_nurse_child = {
+				death = { death_reason = death_sickly }
 			}
 		}
 	}
@@ -78,7 +82,6 @@ DICM_RBE_ensure_wet_nurse_has_child_effect = {
 DICM_RBE_add_ceasar_squad_modifier_effect = {
 	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Master } remove_character_modifier = DICM_RBE_Ceasar_Master }
 	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Wet_Nurse } remove_character_modifier = DICM_RBE_Ceasar_Wet_Nurse }
-	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Scout } remove_character_modifier = DICM_RBE_Ceasar_Scout }
 	if = {
 		limit = {
 			NOT = { has_character_modifier = DICM_RBE_Ceasar_Squad }
@@ -119,11 +122,9 @@ DICM_RBE_add_ceasar_wet_nurse_modifier_effect = {
 	}
 }
 
-# Add the permanent travel aptitude modifier used by specialized scouts.
+# Add the regular service modifier and the additional travel aptitude modifier used by specialized scouts.
 DICM_RBE_add_ceasar_scout_modifier_effect = {
-	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Squad } remove_character_modifier = DICM_RBE_Ceasar_Squad }
-	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Master } remove_character_modifier = DICM_RBE_Ceasar_Master }
-	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Wet_Nurse } remove_character_modifier = DICM_RBE_Ceasar_Wet_Nurse }
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	if = {
 		limit = {
 			NOT = { has_character_modifier = DICM_RBE_Ceasar_Scout }

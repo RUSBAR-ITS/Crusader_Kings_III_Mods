@@ -1,0 +1,103 @@
+﻿# Closes the charioteer color submenu without spawning a character.
+DICM_RBE_close_charioteer_color_window = {
+	scope = character
+
+	effect = {
+		remove_variable = DICM_RBE_charioteer_color_window_open
+	}
+}
+
+# Selects the Blue chariot faction.
+DICM_RBE_select_charioteer_blue = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_charioteer_color
+			value = flag:DICM_RBE_charioteer_blue
+		}
+	}
+}
+
+# Selects the Green chariot faction.
+DICM_RBE_select_charioteer_green = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_charioteer_color
+			value = flag:DICM_RBE_charioteer_green
+		}
+	}
+}
+
+# Selects the White chariot faction.
+DICM_RBE_select_charioteer_white = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_charioteer_color
+			value = flag:DICM_RBE_charioteer_white
+		}
+	}
+}
+
+# Selects the Red chariot faction.
+DICM_RBE_select_charioteer_red = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_charioteer_color
+			value = flag:DICM_RBE_charioteer_red
+		}
+	}
+}
+
+# Reports whether the Blue faction is selected.
+DICM_RBE_charioteer_blue_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_charioteer_color = flag:DICM_RBE_charioteer_blue
+	}
+}
+
+# Reports whether the Green faction is selected.
+DICM_RBE_charioteer_green_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_charioteer_color = flag:DICM_RBE_charioteer_green
+	}
+}
+
+# Reports whether the White faction is selected.
+DICM_RBE_charioteer_white_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_charioteer_color = flag:DICM_RBE_charioteer_white
+	}
+}
+
+# Reports whether the Red faction is selected.
+DICM_RBE_charioteer_red_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_charioteer_color = flag:DICM_RBE_charioteer_red
+	}
+}
+
+# Confirms the selected faction and starts the regular charioteer spawn batch.
+DICM_RBE_confirm_charioteer_spawn = {
+	scope = character
+
+	effect = {
+		court_position_type:charioteer_court_position = { save_scope_as = court_position_type }
+		DICM_RBE_spawn_court_position_batch_effect = yes
+		remove_variable = DICM_RBE_charioteer_color_window_open
+	}
+}

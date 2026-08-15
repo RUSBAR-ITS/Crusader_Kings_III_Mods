@@ -1,0 +1,22 @@
+﻿# Compatibility replacement for the compact DICM court-position spawn handler.
+DI_spawn_court_position = {
+	scope = character
+	saved_scopes = { court_position_type }
+
+	effect = {
+		if = {
+			limit = { scope:court_position_type = court_position_type:charioteer_court_position }
+			set_variable = DICM_RBE_charioteer_color_window_open
+			if = {
+				limit = { NOT = { has_variable = DICM_RBE_charioteer_color } }
+				set_variable = {
+					name = DICM_RBE_charioteer_color
+					value = flag:DICM_RBE_charioteer_blue
+				}
+			}
+		}
+		else = {
+			DICM_RBE_spawn_court_position_batch_effect = yes
+		}
+	}
+}

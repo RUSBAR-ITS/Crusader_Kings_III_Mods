@@ -1,0 +1,244 @@
+﻿# Creates a court-position candidate with deterministic base skills and no random traits.
+DICM_RBE_spawn_court_position_character_effect = {
+	scope:DI_story = {
+		save_scope_value_as = {
+			name = DICM_RBE_spawn_age_minimum
+			value = var:DI_char_spawner_age_increment_value
+		}
+		save_scope_value_as = {
+			name = DICM_RBE_spawn_female_chance
+			value = var:DI_female_chance
+		}
+	}
+
+	save_scope_value_as = {
+		name = DICM_RBE_spawn_learning
+		value = 30
+	}
+	if = {
+		limit = { DICM_RBE_court_position_uses_languages_trigger = yes }
+		save_scope_value_as = {
+			name = DICM_RBE_spawn_learning
+			value = 60
+		}
+	}
+
+	DI_char_spawner_resolve_origin_effect = yes
+
+	create_character = {
+		age = DICM_RBE_spawn_age_minimum_value
+		gender_female_chance = scope:DICM_RBE_spawn_female_chance
+		health = 5
+		fertility = 0.5
+		employer = scope:target
+		faith = scope:DI_cs_spawn_faith
+		culture = scope:DI_cs_spawn_culture
+		dynasty = none
+		diplomacy = 30
+		martial = 30
+		stewardship = 30
+		intrigue = 30
+		learning = scope:DICM_RBE_spawn_learning
+		prowess = 30
+		random_traits = no
+		save_scope_as = new_courtier
+	}
+
+	# Preserve the independent immortality option while ignoring the stat and trait profile checkboxes.
+	scope:DI_story = {
+		if = {
+			limit = { has_variable = DI_char_spawner_immortal }
+			scope:new_courtier = {
+				if = {
+					limit = { NOT = { has_trait = DI_immortal } }
+					add_trait = DI_immortal
+				}
+			}
+		}
+	}
+}
+
+# Applies the chariot faction explicitly selected in the spawn submenu.
+DICM_RBE_prepare_spawned_charioteer_effect = {
+	switch = {
+		trigger = scope:root_target.var:DICM_RBE_charioteer_color
+		flag:DICM_RBE_charioteer_blue = { DICM_RBE_prepare_charioteer_blue_court_position_effect = yes }
+		flag:DICM_RBE_charioteer_green = { DICM_RBE_prepare_charioteer_green_court_position_effect = yes }
+		flag:DICM_RBE_charioteer_white = { DICM_RBE_prepare_charioteer_white_court_position_effect = yes }
+		flag:DICM_RBE_charioteer_red = { DICM_RBE_prepare_charioteer_red_court_position_effect = yes }
+		fallback = { DICM_RBE_prepare_charioteer_blue_court_position_effect = yes }
+	}
+}
+
+# Dispatches the complete DICM RBE preparation profile for the selected court position.
+DICM_RBE_prepare_spawned_court_position_character_effect = {
+	switch = {
+		trigger = scope:court_position_type
+		court_position_type:akolouthos_court_position = { DICM_RBE_prepare_akolouthos_court_position_effect = yes }
+		court_position_type:antiquarian_court_position = { DICM_RBE_prepare_antiquarian_court_position_effect = yes }
+		court_position_type:archer_captain_camp_officer = { DICM_RBE_prepare_archer_captain_camp_officer_effect = yes }
+		court_position_type:armorer_camp_officer = { DICM_RBE_prepare_armorer_camp_officer_effect = yes }
+		court_position_type:bodyguard_court_position = { DICM_RBE_prepare_bodyguard_court_position_effect = yes }
+		court_position_type:bookmaker_court_position = { DICM_RBE_prepare_bookmaker_court_position_effect = yes }
+		court_position_type:boyan_court_position = { DICM_RBE_prepare_boyan_court_position_effect = yes }
+		court_position_type:camelry_captain_camp_officer = { DICM_RBE_prepare_camelry_captain_camp_officer_effect = yes }
+		court_position_type:camp_cook_camp_officer = { DICM_RBE_prepare_camp_cook_camp_officer_effect = yes }
+		court_position_type:camp_priest_camp_officer = { DICM_RBE_prepare_camp_priest_camp_officer_effect = yes }
+		court_position_type:cave_hermit_court_position = { DICM_RBE_prepare_cave_hermit_court_position_effect = yes }
+		court_position_type:champion_court_position = { DICM_RBE_prepare_champion_court_position_effect = yes }
+		court_position_type:charioteer_court_position = { DICM_RBE_prepare_spawned_charioteer_effect = yes }
+		court_position_type:cherbi_court_position = { DICM_RBE_prepare_cherbi_court_position_effect = yes }
+		court_position_type:chief_engineer_camp_officer = { DICM_RBE_prepare_chief_engineer_camp_officer_effect = yes }
+		court_position_type:chief_eunuch_court_position = { DICM_RBE_prepare_chief_eunuch_court_position_effect = yes }
+		court_position_type:chief_forager_camp_officer = { DICM_RBE_prepare_chief_forager_camp_officer_effect = yes }
+		court_position_type:chief_qadi_court_position = { DICM_RBE_prepare_chief_qadi_court_position_effect = yes }
+		court_position_type:chronicler_court_position = { DICM_RBE_prepare_chronicler_court_position_effect = yes }
+		court_position_type:court_artificer_court_position = { DICM_RBE_prepare_court_artificer_court_position_effect = yes }
+		court_position_type:court_astrologer_court_position = { DICM_RBE_prepare_court_astrologer_court_position_effect = yes }
+		court_position_type:court_brahmin_court_position = { DICM_RBE_prepare_court_brahmin_court_position_effect = yes }
+		court_position_type:court_brewmaster_court_position = { DICM_RBE_prepare_court_brewmaster_court_position_effect = yes }
+		court_position_type:court_gardener_court_position = { DICM_RBE_prepare_court_gardener_court_position_effect = yes }
+		court_position_type:court_guru_court_position = { DICM_RBE_prepare_court_guru_court_position_effect = yes }
+		court_position_type:court_jester_court_position = { DICM_RBE_prepare_court_jester_court_position_effect = yes }
+		court_position_type:court_musician_court_position = { DICM_RBE_prepare_court_musician_court_position_effect = yes }
+		court_position_type:court_physician_court_position = { DICM_RBE_prepare_court_physician_court_position_effect = yes }
+		court_position_type:court_poet_court_position = { DICM_RBE_prepare_court_poet_court_position_effect = yes }
+		court_position_type:court_scholar_court_position = { DICM_RBE_prepare_court_scholar_court_position_effect = yes }
+		court_position_type:court_tutor_court_position = { DICM_RBE_prepare_court_tutor_court_position_effect = yes }
+		court_position_type:cultural_emissary_court_position = { DICM_RBE_prepare_cultural_emissary_court_position_effect = yes }
+		court_position_type:cupbearer_court_position = { DICM_RBE_prepare_cupbearer_court_position_effect = yes }
+		court_position_type:elephantry_captain_camp_officer = { DICM_RBE_prepare_elephantry_captain_camp_officer_effect = yes }
+		court_position_type:eparch_court_position = { DICM_RBE_prepare_eparch_court_position_effect = yes }
+		court_position_type:executioner_court_position = { DICM_RBE_prepare_executioner_court_position_effect = yes }
+		court_position_type:fire_dragon_engineer_court_position = { DICM_RBE_prepare_fire_dragon_engineer_court_position_effect = yes }
+		court_position_type:food_taster_court_position = { DICM_RBE_prepare_food_taster_court_position_effect = yes }
+		court_position_type:foreign_emissary_court_position = { DICM_RBE_prepare_foreign_emissary_court_position_effect = yes }
+		court_position_type:garuda_court_position = { DICM_RBE_prepare_garuda_court_position_effect = yes }
+		court_position_type:grand_guardian_court_position = { DICM_RBE_prepare_grand_guardian_court_position_effect = yes }
+		court_position_type:grand_mentor_court_position = { DICM_RBE_prepare_grand_mentor_court_position_effect = yes }
+		court_position_type:grand_preceptor_court_position = { DICM_RBE_prepare_grand_preceptor_court_position_effect = yes }
+		court_position_type:head_groom_camp_officer = { DICM_RBE_prepare_head_groom_camp_officer_effect = yes }
+		court_position_type:head_porter_camp_officer = { DICM_RBE_prepare_head_porter_camp_officer_effect = yes }
+		court_position_type:heavy_cavalry_captain_camp_officer = { DICM_RBE_prepare_heavy_cavalry_captain_camp_officer_effect = yes }
+		court_position_type:heavy_infantry_captain_camp_officer = { DICM_RBE_prepare_heavy_infantry_captain_camp_officer_effect = yes }
+		court_position_type:high_almoner_court_position = { DICM_RBE_prepare_high_almoner_court_position_effect = yes }
+		court_position_type:horse_archer_captain_camp_officer = { DICM_RBE_prepare_horse_archer_captain_camp_officer_effect = yes }
+		court_position_type:huntperson_camp_officer = { DICM_RBE_prepare_huntperson_camp_officer_effect = yes }
+		court_position_type:keeper_of_swans_court_position = { DICM_RBE_prepare_keeper_of_swans_court_position_effect = yes }
+		court_position_type:keeper_of_the_harem_court_position = { DICM_RBE_prepare_keeper_of_the_harem_court_position_effect = yes }
+		court_position_type:keeper_of_the_horses_court_position = { DICM_RBE_prepare_keeper_of_the_horses_court_position_effect = yes }
+		court_position_type:kennelperson_camp_officer = { DICM_RBE_prepare_kennelperson_camp_officer_effect = yes }
+		court_position_type:khlon_glan_court_position = { DICM_RBE_prepare_khlon_glan_court_position_effect = yes }
+		court_position_type:lady_in_waiting_court_position = { DICM_RBE_prepare_lady_in_waiting_court_position_effect = yes }
+		court_position_type:laureate_camp_officer = { DICM_RBE_prepare_laureate_camp_officer_effect = yes }
+		court_position_type:light_cavalry_captain_camp_officer = { DICM_RBE_prepare_light_cavalry_captain_camp_officer_effect = yes }
+		court_position_type:light_infantry_captain_camp_officer = { DICM_RBE_prepare_light_infantry_captain_camp_officer_effect = yes }
+		court_position_type:master_assassin_court_position = { DICM_RBE_prepare_master_assassin_court_position_effect = yes }
+		court_position_type:master_bard_camp_officer = { DICM_RBE_prepare_master_bard_camp_officer_effect = yes }
+		court_position_type:master_of_arms_camp_officer = { DICM_RBE_prepare_master_of_arms_camp_officer_effect = yes }
+		court_position_type:master_of_horse_court_position = { DICM_RBE_prepare_master_of_horse_court_position_effect = yes }
+		court_position_type:master_of_hunt_court_position = { DICM_RBE_prepare_master_of_hunt_court_position_effect = yes }
+		court_position_type:master_of_spoils_camp_officer = { DICM_RBE_prepare_master_of_spoils_camp_officer_effect = yes }
+		court_position_type:master_thief_camp_officer = { DICM_RBE_prepare_master_thief_camp_officer_effect = yes }
+		court_position_type:person_haggler_camp_officer = { DICM_RBE_prepare_person_haggler_camp_officer_effect = yes }
+		court_position_type:pike_captain_camp_officer = { DICM_RBE_prepare_pike_captain_camp_officer_effect = yes }
+		court_position_type:quartermaster_camp_officer = { DICM_RBE_prepare_quartermaster_camp_officer_effect = yes }
+		court_position_type:royal_architect_court_position = { DICM_RBE_prepare_royal_architect_court_position_effect = yes }
+		court_position_type:second_camp_officer = { DICM_RBE_prepare_second_camp_officer_effect = yes }
+		court_position_type:seneschal_court_position = { DICM_RBE_prepare_seneschal_court_position_effect = yes }
+		court_position_type:siege_engineer_court_position = { DICM_RBE_prepare_siege_engineer_court_position_effect = yes }
+		court_position_type:travel_leader_court_position = { DICM_RBE_prepare_travel_leader_court_position_effect = yes }
+		court_position_type:wet_nurse_court_position = { DICM_RBE_prepare_wet_nurse_court_position_effect = yes }
+		court_position_type:witness_camp_officer = { DICM_RBE_prepare_witness_camp_officer_effect = yes }
+		court_position_type:yeke_jarquchi_court_position = { DICM_RBE_prepare_yeke_jarquchi_court_position_effect = yes }
+		court_position_type:yurtchi_court_position = { DICM_RBE_prepare_yurtchi_court_position_effect = yes }
+		fallback = { }
+	}
+}
+
+# Appoints the newly prepared character, replacing an existing holder when the position is full.
+DICM_RBE_appoint_spawned_court_position_character_effect = {
+	if = {
+		limit = { NOT = { DI_can_employ_selected_court_position = yes } }
+		DI_revoke_selected_court_position_holder_effect = yes
+	}
+	appoint_court_position = {
+		recipient = scope:new_courtier
+		court_position = scope:court_position_type
+	}
+}
+
+# Complete replacement path for positions covered by DICM RBE profiles.
+DICM_RBE_spawn_selected_court_position_effect = {
+	DICM_RBE_spawn_court_position_character_effect = yes
+	scope:new_courtier = {
+		DICM_RBE_prepare_spawned_court_position_character_effect = yes
+	}
+	DICM_RBE_appoint_spawned_court_position_character_effect = yes
+}
+
+# Preserves the original DICM path for intentionally unsupported positions and future additions.
+DICM_RBE_spawn_selected_court_position_original_effect = {
+	DI_spawn_low_court_character_effect = yes
+	scope:new_courtier = {
+		DI_apply_court_position_validity_effect = { COURT_POSITION = scope:court_position_type }
+		DI_apply_court_position_trait_xp_effect = { COURT_POSITION = scope:court_position_type }
+		DI_court_position_post_spawn_effect = { COURT_POSITION = scope:court_position_type }
+	}
+	DICM_RBE_appoint_spawned_court_position_character_effect = yes
+}
+
+# Routes the DICM court-position window to a complete DICM RBE profile or the preserved original path.
+DICM_RBE_spawn_selected_court_position_router_effect = {
+	if = {
+		limit = { DICM_RBE_court_position_uses_custom_spawn_trigger = yes }
+		DICM_RBE_spawn_selected_court_position_effect = yes
+	}
+	else = {
+		DICM_RBE_spawn_selected_court_position_original_effect = yes
+	}
+}
+
+# Runs the unchanged DICM multi-character court-position loop through the DICM RBE router.
+DICM_RBE_spawn_court_position_batch_effect = {
+	save_scope_as = root_target
+	random_owned_story = {
+		limit = { story_type = DI_misc_variables_story }
+		save_scope_as = DI_story
+	}
+	scope:DI_story = {
+		save_scope_value_as = {
+			name = DI_char_spawner_count_increment_value
+			value = var:DI_char_spawner_count_increment_value
+		}
+	}
+	DI_apply_court_position_profile_effect = { COURT_POSITION = scope:court_position_type }
+
+	if = {
+		limit = { scope:DI_story = { has_variable = DI_pinned_char_var } }
+		every_in_list = {
+			variable = pinned_characters
+			save_scope_as = target
+			while = {
+				count = scope:DI_char_spawner_count_increment_value
+				DICM_RBE_spawn_selected_court_position_router_effect = yes
+			}
+		}
+	}
+	else = {
+		save_scope_as = target
+		while = {
+			count = scope:DI_char_spawner_count_increment_value
+			DICM_RBE_spawn_selected_court_position_router_effect = yes
+		}
+	}
+
+	if = {
+		limit = { scope:root_target.var:DI_cs_random_traits ?= no }
+		DI_no_random_traits_effect = yes
+	}
+	else_if = {
+		limit = { scope:root_target.var:DI_cs_random_traits ?= yes }
+		DI_random_traits_effect = yes
+	}
+}
