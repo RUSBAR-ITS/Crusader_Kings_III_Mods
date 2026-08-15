@@ -143,6 +143,114 @@ DICM_RBE_retrain_learning_education_effect = {
 	if = { limit = { NOT = { has_trait = education_learning_5 } } add_trait = education_learning_5 }
 }
 
+# Raises the character's existing standard education branch to level five.
+# A character without standard education receives a random level-five branch.
+DICM_RBE_develop_standard_education_effect = {
+	if = {
+		limit = {
+			OR = {
+				has_trait = education_diplomacy_1
+				has_trait = education_diplomacy_2
+				has_trait = education_diplomacy_3
+				has_trait = education_diplomacy_4
+				has_trait = education_diplomacy_5
+			}
+		}
+		if = {
+			limit = { NOT = { has_trait = education_diplomacy_5 } }
+			DICM_RBE_retrain_diplomacy_education_effect = yes
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_trait = education_martial_1
+				has_trait = education_martial_2
+				has_trait = education_martial_3
+				has_trait = education_martial_4
+				has_trait = education_martial_5
+			}
+		}
+		if = {
+			limit = { NOT = { has_trait = education_martial_5 } }
+			DICM_RBE_retrain_martial_education_effect = yes
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_trait = education_stewardship_1
+				has_trait = education_stewardship_2
+				has_trait = education_stewardship_3
+				has_trait = education_stewardship_4
+				has_trait = education_stewardship_5
+			}
+		}
+		if = {
+			limit = { NOT = { has_trait = education_stewardship_5 } }
+			DICM_RBE_retrain_stewardship_education_effect = yes
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_trait = education_intrigue_1
+				has_trait = education_intrigue_2
+				has_trait = education_intrigue_3
+				has_trait = education_intrigue_4
+				has_trait = education_intrigue_5
+			}
+		}
+		if = {
+			limit = { NOT = { has_trait = education_intrigue_5 } }
+			DICM_RBE_retrain_intrigue_education_effect = yes
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_trait = education_learning_1
+				has_trait = education_learning_2
+				has_trait = education_learning_3
+				has_trait = education_learning_4
+				has_trait = education_learning_5
+			}
+		}
+		if = {
+			limit = { NOT = { has_trait = education_learning_5 } }
+			DICM_RBE_retrain_learning_education_effect = yes
+		}
+	}
+	else = {
+		DICM_RBE_retrain_random_standard_education_effect = yes
+	}
+}
+
+# Replaces any standard education with level-five Diplomacy education.
+DICM_RBE_replace_standard_education_with_diplomacy_effect = {
+	DICM_RBE_retrain_diplomacy_education_effect = yes
+}
+
+# Replaces any standard education with level-five Martial education.
+DICM_RBE_replace_standard_education_with_martial_effect = {
+	DICM_RBE_retrain_martial_education_effect = yes
+}
+
+# Replaces any standard education with level-five Stewardship education.
+DICM_RBE_replace_standard_education_with_stewardship_effect = {
+	DICM_RBE_retrain_stewardship_education_effect = yes
+}
+
+# Replaces any standard education with level-five Intrigue education.
+DICM_RBE_replace_standard_education_with_intrigue_effect = {
+	DICM_RBE_retrain_intrigue_education_effect = yes
+}
+
+# Replaces any standard education with level-five Learning education.
+DICM_RBE_replace_standard_education_with_learning_effect = {
+	DICM_RBE_retrain_learning_education_effect = yes
+}
+
 # Replaces every standard and special education trait with level-one Learning education.
 DICM_RBE_retrain_learning_education_level_one_effect = {
 	if = { limit = { has_trait = education_diplomacy_1 } remove_trait = education_diplomacy_1 }

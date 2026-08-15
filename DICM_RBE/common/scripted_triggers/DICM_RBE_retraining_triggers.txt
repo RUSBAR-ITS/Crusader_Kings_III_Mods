@@ -127,6 +127,13 @@ DICM_RBE_retraining_selection_ready_trigger = {
 		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_knight_profile
 		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_commander_profile
 		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_official_profile
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_profile
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_consort_profile
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_ceasar_child_profile
+		AND = {
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_minor_ceasar_child_profile
+			var:DICM_RBE_retraining_target = { is_adult = no }
+		}
 	}
 }
 

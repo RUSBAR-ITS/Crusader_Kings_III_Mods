@@ -80,6 +80,107 @@ DICM_RBE_retraining_nomadic_court_position_visible = {
 	is_valid = { DICM_RBE_retraining_nomadic_court_position_trigger = yes }
 }
 
+# Selects the gender-appropriate True Sovereign profile.
+DICM_RBE_select_retraining_true_sovereign = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_true_sovereign_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the True Sovereign profile is selected.
+DICM_RBE_retraining_true_sovereign_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_profile
+	}
+}
+
+# Selects the gender-appropriate consort profile.
+DICM_RBE_select_retraining_true_sovereign_consort = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_true_sovereign_consort_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the True Sovereign consort profile is selected.
+DICM_RBE_retraining_true_sovereign_consort_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_consort_profile
+	}
+}
+
+# Selects the full Caesar Child retraining profile.
+DICM_RBE_select_retraining_ceasar_child = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_ceasar_child_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the full Caesar Child profile is selected.
+DICM_RBE_retraining_ceasar_child_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_ceasar_child_profile
+	}
+}
+
+# Selects the modifier-only Caesar Child profile for a minor target.
+DICM_RBE_select_retraining_minor_ceasar_child = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_minor_ceasar_child_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the modifier-only Caesar Child profile is selected.
+DICM_RBE_retraining_minor_ceasar_child_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_minor_ceasar_child_profile
+	}
+}
+
+# Shows the modifier-only Caesar Child profile only for a living minor target.
+DICM_RBE_retraining_minor_ceasar_child_visible = {
+	scope = character
+
+	is_valid = {
+		has_variable = DICM_RBE_retraining_target
+		var:DICM_RBE_retraining_target = {
+			is_alive = yes
+			is_adult = no
+		}
+	}
+}
+
 # Selects the chancellor retraining profile.
 DICM_RBE_select_retraining_chancellor = {
 	scope = character

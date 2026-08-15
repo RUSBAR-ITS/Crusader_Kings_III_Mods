@@ -8,6 +8,7 @@ DICM_RBE_genetic_modification_interaction = {
 	auto_accept = yes
 	use_diplomatic_range = no
 	ignores_pending_interaction_block = yes
+	send_options_exclusive = yes
 
 	is_shown = {
 		scope:actor = {
@@ -20,69 +21,31 @@ DICM_RBE_genetic_modification_interaction = {
 	}
 
 	send_option = {
-		flag = DICM_RBE_test_skills_down
-		localization = DICM_RBE_test_skills_down
+		flag = DICM_RBE_apply_genetic_modification
+		localization = DICM_RBE_genetic_modification_option
 	}
 	send_option = {
-		flag = DICM_RBE_test_skills_up
-		localization = DICM_RBE_test_skills_up
-	}
-	send_option = {
-		flag = DICM_RBE_test_skills_upper_limit
-		localization = DICM_RBE_test_skills_upper_limit
-	}
-	send_option = {
-		flag = DICM_RBE_test_skills_below_upper_limit
-		localization = DICM_RBE_test_skills_below_upper_limit
+		flag = DICM_RBE_apply_genetic_correction
+		localization = DICM_RBE_genetic_correction_option
 	}
 
 	on_accept = {
 		if = {
 			limit = {
-				scope:DICM_RBE_test_skills_down = yes
+				scope:DICM_RBE_apply_genetic_modification = yes
 			}
 
 			scope:recipient = {
-				DICM_RBE_adjust_all_base_skills_effect = {
-					DICM_RBE_DECREASE_DELTA = -500
-					DICM_RBE_INCREASE_DELTA = 0
-				}
+				DICM_RBE_genetic_modification_effect = yes
 			}
 		}
 		if = {
 			limit = {
-				scope:DICM_RBE_test_skills_up = yes
+				scope:DICM_RBE_apply_genetic_correction = yes
 			}
 
 			scope:recipient = {
-				DICM_RBE_adjust_all_base_skills_effect = {
-					DICM_RBE_DECREASE_DELTA = 0
-					DICM_RBE_INCREASE_DELTA = 10
-				}
-			}
-		}
-		if = {
-			limit = {
-				scope:DICM_RBE_test_skills_upper_limit = yes
-			}
-
-			scope:recipient = {
-				DICM_RBE_adjust_all_base_skills_effect = {
-					DICM_RBE_DECREASE_DELTA = 0
-					DICM_RBE_INCREASE_DELTA = 500
-				}
-			}
-		}
-		if = {
-			limit = {
-				scope:DICM_RBE_test_skills_below_upper_limit = yes
-			}
-
-			scope:recipient = {
-				DICM_RBE_adjust_all_base_skills_effect = {
-					DICM_RBE_DECREASE_DELTA = -10
-					DICM_RBE_INCREASE_DELTA = 0
-				}
+				DICM_RBE_genetic_correction_effect = yes
 			}
 		}
 	}

@@ -16,11 +16,98 @@ DICM_RBE_normalize_retraining_target_skills_effect = {
 	}
 }
 
+# Removes every mutually exclusive Caesar-family role modifier before assigning a new role.
+DICM_RBE_clear_ceasar_family_role_modifiers_effect = {
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar } remove_character_modifier = DICM_RBE_Ceasar }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Female } remove_character_modifier = DICM_RBE_Ceasar_Female }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Wife } remove_character_modifier = DICM_RBE_Ceasar_Wife }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Husband } remove_character_modifier = DICM_RBE_Ceasar_Husband }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Child } remove_character_modifier = DICM_RBE_Ceasar_Child }
+}
+
+# Assigns the gender-appropriate True Sovereign modifier.
+DICM_RBE_assign_true_sovereign_retraining_modifier_effect = {
+	DICM_RBE_clear_ceasar_family_role_modifiers_effect = yes
+	if = {
+		limit = { is_female = yes }
+		add_character_modifier = { modifier = DICM_RBE_Ceasar_Female }
+	}
+	else = {
+		add_character_modifier = { modifier = DICM_RBE_Ceasar }
+	}
+}
+
+# Assigns the gender-appropriate consort modifier.
+DICM_RBE_assign_true_sovereign_consort_retraining_modifier_effect = {
+	DICM_RBE_clear_ceasar_family_role_modifiers_effect = yes
+	if = {
+		limit = { is_female = yes }
+		add_character_modifier = { modifier = DICM_RBE_Ceasar_Wife }
+	}
+	else = {
+		add_character_modifier = { modifier = DICM_RBE_Ceasar_Husband }
+	}
+}
+
+# Assigns the Caesar Child modifier without changing unrelated service modifiers.
+DICM_RBE_assign_ceasar_child_retraining_modifier_effect = {
+	DICM_RBE_clear_ceasar_family_role_modifiers_effect = yes
+	add_character_modifier = { modifier = DICM_RBE_Ceasar_Child }
+}
+
+# Prepares a True Sovereign while preserving the character's current skill base before adding 500.
+DICM_RBE_prepare_true_sovereign_retraining_effect = {
+	DICM_RBE_adjust_all_base_skills_effect = {
+		DICM_RBE_DECREASE_DELTA = 0
+		DICM_RBE_INCREASE_DELTA = 500
+	}
+	DICM_RBE_develop_standard_education_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_effect = yes
+	DICM_RBE_assign_true_sovereign_retraining_modifier_effect = yes
+}
+
+# Prepares a True Sovereign's consort with every base skill normalized to 50.
+DICM_RBE_prepare_true_sovereign_consort_retraining_effect = {
+	DICM_RBE_adjust_all_base_skills_effect = {
+		DICM_RBE_DECREASE_DELTA = -500
+		DICM_RBE_INCREASE_DELTA = 50
+	}
+	DICM_RBE_develop_standard_education_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_effect = yes
+	DICM_RBE_assign_true_sovereign_consort_retraining_modifier_effect = yes
+}
+
+# Prepares a Caesar Child with every base skill normalized to 20.
+DICM_RBE_prepare_ceasar_child_retraining_effect = {
+	DICM_RBE_adjust_all_base_skills_effect = {
+		DICM_RBE_DECREASE_DELTA = -500
+		DICM_RBE_INCREASE_DELTA = 20
+	}
+	DICM_RBE_develop_standard_education_effect = yes
+	DICM_RBE_remove_bad_personality_traits_effect = yes
+	DICM_RBE_add_good_personality_traits_effect = yes
+	DICM_RBE_assign_ceasar_child_retraining_modifier_effect = yes
+}
+
 # Applies the profile currently selected in the retraining window.
 DICM_RBE_apply_selected_retraining_profile_effect = {
 	if = {
 		limit = { DICM_RBE_retraining_selection_ready_trigger = yes }
-		DICM_RBE_normalize_retraining_target_skills_effect = yes
+		if = {
+			limit = {
+				NOT = {
+					OR = {
+						var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_profile
+						var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_consort_profile
+						var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_ceasar_child_profile
+						var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_minor_ceasar_child_profile
+					}
+				}
+			}
+			DICM_RBE_normalize_retraining_target_skills_effect = yes
+		}
 
 		switch = {
 			trigger = var:DICM_RBE_retraining_profile
@@ -54,6 +141,18 @@ DICM_RBE_apply_selected_retraining_profile_effect = {
 		}
 		flag:DICM_RBE_retraining_official_profile = {
 			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_official_service_character_effect = yes }
+		}
+		flag:DICM_RBE_retraining_true_sovereign_profile = {
+			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_true_sovereign_retraining_effect = yes }
+		}
+		flag:DICM_RBE_retraining_true_sovereign_consort_profile = {
+			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_true_sovereign_consort_retraining_effect = yes }
+		}
+		flag:DICM_RBE_retraining_ceasar_child_profile = {
+			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_ceasar_child_retraining_effect = yes }
+		}
+		flag:DICM_RBE_retraining_minor_ceasar_child_profile = {
+			var:DICM_RBE_retraining_target = { DICM_RBE_assign_ceasar_child_retraining_modifier_effect = yes }
 		}
 		flag:DICM_RBE_retraining_charioteer_blue_profile = {
 			var:DICM_RBE_retraining_target = {

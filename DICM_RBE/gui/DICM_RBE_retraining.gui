@@ -169,6 +169,113 @@
 
 						DICM_RBE_retraining_position_radio = {
 							layoutpolicy_horizontal = expanding
+							visible = "[Not(Character.IsFemale)]"
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_true_sovereign').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_true_sovereign_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/modifiers/DICM_RBE_ceasar.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_Ceasar
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							visible = "[Character.IsFemale]"
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_true_sovereign').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_true_sovereign_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/modifiers/DICM_RBE_ceasar_female.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_Ceasar_Female
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							visible = "[Not(Character.IsFemale)]"
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_true_sovereign_consort').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_true_sovereign_consort_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/modifiers/DICM_RBE_ceasar_husband.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_Ceasar_Husband
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							visible = "[Character.IsFemale]"
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_true_sovereign_consort').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_true_sovereign_consort_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/modifiers/DICM_RBE_ceasar_wife.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_Ceasar_Wife
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_ceasar_child').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_ceasar_child_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/modifiers/DICM_RBE_ceasar_child.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_ceasar_child
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							visible = "[GetScriptedGui('DICM_RBE_retraining_minor_ceasar_child_visible').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_minor_ceasar_child').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_minor_ceasar_child_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/modifiers/DICM_RBE_ceasar_child.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_minor_ceasar_child
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
 							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_chancellor').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 
 							blockoverride "radio" {
