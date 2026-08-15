@@ -74,8 +74,56 @@ DICM_RBE_ensure_wet_nurse_has_child_effect = {
 	}
 }
 
+# Add the permanent service modifier used by regular court-position specialists.
+DICM_RBE_add_ceasar_squad_modifier_effect = {
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Master } remove_character_modifier = DICM_RBE_Ceasar_Master }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Wet_Nurse } remove_character_modifier = DICM_RBE_Ceasar_Wet_Nurse }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Scout } remove_character_modifier = DICM_RBE_Ceasar_Scout }
+	if = {
+		limit = {
+			NOT = { has_character_modifier = DICM_RBE_Ceasar_Squad }
+		}
+		add_character_modifier = {
+			modifier = DICM_RBE_Ceasar_Squad
+		}
+	}
+}
+
+# Add the permanent service modifier used by the Court Artificer.
+DICM_RBE_add_ceasar_master_modifier_effect = {
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Squad } remove_character_modifier = DICM_RBE_Ceasar_Squad }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Wet_Nurse } remove_character_modifier = DICM_RBE_Ceasar_Wet_Nurse }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Scout } remove_character_modifier = DICM_RBE_Ceasar_Scout }
+	if = {
+		limit = {
+			NOT = { has_character_modifier = DICM_RBE_Ceasar_Master }
+		}
+		add_character_modifier = {
+			modifier = DICM_RBE_Ceasar_Master
+		}
+	}
+}
+
+# Add the permanent service modifier used by the Wet Nurse.
+DICM_RBE_add_ceasar_wet_nurse_modifier_effect = {
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Squad } remove_character_modifier = DICM_RBE_Ceasar_Squad }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Master } remove_character_modifier = DICM_RBE_Ceasar_Master }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Scout } remove_character_modifier = DICM_RBE_Ceasar_Scout }
+	if = {
+		limit = {
+			NOT = { has_character_modifier = DICM_RBE_Ceasar_Wet_Nurse }
+		}
+		add_character_modifier = {
+			modifier = DICM_RBE_Ceasar_Wet_Nurse
+		}
+	}
+}
+
 # Add the permanent travel aptitude modifier used by specialized scouts.
 DICM_RBE_add_ceasar_scout_modifier_effect = {
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Squad } remove_character_modifier = DICM_RBE_Ceasar_Squad }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Master } remove_character_modifier = DICM_RBE_Ceasar_Master }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Wet_Nurse } remove_character_modifier = DICM_RBE_Ceasar_Wet_Nurse }
 	if = {
 		limit = {
 			NOT = { has_character_modifier = DICM_RBE_Ceasar_Scout }
@@ -116,6 +164,7 @@ DICM_RBE_raise_merit_to_maximum_level_effect = {
 
 # Akolouthos
 DICM_RBE_prepare_akolouthos_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_add_chivalry_tree_perks_effect = yes
 	DICM_RBE_add_unyielding_defender_commander_trait_max_xp_effect = yes
@@ -136,6 +185,11 @@ DICM_RBE_prepare_akolouthos_court_position_effect = {
 
 # Antiquarian
 DICM_RBE_prepare_antiquarian_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
+	if = {
+		limit = { NOT = { exists = inspiration } }
+		create_inspiration = book_inspiration
+	}
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
@@ -148,6 +202,7 @@ DICM_RBE_prepare_antiquarian_court_position_effect = {
 
 # Archer Captain
 DICM_RBE_prepare_archer_captain_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
@@ -159,6 +214,7 @@ DICM_RBE_prepare_archer_captain_camp_officer_effect = {
 
 # Bodyguard
 DICM_RBE_prepare_bodyguard_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_chivalry_tree_perks_effect = yes
@@ -176,6 +232,7 @@ DICM_RBE_prepare_bodyguard_court_position_effect = {
 
 # Boyan
 DICM_RBE_prepare_boyan_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
@@ -196,6 +253,7 @@ DICM_RBE_prepare_boyan_court_position_effect = {
 
 # Camelry Captain
 DICM_RBE_prepare_camelry_captain_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
@@ -207,6 +265,7 @@ DICM_RBE_prepare_camelry_captain_camp_officer_effect = {
 
 # Camp Priest
 DICM_RBE_prepare_camp_priest_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_theology_tree_perks_effect = yes
@@ -218,6 +277,7 @@ DICM_RBE_prepare_camp_priest_camp_officer_effect = {
 
 # Cherbi
 DICM_RBE_prepare_cherbi_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_chivalry_tree_perks_effect = yes
@@ -234,6 +294,7 @@ DICM_RBE_prepare_cherbi_court_position_effect = {
 
 # Chief Engineer
 DICM_RBE_prepare_chief_engineer_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
@@ -243,6 +304,7 @@ DICM_RBE_prepare_chief_engineer_camp_officer_effect = {
 
 # Chief Qadi
 DICM_RBE_prepare_chief_qadi_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
@@ -257,6 +319,7 @@ DICM_RBE_prepare_chief_qadi_court_position_effect = {
 
 # Chronicler
 DICM_RBE_prepare_chronicler_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
 	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
@@ -268,6 +331,7 @@ DICM_RBE_prepare_chronicler_court_position_effect = {
 
 # Court Brahmin
 DICM_RBE_prepare_court_brahmin_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_wealth_tree_perks_effect = yes
 	DICM_RBE_add_theology_tree_perks_effect = yes
@@ -282,6 +346,7 @@ DICM_RBE_prepare_court_brahmin_court_position_effect = {
 
 # Court Gardener
 DICM_RBE_prepare_court_gardener_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_domain_tree_perks_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_gardener }
@@ -294,6 +359,7 @@ DICM_RBE_prepare_court_gardener_court_position_effect = {
 
 # Court Guru
 DICM_RBE_prepare_court_guru_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_theology_tree_perks_effect = yes
@@ -308,6 +374,7 @@ DICM_RBE_prepare_court_guru_court_position_effect = {
 
 # Court Poet
 DICM_RBE_prepare_court_poet_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
 	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
@@ -320,6 +387,7 @@ DICM_RBE_prepare_court_poet_court_position_effect = {
 
 # Court Scholar
 DICM_RBE_prepare_court_scholar_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_theology_tree_perks_effect = yes
@@ -333,6 +401,7 @@ DICM_RBE_prepare_court_scholar_court_position_effect = {
 
 # Court Tutor
 DICM_RBE_prepare_court_tutor_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
 	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
@@ -347,6 +416,7 @@ DICM_RBE_prepare_court_tutor_court_position_effect = {
 
 # Cultural Emissary
 DICM_RBE_prepare_cultural_emissary_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
 	DICM_RBE_add_court_position_languages_effect = yes
@@ -359,6 +429,7 @@ DICM_RBE_prepare_cultural_emissary_court_position_effect = {
 
 # Elephantry Captain
 DICM_RBE_prepare_elephantry_captain_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
@@ -370,6 +441,7 @@ DICM_RBE_prepare_elephantry_captain_camp_officer_effect = {
 
 # Eparch
 DICM_RBE_prepare_eparch_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_raise_influence_to_maximum_level_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_retrain_republican_education_effect = yes
@@ -391,6 +463,7 @@ DICM_RBE_prepare_eparch_court_position_effect = {
 
 # Executioner
 DICM_RBE_prepare_executioner_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_intrigue_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_intimidation_tree_perks_effect = yes
@@ -402,6 +475,7 @@ DICM_RBE_prepare_executioner_court_position_effect = {
 
 # Fire Dragon Engineer
 DICM_RBE_prepare_fire_dragon_engineer_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_domain_tree_perks_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
@@ -416,6 +490,7 @@ DICM_RBE_prepare_fire_dragon_engineer_court_position_effect = {
 
 # Foreign Emissary
 DICM_RBE_prepare_foreign_emissary_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
 	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
@@ -432,6 +507,7 @@ DICM_RBE_prepare_foreign_emissary_court_position_effect = {
 
 # Grand Guardian
 DICM_RBE_prepare_grand_guardian_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_raise_merit_to_maximum_level_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
@@ -450,6 +526,7 @@ DICM_RBE_prepare_grand_guardian_court_position_effect = {
 
 # Grand Mentor
 DICM_RBE_prepare_grand_mentor_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_raise_merit_to_maximum_level_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
@@ -468,6 +545,7 @@ DICM_RBE_prepare_grand_mentor_court_position_effect = {
 
 # Grand Preceptor
 DICM_RBE_prepare_grand_preceptor_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_raise_merit_to_maximum_level_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
@@ -486,6 +564,7 @@ DICM_RBE_prepare_grand_preceptor_court_position_effect = {
 
 # Heavy Cavalry Captain
 DICM_RBE_prepare_heavy_cavalry_captain_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
@@ -497,6 +576,7 @@ DICM_RBE_prepare_heavy_cavalry_captain_camp_officer_effect = {
 
 # Heavy Infantry Captain
 DICM_RBE_prepare_heavy_infantry_captain_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
@@ -508,6 +588,7 @@ DICM_RBE_prepare_heavy_infantry_captain_camp_officer_effect = {
 
 # High Almoner
 DICM_RBE_prepare_high_almoner_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_wealth_tree_perks_effect = yes
 	DICM_RBE_add_theology_tree_perks_effect = yes
@@ -522,6 +603,7 @@ DICM_RBE_prepare_high_almoner_court_position_effect = {
 
 # Horse Archer Captain
 DICM_RBE_prepare_horse_archer_captain_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
@@ -533,6 +615,7 @@ DICM_RBE_prepare_horse_archer_captain_camp_officer_effect = {
 
 # Keeper of the Horses
 DICM_RBE_prepare_keeper_of_the_horses_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_family_tree_perks_effect = yes
@@ -551,6 +634,7 @@ DICM_RBE_prepare_keeper_of_the_horses_court_position_effect = {
 
 # Khlon Glan
 DICM_RBE_prepare_khlon_glan_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
@@ -562,6 +646,7 @@ DICM_RBE_prepare_khlon_glan_court_position_effect = {
 
 # Light Cavalry Captain
 DICM_RBE_prepare_light_cavalry_captain_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
@@ -573,6 +658,7 @@ DICM_RBE_prepare_light_cavalry_captain_camp_officer_effect = {
 
 # Light Infantry Captain
 DICM_RBE_prepare_light_infantry_captain_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
@@ -584,6 +670,7 @@ DICM_RBE_prepare_light_infantry_captain_camp_officer_effect = {
 
 # Master Bard
 DICM_RBE_prepare_master_bard_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_temptation_tree_perks_effect = yes
 	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
@@ -597,6 +684,7 @@ DICM_RBE_prepare_master_bard_camp_officer_effect = {
 
 # Master of Arms
 DICM_RBE_prepare_master_of_arms_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
@@ -608,6 +696,7 @@ DICM_RBE_prepare_master_of_arms_camp_officer_effect = {
 
 # Master of Horse
 DICM_RBE_prepare_master_of_horse_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_chivalry_tree_perks_effect = yes
@@ -620,6 +709,7 @@ DICM_RBE_prepare_master_of_horse_court_position_effect = {
 
 # Master of Spoils
 DICM_RBE_prepare_master_of_spoils_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_wealth_tree_perks_effect = yes
 	DICM_RBE_add_reaver_commander_trait_max_xp_effect = yes
@@ -631,6 +721,7 @@ DICM_RBE_prepare_master_of_spoils_camp_officer_effect = {
 
 # Master Thief
 DICM_RBE_prepare_master_thief_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_intrigue_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_skulduggery_tree_perks_effect = yes
@@ -643,6 +734,7 @@ DICM_RBE_prepare_master_thief_camp_officer_effect = {
 
 # Pike Captain
 DICM_RBE_prepare_pike_captain_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_strategy_tree_perks_effect = yes
@@ -654,6 +746,7 @@ DICM_RBE_prepare_pike_captain_camp_officer_effect = {
 
 # Quartermaster
 DICM_RBE_prepare_quartermaster_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_wealth_tree_perks_effect = yes
@@ -667,6 +760,7 @@ DICM_RBE_prepare_quartermaster_camp_officer_effect = {
 
 # Royal Architect
 DICM_RBE_prepare_royal_architect_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_domain_tree_perks_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
@@ -676,6 +770,7 @@ DICM_RBE_prepare_royal_architect_court_position_effect = {
 
 # Second
 DICM_RBE_prepare_second_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
@@ -690,6 +785,7 @@ DICM_RBE_prepare_second_camp_officer_effect = {
 
 # Seneschal
 DICM_RBE_prepare_seneschal_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
@@ -701,6 +797,7 @@ DICM_RBE_prepare_seneschal_court_position_effect = {
 
 # Siege Engineer
 DICM_RBE_prepare_siege_engineer_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_add_domain_tree_perks_effect = yes
 	DICM_RBE_add_scholarship_tree_perks_effect = yes
@@ -738,6 +835,7 @@ DICM_RBE_prepare_travel_leader_court_position_effect = {
 
 # Witness
 DICM_RBE_prepare_witness_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
 	DICM_RBE_add_loyal_aptitude_trait_effect = yes
@@ -753,6 +851,7 @@ DICM_RBE_prepare_witness_camp_officer_effect = {
 
 # Yeke Jarquchi
 DICM_RBE_prepare_yeke_jarquchi_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
@@ -770,6 +869,7 @@ DICM_RBE_prepare_yeke_jarquchi_court_position_effect = {
 
 # Yurtchi
 DICM_RBE_prepare_yurtchi_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_duty_tree_perks_effect = yes
 	DICM_RBE_add_authority_tree_perks_effect = yes
@@ -786,6 +886,7 @@ DICM_RBE_prepare_yurtchi_court_position_effect = {
 
 # Armorer
 DICM_RBE_prepare_armorer_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
 	DICM_RBE_add_good_personality_traits_soft_effect = yes
@@ -794,6 +895,7 @@ DICM_RBE_prepare_armorer_camp_officer_effect = {
 
 # Bookmaker
 DICM_RBE_prepare_bookmaker_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
 	DICM_RBE_add_good_personality_traits_soft_effect = yes
@@ -802,6 +904,7 @@ DICM_RBE_prepare_bookmaker_court_position_effect = {
 
 # Camp Cook
 DICM_RBE_prepare_camp_cook_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_intrigue_education_effect = yes
 	DICM_RBE_add_comfort_eater_aptitude_trait_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
@@ -814,6 +917,7 @@ DICM_RBE_prepare_camp_cook_camp_officer_effect = {
 
 # Cave Hermit
 DICM_RBE_prepare_cave_hermit_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_gardener }
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
@@ -825,6 +929,7 @@ DICM_RBE_prepare_cave_hermit_court_position_effect = {
 
 # Blue Charioteer
 DICM_RBE_prepare_charioteer_blue_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
@@ -836,6 +941,7 @@ DICM_RBE_prepare_charioteer_blue_court_position_effect = {
 
 # Green Charioteer
 DICM_RBE_prepare_charioteer_green_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
@@ -847,6 +953,7 @@ DICM_RBE_prepare_charioteer_green_court_position_effect = {
 
 # White Charioteer
 DICM_RBE_prepare_charioteer_white_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
@@ -858,6 +965,7 @@ DICM_RBE_prepare_charioteer_white_court_position_effect = {
 
 # Red Charioteer
 DICM_RBE_prepare_charioteer_red_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_retrain_confucian_education_effect = yes
@@ -869,6 +977,7 @@ DICM_RBE_prepare_charioteer_red_court_position_effect = {
 
 # Champion
 DICM_RBE_prepare_champion_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_lifestyle_blademaster_max_xp_effect = yes
@@ -882,6 +991,8 @@ DICM_RBE_prepare_champion_court_position_effect = {
 
 # Chief Eunuch
 DICM_RBE_prepare_chief_eunuch_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
+	DICM_RBE_add_beardless_eunuch_aptitude_trait_effect = yes
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
 	DICM_RBE_add_good_personality_traits_soft_effect = yes
@@ -890,6 +1001,7 @@ DICM_RBE_prepare_chief_eunuch_court_position_effect = {
 
 # Chief Forager
 DICM_RBE_prepare_chief_forager_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
@@ -902,6 +1014,11 @@ DICM_RBE_prepare_chief_forager_camp_officer_effect = {
 
 # Court Artificer
 DICM_RBE_prepare_court_artificer_court_position_effect = {
+	DICM_RBE_add_ceasar_master_modifier_effect = yes
+	if = {
+		limit = { NOT = { exists = inspiration } }
+		create_inspiration = { type = weapon_inspiration gold = 0 }
+	}
 	if = {
 		limit = { has_character_modifier = local_artisan_modifier }
 		remove_character_modifier = local_artisan_modifier
@@ -914,6 +1031,7 @@ DICM_RBE_prepare_court_artificer_court_position_effect = {
 
 # Court Astrologer
 DICM_RBE_prepare_court_astrologer_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
 	DICM_RBE_add_lifestyle_mystic_max_xp_effect = yes
@@ -924,6 +1042,7 @@ DICM_RBE_prepare_court_astrologer_court_position_effect = {
 
 # Court Brewmaster
 DICM_RBE_prepare_court_brewmaster_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
@@ -938,6 +1057,7 @@ DICM_RBE_prepare_court_brewmaster_court_position_effect = {
 
 # Court Jester
 DICM_RBE_prepare_court_jester_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
 	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
@@ -951,6 +1071,7 @@ DICM_RBE_prepare_court_jester_court_position_effect = {
 
 # Court Musician
 DICM_RBE_prepare_court_musician_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
 	DICM_RBE_add_lifestyle_reveler_max_xp_effect = yes
@@ -964,6 +1085,7 @@ DICM_RBE_prepare_court_musician_court_position_effect = {
 
 # Court Physician
 DICM_RBE_prepare_court_physician_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_herbalist }
 	DICM_RBE_add_lifestyle_mystic_max_xp_effect = yes
@@ -975,6 +1097,7 @@ DICM_RBE_prepare_court_physician_court_position_effect = {
 
 # Cupbearer
 DICM_RBE_prepare_cupbearer_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_loyal_aptitude_trait_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
@@ -986,6 +1109,7 @@ DICM_RBE_prepare_cupbearer_court_position_effect = {
 
 # Food Taster
 DICM_RBE_prepare_food_taster_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_intrigue_education_effect = yes
 	DICM_RBE_add_comfort_eater_aptitude_trait_effect = yes
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = lifestyle_gardener }
@@ -999,6 +1123,8 @@ DICM_RBE_prepare_food_taster_court_position_effect = {
 
 # Garuda
 DICM_RBE_prepare_garuda_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
+	set_knight_status = force
 	DICM_RBE_retrain_martial_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_lifestyle_blademaster_max_xp_effect = yes
@@ -1025,6 +1151,7 @@ DICM_RBE_prepare_head_groom_camp_officer_effect = {
 
 # Head Porter
 DICM_RBE_prepare_head_porter_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_logistician_commander_trait_max_xp_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
@@ -1034,6 +1161,7 @@ DICM_RBE_prepare_head_porter_camp_officer_effect = {
 
 # Huntperson
 DICM_RBE_prepare_huntperson_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
@@ -1046,6 +1174,7 @@ DICM_RBE_prepare_huntperson_camp_officer_effect = {
 
 # Keeper of the Harem
 DICM_RBE_prepare_keeper_of_the_harem_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_intellect_good_3_aptitude_trait_effect = yes
 	DICM_RBE_add_shrewd_aptitude_trait_effect = yes
@@ -1061,6 +1190,7 @@ DICM_RBE_prepare_keeper_of_the_harem_court_position_effect = {
 
 # Keeper of Swans
 DICM_RBE_prepare_keeper_of_swans_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
@@ -1070,6 +1200,7 @@ DICM_RBE_prepare_keeper_of_swans_court_position_effect = {
 
 # Kennelperson
 DICM_RBE_prepare_kennelperson_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	if = {
 		limit = { any_owned_story = { type = story_cycle_pet_cat } }
 		random_owned_story = {
@@ -1098,6 +1229,7 @@ DICM_RBE_prepare_kennelperson_camp_officer_effect = {
 
 # Lady-in-Waiting
 DICM_RBE_prepare_lady_in_waiting_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
 	DICM_RBE_add_personality_trait_with_one_opposite_effect = { TRAIT = gregarious OPPOSITE = shy }
@@ -1108,6 +1240,7 @@ DICM_RBE_prepare_lady_in_waiting_court_position_effect = {
 
 # Laureate
 DICM_RBE_prepare_laureate_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_diplomacy_education_effect = yes
 	DICM_RBE_add_lifestyle_poet_max_xp_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
@@ -1117,6 +1250,7 @@ DICM_RBE_prepare_laureate_camp_officer_effect = {
 
 # Master Assassin
 DICM_RBE_prepare_master_assassin_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_intrigue_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_lifestyle_blademaster_max_xp_effect = yes
@@ -1136,6 +1270,7 @@ DICM_RBE_prepare_master_assassin_court_position_effect = {
 
 # Master of Hunt
 DICM_RBE_prepare_master_of_hunt_court_position_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_add_lifestyle_hunter_max_xp_effect = yes
@@ -1148,6 +1283,7 @@ DICM_RBE_prepare_master_of_hunt_court_position_effect = {
 
 # Person Haggler
 DICM_RBE_prepare_person_haggler_camp_officer_effect = {
+	DICM_RBE_add_ceasar_squad_modifier_effect = yes
 	DICM_RBE_retrain_intrigue_education_effect = yes
 	DICM_RBE_retrain_prowess_education_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
@@ -1161,6 +1297,7 @@ DICM_RBE_prepare_person_haggler_camp_officer_effect = {
 
 # Wet Nurse
 DICM_RBE_prepare_wet_nurse_court_position_effect = {
+	DICM_RBE_add_ceasar_wet_nurse_modifier_effect = yes
 	DICM_RBE_ensure_wet_nurse_has_child_effect = yes
 	DICM_RBE_retrain_learning_education_effect = yes
 	DICM_RBE_add_physique_good_3_aptitude_trait_effect = yes
