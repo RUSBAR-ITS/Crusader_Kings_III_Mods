@@ -1,4 +1,4 @@
-# Adds one requested non-personality aptitude trait when it is missing.
+﻿# Adds one requested non-personality aptitude trait when it is missing.
 DICM_RBE_add_court_position_trait_if_missing_effect = {
 	if = {
 		limit = { NOT = { has_trait = $TRAIT$ } }
@@ -48,10 +48,15 @@ DICM_RBE_apply_court_position_sexuality_setting_effect = {
 	}
 }
 
-# Replaces Disloyal with Loyal and applies the selected global sexuality setting.
+# Replaces Disloyal with Loyal.
 DICM_RBE_add_loyal_aptitude_trait_effect = {
 	if = { limit = { has_trait = disloyal } remove_trait = disloyal }
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = loyal }
+}
+
+# Applies every universal personality rule after a court-position candidate is prepared.
+DICM_RBE_finalize_created_court_position_character_effect = {
+	DICM_RBE_add_loyal_aptitude_trait_effect = yes
 	DICM_RBE_apply_court_position_sexuality_setting_effect = yes
 }
 

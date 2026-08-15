@@ -12,6 +12,10 @@ DICM_RBE_spawn_court_position_character_effect = {
 	}
 
 	save_scope_value_as = {
+		name = DICM_RBE_spawn_base_skill
+		value = 30
+	}
+	save_scope_value_as = {
 		name = DICM_RBE_spawn_learning
 		value = 30
 	}
@@ -20,6 +24,17 @@ DICM_RBE_spawn_court_position_character_effect = {
 		save_scope_value_as = {
 			name = DICM_RBE_spawn_learning
 			value = 60
+		}
+	}
+	if = {
+		limit = { scope:court_position_type = court_position_type:stooge_camp_officer }
+		save_scope_value_as = {
+			name = DICM_RBE_spawn_base_skill
+			value = 0
+		}
+		save_scope_value_as = {
+			name = DICM_RBE_spawn_learning
+			value = 0
 		}
 	}
 
@@ -34,12 +49,12 @@ DICM_RBE_spawn_court_position_character_effect = {
 		faith = scope:DI_cs_spawn_faith
 		culture = scope:DI_cs_spawn_culture
 		dynasty = none
-		diplomacy = 30
-		martial = 30
-		stewardship = 30
-		intrigue = 30
+		diplomacy = scope:DICM_RBE_spawn_base_skill
+		martial = scope:DICM_RBE_spawn_base_skill
+		stewardship = scope:DICM_RBE_spawn_base_skill
+		intrigue = scope:DICM_RBE_spawn_base_skill
 		learning = scope:DICM_RBE_spawn_learning
-		prowess = 30
+		prowess = scope:DICM_RBE_spawn_base_skill
 		random_traits = no
 		save_scope_as = new_courtier
 	}
@@ -147,6 +162,7 @@ DICM_RBE_prepare_spawned_court_position_character_effect = {
 		court_position_type:second_camp_officer = { DICM_RBE_prepare_second_camp_officer_effect = yes }
 		court_position_type:seneschal_court_position = { DICM_RBE_prepare_seneschal_court_position_effect = yes }
 		court_position_type:siege_engineer_court_position = { DICM_RBE_prepare_siege_engineer_court_position_effect = yes }
+		court_position_type:stooge_camp_officer = { DICM_RBE_prepare_stooge_camp_officer_effect = yes }
 		court_position_type:travel_leader_court_position = { DICM_RBE_prepare_travel_leader_court_position_effect = yes }
 		court_position_type:wet_nurse_court_position = { DICM_RBE_prepare_wet_nurse_court_position_effect = yes }
 		court_position_type:witness_camp_officer = { DICM_RBE_prepare_witness_camp_officer_effect = yes }
@@ -173,6 +189,7 @@ DICM_RBE_spawn_selected_court_position_effect = {
 	DICM_RBE_spawn_court_position_character_effect = yes
 	scope:new_courtier = {
 		DICM_RBE_prepare_spawned_court_position_character_effect = yes
+		DICM_RBE_finalize_created_court_position_character_effect = yes
 	}
 	DICM_RBE_appoint_spawned_court_position_character_effect = yes
 }
@@ -184,6 +201,7 @@ DICM_RBE_spawn_selected_court_position_original_effect = {
 		DI_apply_court_position_validity_effect = { COURT_POSITION = scope:court_position_type }
 		DI_apply_court_position_trait_xp_effect = { COURT_POSITION = scope:court_position_type }
 		DI_court_position_post_spawn_effect = { COURT_POSITION = scope:court_position_type }
+		DICM_RBE_finalize_created_court_position_character_effect = yes
 	}
 	DICM_RBE_appoint_spawned_court_position_character_effect = yes
 }
