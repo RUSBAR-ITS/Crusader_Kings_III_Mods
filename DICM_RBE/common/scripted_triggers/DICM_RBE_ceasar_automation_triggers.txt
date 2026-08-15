@@ -3,6 +3,17 @@ DICM_RBE_loyalty_curse_enabled_trigger = {
 	has_global_variable = DICM_RBE_loyalty_curse_enabled
 }
 
+# Returns true for members of the Caesar family who are absolutely immune to the loyalty curse.
+DICM_RBE_loyalty_curse_immune_trigger = {
+	OR = {
+		has_character_modifier = DICM_RBE_Ceasar
+		has_character_modifier = DICM_RBE_Ceasar_Female
+		has_character_modifier = DICM_RBE_Ceasar_Child
+		has_character_modifier = DICM_RBE_Ceasar_Wife
+		has_character_modifier = DICM_RBE_Ceasar_Husband
+	}
+}
+
 # Returns true while administrative-retraining automation is enabled globally for the current game.
 DICM_RBE_administrative_retraining_enabled_trigger = {
 	has_global_variable = DICM_RBE_administrative_retraining_enabled
@@ -28,12 +39,10 @@ DICM_RBE_is_still_in_ceasar_service_trigger = {
 	}
 }
 
-# Returns true only after a non-child character has completely left the specified Caesar sovereign's service.
+# Returns true only after a non-immune character has completely left the specified Caesar sovereign's service.
 DICM_RBE_has_left_ceasar_service_trigger = {
 	is_alive = yes
-	NOT = {
-		has_character_modifier = DICM_RBE_Ceasar_Child
-	}
+	DICM_RBE_loyalty_curse_immune_trigger = no
 	NOT = {
 		DICM_RBE_is_still_in_ceasar_service_trigger = {
 			DICM_RBE_CEASAR = $DICM_RBE_CEASAR$

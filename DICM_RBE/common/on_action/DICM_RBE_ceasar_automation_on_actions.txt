@@ -195,9 +195,7 @@ DICM_RBE_on_eternal_wet_nurse_forty_fifth_birthday = {
 DICM_RBE_on_character_left_ceasar_court = {
 	trigger = {
 		DICM_RBE_loyalty_curse_enabled_trigger = yes
-		NOT = {
-			has_character_modifier = DICM_RBE_Ceasar_Child
-		}
+		DICM_RBE_loyalty_curse_immune_trigger = no
 		exists = scope:old_employer
 		scope:old_employer = {
 			DICM_RBE_is_ceasar_ruler_trigger = yes
@@ -215,9 +213,7 @@ DICM_RBE_on_character_left_ceasar_court = {
 DICM_RBE_on_loyalty_curse_title_lost = {
 	trigger = {
 		DICM_RBE_loyalty_curse_enabled_trigger = yes
-		NOT = {
-			has_character_modifier = DICM_RBE_Ceasar_Child
-		}
+		DICM_RBE_loyalty_curse_immune_trigger = no
 		DICM_RBE_is_ceasar_ruler_trigger = no
 		top_liege = {
 			DICM_RBE_is_ceasar_ruler_trigger = yes

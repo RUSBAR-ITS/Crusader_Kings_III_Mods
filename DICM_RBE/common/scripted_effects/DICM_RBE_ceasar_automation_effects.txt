@@ -80,14 +80,12 @@ DICM_RBE_toggle_administrative_retraining_effect = {
 	}
 }
 
-# Schedules one stabilized loyalty-curse departure check for a non-child character.
+# Schedules one stabilized loyalty-curse departure check for a non-immune character.
 DICM_RBE_schedule_loyalty_curse_departure_check_effect = {
 	if = {
 		limit = {
 			DICM_RBE_loyalty_curse_enabled_trigger = yes
-			NOT = {
-				has_character_modifier = DICM_RBE_Ceasar_Child
-			}
+			DICM_RBE_loyalty_curse_immune_trigger = no
 			NOT = {
 				has_character_flag = DICM_RBE_loyalty_curse_departure_check_pending
 			}
@@ -138,8 +136,38 @@ DICM_RBE_schedule_administrative_retraining_check_effect = {
 DICM_RBE_ceasar_child_adulthood_automation_effect = {
 }
 
-# Extension point for actions applied when a character leaves a Caesar sovereign's court.
+# Applies the complete loyalty curse while preserving The Wake and lifestyle-mastery modifiers.
+DICM_RBE_apply_loyalty_curse_effect = {
+	if = {
+		limit = {
+			DICM_RBE_loyalty_curse_immune_trigger = no
+		}
+
+		DICM_RBE_adjust_all_base_skills_effect = {
+			DICM_RBE_DECREASE_DELTA = -500
+			DICM_RBE_INCREASE_DELTA = 0
+		}
+		DICM_RBE_genetic_curse_effect = yes
+		DICM_RBE_add_bad_personality_traits_effect = yes
+		DICM_RBE_remove_all_perk_lifestyle_traits_effect = yes
+		DICM_RBE_remove_all_event_and_system_lifestyle_traits_effect = yes
+		DICM_RBE_remove_all_commander_traits_effect = yes
+		DICM_RBE_retrain_learning_education_level_one_effect = yes
+
+		if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Squad } remove_character_modifier = DICM_RBE_Ceasar_Squad }
+		if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Master } remove_character_modifier = DICM_RBE_Ceasar_Master }
+		if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Official } remove_character_modifier = DICM_RBE_Ceasar_Official }
+		if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Wet_Nurse } remove_character_modifier = DICM_RBE_Ceasar_Wet_Nurse }
+		if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Scout } remove_character_modifier = DICM_RBE_Ceasar_Scout }
+		if = { limit = { NOT = { has_character_modifier = DICM_RBE_Ideal_Stooge } } add_character_modifier = DICM_RBE_Ideal_Stooge }
+
+		debug_log = "DICM_RBE: Loyalty curse applied to a departed character"
+	}
+}
+
+# Entry point invoked after a character's departure state has stabilized.
 DICM_RBE_loyalty_curse_departure_automation_effect = {
+	DICM_RBE_apply_loyalty_curse_effect = yes
 }
 
 # Extension point for actions applied when a non-child character becomes a landholder below a Caesar sovereign.
