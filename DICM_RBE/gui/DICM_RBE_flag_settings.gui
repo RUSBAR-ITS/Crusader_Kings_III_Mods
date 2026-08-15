@@ -1,4 +1,4 @@
-window = {
+﻿window = {
 	name = "DICM_RBE_flag_settings_window"
 	parentanchor = center
 	layer = windows_layer
@@ -57,6 +57,20 @@ window = {
 						text_single = {
 							text = DICM_RBE_flag_settings_global_heading
 							default_format = "#high"
+						}
+
+						button_checkbox_label = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_toggle_custom_character_generation_setting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = DICM_RBE_custom_character_generation_setting_tt
+
+							blockoverride "checkbox" {
+								checked = "[GetScriptedGui('DICM_RBE_custom_character_generation_setting_enabled').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_custom_character_generation_setting
+							}
 						}
 
 						button_checkbox_label = {

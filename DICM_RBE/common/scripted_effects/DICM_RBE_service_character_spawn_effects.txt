@@ -162,3 +162,248 @@ DICM_RBE_spawn_or_retrain_court_chaplain_effect = {
 		}
 	}
 }
+
+# Runs one DICM RBE councillor spawn handler for the player or every selected pinned character.
+DICM_RBE_run_custom_councillor_spawner_effect = {
+	save_scope_as = root_target
+	random_owned_story = {
+		limit = { story_type = DI_misc_variables_story }
+		save_scope_as = DI_story
+	}
+
+	if = {
+		limit = { scope:DI_story = { has_variable = DI_pinned_char_var } }
+		every_in_list = {
+			variable = pinned_characters
+			save_scope_as = target
+			$DICM_RBE_SPAWN_EFFECT$ = yes
+		}
+	}
+	else = {
+		save_scope_as = target
+		$DICM_RBE_SPAWN_EFFECT$ = yes
+	}
+}
+
+# Reconstructs the original DICM councillor route from its public lower-level effects.
+DICM_RBE_run_original_councillor_spawner_effect = {
+	save_scope_as = root_target
+	$DICM_RBE_TRAIT_EFFECT$ = yes
+	random_owned_story = {
+		limit = { story_type = DI_misc_variables_story }
+		save_scope_as = DI_story
+	}
+
+	if = {
+		limit = { scope:DI_story = { has_variable = DI_pinned_char_var } }
+		every_in_list = {
+			variable = pinned_characters
+			save_scope_as = target
+			DI_spawn_court_character_effect = yes
+			if = {
+				limit = { exists = cp:$DICM_RBE_COUNCILLOR$ }
+				fire_councillor = cp:$DICM_RBE_COUNCILLOR$
+			}
+			assign_councillor_type = {
+				type = $DICM_RBE_COUNCILLOR$
+				target = scope:new_courtier
+			}
+		}
+	}
+	else = {
+		save_scope_as = target
+		DI_spawn_court_character_effect = yes
+		if = {
+			limit = { exists = cp:$DICM_RBE_COUNCILLOR$ }
+			fire_councillor = cp:$DICM_RBE_COUNCILLOR$
+		}
+		assign_councillor_type = {
+			type = $DICM_RBE_COUNCILLOR$
+			target = scope:new_courtier
+		}
+	}
+
+	if = {
+		limit = { scope:root_target.var:DI_cs_random_traits ?= no }
+		DI_no_random_traits_effect = yes
+	}
+	else_if = {
+		limit = { scope:root_target.var:DI_cs_random_traits ?= yes }
+		DI_random_traits_effect = yes
+	}
+}
+
+# Runs the DICM RBE Knight or Commander spawn loop.
+DICM_RBE_run_custom_military_spawner_effect = {
+	save_scope_as = root_target
+	random_owned_story = {
+		limit = { story_type = DI_misc_variables_story }
+		save_scope_as = DI_story
+	}
+	scope:DI_story = {
+		save_scope_value_as = {
+			name = DI_char_spawner_count_increment_value
+			value = var:DI_char_spawner_count_increment_value
+		}
+	}
+
+	if = {
+		limit = { scope:DI_story = { has_variable = DI_pinned_char_var } }
+		every_in_list = {
+			variable = pinned_characters
+			save_scope_as = target
+			while = {
+				count = scope:DI_char_spawner_count_increment_value
+				$DICM_RBE_SPAWN_EFFECT$ = yes
+			}
+		}
+	}
+	else = {
+		save_scope_as = target
+		while = {
+			count = scope:DI_char_spawner_count_increment_value
+			$DICM_RBE_SPAWN_EFFECT$ = yes
+		}
+	}
+}
+
+# Applies the unchanged original post-processing for a spawned Knight.
+DICM_RBE_apply_original_knight_post_spawn_effect = {
+	add_trait_xp = { trait = lifestyle_blademaster value = 100 }
+	add_perk = stalwart_leader_perk
+}
+
+# Applies the unchanged original post-processing for a spawned Commander.
+DICM_RBE_apply_original_commander_post_spawn_effect = {
+	DICM_RBE_apply_original_knight_post_spawn_effect = yes
+	DI_add_commander_traits_effect = yes
+}
+
+# Reconstructs the original DICM Knight or Commander route from its public effects.
+DICM_RBE_run_original_military_spawner_effect = {
+	save_scope_as = root_target
+	random_owned_story = {
+		limit = { story_type = DI_misc_variables_story }
+		save_scope_as = DI_story
+	}
+	scope:DI_story = {
+		save_scope_value_as = {
+			name = DI_char_spawner_count_increment_value
+			value = var:DI_char_spawner_count_increment_value
+		}
+	}
+	DI_knight_traits_effect = yes
+
+	if = {
+		limit = { scope:DI_story = { has_variable = DI_pinned_char_var } }
+		every_in_list = {
+			variable = pinned_characters
+			save_scope_as = target
+			while = {
+				count = scope:DI_char_spawner_count_increment_value
+				DI_spawn_court_character_effect = yes
+				scope:new_courtier = { $DICM_RBE_POST_SPAWN_EFFECT$ = yes }
+			}
+		}
+	}
+	else = {
+		save_scope_as = target
+		while = {
+			count = scope:DI_char_spawner_count_increment_value
+			DI_spawn_court_character_effect = yes
+			scope:new_courtier = { $DICM_RBE_POST_SPAWN_EFFECT$ = yes }
+		}
+	}
+
+	if = {
+		limit = { scope:root_target.var:DI_cs_random_traits ?= no }
+		DI_no_random_traits_effect = yes
+	}
+	else_if = {
+		limit = { scope:root_target.var:DI_cs_random_traits ?= yes }
+		DI_random_traits_effect = yes
+	}
+}
+
+# Applies the original DICM fixed-appointment Court Chaplain upgrade to one target.
+DICM_RBE_run_original_court_chaplain_for_target_effect = {
+	if = {
+		limit = {
+			NOR = {
+				faith = {
+					has_doctrine_parameter = clerical_appointment_head_of_faith
+					has_doctrine_parameter = clerical_appointment_fixed
+				}
+			}
+		}
+		DI_spawn_court_character_effect = yes
+		if = {
+			limit = { exists = cp:councillor_court_chaplain }
+			fire_councillor = cp:councillor_court_chaplain
+		}
+		assign_councillor_type = {
+			type = councillor_court_chaplain
+			target = scope:new_courtier
+		}
+	}
+	else_if = {
+		limit = {
+			exists = cp:councillor_court_chaplain
+			cp:councillor_court_chaplain = {
+				NOT = { has_character_flag = upgraded_chaplain }
+			}
+		}
+		cp:councillor_court_chaplain = {
+			custom_tooltip = improved_stats_effect_TT
+			hidden_effect = {
+				save_scope_as = new_courtier
+				DI_remove_health_conflict_effect = yes
+				DI_remove_education_traits_effect = yes
+				DI_clear_personality_traits_effect = yes
+				add_martial_skill = { 5 10 }
+				add_prowess_skill = { 5 10 }
+				add_diplomacy_skill = { 8 12 }
+				add_stewardship_skill = { 8 12 }
+				add_intrigue_skill = { 5 10 }
+				add_learning_skill = { 8 12 }
+				add_character_flag = upgraded_chaplain
+				add_trait = education_learning_4
+				add_trait = content
+				add_trait = trusting
+				add_trait = calm
+			}
+		}
+	}
+}
+
+# Reconstructs the complete original DICM Court Chaplain route.
+DICM_RBE_run_original_court_chaplain_spawner_effect = {
+	save_scope_as = root_target
+	DI_learning_traits_effect = yes
+	random_owned_story = {
+		limit = { story_type = DI_misc_variables_story }
+		save_scope_as = DI_story
+	}
+
+	if = {
+		limit = { scope:DI_story = { has_variable = DI_pinned_char_var } }
+		every_in_list = {
+			variable = pinned_characters
+			save_scope_as = target
+			DICM_RBE_run_original_court_chaplain_for_target_effect = yes
+		}
+	}
+	else = {
+		save_scope_as = target
+		DICM_RBE_run_original_court_chaplain_for_target_effect = yes
+	}
+
+	if = {
+		limit = { scope:root_target.var:DI_cs_random_traits ?= no }
+		DI_no_random_traits_effect = yes
+	}
+	else_if = {
+		limit = { scope:root_target.var:DI_cs_random_traits ?= yes }
+		DI_random_traits_effect = yes
+	}
+}

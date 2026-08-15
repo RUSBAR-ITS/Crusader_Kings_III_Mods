@@ -1,205 +1,133 @@
-﻿# Compatibility replacement for the DICM Chancellor spawn handler.
-# This file name intentionally sorts after the original DICM scripted GUI file.
+﻿# Late-loading compatibility router for the DICM Chancellor spawn handler.
 DI_diplomacy_councillor = {
 	scope = character
 
 	effect = {
-		save_scope_as = root_target
-		random_owned_story = {
-			limit = { story_type = DI_misc_variables_story }
-			save_scope_as = DI_story
-		}
-
 		if = {
-			limit = { scope:DI_story = { has_variable = DI_pinned_char_var } }
-			every_in_list = {
-				variable = pinned_characters
-				save_scope_as = target
-				DICM_RBE_spawn_and_assign_chancellor_effect = yes
+			limit = { DICM_RBE_custom_character_generation_enabled_trigger = yes }
+			DICM_RBE_run_custom_councillor_spawner_effect = {
+				DICM_RBE_SPAWN_EFFECT = DICM_RBE_spawn_and_assign_chancellor_effect
 			}
 		}
 		else = {
-			save_scope_as = target
-			DICM_RBE_spawn_and_assign_chancellor_effect = yes
+			DICM_RBE_run_original_councillor_spawner_effect = {
+				DICM_RBE_TRAIT_EFFECT = DI_diplomacy_traits_effect
+				DICM_RBE_COUNCILLOR = councillor_chancellor
+			}
 		}
 	}
 }
 
-# Compatibility replacement for the DICM Marshal spawn handler.
+# Late-loading compatibility router for the DICM Marshal spawn handler.
 DI_martial_councillor = {
 	scope = character
 
 	effect = {
-		save_scope_as = root_target
-		random_owned_story = {
-			limit = { story_type = DI_misc_variables_story }
-			save_scope_as = DI_story
-		}
-
 		if = {
-			limit = { scope:DI_story = { has_variable = DI_pinned_char_var } }
-			every_in_list = {
-				variable = pinned_characters
-				save_scope_as = target
-				DICM_RBE_spawn_and_assign_marshal_effect = yes
+			limit = { DICM_RBE_custom_character_generation_enabled_trigger = yes }
+			DICM_RBE_run_custom_councillor_spawner_effect = {
+				DICM_RBE_SPAWN_EFFECT = DICM_RBE_spawn_and_assign_marshal_effect
 			}
 		}
 		else = {
-			save_scope_as = target
-			DICM_RBE_spawn_and_assign_marshal_effect = yes
+			DICM_RBE_run_original_councillor_spawner_effect = {
+				DICM_RBE_TRAIT_EFFECT = DI_martial_traits_effect
+				DICM_RBE_COUNCILLOR = councillor_marshal
+			}
 		}
 	}
 }
 
-# Compatibility replacement for the DICM Steward spawn handler.
+# Late-loading compatibility router for the DICM Steward spawn handler.
 DI_stewardship_councillor = {
 	scope = character
 
 	effect = {
-		save_scope_as = root_target
-		random_owned_story = {
-			limit = { story_type = DI_misc_variables_story }
-			save_scope_as = DI_story
-		}
-
 		if = {
-			limit = { scope:DI_story = { has_variable = DI_pinned_char_var } }
-			every_in_list = {
-				variable = pinned_characters
-				save_scope_as = target
-				DICM_RBE_spawn_and_assign_steward_effect = yes
+			limit = { DICM_RBE_custom_character_generation_enabled_trigger = yes }
+			DICM_RBE_run_custom_councillor_spawner_effect = {
+				DICM_RBE_SPAWN_EFFECT = DICM_RBE_spawn_and_assign_steward_effect
 			}
 		}
 		else = {
-			save_scope_as = target
-			DICM_RBE_spawn_and_assign_steward_effect = yes
+			DICM_RBE_run_original_councillor_spawner_effect = {
+				DICM_RBE_TRAIT_EFFECT = DI_stewardship_traits_effect
+				DICM_RBE_COUNCILLOR = councillor_steward
+			}
 		}
 	}
 }
 
-# Compatibility replacement for the DICM Spymaster spawn handler.
+# Late-loading compatibility router for the DICM Spymaster spawn handler.
 DI_intrigue_councillor = {
 	scope = character
 
 	effect = {
-		save_scope_as = root_target
-		random_owned_story = {
-			limit = { story_type = DI_misc_variables_story }
-			save_scope_as = DI_story
-		}
-
 		if = {
-			limit = { scope:DI_story = { has_variable = DI_pinned_char_var } }
-			every_in_list = {
-				variable = pinned_characters
-				save_scope_as = target
-				DICM_RBE_spawn_and_assign_spymaster_effect = yes
+			limit = { DICM_RBE_custom_character_generation_enabled_trigger = yes }
+			DICM_RBE_run_custom_councillor_spawner_effect = {
+				DICM_RBE_SPAWN_EFFECT = DICM_RBE_spawn_and_assign_spymaster_effect
 			}
 		}
 		else = {
-			save_scope_as = target
-			DICM_RBE_spawn_and_assign_spymaster_effect = yes
+			DICM_RBE_run_original_councillor_spawner_effect = {
+				DICM_RBE_TRAIT_EFFECT = DI_intrigue_traits_effect
+				DICM_RBE_COUNCILLOR = councillor_spymaster
+			}
 		}
 	}
 }
 
-# Compatibility replacement for the DICM Court Chaplain spawn handler.
+# Late-loading compatibility router for the DICM Court Chaplain spawn handler.
 DI_learning_councillor = {
 	scope = character
 
 	effect = {
-		save_scope_as = root_target
-		random_owned_story = {
-			limit = { story_type = DI_misc_variables_story }
-			save_scope_as = DI_story
-		}
-
 		if = {
-			limit = { scope:DI_story = { has_variable = DI_pinned_char_var } }
-			every_in_list = {
-				variable = pinned_characters
-				save_scope_as = target
-				DICM_RBE_spawn_or_retrain_court_chaplain_effect = yes
+			limit = { DICM_RBE_custom_character_generation_enabled_trigger = yes }
+			DICM_RBE_run_custom_councillor_spawner_effect = {
+				DICM_RBE_SPAWN_EFFECT = DICM_RBE_spawn_or_retrain_court_chaplain_effect
 			}
 		}
 		else = {
-			save_scope_as = target
-			DICM_RBE_spawn_or_retrain_court_chaplain_effect = yes
+			DICM_RBE_run_original_court_chaplain_spawner_effect = yes
 		}
 	}
 }
 
-# Compatibility replacement for the DICM Knight spawn handler.
+# Late-loading compatibility router for the DICM Knight spawn handler.
 DI_knight = {
 	scope = character
 
 	effect = {
-		save_scope_as = root_target
-		random_owned_story = {
-			limit = { story_type = DI_misc_variables_story }
-			save_scope_as = DI_story
-		}
-		scope:DI_story = {
-			save_scope_value_as = {
-				name = DI_char_spawner_count_increment_value
-				value = var:DI_char_spawner_count_increment_value
-			}
-		}
-
 		if = {
-			limit = { scope:DI_story = { has_variable = DI_pinned_char_var } }
-			every_in_list = {
-				variable = pinned_characters
-				save_scope_as = target
-				while = {
-					count = scope:DI_char_spawner_count_increment_value
-					DICM_RBE_spawn_knight_service_character_effect = yes
-				}
+			limit = { DICM_RBE_custom_character_generation_enabled_trigger = yes }
+			DICM_RBE_run_custom_military_spawner_effect = {
+				DICM_RBE_SPAWN_EFFECT = DICM_RBE_spawn_knight_service_character_effect
 			}
 		}
 		else = {
-			save_scope_as = target
-			while = {
-				count = scope:DI_char_spawner_count_increment_value
-				DICM_RBE_spawn_knight_service_character_effect = yes
+			DICM_RBE_run_original_military_spawner_effect = {
+				DICM_RBE_POST_SPAWN_EFFECT = DICM_RBE_apply_original_knight_post_spawn_effect
 			}
 		}
 	}
 }
 
-# Compatibility replacement for the DICM Commander spawn handler.
+# Late-loading compatibility router for the DICM Commander spawn handler.
 DI_commander = {
 	scope = character
 
 	effect = {
-		save_scope_as = root_target
-		random_owned_story = {
-			limit = { story_type = DI_misc_variables_story }
-			save_scope_as = DI_story
-		}
-		scope:DI_story = {
-			save_scope_value_as = {
-				name = DI_char_spawner_count_increment_value
-				value = var:DI_char_spawner_count_increment_value
-			}
-		}
-
 		if = {
-			limit = { scope:DI_story = { has_variable = DI_pinned_char_var } }
-			every_in_list = {
-				variable = pinned_characters
-				save_scope_as = target
-				while = {
-					count = scope:DI_char_spawner_count_increment_value
-					DICM_RBE_spawn_commander_service_character_effect = yes
-				}
+			limit = { DICM_RBE_custom_character_generation_enabled_trigger = yes }
+			DICM_RBE_run_custom_military_spawner_effect = {
+				DICM_RBE_SPAWN_EFFECT = DICM_RBE_spawn_commander_service_character_effect
 			}
 		}
 		else = {
-			save_scope_as = target
-			while = {
-				count = scope:DI_char_spawner_count_increment_value
-				DICM_RBE_spawn_commander_service_character_effect = yes
+			DICM_RBE_run_original_military_spawner_effect = {
+				DICM_RBE_POST_SPAWN_EFFECT = DICM_RBE_apply_original_commander_post_spawn_effect
 			}
 		}
 	}

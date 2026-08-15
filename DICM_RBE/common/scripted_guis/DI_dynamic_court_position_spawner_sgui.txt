@@ -5,18 +5,24 @@ DI_spawn_court_position = {
 
 	effect = {
 		if = {
-			limit = { scope:court_position_type = court_position_type:charioteer_court_position }
-			set_variable = DICM_RBE_charioteer_color_window_open
+			limit = { DICM_RBE_custom_character_generation_enabled_trigger = yes }
 			if = {
-				limit = { NOT = { has_variable = DICM_RBE_charioteer_color } }
-				set_variable = {
-					name = DICM_RBE_charioteer_color
-					value = flag:DICM_RBE_charioteer_blue
+				limit = { scope:court_position_type = court_position_type:charioteer_court_position }
+				set_variable = DICM_RBE_charioteer_color_window_open
+				if = {
+					limit = { NOT = { has_variable = DICM_RBE_charioteer_color } }
+					set_variable = {
+						name = DICM_RBE_charioteer_color
+						value = flag:DICM_RBE_charioteer_blue
+					}
 				}
+			}
+			else = {
+				DICM_RBE_spawn_court_position_batch_effect = yes
 			}
 		}
 		else = {
-			DICM_RBE_spawn_court_position_batch_effect = yes
+			DICM_RBE_spawn_original_court_position_batch_effect = yes
 		}
 	}
 }

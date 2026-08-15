@@ -168,3 +168,21 @@ DICM_RBE_instant_fascination_progress_setting_enabled = {
 		DICM_RBE_instant_fascination_progress_enabled_trigger = yes
 	}
 }
+
+# Toggles DICM RBE character generation globally.
+DICM_RBE_toggle_custom_character_generation_setting = {
+	scope = character
+
+	effect = {
+		DICM_RBE_toggle_custom_character_generation_effect = yes
+	}
+}
+
+# Reports whether DICM RBE character generation is enabled globally.
+DICM_RBE_custom_character_generation_setting_enabled = {
+	scope = character
+
+	is_valid = {
+		DICM_RBE_custom_character_generation_enabled_trigger = yes
+	}
+}

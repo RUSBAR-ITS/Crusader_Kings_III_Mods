@@ -1,4 +1,4 @@
-# Enables Sodom and Gomorrah and disables its mutually exclusive setting.
+﻿# Enables Sodom and Gomorrah and disables its mutually exclusive setting.
 DICM_RBE_enable_sodom_and_gomorrah_effect = {
 	DICM_RBE_disable_chemical_sterilization_effect = yes
 	if = {
@@ -199,5 +199,45 @@ DICM_RBE_toggle_eternal_wet_nurse_effect = {
 	}
 	else = {
 		DICM_RBE_enable_eternal_wet_nurse_effect = yes
+	}
+}
+
+# Enables DICM RBE character generation globally.
+DICM_RBE_enable_custom_character_generation_effect = {
+	if = {
+		limit = {
+			NOT = {
+				has_global_variable = DICM_RBE_custom_character_generation_enabled
+			}
+		}
+		set_global_variable = {
+			name = DICM_RBE_custom_character_generation_enabled
+			value = yes
+		}
+		debug_log = "DICM_RBE: DICM_RBE_custom_character_generation_enabled = yes"
+	}
+}
+
+# Disables DICM RBE character generation and restores the original DICM route.
+DICM_RBE_disable_custom_character_generation_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_custom_character_generation_enabled
+		}
+		remove_global_variable = DICM_RBE_custom_character_generation_enabled
+		debug_log = "DICM_RBE: DICM_RBE_custom_character_generation_enabled = no"
+	}
+}
+
+# Toggles DICM RBE character generation globally.
+DICM_RBE_toggle_custom_character_generation_effect = {
+	if = {
+		limit = {
+			has_global_variable = DICM_RBE_custom_character_generation_enabled
+		}
+		DICM_RBE_disable_custom_character_generation_effect = yes
+	}
+	else = {
+		DICM_RBE_enable_custom_character_generation_effect = yes
 	}
 }
