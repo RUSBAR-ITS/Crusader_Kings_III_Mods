@@ -19,6 +19,17 @@ DICM_RBE_administrative_retraining_enabled_trigger = {
 	has_global_variable = DICM_RBE_administrative_retraining_enabled
 }
 
+# Returns true for Caesar-family roles that must never undergo administrative retraining.
+DICM_RBE_administrative_retraining_immune_trigger = {
+	OR = {
+		has_character_modifier = DICM_RBE_Ceasar
+		has_character_modifier = DICM_RBE_Ceasar_Female
+		has_character_modifier = DICM_RBE_Ceasar_Child
+		has_character_modifier = DICM_RBE_Ceasar_Wife
+		has_character_modifier = DICM_RBE_Ceasar_Husband
+	}
+}
+
 # Returns true when an Eternal Wet Nurse is ready for the delayed age rollback.
 DICM_RBE_eternal_wet_nurse_age_rollback_trigger = {
 	is_alive = yes
@@ -50,12 +61,10 @@ DICM_RBE_has_left_ceasar_service_trigger = {
 	}
 }
 
-# Returns true for a non-child landholder serving below the specified Caesar sovereign.
+# Returns true for a non-family landholder serving below the specified Caesar sovereign.
 DICM_RBE_is_ceasar_realm_landholder_trigger = {
 	is_alive = yes
-	NOT = {
-		has_character_modifier = DICM_RBE_Ceasar_Child
-	}
+	DICM_RBE_administrative_retraining_immune_trigger = no
 	has_any_landed_title_trigger = yes
 	this != $DICM_RBE_CEASAR$
 	top_liege = $DICM_RBE_CEASAR$

@@ -113,6 +113,7 @@ DICM_RBE_prepare_minor_ceasar_child_retraining_effect = {
 DICM_RBE_apply_selected_retraining_profile_effect = {
 	if = {
 		limit = { DICM_RBE_retraining_selection_ready_trigger = yes }
+		save_scope_as = DICM_RBE_retraining_ceasar
 		if = {
 			limit = {
 				NOT = {
@@ -158,7 +159,12 @@ DICM_RBE_apply_selected_retraining_profile_effect = {
 			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_commander_service_character_effect = yes }
 		}
 		flag:DICM_RBE_retraining_official_profile = {
-			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_official_service_character_effect = yes }
+			var:DICM_RBE_retraining_target = {
+				DICM_RBE_prepare_official_service_character_effect = {
+					DICM_RBE_CULTURE = scope:DICM_RBE_retraining_ceasar.culture
+					DICM_RBE_FAITH = scope:DICM_RBE_retraining_ceasar.faith
+				}
+			}
 		}
 		flag:DICM_RBE_retraining_true_sovereign_profile = {
 			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_true_sovereign_retraining_effect = yes }

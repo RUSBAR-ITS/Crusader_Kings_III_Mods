@@ -141,7 +141,10 @@ DICM_RBE_add_bad_personality_traits_effect = {
 DICM_RBE_remove_bad_personality_traits_effect = {
 	if = { limit = { has_trait = vengeful } remove_trait = vengeful }
 	if = { limit = { has_trait = stubborn } remove_trait = stubborn }
+	if = { limit = { has_trait = fickle } remove_trait = fickle }
+	if = { limit = { has_trait = eccentric } remove_trait = eccentric }
 	if = { limit = { has_trait = callous } remove_trait = callous }
+	if = { limit = { has_trait = sadistic } remove_trait = sadistic }
 	if = { limit = { has_trait = trusting } remove_trait = trusting }
 	if = { limit = { has_trait = cynical } remove_trait = cynical }
 	if = { limit = { has_trait = arbitrary } remove_trait = arbitrary }

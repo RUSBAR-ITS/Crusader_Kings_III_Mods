@@ -58,7 +58,10 @@ DICM_RBE_ceasar_automation.0003 = {
 				}
 			}
 
-			DICM_RBE_administrative_retraining_automation_effect = yes
+			DICM_RBE_administrative_retraining_automation_effect = {
+				DICM_RBE_CULTURE = scope:DICM_RBE_administrative_retraining_ceasar.culture
+				DICM_RBE_FAITH = scope:DICM_RBE_administrative_retraining_ceasar.faith
+			}
 		}
 	}
 }

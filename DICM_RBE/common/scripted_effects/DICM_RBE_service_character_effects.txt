@@ -67,8 +67,10 @@ DICM_RBE_prepare_commander_service_character_effect = {
 	DICM_RBE_finalize_service_character_effect = yes
 }
 
-# Prepares an imperial Official for service outside the character spawner.
+# Prepares an imperial Official with the supplied Caesar culture and faith.
 DICM_RBE_prepare_official_service_character_effect = {
+	set_culture = $DICM_RBE_CULTURE$
+	set_character_faith = $DICM_RBE_FAITH$
 	DICM_RBE_retrain_stewardship_education_effect = yes
 	DICM_RBE_add_wealth_tree_perks_effect = yes
 	DICM_RBE_add_domain_tree_perks_effect = yes
@@ -77,7 +79,7 @@ DICM_RBE_prepare_official_service_character_effect = {
 	DICM_RBE_add_foreign_affairs_tree_perks_effect = yes
 	DICM_RBE_add_surveyor_tree_perks_effect = yes
 	DICM_RBE_remove_bad_personality_traits_effect = yes
-	DICM_RBE_add_good_personality_traits_soft_effect = yes
+	DICM_RBE_add_good_personality_traits_effect = yes
 	DICM_RBE_add_ceasar_official_modifier_effect = yes
 	DICM_RBE_finalize_service_character_effect = yes
 }
