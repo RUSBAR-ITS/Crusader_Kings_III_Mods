@@ -185,6 +185,114 @@ DICM_RBE_add_all_commander_traits_max_xp_effect = {
 	}
 }
 
+# Adds one randomly selected standard commander trait and raises it to maximum XP.
+# Reckless is used instead of its mutually exclusive Cautious Leader counterpart.
+DICM_RBE_add_random_commander_trait_max_xp_effect = {
+	random_list = {
+		1 = { DICM_RBE_add_logistician_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_random_military_engineer_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_random_aggressive_attacker_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_unyielding_defender_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_random_forder_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_random_flexible_leader_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_random_desert_warrior_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_random_jungle_stalker_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_reaver_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_random_reckless_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_random_holy_warrior_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_random_open_terrain_expert_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_random_rough_terrain_expert_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_random_forest_fighter_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_organizer_commander_trait_max_xp_effect = yes }
+		1 = { DICM_RBE_add_random_winter_soldier_commander_trait_max_xp_effect = yes }
+	}
+}
+
+# Adds Military Engineer and raises its XP to exactly 100.
+DICM_RBE_add_random_military_engineer_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = military_engineer }
+	save_scope_as = DICM_RBE_random_commander_trait_target
+	if = { limit = { has_trait_xp = { trait = military_engineer value < 100 } } add_trait_xp = { trait = military_engineer value = { value = 100 subtract = "scope:DICM_RBE_random_commander_trait_target.has_trait_xp(military_engineer)" } } }
+}
+
+# Adds Aggressive Attacker and raises its XP to exactly 100.
+DICM_RBE_add_random_aggressive_attacker_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = aggressive_attacker }
+	save_scope_as = DICM_RBE_random_commander_trait_target
+	if = { limit = { has_trait_xp = { trait = aggressive_attacker value < 100 } } add_trait_xp = { trait = aggressive_attacker value = { value = 100 subtract = "scope:DICM_RBE_random_commander_trait_target.has_trait_xp(aggressive_attacker)" } } }
+}
+
+# Adds Forder and raises its XP to exactly 100.
+DICM_RBE_add_random_forder_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = forder }
+	save_scope_as = DICM_RBE_random_commander_trait_target
+	if = { limit = { has_trait_xp = { trait = forder value < 100 } } add_trait_xp = { trait = forder value = { value = 100 subtract = "scope:DICM_RBE_random_commander_trait_target.has_trait_xp(forder)" } } }
+}
+
+# Adds Flexible Leader and raises its XP to exactly 100.
+DICM_RBE_add_random_flexible_leader_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = flexible_leader }
+	save_scope_as = DICM_RBE_random_commander_trait_target
+	if = { limit = { has_trait_xp = { trait = flexible_leader value < 100 } } add_trait_xp = { trait = flexible_leader value = { value = 100 subtract = "scope:DICM_RBE_random_commander_trait_target.has_trait_xp(flexible_leader)" } } }
+}
+
+# Adds Desert Warrior and raises its XP to exactly 100.
+DICM_RBE_add_random_desert_warrior_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = desert_warrior }
+	save_scope_as = DICM_RBE_random_commander_trait_target
+	if = { limit = { has_trait_xp = { trait = desert_warrior value < 100 } } add_trait_xp = { trait = desert_warrior value = { value = 100 subtract = "scope:DICM_RBE_random_commander_trait_target.has_trait_xp(desert_warrior)" } } }
+}
+
+# Adds Jungle Stalker and raises its XP to exactly 100.
+DICM_RBE_add_random_jungle_stalker_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = jungle_stalker }
+	save_scope_as = DICM_RBE_random_commander_trait_target
+	if = { limit = { has_trait_xp = { trait = jungle_stalker value < 100 } } add_trait_xp = { trait = jungle_stalker value = { value = 100 subtract = "scope:DICM_RBE_random_commander_trait_target.has_trait_xp(jungle_stalker)" } } }
+}
+
+# Adds Reckless and raises its XP to exactly 100.
+DICM_RBE_add_random_reckless_commander_trait_max_xp_effect = {
+	if = { limit = { has_trait = cautious_leader } remove_trait = cautious_leader }
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = reckless }
+	save_scope_as = DICM_RBE_random_commander_trait_target
+	if = { limit = { has_trait_xp = { trait = reckless value < 100 } } add_trait_xp = { trait = reckless value = { value = 100 subtract = "scope:DICM_RBE_random_commander_trait_target.has_trait_xp(reckless)" } } }
+}
+
+# Adds Holy Warrior and raises its XP to exactly 100.
+DICM_RBE_add_random_holy_warrior_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = holy_warrior }
+	save_scope_as = DICM_RBE_random_commander_trait_target
+	if = { limit = { has_trait_xp = { trait = holy_warrior value < 100 } } add_trait_xp = { trait = holy_warrior value = { value = 100 subtract = "scope:DICM_RBE_random_commander_trait_target.has_trait_xp(holy_warrior)" } } }
+}
+
+# Adds Open Terrain Expert and raises its XP to exactly 100.
+DICM_RBE_add_random_open_terrain_expert_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = open_terrain_expert }
+	save_scope_as = DICM_RBE_random_commander_trait_target
+	if = { limit = { has_trait_xp = { trait = open_terrain_expert value < 100 } } add_trait_xp = { trait = open_terrain_expert value = { value = 100 subtract = "scope:DICM_RBE_random_commander_trait_target.has_trait_xp(open_terrain_expert)" } } }
+}
+
+# Adds Rough Terrain Expert and raises its XP to exactly 100.
+DICM_RBE_add_random_rough_terrain_expert_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = rough_terrain_expert }
+	save_scope_as = DICM_RBE_random_commander_trait_target
+	if = { limit = { has_trait_xp = { trait = rough_terrain_expert value < 100 } } add_trait_xp = { trait = rough_terrain_expert value = { value = 100 subtract = "scope:DICM_RBE_random_commander_trait_target.has_trait_xp(rough_terrain_expert)" } } }
+}
+
+# Adds Forest Fighter and raises its XP to exactly 100.
+DICM_RBE_add_random_forest_fighter_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = forest_fighter }
+	save_scope_as = DICM_RBE_random_commander_trait_target
+	if = { limit = { has_trait_xp = { trait = forest_fighter value < 100 } } add_trait_xp = { trait = forest_fighter value = { value = 100 subtract = "scope:DICM_RBE_random_commander_trait_target.has_trait_xp(forest_fighter)" } } }
+}
+
+# Adds Winter Soldier and raises its XP to exactly 100.
+DICM_RBE_add_random_winter_soldier_commander_trait_max_xp_effect = {
+	DICM_RBE_add_commander_trait_if_missing_effect = { TRAIT = winter_soldier }
+	save_scope_as = DICM_RBE_random_commander_trait_target
+	if = { limit = { has_trait_xp = { trait = winter_soldier value < 100 } } add_trait_xp = { trait = winter_soldier value = { value = 100 subtract = "scope:DICM_RBE_random_commander_trait_target.has_trait_xp(winter_soldier)" } } }
+}
+
 # Removes every standard commander trait when it is present.
 DICM_RBE_remove_all_commander_traits_effect = {
 	if = { limit = { has_trait = logistician } remove_trait = logistician }

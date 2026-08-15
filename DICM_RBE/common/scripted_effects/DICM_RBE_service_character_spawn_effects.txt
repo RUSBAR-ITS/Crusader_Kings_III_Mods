@@ -1,0 +1,164 @@
+﻿# Creates a service character with deterministic base skills and no random traits.
+DICM_RBE_spawn_service_character_effect = {
+	scope:DI_story = {
+		save_scope_value_as = {
+			name = DICM_RBE_service_spawn_age
+			value = var:DI_char_spawner_age_increment_value
+		}
+		save_scope_value_as = {
+			name = DICM_RBE_service_spawn_female_chance
+			value = var:DI_female_chance
+		}
+	}
+
+	DI_char_spawner_resolve_origin_effect = yes
+
+	create_character = {
+		age = scope:DICM_RBE_service_spawn_age
+		gender_female_chance = scope:DICM_RBE_service_spawn_female_chance
+		health = 6
+		fertility = 6
+		employer = scope:target
+		faith = scope:DI_cs_spawn_faith
+		culture = scope:DI_cs_spawn_culture
+		dynasty = generate
+		diplomacy = 30
+		martial = 30
+		stewardship = 30
+		intrigue = 30
+		learning = 30
+		prowess = 30
+		random_traits = no
+		save_scope_as = new_courtier
+	}
+
+	# Preserve the independent immortality option while ignoring the stat and trait profile checkboxes.
+	scope:DI_story = {
+		if = {
+			limit = { has_variable = DI_char_spawner_immortal }
+			scope:new_courtier = {
+				if = {
+					limit = { NOT = { has_trait = DI_immortal } }
+					add_trait = DI_immortal
+				}
+			}
+		}
+	}
+}
+
+# Creates and prepares a Chancellor.
+DICM_RBE_spawn_chancellor_service_character_effect = {
+	DICM_RBE_spawn_service_character_effect = yes
+	scope:new_courtier = { DICM_RBE_prepare_chancellor_service_character_effect = yes }
+}
+
+# Creates and prepares a Marshal.
+DICM_RBE_spawn_marshal_service_character_effect = {
+	DICM_RBE_spawn_service_character_effect = yes
+	scope:new_courtier = { DICM_RBE_prepare_marshal_service_character_effect = yes }
+}
+
+# Creates and prepares a Steward.
+DICM_RBE_spawn_steward_service_character_effect = {
+	DICM_RBE_spawn_service_character_effect = yes
+	scope:new_courtier = { DICM_RBE_prepare_steward_service_character_effect = yes }
+}
+
+# Creates and prepares a Spymaster.
+DICM_RBE_spawn_spymaster_service_character_effect = {
+	DICM_RBE_spawn_service_character_effect = yes
+	scope:new_courtier = { DICM_RBE_prepare_spymaster_service_character_effect = yes }
+}
+
+# Creates and prepares a Court Chaplain.
+DICM_RBE_spawn_court_chaplain_service_character_effect = {
+	DICM_RBE_spawn_service_character_effect = yes
+	scope:new_courtier = { DICM_RBE_prepare_court_chaplain_service_character_effect = yes }
+}
+
+# Creates and prepares a Knight.
+DICM_RBE_spawn_knight_service_character_effect = {
+	DICM_RBE_spawn_service_character_effect = yes
+	scope:new_courtier = { DICM_RBE_prepare_knight_service_character_effect = yes }
+}
+
+# Creates and prepares a Commander.
+DICM_RBE_spawn_commander_service_character_effect = {
+	DICM_RBE_spawn_service_character_effect = yes
+	scope:new_courtier = { DICM_RBE_prepare_commander_service_character_effect = yes }
+}
+
+# Replaces the current Chancellor and assigns the newly prepared character.
+DICM_RBE_spawn_and_assign_chancellor_effect = {
+	DICM_RBE_spawn_chancellor_service_character_effect = yes
+	if = { limit = { exists = cp:councillor_chancellor } fire_councillor = cp:councillor_chancellor }
+	assign_councillor_type = {
+		type = councillor_chancellor
+		target = scope:new_courtier
+	}
+}
+
+# Replaces the current Marshal and assigns the newly prepared character.
+DICM_RBE_spawn_and_assign_marshal_effect = {
+	DICM_RBE_spawn_marshal_service_character_effect = yes
+	if = { limit = { exists = cp:councillor_marshal } fire_councillor = cp:councillor_marshal }
+	assign_councillor_type = {
+		type = councillor_marshal
+		target = scope:new_courtier
+	}
+}
+
+# Replaces the current Steward and assigns the newly prepared character.
+DICM_RBE_spawn_and_assign_steward_effect = {
+	DICM_RBE_spawn_steward_service_character_effect = yes
+	if = { limit = { exists = cp:councillor_steward } fire_councillor = cp:councillor_steward }
+	assign_councillor_type = {
+		type = councillor_steward
+		target = scope:new_courtier
+	}
+}
+
+# Replaces the current Spymaster and assigns the newly prepared character.
+DICM_RBE_spawn_and_assign_spymaster_effect = {
+	DICM_RBE_spawn_spymaster_service_character_effect = yes
+	if = { limit = { exists = cp:councillor_spymaster } fire_councillor = cp:councillor_spymaster }
+	assign_councillor_type = {
+		type = councillor_spymaster
+		target = scope:new_courtier
+	}
+}
+
+# Replaces the current freely appointed Court Chaplain and assigns the newly prepared character.
+DICM_RBE_spawn_and_assign_court_chaplain_effect = {
+	DICM_RBE_spawn_court_chaplain_service_character_effect = yes
+	if = { limit = { exists = cp:councillor_court_chaplain } fire_councillor = cp:councillor_court_chaplain }
+	assign_councillor_type = {
+		type = councillor_court_chaplain
+		target = scope:new_courtier
+	}
+}
+
+# Creates a new Court Chaplain when appointment is free or retrains the fixed appointee.
+DICM_RBE_spawn_or_retrain_court_chaplain_effect = {
+	if = {
+		limit = {
+			faith = {
+				NOR = {
+					has_doctrine_parameter = clerical_appointment_head_of_faith
+					has_doctrine_parameter = clerical_appointment_fixed
+				}
+			}
+		}
+		DICM_RBE_spawn_and_assign_court_chaplain_effect = yes
+	}
+	else_if = {
+		limit = { exists = cp:councillor_court_chaplain }
+		cp:councillor_court_chaplain = {
+			DICM_RBE_adjust_all_base_skills_effect = {
+				DICM_RBE_DECREASE_DELTA = -500
+				DICM_RBE_INCREASE_DELTA = 30
+			}
+			DICM_RBE_prepare_court_chaplain_service_character_effect = yes
+		}
+	}
+}

@@ -54,10 +54,15 @@ DICM_RBE_add_loyal_aptitude_trait_effect = {
 	DICM_RBE_add_court_position_trait_if_missing_effect = { TRAIT = loyal }
 }
 
-# Applies every universal personality rule after a court-position candidate is prepared.
-DICM_RBE_finalize_created_court_position_character_effect = {
+# Applies every universal personality rule to a prepared service character.
+DICM_RBE_finalize_service_character_effect = {
 	DICM_RBE_add_loyal_aptitude_trait_effect = yes
 	DICM_RBE_apply_court_position_sexuality_setting_effect = yes
+}
+
+# Applies the shared service-character finalizer after a court-position candidate is prepared.
+DICM_RBE_finalize_created_court_position_character_effect = {
+	DICM_RBE_finalize_service_character_effect = yes
 }
 
 # Replaces lower and negative intellect traits with the highest positive tier.

@@ -208,3 +208,17 @@ DICM_RBE_add_wayfarer_tree_perks_effect = {
 	if = { limit = { NOT = { has_trait = lifestyle_wayfarer } } add_trait = lifestyle_wayfarer }
 	if = { limit = { NOT = { has_perk = wayfarer_perk } } add_perk = wayfarer_perk }
 }
+
+# Completes the Wanderer Surveyor lifestyle tree.
+DICM_RBE_add_surveyor_tree_perks_effect = {
+	if = { limit = { NOT = { has_perk = mustering_the_troops_perk } } add_perk = mustering_the_troops_perk }
+	if = { limit = { NOT = { has_perk = local_inspection_perk } } add_perk = local_inspection_perk }
+	if = { limit = { NOT = { has_perk = know_your_land_know_your_people_perk } } add_perk = know_your_land_know_your_people_perk }
+	if = { limit = { NOT = { has_perk = no_stone_unturned_perk } } add_perk = no_stone_unturned_perk }
+	if = { limit = { NOT = { has_perk = travel_logs_perk } } add_perk = travel_logs_perk }
+	if = { limit = { NOT = { has_perk = local_arbitration_perk } } add_perk = local_arbitration_perk }
+	if = { limit = { NOT = { has_perk = realm_charts_perk } } add_perk = realm_charts_perk }
+	if = { limit = { NOT = { has_perk = personal_touch_perk } } add_perk = personal_touch_perk }
+	if = { limit = { NOT = { has_trait = lifestyle_surveyor } } add_trait = lifestyle_surveyor }
+	if = { limit = { NOT = { has_perk = surveyor_perk } } add_perk = surveyor_perk }
+}

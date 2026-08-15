@@ -81,6 +81,7 @@ DICM_RBE_ensure_wet_nurse_has_child_effect = {
 # Add the permanent service modifier used by regular court-position specialists.
 DICM_RBE_add_ceasar_squad_modifier_effect = {
 	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Master } remove_character_modifier = DICM_RBE_Ceasar_Master }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Official } remove_character_modifier = DICM_RBE_Ceasar_Official }
 	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Wet_Nurse } remove_character_modifier = DICM_RBE_Ceasar_Wet_Nurse }
 	if = {
 		limit = {
@@ -95,6 +96,7 @@ DICM_RBE_add_ceasar_squad_modifier_effect = {
 # Add the permanent service modifier used by the Court Artificer.
 DICM_RBE_add_ceasar_master_modifier_effect = {
 	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Squad } remove_character_modifier = DICM_RBE_Ceasar_Squad }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Official } remove_character_modifier = DICM_RBE_Ceasar_Official }
 	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Wet_Nurse } remove_character_modifier = DICM_RBE_Ceasar_Wet_Nurse }
 	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Scout } remove_character_modifier = DICM_RBE_Ceasar_Scout }
 	if = {
@@ -111,6 +113,7 @@ DICM_RBE_add_ceasar_master_modifier_effect = {
 DICM_RBE_add_ceasar_wet_nurse_modifier_effect = {
 	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Squad } remove_character_modifier = DICM_RBE_Ceasar_Squad }
 	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Master } remove_character_modifier = DICM_RBE_Ceasar_Master }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Official } remove_character_modifier = DICM_RBE_Ceasar_Official }
 	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Scout } remove_character_modifier = DICM_RBE_Ceasar_Scout }
 	if = {
 		limit = {
@@ -118,6 +121,22 @@ DICM_RBE_add_ceasar_wet_nurse_modifier_effect = {
 		}
 		add_character_modifier = {
 			modifier = DICM_RBE_Ceasar_Wet_Nurse
+		}
+	}
+}
+
+# Add the permanent service modifier used by imperial officials.
+DICM_RBE_add_ceasar_official_modifier_effect = {
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Squad } remove_character_modifier = DICM_RBE_Ceasar_Squad }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Master } remove_character_modifier = DICM_RBE_Ceasar_Master }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Wet_Nurse } remove_character_modifier = DICM_RBE_Ceasar_Wet_Nurse }
+	if = { limit = { has_character_modifier = DICM_RBE_Ceasar_Scout } remove_character_modifier = DICM_RBE_Ceasar_Scout }
+	if = {
+		limit = {
+			NOT = { has_character_modifier = DICM_RBE_Ceasar_Official }
+		}
+		add_character_modifier = {
+			modifier = DICM_RBE_Ceasar_Official
 		}
 	}
 }
