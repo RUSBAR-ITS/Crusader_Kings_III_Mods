@@ -1,0 +1,36 @@
+﻿# Opens the DICM RBE retraining window for the selected character.
+DICM_RBE_retraining_interaction = {
+	interface_priority = 240
+	category = interaction_category_cheat_menu
+	desc = DICM_RBE_retraining_interaction_desc
+	common_interaction = no
+
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+
+	is_shown = {
+		scope:actor = {
+			is_ai = no
+			any_owned_story = {
+				story_type = DI_misc_variables_story
+				has_variable = DI_cheat_menu
+			}
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			set_variable = {
+				name = DICM_RBE_retraining_target
+				value = scope:recipient
+			}
+			remove_variable = DICM_RBE_retraining_profile
+			remove_variable = DICM_RBE_retraining_court_position
+			set_variable = DICM_RBE_retraining_window_open
+			scope:recipient = {
+				debug_log = "DICM_RBE: Retraining window opened for [THIS.Char.GetLogName]"
+			}
+		}
+	}
+}

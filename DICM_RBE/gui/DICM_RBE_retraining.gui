@@ -1,0 +1,646 @@
+﻿window = {
+	name = "DICM_RBE_retraining_window"
+	parentanchor = center
+	layer = windows_layer
+	filter_mouse = all
+	allow_outside = yes
+	alwaystransparent = no
+	datacontext = "[GetPlayer.MakeScope.Var('DICM_RBE_retraining_target').Char]"
+
+	using = Window_Background
+	using = Window_Decoration
+	movable = yes
+	visible = "[GetPlayer.MakeScope.Var('DICM_RBE_retraining_window_open').IsSet]"
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+		on_finish = "[GetVariableSystem.Set('DICM_RBE_retraining_tab', 'common')]"
+		on_finish = "[PdxGuiWidget.StackTop]"
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+	}
+
+	vbox = {
+		set_parent_size_to_minimum = yes
+		using = Window_Margins
+
+		header_pattern = {
+			layoutpolicy_horizontal = expanding
+
+			blockoverride "header_text" {
+				text = DICM_RBE_retraining_window_title
+			}
+
+			blockoverride "button_close" {
+				onclick = "[GetScriptedGui('DICM_RBE_close_retraining_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+			}
+		}
+
+		vbox = {
+			minimumsize = { 920 0 }
+			margin = { 8 12 }
+			spacing = 10
+			layoutpolicy_horizontal = expanding
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 14
+
+				portrait_head = {}
+
+				vbox = {
+					parentanchor = vcenter
+					spacing = 4
+
+					text_single = {
+						text = DICM_RBE_retraining_target_heading
+						default_format = "#high"
+					}
+
+					text_single = {
+						text = "[Character.GetUINameNoTooltip]"
+						default_format = "#bold"
+					}
+				}
+			}
+
+			hbox = {
+				name = "tabs"
+				layoutpolicy_horizontal = expanding
+				margin_top = 4
+
+			button_tab = {
+				layoutpolicy_horizontal = expanding
+				onclick = "[GetVariableSystem.Set('DICM_RBE_retraining_tab', 'common')]"
+				down = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'common')]"
+
+				text_single = {
+					parentanchor = center
+					text = DICM_RBE_retraining_tab_common
+					default_format = "#low"
+				}
+			}
+			button_tab = {
+				layoutpolicy_horizontal = expanding
+				onclick = "[GetVariableSystem.Set('DICM_RBE_retraining_tab', 'regular_court')]"
+				down = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'regular_court')]"
+
+				text_single = {
+					parentanchor = center
+					text = DICM_RBE_retraining_tab_regular_court
+					default_format = "#low"
+				}
+			}
+			button_tab = {
+				layoutpolicy_horizontal = expanding
+				onclick = "[GetVariableSystem.Set('DICM_RBE_retraining_tab', 'administrative_court')]"
+				down = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'administrative_court')]"
+
+				text_single = {
+					parentanchor = center
+					text = DICM_RBE_retraining_tab_administrative_court
+					default_format = "#low"
+				}
+			}
+			button_tab = {
+				layoutpolicy_horizontal = expanding
+				onclick = "[GetVariableSystem.Set('DICM_RBE_retraining_tab', 'camp')]"
+				down = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'camp')]"
+
+				text_single = {
+					parentanchor = center
+					text = DICM_RBE_retraining_tab_camp
+					default_format = "#low"
+				}
+			}
+			button_tab = {
+				layoutpolicy_horizontal = expanding
+				onclick = "[GetVariableSystem.Set('DICM_RBE_retraining_tab', 'celestial_court')]"
+				down = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'celestial_court')]"
+
+				text_single = {
+					parentanchor = center
+					text = DICM_RBE_retraining_tab_celestial_court
+					default_format = "#low"
+				}
+			}
+			button_tab = {
+				layoutpolicy_horizontal = expanding
+				onclick = "[GetVariableSystem.Set('DICM_RBE_retraining_tab', 'mandala_court')]"
+				down = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'mandala_court')]"
+
+				text_single = {
+					parentanchor = center
+					text = DICM_RBE_retraining_tab_mandala_court
+					default_format = "#low"
+				}
+			}
+			button_tab = {
+				layoutpolicy_horizontal = expanding
+				onclick = "[GetVariableSystem.Set('DICM_RBE_retraining_tab', 'nomadic_court')]"
+				down = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'nomadic_court')]"
+
+				text_single = {
+					parentanchor = center
+					text = DICM_RBE_retraining_tab_nomadic_court
+					default_format = "#low"
+				}
+			}
+			}
+
+			scrollbox = {
+				size = { 900 470 }
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+
+				blockoverride "scrollbox_content" {
+					vbox = {
+						spacing = 6
+						layoutpolicy_horizontal = expanding
+
+					vbox = {
+						visible = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'common')]"
+						spacing = 6
+						layoutpolicy_horizontal = expanding
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_chancellor').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_chancellor_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/DI_Chancellor.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_chancellor
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_marshal').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_marshal_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/DI_Marshal.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_marshal
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_steward').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_steward_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/DI_Steward.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_steward
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_spymaster').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_spymaster_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/DI_Spymaster.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_spymaster
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_court_chaplain').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_court_chaplain_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/DI_Chaplain.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_court_chaplain
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_knight').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_knight_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/DI_Knight.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_knight
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_commander').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_commander_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/DI_Commander.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_commander
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_official').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_official_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "gfx/interface/icons/modifiers/DICM_RBE_ceasar_official.dds"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_official
+							}
+						}
+
+					}
+
+					vbox = {
+						visible = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'regular_court')]"
+						spacing = 6
+						layoutpolicy_horizontal = expanding
+
+						text_single = {
+							text = DICM_RBE_retraining_charioteer_heading
+							default_format = "#high"
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_charioteer_blue').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_charioteer_blue_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "[GetCourtPositionType('charioteer_court_position').GetIcon]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_charioteer_blue
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_charioteer_green').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_charioteer_green_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "[GetCourtPositionType('charioteer_court_position').GetIcon]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_charioteer_green
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_charioteer_white').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_charioteer_white_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "[GetCourtPositionType('charioteer_court_position').GetIcon]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_charioteer_white
+							}
+						}
+
+						DICM_RBE_retraining_position_radio = {
+							layoutpolicy_horizontal = expanding
+							onclick = "[GetScriptedGui('DICM_RBE_select_retraining_charioteer_red').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "radio" {
+								frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_charioteer_red_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							}
+
+							blockoverride "position_icon" {
+								texture = "[GetCourtPositionType('charioteer_court_position').GetIcon]"
+							}
+
+							blockoverride "text" {
+								text = DICM_RBE_retraining_charioteer_red
+							}
+						}
+
+						text_single = {
+							text = DICM_RBE_retraining_other_positions_heading
+							default_format = "#high"
+							margin_top = 8
+						}
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							datamodel = "[GetAllCourtPositionTypes]"
+
+							item = {
+								DICM_RBE_retraining_position_radio = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GetScriptedGui('DICM_RBE_retraining_regular_court_position_visible').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End)]"
+									onclick = "[GetScriptedGui('DICM_RBE_select_retraining_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End)]"
+
+									blockoverride "radio" {
+										frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_court_position_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End))]"
+									}
+
+									blockoverride "text" {
+										text = "[CourtPositionType.GetNameNoTooltip]"
+									}
+								}
+							}
+						}
+					}
+
+					vbox = {
+						visible = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'administrative_court')]"
+						spacing = 6
+						layoutpolicy_horizontal = expanding
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							datamodel = "[GetAllCourtPositionTypes]"
+
+							item = {
+								DICM_RBE_retraining_position_radio = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GetScriptedGui('DICM_RBE_retraining_administrative_court_position_visible').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End)]"
+									onclick = "[GetScriptedGui('DICM_RBE_select_retraining_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End)]"
+
+									blockoverride "radio" {
+										frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_court_position_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End))]"
+									}
+
+									blockoverride "text" {
+										text = "[CourtPositionType.GetNameNoTooltip]"
+									}
+								}
+							}
+						}
+					}
+
+					vbox = {
+						visible = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'camp')]"
+						spacing = 6
+						layoutpolicy_horizontal = expanding
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							datamodel = "[GetAllCourtPositionTypes]"
+
+							item = {
+								DICM_RBE_retraining_position_radio = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GetScriptedGui('DICM_RBE_retraining_camp_position_visible').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End)]"
+									onclick = "[GetScriptedGui('DICM_RBE_select_retraining_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End)]"
+
+									blockoverride "radio" {
+										frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_court_position_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End))]"
+									}
+
+									blockoverride "text" {
+										text = "[CourtPositionType.GetNameNoTooltip]"
+									}
+								}
+							}
+						}
+					}
+
+					vbox = {
+						visible = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'celestial_court')]"
+						spacing = 6
+						layoutpolicy_horizontal = expanding
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							datamodel = "[GetAllCourtPositionTypes]"
+
+							item = {
+								DICM_RBE_retraining_position_radio = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GetScriptedGui('DICM_RBE_retraining_celestial_court_position_visible').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End)]"
+									onclick = "[GetScriptedGui('DICM_RBE_select_retraining_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End)]"
+
+									blockoverride "radio" {
+										frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_court_position_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End))]"
+									}
+
+									blockoverride "text" {
+										text = "[CourtPositionType.GetNameNoTooltip]"
+									}
+								}
+							}
+						}
+					}
+
+					vbox = {
+						visible = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'mandala_court')]"
+						spacing = 6
+						layoutpolicy_horizontal = expanding
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							datamodel = "[GetAllCourtPositionTypes]"
+
+							item = {
+								DICM_RBE_retraining_position_radio = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GetScriptedGui('DICM_RBE_retraining_mandala_court_position_visible').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End)]"
+									onclick = "[GetScriptedGui('DICM_RBE_select_retraining_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End)]"
+
+									blockoverride "radio" {
+										frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_court_position_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End))]"
+									}
+
+									blockoverride "text" {
+										text = "[CourtPositionType.GetNameNoTooltip]"
+									}
+								}
+							}
+						}
+					}
+
+					vbox = {
+						visible = "[GetVariableSystem.HasValue('DICM_RBE_retraining_tab', 'nomadic_court')]"
+						spacing = 6
+						layoutpolicy_horizontal = expanding
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							datamodel = "[GetAllCourtPositionTypes]"
+
+							item = {
+								DICM_RBE_retraining_position_radio = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GetScriptedGui('DICM_RBE_retraining_nomadic_court_position_visible').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End)]"
+									onclick = "[GetScriptedGui('DICM_RBE_select_retraining_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End)]"
+
+									blockoverride "radio" {
+										frame = "[BoolTo1And2(GetScriptedGui('DICM_RBE_retraining_court_position_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('court_position_type', CourtPositionType.MakeScope).End))]"
+									}
+
+									blockoverride "text" {
+										text = "[CourtPositionType.GetNameNoTooltip]"
+									}
+								}
+							}
+						}
+					}
+
+					}
+				}
+			}
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 10
+				margin_top = 6
+
+				button_standard = {
+					layoutpolicy_horizontal = expanding
+					text = DICM_RBE_retraining_confirm
+					enabled = "[GetScriptedGui('DICM_RBE_retraining_selection_ready').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					onclick = "[GetScriptedGui('DICM_RBE_confirm_retraining').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+
+				button_standard = {
+					layoutpolicy_horizontal = expanding
+					text = DICM_RBE_retraining_cancel
+					onclick = "[GetScriptedGui('DICM_RBE_close_retraining_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+		}
+	}
+}
+
+types DICMRBERetrainingTypes {
+	type DICM_RBE_retraining_position_radio = button_group {
+		layoutpolicy_horizontal = expanding
+		size = { 0 54 }
+		using = tooltip_se
+
+		background = {
+			using = Background_Area_Dark
+
+			modify_texture = {
+				texture = "gfx/interface/component_masks/mask_fade_vertical.dds"
+				blend_mode = alphamultiply
+				alpha = 0.3
+				rotate_uv = 90
+				mirror = vertical
+			}
+		}
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			spacing = 10
+
+			widget = {
+				size = { 38 54 }
+
+				button_radio = {
+					parentanchor = center
+					widgetanchor = center
+					block "radio" {}
+
+					background = {
+						texture = "gfx/interface/buttons/button_round_big.dds"
+						alpha = 0.5
+					}
+				}
+			}
+
+			widget = {
+				size = { 46 54 }
+
+				icon = {
+					parentanchor = center
+					widgetanchor = center
+					size = { 46 46 }
+
+					block "position_icon" {
+						texture = "[CourtPositionType.GetIcon]"
+					}
+				}
+			}
+
+			widget = {
+				layoutpolicy_horizontal = expanding
+				size = { 0 54 }
+
+				text_single = {
+					parentanchor = left|vcenter
+					widgetanchor = left|vcenter
+					max_width = 760
+					align = nobaseline
+					default_format = "#bold"
+					alwaystransparent = yes
+
+					block "text" {
+						text = "DEFAULT_TEXT"
+					}
+				}
+			}
+		}
+	}
+}
+

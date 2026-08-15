@@ -1,0 +1,358 @@
+﻿# Closes the retraining window and clears its transient selection.
+DICM_RBE_close_retraining_window = {
+	scope = character
+	effect = { DICM_RBE_clear_retraining_window_state_effect = yes }
+}
+
+# Selects a dynamically listed court-position profile.
+DICM_RBE_select_retraining_court_position = {
+	scope = character
+	saved_scopes = { court_position_type }
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_court_position_profile
+		}
+		set_variable = {
+			name = DICM_RBE_retraining_court_position
+			value = scope:court_position_type
+		}
+	}
+}
+
+# Reports whether a dynamically listed court-position profile is selected.
+DICM_RBE_retraining_court_position_selected = {
+	scope = character
+	saved_scopes = { court_position_type }
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_court_position_profile
+		var:DICM_RBE_retraining_court_position = scope:court_position_type
+	}
+}
+
+# Filters the dynamic retraining list for the regular court family.
+DICM_RBE_retraining_regular_court_position_visible = {
+	scope = character
+	saved_scopes = { court_position_type }
+
+	is_valid = { DICM_RBE_retraining_regular_court_position_trigger = yes }
+}
+
+# Filters the dynamic retraining list for the administrative court family.
+DICM_RBE_retraining_administrative_court_position_visible = {
+	scope = character
+	saved_scopes = { court_position_type }
+
+	is_valid = { DICM_RBE_retraining_administrative_court_position_trigger = yes }
+}
+
+# Filters the dynamic retraining list for the camp family.
+DICM_RBE_retraining_camp_position_visible = {
+	scope = character
+	saved_scopes = { court_position_type }
+
+	is_valid = { DICM_RBE_retraining_camp_position_trigger = yes }
+}
+
+# Filters the dynamic retraining list for the celestial court family.
+DICM_RBE_retraining_celestial_court_position_visible = {
+	scope = character
+	saved_scopes = { court_position_type }
+
+	is_valid = { DICM_RBE_retraining_celestial_court_position_trigger = yes }
+}
+
+# Filters the dynamic retraining list for the mandala court family.
+DICM_RBE_retraining_mandala_court_position_visible = {
+	scope = character
+	saved_scopes = { court_position_type }
+
+	is_valid = { DICM_RBE_retraining_mandala_court_position_trigger = yes }
+}
+
+# Filters the dynamic retraining list for the nomadic court family.
+DICM_RBE_retraining_nomadic_court_position_visible = {
+	scope = character
+	saved_scopes = { court_position_type }
+
+	is_valid = { DICM_RBE_retraining_nomadic_court_position_trigger = yes }
+}
+
+# Selects the chancellor retraining profile.
+DICM_RBE_select_retraining_chancellor = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_chancellor_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the chancellor retraining profile is selected.
+DICM_RBE_retraining_chancellor_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_chancellor_profile
+	}
+}
+
+# Selects the marshal retraining profile.
+DICM_RBE_select_retraining_marshal = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_marshal_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the marshal retraining profile is selected.
+DICM_RBE_retraining_marshal_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_marshal_profile
+	}
+}
+
+# Selects the steward retraining profile.
+DICM_RBE_select_retraining_steward = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_steward_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the steward retraining profile is selected.
+DICM_RBE_retraining_steward_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_steward_profile
+	}
+}
+
+# Selects the spymaster retraining profile.
+DICM_RBE_select_retraining_spymaster = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_spymaster_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the spymaster retraining profile is selected.
+DICM_RBE_retraining_spymaster_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_spymaster_profile
+	}
+}
+
+# Selects the court chaplain retraining profile.
+DICM_RBE_select_retraining_court_chaplain = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_court_chaplain_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the court chaplain retraining profile is selected.
+DICM_RBE_retraining_court_chaplain_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_court_chaplain_profile
+	}
+}
+
+# Selects the knight retraining profile.
+DICM_RBE_select_retraining_knight = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_knight_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the knight retraining profile is selected.
+DICM_RBE_retraining_knight_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_knight_profile
+	}
+}
+
+# Selects the commander retraining profile.
+DICM_RBE_select_retraining_commander = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_commander_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the commander retraining profile is selected.
+DICM_RBE_retraining_commander_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_commander_profile
+	}
+}
+
+# Selects the official retraining profile.
+DICM_RBE_select_retraining_official = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_official_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the official retraining profile is selected.
+DICM_RBE_retraining_official_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_official_profile
+	}
+}
+
+# Selects the charioteer blue retraining profile.
+DICM_RBE_select_retraining_charioteer_blue = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_charioteer_blue_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the charioteer blue retraining profile is selected.
+DICM_RBE_retraining_charioteer_blue_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_blue_profile
+	}
+}
+
+# Selects the charioteer green retraining profile.
+DICM_RBE_select_retraining_charioteer_green = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_charioteer_green_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the charioteer green retraining profile is selected.
+DICM_RBE_retraining_charioteer_green_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_green_profile
+	}
+}
+
+# Selects the charioteer white retraining profile.
+DICM_RBE_select_retraining_charioteer_white = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_charioteer_white_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the charioteer white retraining profile is selected.
+DICM_RBE_retraining_charioteer_white_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_white_profile
+	}
+}
+
+# Selects the charioteer red retraining profile.
+DICM_RBE_select_retraining_charioteer_red = {
+	scope = character
+
+	effect = {
+		set_variable = {
+			name = DICM_RBE_retraining_profile
+			value = flag:DICM_RBE_retraining_charioteer_red_profile
+		}
+		remove_variable = DICM_RBE_retraining_court_position
+	}
+}
+
+# Reports whether the charioteer red retraining profile is selected.
+DICM_RBE_retraining_charioteer_red_selected = {
+	scope = character
+
+	is_valid = {
+		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_red_profile
+	}
+}
+
+# Reports whether the current retraining selection can be confirmed.
+DICM_RBE_retraining_selection_ready = {
+	scope = character
+	is_valid = { DICM_RBE_retraining_selection_ready_trigger = yes }
+}
+
+# Applies the selected retraining profile and closes the window.
+DICM_RBE_confirm_retraining = {
+	scope = character
+	effect = { DICM_RBE_apply_selected_retraining_profile_effect = yes }
+}
+

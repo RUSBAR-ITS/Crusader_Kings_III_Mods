@@ -1,0 +1,91 @@
+﻿# Clears the transient state used by the retraining window.
+DICM_RBE_clear_retraining_window_state_effect = {
+	remove_variable = DICM_RBE_retraining_window_open
+	remove_variable = DICM_RBE_retraining_profile
+	remove_variable = DICM_RBE_retraining_court_position
+	remove_variable = DICM_RBE_retraining_target
+}
+
+# Sets every base skill of the selected character to 30 through engine clamping.
+DICM_RBE_normalize_retraining_target_skills_effect = {
+	var:DICM_RBE_retraining_target = {
+		DICM_RBE_adjust_all_base_skills_effect = {
+			DICM_RBE_DECREASE_DELTA = -500
+			DICM_RBE_INCREASE_DELTA = 30
+		}
+	}
+}
+
+# Applies the profile currently selected in the retraining window.
+DICM_RBE_apply_selected_retraining_profile_effect = {
+	if = {
+		limit = { DICM_RBE_retraining_selection_ready_trigger = yes }
+		DICM_RBE_normalize_retraining_target_skills_effect = yes
+
+		switch = {
+			trigger = var:DICM_RBE_retraining_profile
+			flag:DICM_RBE_retraining_court_position_profile = {
+				var:DICM_RBE_retraining_court_position = { save_scope_as = court_position_type }
+				var:DICM_RBE_retraining_target = {
+					DICM_RBE_prepare_spawned_court_position_character_effect = yes
+					DICM_RBE_finalize_created_court_position_character_effect = yes
+				}
+			}
+		flag:DICM_RBE_retraining_chancellor_profile = {
+			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_chancellor_service_character_effect = yes }
+		}
+		flag:DICM_RBE_retraining_marshal_profile = {
+			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_marshal_service_character_effect = yes }
+		}
+		flag:DICM_RBE_retraining_steward_profile = {
+			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_steward_service_character_effect = yes }
+		}
+		flag:DICM_RBE_retraining_spymaster_profile = {
+			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_spymaster_service_character_effect = yes }
+		}
+		flag:DICM_RBE_retraining_court_chaplain_profile = {
+			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_court_chaplain_service_character_effect = yes }
+		}
+		flag:DICM_RBE_retraining_knight_profile = {
+			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_knight_service_character_effect = yes }
+		}
+		flag:DICM_RBE_retraining_commander_profile = {
+			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_commander_service_character_effect = yes }
+		}
+		flag:DICM_RBE_retraining_official_profile = {
+			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_official_service_character_effect = yes }
+		}
+		flag:DICM_RBE_retraining_charioteer_blue_profile = {
+			var:DICM_RBE_retraining_target = {
+				DICM_RBE_prepare_charioteer_blue_court_position_effect = yes
+				DICM_RBE_finalize_created_court_position_character_effect = yes
+			}
+		}
+		flag:DICM_RBE_retraining_charioteer_green_profile = {
+			var:DICM_RBE_retraining_target = {
+				DICM_RBE_prepare_charioteer_green_court_position_effect = yes
+				DICM_RBE_finalize_created_court_position_character_effect = yes
+			}
+		}
+		flag:DICM_RBE_retraining_charioteer_white_profile = {
+			var:DICM_RBE_retraining_target = {
+				DICM_RBE_prepare_charioteer_white_court_position_effect = yes
+				DICM_RBE_finalize_created_court_position_character_effect = yes
+			}
+		}
+		flag:DICM_RBE_retraining_charioteer_red_profile = {
+			var:DICM_RBE_retraining_target = {
+				DICM_RBE_prepare_charioteer_red_court_position_effect = yes
+				DICM_RBE_finalize_created_court_position_character_effect = yes
+			}
+		}
+			fallback = { }
+		}
+
+		var:DICM_RBE_retraining_target = {
+			debug_log = "DICM_RBE: Retraining profile applied to [THIS.Char.GetLogName]"
+		}
+		DICM_RBE_clear_retraining_window_state_effect = yes
+	}
+}
+
