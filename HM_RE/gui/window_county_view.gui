@@ -1066,27 +1066,6 @@ window = {
 						alpha = 0.95
 					}
 				}
-				###### HMC #########
-				###### COW3 #########
-				background = {
-					visible = "[GetScriptedGui('holding_is_cow').IsShown( GuiScope.SetRoot( HoldingView.GetProvince.MakeScope ).End)]"
-					texture = "gfx/interface/component_masks/mask_frame.dds"
-					spriteType = Corneredstretched
-					spriteborder = { 100 100 }
-					using = Color_Purple
-					margin = { 0 0 }
-					alpha = 1
-				}
-	
-				background = {
-					visible = "[GetScriptedGui('holding_is_cow').IsShown( GuiScope.SetRoot( HoldingView.GetProvince.MakeScope ).End)]"
-					texture = "gfx/interface/component_masks/mask_frame.dds"
-					spriteType = Corneredstretched
-					spriteborder = { 100 100 }
-					using = Color_Purple
-					margin = { 0 0 }
-					alpha = 1
-				}
 
 				### TOP LEFT
 				hbox = {
@@ -1197,20 +1176,15 @@ window = {
 									widget = {
 										size = { 30 30 }
 
-										## HMC RCM
 										button_move_capital = {
 											name = "set_realm_capital_button"
 											visible = "[HoldingView.PotentialSetRealmCapital]"
 											texture = "gfx/interface/icons/flat_icons/move_capital.dds"
-											datacontext = "[HoldingView.GetTitle]"
-											datacontext = "[HoldingView.GetHolder]"
 
-											onclick = "[Character.OpenPlayerInteractionWithTargetTitle('rcm_override_interaction', Title.Self)]"
-											tooltip = "[Character.GetPlayerInteractionWithTargetTitleTooltip('rcm_override_interaction', Title.Self)]"
+											enabled = "[HoldingView.CanSetRealmCapital]"
+											onclick = "[HoldingView.SetRealmCapital]"
 
-											#enabled = "[HoldingView.CanSetRealmCapital]"
-											#onclick = "[HoldingView.SetRealmCapital]"
-											#tooltip = "[HoldingView.GetSetRealmCapitalTooltip]"
+											tooltip = "[HoldingView.GetSetRealmCapitalTooltip]"
 										}
 
 										button_move_capital = {
@@ -1251,20 +1225,19 @@ window = {
 									text = "[HoldingView.GetOccupiedInfo]"
 									default_format = "#high"
 								}
-								#### HM CHANGE START #### 
-								##https://steamcommunity.com/sharedfiles/filedetails/?id=2633505646
+								#### HM_RE HOLDING CONTROLS START ####
 								spacer = {
 									size = { 5 5 }
 								}
 								flowcontainer = {
-									name = "holding_manager"
+									name = "HM_RE_holding_manager"
 									spacing = 5
 									visible = "[HoldingView.HasHolding]"
 									direction = vertical
 									flowcontainer = {
 										ignoreinvisible = yes
 										button_icon = {
-											name = "gui_hm_replace_holder_button"
+											name = "HM_RE_replace_holder_button"
 											datacontext = "[GetScriptedGui('hm_replace_holder_button')]"
 											texture = "gfx/interface/icons/flat_icons/revert.dds"
 											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
@@ -1274,7 +1247,7 @@ window = {
 											size = {35 35}
 										}
 										button_icon = {
-											name = "gui_hm_make_castle_button"
+											name = "HM_RE_make_castle_button"
 											datacontext = "[GetScriptedGui('hm_make_castle_button')]"
 											texture = "gfx/interface/icons/holding_types_tab/castle_holding.dds"
 											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
@@ -1284,7 +1257,7 @@ window = {
 											size = {35 35}
 										}
 										button_icon = {
-											name = "gui_hm_make_temple_button"
+											name = "HM_RE_make_temple_button"
 											datacontext = "[GetScriptedGui('hm_make_temple_button')]"
 											texture = "gfx/interface/icons/holding_types_tab/church_holding.dds"
 											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
@@ -1294,7 +1267,7 @@ window = {
 											size = {35 35}
 										}
 										button_icon = {
-											name = "gui_hm_make_city_button"
+											name = "HM_RE_make_city_button"
 											datacontext = "[GetScriptedGui('hm_make_city_button')]"
 											texture = "gfx/interface/icons/holding_types_tab/city_holding.dds"
 											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
@@ -1304,7 +1277,7 @@ window = {
 											size = {35 35}
 										}
 										button_icon = {
-											name = "gui_hm_make_nomad_button"
+											name = "HM_RE_make_nomad_button"
 											datacontext = "[GetScriptedGui('hm_make_nomad_button')]"
 											texture = "gfx/interface/icons/holding_types_tab/nomad_holding.dds"
 											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
@@ -1314,7 +1287,7 @@ window = {
 											size = {35 35}
 										}
 										button_icon = {
-											name = "gui_hm_make_temple_citadel_button"
+											name = "HM_RE_make_temple_citadel_button"
 											datacontext = "[GetScriptedGui('hm_make_temple_citadel_button')]"
 											texture = "gfx/interface/icons/holding_types_tab/temple_citadel_holding.dds"
 											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
@@ -1324,7 +1297,7 @@ window = {
 											size = {35 35}
 										}
 										button_icon = {
-											name = "gui_hm_build_all_button"
+											name = "HM_RE_build_all_button"
 											datacontext = "[GetScriptedGui('hm_build_all_button')]"
 											texture = "gfx/interface/icons/flat_icons/menu.dds"
 											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
@@ -1334,7 +1307,7 @@ window = {
 											size = {35 35}
 										}
 										button_icon = {
-											name = "gui_hm_upgrade_all_button"
+											name = "HM_RE_upgrade_all_button"
 											datacontext = "[GetScriptedGui('hm_upgrade_all_button')]"
 											texture = "gfx/interface/buttons/upgrade.dds"
 											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
@@ -1347,7 +1320,7 @@ window = {
 									flowcontainer = {
 										ignoreinvisible = yes
 										button_icon = {
-											name = "gui_hm_remove_all_button"
+											name = "HM_RE_remove_all_button"
 											datacontext = "[GetScriptedGui('hm_remove_all_button')]"
 											texture = "gfx/interface/icons/flat_icons/clear.dds"
 											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
@@ -1357,7 +1330,7 @@ window = {
 											size = {35 35}
 										}
 										button_icon = {
-											name = "gui_hm_remove_special_buildings_button"
+											name = "HM_RE_remove_special_buildings_button"
 											datacontext = "[GetScriptedGui('hm_remove_special_buildings_button')]"
 											texture = "gfx/interface/icons/flat_icons/data_system.dds"
 											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
@@ -1367,7 +1340,7 @@ window = {
 											size = {35 35}
 										}
 										button_icon = {
-											name = "gui_hm_add_slot_button"
+											name = "HM_RE_add_slot_button"
 											datacontext = "[GetScriptedGui('hm_add_slot_button')]"
 											texture = "gfx/interface/icons/flat_icons/plus.dds"
 											visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
@@ -1378,17 +1351,7 @@ window = {
 										}
 									}
 								}
-								# button_icon = {
-								# 	name = "gui_hm_remove_holding_button"
-								# 	datacontext = "[GetScriptedGui('hm_remove_holding_button')]"
-								# 	texture = "gfx/interface/icons/flat_icons/cancel.dds"
-								# 	visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
-								# 	enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
-								# 	onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
-								# 	tooltip = "[ScriptedGui.BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
-								# 	size = {35 35}
-								# }
-								#### HM CHANGE END ####
+								#### HM_RE HOLDING CONTROLS END ####
 							}
 
 							expand = {}
@@ -2226,7 +2189,7 @@ window = {
 								}
 							}
 
-							####### HMC ##########
+							#### HM_RE EXPANDED BUILDING GRID START ####
 							flowcontainer = {
 
 								name = "holding_view_buildings_area"
@@ -2248,6 +2211,10 @@ window = {
 										datacontext = "[HoldingView.GetGUIDuchyCapitalBuilding]"
 										visible = "[HoldingView.HasDuchyCapitalBuildingSlot]"
 
+										blockoverride "shortcut" {
+											shortcut = "duchy_building"
+										}
+
 										blockoverride "building_frame" {
 											icon = {
 												size = { 100% 100% }
@@ -2255,6 +2222,7 @@ window = {
 												alwaystransparent = yes
 												spriteType = Corneredtiled
 												spriteborder = { 18 18 }
+												framesize = { 252 80 }
 
 												modify_texture = {
 													texture = "gfx/interface/colors/gold.dds"
@@ -2273,13 +2241,16 @@ window = {
 										datacontext = "[HoldingView.GetGUISpecialBuilding]"
 										visible = "[HoldingView.HasSpecialBuildingSlot]"
 
+										blockoverride "shortcut" {
+											shortcut = "special_building"
+										}
+
 										blockoverride "building_frame" {
 											icon = {
 												size = { 100% 100% }
-												texture = "gfx/interface/buttons/button_special_building.dds"
 												alwaystransparent = yes
-												spriteType = Corneredtiled
-												spriteborder = { 18 18 }
+
+												using = Special_Building_Texture
 
 												modify_texture = {
 													texture = "gfx/interface/colors/gold.dds"
@@ -2298,6 +2269,10 @@ window = {
 										datacontext = "[HoldingView.GetGUIGreatBuilding]"
 										visible = "[HoldingView.HasGreatBuildingSlot]"
 
+										blockoverride "shortcut" {
+											shortcut = "great_building"
+										}
+
 										blockoverride "building_frame" {
 											icon = {
 												size = { 100% 100% }
@@ -2305,6 +2280,7 @@ window = {
 												alwaystransparent = yes
 												spriteType = Corneredtiled
 												spriteborder = { 18 18 }
+												framesize = { 252 80 }
 
 												modify_texture = {
 													texture = "gfx/interface/colors/gold.dds"
@@ -2331,15 +2307,13 @@ window = {
 								# Upgrade buildings
 								scrollbox = {
 									size = {350 120}
-									name = "buildings_grid_scroll_area"
+									name = "HM_RE_buildings_grid_scroll_area"
 									scrollbarpolicy_horizontal = always_off
 
-									scrollwidget = {							
+									scrollwidget = {
 										fixedgridbox = {
 											name = "buildings_grid"
 											datamodel = "[HoldingView.GetBuildings]"
-											ignoreinvisible = yes
-											spacing = 3
 											flipdirection = yes
 											addcolumn = 58
 											addrow = 58
@@ -2356,6 +2330,7 @@ window = {
 									}
 								}
 							}
+							#### HM_RE EXPANDED BUILDING GRID END ####
 						}
 					}
 				}

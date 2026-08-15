@@ -1,4 +1,4 @@
-﻿hm_feudalize_vassal_holding_interaction = {
+﻿HM_RE_feudalize_vassal_holding_interaction = {
 	category = interaction_category_uncategorized
 	hidden = yes
 	special_interaction = feudalize_holding
@@ -11,6 +11,8 @@
 	auto_accept = yes
 	
 	is_shown = {
+		has_game_rule = hm_rule_can_feudalize_holdings_vassals
+
 		scope:actor = {
 			this = scope:recipient
 			NOR = {
@@ -23,11 +25,13 @@
 	
 	can_be_picked_title = {
 		scope:target = {
-			# 允许封臣领地
+			# Allow holdings owned by any vassal below the actor.
 			holder = {
-				OR = {
-					this = scope:actor
-					is_vassal_of = scope:actor
+				is_vassal_or_below_of = scope:actor
+				NOR = {
+					government_has_flag = government_is_tribal
+					government_has_flag = government_is_nomadic
+					government_has_flag = government_is_herder
 				}
 			}
 			
@@ -58,16 +62,7 @@
 				limit = { tier <= tier_county }
 				title_province = {
 					has_ongoing_construction = no
-
-					trigger_if = {
-						limit = {
-							scope:target.holder = scope:actor
-						}
-						barony_controller = scope:actor
-					}
-					trigger_else = {
-						barony_controller = scope:target.holder
-					}
+					barony_controller = scope:target.holder
 				}
 			}
 		}
@@ -199,27 +194,23 @@
 					}
 				}
 
-				if = {
-					limit = {
-						scope:target = {
+				scope:target ?= {
+					if = {
+						limit = {
 							title_province = {
 								geographical_region = geographical_region:mpo_region_permafrost
 							}
 						}
-					}
-					if = {
-						limit = {
-							scope:target = { has_county_modifier = mpo_siberian_permafrost_modifier	 }
+						if = {
+							limit = { has_county_modifier = mpo_siberian_permafrost_modifier }
+							remove_county_modifier = mpo_siberian_permafrost_modifier
 						}
-						scope:target = { remove_county_modifier = mpo_siberian_permafrost_modifier }
-					}
-					else_if = {
-						limit = {
-							scope:target = { has_county_modifier = mpo_siberian_permafrost_modifier_bad	 }
+						else_if = {
+							limit = { has_county_modifier = mpo_siberian_permafrost_modifier_bad }
+							remove_county_modifier = mpo_siberian_permafrost_modifier_bad
 						}
-						scope:target = { remove_county_modifier = mpo_siberian_permafrost_modifier_bad }
 					}
-				}			
+				}
 			}
 		}
 	}
