@@ -1,0 +1,43 @@
+﻿hm_decision_remove_all = {
+	picture = {
+		reference ="gfx/interface/illustrations/decisions/ep3_decision_city.dds"
+	}
+
+    desc = hm_decision_remove_all_desc
+	
+	selection_tooltip = hm_decision_remove_all_tooltip
+
+	is_shown = {
+		global_var:hm_show_decisions ?= yes
+		is_landed = yes
+		any_directly_owned_province = {
+			has_ongoing_construction = no
+			barony = {
+				is_leased_out = no
+			}
+			hm_trigger_remove_buildings = yes
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_at_war = no
+	}
+
+	effect = {
+		custom_tooltip = hm_remove_all_effect_tooltip
+		hidden_effect = {
+			every_directly_owned_province = {
+				limit = {
+					has_ongoing_construction = no
+					barony = {
+						is_leased_out = no
+					}
+				}
+				hm_effect_remove_buildings = yes
+			}
+		}
+	}
+
+	ai_check_interval = 0
+}

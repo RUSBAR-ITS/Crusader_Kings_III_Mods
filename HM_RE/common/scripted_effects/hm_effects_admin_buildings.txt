@@ -1,0 +1,78 @@
+﻿hm_effect_construct_capital_bureau = {
+	if = {
+		limit = { hm_trigger_construct_capital_bureau = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = capital_bureau_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = capital_bureau_01
+		}
+	}
+}
+hm_effect_upgrade_capital_bureau = {
+	if = {
+		limit = { hm_trigger_construct_capital_bureau_02 = yes }
+		add_building = capital_bureau_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_capital_bureau_03 = yes }
+		add_building = capital_bureau_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_capital_bureau_04 = yes }
+		add_building = capital_bureau_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_capital_bureau_05 = yes }
+		add_building = capital_bureau_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_capital_bureau_06 = yes }
+		add_building = capital_bureau_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_capital_bureau_07 = yes }
+		add_building = capital_bureau_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_capital_bureau_08 = yes }
+		add_building = capital_bureau_08
+	}
+}
+hm_effect_remove_capital_bureau = {
+	if = {
+		limit = { has_building = capital_bureau_01 }
+		remove_building = capital_bureau_01
+	}
+	else_if = {
+		limit = { has_building =capital_bureau_02 }
+		remove_building = capital_bureau_02
+	}
+	else_if = {
+		limit = { has_building = capital_bureau_03 }
+		remove_building = capital_bureau_03
+	}
+	else_if = {
+		limit = { has_building =capital_bureau_04 }
+		remove_building = capital_bureau_04
+	}
+	else_if = {
+		limit = { has_building = capital_bureau_05 }
+		remove_building = capital_bureau_05
+	}
+	else_if = {
+		limit = { has_building =capital_bureau_06 }
+		remove_building = capital_bureau_06
+	}
+	else_if = {
+		limit = { has_building = capital_bureau_07 }
+		remove_building = capital_bureau_07
+	}
+	else_if = {
+		limit = { has_building =capital_bureau_08 }
+		remove_building = capital_bureau_08
+	}
+}

@@ -1,0 +1,508 @@
+hm_trigger_construct_improvement_01 = {
+	NOT = { has_building_or_higher = improvement_01 }
+	has_building_or_higher = castle_01
+}
+hm_trigger_construct_improvement_02 = {
+	has_building = improvement_01
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_01
+	trigger_if = {
+	limit = { debug_only = no }
+	culture = { has_innovation = innovation_motte }
+	}
+}
+hm_trigger_construct_improvement_03 = {
+	has_building = improvement_02
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_02
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_battlements }
+	}
+}
+hm_trigger_construct_improvement_04 = {
+	has_building = improvement_03
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_02
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_battlements }
+	}
+}
+hm_trigger_construct_improvement_05 = {
+	has_building = improvement_04
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_03
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_hoardings }
+	}
+}
+hm_trigger_construct_improvement_06 = {
+	has_building = improvement_05
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_03
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_hoardings }
+	}
+}
+hm_trigger_construct_improvement_07 = {
+	has_building = improvement_06
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_04
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_machicolations }
+	}
+}
+hm_trigger_construct_improvement_08 = {
+	has_building = improvement_07
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_04
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_machicolations }
+	}
+}
+hm_trigger_construct_improvement = {
+	hm_trigger_construct_improvement_01 = yes
+}
+hm_trigger_upgrade_improvement = {
+	OR = {
+		hm_trigger_construct_improvement_02 = yes
+		hm_trigger_construct_improvement_03 = yes
+		hm_trigger_construct_improvement_04 = yes
+		hm_trigger_construct_improvement_05 = yes
+		hm_trigger_construct_improvement_06 = yes
+		hm_trigger_construct_improvement_07 = yes
+		hm_trigger_construct_improvement_08 = yes
+	}
+}
+
+hm_trigger_construct_expansion_01 = {
+	NOT = { has_building_or_higher = expansion_01 }
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_01
+}
+hm_trigger_construct_expansion_02 = {
+	has_building = expansion_01
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_01
+	trigger_if = {
+	limit = { debug_only = no }
+	culture = { has_innovation = innovation_motte }
+	}
+}
+hm_trigger_construct_expansion_03 = {
+	has_building = expansion_02
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_02
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_battlements }
+	}
+}
+hm_trigger_construct_expansion_04 = {
+	has_building = expansion_03
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_02
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_battlements }
+	}
+}
+hm_trigger_construct_expansion_05 = {
+	has_building = expansion_04
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_03
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_hoardings }
+	}
+}
+hm_trigger_construct_expansion_06 = {
+	has_building = expansion_05
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_03
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_hoardings }
+	}
+}
+hm_trigger_construct_expansion_07 = {
+	has_building = expansion_06
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_04
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_machicolations }
+	}
+}
+hm_trigger_construct_expansion_08 = {
+	has_building = expansion_07
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_04
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_machicolations }
+	}
+}
+hm_trigger_construct_expansion = {
+	hm_trigger_construct_expansion_01 = yes
+}
+hm_trigger_upgrade_expansion = {
+	OR = {
+		hm_trigger_construct_expansion_02 = yes
+		hm_trigger_construct_expansion_03 = yes
+		hm_trigger_construct_expansion_04 = yes
+		hm_trigger_construct_expansion_05 = yes
+		hm_trigger_construct_expansion_06 = yes
+		hm_trigger_construct_expansion_07 = yes
+		hm_trigger_construct_expansion_08 = yes
+	}
+}
+
+hm_trigger_construct_expansion_camel_cavalry_01 = {
+	NOT = { has_building_or_higher = expansion_camel_cavalry_01 }
+	building_camel_farms_requirement_terrain = yes
+	has_building_or_higher = castle_01
+}
+hm_trigger_construct_expansion_camel_cavalry_02 = {
+	has_building = expansion_camel_cavalry_01
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_01
+	trigger_if = {
+	limit = { debug_only = no }
+	culture = { has_innovation = innovation_motte }
+	}
+}
+hm_trigger_construct_expansion_camel_cavalry_03 = {
+	has_building = expansion_camel_cavalry_02
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_02
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_battlements }
+	}
+}
+hm_trigger_construct_expansion_camel_cavalry_04 = {
+	has_building = expansion_camel_cavalry_03
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_02
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_battlements }
+	}
+}
+hm_trigger_construct_expansion_camel_cavalry_05 = {
+	has_building = expansion_camel_cavalry_04
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_03
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_hoardings }
+	}
+}
+hm_trigger_construct_expansion_camel_cavalry_06 = {
+	has_building = expansion_camel_cavalry_05
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_03
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_hoardings }
+	}
+}
+hm_trigger_construct_expansion_camel_cavalry_07 = {
+	has_building = expansion_camel_cavalry_06
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_04
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_machicolations }
+	}
+}
+hm_trigger_construct_expansion_camel_cavalry_08 = {
+	has_building = expansion_camel_cavalry_07
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_04
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_machicolations }
+	}
+}
+hm_trigger_construct_expansion_camel_cavalry_ = {
+	hm_trigger_construct_expansion_camel_cavalry_01 = yes
+}
+hm_trigger_upgrade_expansion_camel_cavalry_ = {
+	OR = {
+		hm_trigger_construct_expansion_camel_cavalry_02 = yes
+		hm_trigger_construct_expansion_camel_cavalry_03 = yes
+		hm_trigger_construct_expansion_camel_cavalry_04 = yes
+		hm_trigger_construct_expansion_camel_cavalry_05 = yes
+		hm_trigger_construct_expansion_camel_cavalry_06 = yes
+		hm_trigger_construct_expansion_camel_cavalry_07 = yes
+		hm_trigger_construct_expansion_camel_cavalry_08 = yes
+	}
+}
+
+hm_trigger_construct_expansion_archer_cavalry_01 = {
+	NOT = { has_building_or_higher = expansion_archer_cavalry_01 }
+	building_camel_farms_requirement_terrain = yes
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_01
+}
+hm_trigger_construct_expansion_archer_cavalry_02 = {
+	has_building = expansion_archer_cavalry_01
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_01
+	trigger_if = {
+	limit = { debug_only = no }
+	culture = { has_innovation = innovation_motte }
+	}
+}
+hm_trigger_construct_expansion_archer_cavalry_03 = {
+	has_building = expansion_archer_cavalry_02
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_02
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_battlements }
+	}
+}
+hm_trigger_construct_expansion_archer_cavalry_04 = {
+	has_building = expansion_archer_cavalry_03
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_02
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_battlements }
+	}
+}
+hm_trigger_construct_expansion_archer_cavalry_05 = {
+	has_building = expansion_archer_cavalry_04
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_03
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_hoardings }
+	}
+}
+hm_trigger_construct_expansion_archer_cavalry_06 = {
+	has_building = expansion_archer_cavalry_05
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_03
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_hoardings }
+	}
+}
+hm_trigger_construct_expansion_archer_cavalry_07 = {
+	has_building = expansion_archer_cavalry_06
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_04
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_machicolations }
+	}
+}
+hm_trigger_construct_expansion_archer_cavalry_08 = {
+	has_building = expansion_archer_cavalry_07
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_04
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_machicolations }
+	}
+}
+hm_trigger_construct_expansion_archer_cavalry_ = {
+	hm_trigger_construct_expansion_archer_cavalry_01 = yes
+}
+hm_trigger_upgrade_expansion_archer_cavalry_ = {
+	OR = {
+		hm_trigger_construct_expansion_archer_cavalry_02 = yes
+		hm_trigger_construct_expansion_archer_cavalry_03 = yes
+		hm_trigger_construct_expansion_archer_cavalry_04 = yes
+		hm_trigger_construct_expansion_archer_cavalry_05 = yes
+		hm_trigger_construct_expansion_archer_cavalry_06 = yes
+		hm_trigger_construct_expansion_archer_cavalry_07 = yes
+		hm_trigger_construct_expansion_archer_cavalry_08 = yes
+	}
+}
+
+hm_trigger_construct_interior_01 = {
+	NOT = { has_building_or_higher = interior_01 }
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_01
+}
+hm_trigger_construct_interior_02 = {
+	has_building = interior_01
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_01
+	trigger_if = {
+	limit = { debug_only = no }
+	culture = { has_innovation = innovation_motte }
+	}
+}
+hm_trigger_construct_interior_03 = {
+	has_building = interior_02
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_02
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_battlements }
+	}
+}
+hm_trigger_construct_interior_04 = {
+	has_building = interior_03
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_02
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_battlements }
+	}
+}
+hm_trigger_construct_interior_05 = {
+	has_building = interior_04
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_03
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_hoardings }
+	}
+}
+hm_trigger_construct_interior_06 = {
+	has_building = interior_05
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_03
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_hoardings }
+	}
+}
+hm_trigger_construct_interior_07 = {
+	has_building = interior_06
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_04
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_machicolations }
+	}
+}
+hm_trigger_construct_interior_08 = {
+	has_building = interior_07
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_04
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_machicolations }
+	}
+}
+hm_trigger_construct_interior_ = {
+	hm_trigger_construct_interior_01 = yes
+}
+hm_trigger_upgrade_interior_ = {
+	OR = {
+		hm_trigger_construct_interior_02 = yes
+		hm_trigger_construct_interior_03 = yes
+		hm_trigger_construct_interior_04 = yes
+		hm_trigger_construct_interior_05 = yes
+		hm_trigger_construct_interior_06 = yes
+		hm_trigger_construct_interior_07 = yes
+		hm_trigger_construct_interior_08 = yes
+	}
+}
+
+hm_trigger_construct_town_01 = {
+	NOT = { has_building_or_higher = town_01 }
+	building_town_requirement_terrain = yes
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_01
+	trigger_if = {
+	limit = { debug_only = no }
+	culture = { has_innovation = innovation_city_planning }
+	}
+}
+hm_trigger_construct_town_02 = {
+	has_building = town_01
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_01
+	building_town_requirement_terrain = yes
+	trigger_if = {
+	limit = { debug_only = no }
+	culture = { has_innovation = innovation_city_planning }
+	}
+}
+hm_trigger_construct_town_03 = {
+	has_building = town_02
+	building_town_requirement_terrain = yes
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_02
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_manorialism }
+	}
+}
+hm_trigger_construct_town_04 = {
+	has_building = town_03
+	building_town_requirement_terrain = yes
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_02
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_manorialism }
+	}
+}
+hm_trigger_construct_town_05 = {
+	has_building = town_04
+	building_town_requirement_terrain = yes
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_03
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_hoardings }
+	}
+}
+hm_trigger_construct_town_06 = {
+	has_building = town_05
+	building_town_requirement_terrain = yes
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_03
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_hoardings }
+	}
+}
+hm_trigger_construct_town_07 = {
+	has_building = town_06
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_04
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_cranes }
+	}
+}
+hm_trigger_construct_town_08 = {
+	has_building = town_07
+	building_town_requirement_terrain = yes
+	hm_building_requirement_tribal = no
+	has_building_or_higher = castle_04
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_cranes }
+	}
+}
+hm_trigger_construct_town_ = {
+	hm_trigger_construct_town_01 = yes
+}
+hm_trigger_upgrade_town_ = {
+	OR = {
+		hm_trigger_construct_town_02 = yes
+		hm_trigger_construct_town_03 = yes
+		hm_trigger_construct_town_04 = yes
+		hm_trigger_construct_town_05 = yes
+		hm_trigger_construct_town_06 = yes
+		hm_trigger_construct_town_07 = yes
+		hm_trigger_construct_town_08 = yes
+	}
+}

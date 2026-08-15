@@ -1,0 +1,2922 @@
+### caravanserai
+
+hm_trigger_construct_caravanserai_01 = {
+	NOT = { has_building_or_higher = caravanserai_01 }
+	NOR = {
+		has_building_or_higher = watermills_01
+		has_building_or_higher = windmills_01
+	}
+	hm_building_requirement_tribal = no
+	building_caravanserai_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	county.holder.culture = {
+		has_innovation = innovation_guilds
+	}
+	OR = {
+		is_county_capital = yes
+		AND = {
+			has_holding_type = city_holding
+			has_building_or_higher = city_01
+			county.holder.culture = { has_cultural_parameter = watermills_windmills_cities }
+			NOR = {
+				has_building_or_higher = watermills_01
+				has_building_or_higher = windmills_01
+			}
+		}
+	}
+}
+hm_trigger_construct_caravanserai_02 = {
+	has_building = caravanserai_01
+	hm_building_requirement_tribal = no
+	building_caravanserai_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_caravanserai_03 = {
+	has_building = caravanserai_02
+	hm_building_requirement_tribal = no
+	building_caravanserai_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_caravanserai_04 = {
+	has_building = caravanserai_03
+	hm_building_requirement_tribal = no
+	building_caravanserai_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_caravanserai_05 = {
+	has_building = caravanserai_04
+	hm_building_requirement_tribal = no
+	building_caravanserai_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_caravanserai_06 = {
+	has_building = caravanserai_05
+	hm_building_requirement_tribal = no
+	building_caravanserai_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_caravanserai_07 = {
+	has_building = caravanserai_06
+	hm_building_requirement_tribal = no
+	building_caravanserai_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_caravanserai_08 = {
+	has_building = caravanserai_07
+	hm_building_requirement_tribal = no
+	building_caravanserai_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_caravanserai = {
+	hm_trigger_construct_caravanserai_01 = yes
+}
+hm_trigger_upgrade_caravanserai = {
+	OR = {
+		hm_trigger_construct_caravanserai_02 = yes
+		hm_trigger_construct_caravanserai_03 = yes
+		hm_trigger_construct_caravanserai_04 = yes
+		hm_trigger_construct_caravanserai_05 = yes
+		hm_trigger_construct_caravanserai_06 = yes
+		hm_trigger_construct_caravanserai_07 = yes
+		hm_trigger_construct_caravanserai_08 = yes
+	}
+}
+
+### watermills
+
+hm_trigger_construct_watermills_01 = {
+	NOT = { has_building_or_higher = watermills_01 }
+	NOR = {
+		has_building_or_higher = caravanserai_01
+		has_building_or_higher = windmills_01
+	}
+	hm_building_requirement_tribal = no
+	OR = {
+		building_watermills_requirement_terrain = yes
+		AND = {
+			has_building_or_higher = logging_camps_04
+			culture = {
+				has_cultural_parameter = watermills_forestries_unlock
+			}
+		}
+	}
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+					culture = {
+						has_cultural_parameter = watermills_forestries_unlock
+					}
+				}
+			}
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+		}
+		trigger_else = {
+			OR = {
+				county.holder.culture = {
+					has_cultural_parameter = next_level_w_mills
+					has_innovation = innovation_manorialism
+				}
+				AND = {
+					has_building_or_higher = logging_camps_04
+					culture = {
+						has_cultural_parameter = watermills_forestries_unlock
+					}
+				}
+			}
+		}
+		OR = {
+			is_county_capital = yes
+			AND = {
+				has_holding_type = city_holding
+				has_building_or_higher = city_01
+				county.holder.culture = { has_cultural_parameter = watermills_windmills_cities }
+				NOR = {
+					has_building_or_higher = caravanserai_01
+					has_building_or_higher = windmills_01
+				}
+			}
+		}
+	}
+}
+hm_trigger_construct_watermills_02 = {
+	has_building = watermills_01
+	hm_building_requirement_tribal = no
+	OR = {
+		building_watermills_requirement_terrain = yes
+		AND = {
+			has_building_or_higher = logging_camps_04
+			culture = {
+				has_cultural_parameter = watermills_forestries_unlock
+			}
+		}
+	}
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+					culture = {
+						has_cultural_parameter = watermills_forestries_unlock
+					}
+				}
+			}
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+		}
+		trigger_else = {
+			OR = {
+				county.holder.culture = {
+					has_cultural_parameter = next_level_w_mills
+					has_innovation = innovation_manorialism
+				}
+				AND = {
+					has_building_or_higher = logging_camps_04
+					culture = {
+						has_cultural_parameter = watermills_forestries_unlock
+					}
+				}
+			}
+		}
+	}
+}
+hm_trigger_construct_watermills_03 = {
+	has_building = watermills_02
+	hm_building_requirement_tribal = no
+	OR = {
+		building_watermills_requirement_terrain = yes
+		AND = {
+			has_building_or_higher = logging_camps_04
+			culture = {
+				has_cultural_parameter = watermills_forestries_unlock
+			}
+		}
+	}
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+					culture = {
+						has_cultural_parameter = watermills_forestries_unlock
+					}
+				}
+			}
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+		}
+		trigger_else = {
+			OR = {
+				culture = {
+					has_innovation = innovation_windmills
+				}
+				county.holder.culture = {
+					has_cultural_parameter = next_level_w_mills
+					has_innovation = innovation_manorialism
+				}
+				AND = {
+					has_building_or_higher = logging_camps_04
+					culture = {
+						has_cultural_parameter = watermills_forestries_unlock
+					}
+				}
+			}
+			building_requirement_castle_city_church = { LEVEL = 01 }
+		}
+	}
+}
+hm_trigger_construct_watermills_04 = {
+	has_building = watermills_03
+	hm_building_requirement_tribal = no
+	OR = {
+		building_watermills_requirement_terrain = yes
+		AND = {
+			has_building_or_higher = logging_camps_04
+			culture = {
+				has_cultural_parameter = watermills_forestries_unlock
+			}
+		}
+	}
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+					culture = {
+						has_cultural_parameter = watermills_forestries_unlock
+					}
+				}
+			}
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+		}
+		trigger_else = {
+			OR = {
+				culture = {
+					has_innovation = innovation_windmills
+				}
+				county.holder.culture = {
+					has_cultural_parameter = next_level_w_mills
+					has_innovation = innovation_manorialism
+				}
+				AND = {
+					has_building_or_higher = logging_camps_04
+					culture = {
+						has_cultural_parameter = watermills_forestries_unlock
+					}
+				}
+			}
+			building_requirement_castle_city_church = { LEVEL = 01 }
+		}
+	}
+}
+hm_trigger_construct_watermills_05 = {
+	has_building = watermills_04
+	hm_building_requirement_tribal = no
+	building_watermills_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+				}
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+		}
+		trigger_else = {
+			county.holder.culture = {
+				has_cultural_parameter = next_level_w_mills
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+		}
+	}
+}
+hm_trigger_construct_watermills_06 = {
+	has_building = watermills_05
+	hm_building_requirement_tribal = no
+	building_watermills_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+				}
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+			county.holder.culture = {
+				has_innovation = innovation_cranes
+			}
+		}
+		trigger_else = {
+			county.holder.culture = {
+				has_cultural_parameter = next_level_w_mills
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+		}
+	}
+}
+hm_trigger_construct_watermills_07 = {
+	has_building = watermills_06
+	hm_building_requirement_tribal = no
+	building_watermills_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+				}
+			}
+			building_requirement_castle_city_church = { LEVEL = 04 }
+			county.holder.culture = {
+				has_innovation = innovation_cranes
+			}
+		}
+		trigger_else = {
+			county.holder.culture = {
+				has_cultural_parameter = next_level_w_mills
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+		}
+	}
+}
+hm_trigger_construct_watermills_08 = {
+	has_building = watermills_07
+	hm_building_requirement_tribal = no
+	building_watermills_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+				}
+			}
+			building_requirement_castle_city_church = { LEVEL = 04 }
+			county.holder.culture = {
+				has_innovation = innovation_cranes
+			}
+		}
+		trigger_else = {
+			county.holder.culture = {
+				has_cultural_parameter = next_level_w_mills
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+		}
+	}
+}
+
+hm_trigger_construct_watermills = {
+	hm_trigger_construct_watermills_01 = yes
+}
+hm_trigger_upgrade_watermills = {
+	OR = {
+		hm_trigger_construct_watermills_02 = yes
+		hm_trigger_construct_watermills_03 = yes
+		hm_trigger_construct_watermills_04 = yes
+		hm_trigger_construct_watermills_05 = yes
+		hm_trigger_construct_watermills_06 = yes
+		hm_trigger_construct_watermills_07 = yes
+		hm_trigger_construct_watermills_08 = yes
+	}
+}
+
+### Windmills
+
+hm_trigger_construct_windmills_01 = {
+	NOT = { has_building_or_higher = windmills_01 }
+	NOR = {
+		has_building_or_higher = caravanserai_01
+		has_building_or_higher = watermills_01
+	}
+	hm_building_requirement_tribal = no
+	OR = {
+		building_windmills_requirement_terrain = yes
+		AND = {
+			has_building_or_higher = hill_farms_04
+			culture = {
+				has_cultural_parameter = windmills_hill_farms_unlock
+			}
+		}
+	}
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+					culture = {
+						has_cultural_parameter = windmills_hill_farms_unlock
+					}
+				}
+			}
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+		}
+		trigger_else = {
+			OR = {
+				county.holder.culture = {
+					has_cultural_parameter = next_level_w_mills
+					has_innovation = innovation_manorialism
+				}
+				AND = {
+					has_building_or_higher = hill_farms_04
+					culture = {
+						has_cultural_parameter = windmills_hill_farms_unlock
+					}
+				}
+			}
+		}
+		OR = {
+			AND = {
+				has_holding_type = city_holding
+				has_building_or_higher = city_01
+				county.holder.culture = { has_cultural_parameter = watermills_windmills_cities }
+				NOR = {
+					has_building_or_higher = caravanserai_01
+					has_building_or_higher = watermills_01
+				}
+			}
+			AND = {
+				NOT = { has_holding_type = city_holding }
+				is_county_capital = yes
+			}
+		}
+	}
+}
+hm_trigger_construct_windmills_02 = {
+	has_building = windmills_01
+	hm_building_requirement_tribal = no
+	OR = {
+		building_windmills_requirement_terrain = yes
+		AND = {
+			has_building_or_higher = hill_farms_04
+			culture = {
+				has_cultural_parameter = windmills_hill_farms_unlock
+			}
+		}
+	}
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+					culture = {
+						has_cultural_parameter = windmills_hill_farms_unlock
+					}
+				}
+			}
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+		}
+		trigger_else = {
+			OR = {
+				county.holder.culture = {
+					has_cultural_parameter = next_level_w_mills
+					has_innovation = innovation_manorialism
+				}
+				AND = {
+					has_building_or_higher = hill_farms_04
+					culture = {
+						has_cultural_parameter = windmills_hill_farms_unlock
+					}
+				}
+			}
+		}
+	}
+}
+hm_trigger_construct_windmills_03 = {
+	has_building = windmills_02
+	hm_building_requirement_tribal = no
+	OR = {
+		building_windmills_requirement_terrain = yes
+		AND = {
+			has_building_or_higher = hill_farms_04
+			culture = {
+				has_cultural_parameter = windmills_hill_farms_unlock
+			}
+		}
+	}
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+					culture = {
+						has_cultural_parameter = windmills_hill_farms_unlock
+					}
+				}
+			}
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+		}
+		trigger_else = {
+			OR = {
+				culture = {
+					has_innovation = innovation_windmills
+				}
+				county.holder.culture = {
+					has_cultural_parameter = next_level_w_mills
+					has_innovation = innovation_manorialism
+				}
+				AND = {
+					has_building_or_higher = hill_farms_04
+					culture = {
+						has_cultural_parameter = windmills_hill_farms_unlock
+					}
+				}
+			}
+		}
+	}
+}
+hm_trigger_construct_windmills_04 = {
+	has_building = windmills_03
+	hm_building_requirement_tribal = no
+	OR = {
+		building_windmills_requirement_terrain = yes
+		AND = {
+			has_building_or_higher = hill_farms_04
+			culture = {
+				has_cultural_parameter = windmills_hill_farms_unlock
+			}
+		}
+	}
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+					culture = {
+						has_cultural_parameter = windmills_hill_farms_unlock
+					}
+				}
+			}
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+		}
+		trigger_else = {
+			OR = {
+				culture = {
+					has_innovation = innovation_windmills
+				}
+				county.holder.culture = {
+					has_cultural_parameter = next_level_w_mills
+					has_innovation = innovation_manorialism
+				}
+				AND = {
+					has_building_or_higher = hill_farms_04
+					culture = {
+						has_cultural_parameter = windmills_hill_farms_unlock
+					}
+				}
+			}
+		}
+	}
+}
+hm_trigger_construct_windmills_05 = {
+	has_building = windmills_04
+	hm_building_requirement_tribal = no
+	building_windmills_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_windmills
+		}
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+				}
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+		}
+		trigger_else = {
+			county.holder.culture = {
+				has_cultural_parameter = next_level_w_mills
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+		}
+	}
+}
+hm_trigger_construct_windmills_06 = {
+	has_building = windmills_05
+	hm_building_requirement_tribal = no
+	building_windmills_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+				}
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+			county.holder.culture = {
+				has_innovation = innovation_cranes
+			}
+		}
+		trigger_else = {
+			county.holder.culture = {
+				has_cultural_parameter = next_level_w_mills
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+		}
+	}
+}
+hm_trigger_construct_windmills_07 = {
+	has_building = windmills_06
+	hm_building_requirement_tribal = no
+	building_windmills_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+				}
+			}
+			building_requirement_castle_city_church = { LEVEL = 04 }
+			county.holder.culture = {
+				has_innovation = innovation_cranes
+			}
+		}
+		trigger_else = {
+			county.holder.culture = {
+				has_cultural_parameter = next_level_w_mills
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+		}
+	}
+}
+hm_trigger_construct_windmills_08 = {
+	has_building = windmills_07
+	hm_building_requirement_tribal = no
+	building_windmills_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					county.holder.culture = {
+						has_cultural_parameter = next_level_w_mills
+					}
+				}
+			}
+			building_requirement_castle_city_church = { LEVEL = 04 }
+			county.holder.culture = {
+				has_innovation = innovation_cranes
+			}
+		}
+		trigger_else = {
+			county.holder.culture = {
+				has_cultural_parameter = next_level_w_mills
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+			county.holder.culture = {
+				has_innovation = innovation_windmills
+			}
+		}
+	}
+}
+
+hm_trigger_construct_windmills = {
+	hm_trigger_construct_windmills_01 = yes
+}
+hm_trigger_upgrade_windmills = {
+	OR = {
+		hm_trigger_construct_windmills_02 = yes
+		hm_trigger_construct_windmills_03 = yes
+		hm_trigger_construct_windmills_04 = yes
+		hm_trigger_construct_windmills_05 = yes
+		hm_trigger_construct_windmills_06 = yes
+		hm_trigger_construct_windmills_07 = yes
+		hm_trigger_construct_windmills_08 = yes
+	}
+}
+
+### Trade Port
+
+hm_trigger_construct_common_tradeport_01 = {
+	NOT = { has_building_or_higher = common_tradeport_01 }
+	#hm_building_requirement_tribal = no
+	building_common_tradeport_requirement_terrain = yes
+	trigger_if = { # Sometimes tribals can into botes
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = trade_ports_enabled_for_tribals
+				}
+			}
+		}
+
+		building_requirement_castle_city_church = { LEVEL = 01 }
+	}
+	trigger_else = {
+		OR = {
+			has_building_or_higher = tribe_01
+			building_requirement_castle_city_church = { LEVEL = 01 }
+		}
+	}
+}
+hm_trigger_construct_common_tradeport_02 = {
+	has_building = common_tradeport_01
+	#hm_building_requirement_tribal = no
+	building_common_tradeport_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = trade_ports_enabled_for_tribals
+					}
+				}
+
+			}
+			building_requirement_castle_city_church = { LEVEL = 01 }
+		}
+		trigger_else = {
+			OR = {
+				has_building_or_higher = tribe_01
+				building_requirement_castle_city_church = { LEVEL = 01 }
+			}
+		}
+		
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			culture = {
+				has_innovation = innovation_crop_rotation
+				}
+		}
+		trigger_else = {
+				culture = {
+					has_cultural_parameter = next_level_trade_ports
+
+				}
+				
+		}
+	}
+	trigger_else = {
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = trade_ports_enabled_for_tribals
+					}
+				}
+
+			}
+			building_requirement_castle_city_church = { LEVEL = 01 }
+		}
+		trigger_else = {
+			OR = {
+				has_building_or_higher = tribe_01
+				building_requirement_castle_city_church = { LEVEL = 01 }
+			}
+		}
+		
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			# culture = {
+			# 	has_innovation = innovation_crop_rotation
+			# 	}
+		}
+		trigger_else = {
+				culture = {
+					has_cultural_parameter = next_level_trade_ports
+
+				}
+				
+		}
+	}
+}
+hm_trigger_construct_common_tradeport_03 = {
+	has_building = common_tradeport_02
+	hm_building_requirement_tribal = no
+	building_common_tradeport_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			culture = {
+				has_innovation = innovation_manorialism
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+		}
+		trigger_else = {
+			culture = {
+				has_innovation = innovation_crop_rotation
+			}
+			culture = {
+				has_cultural_parameter = next_level_trade_ports
+			}
+			building_requirement_castle_city_church = { LEVEL = 01 }
+		}
+	}
+	trigger_else = {
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+		}
+		trigger_else = {
+			culture = {
+				has_cultural_parameter = next_level_trade_ports
+			}
+			building_requirement_castle_city_church = { LEVEL = 01 }
+		}
+	}
+}
+
+
+hm_trigger_construct_common_tradeport_04 = {
+	has_building = common_tradeport_03
+	hm_building_requirement_tribal = no
+	building_common_tradeport_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			culture = {
+				has_innovation = innovation_manorialism
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+		}
+		trigger_else = {
+			culture = {
+				has_innovation = innovation_crop_rotation
+			}
+			culture = {
+				has_cultural_parameter = next_level_trade_ports
+			}
+			building_requirement_castle_city_church = { LEVEL = 01 }
+		}
+	}
+	trigger_else = {
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			# culture = {
+			# 	has_innovation = innovation_manorialism
+			# }
+			building_requirement_castle_city_church = { LEVEL = 02 }
+		}
+		trigger_else = {
+			# culture = {
+			# 	has_innovation = innovation_crop_rotation
+			# }
+			culture = {
+				has_cultural_parameter = next_level_trade_ports
+			}
+			building_requirement_castle_city_church = { LEVEL = 01 }
+		}
+	}
+}
+hm_trigger_construct_common_tradeport_05 = {
+	has_building = common_tradeport_04
+	hm_building_requirement_tribal = no
+	building_common_tradeport_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			culture = {
+				has_innovation = innovation_guilds
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+		}
+		trigger_else = {
+			culture = {
+				has_innovation = innovation_manorialism
+			}
+			culture = {
+				has_cultural_parameter = next_level_trade_ports
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+		}
+	}
+	trigger_else = {
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			# culture = {
+			# 	has_innovation = innovation_guilds
+			# }
+			building_requirement_castle_city_church = { LEVEL = 03 }
+		}
+		trigger_else = {
+			# culture = {
+			# 	has_innovation = innovation_manorialism
+			# }
+			culture = {
+				has_cultural_parameter = next_level_trade_ports
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+		}
+	}
+}
+hm_trigger_construct_common_tradeport_06 = {
+	has_building = common_tradeport_05
+	hm_building_requirement_tribal = no
+	building_common_tradeport_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			culture = {
+				has_innovation = innovation_guilds
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+		}
+		trigger_else = {
+			culture = {
+				has_innovation = innovation_manorialism
+			}
+			culture = {
+				has_cultural_parameter = next_level_trade_ports
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+		}
+	}
+	trigger_else = {
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			# culture = {
+			# 	has_innovation = innovation_guilds
+			# }
+			building_requirement_castle_city_church = { LEVEL = 03 }
+		}
+		trigger_else = {
+			# culture = {
+			# 	has_innovation = innovation_manorialism
+			# }
+			culture = {
+				has_cultural_parameter = next_level_trade_ports
+			}
+			building_requirement_castle_city_church = { LEVEL = 02 }
+		}
+	}
+}
+hm_trigger_construct_common_tradeport_07 = {
+	has_building = common_tradeport_06
+	hm_building_requirement_tribal = no
+	building_common_tradeport_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			culture = {
+				has_innovation = innovation_cranes
+			}
+			building_requirement_castle_city_church = { LEVEL = 04 }
+		}
+		trigger_else = {
+			culture = {
+				has_innovation = innovation_guilds
+			}
+			culture = {
+				has_cultural_parameter = next_level_trade_ports
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+		}
+	}
+	trigger_else = {
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			# culture = {
+			# 	has_innovation = innovation_cranes
+			# }
+			building_requirement_castle_city_church = { LEVEL = 04 }
+		}
+		trigger_else = {
+			# culture = {
+			# 	has_innovation = innovation_guilds
+			# }
+			culture = {
+				has_cultural_parameter = next_level_trade_ports
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+		}
+	}
+}
+hm_trigger_construct_common_tradeport_08 = {
+	has_building = common_tradeport_07
+	hm_building_requirement_tribal = no
+	building_common_tradeport_requirement_terrain = yes
+	trigger_if = {
+		limit = { debug_only = no }
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			culture = {
+				has_innovation = innovation_cranes
+			}
+			building_requirement_castle_city_church = { LEVEL = 04 }
+		}
+		trigger_else = {
+			culture = {
+				has_innovation = innovation_guilds
+			}
+			culture = {
+				has_cultural_parameter = next_level_trade_ports
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+		}
+	}
+	trigger_else = {
+		trigger_if = {
+			limit = {
+				NOT = {
+					culture = {
+						has_cultural_parameter = next_level_trade_ports
+					}
+				}
+			}
+			# culture = {
+			# 	has_innovation = innovation_cranes
+			# }
+			building_requirement_castle_city_church = { LEVEL = 04 }
+		}
+		trigger_else = {
+			# culture = {
+			# 	has_innovation = innovation_guilds
+			# }
+			culture = {
+				has_cultural_parameter = next_level_trade_ports
+			}
+			building_requirement_castle_city_church = { LEVEL = 03 }
+		}
+	}
+}
+hm_trigger_construct_common_tradeport = {
+	hm_trigger_construct_common_tradeport_01 = yes
+}
+hm_trigger_upgrade_common_tradeport = {
+	OR = {
+		hm_trigger_construct_common_tradeport_02 = yes
+		hm_trigger_construct_common_tradeport_03 = yes
+		hm_trigger_construct_common_tradeport_04 = yes
+		hm_trigger_construct_common_tradeport_05 = yes
+		hm_trigger_construct_common_tradeport_06 = yes
+		hm_trigger_construct_common_tradeport_07 = yes
+		hm_trigger_construct_common_tradeport_08 = yes
+	}
+}
+
+### Pastures
+
+hm_trigger_construct_pastures_01 = {
+	NOT = { has_building_or_higher = pastures_01 }
+	hm_building_requirement_tribal = no
+	building_pastures_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_pastures_02 = {
+	has_building = pastures_01
+	hm_building_requirement_tribal = no
+	building_pastures_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+}
+hm_trigger_construct_pastures_03 = {
+	has_building = pastures_02
+	hm_building_requirement_tribal = no
+	building_pastures_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_pastures_04 = {
+	has_building = pastures_03
+	hm_building_requirement_tribal = no
+	building_pastures_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_pastures_05 = {
+	has_building = pastures_04
+	hm_building_requirement_tribal = no
+	building_pastures_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_pastures_06 = {
+	has_building = pastures_05
+	hm_building_requirement_tribal = no
+	building_pastures_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_pastures_07 = {
+	has_building = pastures_06
+	hm_building_requirement_tribal = no
+	building_pastures_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_pastures_08 = {
+	has_building = pastures_07
+	hm_building_requirement_tribal = no
+	building_pastures_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_pastures = {
+	hm_trigger_construct_pastures_01 = yes
+}
+hm_trigger_upgrade_pastures = {
+	OR = {
+		hm_trigger_construct_pastures_02 = yes
+		hm_trigger_construct_pastures_03 = yes
+		hm_trigger_construct_pastures_04 = yes
+		hm_trigger_construct_pastures_05 = yes
+		hm_trigger_construct_pastures_06 = yes
+		hm_trigger_construct_pastures_07 = yes
+		hm_trigger_construct_pastures_08 = yes
+	}
+}
+
+### hunting_grounds
+
+hm_trigger_construct_hunting_grounds_01 = {
+	NOT = { has_building_or_higher = hunting_grounds_01 }
+	hm_building_requirement_tribal = no
+	building_hunting_grounds_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_hunting_grounds_02 = {
+	has_building = hunting_grounds_01
+	hm_building_requirement_tribal = no
+	building_hunting_grounds_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+}
+hm_trigger_construct_hunting_grounds_03 = {
+	has_building = hunting_grounds_02
+	hm_building_requirement_tribal = no
+	building_hunting_grounds_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_hunting_grounds_04 = {
+	has_building = hunting_grounds_03
+	hm_building_requirement_tribal = no
+	building_hunting_grounds_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_hunting_grounds_05 = {
+	has_building = hunting_grounds_04
+	hm_building_requirement_tribal = no
+	building_hunting_grounds_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_hunting_grounds_06 = {
+	has_building = hunting_grounds_05
+	hm_building_requirement_tribal = no
+	building_hunting_grounds_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_hunting_grounds_07 = {
+	has_building = hunting_grounds_06
+	hm_building_requirement_tribal = no
+	building_hunting_grounds_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_hunting_grounds_08 = {
+	has_building = hunting_grounds_07
+	hm_building_requirement_tribal = no
+	building_hunting_grounds_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_hunting_grounds = {
+	hm_trigger_construct_hunting_grounds_01 = yes
+}
+hm_trigger_upgrade_hunting_grounds = {
+	OR = {
+		hm_trigger_construct_hunting_grounds_02 = yes
+		hm_trigger_construct_hunting_grounds_03 = yes
+		hm_trigger_construct_hunting_grounds_04 = yes
+		hm_trigger_construct_hunting_grounds_05 = yes
+		hm_trigger_construct_hunting_grounds_06 = yes
+		hm_trigger_construct_hunting_grounds_07 = yes
+		hm_trigger_construct_hunting_grounds_08 = yes
+	}
+}
+
+### orchards
+
+hm_trigger_construct_orchards_01 = {
+	NOT = { has_building_or_higher = orchards_01 }
+	hm_building_requirement_tribal = no
+	building_orchards_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_orchards_02 = {
+	has_building = orchards_01
+	hm_building_requirement_tribal = no
+	building_orchards_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+}
+hm_trigger_construct_orchards_03 = {
+	has_building = orchards_02
+	hm_building_requirement_tribal = no
+	building_orchards_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_orchards_04 = {
+	has_building = orchards_03
+	hm_building_requirement_tribal = no
+	building_orchards_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_orchards_05 = {
+	has_building = orchards_04
+	hm_building_requirement_tribal = no
+	building_orchards_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_orchards_06 = {
+	has_building = orchards_05
+	hm_building_requirement_tribal = no
+	building_orchards_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_orchards_07 = {
+	has_building = orchards_06
+	hm_building_requirement_tribal = no
+	building_orchards_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_orchards_08 = {
+	has_building = orchards_07
+	hm_building_requirement_tribal = no
+	building_orchards_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_orchards = {
+	hm_trigger_construct_orchards_01 = yes
+}
+hm_trigger_upgrade_orchards = {
+	OR = {
+		hm_trigger_construct_orchards_02 = yes
+		hm_trigger_construct_orchards_03 = yes
+		hm_trigger_construct_orchards_04 = yes
+		hm_trigger_construct_orchards_05 = yes
+		hm_trigger_construct_orchards_06 = yes
+		hm_trigger_construct_orchards_07 = yes
+		hm_trigger_construct_orchards_08 = yes
+	}
+}
+
+### farm estates
+
+hm_trigger_construct_farm_estates_01 = {
+	NOT = { has_building_or_higher = farm_estates_01 }
+	hm_building_requirement_tribal = no
+	OR = {
+		AND = {
+			building_farm_estates_requirement_terrain = yes
+			building_requirement_castle_city_church = { LEVEL = 01 }
+		}		
+		AND = {
+			has_building_or_higher = pastures_04
+			culture = {
+				has_cultural_parameter = farm_estates_pastures_unlock
+			}
+		}
+		AND = {
+			building_paddy_fields_requirement_terrain = yes
+			county.holder.culture = { has_innovation = innovation_champa_rice }
+			building_requirement_castle_city_church = { LEVEL = 01 }
+		}
+	}	
+}
+hm_trigger_construct_farm_estates_02 = {
+	has_building = farm_estates_01
+	hm_building_requirement_tribal = no
+	OR = {
+		AND = {
+			building_requirement_castle_city_church = { LEVEL = 01 }
+			county.holder.culture = {
+				has_innovation = innovation_crop_rotation
+			}
+			building_farm_estates_requirement_terrain = yes
+		}			
+		AND = {
+			has_building_or_higher = pastures_04
+			culture = {
+				has_cultural_parameter = farm_estates_pastures_unlock
+			}
+		}
+		AND = {
+			building_paddy_fields_requirement_terrain = yes
+			county.holder.culture = { has_innovation = innovation_champa_rice }
+			building_requirement_castle_city_church = { LEVEL = 01 }
+		}
+	}
+}
+hm_trigger_construct_farm_estates_03 = {
+	has_building = farm_estates_02
+	hm_building_requirement_tribal = no
+	trigger_if = {
+		limit = { debug_only = no }
+		OR = {
+			AND = {
+				building_requirement_castle_city_church = { LEVEL = 02 }
+				county.holder.culture = {
+					has_innovation = innovation_manorialism
+				}
+				building_farm_estates_requirement_terrain = yes
+			}
+			
+			AND = {
+				has_building_or_higher = pastures_04
+				culture = {
+					has_cultural_parameter = farm_estates_pastures_unlock
+				}
+			}
+			AND = {
+				building_paddy_fields_requirement_terrain = yes
+				county.holder.culture = { 
+					has_innovation = innovation_champa_rice 
+					has_innovation = innovation_manorialism
+				}
+				building_requirement_castle_city_church = { LEVEL = 02 }
+			}
+		}
+	}
+}
+hm_trigger_construct_farm_estates_04 = {
+	has_building = farm_estates_03
+	hm_building_requirement_tribal = no
+	trigger_if = {
+		limit = { debug_only = no }
+		OR = {
+			AND = {
+				building_requirement_castle_city_church = { LEVEL = 02 }
+				county.holder.culture = {
+					has_innovation = innovation_manorialism
+				}
+				building_farm_estates_requirement_terrain = yes
+			}
+			
+			AND = {
+				has_building_or_higher = pastures_04
+				culture = {
+					has_cultural_parameter = farm_estates_pastures_unlock
+				}
+			}
+			AND = {
+				building_paddy_fields_requirement_terrain = yes
+				county.holder.culture = { 
+					has_innovation = innovation_champa_rice 
+					has_innovation = innovation_manorialism
+				}
+				building_requirement_castle_city_church = { LEVEL = 02 }
+			}
+		}
+	}
+}
+hm_trigger_construct_farm_estates_05 = {
+	has_building = farm_estates_04
+	hm_building_requirement_tribal = no
+	trigger_if = {
+		limit = { debug_only = no }
+		OR = {
+			building_farm_estates_requirement_terrain = yes
+			AND = {
+				building_paddy_fields_requirement_terrain = yes
+				county.holder.culture = { 
+					has_innovation = innovation_champa_rice 
+				}
+			}
+		}
+		building_requirement_castle_city_church = { LEVEL = 03 }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_farm_estates_06 = {
+	has_building = farm_estates_05
+	hm_building_requirement_tribal = no
+	trigger_if = {
+		limit = { debug_only = no }
+		OR = {
+			building_farm_estates_requirement_terrain = yes
+			AND = {
+				building_paddy_fields_requirement_terrain = yes
+				county.holder.culture = { 
+					has_innovation = innovation_champa_rice 
+				}
+			}
+		}
+		building_requirement_castle_city_church = { LEVEL = 03 }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_farm_estates_07 = {
+	has_building = farm_estates_06
+	hm_building_requirement_tribal = no
+	trigger_if = {
+		limit = { debug_only = no }
+		OR = {
+			building_farm_estates_requirement_terrain = yes
+			AND = {
+				building_paddy_fields_requirement_terrain = yes
+				county.holder.culture = { 
+					has_innovation = innovation_champa_rice 
+				}
+			}
+		}
+		building_requirement_castle_city_church = { LEVEL = 04 }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_farm_estates_08 = {
+	has_building = farm_estates_07
+	hm_building_requirement_tribal = no
+	trigger_if = {
+		limit = { debug_only = no }
+		OR = {
+			building_farm_estates_requirement_terrain = yes
+			AND = {
+				building_paddy_fields_requirement_terrain = yes
+				county.holder.culture = { 
+					has_innovation = innovation_champa_rice 
+				}
+			}
+		}
+		building_requirement_castle_city_church = { LEVEL = 04 }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_farm_estates = {
+	hm_trigger_construct_farm_estates_01 = yes
+}
+hm_trigger_upgrade_farm_estates = {
+	OR = {
+		hm_trigger_construct_farm_estates_02 = yes
+		hm_trigger_construct_farm_estates_03 = yes
+		hm_trigger_construct_farm_estates_04 = yes
+		hm_trigger_construct_farm_estates_05 = yes
+		hm_trigger_construct_farm_estates_06 = yes
+		hm_trigger_construct_farm_estates_07 = yes
+		hm_trigger_construct_farm_estates_08 = yes
+	}
+}
+
+### cereal_fields
+
+hm_trigger_construct_cereal_fields_01 = {
+	NOT = { has_building_or_higher = cereal_fields_01 }
+	hm_building_requirement_tribal = no
+	building_cereal_fields_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_cereal_fields_02 = {
+	has_building = cereal_fields_01
+	hm_building_requirement_tribal = no
+	building_cereal_fields_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+}
+hm_trigger_construct_cereal_fields_03 = {
+	has_building = cereal_fields_02
+	hm_building_requirement_tribal = no
+	building_cereal_fields_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_cereal_fields_04 = {
+	has_building = cereal_fields_03
+	hm_building_requirement_tribal = no
+	building_cereal_fields_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_cereal_fields_05 = {
+	has_building = cereal_fields_04
+	hm_building_requirement_tribal = no
+	building_cereal_fields_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_cereal_fields_06 = {
+	has_building = cereal_fields_05
+	hm_building_requirement_tribal = no
+	building_cereal_fields_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_cereal_fields_07 = {
+	has_building = cereal_fields_06
+	hm_building_requirement_tribal = no
+	building_cereal_fields_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_cereal_fields_08 = {
+	has_building = cereal_fields_07
+	hm_building_requirement_tribal = no
+	building_cereal_fields_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_cereal_fields = {
+	hm_trigger_construct_cereal_fields_01 = yes
+}
+hm_trigger_upgrade_cereal_fields = {
+	OR = {
+		hm_trigger_construct_cereal_fields_02 = yes
+		hm_trigger_construct_cereal_fields_03 = yes
+		hm_trigger_construct_cereal_fields_04 = yes
+		hm_trigger_construct_cereal_fields_05 = yes
+		hm_trigger_construct_cereal_fields_06 = yes
+		hm_trigger_construct_cereal_fields_07 = yes
+		hm_trigger_construct_cereal_fields_08 = yes
+	}
+}
+
+### logging_camps
+
+hm_trigger_construct_logging_camps_01 = {
+	NOT = { has_building_or_higher = logging_camps_01 }
+	hm_building_requirement_tribal = no
+	building_logging_camps_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_logging_camps_02 = {
+	has_building = logging_camps_01
+	hm_building_requirement_tribal = no
+	building_logging_camps_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+}
+hm_trigger_construct_logging_camps_03 = {
+	has_building = logging_camps_02
+	hm_building_requirement_tribal = no
+	building_logging_camps_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_logging_camps_04 = {
+	has_building = logging_camps_03
+	hm_building_requirement_tribal = no
+	building_logging_camps_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_logging_camps_05 = {
+	has_building = logging_camps_04
+	hm_building_requirement_tribal = no
+	building_logging_camps_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_logging_camps_06 = {
+	has_building = logging_camps_05
+	hm_building_requirement_tribal = no
+	building_logging_camps_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_logging_camps_07 = {
+	has_building = logging_camps_06
+	hm_building_requirement_tribal = no
+	building_logging_camps_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_logging_camps_08 = {
+	has_building = logging_camps_07
+	hm_building_requirement_tribal = no
+	building_logging_camps_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_logging_camps = {
+	hm_trigger_construct_logging_camps_01 = yes
+}
+hm_trigger_upgrade_logging_camps = {
+	OR = {
+		hm_trigger_construct_logging_camps_02 = yes
+		hm_trigger_construct_logging_camps_03 = yes
+		hm_trigger_construct_logging_camps_04 = yes
+		hm_trigger_construct_logging_camps_05 = yes
+		hm_trigger_construct_logging_camps_06 = yes
+		hm_trigger_construct_logging_camps_07 = yes
+		hm_trigger_construct_logging_camps_08 = yes
+	}
+}
+
+### peat_quarries
+
+hm_trigger_construct_peat_quarries_01 = {
+	NOT = { has_building_or_higher = peat_quarries_01 }
+	hm_building_requirement_tribal = no
+	building_peat_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_peat_quarries_02 = {
+	has_building = peat_quarries_01
+	hm_building_requirement_tribal = no
+	building_peat_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+}
+hm_trigger_construct_peat_quarries_03 = {
+	has_building = peat_quarries_02
+	hm_building_requirement_tribal = no
+	building_peat_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_peat_quarries_04 = {
+	has_building = peat_quarries_03
+	hm_building_requirement_tribal = no
+	building_peat_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_peat_quarries_05 = {
+	has_building = peat_quarries_04
+	hm_building_requirement_tribal = no
+	building_peat_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_peat_quarries_06 = {
+	has_building = peat_quarries_05
+	hm_building_requirement_tribal = no
+	building_peat_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_peat_quarries_07 = {
+	has_building = peat_quarries_06
+	hm_building_requirement_tribal = no
+	building_peat_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_peat_quarries_08 = {
+	has_building = peat_quarries_07
+	hm_building_requirement_tribal = no
+	building_peat_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_peat_quarries = {
+	hm_trigger_construct_peat_quarries_01 = yes
+}
+hm_trigger_upgrade_peat_quarries = {
+	OR = {
+		hm_trigger_construct_peat_quarries_02 = yes
+		hm_trigger_construct_peat_quarries_03 = yes
+		hm_trigger_construct_peat_quarries_04 = yes
+		hm_trigger_construct_peat_quarries_05 = yes
+		hm_trigger_construct_peat_quarries_06 = yes
+		hm_trigger_construct_peat_quarries_07 = yes
+		hm_trigger_construct_peat_quarries_08 = yes
+	}
+}
+
+### hill_farms
+
+hm_trigger_construct_hill_farms_01 = {
+	NOT = { has_building_or_higher = hill_farms_01 }
+	hm_building_requirement_tribal = no
+	building_hill_farms_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_hill_farms_02 = {
+	has_building = hill_farms_01
+	hm_building_requirement_tribal = no
+	building_hill_farms_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+}
+hm_trigger_construct_hill_farms_03 = {
+	has_building = hill_farms_02
+	hm_building_requirement_tribal = no
+	building_hill_farms_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_hill_farms_04 = {
+	has_building = hill_farms_03
+	hm_building_requirement_tribal = no
+	building_hill_farms_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_hill_farms_05 = {
+	has_building = hill_farms_04
+	hm_building_requirement_tribal = no
+	building_hill_farms_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_hill_farms_06 = {
+	has_building = hill_farms_05
+	hm_building_requirement_tribal = no
+	building_hill_farms_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_hill_farms_07 = {
+	has_building = hill_farms_06
+	hm_building_requirement_tribal = no
+	building_hill_farms_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_hill_farms_08 = {
+	has_building = hill_farms_07
+	hm_building_requirement_tribal = no
+	building_hill_farms_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_hill_farms = {
+	hm_trigger_construct_hill_farms_01 = yes
+}
+hm_trigger_upgrade_hill_farms = {
+	OR = {
+		hm_trigger_construct_hill_farms_02 = yes
+		hm_trigger_construct_hill_farms_03 = yes
+		hm_trigger_construct_hill_farms_04 = yes
+		hm_trigger_construct_hill_farms_05 = yes
+		hm_trigger_construct_hill_farms_06 = yes
+		hm_trigger_construct_hill_farms_07 = yes
+		hm_trigger_construct_hill_farms_08 = yes
+	}
+}
+
+### elephant_pens
+
+hm_trigger_construct_elephant_pens_01 = {
+	NOT = { has_building_or_higher = elephant_pens_01 }
+	hm_building_requirement_tribal = no
+	building_elephant_pens_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_elephant_pens_02 = {
+	has_building = elephant_pens_01
+	hm_building_requirement_tribal = no
+	building_elephant_pens_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+}
+hm_trigger_construct_elephant_pens_03 = {
+	has_building = elephant_pens_02
+	hm_building_requirement_tribal = no
+	building_elephant_pens_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_elephant_pens_04 = {
+	has_building = elephant_pens_03
+	hm_building_requirement_tribal = no
+	building_elephant_pens_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_elephant_pens_05 = {
+	has_building = elephant_pens_04
+	hm_building_requirement_tribal = no
+	building_elephant_pens_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_elephant_pens_06 = {
+	has_building = elephant_pens_05
+	hm_building_requirement_tribal = no
+	building_elephant_pens_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_elephant_pens_07 = {
+	has_building = elephant_pens_06
+	hm_building_requirement_tribal = no
+	building_elephant_pens_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_elephant_pens_08 = {
+	has_building = elephant_pens_07
+	hm_building_requirement_tribal = no
+	building_elephant_pens_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_elephant_pens = {
+	hm_trigger_construct_elephant_pens_01 = yes
+}
+hm_trigger_upgrade_elephant_pens = {
+	OR = {
+		hm_trigger_construct_elephant_pens_02 = yes
+		hm_trigger_construct_elephant_pens_03 = yes
+		hm_trigger_construct_elephant_pens_04 = yes
+		hm_trigger_construct_elephant_pens_05 = yes
+		hm_trigger_construct_elephant_pens_06 = yes
+		hm_trigger_construct_elephant_pens_07 = yes
+		hm_trigger_construct_elephant_pens_08 = yes
+	}
+}
+
+### plantations
+
+hm_trigger_construct_plantations_01 = {
+	NOT = { has_building_or_higher = plantations_01 }
+	hm_building_requirement_tribal = no
+	building_plantations_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_plantations_02 = {
+	has_building = plantations_01
+	hm_building_requirement_tribal = no
+	building_plantations_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+}
+hm_trigger_construct_plantations_03 = {
+	has_building = plantations_02
+	hm_building_requirement_tribal = no
+	building_plantations_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_plantations_04 = {
+	has_building = plantations_03
+	hm_building_requirement_tribal = no
+	building_plantations_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_plantations_05 = {
+	has_building = plantations_04
+	hm_building_requirement_tribal = no
+	building_plantations_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_plantations_06 = {
+	has_building = plantations_05
+	hm_building_requirement_tribal = no
+	building_plantations_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_plantations_07 = {
+	has_building = plantations_06
+	hm_building_requirement_tribal = no
+	building_plantations_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_plantations_08 = {
+	has_building = plantations_07
+	hm_building_requirement_tribal = no
+	building_plantations_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_plantations = {
+	hm_trigger_construct_plantations_01 = yes
+}
+hm_trigger_upgrade_plantations = {
+	OR = {
+		hm_trigger_construct_plantations_02 = yes
+		hm_trigger_construct_plantations_03 = yes
+		hm_trigger_construct_plantations_04 = yes
+		hm_trigger_construct_plantations_05 = yes
+		hm_trigger_construct_plantations_06 = yes
+		hm_trigger_construct_plantations_07 = yes
+		hm_trigger_construct_plantations_08 = yes
+	}
+}
+
+### quarries
+
+hm_trigger_construct_quarries_01 = {
+	NOT = { has_building_or_higher = quarries_01 }
+	hm_building_requirement_tribal = no
+	building_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_quarries_02 = {
+	has_building = quarries_01
+	hm_building_requirement_tribal = no
+	building_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+}
+hm_trigger_construct_quarries_03 = {
+	has_building = quarries_02
+	hm_building_requirement_tribal = no
+	building_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_quarries_04 = {
+	has_building = quarries_03
+	hm_building_requirement_tribal = no
+	building_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_quarries_05 = {
+	has_building = quarries_04
+	hm_building_requirement_tribal = no
+	building_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_quarries_06 = {
+	has_building = quarries_05
+	hm_building_requirement_tribal = no
+	building_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_guilds
+		}
+	}
+}
+hm_trigger_construct_quarries_07 = {
+	has_building = quarries_06
+	hm_building_requirement_tribal = no
+	building_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_quarries_08 = {
+	has_building = quarries_07
+	hm_building_requirement_tribal = no
+	building_quarries_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_quarries = {
+	hm_trigger_construct_quarries_01 = yes
+}
+hm_trigger_upgrade_quarries = {
+	OR = {
+		hm_trigger_construct_quarries_02 = yes
+		hm_trigger_construct_quarries_03 = yes
+		hm_trigger_construct_quarries_04 = yes
+		hm_trigger_construct_quarries_05 = yes
+		hm_trigger_construct_quarries_06 = yes
+		hm_trigger_construct_quarries_07 = yes
+		hm_trigger_construct_quarries_08 = yes
+	}
+}
+
+# Qanats
+
+hm_trigger_construct_qanats_01 = {
+	NOT = { has_building_or_higher = qanats_01 }
+	hm_building_requirement_tribal = no
+	building_qanat_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	culture = {
+		has_cultural_parameter = unlocks_qanat_building
+	}
+}
+hm_trigger_construct_qanats_02 = {
+	has_building = qanats_01
+	hm_building_requirement_tribal = no
+	building_qanat_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_qanats_03 = {
+	has_building = qanats_02
+	hm_building_requirement_tribal = no
+	building_qanat_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+}
+hm_trigger_construct_qanats_04 = {
+	has_building = qanats_03
+	hm_building_requirement_tribal = no
+	building_qanat_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+}
+hm_trigger_construct_qanats_05 = {
+	has_building = qanats_04
+	hm_building_requirement_tribal = no
+	building_qanat_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+}
+hm_trigger_construct_qanats_06 = {
+	has_building = qanats_05
+	hm_building_requirement_tribal = no
+	building_qanat_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+}
+hm_trigger_construct_qanats_07 = {
+	has_building = qanats_06
+	hm_building_requirement_tribal = no
+	building_qanat_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+}
+hm_trigger_construct_qanats_08 = {
+	has_building = qanats_07
+	hm_building_requirement_tribal = no
+	building_qanat_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+}
+hm_trigger_construct_qanats = {
+	hm_trigger_construct_qanats_01 = yes
+}
+hm_trigger_upgrade_qanats = {
+	OR = {
+		hm_trigger_construct_qanats_02 = yes
+		hm_trigger_construct_qanats_03 = yes
+		hm_trigger_construct_qanats_04 = yes
+		hm_trigger_construct_qanats_05 = yes
+		hm_trigger_construct_qanats_06 = yes
+		hm_trigger_construct_qanats_07 = yes
+		hm_trigger_construct_qanats_08 = yes
+	}
+}
+
+# Murex Farm
+hm_trigger_construct_murex_farm_01 = {
+	NOT = { has_building_or_higher = murex_farm_01 }
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_murex_farm_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_murex_farm_02 = {
+	has_building = murex_farm_01
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_murex_farm_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_murex_farm_03 = {
+	has_building = murex_farm_02
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_murex_farm_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+}
+hm_trigger_construct_murex_farm_04 = {
+	has_building = murex_farm_03
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_murex_farm_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+}
+hm_trigger_construct_murex_farm_05 = {
+	has_building = murex_farm_04
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_murex_farm_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+}
+hm_trigger_construct_murex_farm_06 = {
+	has_building = murex_farm_05
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_murex_farm_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+}
+hm_trigger_construct_murex_farm_07 = {
+	has_building = murex_farm_06
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_murex_farm_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+}
+hm_trigger_construct_murex_farm_08 = {
+	has_building = murex_farm_07
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_murex_farm_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+}
+hm_trigger_construct_murex_farm = {
+	hm_trigger_construct_murex_farm_01 = yes
+}
+hm_trigger_upgrade_murex_farm = {
+	OR = {
+		hm_trigger_construct_murex_farm_02 = yes
+		hm_trigger_construct_murex_farm_03 = yes
+		hm_trigger_construct_murex_farm_04 = yes
+		hm_trigger_construct_murex_farm_05 = yes
+		hm_trigger_construct_murex_farm_06 = yes
+		hm_trigger_construct_murex_farm_07 = yes
+		hm_trigger_construct_murex_farm_08 = yes
+	}
+}
+### paddy_fields
+hm_trigger_construct_paddy_fields_01 = {
+	NOT = { has_building_or_higher = paddy_fields_01 }
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_paddy_fields_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_paddy_fields_02 = {
+	has_building = paddy_fields_01
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_paddy_fields_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_paddy_fields_03 = {
+	has_building = paddy_fields_02
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_paddy_fields_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+}
+hm_trigger_construct_paddy_fields_04 = {
+	has_building = paddy_fields_03
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_paddy_fields_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+}
+hm_trigger_construct_paddy_fields_05 = {
+	has_building = paddy_fields_04
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_paddy_fields_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+}
+hm_trigger_construct_paddy_fields_06 = {
+	has_building = paddy_fields_05
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_paddy_fields_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+}
+hm_trigger_construct_paddy_fields_07 = {
+	has_building = paddy_fields_06
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_paddy_fields_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+}
+hm_trigger_construct_paddy_fields_08 = {
+	has_building = paddy_fields_07
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_paddy_fields_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+}
+hm_trigger_construct_paddy_fields = {
+	hm_trigger_construct_paddy_fields_01 = yes
+}
+hm_trigger_upgrade_paddy_fields = {
+	OR = {
+		hm_trigger_construct_paddy_fields_02 = yes
+		hm_trigger_construct_paddy_fields_03 = yes
+		hm_trigger_construct_paddy_fields_04 = yes
+		hm_trigger_construct_paddy_fields_05 = yes
+		hm_trigger_construct_paddy_fields_06 = yes
+		hm_trigger_construct_paddy_fields_07 = yes
+		hm_trigger_construct_paddy_fields_08 = yes
+	}
+}
+
+# Waterworks
+hm_trigger_construct_waterworks_01 = {
+	NOT = { has_building_or_higher = waterworks_01 }
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	is_county_capital = yes
+	NOR = {
+		terrain = mountains
+		terrain = desert_mountains
+	}
+	county.holder.culture = { has_cultural_parameter = unlocks_waterworks_buildings }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_waterworks_02 = {
+	has_building = waterworks_01
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	is_county_capital = yes
+	NOR = {
+		terrain = mountains
+		terrain = desert_mountains
+	}
+	county.holder.culture = { has_cultural_parameter = unlocks_waterworks_buildings }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_waterworks_03 = {
+	has_building = waterworks_02
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	is_county_capital = yes
+	NOR = {
+		terrain = mountains
+		terrain = desert_mountains
+	}
+	county.holder.culture = { has_cultural_parameter = unlocks_waterworks_buildings }
+	building_requirement_castle_city_church = { LEVEL = 02 }
+}
+hm_trigger_construct_waterworks_04 = {
+	has_building = waterworks_03
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	is_county_capital = yes
+	NOR = {
+		terrain = mountains
+		terrain = desert_mountains
+	}
+	county.holder.culture = { has_cultural_parameter = unlocks_waterworks_buildings }
+	building_requirement_castle_city_church = { LEVEL = 02 }
+}
+hm_trigger_construct_waterworks_05 = {
+	has_building = waterworks_04
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	is_county_capital = yes
+	NOR = {
+		terrain = mountains
+		terrain = desert_mountains
+	}
+	county.holder.culture = { has_cultural_parameter = unlocks_waterworks_buildings }
+	building_requirement_castle_city_church = { LEVEL = 03 }
+}
+hm_trigger_construct_waterworks_06 = {
+	has_building = waterworks_05
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	is_county_capital = yes
+	NOR = {
+		terrain = mountains
+		terrain = desert_mountains
+	}
+	county.holder.culture = { has_cultural_parameter = unlocks_waterworks_buildings }
+	building_requirement_castle_city_church = { LEVEL = 03 }
+}
+hm_trigger_construct_waterworks_07 = {
+	has_building = waterworks_06
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	is_county_capital = yes
+	NOR = {
+		terrain = mountains
+		terrain = desert_mountains
+	}
+	county.holder.culture = { has_cultural_parameter = unlocks_waterworks_buildings }
+	building_requirement_castle_city_church = { LEVEL = 04 }
+}
+hm_trigger_construct_waterworks_08 = {
+	has_building = waterworks_07
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	is_county_capital = yes
+	NOR = {
+		terrain = mountains
+		terrain = desert_mountains
+	}
+	county.holder.culture = { has_cultural_parameter = unlocks_waterworks_buildings }
+	building_requirement_castle_city_church = { LEVEL = 04 }
+}
+hm_trigger_construct_waterworks = {
+	hm_trigger_construct_waterworks_01 = yes
+}
+hm_trigger_upgrade_waterworks = {
+	OR = {
+		hm_trigger_construct_waterworks_02 = yes
+		hm_trigger_construct_waterworks_03 = yes
+		hm_trigger_construct_waterworks_04 = yes
+		hm_trigger_construct_waterworks_05 = yes
+		hm_trigger_construct_waterworks_06 = yes
+		hm_trigger_construct_waterworks_07 = yes
+		hm_trigger_construct_waterworks_08 = yes
+	}
+}
+
+hm_trigger_construct_spice_plantation_01 = {
+	NOT = { has_building_or_higher = spice_plantation_01 }
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_spice_plantation_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_spice_plantation_02 = {
+	has_building = spice_plantation_01
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_spice_plantation_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_spice_plantation_03 = {
+	has_building = spice_plantation_02
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_spice_plantation_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+}
+hm_trigger_construct_spice_plantation_04 = {
+	has_building = spice_plantation_03
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_spice_plantation_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+}
+hm_trigger_construct_spice_plantation_05 = {
+	has_building = spice_plantation_04
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_spice_plantation_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+}
+hm_trigger_construct_spice_plantation_06 = {
+	has_building = spice_plantation_05
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_spice_plantation_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+}
+hm_trigger_construct_spice_plantation_07 = {
+	has_building = spice_plantation_06
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_spice_plantation_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+}
+hm_trigger_construct_spice_plantation_08 = {
+	has_building = spice_plantation_07
+	hm_building_requirement_tribal = no
+	county = { NOT = { has_county_modifier = backwater_county_modifier } }
+	building_spice_plantation_requirement_terrain  = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+}
+hm_trigger_construct_spice_plantation = {
+	hm_trigger_construct_spice_plantation_01 = yes
+}
+hm_trigger_upgrade_spice_plantation = {
+	OR = {
+		hm_trigger_construct_spice_plantation_02 = yes
+		hm_trigger_construct_spice_plantation_03 = yes
+		hm_trigger_construct_spice_plantation_04 = yes
+		hm_trigger_construct_spice_plantation_05 = yes
+		hm_trigger_construct_spice_plantation_06 = yes
+		hm_trigger_construct_spice_plantation_07 = yes
+		hm_trigger_construct_spice_plantation_08 = yes
+	}
+}

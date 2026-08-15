@@ -1,0 +1,31 @@
+hm_trigger_construct_castle_02 = {
+	has_building = castle_01
+	hm_building_requirement_tribal = no
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_battlements }
+	}
+}
+hm_trigger_construct_castle_03 = {
+	has_building = castle_02
+	hm_building_requirement_tribal = no
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_hoardings }
+	}
+}
+hm_trigger_construct_castle_04 = {
+	has_building = castle_03
+	hm_building_requirement_tribal = no
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_machicolations }
+	}
+}
+hm_trigger_upgrade_castle = {
+	OR = {
+		hm_trigger_construct_castle_02 = yes
+		hm_trigger_construct_castle_03 = yes
+		hm_trigger_construct_castle_04 = yes
+	}
+}

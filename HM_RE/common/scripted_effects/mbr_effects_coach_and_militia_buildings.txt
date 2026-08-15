@@ -1,0 +1,316 @@
+﻿hm_effect_construct_horse = {
+	if = {
+		limit = { hm_trigger_construct_horse = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = horse_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = horse_01
+		}
+	}
+}
+hm_effect_upgrade_horse = {
+	if = {
+		limit = { hm_trigger_construct_horse_02 = yes }
+		add_building = horse_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_horse_03 = yes }
+		add_building = horse_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_horse_04 = yes }
+		add_building = horse_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_horse_05 = yes }
+		add_building = horse_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_horse_06 = yes }
+		add_building = horse_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_horse_07 = yes }
+		add_building = horse_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_horse_08 = yes }
+		add_building = horse_08
+	}
+}
+hm_effect_remove_horse = {
+	if = {
+		limit = { has_building = horse_01 }
+		remove_building = horse_01
+	}
+	else_if = {
+		limit = { has_building =horse_02 }
+		remove_building = horse_02
+	}
+	else_if = {
+		limit = { has_building = horse_03 }
+		remove_building = horse_03
+	}
+	else_if = {
+		limit = { has_building =horse_04 }
+		remove_building = horse_04
+	}
+	else_if = {
+		limit = { has_building = horse_05 }
+		remove_building = horse_05
+	}
+	else_if = {
+		limit = { has_building =horse_06 }
+		remove_building = horse_06
+	}
+	else_if = {
+		limit = { has_building = horse_07 }
+		remove_building = horse_07
+	}
+	else_if = {
+		limit = { has_building =horse_08 }
+		remove_building = horse_08
+	}
+}
+
+hm_effect_construct_MBRXXX_horse_archer = {
+	if = {
+		limit = { hm_trigger_construct_MBRXXX_horse_archer = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = MBRXXX_horse_archer_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = MBRXXX_horse_archer_01
+		}
+	}
+}
+hm_effect_upgrade_MBRXXX_horse_archer = {
+	if = {
+		limit = { hm_trigger_construct_MBRXXX_horse_archer_02 = yes }
+		add_building = MBRXXX_horse_archer_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_MBRXXX_horse_archer_03 = yes }
+		add_building = MBRXXX_horse_archer_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_MBRXXX_horse_archer_04 = yes }
+		add_building = MBRXXX_horse_archer_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_MBRXXX_horse_archer_05 = yes }
+		add_building = MBRXXX_horse_archer_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_MBRXXX_horse_archer_06 = yes }
+		add_building = MBRXXX_horse_archer_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_MBRXXX_horse_archer_07 = yes }
+		add_building = MBRXXX_horse_archer_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_MBRXXX_horse_archer_08 = yes }
+		add_building = MBRXXX_horse_archer_08
+	}
+}
+
+hm_effect_remove_MBRXXX_horse_archer = {
+	if = {
+		limit = { has_building = MBRXXX_horse_archer_01 }
+		remove_building = MBRXXX_horse_archer_01
+	}
+	else_if = {
+		limit = { has_building = MBRXXX_horse_archer_02 }
+		remove_building = MBRXXX_horse_archer_02
+	}
+	else_if = {
+		limit = { has_building = MBRXXX_horse_archer_03 }
+		remove_building = MBRXXX_horse_archer_03
+	}
+	else_if = {
+		limit = { has_building = MBRXXX_horse_archer_04 }
+		remove_building = MBRXXX_horse_archer_04
+	}
+	else_if = {
+		limit = { has_building = MBRXXX_horse_archer_05 }
+		remove_building = MBRXXX_horse_archer_05
+	}
+	else_if = {
+		limit = { has_building = MBRXXX_horse_archer_06 }
+		remove_building = MBRXXX_horse_archer_06
+	}
+	else_if = {
+		limit = { has_building = MBRXXX_horse_archer_07 }
+		remove_building = MBRXXX_horse_archer_07
+	}
+	else_if = {
+		limit = { has_building =MBRXXX_horse_archer_08 }
+		remove_building = MBRXXX_horse_archer_08
+	}
+}
+
+hm_effect_construct_MBRXXX_camel = {
+	if = {
+		limit = { hm_trigger_construct_MBRXXX_camel = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = MBRXXX_camel_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = MBRXXX_camel_01
+		}
+	}
+}
+hm_effect_upgrade_MBRXXX_camel = {
+	if = {
+		limit = { hm_trigger_construct_MBRXXX_camel_02 = yes }
+		add_building = MBRXXX_camel_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_MBRXXX_camel_03 = yes }
+		add_building = MBRXXX_camel_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_MBRXXX_camel_04 = yes }
+		add_building = MBRXXX_camel_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_MBRXXX_camel_05 = yes }
+		add_building = MBRXXX_camel_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_MBRXXX_camel_06 = yes }
+		add_building = MBRXXX_camel_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_MBRXXX_camel_07 = yes }
+		add_building = MBRXXX_camel_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_MBRXXX_camel_08 = yes }
+		add_building = MBRXXX_camel_08
+	}
+}
+hm_effect_remove_MBRXXX_camel = {
+	if = {
+		limit = { has_building = MBRXXX_camel_01 }
+		remove_building = MBRXXX_camel_01
+	}
+	else_if = {
+		limit = { has_building =MBRXXX_camel_02 }
+		remove_building = MBRXXX_camel_02
+	}
+	else_if = {
+		limit = { has_building = MBRXXX_camel_03 }
+		remove_building = MBRXXX_camel_03
+	}
+	else_if = {
+		limit = { has_building =MBRXXX_camel_04 }
+		remove_building = MBRXXX_camel_04
+	}
+	else_if = {
+		limit = { has_building = MBRXXX_camel_05 }
+		remove_building = MBRXXX_camel_05
+	}
+	else_if = {
+		limit = { has_building =MBRXXX_camel_06 }
+		remove_building = MBRXXX_camel_06
+	}
+	else_if = {
+		limit = { has_building = MBRXXX_camel_07 }
+		remove_building = MBRXXX_camel_07
+	}
+	else_if = {
+		limit = { has_building =MBRXXX_camel_08 }
+		remove_building = MBRXXX_camel_08
+	}
+}
+
+hm_effect_construct_militia = {
+	if = {
+		limit = { hm_trigger_construct_militia = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = militia_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = militia_01
+		}
+	}
+}
+hm_effect_upgrade_militia = {
+	if = {
+		limit = { hm_trigger_construct_militia_02 = yes }
+		add_building = militia_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_militia_03 = yes }
+		add_building = militia_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_militia_04 = yes }
+		add_building = militia_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_militia_05 = yes }
+		add_building = militia_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_militia_06 = yes }
+		add_building = militia_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_militia_07 = yes }
+		add_building = militia_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_militia_08 = yes }
+		add_building = militia_08
+	}
+}
+hm_effect_remove_militia = {
+	if = {
+		limit = { has_building = militia_01 }
+		remove_building = militia_01
+	}
+	else_if = {
+		limit = { has_building = militia_02 }
+		remove_building = militia_02
+	}
+	else_if = {
+		limit = { has_building = militia_03 }
+		remove_building = militia_03
+	}
+	else_if = {
+		limit = { has_building = militia_04 }
+		remove_building = militia_04
+	}
+	else_if = {
+		limit = { has_building = militia_05 }
+		remove_building = militia_05
+	}
+	else_if = {
+		limit = { has_building = militia_06 }
+		remove_building = militia_06
+	}
+	else_if = {
+		limit = { has_building = militia_07 }
+		remove_building = militia_07
+	}
+	else_if = {
+		limit = { has_building = militia_08 }
+		remove_building = militia_08
+	}
+}

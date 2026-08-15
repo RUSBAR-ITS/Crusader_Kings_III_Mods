@@ -1,0 +1,163 @@
+﻿hm_effect_construct_dingjudian = {
+	if = {
+		limit = { hm_trigger_construct_dingjudian = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = dingjudian_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = dingjudian_01
+		}
+	}
+}
+hm_effect_upgrade_dingjudian = {
+	if = {
+		limit = { hm_trigger_construct_dingjudian_02 = yes }
+		add_building = dingjudian_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_dingjudian_03 = yes }
+		add_building = dingjudian_03
+	}
+}
+hm_effect_remove_dingjudian = {
+	if = {
+		limit = { has_building = dingjudian_01 }
+		remove_building = dingjudian_01
+	}
+	else_if = {
+		limit = { has_building =dingjudian_02 }
+		remove_building = dingjudian_02
+	}
+	else_if = {
+		limit = { has_building = dingjudian_03 }
+		remove_building = dingjudian_03
+	}
+}
+
+hm_effect_construct_muchang = {
+	if = {
+		limit = { hm_trigger_construct_muchang = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = muchang_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = muchang_01
+		}
+	}
+}
+hm_effect_upgrade_muchang = {
+	if = {
+		limit = { hm_trigger_construct_muchang_02 = yes }
+		add_building = muchang_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_muchang_03 = yes }
+		add_building = muchang_03
+	}
+}
+hm_effect_remove_muchang = {
+	if = {
+		limit = { has_building = muchang_01 }
+		remove_building = muchang_01
+	}
+	else_if = {
+		limit = { has_building =muchang_02 }
+		remove_building = muchang_02
+	}
+	else_if = {
+		limit = { has_building = muchang_03 }
+		remove_building = muchang_03
+	}
+}
+
+hm_effect_construct_gaoshanjudian = {
+	if = {
+		limit = { hm_trigger_construct_gaoshanjudian = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = gaoshanjudian_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = gaoshanjudian_01
+		}
+	}
+}
+hm_effect_upgrade_gaoshanjudian = {
+	if = {
+		limit = { hm_trigger_construct_gaoshanjudian_02 = yes }
+		add_building = gaoshanjudian_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_gaoshanjudian_03 = yes }
+		add_building = gaoshanjudian_03
+	}
+}
+hm_effect_remove_gaoshanjudian = {
+	if = {
+		limit = { has_building = gaoshanjudian_01 }
+		remove_building = gaoshanjudian_01
+	}
+	else_if = {
+		limit = { has_building =gaoshanjudian_02 }
+		remove_building = gaoshanjudian_02
+	}
+	else_if = {
+		limit = { has_building = gaoshanjudian_03 }
+		remove_building = gaoshanjudian_03
+	}
+}
+
+hm_effect_construct_conglinliechang = {
+	if = {
+		limit = { hm_trigger_construct_conglinliechang = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = conglinliechang_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = conglinliechang_01
+		}
+	}
+}
+hm_effect_upgrade_conglinliechang = {
+	if = {
+		limit = { hm_trigger_construct_conglinliechang_02 = yes }
+		add_building = conglinliechang_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_conglinliechang_03 = yes }
+		add_building = conglinliechang_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_conglinliechang_04 = yes }
+		add_building = conglinliechang_04
+	}
+}
+hm_effect_remove_conglinliechang = {
+	if = {
+		limit = { has_building = conglinliechang_01 }
+		remove_building = conglinliechang_01
+	}
+	else_if = {
+		limit = { has_building =conglinliechang_02 }
+		remove_building = conglinliechang_02
+	}
+	else_if = {
+		limit = { has_building = conglinliechang_03 }
+		remove_building = conglinliechang_03
+	}
+	else_if = {
+		limit = { has_building =conglinliechang_04 }
+		remove_building = conglinliechang_04
+	}
+}

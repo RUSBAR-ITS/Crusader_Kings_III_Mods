@@ -1,0 +1,251 @@
+﻿hm_effect_upgrade_temple_citadel = {
+	if = {
+		limit = { hm_trigger_construct_temple_citadel_02 = yes }
+		add_building = temple_citadel_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_temple_citadel_03 = yes }
+		add_building = temple_citadel_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_temple_citadel_04 = yes }
+		add_building = temple_citadel_04
+	}
+}
+
+hm_effect_construct_citadel_shrine = {
+	if = {
+		limit = { hm_trigger_construct_citadel_shrine = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = citadel_shrine_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = citadel_shrine_01
+		}
+	}
+}
+hm_effect_upgrade_citadel_shrine = {
+	if = {
+		limit = { hm_trigger_construct_citadel_shrine_02 = yes }
+		add_building = citadel_shrine_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_citadel_shrine_03 = yes }
+		add_building = citadel_shrine_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_citadel_shrine_04 = yes }
+		add_building = citadel_shrine_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_citadel_shrine_05 = yes }
+		add_building = citadel_shrine_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_citadel_shrine_06 = yes }
+		add_building = citadel_shrine_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_citadel_shrine_07 = yes }
+		add_building = citadel_shrine_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_citadel_shrine_08 = yes }
+		add_building = citadel_shrine_08
+	}
+}
+hm_effect_remove_citadel_shrine = {
+	if = {
+		limit = { has_building = citadel_shrine_01 }
+		remove_building = citadel_shrine_01
+	}
+	else_if = {
+		limit = { has_building =citadel_shrine_02 }
+		remove_building = citadel_shrine_02
+	}
+	else_if = {
+		limit = { has_building = citadel_shrine_03 }
+		remove_building = citadel_shrine_03
+	}
+	else_if = {
+		limit = { has_building =citadel_shrine_04 }
+		remove_building = citadel_shrine_04
+	}
+	else_if = {
+		limit = { has_building = citadel_shrine_05 }
+		remove_building = citadel_shrine_05
+	}
+	else_if = {
+		limit = { has_building =citadel_shrine_06 }
+		remove_building = citadel_shrine_06
+	}
+	else_if = {
+		limit = { has_building = citadel_shrine_07 }
+		remove_building = citadel_shrine_07
+	}
+	else_if = {
+		limit = { has_building =citadel_shrine_08 }
+		remove_building = citadel_shrine_08
+	}
+}
+
+hm_effect_construct_sacred_pool = {
+	if = {
+		limit = { hm_trigger_construct_sacred_pool = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = sacred_pool_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = sacred_pool_01
+		}
+	}
+}
+hm_effect_upgrade_sacred_pool = {
+	if = {
+		limit = { hm_trigger_construct_sacred_pool_02 = yes }
+		add_building = sacred_pool_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_sacred_pool_03 = yes }
+		add_building = sacred_pool_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_sacred_pool_04 = yes }
+		add_building = sacred_pool_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_sacred_pool_05 = yes }
+		add_building = sacred_pool_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_sacred_pool_06 = yes }
+		add_building = sacred_pool_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_sacred_pool_07 = yes }
+		add_building = sacred_pool_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_sacred_pool_08 = yes }
+		add_building = sacred_pool_08
+	}
+}
+hm_effect_remove_sacred_pool = {
+	if = {
+		limit = { has_building = sacred_pool_01 }
+		remove_building = sacred_pool_01
+	}
+	else_if = {
+		limit = { has_building =sacred_pool_02 }
+		remove_building = sacred_pool_02
+	}
+	else_if = {
+		limit = { has_building = sacred_pool_03 }
+		remove_building = sacred_pool_03
+	}
+	else_if = {
+		limit = { has_building =sacred_pool_04 }
+		remove_building = sacred_pool_04
+	}
+	else_if = {
+		limit = { has_building = sacred_pool_05 }
+		remove_building = sacred_pool_05
+	}
+	else_if = {
+		limit = { has_building =sacred_pool_06 }
+		remove_building = sacred_pool_06
+	}
+	else_if = {
+		limit = { has_building = sacred_pool_07 }
+		remove_building = sacred_pool_07
+	}
+	else_if = {
+		limit = { has_building =sacred_pool_08 }
+		remove_building = sacred_pool_08
+	}
+}
+
+hm_effect_construct_vihara_halls = {
+	if = {
+		limit = { hm_trigger_construct_vihara_halls = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = vihara_halls_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = vihara_halls_01
+		}
+	}
+}
+hm_effect_upgrade_vihara_halls = {
+	if = {
+		limit = { hm_trigger_construct_vihara_halls_02 = yes }
+		add_building = vihara_halls_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_vihara_halls_03 = yes }
+		add_building = vihara_halls_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_vihara_halls_04 = yes }
+		add_building = vihara_halls_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_vihara_halls_05 = yes }
+		add_building = vihara_halls_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_vihara_halls_06 = yes }
+		add_building = vihara_halls_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_vihara_halls_07 = yes }
+		add_building = vihara_halls_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_vihara_halls_08 = yes }
+		add_building = vihara_halls_08
+	}
+}
+hm_effect_remove_vihara_halls = {
+	if = {
+		limit = { has_building = vihara_halls_01 }
+		remove_building = vihara_halls_01
+	}
+	else_if = {
+		limit = { has_building =vihara_halls_02 }
+		remove_building = vihara_halls_02
+	}
+	else_if = {
+		limit = { has_building = vihara_halls_03 }
+		remove_building = vihara_halls_03
+	}
+	else_if = {
+		limit = { has_building =vihara_halls_04 }
+		remove_building = vihara_halls_04
+	}
+	else_if = {
+		limit = { has_building = vihara_halls_05 }
+		remove_building = vihara_halls_05
+	}
+	else_if = {
+		limit = { has_building =vihara_halls_06 }
+		remove_building = vihara_halls_06
+	}
+	else_if = {
+		limit = { has_building = vihara_halls_07 }
+		remove_building = vihara_halls_07
+	}
+	else_if = {
+		limit = { has_building =vihara_halls_08 }
+		remove_building = vihara_halls_08
+	}
+}

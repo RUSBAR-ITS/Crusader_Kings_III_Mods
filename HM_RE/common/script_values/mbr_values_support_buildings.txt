@@ -1,0 +1,70 @@
+﻿hm_value_construct_support_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_support_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_support_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_support_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_support_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_support_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_support_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_support_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_support_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_support_01 = yes }
+		add = hm_value_construct_support_01_gold_cost
+	}
+}
+hm_value_upgrade_support_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_support_02 = yes }
+		add = hm_value_construct_support_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_support_03 = yes }
+		add = hm_value_construct_support_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_support_04 = yes }
+		add = hm_value_construct_support_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_support_05 = yes }
+		add = hm_value_construct_support_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_support_06 = yes }
+		add = hm_value_construct_support_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_support_07 = yes }
+		add = hm_value_construct_support_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_support_08 = yes }
+		add = hm_value_construct_support_08_gold_cost
+	}
+}

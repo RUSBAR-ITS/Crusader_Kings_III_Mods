@@ -1,0 +1,979 @@
+﻿hm_value_slot_cost_very_cheap = 75
+hm_value_slot_cost_cheap = 125
+hm_value_slot_cost_default = 250
+hm_value_slot_cost_expensive = 500
+hm_value_slot_cost_very_expensive = 1000
+
+hm_value_player_slot_base_cost = {
+	if = {
+		limit = {
+			debug_only = yes
+		}
+		value = 0
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_player_slot_base_cost_very_cheap
+		}
+		value = hm_value_slot_cost_very_cheap
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_player_slot_base_cost_cheap
+		}
+		value = hm_value_slot_cost_cheap
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_player_slot_base_cost_expensive
+		}
+		value = hm_value_slot_cost_expensive
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_player_slot_base_cost_very_expensive
+		}
+		value = hm_value_slot_cost_very_expensive
+	}
+	else = {
+		value = hm_value_slot_cost_default
+	}
+}
+
+hm_value_player_slot_step_cost = {
+	if = {
+		limit = {
+			debug_only = yes
+		}
+		value = 0
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_player_slot_step_cost_very_cheap
+		}
+		value = hm_value_slot_cost_very_cheap
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_player_slot_step_cost_cheap
+		}
+		value = hm_value_slot_cost_cheap
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_player_slot_step_cost_expensive
+		}
+		value = hm_value_slot_cost_expensive
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_player_slot_step_cost_very_expensive
+		}
+		value = hm_value_slot_cost_very_expensive
+	}
+	else = {
+		value = hm_value_slot_cost_default
+	}
+}
+
+hm_value_player_slot_cost = {
+	value = hm_value_player_slot_base_cost
+	add = {
+		value = hm_value_player_slot_step_cost
+		multiply = {
+			value = building_slots
+			subtract = hm_value_default_slots
+			subtract = hm_value_event_buildings
+			min = 0
+		}
+	}
+}
+
+hm_value_player_add_slots_decision_gold_cost = {
+	if = {
+		limit = {
+			debug_only = yes
+		}
+		value = 0
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_player_add_slots_decision_base_cost_very_cheap
+		}
+		value = hm_value_slot_cost_very_cheap
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_player_add_slots_decision_base_cost_cheap
+		}
+		value = hm_value_slot_cost_cheap
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_player_add_slots_decision_base_cost_expensive
+		}
+		value = hm_value_slot_cost_expensive
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_player_add_slots_decision_base_cost_very_expensive
+		}
+		value = hm_value_slot_cost_very_expensive
+	}
+	else = {
+		value = hm_value_slot_cost_default
+	}
+}
+
+hm_value_ai_slot_base_cost = {
+	if = {
+		limit = {
+			has_game_rule = hm_rule_ai_slot_base_cost_free
+		}
+		value = 0
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_ai_slot_base_cost_very_cheap
+		}
+		value = hm_value_slot_cost_very_cheap
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_ai_slot_base_cost_cheap
+		}
+		value = hm_value_slot_cost_cheap
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_ai_slot_base_cost_expensive
+		}
+		value = hm_value_slot_cost_expensive
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_ai_slot_base_cost_very_expensive
+		}
+		value = hm_value_slot_cost_very_expensive
+	}
+	else = {
+		value = hm_value_slot_cost_default
+	}
+}
+
+hm_value_ai_slot_step_cost = {
+	if = {
+		limit = {
+			has_game_rule = hm_rule_ai_slot_step_cost_free
+		}
+		value = 0
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_ai_slot_step_cost_very_cheap
+		}
+		value = hm_value_slot_cost_very_cheap
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_ai_slot_step_cost_cheap
+		}
+		value = hm_value_slot_cost_cheap
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_ai_slot_step_cost_expensive
+		}
+		value = hm_value_slot_cost_expensive
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_ai_slot_step_cost_very_expensive
+		}
+		value = hm_value_slot_cost_very_expensive
+	}
+	else = {
+		value = hm_value_slot_cost_default
+	}
+}
+
+hm_value_ai_slot_cost = {
+	value = hm_value_ai_slot_base_cost
+	add = {
+		value = hm_value_ai_slot_step_cost
+		multiply = {
+			value = building_slots
+			subtract = hm_value_default_slots
+			subtract = hm_value_event_buildings
+			min = 0
+		}
+	}
+	multiply = {
+		value = 1
+		if = {
+			limit = {
+				province_owner = {
+					highest_held_title_tier = tier_barony
+				}
+			}
+			subtract = 0.5
+		}
+	}
+}
+
+hm_value_ai_slot_minimum_cost = {
+	value = hm_value_ai_slot_cost
+	multiply = 2
+}
+
+hm_value_max_slots = 200
+
+hm_value_default_slots = {
+	value = 0
+	if = {
+		limit = { has_holding = yes }
+		add = 1
+	}
+	if = {
+		limit = { is_county_capital = yes }
+		add = 1
+	}
+}
+
+hm_value_additional_slots_for_holding_level = {
+	value = 0
+	if = {
+		limit = { building_requirement_castle_city_church = { LEVEL = 02 } }
+		add = 1
+	}
+	if = {
+		limit = { building_requirement_castle_city_church = { LEVEL = 03 } }
+		add = 1
+	}
+	if = {
+		limit = { is_county_capital = yes }
+		multiply = 2
+	}
+	if = {
+		limit = { building_requirement_castle_city_church = { LEVEL = 04 } }
+		add = hm_value_max_slots
+	}
+	max = hm_value_max_slots
+}
+
+hm_value_max_slots_for_holding_level = {
+	value = hm_value_default_slots
+	add = hm_value_additional_slots_for_holding_level
+	max = hm_value_max_slots
+}
+
+hm_value_available_slots_for_holding_level = {
+	value = hm_value_max_slots_for_holding_level
+	subtract = building_slots
+	min = 0
+}
+
+hm_value_additional_slots_for_development_level = {
+	value = 0
+	if = {
+		limit = { is_county_capital = yes }
+		add = county.development_level
+		divide = 5
+		floor = yes
+	}
+	else = {
+		add = county.development_level
+		divide = 10
+		floor = yes
+	}
+	if = {
+		limit = {
+			county.development_level >= 100
+		}
+		add = hm_value_max_slots
+	}
+	max = hm_value_max_slots
+}
+
+hm_value_max_slots_for_development_level = {
+	value = hm_value_default_slots
+	add = hm_value_additional_slots_for_development_level
+	max = hm_value_max_slots
+}
+
+hm_value_available_slots_for_development_level = {
+	value = hm_value_max_slots_for_development_level
+	subtract = building_slots
+	min = 0
+}
+
+hm_value_event_buildings = { #scope: province
+	value = 0
+	if = {
+		limit = { has_building = special_greenhouse_01 }
+		add = 1
+	}
+}
+
+hm_value_potential_buildings = { #scope: province
+	value = 0
+	# tribal buildings
+	if = {
+		limit = { hm_trigger_construct_longhouses = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_war_camps = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_palisades = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_market_villages = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_idjang_forts = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_wantilan = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_war_kora_kora_yards = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_water_temples = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_stilted_granaries = yes }
+		add = 1
+	}
+	# castle buildings
+	# city buildings
+	if = {
+		limit = { hm_trigger_construct_guild_halls = yes }
+		add = 1
+	}
+	# temple buildings
+	if = {
+		limit = { hm_trigger_construct_scriptorium = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_monastic_schools = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_megalith = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_breweries = yes }
+		add = 1
+	}
+	# temple citadel buildings
+	if = {
+		limit = { hm_trigger_construct_citadel_shrine = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_sacred_pool = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_vihara_halls = yes }
+		add = 1
+	}
+	# common buildings
+	if = {
+		limit = { hm_trigger_construct_hospices = yes }
+		add = 1
+	}
+	# standard fortification buildings
+	if = {
+		limit = { hm_trigger_construct_ramparts = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_curtain_walls = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_watchtowers = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_hill_forts = yes }
+		add = 1
+	}
+	# standard economy buildings
+	if = {
+		limit = { hm_trigger_construct_caravanserai = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_watermills = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_windmills = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_common_tradeport = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_pastures = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_hunting_grounds = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_orchards = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_farm_estates = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_cereal_fields = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_logging_camps = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_peat_quarries = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_hill_farms = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_elephant_pens = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_plantations = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_quarries = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_qanats = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_murex_farm = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_paddy_fields = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_waterworks = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_spice_plantation = yes }
+		add = 1
+	}
+	# standard military buildings
+	if = {
+		limit = { hm_trigger_construct_wind_furnace = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_workshops = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_horse_pastures = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_hillside_grazing = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_warrior_lodges = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_military_camps = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_regimental_grounds = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_outposts = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_barracks = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_camel_farms = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_stables = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_smiths = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_powder_magazine = yes }
+		add = 1
+	}
+	# admin buildings
+	if = {
+		limit = { hm_trigger_construct_capital_bureau = yes }
+		add = 1
+	}
+	#mbr coach and militia buildings
+	if = {
+		limit = { hm_trigger_construct_horse = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_MBRXXX_horse_archer = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_MBRXXX_camel = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_militia = yes }
+		add = 1
+	}
+	#mbrxxx castle buildings
+	if = {
+		limit = { hm_trigger_construct_improvement = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_expansion = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_interior = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_town = yes }
+		add = 1
+	}
+	#mbrxxx city buildings
+	if = {
+		limit = { hm_trigger_construct_district = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_slaughterhouse = yes }
+		add = 1
+	}
+	#mbrxxx civil engineering buildings
+	if = {
+		limit = { hm_trigger_construct_civil_engineering = yes }
+		add = 1
+	}
+	#mbrxxx common buildings
+	if = {
+		limit = { hm_trigger_construct_vineyard = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_tunnel = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_hospital = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_farming = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_embassy = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_plain = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_czhen = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_muhou = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_silk = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_restau = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_supm = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_mif = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_lcamp = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_hbm = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_tavern = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_stash = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_spice = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_crockery = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_currier = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_waterfront = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_shanqiu = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_fayuan = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_heishi = yes }
+		add = 1
+	}
+	#mbrxxx support buildings
+	if = {
+		limit = { hm_trigger_construct_support = yes }
+		add = 1
+	}
+	#mbrxxx tribal buildings
+	if = {
+		limit = { hm_trigger_construct_Townsquare = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_war = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_raiding = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_ting = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_medicine_lodge = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_liehu = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_car = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_pimao = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_zhanshi = yes }
+		add = 1
+	}
+	##############建筑师系列#############
+	if = {
+		limit = { hm_trigger_construct_uba_manor = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_residence = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_library = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_townhall = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_temple = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_bazaar = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_aqueduct = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_joust = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_checkpoint = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_taxing = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_bathroom = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_herbal = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_private = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_fur = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_vineyard = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_olive = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_piazza = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_tea = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_kiln = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_uba_silk = yes }
+		add = 1
+	}
+	###########东方兵种拓展##########
+	if = {
+		limit = { hm_trigger_construct_qianmutian = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_lutaiyanchang = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_shanhaiguan = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_heitudi = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_bunudui = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_nulishichang = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_changshanyuchang = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_chayuan = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_shutian = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_weibojun = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_dongfangchengqiang = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_xinzeng_01_yidao = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_xinzeng_02_yidao = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_xinzeng_03_yidao = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_dingjudian = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_muchang = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_gaoshanjudian = yes }
+		add = 1
+	}
+	if = {
+		limit = { hm_trigger_construct_conglinliechang = yes }
+		add = 1
+	}
+}
+
+hm_value_potential_slots_for_holding_level = {
+	value = hm_value_potential_buildings
+	subtract = free_building_slots
+	min = 0
+	max = hm_value_available_slots_for_holding_level
+}
+
+hm_value_potential_slots_for_development_level = {
+	value = hm_value_potential_buildings
+	subtract = free_building_slots
+	min = 0
+	max = hm_value_available_slots_for_development_level
+}
+
+hm_value_player_potential_slots = {
+	if = {
+		limit = { has_game_rule = hm_rule_player_extra_slots_enabled }
+		value = hm_value_potential_buildings
+		subtract = free_building_slots
+		min = 0
+	}
+	else_if = {
+		limit = { has_game_rule = hm_rule_player_extra_slots_per_holding_level }
+		value = hm_value_potential_slots_for_holding_level
+	}
+	else_if = {
+		limit = { has_game_rule = hm_rule_player_extra_slots_per_development_level }
+		value = hm_value_potential_slots_for_development_level
+	}
+	else = {
+		value = 0
+	}
+}
+
+hm_value_ai_potential_slots = {
+	if = {
+		limit = { has_game_rule = hm_rule_ai_extra_slots_enabled }
+		value = hm_value_potential_buildings
+		subtract = free_building_slots
+		min = 0
+	}
+	else_if = {
+		limit = { has_game_rule = hm_rule_ai_extra_slots_per_holding_level }
+		value = hm_value_potential_slots_for_holding_level
+	}
+	else_if = {
+		limit = { has_game_rule = hm_rule_ai_extra_slots_per_development_level }
+		value = hm_value_potential_slots_for_development_level
+	}
+	else = {
+		value = 0
+	}
+}
+
+#hm_value_max_slots_cost = { #scope: province
+#	value = hm_value_player_slot_cost
+#	multiply = hm_value_player_potential_slots
+#	add = {
+#		value = hm_value_player_slot_step_cost
+#		multiply = {
+#			value = hm_value_player_potential_slots
+#			multiply = {
+#				value = hm_value_player_potential_slots
+#				add = 1
+#			}
+#		}
+#		divide = 2
+#	}
+#}
+hm_value_max_slots_cost = { #scope: province
+	value = hm_value_player_slot_cost
+	add = hm_value_player_slot_step_cost
+	multiply = {
+		value = hm_value_player_potential_slots
+		min = 1
+		max = 5
+	}
+	divide = 2
+}

@@ -1,0 +1,265 @@
+﻿hm_trigger_construct_Townsquare_01 = {
+	NOT = { has_building_or_higher = Townsquare_01 }
+	has_building_or_higher = tribe_01
+	county.holder = {
+		has_government = tribal_government
+	}
+}
+hm_trigger_construct_Townsquare_02 = {
+	has_building = Townsquare_01
+	has_building_or_higher = tribe_01
+}
+
+hm_trigger_construct_Townsquare_03 = {
+	has_building = Townsquare_02
+	has_building_or_higher = tribe_02
+}
+
+hm_trigger_construct_Townsquare = {
+	hm_trigger_construct_Townsquare_01 = yes
+}
+hm_trigger_upgrade_Townsquare = {
+	hm_trigger_construct_Townsquare_02 = yes
+	hm_trigger_construct_Townsquare_03 = yes
+}
+
+hm_trigger_construct_tribeport_01 = {
+	NOT = { has_building_or_higher = tribeport_01 }
+	building_common_tradeport_requirement_terrain = yes
+	has_building_or_higher = tribe_01
+	is_coastal = yes
+	county.holder = {
+		has_government = tribal_government
+	}
+}
+hm_trigger_construct_tribeport_02 = {
+	has_building = tribeport_01
+	has_building_or_higher = tribe_01
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_city_planning
+		}
+	}
+}
+
+hm_trigger_construct_tribeport = {
+	hm_trigger_construct_tribeport_01 = yes
+}
+hm_trigger_upgrade_tribeport = {
+		hm_trigger_construct_tribeport_02 = yes
+}
+
+hm_trigger_construct_war_01 = {
+	NOT = { has_building_or_higher = war_01 }
+	has_building_or_higher = tribe_01
+	county.holder = {
+		has_government = tribal_government
+	}
+}
+hm_trigger_construct_war_02 = {
+	has_building = war_01
+	has_building_or_higher = tribe_02
+	county.holder = {
+		has_government = tribal_government
+	}
+}
+hm_trigger_construct_war_03 = {
+	has_building = war_02
+	has_building_or_higher = tribe_02
+	county.holder = {
+		has_government = tribal_government
+	}
+}
+
+hm_trigger_construct_war = {
+	hm_trigger_construct_war_01 = yes
+}
+hm_trigger_upgrade_war = {
+	hm_trigger_construct_war_02 = yes
+	hm_trigger_construct_war_03 = yes
+}
+
+hm_trigger_construct_raiding_01 = {
+	NOT = { has_building_or_higher = raiding_01 }
+	has_building_or_higher = tribe_01
+	county.holder = {
+		has_government = tribal_government
+	}
+}
+hm_trigger_construct_raiding_02 = {
+	has_building = raiding_01
+	has_building_or_higher = tribe_01
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_barracks
+		}
+	}
+}
+
+hm_trigger_construct_raiding = {
+	hm_trigger_construct_raiding_01 = yes
+}
+hm_trigger_upgrade_raiding = {
+		hm_trigger_construct_raiding_02 = yes
+}
+
+hm_trigger_construct_ting_01 = {
+	NOT = { has_building_or_higher = ting_01 }
+	has_building_or_higher = tribe_01
+	county.holder = {
+		has_government = tribal_government
+	}
+}
+hm_trigger_construct_ting_02 = {
+	has_building = ting_01
+	has_building_or_higher = tribe_01
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_city_planning
+		}
+	}
+}
+
+hm_trigger_construct_ting = {
+	hm_trigger_construct_ting_01 = yes
+}
+hm_trigger_upgrade_ting = {
+		hm_trigger_construct_ting_02 = yes
+}
+
+hm_trigger_construct_medicine_lodge_01 = {
+	NOT = { has_building_or_higher = medicine_lodge_01 }
+	has_building_or_higher = tribe_01
+	county.holder = {
+		has_government = tribal_government
+	}
+}
+hm_trigger_construct_medicine_lodge_02 = {
+	has_building = medicine_lodge_01
+	has_building_or_higher = tribe_01
+}
+hm_trigger_construct_medicine_lodge_03 = {
+	has_building = medicine_lodge_02
+	has_building_or_higher = tribe_01
+}
+hm_trigger_construct_medicine_lodge_04 = {
+	has_building = medicine_lodge_03
+	has_building_or_higher = tribe_02
+}
+hm_trigger_construct_medicine_lodge_05 = {
+	has_building = medicine_lodge_04
+	has_building_or_higher = tribe_02
+}
+
+hm_trigger_construct_medicine_lodge = {
+	hm_trigger_construct_medicine_lodge_01 = yes
+}
+hm_trigger_upgrade_medicine_lodge = {
+	hm_trigger_construct_medicine_lodge_02 = yes
+	hm_trigger_construct_medicine_lodge_03 = yes
+	hm_trigger_construct_medicine_lodge_04 = yes
+}
+
+hm_trigger_construct_liehu_01 = {
+	NOT = { has_building_or_higher = liehu_01 }
+	has_building_or_higher = tribe_01
+	county.holder = {
+			has_government = tribal_government
+	}
+}
+hm_trigger_construct_liehu_02 = {
+	has_building = liehu_01
+	has_building_or_higher = tribe_01
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_city_planning
+		}
+	}
+}
+
+hm_trigger_construct_liehu = {
+	hm_trigger_construct_liehu_01 = yes
+}
+hm_trigger_upgrade_liehu = {
+		hm_trigger_construct_liehu_02 = yes
+}
+
+hm_trigger_construct_car_01 = {
+	NOT = { has_building_or_higher = car_01 }
+	has_building_or_higher = tribe_01
+	building_horse_pastures_requirement_terrain = yes
+	county.holder = {
+			has_government = tribal_government
+	}
+}
+hm_trigger_construct_car_02 = {
+	has_building = car_01
+	has_building_or_higher = tribe_01
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_city_planning
+		}
+	}
+}
+
+hm_trigger_construct_car = {
+	hm_trigger_construct_car_01 = yes
+}
+hm_trigger_upgrade_car = {
+		hm_trigger_construct_car_02 = yes
+}
+
+hm_trigger_construct_pimao_01 = {
+	NOT = { has_building_or_higher = pimao_01 }
+	has_building_or_higher = tribe_01
+	county.holder = {
+			has_government = tribal_government
+	}
+}
+hm_trigger_construct_pimao_02 = {
+	has_building = pimao_01
+	has_building_or_higher = tribe_01
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_city_planning
+		}
+	}
+}
+
+hm_trigger_construct_pimao = {
+	hm_trigger_construct_pimao_01 = yes
+}
+hm_trigger_upgrade_pimao = {
+		hm_trigger_construct_pimao_02 = yes
+}
+
+hm_trigger_construct_zhanshi_01 = {
+	NOT = { has_building_or_higher = zhanshi_01 }
+	has_building_or_higher = tribe_01
+	county.holder = {
+			has_government = tribal_government
+	}
+}
+hm_trigger_construct_zhanshi_02 = {
+	has_building = zhanshi_01
+	has_building_or_higher = tribe_01
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = {
+			has_innovation = innovation_city_planning
+		}
+	}
+}
+
+hm_trigger_construct_zhanshi = {
+	hm_trigger_construct_zhanshi_01 = yes
+}
+hm_trigger_upgrade_zhanshi = {
+		hm_trigger_construct_zhanshi_02 = yes
+}

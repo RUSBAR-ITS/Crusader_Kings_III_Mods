@@ -1,0 +1,197 @@
+﻿hm_control_player_free_functions = {
+	categories = { holding_manager }
+	default = hm_rule_player_free_functions_disabled
+	hm_rule_player_free_functions_enabled = {}
+	hm_rule_player_free_functions_disabled = {}
+}
+
+hm_control_change_holding_type_cost = {
+	categories = { holding_manager }
+	default = hm_rule_change_holding_type_cost_default
+	hm_rule_change_holding_type_cost_very_cheap = {}
+	hm_rule_change_holding_type_cost_cheap = {}
+	hm_rule_change_holding_type_cost_default = {}
+	hm_rule_change_holding_type_cost_expensive = {}
+	hm_rule_change_holding_type_cost_very_expensive = {}
+}
+
+hm_control_change_holding_type_cooldown = {
+	categories = { holding_manager }
+	default = hm_rule_change_holding_type_cooldown_default
+	hm_rule_change_holding_type_cooldown_very_short = {}
+	hm_rule_change_holding_type_cooldown_short = {}
+	hm_rule_change_holding_type_cooldown_default = {}
+	hm_rule_change_holding_type_cooldown_long = {}
+	hm_rule_change_holding_type_cooldown_very_long = {}
+}
+
+hm_control_can_replace_buildings = {
+	categories = { holding_manager }
+	default = hm_rule_can_replace_buildings_default
+	hm_rule_can_replace_buildings_default = {}
+	hm_rule_can_replace_buildings_vassals = {}
+}
+
+hm_control_can_feudalize_holdings = {
+	categories = { holding_manager }
+	default = hm_rule_can_feudalize_holdings_default
+	hm_rule_can_feudalize_holdings_default = {}
+	hm_rule_can_feudalize_holdings_vassals = {}
+}
+
+hm_rule_construct_buildings_gold_cost_cap = {
+    categories = { holding_manager }
+    default = hm_value_construct_buildings_gold_cost_cap_default
+    hm_value_construct_buildings_gold_cost_cap_very_cheap  = {}
+	hm_value_construct_buildings_gold_cost_cap_cheap  = {}
+	hm_value_construct_buildings_gold_cost_cap_default = {}
+	hm_value_construct_buildings_gold_cost_cap_expensive  = {}
+	hm_value_construct_buildings_gold_cost_cap_very_expensive  = {}
+}
+
+hm_control_player_extra_slots = {
+	categories = { holding_manager }
+	default = hm_rule_player_extra_slots_enabled
+	hm_rule_player_extra_slots_disabled = {}
+	hm_rule_player_extra_slots_per_holding_level = {}
+	hm_rule_player_extra_slots_per_development_level = {}
+	hm_rule_player_extra_slots_enabled = {}
+}
+
+hm_control_player_slot_base_cost = {
+	categories = { holding_manager }
+	default = hm_rule_player_slot_base_cost_default
+	hm_rule_player_slot_base_cost_very_cheap = {}
+	hm_rule_player_slot_base_cost_cheap = {}
+	hm_rule_player_slot_base_cost_default = {}
+	hm_rule_player_slot_base_cost_expensive = {}
+	hm_rule_player_slot_base_cost_very_expensive = {}
+}
+
+hm_control_player_slot_step_cost = {
+	categories = { holding_manager }
+	default = hm_rule_player_slot_step_cost_default
+	hm_rule_player_slot_step_cost_very_cheap = {}
+	hm_rule_player_slot_step_cost_cheap = {}
+	hm_rule_player_slot_step_cost_default = {}
+	hm_rule_player_slot_step_cost_expensive = {}
+	hm_rule_player_slot_step_cost_very_expensive = {}
+}
+
+hm_control_construction_time_cost = {
+	categories = { holding_manager }
+	default = hm_rule_construction_time_cost_default
+	hm_rule_construction_time_cost_free = {}
+	hm_rule_construction_time_cost_very_cheap = {}
+	hm_rule_construction_time_cost_cheap = {}
+	hm_rule_construction_time_cost_default = {}
+	hm_rule_construction_time_cost_expensive = {}
+	hm_rule_construction_time_cost_very_expensive = {}
+}
+
+hm_build_all_button = {
+	categories = { holding_manager }
+	default = hm_build_all_button_on
+
+	hm_build_all_button_on = {
+	}
+	
+	hm_build_all_button_off = {
+	}
+}
+
+hm_upgrade_all_button = {
+	categories = { holding_manager }
+	default = hm_upgrade_all_button_on
+
+	hm_upgrade_all_button_on = {
+	}
+	
+	hm_upgrade_all_button_off = {
+	}
+}
+
+hm_make_nomad_button = {
+	categories = { holding_manager }
+	default = hm_make_nomad_button_off
+
+	hm_make_nomad_button_on = {
+	}
+	
+	hm_make_nomad_button_off = {
+	}
+}
+
+hm_make_temple_citadel_button = {
+	categories = { holding_manager }
+	default = hm_make_temple_citadel_button_off
+
+	hm_make_temple_citadel_button_on = {
+	}
+	
+	hm_make_temple_citadel_button_off = {
+	}
+}
+
+hm_player_add_slots_decision = {
+	categories = { holding_manager }
+	default = hm_player_add_slots_decision_on
+
+	hm_player_add_slots_decision_on = {
+	}
+	
+	hm_player_add_slots_decision_off = {
+	}
+}
+
+hm_player_add_slots_decision_base_cost = {
+	categories = { holding_manager }
+	default = hm_player_add_slots_decision_base_cost_default
+	hm_player_add_slots_decision_base_cost_very_cheap = {}
+	hm_player_add_slots_decision_base_cost_cheap = {}
+	hm_player_add_slots_decision_base_cost_default = {}
+	hm_player_add_slots_decision_base_cost_expensive = {}
+	hm_player_add_slots_decision_base_cost_very_expensive = {}
+}
+
+hm_player_cost_gold_or_treasury = {
+	categories = { holding_manager }
+	default = hm_player_cost_treasury
+
+	hm_player_cost_treasury = {
+	}
+	
+	hm_player_cost_gold = {
+	}
+}
+
+hm_control_ai_extra_slots = {
+	categories = { holding_manager }
+	default = hm_rule_ai_extra_slots_enabled
+	hm_rule_ai_extra_slots_disabled = {}
+	hm_rule_ai_extra_slots_per_holding_level = {}
+	hm_rule_ai_extra_slots_per_development_level = {}
+	hm_rule_ai_extra_slots_enabled = {}
+}
+
+hm_control_ai_slot_base_cost = {
+	categories = { holding_manager }
+	default = hm_rule_ai_slot_base_cost_default
+	hm_rule_ai_slot_base_cost_free = {}
+	hm_rule_ai_slot_base_cost_very_cheap = {}
+	hm_rule_ai_slot_base_cost_cheap = {}
+	hm_rule_ai_slot_base_cost_default = {}
+	hm_rule_ai_slot_base_cost_expensive = {}
+	hm_rule_ai_slot_base_cost_very_expensive = {}
+}
+
+hm_control_ai_slot_step_cost = {
+	categories = { holding_manager }
+	default = hm_rule_ai_slot_step_cost_default
+	hm_rule_ai_slot_step_cost_free = {}
+	hm_rule_ai_slot_step_cost_very_cheap = {}
+	hm_rule_ai_slot_step_cost_cheap = {}
+	hm_rule_ai_slot_step_cost_default = {}
+	hm_rule_ai_slot_step_cost_expensive = {}
+	hm_rule_ai_slot_step_cost_very_expensive = {}
+}

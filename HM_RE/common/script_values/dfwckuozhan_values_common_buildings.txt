@@ -1,0 +1,543 @@
+﻿hm_value_construct_qianmutian_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_qianmutian_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_qianmutian_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_qianmutian_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_qianmutian_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_qianmutian_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_qianmutian_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_qianmutian_01 = yes }
+		add = hm_value_construct_qianmutian_01_gold_cost
+	}
+}
+hm_value_upgrade_qianmutian_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_qianmutian_02 = yes }
+		add = hm_value_construct_qianmutian_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_qianmutian_03 = yes }
+		add = hm_value_construct_qianmutian_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_qianmutian_04 = yes }
+		add = hm_value_construct_qianmutian_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_qianmutian_05 = yes }
+		add = hm_value_construct_qianmutian_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_qianmutian_06 = yes }
+		add = hm_value_construct_qianmutian_06_gold_cost
+	}
+}
+
+hm_value_construct_lutaiyanchang_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_lutaiyanchang_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_lutaiyanchang_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_lutaiyanchang_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_lutaiyanchang_01 = yes }
+		add = hm_value_construct_lutaiyanchang_01_gold_cost
+	}
+}
+hm_value_upgrade_lutaiyanchang_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_lutaiyanchang_02 = yes }
+		add = hm_value_construct_lutaiyanchang_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_lutaiyanchang_03 = yes }
+		add = hm_value_construct_lutaiyanchang_03_gold_cost
+	}
+}
+
+hm_value_construct_shanhaiguan_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_shanhaiguan_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_shanhaiguan_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_shanhaiguan_01 = yes }
+		add = hm_value_construct_shanhaiguan_01_gold_cost
+	}
+}
+hm_value_upgrade_shanhaiguan_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_shanhaiguan_02 = yes }
+		add = hm_value_construct_shanhaiguan_02_gold_cost
+	}
+}
+
+hm_value_construct_heitudi_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_heitudi_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_heitudi_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_heitudi_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_heitudi_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_heitudi_01 = yes }
+		add = hm_value_construct_heitudi_01_gold_cost
+	}
+}
+hm_value_upgrade_heitudi_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_heitudi_02 = yes }
+		add = hm_value_construct_heitudi_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_heitudi_03 = yes }
+		add = hm_value_construct_heitudi_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_heitudi_04 = yes }
+		add = hm_value_construct_heitudi_04_gold_cost
+	}
+}
+
+hm_value_construct_medicine_bunudui_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_medicine_bunudui_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_medicine_bunudui_01 = yes }
+		add = hm_value_construct_medicine_bunudui_01_gold_cost
+	}
+}
+
+hm_value_construct_nulishichang_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_nulishichang_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_nulishichang_01 = yes }
+		add = hm_value_construct_nulishichang_01_gold_cost
+	}
+}
+
+hm_value_construct_changshanyuchang_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_changshanyuchang_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_changshanyuchang_01 = yes }
+		add = hm_value_construct_changshanyuchang_01_gold_cost
+	}
+}
+
+hm_value_construct_chayuan_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_chayuan_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_chayuan_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_chayuan_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_chayuan_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_chayuan_01 = yes }
+		add = hm_value_construct_chayuan_01_gold_cost
+	}
+}
+hm_value_upgrade_chayuan_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_chayuan_02 = yes }
+		add = hm_value_construct_chayuan_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_chayuan_03 = yes }
+		add = hm_value_construct_chayuan_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_chayuan_04 = yes }
+		add = hm_value_construct_chayuan_04_gold_cost
+	}
+}
+
+hm_value_construct_shutian_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_shutian_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_shutian_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_shutian_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_shutian_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_shutian_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_shutian_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_shutian_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_shutian_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_shutian_01 = yes }
+		add = hm_value_construct_shutian_01_gold_cost
+	}
+}
+hm_value_upgrade_shutian_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_shutian_02 = yes }
+		add = hm_value_construct_shutian_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_shutian_03 = yes }
+		add = hm_value_construct_shutian_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_shutian_04 = yes }
+		add = hm_value_construct_shutian_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_shutian_05 = yes }
+		add = hm_value_construct_shutian_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_shutian_06 = yes }
+		add = hm_value_construct_shutian_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_shutian_07 = yes }
+		add = hm_value_construct_shutian_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_shutian_08 = yes }
+		add = hm_value_construct_shutian_08_gold_cost
+	}
+}
+
+hm_value_construct_weibojun_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_weibojun_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_weibojun_01 = yes }
+		add = hm_value_construct_weibojun_01_gold_cost
+	}
+}
+
+hm_value_construct_dongfangchengqiang_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_dongfangchengqiang_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_dongfangchengqiang_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_dongfangchengqiang_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_dongfangchengqiang_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_dongfangchengqiang_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_dongfangchengqiang_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_dongfangchengqiang_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_dongfangchengqiang_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_dongfangchengqiang_01 = yes }
+		add = hm_value_construct_dongfangchengqiang_01_gold_cost
+	}
+}
+hm_value_upgrade_dongfangchengqiang_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_dongfangchengqiang_02 = yes }
+		add = hm_value_construct_dongfangchengqiang_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_dongfangchengqiang_03 = yes }
+		add = hm_value_construct_dongfangchengqiang_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_dongfangchengqiang_04 = yes }
+		add = hm_value_construct_dongfangchengqiang_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_dongfangchengqiang_05 = yes }
+		add = hm_value_construct_dongfangchengqiang_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_dongfangchengqiang_06 = yes }
+		add = hm_value_construct_dongfangchengqiang_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_dongfangchengqiang_07 = yes }
+		add = hm_value_construct_dongfangchengqiang_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_dongfangchengqiang_08 = yes }
+		add = hm_value_construct_dongfangchengqiang_08_gold_cost
+	}
+}
+
+#hm_value_construct_jiaochang_01_gold_cost = {
+#	value = normal_building_tier_1_cost
+#	multiply = hm_value_multiplier_standard_construction_time_cost
+#}
+#
+#hm_value_construct_jiaochang_02_gold_cost = {
+#	value = normal_building_tier_2_cost
+#	multiply = hm_value_multiplier_standard_construction_time_cost
+#}
+#
+#hm_value_construct_jiaochang_03_gold_cost = {
+#	value = normal_building_tier_3_cost
+#	multiply = hm_value_multiplier_standard_construction_time_cost
+#}
+#
+#hm_value_construct_jiaochang_gold_cost = {
+#	value = 0
+#	if = {
+#		limit = { hm_trigger_construct_jiaochang_01 = yes }
+#		add = hm_value_construct_jiaochang_01_gold_cost
+#	}
+#}
+#
+#hm_value_upgrade_jiaochang_gold_cost = {
+#	value = 0
+#	if = {
+#		limit = { hm_trigger_construct_jiaochang_02 = yes }
+#		add = hm_value_construct_jiaochang_02_gold_cost
+#	}
+#	else_if = {
+#		limit = { hm_trigger_construct_jiaochang_03 = yes }
+#		add = hm_value_construct_jiaochang_03_gold_cost
+#	}
+#}
+
+hm_value_construct_xinzeng_01_yidao_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_xinzeng_01_yidao_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_xinzeng_01_yidao_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_xinzeng_01_yidao_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_xinzeng_01_yidao_01 = yes }
+		add = hm_value_construct_xinzeng_01_yidao_01_gold_cost
+	}
+}
+hm_value_upgrade_xinzeng_01_yidao_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_xinzeng_01_yidao_02 = yes }
+		add = hm_value_construct_xinzeng_01_yidao_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_xinzeng_01_yidao_03 = yes }
+		add = hm_value_construct_xinzeng_01_yidao_03_gold_cost
+	}
+}
+
+hm_value_construct_xinzeng_02_yidao_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_xinzeng_02_yidao_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_xinzeng_02_yidao_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_xinzeng_02_yidao_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_xinzeng_02_yidao_01 = yes }
+		add = hm_value_construct_xinzeng_02_yidao_01_gold_cost
+	}
+}
+hm_value_upgrade_xinzeng_02_yidao_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_xinzeng_02_yidao_02 = yes }
+		add = hm_value_construct_xinzeng_02_yidao_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_xinzeng_02_yidao_03 = yes }
+		add = hm_value_construct_xinzeng_02_yidao_03_gold_cost
+	}
+}
+
+hm_value_construct_xinzeng_03_yidao_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_xinzeng_03_yidao_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_xinzeng_03_yidao_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_xinzeng_03_yidao_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_xinzeng_03_yidao_01 = yes }
+		add = hm_value_construct_xinzeng_03_yidao_01_gold_cost
+	}
+}
+hm_value_upgrade_xinzeng_03_yidao_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_xinzeng_03_yidao_02 = yes }
+		add = hm_value_construct_xinzeng_03_yidao_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_xinzeng_03_yidao_03 = yes }
+		add = hm_value_construct_xinzeng_03_yidao_03_gold_cost
+	}
+}
+
+#hm_value_construct_huaxia_guanai_01_gold_cost = {
+#	value = normal_building_tier_1_cost
+#	multiply = hm_value_multiplier_standard_construction_time_cost
+#}
+#hm_value_construct_huaxia_guanai_02_gold_cost = {
+#	value = normal_building_tier_2_cost
+#	multiply = hm_value_multiplier_standard_construction_time_cost
+#}
+#hm_value_construct_huaxia_guanai_03_gold_cost = {
+#	value = normal_building_tier_3_cost
+#	multiply = hm_value_multiplier_standard_construction_time_cost
+#}
+#hm_value_construct_huaxia_guanai_04_gold_cost = {
+#	value = normal_building_tier_4_cost
+#	multiply = hm_value_multiplier_standard_construction_time_cost
+#}
+#hm_value_construct_huaxia_guanai_gold_cost = {
+#	value = 0
+#	if = {
+#		limit = { hm_trigger_construct_huaxia_guanai_01 = yes }
+#		add = hm_value_construct_huaxia_guanai_01_gold_cost
+#	}
+#}
+#hm_value_upgrade_huaxia_guanai_gold_cost = {
+#	value = 0
+#	if = {
+#		limit = { hm_trigger_construct_huaxia_guanai_02 = yes }
+#		add = hm_value_construct_huaxia_guanai_02_gold_cost
+#	}
+#	else_if = {
+#		limit = { hm_trigger_construct_huaxia_guanai_03 = yes }
+#		add = hm_value_construct_huaxia_guanai_03_gold_cost
+#	}
+#	else_if = {
+#		limit = { hm_trigger_construct_huaxia_guanai_04 = yes }
+#		add = hm_value_construct_huaxia_guanai_04_gold_cost
+#	}
+#}

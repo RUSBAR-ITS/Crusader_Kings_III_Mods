@@ -1,0 +1,1419 @@
+﻿hm_value_construct_uba_manor_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_manor_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_manor_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_manor_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_manor_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_manor_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_manor_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_manor_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_manor_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_manor_01 = yes }
+		add = hm_value_construct_uba_manor_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_manor_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_manor_02 = yes }
+		add = hm_value_construct_uba_manor_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_manor_03 = yes }
+		add = hm_value_construct_uba_manor_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_manor_04 = yes }
+		add = hm_value_construct_uba_manor_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_manor_05 = yes }
+		add = hm_value_construct_uba_manor_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_manor_06 = yes }
+		add = hm_value_construct_uba_manor_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_manor_07 = yes }
+		add = hm_value_construct_uba_manor_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_manor_08 = yes }
+		add = hm_value_construct_uba_manor_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_residence_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_residence_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_residence_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_residence_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_residence_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_residence_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_residence_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_residence_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_residence_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_residence_01 = yes }
+		add = hm_value_construct_uba_residence_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_residence_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_residence_02 = yes }
+		add = hm_value_construct_uba_residence_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_residence_03 = yes }
+		add = hm_value_construct_uba_residence_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_residence_04 = yes }
+		add = hm_value_construct_uba_residence_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_residence_05 = yes }
+		add = hm_value_construct_uba_residence_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_residence_06 = yes }
+		add = hm_value_construct_uba_residence_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_residence_07 = yes }
+		add = hm_value_construct_uba_residence_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_residence_08 = yes }
+		add = hm_value_construct_uba_residence_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_library_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_library_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_library_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_library_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_library_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_library_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_library_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_library_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_library_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_library_01 = yes }
+		add = hm_value_construct_uba_library_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_library_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_library_02 = yes }
+		add = hm_value_construct_uba_library_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_library_03 = yes }
+		add = hm_value_construct_uba_library_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_library_04 = yes }
+		add = hm_value_construct_uba_library_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_library_05 = yes }
+		add = hm_value_construct_uba_library_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_library_06 = yes }
+		add = hm_value_construct_uba_library_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_library_07 = yes }
+		add = hm_value_construct_uba_library_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_library_08 = yes }
+		add = hm_value_construct_uba_library_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_townhall_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_townhall_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_townhall_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_townhall_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_townhall_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_townhall_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_townhall_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_townhall_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_townhall_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_townhall_01 = yes }
+		add = hm_value_construct_uba_townhall_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_townhall_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_townhall_02 = yes }
+		add = hm_value_construct_uba_townhall_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_townhall_03 = yes }
+		add = hm_value_construct_uba_townhall_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_townhall_04 = yes }
+		add = hm_value_construct_uba_townhall_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_townhall_05 = yes }
+		add = hm_value_construct_uba_townhall_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_townhall_06 = yes }
+		add = hm_value_construct_uba_townhall_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_townhall_07 = yes }
+		add = hm_value_construct_uba_townhall_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_townhall_08 = yes }
+		add = hm_value_construct_uba_townhall_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_temple_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_temple_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_temple_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_temple_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_temple_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_temple_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_temple_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_temple_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_temple_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_temple_01 = yes }
+		add = hm_value_construct_uba_temple_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_temple_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_temple_02 = yes }
+		add = hm_value_construct_uba_temple_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_temple_03 = yes }
+		add = hm_value_construct_uba_temple_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_temple_04 = yes }
+		add = hm_value_construct_uba_temple_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_temple_05 = yes }
+		add = hm_value_construct_uba_temple_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_temple_06 = yes }
+		add = hm_value_construct_uba_temple_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_temple_07 = yes }
+		add = hm_value_construct_uba_temple_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_temple_08 = yes }
+		add = hm_value_construct_uba_temple_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_bazaar_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bazaar_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bazaar_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bazaar_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bazaar_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bazaar_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bazaar_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bazaar_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bazaar_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_bazaar_01 = yes }
+		add = hm_value_construct_uba_bazaar_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_bazaar_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_bazaar_02 = yes }
+		add = hm_value_construct_uba_bazaar_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_bazaar_03 = yes }
+		add = hm_value_construct_uba_bazaar_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_bazaar_04 = yes }
+		add = hm_value_construct_uba_bazaar_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_bazaar_05 = yes }
+		add = hm_value_construct_uba_bazaar_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_bazaar_06 = yes }
+		add = hm_value_construct_uba_bazaar_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_bazaar_07 = yes }
+		add = hm_value_construct_uba_bazaar_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_bazaar_08 = yes }
+		add = hm_value_construct_uba_bazaar_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_aqueduct_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_aqueduct_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_aqueduct_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_aqueduct_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_aqueduct_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_aqueduct_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_aqueduct_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_aqueduct_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_aqueduct_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_aqueduct_01 = yes }
+		add = hm_value_construct_uba_aqueduct_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_aqueduct_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_aqueduct_02 = yes }
+		add = hm_value_construct_uba_aqueduct_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_aqueduct_03 = yes }
+		add = hm_value_construct_uba_aqueduct_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_aqueduct_04 = yes }
+		add = hm_value_construct_uba_aqueduct_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_aqueduct_05 = yes }
+		add = hm_value_construct_uba_aqueduct_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_aqueduct_06 = yes }
+		add = hm_value_construct_uba_aqueduct_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_aqueduct_07 = yes }
+		add = hm_value_construct_uba_aqueduct_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_aqueduct_08 = yes }
+		add = hm_value_construct_uba_aqueduct_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_joust_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_joust_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_joust_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_joust_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_joust_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_joust_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_joust_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_joust_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_joust_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_joust_01 = yes }
+		add = hm_value_construct_uba_joust_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_joust_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_joust_02 = yes }
+		add = hm_value_construct_uba_joust_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_joust_03 = yes }
+		add = hm_value_construct_uba_joust_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_joust_04 = yes }
+		add = hm_value_construct_uba_joust_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_joust_05 = yes }
+		add = hm_value_construct_uba_joust_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_joust_06 = yes }
+		add = hm_value_construct_uba_joust_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_joust_07 = yes }
+		add = hm_value_construct_uba_joust_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_joust_08 = yes }
+		add = hm_value_construct_uba_joust_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_checkpoint_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_checkpoint_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_checkpoint_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_checkpoint_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_checkpoint_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_checkpoint_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_checkpoint_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_checkpoint_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_checkpoint_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_checkpoint_01 = yes }
+		add = hm_value_construct_uba_checkpoint_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_checkpoint_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_checkpoint_02 = yes }
+		add = hm_value_construct_uba_checkpoint_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_checkpoint_03 = yes }
+		add = hm_value_construct_uba_checkpoint_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_checkpoint_04 = yes }
+		add = hm_value_construct_uba_checkpoint_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_checkpoint_05 = yes }
+		add = hm_value_construct_uba_checkpoint_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_checkpoint_06 = yes }
+		add = hm_value_construct_uba_checkpoint_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_checkpoint_07 = yes }
+		add = hm_value_construct_uba_checkpoint_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_checkpoint_08 = yes }
+		add = hm_value_construct_uba_checkpoint_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_taxing_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_taxing_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_taxing_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_taxing_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_taxing_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_taxing_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_taxing_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_taxing_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_taxing_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_taxing_01 = yes }
+		add = hm_value_construct_uba_taxing_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_taxing_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_taxing_02 = yes }
+		add = hm_value_construct_uba_taxing_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_taxing_03 = yes }
+		add = hm_value_construct_uba_taxing_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_taxing_04 = yes }
+		add = hm_value_construct_uba_taxing_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_taxing_05 = yes }
+		add = hm_value_construct_uba_taxing_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_taxing_06 = yes }
+		add = hm_value_construct_uba_taxing_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_taxing_07 = yes }
+		add = hm_value_construct_uba_taxing_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_taxing_08 = yes }
+		add = hm_value_construct_uba_taxing_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_bathroom_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bathroom_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bathroom_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bathroom_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bathroom_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bathroom_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bathroom_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bathroom_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_bathroom_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_bathroom_01 = yes }
+		add = hm_value_construct_uba_bathroom_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_bathroom_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_bathroom_02 = yes }
+		add = hm_value_construct_uba_bathroom_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_bathroom_03 = yes }
+		add = hm_value_construct_uba_bathroom_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_bathroom_04 = yes }
+		add = hm_value_construct_uba_bathroom_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_bathroom_05 = yes }
+		add = hm_value_construct_uba_bathroom_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_bathroom_06 = yes }
+		add = hm_value_construct_uba_bathroom_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_bathroom_07 = yes }
+		add = hm_value_construct_uba_bathroom_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_bathroom_08 = yes }
+		add = hm_value_construct_uba_bathroom_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_herbal_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_herbal_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_herbal_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_herbal_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_herbal_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_herbal_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_herbal_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_herbal_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_herbal_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_herbal_01 = yes }
+		add = hm_value_construct_uba_herbal_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_herbal_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_herbal_02 = yes }
+		add = hm_value_construct_uba_herbal_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_herbal_03 = yes }
+		add = hm_value_construct_uba_herbal_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_herbal_04 = yes }
+		add = hm_value_construct_uba_herbal_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_herbal_05 = yes }
+		add = hm_value_construct_uba_herbal_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_herbal_06 = yes }
+		add = hm_value_construct_uba_herbal_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_herbal_07 = yes }
+		add = hm_value_construct_uba_herbal_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_herbal_08 = yes }
+		add = hm_value_construct_uba_herbal_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_private_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_private_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_private_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_private_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_private_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_private_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_private_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_private_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_private_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_private_01 = yes }
+		add = hm_value_construct_uba_private_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_private_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_private_02 = yes }
+		add = hm_value_construct_uba_private_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_private_03 = yes }
+		add = hm_value_construct_uba_private_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_private_04 = yes }
+		add = hm_value_construct_uba_private_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_private_05 = yes }
+		add = hm_value_construct_uba_private_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_private_06 = yes }
+		add = hm_value_construct_uba_private_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_private_07 = yes }
+		add = hm_value_construct_uba_private_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_private_08 = yes }
+		add = hm_value_construct_uba_private_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_fur_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_fur_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_fur_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_fur_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_fur_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_fur_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_fur_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_fur_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_fur_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_fur_01 = yes }
+		add = hm_value_construct_uba_fur_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_fur_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_fur_02 = yes }
+		add = hm_value_construct_uba_fur_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_fur_03 = yes }
+		add = hm_value_construct_uba_fur_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_fur_04 = yes }
+		add = hm_value_construct_uba_fur_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_fur_05 = yes }
+		add = hm_value_construct_uba_fur_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_fur_06 = yes }
+		add = hm_value_construct_uba_fur_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_fur_07 = yes }
+		add = hm_value_construct_uba_fur_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_fur_08 = yes }
+		add = hm_value_construct_uba_fur_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_vineyard_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_vineyard_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_vineyard_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_vineyard_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_vineyard_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_vineyard_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_vineyard_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_vineyard_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_vineyard_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_vineyard_01 = yes }
+		add = hm_value_construct_uba_vineyard_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_vineyard_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_vineyard_02 = yes }
+		add = hm_value_construct_uba_vineyard_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_vineyard_03 = yes }
+		add = hm_value_construct_uba_vineyard_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_vineyard_04 = yes }
+		add = hm_value_construct_uba_vineyard_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_vineyard_05 = yes }
+		add = hm_value_construct_uba_vineyard_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_vineyard_06 = yes }
+		add = hm_value_construct_uba_vineyard_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_vineyard_07 = yes }
+		add = hm_value_construct_uba_vineyard_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_vineyard_08 = yes }
+		add = hm_value_construct_uba_vineyard_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_olive_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_olive_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_olive_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_olive_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_olive_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_olive_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_olive_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_olive_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_olive_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_olive_01 = yes }
+		add = hm_value_construct_uba_olive_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_olive_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_olive_02 = yes }
+		add = hm_value_construct_uba_olive_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_olive_03 = yes }
+		add = hm_value_construct_uba_olive_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_olive_04 = yes }
+		add = hm_value_construct_uba_olive_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_olive_05 = yes }
+		add = hm_value_construct_uba_olive_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_olive_06 = yes }
+		add = hm_value_construct_uba_olive_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_olive_07 = yes }
+		add = hm_value_construct_uba_olive_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_olive_08 = yes }
+		add = hm_value_construct_uba_olive_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_piazza_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_piazza_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_piazza_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_piazza_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_piazza_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_piazza_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_piazza_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_piazza_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_piazza_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_piazza_01 = yes }
+		add = hm_value_construct_uba_piazza_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_piazza_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_piazza_02 = yes }
+		add = hm_value_construct_uba_piazza_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_piazza_03 = yes }
+		add = hm_value_construct_uba_piazza_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_piazza_04 = yes }
+		add = hm_value_construct_uba_piazza_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_piazza_05 = yes }
+		add = hm_value_construct_uba_piazza_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_piazza_06 = yes }
+		add = hm_value_construct_uba_piazza_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_piazza_07 = yes }
+		add = hm_value_construct_uba_piazza_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_piazza_08 = yes }
+		add = hm_value_construct_uba_piazza_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_tea_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_tea_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_tea_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_tea_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_tea_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_tea_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_tea_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_tea_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_tea_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_tea_01 = yes }
+		add = hm_value_construct_uba_tea_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_tea_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_tea_02 = yes }
+		add = hm_value_construct_uba_tea_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_tea_03 = yes }
+		add = hm_value_construct_uba_tea_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_tea_04 = yes }
+		add = hm_value_construct_uba_tea_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_tea_05 = yes }
+		add = hm_value_construct_uba_tea_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_tea_06 = yes }
+		add = hm_value_construct_uba_tea_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_tea_07 = yes }
+		add = hm_value_construct_uba_tea_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_tea_08 = yes }
+		add = hm_value_construct_uba_tea_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_silk_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_silk_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_silk_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_silk_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_silk_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_silk_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_silk_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_silk_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_silk_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_silk_01 = yes }
+		add = hm_value_construct_uba_silk_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_silk_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_silk_02 = yes }
+		add = hm_value_construct_uba_silk_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_silk_03 = yes }
+		add = hm_value_construct_uba_silk_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_silk_04 = yes }
+		add = hm_value_construct_uba_silk_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_silk_05 = yes }
+		add = hm_value_construct_uba_silk_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_silk_06 = yes }
+		add = hm_value_construct_uba_silk_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_silk_07 = yes }
+		add = hm_value_construct_uba_silk_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_silk_08 = yes }
+		add = hm_value_construct_uba_silk_08_gold_cost
+	}
+}
+
+hm_value_construct_uba_kiln_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_kiln_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_kiln_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_kiln_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_kiln_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_kiln_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_kiln_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_kiln_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_uba_kiln_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_kiln_01 = yes }
+		add = hm_value_construct_uba_kiln_01_gold_cost
+	}
+}
+hm_value_upgrade_uba_kiln_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_uba_kiln_02 = yes }
+		add = hm_value_construct_uba_kiln_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_kiln_03 = yes }
+		add = hm_value_construct_uba_kiln_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_kiln_04 = yes }
+		add = hm_value_construct_uba_kiln_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_kiln_05 = yes }
+		add = hm_value_construct_uba_kiln_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_kiln_06 = yes }
+		add = hm_value_construct_uba_kiln_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_kiln_07 = yes }
+		add = hm_value_construct_uba_kiln_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_uba_kiln_08 = yes }
+		add = hm_value_construct_uba_kiln_08_gold_cost
+	}
+}

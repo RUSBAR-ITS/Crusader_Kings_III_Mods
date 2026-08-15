@@ -1,0 +1,98 @@
+# hospices
+
+hm_trigger_construct_hospices_01 = {
+	NOT = { has_building_or_higher = hospices_01 }
+	hm_building_requirement_tribal = no
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_hospices_02 = {
+	has_building = hospices_01
+	hm_building_requirement_tribal = no
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = {
+			has_innovation = innovation_city_planning
+		}
+	}
+}
+hm_trigger_construct_hospices_03 = {
+	has_building = hospices_02
+	hm_building_requirement_tribal = no
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_hospices_04 = {
+	has_building = hospices_03
+	hm_building_requirement_tribal = no
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+}
+hm_trigger_construct_hospices_05 = {
+	has_building = hospices_04
+	hm_building_requirement_tribal = no
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = {
+			has_innovation = innovation_windmills
+		}
+	}
+}
+hm_trigger_construct_hospices_06 = {
+	has_building = hospices_05
+	hm_building_requirement_tribal = no
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = {
+			has_innovation = innovation_windmills
+		}
+	}
+}
+hm_trigger_construct_hospices_07 = {
+	has_building = hospices_06
+	hm_building_requirement_tribal = no
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_hospices_08 = {
+	has_building = hospices_07
+	hm_building_requirement_tribal = no
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+}
+hm_trigger_construct_hospices = {
+	hm_trigger_construct_hospices_01 = yes
+}
+hm_trigger_upgrade_hospices = {
+	OR = {
+		hm_trigger_construct_hospices_02 = yes
+		hm_trigger_construct_hospices_03 = yes
+		hm_trigger_construct_hospices_04 = yes
+		hm_trigger_construct_hospices_05 = yes
+		hm_trigger_construct_hospices_06 = yes
+		hm_trigger_construct_hospices_07 = yes
+		hm_trigger_construct_hospices_08 = yes
+	}
+}

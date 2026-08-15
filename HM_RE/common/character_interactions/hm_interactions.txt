@@ -1,0 +1,234 @@
+﻿hm_feudalize_vassal_holding_interaction = {
+	category = interaction_category_uncategorized
+	hidden = yes
+	special_interaction = feudalize_holding
+	
+	desc = feudalize_holding_interaction_desc
+	
+	target_type = title
+	target_filter = actor_realm_titles
+	
+	auto_accept = yes
+	
+	is_shown = {
+		scope:actor = {
+			this = scope:recipient
+			NOR = {
+				government_has_flag = government_is_tribal
+				government_has_flag = government_is_nomadic
+				government_has_flag = government_is_herder
+			}
+		}
+	}
+	
+	can_be_picked_title = {
+		scope:target = {
+			# 允许封臣领地
+			holder = {
+				OR = {
+					this = scope:actor
+					is_vassal_of = scope:actor
+				}
+			}
+			
+			is_capital_barony = no
+			
+			trigger_if = {
+				limit = { tier <= tier_county }
+				title_province = {
+					OR = {
+						has_holding_type = tribal_holding
+						has_holding_type = nomad_holding
+						has_holding_type = herder_holding
+					}
+				}
+			}
+			trigger_else = {
+				custom_description = {
+					text = "feudalize_holding_interaction_title_not_county_or_below"
+					always = no
+				}
+			}
+		}
+	}
+	
+	has_valid_target_showing_failures_only = {
+		scope:target = {
+			trigger_if = {
+				limit = { tier <= tier_county }
+				title_province = {
+					has_ongoing_construction = no
+
+					trigger_if = {
+						limit = {
+							scope:target.holder = scope:actor
+						}
+						barony_controller = scope:actor
+					}
+					trigger_else = {
+						barony_controller = scope:target.holder
+					}
+				}
+			}
+		}
+	}
+
+	cost = {
+		treasury_or_gold = {
+			scope:actor = {
+				if = {
+					limit = {
+						scope:target.county = {
+							has_variable = was_razed
+						}
+					}
+					add = {
+						value = 50
+						desc = BASE
+					}
+				}
+				else_if = {
+					limit = {
+						scope:target.county = {
+							culture = scope:actor.culture
+						}
+					}
+					add = {
+						value = 200
+						desc = BASE
+					}
+				}
+				else = {
+					add = {
+						value = feudalize_holding_interaction_cost
+						desc = BASE
+					}
+				}
+				if = {
+					limit = { # More expensive for admin to make barbarians civilized...
+						government_has_flag = government_is_administrative
+					}
+					add = {
+						value = feudalize_holding_interaction_cost
+						multiply = 0.25
+						desc = has_admin_government
+					}
+					if = {
+						limit = { # Admin get a bonus for high bureaucracy levels
+							OR = {
+								has_realm_law = imperial_bureaucracy_2
+								has_realm_law = imperial_bureaucracy_3
+							}
+						}
+						subtract = {
+							value = feudalize_holding_interaction_cost
+							multiply = {
+								value = 0.1
+								if = {
+									limit = {
+										has_realm_law = imperial_bureaucracy_3
+									}
+									add = 0.15
+								}
+							}
+							desc = imperial_bureaucracy
+						}
+					}
+				}
+			}
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = feudalize_holding_interaction_notification
+
+				right_icon = scope:actor
+
+				if = {
+					limit = {
+						scope:target.title_province = {
+							OR = {
+								has_holding_type = nomad_holding
+								has_holding_type = herder_holding
+							}
+						}
+					}
+					if = {
+						limit = {
+							OR = {
+								scope:target.county.culture = scope:actor.culture
+								scope:target.county = { has_variable = was_razed }
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							OR = {
+								government_has_flag = government_is_tribal
+								scope:target.county.culture = { has_same_culture_heritage = scope:actor.culture }
+							}
+						}
+						scope:target.county = {
+							add_county_modifier = {
+								modifier = mpo_feudalize_nomadic_land_modifier
+								years = 5
+							}
+						}
+					}
+					else = {
+						scope:target.county = {
+							add_county_modifier = {
+								modifier = mpo_feudalize_nomadic_land_modifier
+								years = 30
+							}
+						}
+					}
+					# SILK ROAD
+					scope:target = {
+						tgp_silk_road_feudalize_holding_effect = yes
+					}
+				}
+
+				if = {
+					limit = { exists = scope:target.title_province }
+					scope:target.title_province = {
+						set_holding_type = castle_holding
+					}
+				}
+
+				if = {
+					limit = {
+						scope:target = {
+							title_province = {
+								geographical_region = geographical_region:mpo_region_permafrost
+							}
+						}
+					}
+					if = {
+						limit = {
+							scope:target = { has_county_modifier = mpo_siberian_permafrost_modifier	 }
+						}
+						scope:target = { remove_county_modifier = mpo_siberian_permafrost_modifier }
+					}
+					else_if = {
+						limit = {
+							scope:target = { has_county_modifier = mpo_siberian_permafrost_modifier_bad	 }
+						}
+						scope:target = { remove_county_modifier = mpo_siberian_permafrost_modifier_bad }
+					}
+				}			
+			}
+		}
+	}
+
+	# Interaction frequency determined by code, do not change
+	ai_frequency = 0
+
+	# Used to determine which holding should be feudalized over another AND how important this AI goal is compared to others, like creating titles and constructing new holdings
+	ai_will_do = {
+		base = 1500
+	}
+}

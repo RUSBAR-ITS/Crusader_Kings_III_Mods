@@ -1,0 +1,365 @@
+﻿hm_effect_upgrade_tribe = {
+	if = {
+		limit = { hm_trigger_construct_tribe_02 = yes }
+		add_building = tribe_02
+	}
+}
+
+hm_effect_construct_longhouses = {
+	if = {
+		limit = { hm_trigger_construct_longhouses = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = longhouses_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = longhouses_01
+		}
+	}
+}
+hm_effect_upgrade_longhouses = {
+	if = {
+		limit = { hm_trigger_construct_longhouses_02 = yes }
+		add_building = longhouses_02
+	}
+}
+hm_effect_remove_longhouses = {
+	if = {
+		limit = { has_building = longhouses_01 }
+		remove_building = longhouses_01
+	}
+	else_if = {
+		limit = { has_building =longhouses_02 }
+		remove_building = longhouses_02
+	}
+}
+
+hm_effect_construct_war_camps = {
+	if = {
+		limit = { hm_trigger_construct_war_camps = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = war_camps_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = war_camps_01
+		}
+	}
+}
+hm_effect_upgrade_war_camps = {
+	if = {
+		limit = { hm_trigger_construct_war_camps_02 = yes }
+		add_building = war_camps_02
+	}
+}
+hm_effect_remove_war_camps = {
+	if = {
+		limit = { has_building = war_camps_01 }
+		remove_building = war_camps_01
+	}
+	else_if = {
+		limit = { has_building =war_camps_02 }
+		remove_building = war_camps_02
+	}
+}
+
+hm_effect_construct_palisades = {
+	if = {
+		limit = { hm_trigger_construct_palisades = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = palisades_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = palisades_01
+		}
+	}
+}
+hm_effect_upgrade_palisades = {
+	if = {
+		limit = { hm_trigger_construct_palisades_02 = yes }
+		add_building = palisades_02
+	}
+}
+hm_effect_remove_palisades = {
+	if = {
+		limit = { has_building = palisades_01 }
+		remove_building = palisades_01
+	}
+	else_if = {
+		limit = { has_building =palisades_02 }
+		remove_building = palisades_02
+	}
+}
+
+hm_effect_construct_market_villages = {
+	if = {
+		limit = { hm_trigger_construct_market_villages = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = market_villages_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = market_villages_01
+		}
+	}
+}
+hm_effect_upgrade_market_villages = {
+	if = {
+		limit = { hm_trigger_construct_market_villages_02 = yes }
+		add_building = market_villages_02
+	}
+}
+hm_effect_remove_market_villages = {
+	if = {
+		limit = { has_building = market_villages_01 }
+		remove_building = market_villages_01
+	}
+	else_if = {
+		limit = { has_building =market_villages_02 }
+		remove_building = market_villages_02
+	}
+}
+
+hm_effect_construct_idjang_forts = {
+	if = {
+		limit = { hm_trigger_construct_idjang_forts = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = idjang_forts_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = idjang_forts_01
+		}
+	}
+}
+hm_effect_upgrade_idjang_forts = {
+	if = {
+		limit = { hm_trigger_construct_idjang_forts_02 = yes }
+		add_building = idjang_forts_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_idjang_forts_03 = yes }
+		add_building = idjang_forts_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_idjang_forts_04 = yes }
+		add_building = idjang_forts_04
+	}
+}
+hm_effect_remove_idjang_forts = {
+	if = {
+		limit = { has_building = idjang_forts_01 }
+		remove_building = idjang_forts_01
+	}
+	else_if = {
+		limit = { has_building =idjang_forts_02 }
+		remove_building = idjang_forts_02
+	}
+	else_if = {
+		limit = { has_building = idjang_forts_03 }
+		remove_building = idjang_forts_03
+	}
+	else_if = {
+		limit = { has_building =idjang_forts_04 }
+		remove_building = idjang_forts_04
+	}
+}
+
+hm_effect_construct_wantilan = {
+	if = {
+		limit = { hm_trigger_construct_wantilan = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = wantilan_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = wantilan_01
+		}
+	}
+}
+hm_effect_upgrade_wantilan = {
+	if = {
+		limit = { hm_trigger_construct_wantilan_02 = yes }
+		add_building = wantilan_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_wantilan_03 = yes }
+		add_building = wantilan_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_wantilan_04 = yes }
+		add_building = wantilan_04
+	}
+}
+hm_effect_remove_wantilan = {
+	if = {
+		limit = { has_building = wantilan_01 }
+		remove_building = wantilan_01
+	}
+	else_if = {
+		limit = { has_building =wantilan_02 }
+		remove_building = wantilan_02
+	}
+	else_if = {
+		limit = { has_building = wantilan_03 }
+		remove_building = wantilan_03
+	}
+	else_if = {
+		limit = { has_building =wantilan_04 }
+		remove_building = wantilan_04
+	}
+}
+
+hm_effect_construct_kora_kora_yards = {
+	if = {
+		limit = { hm_trigger_construct_kora_kora_yards = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = kora_kora_yards_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = kora_kora_yards_01
+		}
+	}
+}
+hm_effect_upgrade_kora_kora_yards = {
+	if = {
+		limit = { hm_trigger_construct_kora_kora_yards_02 = yes }
+		add_building = kora_kora_yards_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_kora_kora_yards_03 = yes }
+		add_building = kora_kora_yards_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_kora_kora_yards_04 = yes }
+		add_building = kora_kora_yards_04
+	}
+}
+hm_effect_remove_kora_kora_yards = {
+	if = {
+		limit = { has_building = kora_kora_yards_01 }
+		remove_building = kora_kora_yards_01
+	}
+	else_if = {
+		limit = { has_building =kora_kora_yards_02 }
+		remove_building = kora_kora_yards_02
+	}
+	else_if = {
+		limit = { has_building = kora_kora_yards_03 }
+		remove_building = kora_kora_yards_03
+	}
+	else_if = {
+		limit = { has_building =kora_kora_yards_04 }
+		remove_building = kora_kora_yards_04
+	}
+}
+
+hm_effect_construct_water_temples = {
+	if = {
+		limit = { hm_trigger_construct_water_temples = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = water_temples_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = water_temples_01
+		}
+	}
+}
+hm_effect_upgrade_water_temples = {
+	if = {
+		limit = { hm_trigger_construct_water_temples_02 = yes }
+		add_building = water_temples_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_water_temples_03 = yes }
+		add_building = water_temples_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_water_temples_04 = yes }
+		add_building = water_temples_04
+	}
+}
+hm_effect_remove_water_temples = {
+	if = {
+		limit = { has_building = water_temples_01 }
+		remove_building = water_temples_01
+	}
+	else_if = {
+		limit = { has_building =water_temples_02 }
+		remove_building = water_temples_02
+	}
+	else_if = {
+		limit = { has_building = water_temples_03 }
+		remove_building = water_temples_03
+	}
+	else_if = {
+		limit = { has_building =water_temples_04 }
+		remove_building = water_temples_04
+	}
+}
+
+hm_effect_construct_stilted_granaries = {
+	if = {
+		limit = { hm_trigger_construct_stilted_granaries = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = stilted_granaries_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = stilted_granaries_01
+		}
+	}
+}
+hm_effect_upgrade_stilted_granaries = {
+	if = {
+		limit = { hm_trigger_construct_stilted_granaries_02 = yes }
+		add_building = stilted_granaries_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_stilted_granaries_03 = yes }
+		add_building = stilted_granaries_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_stilted_granaries_04 = yes }
+		add_building = stilted_granaries_04
+	}
+}
+hm_effect_remove_stilted_granaries = {
+	if = {
+		limit = { has_building = stilted_granaries_01 }
+		remove_building = stilted_granaries_01
+	}
+	else_if = {
+		limit = { has_building =stilted_granaries_02 }
+		remove_building = stilted_granaries_02
+	}
+	else_if = {
+		limit = { has_building = stilted_granaries_03 }
+		remove_building = stilted_granaries_03
+	}
+	else_if = {
+		limit = { has_building =stilted_granaries_04 }
+		remove_building = stilted_granaries_04
+	}
+}

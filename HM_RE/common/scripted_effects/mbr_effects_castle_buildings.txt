@@ -1,0 +1,473 @@
+﻿hm_effect_construct_improvement = {
+	if = {
+		limit = { hm_trigger_construct_improvement = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = improvement_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = improvement_01
+		}
+	}
+}
+hm_effect_upgrade_improvement = {
+	if = {
+		limit = { hm_trigger_construct_improvement_02 = yes }
+		add_building = improvement_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_improvement_03 = yes }
+		add_building = improvement_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_improvement_04 = yes }
+		add_building = improvement_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_improvement_05 = yes }
+		add_building = improvement_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_improvement_06 = yes }
+		add_building = improvement_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_improvement_07 = yes }
+		add_building = improvement_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_improvement_08 = yes }
+		add_building = improvement_08
+	}
+}
+hm_effect_remove_improvement = {
+	if = {
+		limit = { has_building = improvement_01 }
+		remove_building = improvement_01
+	}
+	else_if = {
+		limit = { has_building =improvement_02 }
+		remove_building = improvement_02
+	}
+	else_if = {
+		limit = { has_building = improvement_03 }
+		remove_building = improvement_03
+	}
+	else_if = {
+		limit = { has_building =improvement_04 }
+		remove_building = improvement_04
+	}
+	else_if = {
+		limit = { has_building = improvement_05 }
+		remove_building = improvement_05
+	}
+	else_if = {
+		limit = { has_building =improvement_06 }
+		remove_building = improvement_06
+	}
+	else_if = {
+		limit = { has_building = improvement_07 }
+		remove_building = improvement_07
+	}
+	else_if = {
+		limit = { has_building =improvement_08 }
+		remove_building = improvement_08
+	}
+}
+
+hm_effect_construct_expansion = {
+	if = {
+		limit = { hm_trigger_construct_expansion = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = expansion_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = expansion_01
+		}
+	}
+}
+hm_effect_upgrade_expansion = {
+	if = {
+		limit = { hm_trigger_construct_expansion_02 = yes }
+		add_building = expansion_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_03 = yes }
+		add_building = expansion_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_04 = yes }
+		add_building = expansion_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_05 = yes }
+		add_building = expansion_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_06 = yes }
+		add_building = expansion_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_07 = yes }
+		add_building = expansion_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_08 = yes }
+		add_building = expansion_08
+	}
+}
+hm_effect_remove_expansion = {
+	if = {
+		limit = { has_building = expansion_01 }
+		remove_building = expansion_01
+	}
+	else_if = {
+		limit = { has_building =expansion_02 }
+		remove_building = expansion_02
+	}
+	else_if = {
+		limit = { has_building = expansion_03 }
+		remove_building = expansion_03
+	}
+	else_if = {
+		limit = { has_building =expansion_04 }
+		remove_building = expansion_04
+	}
+	else_if = {
+		limit = { has_building = expansion_05 }
+		remove_building = expansion_05
+	}
+	else_if = {
+		limit = { has_building =expansion_06 }
+		remove_building = expansion_06
+	}
+	else_if = {
+		limit = { has_building = expansion_07 }
+		remove_building = expansion_07
+	}
+	else_if = {
+		limit = { has_building =expansion_08 }
+		remove_building = expansion_08
+	}
+}
+
+hm_effect_construct_expansion_camel_cavalry = {
+	if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = expansion_camel_cavalry_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = expansion_camel_cavalry_01
+		}
+	}
+}
+hm_effect_upgrade_expansion_camel_cavalry = {
+	if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_02 = yes }
+		add_building = expansion_camel_cavalry_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_03 = yes }
+		add_building = expansion_camel_cavalry_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_04 = yes }
+		add_building = expansion_camel_cavalry_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_05 = yes }
+		add_building = expansion_camel_cavalry_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_06 = yes }
+		add_building = expansion_camel_cavalry_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_07 = yes }
+		add_building = expansion_camel_cavalry_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_08 = yes }
+		add_building = expansion_camel_cavalry_08
+	}
+}
+hm_effect_remove_expansion_camel_cavalry = {
+	if = {
+		limit = { has_building = expansion_camel_cavalry_01 }
+		remove_building = expansion_camel_cavalry_01
+	}
+	else_if = {
+		limit = { has_building =expansion_camel_cavalry_02 }
+		remove_building = expansion_camel_cavalry_02
+	}
+	else_if = {
+		limit = { has_building = expansion_camel_cavalry_03 }
+		remove_building = expansion_camel_cavalry_03
+	}
+	else_if = {
+		limit = { has_building =expansion_camel_cavalry_04 }
+		remove_building = expansion_camel_cavalry_04
+	}
+	else_if = {
+		limit = { has_building = expansion_camel_cavalry_05 }
+		remove_building = expansion_camel_cavalry_05
+	}
+	else_if = {
+		limit = { has_building =expansion_camel_cavalry_06 }
+		remove_building = expansion_camel_cavalry_06
+	}
+	else_if = {
+		limit = { has_building = expansion_camel_cavalry_07 }
+		remove_building = expansion_camel_cavalry_07
+	}
+	else_if = {
+		limit = { has_building =expansion_camel_cavalry_08 }
+		remove_building = expansion_camel_cavalry_08
+	}
+}
+
+hm_effect_construct_expansion_archer_cavalry = {
+	if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = expansion_archer_cavalry_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = expansion_archer_cavalry_01
+		}
+	}
+}
+hm_effect_upgrade_expansion_archer_cavalry = {
+	if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_02 = yes }
+		add_building = expansion_archer_cavalry_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_03 = yes }
+		add_building = expansion_archer_cavalry_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_04 = yes }
+		add_building = expansion_archer_cavalry_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_05 = yes }
+		add_building = expansion_archer_cavalry_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_06 = yes }
+		add_building = expansion_archer_cavalry_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_07 = yes }
+		add_building = expansion_archer_cavalry_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_08 = yes }
+		add_building = expansion_archer_cavalry_08
+	}
+}
+hm_effect_remove_expansion_archer_cavalry = {
+	if = {
+		limit = { has_building = expansion_archer_cavalry_01 }
+		remove_building = expansion_archer_cavalry_01
+	}
+	else_if = {
+		limit = { has_building =expansion_archer_cavalry_02 }
+		remove_building = expansion_archer_cavalry_02
+	}
+	else_if = {
+		limit = { has_building = expansion_archer_cavalry_03 }
+		remove_building = expansion_archer_cavalry_03
+	}
+	else_if = {
+		limit = { has_building =expansion_archer_cavalry_04 }
+		remove_building = expansion_archer_cavalry_04
+	}
+	else_if = {
+		limit = { has_building = expansion_archer_cavalry_05 }
+		remove_building = expansion_archer_cavalry_05
+	}
+	else_if = {
+		limit = { has_building =expansion_archer_cavalry_06 }
+		remove_building = expansion_archer_cavalry_06
+	}
+	else_if = {
+		limit = { has_building = expansion_archer_cavalry_07 }
+		remove_building = expansion_archer_cavalry_07
+	}
+	else_if = {
+		limit = { has_building =expansion_archer_cavalry_08 }
+		remove_building = expansion_archer_cavalry_08
+	}
+}
+
+hm_effect_construct_interior = {
+	if = {
+		limit = { hm_trigger_construct_interior = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = interior_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = interior_01
+		}
+	}
+}
+hm_effect_upgrade_interior = {
+	if = {
+		limit = { hm_trigger_construct_interior_02 = yes }
+		add_building = interior_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_interior_03 = yes }
+		add_building = interior_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_interior_04 = yes }
+		add_building = interior_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_interior_05 = yes }
+		add_building = interior_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_interior_06 = yes }
+		add_building = interior_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_interior_07 = yes }
+		add_building = interior_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_interior_08 = yes }
+		add_building = interior_08
+	}
+}
+hm_effect_remove_interior = {
+	if = {
+		limit = { has_building = interior_01 }
+		remove_building = interior_01
+	}
+	else_if = {
+		limit = { has_building =interior_02 }
+		remove_building = interior_02
+	}
+	else_if = {
+		limit = { has_building = interior_03 }
+		remove_building = interior_03
+	}
+	else_if = {
+		limit = { has_building =interior_04 }
+		remove_building = interior_04
+	}
+	else_if = {
+		limit = { has_building = interior_05 }
+		remove_building = interior_05
+	}
+	else_if = {
+		limit = { has_building =interior_06 }
+		remove_building = interior_06
+	}
+	else_if = {
+		limit = { has_building = interior_07 }
+		remove_building = interior_07
+	}
+	else_if = {
+		limit = { has_building =interior_08 }
+		remove_building = interior_08
+	}
+}
+
+hm_effect_construct_town = {
+	if = {
+		limit = { hm_trigger_construct_town = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = town_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = town_01
+		}
+	}
+}
+hm_effect_upgrade_town = {
+	if = {
+		limit = { hm_trigger_construct_town_02 = yes }
+		add_building = town_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_town_03 = yes }
+		add_building = town_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_town_04 = yes }
+		add_building = town_04
+	}
+	else_if = {
+		limit = { hm_trigger_construct_town_05 = yes }
+		add_building = town_05
+	}
+	else_if = {
+		limit = { hm_trigger_construct_town_06 = yes }
+		add_building = town_06
+	}
+	else_if = {
+		limit = { hm_trigger_construct_town_07 = yes }
+		add_building = town_07
+	}
+	else_if = {
+		limit = { hm_trigger_construct_town_08 = yes }
+		add_building = town_08
+	}
+}
+hm_effect_remove_town = {
+	if = {
+		limit = { has_building = town_01 }
+		remove_building = town_01
+	}
+	else_if = {
+		limit = { has_building =town_02 }
+		remove_building = town_02
+	}
+	else_if = {
+		limit = { has_building = town_03 }
+		remove_building = town_03
+	}
+	else_if = {
+		limit = { has_building =town_04 }
+		remove_building = town_04
+	}
+	else_if = {
+		limit = { has_building = town_05 }
+		remove_building = town_05
+	}
+	else_if = {
+		limit = { has_building =town_06 }
+		remove_building = town_06
+	}
+	else_if = {
+		limit = { has_building = town_07 }
+		remove_building = town_07
+	}
+	else_if = {
+		limit = { has_building =town_08 }
+		remove_building = town_08
+	}
+}

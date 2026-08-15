@@ -1,0 +1,494 @@
+﻿hm_value_construct_buildings_gold_cost_cap_very_cheap = 200
+hm_value_construct_buildings_gold_cost_cap_cheap = 400
+hm_value_construct_buildings_gold_cost_cap_default = 800
+hm_value_construct_buildings_gold_cost_cap_expensive = 1600
+hm_value_construct_buildings_gold_cost_cap_very_expensive = 3200
+
+hm_value_construct_buildings_gold_cost = { # scope:province
+	if = {
+		limit = {
+			has_game_rule = hm_rule_player_free_functions_enabled
+			root = { is_ai = no }
+		}
+		value = 0
+	}
+	else = {
+		value = 0
+		# tribal buildings
+		add = hm_value_construct_longhouses_gold_cost
+		add = hm_value_construct_war_camps_gold_cost
+		add = hm_value_construct_palisades_gold_cost
+		add = hm_value_construct_market_villages_gold_cost
+		add = hm_value_construct_idjang_forts_gold_cost
+		add = hm_value_construct_wantilan_gold_cost
+		add = hm_value_construct_war_kora_kora_yards_gold_cost
+		add = hm_value_construct_water_temples_gold_cost
+		add = hm_value_construct_stilted_granaries_gold_cost
+		# castle buildings
+		# city buildings
+		add = hm_value_construct_guild_halls_gold_cost
+		# temple buildings
+		add = hm_value_construct_scriptorium_gold_cost
+		add = hm_value_construct_monastic_schools_gold_cost
+		add = hm_value_construct_megalith_gold_cost
+		add = hm_value_construct_breweries_gold_cost
+		# temple citadel buildings
+		add = hm_value_construct_citadel_shrine_gold_cost
+		add = hm_value_construct_sacred_pool_gold_cost
+		add = hm_value_construct_vihara_halls_gold_cost
+		# common buildings
+		add = hm_value_construct_hospices_gold_cost
+		# standard fortification buildings
+		add = hm_value_construct_ramparts_gold_cost
+		add = hm_value_construct_curtain_walls_gold_cost
+		add = hm_value_construct_watchtowers_gold_cost
+		add = hm_value_construct_hill_forts_gold_cost
+		# standard economy buildings
+		add = hm_value_construct_caravanserai_gold_cost
+		add = hm_value_construct_watermills_gold_cost
+		add = hm_value_construct_windmills_gold_cost
+		add = hm_value_construct_common_tradeport_gold_cost
+		add = hm_value_construct_pastures_gold_cost
+		add = hm_value_construct_hunting_grounds_gold_cost
+		add = hm_value_construct_orchards_gold_cost
+		add = hm_value_construct_farm_estates_gold_cost
+		add = hm_value_construct_cereal_fields_gold_cost
+		add = hm_value_construct_logging_camps_gold_cost
+		add = hm_value_construct_peat_quarries_gold_cost
+		add = hm_value_construct_hill_farms_gold_cost
+		add = hm_value_construct_elephant_pens_gold_cost
+		add = hm_value_construct_plantations_gold_cost
+		add = hm_value_construct_quarries_gold_cost
+		add = hm_value_construct_qanats_gold_cost
+		add = hm_value_construct_murex_farm_gold_cost
+		add = hm_value_construct_paddy_fields_gold_cost
+		add = hm_value_construct_waterworks_gold_cost
+		add = hm_value_construct_spice_plantation_gold_cost
+		# standard military buildings
+		add = hm_value_construct_wind_furnace_gold_cost
+		add = hm_value_construct_workshops_gold_cost
+		add = hm_value_construct_horse_pastures_gold_cost
+		add = hm_value_construct_hillside_grazing_gold_cost
+		add = hm_value_construct_warrior_lodges_gold_cost
+		add = hm_value_construct_military_camps_gold_cost
+		add = hm_value_construct_regimental_grounds_gold_cost
+		add = hm_value_construct_outposts_gold_cost
+		add = hm_value_construct_barracks_gold_cost
+		add = hm_value_construct_camel_farms_gold_cost
+		add = hm_value_construct_stables_gold_cost
+		add = hm_value_construct_smiths_gold_cost
+		add = hm_value_construct_powder_magazine_gold_cost
+		# admin buildings
+		add = hm_value_construct_capital_bureau_gold_cost
+		#mbr coach and militia buildings
+		add = hm_value_construct_horse_gold_cost
+		add = hm_value_construct_MBRXXX_horse_archer_gold_cost
+		add = hm_value_construct_MBRXXX_camel_gold_cost
+		add = hm_value_construct_militia_gold_cost
+		#mbrxxx castle buildings
+		add = hm_value_construct_improvement_gold_cost
+		add = hm_value_construct_expansion_gold_cost
+		add = hm_value_construct_expansion_camel_cavalry_gold_cost
+		add = hm_value_construct_expansion_archer_cavalry_gold_cost
+		add = hm_value_construct_interior_gold_cost
+		add = hm_value_construct_town_gold_cost
+		#mbrxxx city buildings
+		add = hm_value_construct_district_gold_cost
+		add = hm_value_construct_slaughterhouse_gold_cost
+		#mbrxxx common buildings
+		add = hm_value_construct_vineyard_gold_cost
+		add = hm_value_construct_tunnel_gold_cost
+		add = hm_value_construct_hospital_gold_cost
+		add = hm_value_construct_farming_gold_cost
+		add = hm_value_construct_embassy_gold_cost
+		add = hm_value_construct_plain_gold_cost
+		add = hm_value_construct_czhen_gold_cost
+		add = hm_value_construct_muhou_gold_cost
+		add = hm_value_construct_silk_gold_cost
+		add = hm_value_construct_restau_gold_cost
+		add = hm_value_construct_supm_gold_cost
+		add = hm_value_construct_mif_gold_cost
+		add = hm_value_construct_lcamp_gold_cost
+		add = hm_value_construct_hbm_gold_cost
+		add = hm_value_construct_tavern_gold_cost
+		add = hm_value_construct_stash_gold_cost
+		add = hm_value_construct_spice_gold_cost
+		add = hm_value_construct_crockery_gold_cost
+		add = hm_value_construct_currier_gold_cost
+		add = hm_value_construct_waterfront_gold_cost
+		add = hm_value_construct_shanqiu_gold_cost
+		add = hm_value_construct_fayuan_gold_cost
+		add = hm_value_construct_heishi_gold_cost
+		#mbrxxx support buildings
+		add = hm_value_construct_support_gold_cost
+		#mbrxxx tribal buildings
+		add = hm_value_construct_Townsquare_gold_cost
+		add = hm_value_construct_war_gold_cost
+		add = hm_value_construct_raiding_gold_cost
+		add = hm_value_construct_ting_gold_cost
+		add = hm_value_construct_medicine_lodge_gold_cost
+		add = hm_value_construct_liehu_gold_cost
+		add = hm_value_construct_car_gold_cost
+		add = hm_value_construct_pimao_gold_cost
+		add = hm_value_construct_zhanshi_gold_cost
+		#建筑师系列
+		add = hm_value_construct_uba_manor_gold_cost
+		add = hm_value_construct_uba_residence_gold_cost
+		add = hm_value_construct_uba_library_gold_cost
+		add = hm_value_construct_uba_townhall_gold_cost
+		add = hm_value_construct_uba_temple_gold_cost
+		add = hm_value_construct_uba_bazaar_gold_cost
+		add = hm_value_construct_uba_aqueduct_gold_cost
+		add = hm_value_construct_uba_joust_gold_cost
+		add = hm_value_construct_uba_checkpoint_gold_cost
+		add = hm_value_construct_uba_taxing_gold_cost
+		add = hm_value_construct_uba_bathroom_gold_cost
+		add = hm_value_construct_uba_herbal_gold_cost
+		add = hm_value_construct_uba_private_gold_cost
+		add = hm_value_construct_uba_fur_gold_cost
+		add = hm_value_construct_uba_vineyard_gold_cost
+		add = hm_value_construct_uba_olive_gold_cost
+		add = hm_value_construct_uba_piazza_gold_cost
+		add = hm_value_construct_uba_tea_gold_cost
+		add = hm_value_construct_uba_kiln_gold_cost
+		add = hm_value_construct_uba_silk_gold_cost
+		#东方兵种拓展
+		add = hm_value_construct_qianmutian_gold_cost
+		add = hm_value_construct_lutaiyanchang_gold_cost
+		add = hm_value_construct_shanhaiguan_gold_cost
+		add = hm_value_construct_heitudi_gold_cost
+		add = hm_value_construct_bunudui_gold_cost
+		add = hm_value_construct_nulishichang_gold_cost
+		add = hm_value_construct_changshanyuchang_gold_cost
+		add = hm_value_construct_chayuan_gold_cost
+		add = hm_value_construct_shutian_gold_cost
+		add = hm_value_construct_weibojun_gold_cost
+		add = hm_value_construct_dongfangchengqiang_gold_cost
+		add = hm_value_construct_xinzeng_01_yidao_gold_cost
+		add = hm_value_construct_xinzeng_02_yidao_gold_cost
+		add = hm_value_construct_xinzeng_03_yidao_gold_cost
+		add = hm_value_construct_dingjudian_gold_cost
+		add = hm_value_construct_muchang_gold_cost
+		add = hm_value_construct_gaoshanjudian_gold_cost
+		add = hm_value_construct_conglinliechang_gold_cost
+		#City Walls
+		add = hm_value_construct_city_walls_gold_cost
+	}
+}
+
+hm_value_construct_buildings_prestige_cost = { # scope:province
+	if = {
+		limit = {
+			has_game_rule = hm_rule_player_free_functions_enabled
+			root = { is_ai = no }
+		}
+		value = 0
+	}
+	else = {
+		value = 0
+		# tribal buildings
+		add = hm_value_construct_longhouses_prestige_cost
+		add = hm_value_construct_war_camps_prestige_cost
+		add = hm_value_construct_palisades_prestige_cost
+		add = hm_value_construct_market_villages_prestige_cost
+	}
+}
+
+hm_value_upgrade_buildings_gold_cost = { # scope:province
+	if = {
+		limit = {
+			has_game_rule = hm_rule_player_free_functions_enabled
+			root = { is_ai = no }
+		}
+		value = 0
+	}
+	else = {
+		value = 0
+		# tribal buildings
+		add = hm_value_upgrade_tribe_gold_cost
+		add = hm_value_upgrade_longhouses_gold_cost
+		add = hm_value_upgrade_war_camps_gold_cost
+		add = hm_value_upgrade_palisades_gold_cost
+		add = hm_value_upgrade_market_villages_gold_cost
+		add = hm_value_upgrade_idjang_forts_gold_cost
+		add = hm_value_upgrade_wantilan_gold_cost
+		add = hm_value_upgrade_war_kora_kora_yards_gold_cost
+		add = hm_value_upgrade_water_temples_gold_cost
+		add = hm_value_upgrade_stilted_granaries_gold_cost
+		# castle buildings
+		add = hm_value_upgrade_castle_gold_cost
+		# city buildings
+		add = hm_value_upgrade_city_gold_cost
+		add = hm_value_upgrade_guild_halls_gold_cost
+		# temple buildings
+		add = hm_value_upgrade_temple_gold_cost
+		add = hm_value_upgrade_scriptorium_gold_cost
+		add = hm_value_upgrade_monastic_schools_gold_cost
+		add = hm_value_upgrade_megalith_gold_cost
+		add = hm_value_upgrade_breweries_gold_cost
+		# temple citadel buildings
+		add = hm_value_upgrade_temple_citadel_gold_cost
+		add = hm_value_upgrade_citadel_shrine_gold_cost
+		add = hm_value_upgrade_sacred_pool_gold_cost
+		add = hm_value_upgrade_vihara_halls_gold_cost
+		# common buildings
+		add = hm_value_upgrade_hospices_gold_cost
+		# standard fortification buildings
+		add = hm_value_upgrade_ramparts_gold_cost
+		add = hm_value_upgrade_curtain_walls_gold_cost
+		add = hm_value_upgrade_watchtowers_gold_cost
+		add = hm_value_upgrade_hill_forts_gold_cost
+		# standard economy buildings
+		add = hm_value_upgrade_caravanserai_gold_cost
+		add = hm_value_upgrade_watermills_gold_cost
+		add = hm_value_upgrade_windmills_gold_cost
+		add = hm_value_upgrade_common_tradeport_gold_cost
+		add = hm_value_upgrade_pastures_gold_cost
+		add = hm_value_upgrade_hunting_grounds_gold_cost
+		add = hm_value_upgrade_orchards_gold_cost
+		add = hm_value_upgrade_farm_estates_gold_cost
+		add = hm_value_upgrade_cereal_fields_gold_cost
+		add = hm_value_upgrade_logging_camps_gold_cost
+		add = hm_value_upgrade_peat_quarries_gold_cost
+		add = hm_value_upgrade_hill_farms_gold_cost
+		add = hm_value_upgrade_elephant_pens_gold_cost
+		add = hm_value_upgrade_plantations_gold_cost
+		add = hm_value_upgrade_quarries_gold_cost
+		add = hm_value_upgrade_qanats_gold_cost
+		add = hm_value_upgrade_murex_farm_gold_cost
+		add = hm_value_upgrade_paddy_fields_gold_cost
+		add = hm_value_upgrade_waterworks_gold_cost
+		add = hm_value_upgrade_spice_plantation_gold_cost
+		# standard military buildings
+		add = hm_value_upgrade_wind_furnace_gold_cost
+		add = hm_value_upgrade_workshops_gold_cost
+		add = hm_value_upgrade_horse_pastures_gold_cost
+		add = hm_value_upgrade_hillside_grazing_gold_cost
+		add = hm_value_upgrade_warrior_lodges_gold_cost
+		add = hm_value_upgrade_military_camps_gold_cost
+		add = hm_value_upgrade_regimental_grounds_gold_cost
+		add = hm_value_upgrade_outposts_gold_cost
+		add = hm_value_upgrade_barracks_gold_cost
+		add = hm_value_upgrade_camel_farms_gold_cost
+		add = hm_value_upgrade_stables_gold_cost
+		add = hm_value_upgrade_smiths_gold_cost
+		add = hm_value_upgrade_powder_magazine_gold_cost
+		# admin buildings
+		add = hm_value_upgrade_capital_bureau_gold_cost
+		#mbr coach and militia buildings
+		add = hm_value_upgrade_horse_gold_cost
+		add = hm_value_upgrade_MBRXXX_horse_archer_gold_cost
+		add = hm_value_upgrade_MBRXXX_camel_gold_cost
+		add = hm_value_upgrade_militia_gold_cost
+		#mbrxxx castle buildings
+		add = hm_value_upgrade_improvement_gold_cost
+		add = hm_value_upgrade_expansion_gold_cost
+		add = hm_value_upgrade_expansion_camel_cavalry_gold_cost
+		add = hm_value_upgrade_expansion_archer_cavalry_gold_cost
+		add = hm_value_upgrade_interior_gold_cost
+		add = hm_value_upgrade_town_gold_cost
+		#mbrxxx city buildings
+		add = hm_value_upgrade_district_gold_cost
+		add = hm_value_upgrade_slaughterhouse_gold_cost
+		#mbrxxx common buildings
+		add = hm_value_upgrade_vineyard_gold_cost
+		add = hm_value_upgrade_tunnel_gold_cost
+		add = hm_value_upgrade_hospital_gold_cost
+		add = hm_value_upgrade_farming_gold_cost
+		add = hm_value_upgrade_embassy_gold_cost
+		add = hm_value_upgrade_plain_gold_cost
+		add = hm_value_upgrade_czhen_gold_cost
+		add = hm_value_upgrade_muhou_gold_cost
+		add = hm_value_upgrade_silk_gold_cost
+		add = hm_value_upgrade_restau_gold_cost
+		add = hm_value_upgrade_supm_gold_cost
+		add = hm_value_upgrade_mif_gold_cost
+		add = hm_value_upgrade_lcamp_gold_cost
+		add = hm_value_upgrade_hbm_gold_cost
+		add = hm_value_upgrade_tavern_gold_cost
+		add = hm_value_upgrade_stash_gold_cost
+		add = hm_value_upgrade_spice_gold_cost
+		add = hm_value_upgrade_crockery_gold_cost
+		add = hm_value_upgrade_currier_gold_cost
+		add = hm_value_upgrade_waterfront_gold_cost
+		add = hm_value_upgrade_shanqiu_gold_cost
+		add = hm_value_upgrade_fayuan_gold_cost
+		add = hm_value_upgrade_heishi_gold_cost
+		#mbrxxx support buildings
+		add = hm_value_upgrade_support_gold_cost
+		#mbrxxx tribal buildings
+		add = hm_value_upgrade_Townsquare_gold_cost
+		add = hm_value_upgrade_war_gold_cost
+		add = hm_value_upgrade_raiding_gold_cost
+		add = hm_value_upgrade_ting_gold_cost
+		add = hm_value_upgrade_medicine_lodge_gold_cost
+		add = hm_value_upgrade_liehu_gold_cost
+		add = hm_value_upgrade_car_gold_cost
+		add = hm_value_upgrade_pimao_gold_cost
+		add = hm_value_upgrade_zhanshi_gold_cost
+		#建筑师系列
+		add = hm_value_upgrade_uba_manor_gold_cost
+		add = hm_value_upgrade_uba_residence_gold_cost
+		add = hm_value_upgrade_uba_library_gold_cost
+		add = hm_value_upgrade_uba_townhall_gold_cost
+		add = hm_value_upgrade_uba_temple_gold_cost
+		add = hm_value_upgrade_uba_bazaar_gold_cost
+		add = hm_value_upgrade_uba_aqueduct_gold_cost
+		add = hm_value_upgrade_uba_joust_gold_cost
+		add = hm_value_upgrade_uba_checkpoint_gold_cost
+		add = hm_value_upgrade_uba_taxing_gold_cost
+		add = hm_value_upgrade_uba_bathroom_gold_cost
+		add = hm_value_upgrade_uba_herbal_gold_cost
+		add = hm_value_upgrade_uba_private_gold_cost
+		add = hm_value_upgrade_uba_fur_gold_cost
+		add = hm_value_upgrade_uba_vineyard_gold_cost
+		add = hm_value_upgrade_uba_olive_gold_cost
+		add = hm_value_upgrade_uba_piazza_gold_cost
+		add = hm_value_upgrade_uba_tea_gold_cost
+		add = hm_value_upgrade_uba_kiln_gold_cost
+		add = hm_value_upgrade_uba_silk_gold_cost
+		#东方兵种拓展
+		add = hm_value_upgrade_qianmutian_gold_cost
+		add = hm_value_upgrade_lutaiyanchang_gold_cost
+		add = hm_value_upgrade_shanhaiguan_gold_cost
+		add = hm_value_upgrade_heitudi_gold_cost
+		add = hm_value_upgrade_bunudui_gold_cost
+		add = hm_value_upgrade_nulishichang_gold_cost
+		add = hm_value_upgrade_changshanyuchang_gold_cost
+		add = hm_value_upgrade_chayuan_gold_cost
+		add = hm_value_upgrade_shutian_gold_cost
+		add = hm_value_upgrade_weibojun_gold_cost
+		add = hm_value_upgrade_dongfangchengqiang_gold_cost
+		add = hm_value_upgrade_xinzeng_01_yidao_gold_cost
+		add = hm_value_upgrade_xinzeng_02_yidao_gold_cost
+		add = hm_value_upgrade_xinzeng_03_yidao_gold_cost
+		add = hm_value_upgrade_dingjudian_gold_cost
+		add = hm_value_upgrade_muchang_gold_cost
+		add = hm_value_upgrade_gaoshanjudian_gold_cost
+		add = hm_value_upgrade_conglinliechang_gold_cost
+		#City Walls
+		add = hm_value_upgrade_city_walls_gold_cost
+	}
+}
+
+hm_value_upgrade_buildings_prestige_cost = { # scope:province
+	if = {
+		limit = {
+			has_game_rule = hm_rule_player_free_functions_enabled
+			root = { is_ai = no }
+		}
+		value = 0
+	}
+	else = {
+		value = 0
+		# tribal buildings
+		add = hm_value_upgrade_tribe_prestige_cost
+		add = hm_value_upgrade_longhouses_prestige_cost
+		add = hm_value_upgrade_war_camps_prestige_cost
+		add = hm_value_upgrade_palisades_prestige_cost
+		add = hm_value_upgrade_market_villages_prestige_cost
+	}
+}
+
+hm_value_construct_buildings_gold_cost_cap = {
+	if = {
+		limit = {
+			debug_only = yes
+		}
+		value = 0
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_construct_buildings_gold_cost_cap_very_cheap
+		}
+		value = hm_value_construct_buildings_gold_cost_cap_very_cheap
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_construct_buildings_gold_cost_cap_cheap
+		}
+		value = hm_value_construct_buildings_gold_cost_cap_cheap
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_construct_buildings_gold_cost_cap_expensive
+		}
+		value = hm_value_construct_buildings_gold_cost_cap_expensive
+	}
+	else_if = {
+		limit = {
+			has_game_rule = hm_rule_construct_buildings_gold_cost_cap_very_expensive
+		}
+		value = hm_value_construct_buildings_gold_cost_cap_very_expensive
+	}
+	else = {
+		value = hm_value_construct_buildings_gold_cost_cap_default
+	}
+}
+
+hm_value_construct_buildings_gold_cost_capped = {
+	value = hm_value_construct_buildings_gold_cost
+	max = hm_value_construct_buildings_gold_cost_cap
+}
+
+#hm_value_max_building_slots_and_construct_buildings_gold_cost = {
+#	value = 0
+#	add = hm_value_max_slots_cost
+#	add = hm_value_construct_buildings_gold_cost
+#}
+
+hm_value_construct_buildings_gold_cost_dynamic_cap = {
+	value = hm_value_construct_buildings_gold_cost_base_cap
+	
+	if = {
+		limit = { county.development_level >= 40 }
+		multiply = 0.5
+	}
+	if = {
+		limit = { county.development_level >= 30 }
+		multiply = 0.7
+	}
+	if = {
+		limit = { county.development_level >= 20 }
+		multiply = 0.85
+	}
+	if = {
+		limit = { county.development_level >= 10 }
+		multiply = 1.0
+	}
+	else = {
+		multiply = 1.1
+	}
+
+	min = 150
+	max = 4000
+}
+
+hm_value_construct_buildings_gold_cost_capped = {
+	if = {
+		limit = {
+			has_game_rule = hm_rule_player_free_functions_enabled
+			root = { is_ai = no }
+		}
+		value = 0
+	}
+	else = {
+		value = hm_value_construct_buildings_gold_cost
+		max = hm_value_construct_buildings_gold_cost_dynamic_cap
+	}
+}
+
+hm_value_max_building_slots_and_construct_buildings_gold_cost = {
+	if = {
+		limit = {
+			has_game_rule = hm_rule_player_free_functions_enabled
+			root = { is_ai = no }
+		}
+		value = 0
+	}
+	else = {
+		value = 0
+		add = hm_value_max_slots_cost
+		add = hm_value_construct_buildings_gold_cost_capped
+	}
+}

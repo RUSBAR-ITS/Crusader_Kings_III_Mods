@@ -1,0 +1,88 @@
+﻿hmc_add_slots_decision = { 
+	picture = { 
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_city.dds" 
+	}
+	ai_check_interval = 0
+	desc = hmc_add_slots_decision_desc
+
+	widget = {
+		gui = decision_view_widget_hmc_building_special
+		controller = create_holy_order
+
+		barony_valid = {
+            trigger_if = {
+                limit = {
+                    exists = this
+                }
+                hc_barony_is_valid_for_build_special_trigger = {
+                    CHARACTER = scope:ruler
+                }
+            }
+            trigger_else = {
+                custom_description = {
+                    text = "has_holy_order_barony_selected"
+                    always = no
+                }
+            }
+		}
+	}
+
+	is_shown = {
+		has_game_rule = hm_player_add_slots_decision_on
+		global_var:hm_show_decisions ?= yes
+		is_ai = no
+		is_landed = yes
+	}
+
+	is_valid = {
+    #    stewardship >= 15
+	}
+
+	cost = {
+		gold = {
+			every_directly_owned_province = {
+				limit = {
+					has_ongoing_construction = no
+					barony = {
+						is_leased_out = no
+					}
+				}
+				add = hm_value_player_add_slots_decision_gold_cost
+			}
+			if = {
+				limit = {
+					debug_only = yes
+				}
+				multiply = 0
+			}
+		}
+	}
+
+	#cooldown = {
+	# 	days = 1
+	#}
+
+    is_valid_showing_failures_only = {
+		#is_at_war = no
+        is_imprisoned = no
+        is_capable_adult = yes
+	}
+
+	effect = {
+		scope:barony.title_province = {
+            add_province_modifier = extra_building_slot
+        }
+        hidden_effect = {
+            send_interface_message = {
+                type = event_generic_good
+                title = hmc_add_slots_decision_msg_t
+                right_icon = root
+                custom_tooltip = hmc_add_slots_decision_msg_tt
+            }
+        }
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}

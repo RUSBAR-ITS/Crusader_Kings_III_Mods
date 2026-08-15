@@ -1,0 +1,104 @@
+hm_trigger_construct_oath_warriors_building_01 = {
+	NOT = { has_building_or_higher = oath_warriors_building_01 }
+	county.holder = {
+		has_variable = provide_for_the_warriors_oath
+	}
+}
+hm_trigger_construct_oath_warriors_building_02 = {
+	has_building = oath_warriors_building_01
+	county.holder = {
+		has_variable = provide_for_the_warriors_oath
+	}
+}
+hm_trigger_construct_oath_warriors_building_03 = {
+	has_building = oath_warriors_building_02
+	county.holder = {
+		has_variable = provide_for_the_warriors_oath
+	}
+}
+hm_trigger_construct_oath_warriors_building_04 = {
+	has_building = oath_warriors_building_03
+	county.holder = {
+		has_variable = provide_for_the_warriors_oath
+	}
+}
+hm_trigger_construct_oath_warriors_building = {
+	hm_trigger_construct_oath_warriors_building_01 = yes
+}
+hm_trigger_upgrade_oath_warriors_building = {
+	OR = {
+		hm_trigger_construct_oath_warriors_building_02 = yes
+		hm_trigger_construct_oath_warriors_building_03 = yes
+		hm_trigger_construct_oath_warriors_building_04 = yes
+	}
+}
+
+hm_trigger_construct_oath_faithful_building_01 = {
+	NOT = { has_building_or_higher = oath_faithful_building_01 }
+	county.holder = {
+		has_variable = provide_for_the_faithful_oath
+	}
+}
+hm_trigger_construct_oath_faithful_building_02 = {
+	has_building = oath_faithful_building_01
+	county.holder = {
+		has_variable = provide_for_the_faithful_oath
+	}
+}
+hm_trigger_construct_oath_faithful_building_03 = {
+	has_building = oath_faithful_building_02
+	county.holder = {
+		has_variable = provide_for_the_faithful_oath
+	}
+}
+hm_trigger_construct_oath_faithful_building_04 = {
+	has_building = oath_faithful_building_03
+	county.holder = {
+		has_variable = provide_for_the_faithful_oath
+	}
+}
+hm_trigger_construct_oath_faithful_building = {
+	hm_trigger_construct_oath_faithful_building_01 = yes
+}
+hm_trigger_upgrade_oath_faithful_building = {
+	OR = {
+		hm_trigger_construct_oath_faithful_building_02 = yes
+		hm_trigger_construct_oath_faithful_building_03 = yes
+		hm_trigger_construct_oath_faithful_building_04 = yes
+	}
+}
+
+hm_trigger_construct_oath_poor_building_01 = {
+	NOT = { has_building_or_higher = oath_poor_building_01 }
+	county.holder = {
+		has_variable = provide_for_the_poor_oath
+	}
+}
+hm_trigger_construct_oath_poor_building_02 = {
+	has_building = oath_poor_building_01
+	county.holder = {
+		has_variable = provide_for_the_poor_oath
+	}
+}
+hm_trigger_construct_oath_poor_building_03 = {
+	has_building = oath_poor_building_02
+	county.holder = {
+		has_variable = provide_for_the_poor_oath
+	}
+}
+hm_trigger_construct_oath_poor_building_04 = {
+	has_building = oath_poor_building_03
+	county.holder = {
+		has_variable = provide_for_the_poor_oath
+	}
+}
+hm_trigger_construct_oath_poor_building = {
+	hm_trigger_construct_oath_poor_building_01 = yes
+}
+hm_trigger_upgrade_oath_poor_building = {
+	OR = {
+		hm_trigger_construct_oath_poor_building_02 = yes
+		hm_trigger_construct_oath_poor_building_03 = yes
+		hm_trigger_construct_oath_poor_building_04 = yes
+	}
+}

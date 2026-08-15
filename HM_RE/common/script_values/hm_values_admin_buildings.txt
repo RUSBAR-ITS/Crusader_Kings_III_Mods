@@ -1,0 +1,70 @@
+﻿hm_value_construct_capital_bureau_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_capital_bureau_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_capital_bureau_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_capital_bureau_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_capital_bureau_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_capital_bureau_06_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_capital_bureau_07_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_capital_bureau_08_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_capital_bureau_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_capital_bureau_01 = yes }
+		add = hm_value_construct_capital_bureau_01_gold_cost
+	}
+}
+hm_value_upgrade_capital_bureau_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_capital_bureau_02 = yes }
+		add = hm_value_construct_capital_bureau_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_capital_bureau_03 = yes }
+		add = hm_value_construct_capital_bureau_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_capital_bureau_04 = yes }
+		add = hm_value_construct_capital_bureau_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_capital_bureau_05 = yes }
+		add = hm_value_construct_capital_bureau_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_capital_bureau_06 = yes }
+		add = hm_value_construct_capital_bureau_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_capital_bureau_07 = yes }
+		add = hm_value_construct_capital_bureau_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_capital_bureau_08 = yes }
+		add = hm_value_construct_capital_bureau_08_gold_cost
+	}
+}

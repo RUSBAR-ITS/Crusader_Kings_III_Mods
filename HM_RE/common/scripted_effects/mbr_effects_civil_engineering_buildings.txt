@@ -1,0 +1,80 @@
+﻿#hm_effect_construct_civil_engineering = {
+#	if = {
+#		limit = { hm_trigger_construct_civil_engineering = yes }
+#		if = {
+#			limit = { has_free_building_slot = yes }
+#			add_building = civil_engineering_01
+#		}
+#		else_if = {
+#			limit = { hm_trigger_add_slot = yes }
+#			add_province_modifier = extra_building_slot
+#			add_building = civil_engineering_01
+#		}
+#	}
+#}
+#
+#hm_effect_upgrade_civil_engineering = {
+#	if = {
+#		limit = { hm_trigger_construct_civil_engineering_02 = yes }
+#		add_building = civil_engineering_02
+#	}
+#	else_if = {
+#		limit = { hm_trigger_construct_civil_engineering_03 = yes }
+#		add_building = civil_engineering_03
+#	}
+#	else_if = {
+#		limit = { hm_trigger_construct_civil_engineering_04 = yes }
+#		add_building = civil_engineering_04
+#	}
+#	else_if = {
+#		limit = { hm_trigger_construct_civil_engineering_05 = yes }
+#		add_building = civil_engineering_05
+#	}
+#	else_if = {
+#		limit = { hm_trigger_construct_civil_engineering_06 = yes }
+#		add_building = civil_engineering_06
+#	}
+#	else_if = {
+#		limit = { hm_trigger_construct_civil_engineering_07 = yes }
+#		add_building = civil_engineering_07
+#	}
+#	else_if = {
+#		limit = { hm_trigger_construct_civil_engineering_08 = yes }
+#		add_building = civil_engineering_08
+#	}
+#}
+#
+#hm_effect_remove_civil_engineering = {
+#	if = {
+#		limit = { has_building = civil_engineering_01 }
+#		remove_building = civil_engineering_01
+#	}
+#	else_if = {
+#		limit = { has_building =civil_engineering_02 }
+#		remove_building = civil_engineering_02
+#	}
+#	else_if = {
+#		limit = { has_building = civil_engineering_03 }
+#		remove_building = civil_engineering_03
+#	}
+#	else_if = {
+#		limit = { has_building =civil_engineering_04 }
+#		remove_building = civil_engineering_04
+#	}
+#	else_if = {
+#		limit = { has_building = civil_engineering_05 }
+#		remove_building = civil_engineering_05
+#	}
+#	else_if = {
+#		limit = { has_building =civil_engineering_06 }
+#		remove_building = civil_engineering_06
+#	}
+#	else_if = {
+#		limit = { has_building = civil_engineering_07 }
+#		remove_building = civil_engineering_07
+#	}
+#	else_if = {
+#		limit = { has_building =civil_engineering_08 }
+#		remove_building = civil_engineering_08
+#	}
+#}

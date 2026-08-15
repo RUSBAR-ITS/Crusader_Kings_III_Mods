@@ -1,0 +1,846 @@
+hm_trigger_construct_qianmutian_01 = {
+	NOT = { has_building_or_higher = qianmutian_01 }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = floodplains
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_suhu #苏湖地区
+	NOT = {
+		has_building_or_higher = qianmutian_01_ai
+	}
+}
+hm_trigger_construct_qianmutian_02 = {
+	has_building = qianmutian_01
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = floodplains
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_suhu #苏湖地区
+}
+hm_trigger_construct_qianmutian_03 = {
+	has_building = qianmutian_02
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = floodplains
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_suhu #苏湖地区
+}
+hm_trigger_construct_qianmutian_04 = {
+	has_building = qianmutian_03
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = floodplains
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_suhu #苏湖地区
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = { 
+			has_innovation = innovation_manorialism 
+		}
+	}
+}
+hm_trigger_construct_qianmutian_05 = {
+	has_building = qianmutian_04
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = floodplains
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_suhu #苏湖地区
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = { 
+			has_innovation = innovation_manorialism 
+		}
+	}
+}
+hm_trigger_construct_qianmutian_06 = {
+	has_building = qianmutian_05
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = floodplains
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_suhu #苏湖地区
+	trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = { 
+			has_innovation = innovation_manorialism 
+		}
+	}
+}
+hm_trigger_construct_qianmutian = {
+	hm_trigger_construct_qianmutian_01 = yes
+}
+hm_trigger_upgrade_qianmutian = {
+	OR = {
+		hm_trigger_construct_qianmutian_02 = yes
+		hm_trigger_construct_qianmutian_03 = yes
+		hm_trigger_construct_qianmutian_04 = yes
+		hm_trigger_construct_qianmutian_05 = yes
+		hm_trigger_construct_qianmutian_06 = yes
+	}
+}
+
+hm_trigger_construct_lutaiyanchang_01 = {
+	NOT = { has_building_or_higher = lutaiyanchang_01 }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	barony = title:b_Lutai
+}
+hm_trigger_construct_lutaiyanchang_02 = {
+	has_building = lutaiyanchang_01
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	barony = title:b_Lutai
+}
+hm_trigger_construct_lutaiyanchang_03 = {
+	has_building = lutaiyanchang_02
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	barony = title:b_Lutai
+}
+hm_trigger_construct_lutaiyanchang = {
+	hm_trigger_construct_lutaiyanchang_01 = yes
+}
+hm_trigger_upgrade_lutaiyanchang = {
+	OR = {
+		hm_trigger_construct_lutaiyanchang_02 = yes
+		hm_trigger_construct_lutaiyanchang_03 = yes
+	}
+}
+
+hm_trigger_construct_shanhaiguan_01 = {
+	NOT = { has_building_or_higher = shanhaiguan_01 }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	barony = title:b_Yuguan_Shanhaiguan
+}
+hm_trigger_construct_shanhaiguan_02 = {
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	barony = title:b_Yuguan_Shanhaiguan
+}
+hm_trigger_construct_shanhaiguan = {
+	hm_trigger_construct_shanhaiguan_01 = yes
+}
+hm_trigger_upgrade_shanhaiguan = {
+		hm_trigger_construct_shanhaiguan_02 = yes
+}
+
+hm_trigger_construct_heitudi_01 = {
+	NOT = { has_building_or_higher = heitudi_01 }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	NOT = {
+	governments = { tribal_government }
+	}
+	OR = {
+		terrain = forest
+		terrain = taiga
+		terrain = plains
+		terrain = hills
+	}
+
+		geographical_region = world_heitu #东北黑土区
+}
+hm_trigger_construct_heitudi_02 = {
+	has_building = heitudi_01
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	NOT = {
+	governments = { tribal_government }
+	}
+	OR = {
+		terrain = forest
+		terrain = taiga
+		terrain = plains
+		terrain = hills
+	}
+
+		geographical_region = world_heitu #东北黑土区
+}
+hm_trigger_construct_heitudi_03 = {
+	has_building = heitudi_02
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	NOT = {
+	governments = { tribal_government }
+	}
+	OR = {
+		terrain = forest
+		terrain = taiga
+		terrain = plains
+		terrain = hills
+	}
+
+	geographical_region = world_heitu #东北黑土区
+}
+
+hm_trigger_construct_heitudi_04 = {
+	has_building = heitudi_03
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	NOT = {
+	governments = { tribal_government }
+	}
+	OR = {
+		terrain = forest
+		terrain = taiga
+		terrain = plains
+		terrain = hills
+	}
+
+	geographical_region = world_heitu #东北黑土区
+}
+hm_trigger_construct_heitudi = {
+	hm_trigger_construct_heitudi_01 = yes
+}
+hm_trigger_upgrade_heitudi = {
+	OR = {
+		hm_trigger_construct_heitudi_02 = yes
+		hm_trigger_construct_heitudi_03 = yes
+		hm_trigger_construct_heitudi_04 = yes
+	}
+}
+
+hm_trigger_construct_bunudui_01 = {
+	NOT = { has_building_or_higher = bunudui_01 }
+	always = no
+		culture = {
+			has_cultural_pillar = heritage_east_slavic
+		}
+	county.holder = {
+		has_perk = kidnapper_perk
+		dread >=20
+			NOT = {
+				culture = {
+				has_cultural_pillar = heritage_east_slavic
+			}
+		}
+    }
+}
+hm_trigger_construct_bunudui = {
+	hm_trigger_construct_bunudui_01 = yes
+}
+
+hm_trigger_construct_nulishichang_01 = {
+	NOT = { has_building_or_higher = nulishichang_01 }
+	has_building_or_higher = bunudui_01
+}
+hm_trigger_construct_nulishichang = {
+	hm_trigger_construct_nulishichang_01 = yes
+}
+
+hm_trigger_construct_changshanyuchang_01 = {
+	NOT = { has_building_or_higher = changshanyuchang_01 }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	county = title:c_pozhuo
+}
+hm_trigger_construct_changshanyuchang = {
+	hm_trigger_construct_changshanyuchang_01 = yes
+}
+
+hm_trigger_construct_chayuan_01 = {
+	NOT = { has_building_or_higher = chayuan_01 }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	terrain = hills
+	geographical_region = world_asia_china_south
+}
+hm_trigger_construct_chayuan_02 = {
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	terrain = hills
+	geographical_region = world_asia_china_south
+}
+hm_trigger_construct_chayuan_03 = {
+	has_building = chayuan_02
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	terrain = hills
+	geographical_region = world_asia_china_south
+}
+
+hm_trigger_construct_chayuan_04 = {
+	has_building = chayuan_03
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	terrain = hills
+	geographical_region = world_asia_china_south
+}
+hm_trigger_construct_chayuan = {
+	hm_trigger_construct_chayuan_01 = yes
+}
+hm_trigger_upgrade_chayuan = {
+	OR = {
+		hm_trigger_construct_chayuan_02 = yes
+		hm_trigger_construct_chayuan_03 = yes
+		hm_trigger_construct_chayuan_04 = yes
+	}
+}
+
+hm_trigger_construct_shutian_01 = {
+	NOT = { has_building_or_higher = shutian_01 }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = plains
+		terrain = forest
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_asia_china_shu #蜀地
+	NOT = {
+		has_building_or_higher = shutian_01_ai
+	}
+}
+hm_trigger_construct_shutian_02 = {
+	has_building = shutian_01
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = plains
+		terrain = forest
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_asia_china_shu #蜀地
+}
+hm_trigger_construct_shutian_03 = {
+	has_building = shutian_02
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = plains
+		terrain = forest
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_asia_china_shu #蜀地
+}
+
+hm_trigger_construct_shutian_04 = {
+	has_building = shutian_03
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = plains
+		terrain = forest
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_asia_china_shu #蜀地
+}
+hm_trigger_construct_shutian_05 = {
+	has_building = shutian_04
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = plains
+		terrain = forest
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_asia_china_shu #蜀地
+}
+hm_trigger_construct_shutian_06 = {
+	has_building = shutian_05
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = plains
+		terrain = forest
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_asia_china_shu #蜀地
+}
+hm_trigger_construct_shutian_07 = {
+	has_building = shutian_06
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = plains
+		terrain = forest
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_asia_china_shu #蜀地
+}
+hm_trigger_construct_shutian_08 = {
+	has_building = shutian_06
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	governments = { celestial_government }
+	OR = {
+		terrain = farmlands
+		terrain = plains
+		terrain = forest
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+	geographical_region = world_asia_china_shu #蜀地
+}
+hm_trigger_construct_shutian = {
+	hm_trigger_construct_shutian_01 = yes
+}
+hm_trigger_upgrade_shutian = {
+	OR = {
+		hm_trigger_construct_shutian_02 = yes
+		hm_trigger_construct_shutian_03 = yes
+		hm_trigger_construct_shutian_04 = yes
+		hm_trigger_construct_shutian_05 = yes
+		hm_trigger_construct_shutian_06 = yes
+		hm_trigger_construct_shutian_07 = yes
+		hm_trigger_construct_shutian_08 = yes
+	}
+}
+
+hm_trigger_construct_weibojun_01 = {
+	NOT = { has_building_or_higher = weibojun_01 }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	OR = {
+		barony  = title:b_BozhouLiaocheng
+		barony  = title:b_Weizhou_Yuancheng
+	}
+	current_date <= 905.1.1
+}
+hm_trigger_construct_weibojun = {
+	hm_trigger_construct_weibojun_01 = yes
+}
+
+hm_trigger_construct_dongfangchengqiang_01 = {
+	NOT = { has_building_or_higher = dongfangchengqiang_01 }
+	NOT = {
+		has_building_or_higher = curtain_walls_01
+	}
+	hm_building_requirement_tribal = no
+	OR = {
+	culture = { has_cultural_pillar = heritage_chinese }
+		county.holder = {
+		culture = { has_cultural_pillar = heritage_chinese }
+	}
+	}
+		building_curtain_walls_requirement_terrain = yes
+		building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_dongfangchengqiang_02 = {
+	has_building = dongfangchengqiang_01
+	hm_building_requirement_tribal = no
+	building_curtain_walls_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+    trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = { 
+			has_innovation = innovation_motte 
+		}
+	}
+}
+hm_trigger_construct_dongfangchengqiang_03 = {
+	has_building = dongfangchengqiang_02
+	hm_building_requirement_tribal = no
+	building_curtain_walls_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+    trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = { 
+			has_innovation = innovation_battlements 
+		}
+	}
+}
+
+hm_trigger_construct_dongfangchengqiang_04 = {
+	has_building = dongfangchengqiang_03
+	hm_building_requirement_tribal = no
+	building_curtain_walls_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 02 }
+    trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = { 
+			has_innovation = innovation_battlements 
+		}
+	}
+}
+hm_trigger_construct_dongfangchengqiang_05 = {
+	has_building = dongfangchengqiang_04
+	hm_building_requirement_tribal = no
+	building_curtain_walls_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+    trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = { 
+			has_innovation = innovation_hoardings 
+		}
+	}
+}
+hm_trigger_construct_dongfangchengqiang_06 = {
+	has_building = dongfangchengqiang_05
+	hm_building_requirement_tribal = no
+	building_curtain_walls_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 03 }
+    trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = { 
+			has_innovation = innovation_hoardings 
+		}
+	}
+}
+hm_trigger_construct_dongfangchengqiang_07 = {
+	has_building = dongfangchengqiang_06
+	hm_building_requirement_tribal = no
+	building_curtain_walls_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+    trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = { 
+			has_innovation = innovation_machicolations 
+		}
+	}
+}
+hm_trigger_construct_dongfangchengqiang_08 = {
+	has_building = dongfangchengqiang_06
+	hm_building_requirement_tribal = no
+	building_curtain_walls_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 04 }
+    trigger_if = {
+		limit = { debug_only = no }
+		county.holder.culture = { 
+			has_innovation = innovation_machicolations 
+		}
+	}
+}
+hm_trigger_construct_dongfangchengqiang = {
+	hm_trigger_construct_dongfangchengqiang_01 = yes
+}
+hm_trigger_upgrade_dongfangchengqiang = {
+	OR = {
+		hm_trigger_construct_dongfangchengqiang_02 = yes
+		hm_trigger_construct_dongfangchengqiang_03 = yes
+		hm_trigger_construct_dongfangchengqiang_04 = yes
+		hm_trigger_construct_dongfangchengqiang_05 = yes
+		hm_trigger_construct_dongfangchengqiang_06 = yes
+		hm_trigger_construct_dongfangchengqiang_07 = yes
+		hm_trigger_construct_dongfangchengqiang_08 = yes
+	}
+}
+
+hm_trigger_construct_curtain_walls_01 = {
+	NOT = { has_building_or_higher = curtain_walls_01 }
+	hm_building_requirement_tribal = no
+	NOT = {
+			has_building_or_higher = dongfangchengqiang_01
+		}
+		NOT = {
+			culture = { has_cultural_pillar = heritage_chinese }
+		}
+		county:holder = {
+		NOT = {
+			culture = { has_cultural_pillar = heritage_chinese }
+		}
+	}
+	building_curtain_walls_requirement_terrain = yes
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+
+hm_trigger_construct_curtain_walls = {
+	hm_trigger_construct_curtain_walls_01 = yes
+}
+
+#hm_trigger_construct_jiaochang_01 = {
+#	NOT = { has_building_or_higher = jiaochang_01 }
+#	building_requirement_castle_city_church = { LEVEL = 01 }
+#		hm_building_requirement_tribal = no
+#		county:holder = {
+#		culture = {
+#			has_cultural_pillar = heritage_chinese #该头衔持有者的文化拥有华夏传承
+#		}
+#	}
+#	trigger_if = {
+#		limit = { debug_only = no }
+#		culture = { 
+#			has_innovation = innovation_mustering_grounds 
+#		}
+#	}
+#}
+#
+#hm_trigger_construct_jiaochang_02 = {
+#	has_building = jiaochang_01
+#	building_requirement_castle_city_church = { LEVEL = 02 }
+#		hm_building_requirement_tribal = no
+#		county:holder = {
+#		culture = {
+#			has_cultural_pillar = heritage_chinese #该头衔持有者的文化拥有华夏传承
+#		}
+#	}
+#	trigger_if = {
+#		limit = { debug_only = no }
+#		culture = { 
+#			has_innovation = innovation_mustering_grounds 
+#		}
+#	}
+#}
+#
+#hm_trigger_construct_jiaochang_03 = {
+#	has_building = jiaochang_02
+#	building_requirement_castle_city_church = { LEVEL = 03 }
+#		hm_building_requirement_tribal = no
+#		county:holder = {
+#		culture = {
+#			has_cultural_pillar = heritage_chinese #该头衔持有者的文化拥有华夏传承
+#		}
+#	}
+#	trigger_if = {
+#		limit = { debug_only = no }
+#		culture = { 
+#			has_innovation = innovation_mustering_grounds 
+#		}
+#	}
+#}
+#
+#hm_trigger_construct_jiaochang = {
+#	hm_trigger_construct_jiaochang_01 = yes
+#}
+#
+#hm_trigger_upgrade_jiaochang = {
+#	OR = {
+#		hm_trigger_construct_jiaochang_02 = yes
+#		hm_trigger_construct_jiaochang_03 = yes
+#	}
+#}
+
+hm_trigger_construct_xinzeng_01_yidao_01 = {
+	NOT = { has_building_or_higher = xinzeng_01_yidao_01 }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	NOT = {
+		governments = { tribal_government }
+	}
+	county = {
+		NOT = {
+			any_county_province = {
+				has_building_or_higher = xinzeng_01_yidao_01
+			}
+		}
+	}
+	OR = {
+		terrain = plains
+		terrain = farmlands
+		terrain = drylands
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+}
+hm_trigger_construct_xinzeng_01_yidao_02 = {
+	has_building = xinzeng_01_yidao_01
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	NOT = {
+		governments = { tribal_government }
+	}
+	OR = {
+		terrain = plains
+		terrain = farmlands
+		terrain = drylands
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+}
+hm_trigger_construct_xinzeng_01_yidao_03 = {
+	has_building = xinzeng_01_yidao_02
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	NOT = {
+		governments = { tribal_government }
+	}
+	OR = {
+		terrain = plains
+		terrain = farmlands
+		terrain = drylands
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+}
+hm_trigger_construct_xinzeng_01_yidao = {
+	hm_trigger_construct_xinzeng_01_yidao_01 = yes
+}
+hm_trigger_upgrade_xinzeng_01_yidao = {
+	OR = {
+		hm_trigger_construct_xinzeng_01_yidao_02 = yes
+		hm_trigger_construct_xinzeng_01_yidao_03 = yes
+	}
+}
+
+hm_trigger_construct_xinzeng_02_yidao_01 = {
+	NOT = { has_building_or_higher = xinzeng_02_yidao_01 }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	NOT = {
+		governments = { tribal_government }
+	}
+	county = {
+		NOT = {
+			any_county_province = {
+				has_building_or_higher = xinzeng_02_yidao_01
+			}
+		}
+	}
+	OR = {
+		terrain = hills
+		terrain = forest
+		terrain = oasis
+		terrain = steppe
+		terrain = floodplains
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+}
+hm_trigger_construct_xinzeng_02_yidao_02 = {
+	has_building = xinzeng_02_yidao_01
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	NOT = {
+		governments = { tribal_government }
+	}
+	OR = {
+		terrain = hills
+		terrain = forest
+		terrain = oasis
+		terrain = steppe
+		terrain =floodplains
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+}
+hm_trigger_construct_xinzeng_02_yidao_03 = {
+	has_building = xinzeng_02_yidao_02
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	NOT = {
+		governments = { tribal_government }
+	}
+	OR = {
+		terrain = hills
+		terrain = forest
+		terrain = oasis
+		terrain = steppe
+		terrain =floodplains
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+}
+hm_trigger_construct_xinzeng_02_yidao = {
+	hm_trigger_construct_xinzeng_02_yidao_01 = yes
+}
+hm_trigger_upgrade_xinzeng_02_yidao = {
+	OR = {
+		hm_trigger_construct_xinzeng_02_yidao_02 = yes
+		hm_trigger_construct_xinzeng_02_yidao_03 = yes
+	}
+}
+
+hm_trigger_construct_xinzeng_03_yidao_01 = {
+	NOT = { has_building_or_higher = xinzeng_03_yidao_01 }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	NOT = {
+		governments = { tribal_government }
+	}
+	county = {
+		NOT = {
+			any_county_province = {
+				has_building_or_higher = xinzeng_03_yidao_01
+			}
+		}
+	}
+	OR = {
+		terrain = mountains
+		terrain = desert
+		terrain = jungle
+		terrain = taiga
+		terrain = wetlands
+		terrain = desert_mountains
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+}
+hm_trigger_construct_xinzeng_03_yidao_02 = {
+	has_building = xinzeng_03_yidao_01
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	NOT = {
+		governments = { tribal_government }
+	}
+	OR = {
+		terrain = mountains
+		terrain = desert
+		terrain = jungle
+		terrain = taiga
+		terrain = wetlands
+		terrain = desert_mountains
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+}
+hm_trigger_construct_xinzeng_03_yidao_03 = {
+	has_building = xinzeng_03_yidao_02
+	building_requirement_castle_city_church = { LEVEL = 01 }
+	NOT = {
+		governments = { tribal_government }
+	}
+	OR = {
+		terrain = mountains
+		terrain = desert
+		terrain = jungle
+		terrain = taiga
+		terrain = wetlands
+		terrain = desert_mountains
+	}
+	culture = { has_cultural_pillar = heritage_chinese }
+}
+hm_trigger_construct_xinzeng_03_yidao = {
+	hm_trigger_construct_xinzeng_03_yidao_01 = yes
+}
+hm_trigger_upgrade_xinzeng_03_yidao = {
+	OR = {
+		hm_trigger_construct_xinzeng_03_yidao_02 = yes
+		hm_trigger_construct_xinzeng_03_yidao_03 = yes
+	}
+}
+
+#hm_trigger_construct_huaxia_guanai_01 = {
+#	NOT = { has_building_or_higher = huaxia_guanai_01 }
+#	OR = {
+#		culture = { has_cultural_pillar = heritage_chinese }
+#		county.holder = {
+#			culture = { has_cultural_pillar = heritage_chinese }
+#		}
+#	}
+#	building_requirement_castle_city_church = { LEVEL = 01 }
+#}
+#hm_trigger_construct_huaxia_guanai_02 = {
+#	has_building = huaxia_guanai_01
+#	OR = {
+#		culture = { has_cultural_pillar = heritage_chinese }
+#		county.holder = {
+#			culture = { has_cultural_pillar = heritage_chinese }
+#		}
+#	}
+#	building_requirement_castle_city_church = { LEVEL = 02 }
+#}
+#hm_trigger_construct_huaxia_guanai_03 = {
+#	has_building = huaxia_guanai_02
+#	OR = {
+#		culture = { has_cultural_pillar = heritage_chinese }
+#		county.holder = {
+#			culture = { has_cultural_pillar = heritage_chinese }
+#		}
+#	}
+#	building_requirement_castle_city_church = { LEVEL = 03 }
+#}
+#
+#hm_trigger_construct_huaxia_guanai_04 = {
+#	has_building = huaxia_guanai_03
+#	OR = {
+#		culture = { has_cultural_pillar = heritage_chinese }
+#		county.holder = {
+#			culture = { has_cultural_pillar = heritage_chinese }
+#		}
+#	}
+#	building_requirement_castle_city_church = { LEVEL = 03 }
+#}
+#hm_trigger_construct_huaxia_guanai = {
+#	hm_trigger_construct_huaxia_guanai_01 = yes
+#}
+#hm_trigger_upgrade_huaxia_guanai = {
+#	OR = {
+#		hm_trigger_construct_huaxia_guanai_02 = yes
+#		hm_trigger_construct_huaxia_guanai_03 = yes
+#		hm_trigger_construct_huaxia_guanai_04 = yes
+#	}
+#}

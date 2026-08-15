@@ -1,0 +1,500 @@
+﻿hm_make_castle_button = {
+    scope = character
+	saved_scopes = { gui_holding }
+    is_shown = {
+		NOT = {
+			government_has_flag = government_is_nomadic
+		}
+		scope:gui_holding = {
+			barony = { is_under_holy_order_lease = no }
+			NOR = {
+				has_holding_type = tribal_holding
+				has_holding_type = castle_holding
+			}
+		}
+		trigger_if = {
+			limit = {
+				debug_only = no
+			}
+			trigger_if = {
+				limit = {
+					scope:gui_holding.barony = { is_leased_out = no }
+				}
+				OR = {
+					scope:gui_holding.province_owner = root
+					is_liege_or_above_of = scope:gui_holding.province_owner
+				}
+				
+			}
+			trigger_else = {
+				OR = {
+					scope:gui_holding.barony.lessee = root
+					is_liege_or_above_of = scope:gui_holding.barony.lessee
+				}
+			}
+		}
+    }
+    is_valid = {
+		scope:gui_holding = {
+			has_ongoing_construction = no
+			trigger_if = {
+				limit = {
+					debug_only = no
+					root = {
+						has_treasury = yes
+					}
+					has_game_rule = hm_player_cost_treasury
+				}
+				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
+				hm_value_change_holding_type_cost <= root.treasury
+			}
+			trigger_else = {
+				limit = {
+					debug_only = no
+				}
+				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
+				hm_value_change_holding_type_cost <= root.gold
+			}
+		}
+    }
+    effect = {
+		scope:gui_holding = {
+			set_holding_type = castle_holding
+			if = {
+				limit = {
+					NOT = { debug_only = yes }
+					root = {
+					has_treasury = yes
+					}
+					has_game_rule = hm_player_cost_treasury
+				}
+				save_temporary_scope_value_as = {
+					name = hm_gui_scope_change_holding_type_cost
+					value = hm_value_change_holding_type_cost
+				}
+				root = {
+					remove_treasury = scope:hm_gui_scope_change_holding_type_cost
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { debug_only = yes }
+				}
+				save_temporary_scope_value_as = {
+					name = hm_gui_scope_change_holding_type_cost
+					value = hm_value_change_holding_type_cost
+				}
+				root = {
+					remove_long_term_gold = scope:hm_gui_scope_change_holding_type_cost
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						is_county_capital = no
+					}
+					hm_effect_resolve_holding = yes
+				}
+				add_province_modifier = {
+					modifier = hm_modifier_holding_type_changed_recently
+					years = hm_value_change_holding_type_cooldown
+				}
+			}
+		}
+    }
+}
+
+hm_make_temple_button = {
+    scope = character
+	saved_scopes = { gui_holding }
+    is_shown = {
+		NOT = {
+			government_has_flag = government_is_nomadic
+		}
+		scope:gui_holding = {
+			barony = { is_under_holy_order_lease = no }
+			NOR = {
+				has_holding_type = tribal_holding
+				has_holding_type = church_holding
+			}
+		}
+		trigger_if = {
+			limit = {
+				debug_only = no
+			}
+			trigger_if = {
+				limit = {
+					scope:gui_holding.barony = { is_leased_out = no }
+				}
+				OR = {
+					scope:gui_holding.province_owner = root
+					is_liege_or_above_of = scope:gui_holding.province_owner
+				}
+				
+			}
+			trigger_else = {
+				OR = {
+					scope:gui_holding.barony.lessee = root
+					is_liege_or_above_of = scope:gui_holding.barony.lessee
+				}
+			}
+		}
+    }
+    is_valid = {
+		scope:gui_holding = {
+			has_ongoing_construction = no
+			trigger_if = {
+				limit = {
+					debug_only = no
+					root = {
+						has_treasury = yes
+					}
+					has_game_rule = hm_player_cost_treasury
+				}
+				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
+				hm_value_change_holding_type_cost <= root.treasury
+			}
+			trigger_else = {
+				limit = {
+					debug_only = no
+				}
+				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
+				hm_value_change_holding_type_cost <= root.gold
+			}
+		}
+    }
+    effect = {
+		scope:gui_holding = {
+			set_holding_type = church_holding
+			if = {
+				limit = {
+					NOT = { debug_only = yes }
+					root = {
+						has_treasury = yes
+					}
+					has_game_rule = hm_player_cost_treasury
+				}
+				save_temporary_scope_value_as = {
+					name = hm_gui_scope_change_holding_type_cost
+					value = hm_value_change_holding_type_cost
+				}
+				root = {
+					remove_treasury = scope:hm_gui_scope_change_holding_type_cost
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { debug_only = yes }
+				}
+				save_temporary_scope_value_as = {
+					name = hm_gui_scope_change_holding_type_cost
+					value = hm_value_change_holding_type_cost
+				}
+				root = {
+					remove_long_term_gold = scope:hm_gui_scope_change_holding_type_cost
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						is_county_capital = no
+					}
+					hm_effect_resolve_holding = yes
+				}
+				add_province_modifier = {
+					modifier = hm_modifier_holding_type_changed_recently
+					years = hm_value_change_holding_type_cooldown
+				}
+			}
+		}
+    }
+}
+
+hm_make_city_button = {
+    scope = character
+	saved_scopes = { gui_holding }
+    is_shown = {
+		NOT = {
+			government_has_flag = government_is_nomadic
+		}
+		scope:gui_holding = {
+			barony = { is_under_holy_order_lease = no }
+			NOR = {
+				has_holding_type = tribal_holding
+				has_holding_type = city_holding
+			}
+		}
+		trigger_if = {
+			limit = {
+				debug_only = no
+			}
+			trigger_if = {
+				limit = {
+					scope:gui_holding.barony = { is_leased_out = no }
+				}
+				OR = {
+					scope:gui_holding.province_owner = root
+					is_liege_or_above_of = scope:gui_holding.province_owner
+				}
+				
+			}
+			trigger_else = {
+				OR = {
+					scope:gui_holding.barony.lessee = root
+					is_liege_or_above_of = scope:gui_holding.barony.lessee
+				}
+			}
+		}
+    }
+    is_valid = {
+		scope:gui_holding = {
+			has_ongoing_construction = no
+			trigger_if = {
+				limit = {
+					debug_only = no
+					root = {
+						has_treasury = yes
+					}
+					has_game_rule = hm_player_cost_treasury
+				}
+				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
+				hm_value_change_holding_type_cost <= root.treasury
+			}
+			trigger_else = {
+				limit = {
+					debug_only = no
+				}
+				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
+				hm_value_change_holding_type_cost <= root.gold
+			}
+		}
+    }
+    effect = {
+		scope:gui_holding = {
+			set_holding_type = city_holding
+			if = {
+				limit = {
+					NOT = { debug_only = yes }
+					root = {
+						has_treasury = yes
+					}
+					has_game_rule = hm_player_cost_treasury
+				}
+				save_temporary_scope_value_as = {
+					name = hm_gui_scope_change_holding_type_cost
+					value = hm_value_change_holding_type_cost
+				}
+				root = {
+					remove_treasury = scope:hm_gui_scope_change_holding_type_cost
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { debug_only = yes }
+				}
+				save_temporary_scope_value_as = {
+					name = hm_gui_scope_change_holding_type_cost
+					value = hm_value_change_holding_type_cost
+				}
+				root = {
+					remove_long_term_gold = scope:hm_gui_scope_change_holding_type_cost
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						is_county_capital = no
+					}
+					hm_effect_resolve_holding = yes
+				}
+				add_province_modifier = {
+					modifier = hm_modifier_holding_type_changed_recently
+					years = hm_value_change_holding_type_cooldown
+				}
+			}
+		}
+    }
+}
+
+hm_make_nomad_button = {
+    scope = character
+	saved_scopes = { gui_holding }
+    is_shown = {
+		has_game_rule = hm_make_nomad_button_on
+		scope:gui_holding = {
+			barony = { is_under_holy_order_lease = no }
+			NOR = {
+				has_holding_type = nomad_holding
+			}
+		}
+		trigger_if = {
+			limit = {
+				debug_only = no
+			}
+			trigger_if = {
+				limit = {
+					scope:gui_holding.barony = { is_leased_out = no }
+				}
+				OR = {
+					scope:gui_holding.province_owner = root
+					is_liege_or_above_of = scope:gui_holding.province_owner
+				}
+				
+			}
+			trigger_else = {
+				OR = {
+					scope:gui_holding.barony.lessee = root
+					is_liege_or_above_of = scope:gui_holding.barony.lessee
+				}
+			}
+		}
+    }
+    is_valid = {
+		scope:gui_holding = {
+			has_ongoing_construction = no
+			trigger_if = {
+				limit = {
+					debug_only = no
+				}
+				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
+				hm_value_change_holding_type_cost <= root.gold
+			}
+		}
+    }
+    effect = {
+		scope:gui_holding = {
+			set_holding_type = nomad_holding
+			hidden_effect = {
+				if = {
+					limit = {
+						is_county_capital = no
+					}
+					hm_effect_resolve_holding = yes
+				}
+				if = {
+					limit = {
+						NOT = { debug_only = yes }
+					}
+					add_province_modifier = {
+						modifier = hm_modifier_holding_type_changed_recently
+						years = hm_value_change_holding_type_cooldown
+					}
+					save_temporary_scope_value_as = {
+						name = hm_gui_scope_change_holding_type_cost
+						value = hm_value_change_holding_type_cost
+					}
+					root = {
+						remove_long_term_gold = scope:hm_gui_scope_change_holding_type_cost
+					}
+				}
+				custom_tooltip = hm_remove_all.tt
+				hm_effect_remove_buildings = yes
+			}
+		}
+    }
+}
+
+hm_make_temple_citadel_button = {
+    scope = character
+	saved_scopes = { gui_holding }
+    is_shown = {
+		has_game_rule = hm_make_temple_citadel_button_on
+		scope:gui_holding = {
+			barony = { is_under_holy_order_lease = no }
+			NOR = {
+				has_holding_type = nomad_holding
+				has_holding_type = tribal_holding
+				has_holding_type = temple_citadel_holding
+			}
+		}
+		trigger_if = {
+			limit = {
+				debug_only = no
+			}
+			trigger_if = {
+				limit = {
+					scope:gui_holding.barony = { is_leased_out = no }
+				}
+				OR = {
+					scope:gui_holding.province_owner = root
+					is_liege_or_above_of = scope:gui_holding.province_owner
+				}
+				
+			}
+			trigger_else = {
+				OR = {
+					scope:gui_holding.barony.lessee = root
+					is_liege_or_above_of = scope:gui_holding.barony.lessee
+				}
+			}
+		}
+    }
+    is_valid = {
+		scope:gui_holding = {
+			has_ongoing_construction = no
+			trigger_if = {
+				limit = {
+					debug_only = no
+					root = {
+						has_treasury = yes
+					}
+					has_game_rule = hm_player_cost_treasury
+				}
+				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
+				hm_value_change_holding_type_cost <= root.treasury
+			}
+			trigger_else = {
+				limit = {
+					debug_only = no
+				}
+				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
+				hm_value_change_holding_type_cost <= root.gold
+			}
+		}
+    }
+    effect = {
+		scope:gui_holding = {
+			set_holding_type = temple_citadel_holding
+			if = {
+				limit = {
+					NOT = { debug_only = yes }
+					root = {
+						has_treasury = yes
+					}
+					has_game_rule = hm_player_cost_treasury
+				}
+				save_temporary_scope_value_as = {
+					name = hm_gui_scope_change_holding_type_cost
+					value = hm_value_change_holding_type_cost
+				}
+				root = {
+					remove_treasury = scope:hm_gui_scope_change_holding_type_cost
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { debug_only = yes }
+				}
+				save_temporary_scope_value_as = {
+					name = hm_gui_scope_change_holding_type_cost
+					value = hm_value_change_holding_type_cost
+				}
+				root = {
+					remove_long_term_gold = scope:hm_gui_scope_change_holding_type_cost
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						is_county_capital = no
+					}
+					hm_effect_resolve_holding = yes
+				}
+				add_province_modifier = {
+					modifier = hm_modifier_holding_type_changed_recently
+					years = hm_value_change_holding_type_cooldown
+				}
+			}
+		}
+    }
+}

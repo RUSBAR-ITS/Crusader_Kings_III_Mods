@@ -1,0 +1,140 @@
+hm_effect_construct_oath_warriors_building = {
+	if = {
+		limit = { hm_trigger_construct_oath_warriors_building = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = oath_warriors_building_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = oath_warriors_building_01
+		}
+	}
+}
+hm_effect_upgrade_oath_warriors_building = {
+	if = {
+		limit = { hm_trigger_construct_oath_warriors_building_02 = yes }
+		add_building = oath_warriors_building_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_oath_warriors_building_03 = yes }
+		add_building = oath_warriors_building_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_oath_warriors_building_04 = yes }
+		add_building = oath_warriors_building_04
+	}
+}
+hm_effect_remove_oath_warriors_building = {
+	if = {
+		limit = { has_building = oath_warriors_building_01 }
+		remove_building = oath_warriors_building_01
+	}
+	else_if = {
+		limit = { has_building = oath_warriors_building_02 }
+		remove_building = oath_warriors_building_02
+	}
+	else_if = {
+		limit = { has_building = oath_warriors_building_03 }
+		remove_building = oath_warriors_building_03
+	}
+	else_if = {
+		limit = { has_building = oath_warriors_building_04 }
+		remove_building = oath_warriors_building_04
+	}
+}
+
+hm_effect_construct_oath_faithful_building = {
+	if = {
+		limit = { hm_trigger_construct_oath_faithful_building = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = oath_faithful_building_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = oath_faithful_building_01
+		}
+	}
+}
+hm_effect_upgrade_oath_faithful_building = {
+	if = {
+		limit = { hm_trigger_construct_oath_faithful_building_02 = yes }
+		add_building = oath_faithful_building_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_oath_faithful_building_03 = yes }
+		add_building = oath_faithful_building_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_oath_faithful_building_04 = yes }
+		add_building = oath_faithful_building_04
+	}
+}
+hm_effect_remove_oath_faithful_building = {
+	if = {
+		limit = { has_building = oath_faithful_building_01 }
+		remove_building = oath_faithful_building_01
+	}
+	else_if = {
+		limit = { has_building = oath_faithful_building_02 }
+		remove_building = oath_faithful_building_02
+	}
+	else_if = {
+		limit = { has_building = oath_faithful_building_03 }
+		remove_building = oath_faithful_building_03
+	}
+	else_if = {
+		limit = { has_building = oath_faithful_building_04 }
+		remove_building = oath_faithful_building_04
+	}
+}
+
+hm_effect_construct_oath_poor_building = {
+	if = {
+		limit = { hm_trigger_construct_oath_poor_building = yes }
+		if = {
+			limit = { has_free_building_slot = yes }
+			add_building = oath_poor_building_01
+		}
+		else_if = {
+			limit = { hm_trigger_add_slot = yes }
+			add_province_modifier = extra_building_slot
+			add_building = oath_poor_building_01
+		}
+	}
+}
+hm_effect_upgrade_oath_poor_building = {
+	if = {
+		limit = { hm_trigger_construct_oath_poor_building_02 = yes }
+		add_building = oath_poor_building_02
+	}
+	else_if = {
+		limit = { hm_trigger_construct_oath_poor_building_03 = yes }
+		add_building = oath_poor_building_03
+	}
+	else_if = {
+		limit = { hm_trigger_construct_oath_poor_building_04 = yes }
+		add_building = oath_poor_building_04
+	}
+}
+hm_effect_remove_oath_poor_building = {
+	if = {
+		limit = { has_building = oath_poor_building_01 }
+		remove_building = oath_poor_building_01
+	}
+	else_if = {
+		limit = { has_building = oath_poor_building_02 }
+		remove_building = oath_poor_building_02
+	}
+	else_if = {
+		limit = { has_building = oath_poor_building_03 }
+		remove_building = oath_poor_building_03
+	}
+	else_if = {
+		limit = { has_building = oath_poor_building_04 }
+		remove_building = oath_poor_building_04
+	}
+}

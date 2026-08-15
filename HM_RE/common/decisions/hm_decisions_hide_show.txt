@@ -1,0 +1,50 @@
+﻿hm_decision_hide_all = {
+	picture = {
+		reference ="gfx/interface/illustrations/decisions/ep3_decision_city.dds"
+	}
+    desc = hm_decision_hide_all_desc
+	selection_tooltip = hm_decision_hide_all_tooltip
+
+	is_shown = {
+		global_var:hm_show_decisions ?= yes
+	}
+
+	effect = {
+		custom_tooltip = hm_hide_all_effect_tooltip
+		hidden_effect = {
+			set_global_variable = {
+				name = hm_show_decisions
+				value = no
+			}
+		}
+	}
+
+	ai_check_interval = 0
+}
+
+hm_decision_show_all = {
+	picture = {
+		reference ="gfx/interface/illustrations/decisions/ep3_decision_city.dds"
+	}
+    desc = hm_decision_show_all_desc
+	selection_tooltip = hm_decision_show_all_tooltip
+
+	is_shown = {
+		OR = {
+			NOT = { exists = global_var:hm_show_decisions }
+			global_var:hm_show_decisions = no
+		}
+	}
+
+	effect = {
+		custom_tooltip = hm_show_all_effect_tooltip
+		hidden_effect = {
+			set_global_variable = {
+				name = hm_show_decisions
+				value = yes
+			}
+		}
+	}
+
+	ai_check_interval = 0
+}

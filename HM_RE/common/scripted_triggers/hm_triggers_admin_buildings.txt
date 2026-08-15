@@ -1,0 +1,111 @@
+hm_trigger_construct_capital_bureau_01 = {
+	NOT = { has_building_or_higher = capital_bureau_01 }
+	hm_building_requirement_tribal = no
+	is_county_capital = yes
+	county.holder = {
+            government_has_flag = government_is_administrative
+            is_independent_ruler = yes
+        }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_capital_bureau_02 = {
+	has_building = capital_bureau_01
+	hm_building_requirement_tribal = no
+	county.holder = {
+            government_has_flag = government_is_administrative
+            is_independent_ruler = yes
+        }
+	building_requirement_castle_city_church = { LEVEL = 01 }
+}
+hm_trigger_construct_capital_bureau_03 = {
+	has_building = capital_bureau_02
+	hm_building_requirement_tribal = no
+	county.holder = {
+            government_has_flag = government_is_administrative
+            is_independent_ruler = yes
+        }
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_manorialism }
+	}
+}
+hm_trigger_construct_capital_bureau_04 = {
+	has_building = capital_bureau_03
+	hm_building_requirement_tribal = no
+	county.holder = {
+            government_has_flag = government_is_administrative
+            is_independent_ruler = yes
+        }
+	building_requirement_castle_city_church = { LEVEL = 02 }
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_manorialism }
+	}
+}
+hm_trigger_construct_capital_bureau_05 = {
+	has_building = capital_bureau_04
+	hm_building_requirement_tribal = no
+	county.holder = {
+            government_has_flag = government_is_administrative
+            is_independent_ruler = yes
+        }
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_windmills }
+	}
+}
+hm_trigger_construct_capital_bureau_06 = {
+	has_building = capital_bureau_05
+	hm_building_requirement_tribal = no
+	county.holder = {
+            government_has_flag = government_is_administrative
+            is_independent_ruler = yes
+        }
+	building_requirement_castle_city_church = { LEVEL = 03 }
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_windmills }
+	}
+}
+hm_trigger_construct_capital_bureau_07 = {
+	has_building = capital_bureau_06
+	hm_building_requirement_tribal = no
+	county.holder = {
+            government_has_flag = government_is_administrative
+            is_independent_ruler = yes
+        }
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_cranes }
+	}
+}
+hm_trigger_construct_capital_bureau_08 = {
+	has_building = capital_bureau_07
+	hm_building_requirement_tribal = no
+	county.holder = {
+            government_has_flag = government_is_administrative
+            is_independent_ruler = yes
+        }
+	building_requirement_castle_city_church = { LEVEL = 04 }
+	trigger_if = {
+		limit = { debug_only = no }
+		culture = { has_innovation = innovation_cranes }
+	}
+}
+hm_trigger_construct_capital_bureau = {
+	hm_trigger_construct_capital_bureau_01 = yes
+}
+hm_trigger_upgrade_capital_bureau = {
+	OR = {
+		hm_trigger_construct_capital_bureau_02 = yes
+		hm_trigger_construct_capital_bureau_03 = yes
+		hm_trigger_construct_capital_bureau_04 = yes
+		hm_trigger_construct_capital_bureau_05 = yes
+		hm_trigger_construct_capital_bureau_06 = yes
+		hm_trigger_construct_capital_bureau_07 = yes
+		hm_trigger_construct_capital_bureau_08 = yes
+	}
+}

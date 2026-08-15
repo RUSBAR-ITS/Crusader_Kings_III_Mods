@@ -1,0 +1,425 @@
+﻿hm_value_construct_improvement_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_improvement_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_improvement_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_improvement_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_improvement_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_improvement_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_improvement_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_improvement_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_improvement_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_improvement_01 = yes }
+		add = hm_value_construct_improvement_01_gold_cost
+	}
+}
+hm_value_upgrade_improvement_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_improvement_02 = yes }
+		add = hm_value_construct_improvement_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_improvement_03 = yes }
+		add = hm_value_construct_improvement_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_improvement_04 = yes }
+		add = hm_value_construct_improvement_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_improvement_05 = yes }
+		add = hm_value_construct_improvement_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_improvement_06 = yes }
+		add = hm_value_construct_improvement_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_improvement_07 = yes }
+		add = hm_value_construct_improvement_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_improvement_08 = yes }
+		add = hm_value_construct_improvement_08_gold_cost
+	}
+}
+
+hm_value_construct_expansion_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_expansion_01 = yes }
+		add = hm_value_construct_expansion_01_gold_cost
+	}
+}
+hm_value_upgrade_expansion_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_expansion_02 = yes }
+		add = hm_value_construct_expansion_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_03 = yes }
+		add = hm_value_construct_expansion_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_04 = yes }
+		add = hm_value_construct_expansion_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_05 = yes }
+		add = hm_value_construct_expansion_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_06 = yes }
+		add = hm_value_construct_expansion_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_07 = yes }
+		add = hm_value_construct_expansion_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_08 = yes }
+		add = hm_value_construct_expansion_08_gold_cost
+	}
+}
+
+hm_value_construct_expansion_camel_cavalry_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_camel_cavalry_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_camel_cavalry_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_camel_cavalry_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_camel_cavalry_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_camel_cavalry_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_camel_cavalry_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_camel_cavalry_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_camel_cavalry_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_01 = yes }
+		add = hm_value_construct_expansion_camel_cavalry_01_gold_cost
+	}
+}
+hm_value_upgrade_expansion_camel_cavalry_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_02 = yes }
+		add = hm_value_construct_expansion_camel_cavalry_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_03 = yes }
+		add = hm_value_construct_expansion_camel_cavalry_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_04 = yes }
+		add = hm_value_construct_expansion_camel_cavalry_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_05 = yes }
+		add = hm_value_construct_expansion_camel_cavalry_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_06 = yes }
+		add = hm_value_construct_expansion_camel_cavalry_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_07 = yes }
+		add = hm_value_construct_expansion_camel_cavalry_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_camel_cavalry_08 = yes }
+		add = hm_value_construct_expansion_camel_cavalry_08_gold_cost
+	}
+}
+
+hm_value_construct_expansion_archer_cavalry_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_archer_cavalry_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_archer_cavalry_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_archer_cavalry_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_archer_cavalry_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_archer_cavalry_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_archer_cavalry_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_archer_cavalry_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_expansion_archer_cavalry_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_01 = yes }
+		add = hm_value_construct_expansion_archer_cavalry_01_gold_cost
+	}
+}
+hm_value_upgrade_expansion_archer_cavalry_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_02 = yes }
+		add = hm_value_construct_expansion_archer_cavalry_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_03 = yes }
+		add = hm_value_construct_expansion_archer_cavalry_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_04 = yes }
+		add = hm_value_construct_expansion_archer_cavalry_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_05 = yes }
+		add = hm_value_construct_expansion_archer_cavalry_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_06 = yes }
+		add = hm_value_construct_expansion_archer_cavalry_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_07 = yes }
+		add = hm_value_construct_expansion_archer_cavalry_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_expansion_archer_cavalry_08 = yes }
+		add = hm_value_construct_expansion_archer_cavalry_08_gold_cost
+	}
+}
+
+hm_value_construct_interior_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_interior_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_interior_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_interior_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_interior_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_interior_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_interior_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_interior_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_interior_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_interior_01 = yes }
+		add = hm_value_construct_interior_01_gold_cost
+	}
+}
+hm_value_upgrade_interior_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_interior_02 = yes }
+		add = hm_value_construct_interior_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_interior_03 = yes }
+		add = hm_value_construct_interior_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_interior_04 = yes }
+		add = hm_value_construct_interior_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_interior_05 = yes }
+		add = hm_value_construct_interior_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_interior_06 = yes }
+		add = hm_value_construct_interior_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_interior_07 = yes }
+		add = hm_value_construct_interior_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_interior_08 = yes }
+		add = hm_value_construct_interior_08_gold_cost
+	}
+}
+
+hm_value_construct_town_01_gold_cost = {
+	value = normal_building_tier_1_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_town_02_gold_cost = {
+	value = normal_building_tier_2_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_town_03_gold_cost = {
+	value = normal_building_tier_3_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_town_04_gold_cost = {
+	value = normal_building_tier_4_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_town_05_gold_cost = {
+	value = normal_building_tier_5_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_town_06_gold_cost = {
+	value = normal_building_tier_6_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_town_07_gold_cost = {
+	value = normal_building_tier_7_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_town_08_gold_cost = {
+	value = normal_building_tier_8_cost
+	multiply = hm_value_multiplier_standard_construction_time_cost
+}
+hm_value_construct_town_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_town_01 = yes }
+		add = hm_value_construct_town_01_gold_cost
+	}
+}
+hm_value_upgrade_town_gold_cost = {
+	value = 0
+	if = {
+		limit = { hm_trigger_construct_town_02 = yes }
+		add = hm_value_construct_town_02_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_town_03 = yes }
+		add = hm_value_construct_town_03_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_town_04 = yes }
+		add = hm_value_construct_town_04_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_town_05 = yes }
+		add = hm_value_construct_town_05_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_town_06 = yes }
+		add = hm_value_construct_town_06_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_town_07 = yes }
+		add = hm_value_construct_town_07_gold_cost
+	}
+	else_if = {
+		limit = { hm_trigger_construct_town_08 = yes }
+		add = hm_value_construct_town_08_gold_cost
+	}
+}
