@@ -5,7 +5,7 @@ on_birth_child = {
 	}
 }
 
-# Grants the child modifier when inheritance is enabled and both biological parents belong to the Caesar line.
+# Grants the child modifier and guaranteed dynastic traits when both biological parents belong to the Caesar line.
 DICM_RBE_on_birth_child_ceasar_inheritance = {
 	trigger = {
 		DICM_RBE_ceasar_child_inheritance_enabled_trigger = yes
@@ -17,14 +17,25 @@ DICM_RBE_on_birth_child_ceasar_inheritance = {
 		scope:real_father = {
 			DICM_RBE_is_ceasar_lineage_parent_trigger = yes
 		}
-		NOT = {
-			has_character_modifier = DICM_RBE_Ceasar_Child
-		}
 	}
 
 	effect = {
-		add_character_modifier = {
-			modifier = DICM_RBE_Ceasar_Child
+		if = {
+			limit = {
+				NOT = {
+					has_character_modifier = DICM_RBE_Ceasar_Child
+				}
+			}
+			add_character_modifier = {
+				modifier = DICM_RBE_Ceasar_Child
+			}
 		}
+
+		# Remove birth traits that conflict with the guaranteed Caesar-line traits.
+		if = { limit = { has_trait = infertile } remove_trait = infertile }
+		if = { limit = { has_trait = inbred } remove_trait = inbred }
+		if = { limit = { NOT = { has_trait = fecund } } add_trait = fecund }
+		if = { limit = { NOT = { has_trait = pure_blooded } } add_trait = pure_blooded }
+		DICM_RBE_genius_mentors_effect = yes
 	}
 }
