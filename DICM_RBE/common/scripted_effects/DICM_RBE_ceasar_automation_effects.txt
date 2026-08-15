@@ -132,8 +132,9 @@ DICM_RBE_schedule_administrative_retraining_check_effect = {
 	}
 }
 
-# Extension point for actions applied one day after a Caesar child reaches adulthood.
+# Applies the complete Caesar Child retraining profile except for base-skill changes after adulthood.
 DICM_RBE_ceasar_child_adulthood_automation_effect = {
+	DICM_RBE_prepare_ceasar_child_without_skill_changes_effect = yes
 }
 
 # Applies the complete loyalty curse while preserving The Wake and lifestyle-mastery modifiers.

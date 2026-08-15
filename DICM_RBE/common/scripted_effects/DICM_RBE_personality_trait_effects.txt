@@ -179,6 +179,22 @@ DICM_RBE_remove_chaste_trait_effect = {
 	if = { limit = { has_trait = chaste } remove_trait = chaste }
 }
 
+# Applies the selected Caesar-family personality setting.
+DICM_RBE_apply_ceasar_family_personality_setting_effect = {
+	if = {
+		limit = {
+			DICM_RBE_pious_dynasty_enabled_trigger = yes
+		}
+		DICM_RBE_add_chaste_trait_effect = yes
+	}
+	else_if = {
+		limit = {
+			DICM_RBE_never_too_many_bastards_enabled_trigger = yes
+		}
+		DICM_RBE_add_lustful_trait_effect = yes
+	}
+}
+
 # Adds Eccentric after removing both of its opposite traits.
 DICM_RBE_add_eccentric_trait_effect = {
 	if = { limit = { has_trait = stubborn } remove_trait = stubborn }

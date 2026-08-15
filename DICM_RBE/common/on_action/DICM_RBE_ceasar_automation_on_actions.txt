@@ -63,7 +63,7 @@ on_vassal_change = {
 	}
 }
 
-# Assigns the appropriate consort modifier when exactly one spouse is a Caesar-line sovereign.
+# Applies the complete consort retraining profile when exactly one spouse is a Caesar-line sovereign.
 DICM_RBE_on_marriage_assign_ceasar_consort = {
 	trigger = {
 		DICM_RBE_ceasar_child_inheritance_enabled_trigger = yes
@@ -93,7 +93,7 @@ DICM_RBE_on_marriage_assign_ceasar_consort = {
 				}
 			}
 			scope:spouse = {
-				DICM_RBE_assign_imperator_consort_modifier_effect = yes
+				DICM_RBE_prepare_true_sovereign_consort_retraining_effect = yes
 			}
 		}
 		else_if = {
@@ -104,7 +104,7 @@ DICM_RBE_on_marriage_assign_ceasar_consort = {
 				}
 			}
 			scope:spouse = {
-				DICM_RBE_assign_imperatrix_consort_modifier_effect = yes
+				DICM_RBE_prepare_true_sovereign_consort_retraining_effect = yes
 			}
 		}
 		else_if = {
@@ -114,7 +114,7 @@ DICM_RBE_on_marriage_assign_ceasar_consort = {
 					has_character_modifier = DICM_RBE_Ceasar
 				}
 			}
-			DICM_RBE_assign_imperator_consort_modifier_effect = yes
+			DICM_RBE_prepare_true_sovereign_consort_retraining_effect = yes
 		}
 		else_if = {
 			limit = {
@@ -123,7 +123,7 @@ DICM_RBE_on_marriage_assign_ceasar_consort = {
 					has_character_modifier = DICM_RBE_Ceasar_Female
 				}
 			}
-			DICM_RBE_assign_imperatrix_consort_modifier_effect = yes
+			DICM_RBE_prepare_true_sovereign_consort_retraining_effect = yes
 		}
 	}
 }

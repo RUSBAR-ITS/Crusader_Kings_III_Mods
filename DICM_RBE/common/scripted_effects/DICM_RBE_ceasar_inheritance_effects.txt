@@ -91,21 +91,7 @@ DICM_RBE_assign_imperatrix_consort_modifier_effect = {
 	}
 }
 
-# Promotes a Caesar-line child to the gender-appropriate sovereign modifier.
+# Applies the complete True Sovereign retraining profile to the new player heir.
 DICM_RBE_promote_ceasar_child_to_ruler_effect = {
-	remove_character_modifier = DICM_RBE_Ceasar_Child
-
-	if = {
-		limit = {
-			is_female = yes
-		}
-		add_character_modifier = {
-			modifier = DICM_RBE_Ceasar_Female
-		}
-	}
-	else = {
-		add_character_modifier = {
-			modifier = DICM_RBE_Ceasar
-		}
-	}
+	DICM_RBE_prepare_true_sovereign_retraining_effect = yes
 }
