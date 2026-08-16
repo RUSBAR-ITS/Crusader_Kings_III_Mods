@@ -9,10 +9,7 @@
 		gold = {
 			every_directly_owned_province = {
 				limit = {
-					has_ongoing_construction = no
-					barony = {
-						is_leased_out = no
-					}
+					HM_RE_can_mass_manage_buildings = yes
 				}
 				add = HM_RE_value_upgrade_buildings_gold_cost
 			}
@@ -20,10 +17,7 @@
 		prestige = {
 			every_directly_owned_province = {
 				limit = {
-					has_ongoing_construction = no
-					barony = {
-						is_leased_out = no
-					}
+					HM_RE_can_mass_manage_buildings = yes
 				}
 				add = HM_RE_value_upgrade_buildings_prestige_cost
 			}
@@ -35,11 +29,7 @@
 		is_landed = yes
 		any_directly_owned_province = {
 			count > 0
-			has_ongoing_construction = no
-			barony = {
-				is_leased_out = no
-			}
-			HM_RE_can_upgrade_buildings = yes
+			HM_RE_can_mass_upgrade_buildings = yes
 		}
 	}
 
@@ -53,10 +43,7 @@
 		hidden_effect = {
 			every_directly_owned_province = {
 				limit = {
-					has_ongoing_construction = no
-					barony = {
-						is_leased_out = no
-					}
+					HM_RE_can_mass_manage_buildings = yes
 				}
 				HM_RE_effect_upgrade_buildings = yes
 			}
@@ -77,10 +64,7 @@ HM_RE_decision_buildings_upgrade_realm = {
 		gold = {
 			every_realm_province = {
 				limit = {
-					has_ongoing_construction = no
-					barony = {
-						is_leased_out = no
-					}
+					HM_RE_can_mass_manage_buildings = yes
 				}
 				add = HM_RE_value_upgrade_buildings_gold_cost
 			}
@@ -88,10 +72,7 @@ HM_RE_decision_buildings_upgrade_realm = {
 		prestige = {
 			every_realm_province = {
 				limit = {
-					has_ongoing_construction = no
-					barony = {
-						is_leased_out = no
-					}
+					HM_RE_can_mass_manage_buildings = yes
 				}
 				add = HM_RE_value_upgrade_buildings_prestige_cost
 			}
@@ -105,11 +86,7 @@ HM_RE_decision_buildings_upgrade_realm = {
 		is_landed = yes
 		any_realm_province = {
 			count > 0
-			has_ongoing_construction = no
-			barony = {
-				is_leased_out = no
-			}
-			HM_RE_can_upgrade_buildings = yes
+			HM_RE_can_mass_upgrade_buildings = yes
 		}
 	}
 
@@ -123,10 +100,7 @@ HM_RE_decision_buildings_upgrade_realm = {
 		hidden_effect = {
 			every_realm_province = {
 				limit = {
-					has_ongoing_construction = no
-					barony = {
-						is_leased_out = no
-					}
+					HM_RE_can_mass_manage_buildings = yes
 				}
 				HM_RE_effect_upgrade_buildings = yes
 			}

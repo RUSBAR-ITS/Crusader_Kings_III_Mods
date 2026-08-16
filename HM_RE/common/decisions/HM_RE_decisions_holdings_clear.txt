@@ -11,11 +11,7 @@
 		global_var:HM_RE_show_decisions ?= yes
 		is_landed = yes
 		any_directly_owned_province = {
-			has_ongoing_construction = no
-			barony = {
-				is_leased_out = no
-			}
-			HM_RE_trigger_remove_buildings = yes
+			HM_RE_can_mass_remove_buildings = yes
 		}
 	}
 
@@ -29,10 +25,7 @@
 		hidden_effect = {
 			every_directly_owned_province = {
 				limit = {
-					has_ongoing_construction = no
-					barony = {
-						is_leased_out = no
-					}
+					HM_RE_can_mass_remove_buildings = yes
 				}
 				HM_RE_effect_remove_buildings = yes
 			}
@@ -55,11 +48,7 @@ HM_RE_decision_remove_all_realm = {
 		has_game_rule = HM_RE_rule_can_replace_buildings_vassals
 		is_landed = yes
 		any_realm_province = {
-			has_ongoing_construction = no
-			barony = {
-				is_leased_out = no
-			}
-			HM_RE_trigger_remove_buildings = yes
+			HM_RE_can_mass_remove_buildings = yes
 		}
 	}
 
@@ -73,10 +62,7 @@ HM_RE_decision_remove_all_realm = {
 		hidden_effect = {
 			every_realm_province = {
 				limit = {
-					has_ongoing_construction = no
-					barony = {
-						is_leased_out = no
-					}
+					HM_RE_can_mass_remove_buildings = yes
 				}
 				HM_RE_effect_remove_buildings = yes
 			}

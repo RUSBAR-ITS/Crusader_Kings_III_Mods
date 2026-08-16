@@ -73,15 +73,58 @@
 	}
 }
 
-HM_RE_can_mass_construct_buildings = { # scope: province
-	has_ongoing_construction = no
-	barony = {
-		is_leased_out = no
+HM_RE_can_mass_manage_buildings = { # scope: province
+	trigger_if = {
+		limit = {
+			has_holding = yes
+		}
+		has_ongoing_construction = no
+		barony = {
+			is_leased_out = no
+		}
 	}
-	HM_RE_can_construct_buildings = yes
-	OR = {
-		HM_RE_trigger_player_add_slot = yes
-		has_free_building_slot = yes
+	trigger_else = {
+		always = no
+	}
+}
+
+HM_RE_can_mass_construct_buildings = { # scope: province
+	trigger_if = {
+		limit = {
+			HM_RE_can_mass_manage_buildings = yes
+		}
+		HM_RE_can_construct_buildings = yes
+		OR = {
+			HM_RE_trigger_player_add_slot = yes
+			has_free_building_slot = yes
+		}
+	}
+	trigger_else = {
+		always = no
+	}
+}
+
+HM_RE_can_mass_upgrade_buildings = { # scope: province
+	trigger_if = {
+		limit = {
+			HM_RE_can_mass_manage_buildings = yes
+		}
+		HM_RE_can_upgrade_buildings = yes
+	}
+	trigger_else = {
+		always = no
+	}
+}
+
+HM_RE_can_mass_remove_buildings = { # scope: province
+	trigger_if = {
+		limit = {
+			HM_RE_can_mass_manage_buildings = yes
+		}
+		HM_RE_trigger_remove_buildings = yes
+	}
+	trigger_else = {
+		always = no
 	}
 }
 
