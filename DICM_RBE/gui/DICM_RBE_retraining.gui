@@ -53,8 +53,9 @@
 				portrait_head = {}
 
 				vbox = {
-					parentanchor = vcenter
+					layoutpolicy_vertical = expanding
 					spacing = 4
+					expand = {}
 
 					text_single = {
 						text = DICM_RBE_retraining_target_heading
@@ -65,6 +66,8 @@
 						text = "[Character.GetUINameNoTooltip]"
 						default_format = "#bold"
 					}
+
+					expand = {}
 				}
 			}
 
