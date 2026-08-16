@@ -1,0 +1,865 @@
+﻿############################################################
+# GENERATED FILE - DO NOT EDIT BY HAND
+# Generator: tools/Generate-RBUDOverrides.ps1
+# CK3: 1.19.0.6
+# Plan SHA-256: EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC
+############################################################
+
+@japanese_manor_development_growth_factor_1 = 0.025
+@japanese_manor_monthly_gold_add_0 = 0.1
+@japanese_manor_monthly_influence_add_1 = 0.15
+@japanese_manor_monthly_influence_add_2 = 0.25
+@japanese_manor_monthly_piety_add_1 = 0.1
+@japanese_manor_monthly_piety_add_2 = 0.25
+@japanese_manor_monthly_prestige_add_1 = 0.1
+@japanese_manor_monthly_prestige_mult_1 = 0.025
+@japanese_manor_stress_gain_mult_1 = -0.025
+@japanese_manor_stress_loss_mult_1 = 0.025
+@RB_UD_construction_time_days = 10
+
+japanese_garden_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	internal_slots = 3
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_garden }
+				multiply = 0.75
+				desc = raid_insight_garden
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
+		stress_gain_mult = @japanese_manor_stress_gain_mult_1
+	}
+
+	parameters = {
+		increased_gardener_aptitude_1 = yes
+	}
+
+	ai_value = {
+		value = 9
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_garden_japanese"
+	}
+}
+
+japanese_garden_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	internal_slots = 3
+	previous_building = japanese_garden_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_garden }
+				multiply = 0.75
+				desc = raid_insight_garden
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
+		stress_gain_mult = @japanese_manor_stress_gain_mult_1
+	}
+
+	parameters = {
+		increased_gardener_aptitude_2 = yes
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_garden_japanese"
+	}
+}
+
+japanese_garden_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	internal_slots = 3
+	previous_building = japanese_garden_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_garden }
+				multiply = 0.75
+				desc = raid_insight_garden
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
+		stress_gain_mult = @japanese_manor_stress_gain_mult_1
+	}
+
+	parameters = {
+		increased_gardener_aptitude_3 = yes
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_garden_japanese"
+	}
+}
+
+japanese_garden_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	internal_slots = 3
+	previous_building = japanese_garden_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_garden }
+				multiply = 0.75
+				desc = raid_insight_garden
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
+		stress_gain_mult = @japanese_manor_stress_gain_mult_1
+	}
+
+	parameters = {
+		increased_gardener_aptitude_4 = yes
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_garden_japanese"
+	}
+}
+
+japanese_garden_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	internal_slots = 3
+	previous_building = japanese_garden_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_normal_cost_tier_5_value
+			if = {
+				limit = { has_character_modifier = raid_insight_garden }
+				multiply = 0.75
+				desc = raid_insight_garden
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
+		stress_gain_mult = @japanese_manor_stress_gain_mult_1
+	}
+
+	parameters = {
+		increased_gardener_aptitude_5 = yes
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_garden_japanese"
+	}
+}
+
+japanese_garden_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	internal_slots = 3
+	previous_building = japanese_garden_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_06 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_normal_cost_tier_6_value
+			if = {
+				limit = { has_character_modifier = raid_insight_garden }
+				multiply = 0.75
+				desc = raid_insight_garden
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
+		stress_gain_mult = @japanese_manor_stress_gain_mult_1
+	}
+
+	parameters = {
+		increased_gardener_aptitude_6 = yes
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_garden_japanese"
+	}
+}
+
+japanese_rock_garden_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_garden_01
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_living_quarters }
+				multiply = 0.75
+				desc = raid_insight_quarters
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_piety_add = @japanese_manor_monthly_piety_add_2
+		stress_loss_mult = @japanese_manor_stress_loss_mult_1
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_rock_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_rock_garden_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_rock_garden_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_living_quarters }
+				multiply = 0.75
+				desc = raid_insight_quarters
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_piety_add = @japanese_manor_monthly_piety_add_1
+		stress_loss_mult = @japanese_manor_stress_loss_mult_1
+	}
+	
+	ai_value = {
+		value = 6
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_rock_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_rock_garden_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_rock_garden_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_living_quarters }
+				multiply = 0.75
+				desc = raid_insight_quarters
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_piety_add = @japanese_manor_monthly_piety_add_1
+		stress_loss_mult = @japanese_manor_stress_loss_mult_1
+	}
+	
+	ai_value = {
+		value = 5
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_rock_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_rock_garden_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_rock_garden_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_living_quarters }
+				multiply = 0.75
+				desc = raid_insight_quarters
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_piety_add = @japanese_manor_monthly_piety_add_1
+		stress_loss_mult = @japanese_manor_stress_loss_mult_1
+	}
+	
+	ai_value = {
+		value = 4
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_rock_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_rock_garden_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_rock_garden_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_living_quarters }
+				multiply = 0.75
+				desc = raid_insight_quarters
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_piety_add = @japanese_manor_monthly_piety_add_1
+		stress_loss_mult = @japanese_manor_stress_loss_mult_1
+	}
+	
+	ai_value = {
+		value = 4
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_rock_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_rock_garden_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_rock_garden_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_06 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_6_value
+			if = {
+				limit = { has_character_modifier = raid_insight_living_quarters }
+				multiply = 0.75
+				desc = raid_insight_quarters
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_piety_add = @japanese_manor_monthly_piety_add_1
+		stress_loss_mult = @japanese_manor_stress_loss_mult_1
+	}
+	
+	ai_value = {
+		value = 4
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_rock_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_kazan_display_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_garden_01
+
+	cost = {
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_1_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_2
+		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_kazan_display.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_kazan_display_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_kazan_display_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_02 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_2_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_1
+		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+	
+	ai_value = {
+		value = 6
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_kazan_display.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_kazan_display_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_kazan_display_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_03 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_3_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_1
+		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+	
+	ai_value = {
+		value = 5
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_kazan_display.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_kazan_display_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_kazan_display_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_4_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_1
+		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+	
+	ai_value = {
+		value = 4
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_kazan_display.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_kazan_display_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_kazan_display_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_05 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_5_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_1
+		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+	
+	ai_value = {
+		value = 4
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_kazan_display.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_kazan_display_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_kazan_display_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_06 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_6_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_1
+		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+	
+	ai_value = {
+		value = 4
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_kazan_display.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_orchard_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_garden_01
+
+	cost = {
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_1_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_factor_1
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_fruit_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_orchard_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_orchard_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_02 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_2_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_factor_1
+	}
+	
+	ai_value = {
+		value = 6
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_fruit_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_orchard_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_orchard_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_03 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_3_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_factor_1
+	}
+	
+	ai_value = {
+		value = 5
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_fruit_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_orchard_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_orchard_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_4_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_factor_1
+	}
+	
+	ai_value = {
+		value = 4
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_fruit_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_orchard_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_orchard_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_05 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_5_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_factor_1
+	}
+	
+	ai_value = {
+		value = 4
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_fruit_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}
+
+japanese_orchard_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_orchard_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_06 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_6_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_factor_1
+	}
+	
+	ai_value = {
+		value = 4
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_fruit_garden.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_garden_japanese_mask.png"
+	}
+}

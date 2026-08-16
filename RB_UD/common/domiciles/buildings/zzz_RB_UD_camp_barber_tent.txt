@@ -1,0 +1,621 @@
+﻿############################################################
+# GENERATED FILE - DO NOT EDIT BY HAND
+# Generator: tools/Generate-RBUDOverrides.ps1
+# CK3: 1.19.0.6
+# Plan SHA-256: EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC
+############################################################
+
+@RB_UD_construction_time_days = 10
+
+barber_tent_01 = {
+	internal_slots = 5
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+
+	cost = { gold = barber_tent_01_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = barber_tent_01_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		epidemic_travel_danger = -10
+		negate_health_penalty_add = 0.2
+		hard_casualty_modifier = -0.03
+		domicile_monthly_gold_add = 0.2
+	}
+
+	parameters = {
+		camp_infection_chance_buff_1 = yes
+	}
+
+	ai_value = { value = barber_tent_main_path_value }
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barber.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barber.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+
+	}
+}
+
+barber_tent_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = barber_tent_01
+	internal_slots = 5
+
+	cost = { gold = barber_tent_02_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = barber_tent_02_domicile_building_gold_cost_value
+			add = barber_tent_01_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		epidemic_travel_danger = -5
+		negate_health_penalty_add = 0.2
+		hard_casualty_modifier = -0.03
+		domicile_monthly_gold_add = 0.2
+	}
+
+	parameters = {
+		camp_infection_chance_buff_2 = yes
+	}
+
+	ai_value = { value = barber_tent_main_path_value }
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barber.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barber.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+}
+
+barber_tent_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = barber_tent_02
+	internal_slots = 5
+
+	cost = { gold = barber_tent_03_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = barber_tent_03_domicile_building_gold_cost_value
+			add = barber_tent_02_domicile_building_gold_cost_value
+			add = barber_tent_01_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		epidemic_travel_danger = -5
+		negate_health_penalty_add = 0.2
+		hard_casualty_modifier = -0.03
+		domicile_monthly_gold_add = 0.2
+	}
+
+	parameters = {
+		camp_infection_chance_buff_3 = yes
+	}
+
+	ai_value = { value = barber_tent_main_path_value }
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barber.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barber.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+}
+
+barber_tent_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = barber_tent_03
+	internal_slots = 5
+
+	cost = { gold = barber_tent_04_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = barber_tent_04_domicile_building_gold_cost_value
+			add = barber_tent_03_domicile_building_gold_cost_value
+			add = barber_tent_02_domicile_building_gold_cost_value
+			add = barber_tent_01_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		epidemic_travel_danger = -7
+		negate_health_penalty_add = 0.2
+		hard_casualty_modifier = -0.03
+		domicile_monthly_gold_add = 0.2
+	}
+
+	parameters = {
+		camp_infection_chance_buff_4 = yes
+	}
+
+	ai_value = { value = barber_tent_main_path_value }
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barber.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barber.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+}
+
+barber_tent_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = barber_tent_04
+	internal_slots = 5
+
+	cost = { gold = barber_tent_05_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = barber_tent_05_domicile_building_gold_cost_value
+			add = barber_tent_04_domicile_building_gold_cost_value
+			add = barber_tent_03_domicile_building_gold_cost_value
+			add = barber_tent_02_domicile_building_gold_cost_value
+			add = barber_tent_01_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		epidemic_travel_danger = -7
+		negate_health_penalty_add = 0.2
+		hard_casualty_modifier = -0.03
+		domicile_monthly_gold_add = 0.2
+	}
+
+	parameters = {
+		camp_infection_chance_buff_5 = yes
+	}
+
+	ai_value = { value = barber_tent_main_path_value }
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barber.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barber.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+}
+
+barber_tent_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = barber_tent_05
+	internal_slots = 5
+
+	cost = { gold = barber_tent_06_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = barber_tent_06_domicile_building_gold_cost_value
+			add = barber_tent_05_domicile_building_gold_cost_value
+			add = barber_tent_04_domicile_building_gold_cost_value
+			add = barber_tent_03_domicile_building_gold_cost_value
+			add = barber_tent_02_domicile_building_gold_cost_value
+			add = barber_tent_01_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		epidemic_travel_danger = -10
+		negate_health_penalty_add = 0.5
+		hard_casualty_modifier = -0.03
+		domicile_monthly_gold_add = 0.2
+	}
+
+	parameters = {
+		camp_infection_chance_buff_6 = yes
+	}
+
+	ai_value = { value = barber_tent_main_path_value }
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barber.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barber.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+}
+
+barber_tent_surgeons_tools = { # Surgeon's Tools
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = barber_tent_01
+
+	cost = { gold = barber_tent_surgeons_tools_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = barber_tent_surgeons_tools_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		negate_health_penalty_add = 0.50
+		hard_casualty_modifier = -0.2
+	}
+
+	parameters = {
+		camp_improved_court_physician_aptitude = yes
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t5
+		if = {
+			limit = {
+				owner = { has_lifestyle = learning_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_surgeons_tools.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_surgeons_tools.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+}
+
+barber_tent_dentists_tools = { # Dentist's Tools
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = barber_tent_01
+
+	cost = { gold = barber_tent_dentists_tools_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = barber_tent_dentists_tools_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		negate_health_penalty_add = 0.25
+		hard_casualty_modifier = -0.1
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t2
+		if = {
+			limit = {
+				owner = { has_lifestyle = learning_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_dentist.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_dentist.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+}
+
+barber_tent_torturers_tools = { # Torturer's Tools
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = barber_tent_01
+
+	cost = { gold = barber_tent_torturers_tools_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = barber_tent_torturers_tools_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		monthly_intrigue_lifestyle_xp_gain_add = 25
+		knight_effectiveness_per_dread = 0.001
+		dread_baseline_add = 10
+		prisoner_opinion = -30
+	}
+
+	parameters = {
+		camp_unlocks_torture_interaction = yes
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t3
+		if = {
+			limit = {
+				owner = { has_lifestyle = intrigue_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+		if = {
+			limit = {
+				owner = { has_trait = compassionate }
+			}
+			multiply = 0
+		}
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_torture.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_torture.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+}
+
+barber_tent_reference_corpus = { # Reference Corpus
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = barber_tent_01
+
+	cost = { gold = barber_tent_reference_corpus_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = barber_tent_reference_corpus_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+
+	character_modifier = {
+		negate_health_penalty_add = 0.25
+		monthly_learning_lifestyle_xp_gain_mult = 0.25
+		learning_scheme_phase_duration = -10
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t5
+		if = {
+			limit = {
+				owner = { has_lifestyle = learning_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_reference_corpus.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_reference_corpus.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+}
+
+barber_tent_morticians_tools = { # Mortician's Tools
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = barber_tent_01
+
+	cost = { gold = barber_tent_morticians_tools_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = barber_tent_morticians_tools_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+
+	character_modifier = {
+		dread_baseline_add = 30
+	}
+
+	parameters = {
+		camp_gold_from_victories_or_nearby_battles = yes
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t5
+		if = {
+			limit = {
+				owner = { has_lifestyle = intrigue_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_morticians_tools.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_morticians_tools.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_barber.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
+	}
+}

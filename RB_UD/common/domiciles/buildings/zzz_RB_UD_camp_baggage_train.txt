@@ -1,0 +1,1125 @@
+﻿############################################################
+# GENERATED FILE - DO NOT EDIT BY HAND
+# Generator: tools/Generate-RBUDOverrides.ps1
+# CK3: 1.19.0.6
+# Plan SHA-256: EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC
+############################################################
+
+@RB_UD_construction_time_days = 10
+
+baggage_train_01 = {
+	internal_slots = 13
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+
+	cost = { gold = baggage_train_01_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_01_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		character_travel_speed_mult = 0.02
+		provisions_capacity_mult = 0.1
+		supply_capacity_mult = 0.2
+		skirmishers_max_size_add = 1
+	}
+
+	parameters = {
+		camp_better_scout_for_talent = yes
+		camp_unlocks_head_porter_officer = yes
+		receives_more_escort_contracts = yes
+	}
+
+	ai_value = { value = baggage_train_main_path_value }
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+	internal_slots = 13
+
+	cost = { gold = baggage_train_02_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_02_domicile_building_gold_cost_value
+			add = baggage_train_01_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		character_travel_speed_mult = 0.02
+		provisions_capacity_mult = 0.1
+		supply_capacity_mult = 0.2
+		archers_max_size_add = 1
+	}
+
+	parameters = {
+		camp_better_scout_for_talent = yes
+		camp_unlocks_head_porter_officer = yes
+		receives_more_escort_contracts = yes
+	}
+
+	ai_value = { value = baggage_train_main_path_value }
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_02
+	internal_slots = 13
+
+	cost = { gold = baggage_train_03_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_03_domicile_building_gold_cost_value
+			add = baggage_train_02_domicile_building_gold_cost_value
+			add = baggage_train_01_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		character_travel_speed_mult = 0.02
+		provisions_capacity_mult = 0.1
+		supply_capacity_mult = 0.2
+		heavy_infantry_max_size_add = 1
+	}
+
+	parameters = {
+		camp_better_scout_for_talent = yes
+		camp_unlocks_head_porter_officer = yes
+		receives_more_escort_contracts = yes
+	}
+
+	ai_value = { value = baggage_train_main_path_value }
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_03
+	internal_slots = 13
+
+	cost = { gold = baggage_train_04_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_04_domicile_building_gold_cost_value
+			add = baggage_train_03_domicile_building_gold_cost_value
+			add = baggage_train_02_domicile_building_gold_cost_value
+			add = baggage_train_01_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		character_travel_speed_mult = 0.02
+		provisions_capacity_mult = 0.1
+		supply_capacity_mult = 0.2
+		light_cavalry_max_size_add = 1
+	}
+
+	parameters = {
+		camp_better_scout_for_talent = yes
+		camp_unlocks_head_porter_officer = yes
+		receives_more_escort_contracts = yes
+	}
+
+	ai_value = { value = baggage_train_main_path_value }
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_04
+	internal_slots = 13
+
+	cost = { gold = baggage_train_05_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_05_domicile_building_gold_cost_value
+			add = baggage_train_04_domicile_building_gold_cost_value
+			add = baggage_train_03_domicile_building_gold_cost_value
+			add = baggage_train_02_domicile_building_gold_cost_value
+			add = baggage_train_01_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		character_travel_speed_mult = 0.02
+		provisions_capacity_mult = 0.1
+		supply_capacity_mult = 0.2
+		heavy_cavalry_max_size_add = 1
+	}
+
+	parameters = {
+		camp_better_scout_for_talent = yes
+		camp_unlocks_head_porter_officer = yes
+		receives_more_escort_contracts = yes
+	}
+
+	ai_value = { value = baggage_train_main_path_value }
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_05
+	internal_slots = 13
+
+	cost = { gold = baggage_train_06_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_06_domicile_building_gold_cost_value
+			add = baggage_train_05_domicile_building_gold_cost_value
+			add = baggage_train_04_domicile_building_gold_cost_value
+			add = baggage_train_03_domicile_building_gold_cost_value
+			add = baggage_train_02_domicile_building_gold_cost_value
+			add = baggage_train_01_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		character_travel_speed_mult = 0.02
+		provisions_capacity_mult = 0.1
+		supply_capacity_mult = 0.2
+		siege_weapon_max_size_add = 1
+	}
+
+	parameters = {
+		camp_better_scout_for_talent = yes
+		camp_unlocks_head_porter_officer = yes
+		receives_more_escort_contracts = yes
+	}
+
+	ai_value = { value = baggage_train_main_path_value }
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_ample_steeds = { # Ample Steeds
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+
+	cost = { gold = baggage_train_ample_steeds_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_ample_steeds_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	can_construct = {
+		custom_tooltip = {
+			text = baggage_train_ample_steeds.tt.ate_steeds
+			NOT = { has_character_flag = recently_ate_horses }
+		}
+	}
+
+	character_modifier = {
+		character_travel_speed = 10
+		light_cavalry_pursuit_mult = 0.1
+		heavy_cavalry_pursuit_mult = 0.1
+		archer_cavalry_pursuit_mult = 0.1
+	}
+
+	parameters = {
+		camp_unlocks_head_groom_officer = yes
+		camp_cheaper_cavalry_reinforcement = yes
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t2
+		if = {
+			limit = {
+				owner = { has_lifestyle = martial_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_ample_steeds.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_ample_steeds.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_porters = { # Porters
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+
+	cost = { gold = baggage_train_porters_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_porters_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		provisions_capacity_mult = 0.25
+		supply_capacity_mult = 0.25
+		knight_effectiveness_per_stewardship = 0.01
+	}
+
+	parameters = {
+		camp_recruit_porters_events = yes
+		camp_improved_reinforcement_from_gold = yes
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t1
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						has_lifestyle = stewardship_lifestyle
+						has_lifestyle = martial_lifestyle
+					}
+				}
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_porters.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_porters.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_trackers = { # Trackers
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+
+	cost = { gold = baggage_train_trackers_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_trackers_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		movement_speed = 0.1
+		plains_provisions_use_mult = -0.25
+		jungle_provisions_use_mult = -0.25
+		forest_provisions_use_mult = -0.25
+		taiga_provisions_use_mult = -0.25
+		drylands_provisions_use_mult = -0.25
+	}
+
+	parameters = {
+		camp_unlocks_huntperson_officer = yes
+		camp_improved_tracker_contract_success = yes
+		camp_improves_gather_provisions_hunting = yes
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t3
+		if = {
+			limit = {
+				owner = { has_lifestyle = martial_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_trackers.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_trackers.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_kennel = { # Kennel
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+
+	cost = { gold = baggage_train_kennel_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_kennel_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	can_construct = {
+		custom_tooltip = {
+			text = baggage_train_kennel.tt.ate_dogs
+			NOT = { has_character_flag = recently_ate_dogs }
+		}
+	}
+
+	character_modifier = {
+		courtier_opinion = 5
+		skirmishers_damage_mult = 0.2
+		skirmishers_pursuit_mult = 0.2
+	}
+
+	parameters = {
+		camp_unlocks_kennelperson_officer = yes
+		camp_unlocks_adopt_a_kennel_dog_decision = yes
+	}
+
+	ai_value = { value = camp_building_ai_base_t1 }
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_kennel.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_kennel.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_siege_engineers = { # Siege Engineers
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+
+	cost = { gold = baggage_train_siege_engineers_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_siege_engineers_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+
+	character_modifier = {
+		siege_weapon_siege_value_mult = 0.25
+	}
+
+	parameters = {
+		camp_unlocks_chief_engineer_officer = yes
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t5
+		if = {
+			limit = {
+				owner = { has_lifestyle = martial_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_siege_engineers.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_siege_engineers.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_shrine = { # Shrine
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+
+	cost = { gold = baggage_train_shrine_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_shrine_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_piety_add = 0.25
+		same_faith_opinion = 5
+		learning = 1
+	}
+
+	parameters = {
+		camp_enable_conversion = yes
+	}
+
+	parameters = {
+		camp_unlocks_camp_priest_officer = yes
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t3
+		if = {
+			limit = {
+				owner = { has_lifestyle = learning_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+		if = {
+			limit = {
+				owner = { has_trait = cynical }
+			}
+			multiply = 0
+		}
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_shrine.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_camp_shrine.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_scribes = { # Scribes
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+
+	cost = { gold = baggage_train_scribes_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_scribes_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+
+	character_modifier = {
+		learning_per_prestige_level = 1
+	}
+
+	parameters = {
+		camp_improved_learning_contract_rewards = yes
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t5
+		if = {
+			limit = {
+				owner = { has_lifestyle = learning_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_scribes.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_scribes.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_bartering_grounds = { # Bartering Grounds
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+
+	cost = { gold = baggage_train_bartering_grounds_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_bartering_grounds_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		monthly_stewardship_lifestyle_xp_gain_mult = 0.25
+	}
+
+	parameters = {
+		camp_improved_stewardship_contract_rewards = yes
+		camp_unlocks_pawn_gear_interaction = yes
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t4
+		if = {
+			limit = {
+				owner = { has_lifestyle = stewardship_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bartering_grounds.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bartering_grounds.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_proof_of_claims = { # Proof of Claims
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+
+	cost = { gold = baggage_train_proof_of_claims_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_proof_of_claims_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+
+	character_modifier = {
+		diplomacy_per_prestige_level = 1
+	}
+
+	parameters = {
+		camp_unlocks_witness_officer = yes
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t5
+		if = {
+			limit = {
+				owner = { has_lifestyle = diplomacy_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_proof_of_claims.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_proof_of_claims.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_ransom_cages = { # Ransom Cages
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+
+	cost = { gold = baggage_train_ransom_cages_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_ransom_cages_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+
+	character_modifier = {}
+
+	parameters = {
+		camp_unlocks_person_haggler_officer = yes
+		camp_reduced_prisoner_escape_chance = yes
+		camp_unlocks_abduct_scheme = yes
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t5
+		if = {
+			limit = {
+				owner = { has_lifestyle = intrigue_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_ransom_cages.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_ransom_cages.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_negotiators = { # Negotiators
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+
+	cost = { gold = baggage_train_negotiators_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_negotiators_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+
+	character_modifier = {
+		monthly_diplomacy_lifestyle_xp_gain_mult = 0.25
+	}
+
+	parameters = {
+		camp_improves_wipe_slate_decision = yes
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t5
+		if = {
+			limit = {
+				owner = { has_lifestyle = diplomacy_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_negotiators.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_negotiators.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_ascetics = { # Ascetics
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+
+	cost = { gold = baggage_train_ascetics_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_ascetics_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+
+	character_modifier = {
+		monthly_learning_lifestyle_xp_gain_mult = 0.25
+		domicile_monthly_piety_add = 3
+		holy_order_hire_cost_mult = -0.5
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t5
+		if = {
+			limit = {
+				owner = { has_lifestyle = learning_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_ascetics.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_ascetics.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}
+
+baggage_train_pleasure_tents = { # Pleasure Tents
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { camp }
+	previous_building = baggage_train_01
+
+	cost = { gold = baggage_train_pleasure_tents_domicile_building_gold_cost_value }
+	refund = {
+		gold = {
+			value = baggage_train_pleasure_tents_domicile_building_gold_cost_value
+			multiply = camp_refund_mult_value
+			floor = yes
+		}
+	}
+
+	character_modifier = {
+		courtier_opinion = 10
+		stress_loss_mult = 0.1
+		intrigue_scheme_phase_duration = -10
+		monthly_intrigue_lifestyle_xp_gain_mult = 0.25
+		fertility = 0.2
+	}
+
+	ai_value = {
+		value = camp_building_ai_base_t1
+		if = {
+			limit = {
+				owner = { has_lifestyle = diplomacy_lifestyle }
+			}
+			add = camp_building_ai_lifestyle_bias_value
+		}
+		multiply = 10
+	}
+
+	asset = {
+		trigger = {
+			owner.culture = {
+				OR = {
+					has_graphical_chinese_culture_group_trigger = yes
+					has_graphical_japanese_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_pleasure_tents.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_pleasure_tents.dds"
+		texture = "gfx/interface/window_domiciles/laamp_building_baggage_train.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_baggage_train_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_baggage_train"
+	}
+}

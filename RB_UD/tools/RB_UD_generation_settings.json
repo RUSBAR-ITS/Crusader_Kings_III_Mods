@@ -1,0 +1,27 @@
+{
+  "SchemaVersion": 1,
+  "OutputGrouping": "vanilla_root_family",
+  "ExpectedCoverage": {
+    "BuildingCount": 1620,
+    "FamiliesByDomicileType": {
+      "camp": 8,
+      "estate": 17,
+      "yurt": 8,
+      "east_asian_estate": 16,
+      "japanese_manor": 13
+    }
+  },
+  "ConstructionTime": {
+    "DefaultDays": 10,
+    "LocalConstant": "@RB_UD_construction_time_days"
+  },
+  "Costs": {
+    "ReplaceDirectNumericResources": [
+      "gold",
+      "herd",
+      "influence",
+      "prestige"
+    ],
+    "GeneratedScriptValuesFile": "common/script_values/zzz_RB_UD_domicile_cost_values.txt"
+  }
+}

@@ -1,0 +1,1789 @@
+﻿############################################################
+# GENERATED FILE - DO NOT EDIT BY HAND
+# Generator: tools/Generate-RBUDOverrides.ps1
+# CK3: 1.19.0.6
+# Plan SHA-256: EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC
+############################################################
+
+@RB_UD_construction_time_days = 10
+
+family_yurt_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	internal_slots = 8
+
+	cost = {
+		herd = yurt_external_building_herd_cost_tier_1
+		prestige = yurt_external_building_prestige_cost_tier_1
+		gold = yurt_external_building_gold_cost_tier_1
+	}
+
+	parameters = {
+		nomad_introduce_heir_unlock = yes
+		nomad_main_yurt_marriage_acceptance_lvl_1 = yes
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.05
+		dynasty_house_opinion = 4
+	}
+
+	ai_value = {
+		value = nomadic_capital_exterior_building_1
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_family_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+family_yurt_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	previous_building = family_yurt_01
+	internal_slots = 8
+
+	cost = {
+		herd = yurt_external_building_herd_cost_tier_2
+		prestige = yurt_external_building_prestige_cost_tier_2
+		gold = yurt_external_building_gold_cost_tier_2
+	}
+
+	parameters = {
+		nomad_introduce_heir_unlock = yes
+		nomad_unlock_wet_nurse = yes
+		nomad_main_yurt_marriage_acceptance_lvl_1 = yes
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.05
+		dynasty_house_opinion = 6
+	}
+
+
+	ai_value = {
+		value = nomadic_capital_exterior_building_2
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_family_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+family_yurt_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	previous_building = family_yurt_02
+	internal_slots = 8
+
+
+	cost = {
+		herd = yurt_external_building_herd_cost_tier_3
+		prestige = yurt_external_building_prestige_cost_tier_3
+		gold = yurt_external_building_gold_cost_tier_3
+	}
+
+	parameters = {
+		nomad_introduce_heir_unlock = yes
+		nomad_unlock_wet_nurse = yes
+		nomad_unlock_court_tutor = yes
+		nomad_main_yurt_marriage_acceptance_lvl_2 = yes
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.05
+		dynasty_house_opinion = 10
+	}
+
+
+	ai_value = {
+		value = nomadic_capital_exterior_building_3
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_family_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+family_yurt_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	previous_building = family_yurt_03
+	internal_slots = 8
+
+	can_construct = {
+		domicile = {
+			has_domicile_building_or_higher = yurt_main_03
+		}
+	}
+
+	cost = {
+		herd = yurt_external_building_herd_cost_tier_4
+		prestige = yurt_external_building_prestige_cost_tier_4
+		gold = yurt_external_building_gold_cost_tier_4
+	}
+
+	parameters = {
+		nomad_introduce_heir_unlock = yes
+		nomad_unlock_wet_nurse = yes
+		nomad_unlock_court_tutor = yes
+		nomad_main_yurt_marriage_acceptance_lvl_3 = yes
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.05
+		dynasty_house_opinion = 12
+	}
+
+	province_modifier = {
+		defender_holding_advantage = 1
+	}
+
+
+	ai_value = {
+		value = nomadic_capital_exterior_building_4
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_family_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+family_yurt_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	previous_building = family_yurt_04
+	internal_slots = 8
+
+	can_construct = {
+		domicile = {
+			has_domicile_building_or_higher = yurt_main_04
+		}
+	}
+
+	cost = {
+		herd = yurt_external_building_herd_cost_tier_5
+		prestige = yurt_external_building_prestige_cost_tier_5
+		gold = yurt_external_building_gold_cost_tier_5
+	}
+
+	parameters = {
+		nomad_introduce_heir_unlock = yes
+		nomad_unlock_wet_nurse = yes
+		nomad_unlock_court_tutor = yes
+		nomad_main_yurt_marriage_acceptance_lvl_3 = yes
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.1
+		dynasty_house_opinion = 8
+	}
+
+
+	ai_value = {
+		value = nomadic_capital_exterior_building_5
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_family_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+family_yurt_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	previous_building = family_yurt_05
+	internal_slots = 8
+
+	can_construct = {
+		domicile = {
+			has_domicile_building_or_higher = yurt_main_05
+		}
+	}
+
+	cost = {
+		herd = yurt_external_building_herd_cost_tier_5
+		prestige = yurt_external_building_prestige_cost_tier_5
+		gold = yurt_external_building_gold_cost_tier_5
+	}
+
+	parameters = {
+		nomad_introduce_heir_unlock = yes
+		nomad_unlock_wet_nurse = yes
+		nomad_unlock_court_tutor = yes
+		nomad_main_yurt_marriage_acceptance_lvl_4 = yes
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.1
+		dynasty_house_opinion = 10
+	}
+
+	province_modifier = {
+		defender_holding_advantage = 1
+	}
+
+	ai_value = {
+		value = nomadic_capital_exterior_building_6
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_family_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+renown_gain_yurt_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = family_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_1
+		prestige = yurt_internal_building_prestige_cost_tier_1
+		gold = yurt_internal_building_gold_cost_tier_1
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige = 0.2
+	}
+
+	parameters = {
+		nomad_yurt_dynasty_many_crowns_bonus = yes
+	}
+
+	ai_value = {
+		value = 0
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_renown_gain_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+renown_gain_yurt_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = renown_gain_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_2
+		prestige = yurt_internal_building_prestige_cost_tier_2
+		gold = yurt_internal_building_gold_cost_tier_2
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige = 0.1
+	}
+
+	parameters = {
+		nomad_yurt_dynasty_many_crowns_bonus = yes
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_2
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_renown_gain_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+renown_gain_yurt_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = renown_gain_yurt_02
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_3
+		prestige = yurt_internal_building_prestige_cost_tier_3
+		gold = yurt_internal_building_gold_cost_tier_3
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige = 0.1
+	}
+
+	parameters = {
+		nomad_yurt_dynasty_many_crowns_bonus = yes
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_3
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_renown_gain_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+renown_gain_yurt_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = renown_gain_yurt_03
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_4
+		prestige = yurt_internal_building_prestige_cost_tier_4
+		gold = yurt_internal_building_gold_cost_tier_4
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige = 0.2
+	}
+
+	parameters = {
+		nomad_yurt_dynasty_many_crowns_bonus = yes
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_4
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_renown_gain_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+renown_gain_yurt_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = renown_gain_yurt_04
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_5
+		prestige = yurt_internal_building_prestige_cost_tier_5
+		gold = yurt_internal_building_gold_cost_tier_5
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige = 0.2
+	}
+
+	parameters = {
+		nomad_yurt_dynasty_many_crowns_bonus = yes
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_5
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_renown_gain_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+renown_gain_yurt_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = renown_gain_yurt_05
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_6
+		prestige = yurt_internal_building_prestige_cost_tier_6
+		gold = yurt_internal_building_gold_cost_tier_6
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige = 0.2
+	}
+
+	parameters = {
+		nomad_yurt_dynasty_many_crowns_bonus = yes
+		nomad_yurt_dynasty_many_khans = yes
+		nomad_yurt_dynasty_many_khans_yearly_bonus = yes
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_6
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_renown_gain_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+wet_nurse_yurt_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = family_yurt_01
+
+	can_construct = {
+		domicile = {
+			has_domicile_building_or_higher = family_yurt_02
+		}
+	}
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_1
+		prestige = yurt_internal_building_prestige_cost_tier_1
+		gold = yurt_internal_building_gold_cost_tier_1
+	}
+
+	parameters = {
+		domicile_increased_wet_nurse_aptitude_1 = yes
+		estate_increased_tutor_aptitude_1 = yes
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_1
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_wet_nurse_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+wet_nurse_yurt_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = wet_nurse_yurt_01
+
+	can_construct = {
+		domicile = {
+			has_domicile_building_or_higher = family_yurt_03
+		}
+	}
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_2
+		prestige = yurt_internal_building_prestige_cost_tier_2
+		gold = yurt_internal_building_gold_cost_tier_2
+	}
+
+	parameters = {
+		domicile_increased_wet_nurse_aptitude_2 = yes
+		estate_increased_tutor_aptitude_2 = yes
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.02
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_2
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_wet_nurse_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+wet_nurse_yurt_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = wet_nurse_yurt_02
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_3
+		prestige = yurt_internal_building_prestige_cost_tier_3
+		gold = yurt_internal_building_gold_cost_tier_3
+	}
+
+	parameters = {
+		domicile_increased_wet_nurse_aptitude_3 = yes
+		estate_increased_tutor_aptitude_3 = yes
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.01
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_3
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_wet_nurse_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+wet_nurse_yurt_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = wet_nurse_yurt_03
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_4
+		prestige = yurt_internal_building_prestige_cost_tier_4
+		gold = yurt_internal_building_gold_cost_tier_4
+	}
+
+	parameters = {
+		domicile_increased_wet_nurse_aptitude_4 = yes
+		estate_increased_tutor_aptitude_4 = yes
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.01
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_4
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_wet_nurse_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+wet_nurse_yurt_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = wet_nurse_yurt_04
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_5
+		prestige = yurt_internal_building_prestige_cost_tier_5
+		gold = yurt_internal_building_gold_cost_tier_5
+	}
+
+	parameters = {
+		domicile_increased_wet_nurse_aptitude_5 = yes
+		estate_increased_tutor_aptitude_5 = yes
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.02
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_5
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_wet_nurse_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+wet_nurse_yurt_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = wet_nurse_yurt_05
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_6
+		prestige = yurt_internal_building_prestige_cost_tier_6
+		gold = yurt_internal_building_gold_cost_tier_6
+	}
+
+	parameters = {
+		domicile_increased_wet_nurse_aptitude_6 = yes
+		estate_increased_tutor_aptitude_6 = yes
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.03
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_6
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_wet_nurse_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+personal_chamber_yurt_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = family_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_1
+		prestige = yurt_internal_building_prestige_cost_tier_1
+		gold = yurt_internal_building_gold_cost_tier_1
+	}
+
+	character_modifier = {
+		spouse_opinion = 10
+		fertility = 0.05
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_1
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_personal_chamber_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+personal_chamber_yurt_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = personal_chamber_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_2
+		prestige = yurt_internal_building_prestige_cost_tier_2
+		gold = yurt_internal_building_gold_cost_tier_2
+	}
+
+	character_modifier = {
+		spouse_opinion = 10
+		fertility = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_2
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_personal_chamber_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+personal_chamber_yurt_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = personal_chamber_yurt_02
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_3
+		prestige = yurt_internal_building_prestige_cost_tier_3
+		gold = yurt_internal_building_gold_cost_tier_3
+	}
+
+	character_modifier = {
+		spouse_opinion = 10
+		fertility = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_3
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_personal_chamber_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+personal_chamber_yurt_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = personal_chamber_yurt_03
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_4
+		prestige = yurt_internal_building_prestige_cost_tier_4
+		gold = yurt_internal_building_gold_cost_tier_4
+	}
+
+	character_modifier = {
+		spouse_opinion = 10
+		fertility = 0.15
+	}
+
+	parameters = {
+		nomad_yurt_spouse_will_not_cheat = yes
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_4
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_personal_chamber_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+personal_chamber_yurt_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = personal_chamber_yurt_04
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_5
+		prestige = yurt_internal_building_prestige_cost_tier_5
+		gold = yurt_internal_building_gold_cost_tier_5
+	}
+
+	character_modifier = {
+		spouse_opinion = 10
+		fertility = 0.2
+	}
+
+	parameters = {
+		nomad_yurt_spouse_will_not_cheat = yes
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_5
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_personal_chamber_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+personal_chamber_yurt_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = personal_chamber_yurt_05
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_6
+		prestige = yurt_internal_building_prestige_cost_tier_6
+		gold = yurt_internal_building_gold_cost_tier_6
+	}
+
+	character_modifier = {
+		spouse_opinion = 20
+		fertility = 0.2
+	}
+
+	parameters = {
+		nomad_yurt_spouse_will_not_cheat = yes
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_6
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_personal_chamber_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+recreation_chamber_yurt_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = family_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_1
+		prestige = yurt_internal_building_prestige_cost_tier_1
+		gold = yurt_internal_building_gold_cost_tier_1
+	}
+
+	character_modifier = {
+		stress_gain_mult = -0.05
+		stress_loss_mult = 0.05
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_1
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_recreation_chamber_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+recreation_chamber_yurt_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = recreation_chamber_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_2
+		prestige = yurt_internal_building_prestige_cost_tier_2
+		gold = yurt_internal_building_gold_cost_tier_2
+	}
+
+	character_modifier = {
+		stress_gain_mult = -0.05
+		stress_loss_mult = 0.05
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_2
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_recreation_chamber_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+recreation_chamber_yurt_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = recreation_chamber_yurt_02
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_3
+		prestige = yurt_internal_building_prestige_cost_tier_3
+		gold = yurt_internal_building_gold_cost_tier_3
+	}
+
+	character_modifier = {
+		stress_gain_mult = -0.05
+		stress_loss_mult = 0.05
+		health = 0.05
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_3
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_recreation_chamber_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+recreation_chamber_yurt_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = recreation_chamber_yurt_03
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_4
+		prestige = yurt_internal_building_prestige_cost_tier_4
+		gold = yurt_internal_building_gold_cost_tier_4
+	}
+
+	character_modifier = {
+		stress_gain_mult = -0.05
+		stress_loss_mult = 0.05
+		health = 0.05
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_4
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_recreation_chamber_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+recreation_chamber_yurt_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = recreation_chamber_yurt_04
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_5
+		prestige = yurt_internal_building_prestige_cost_tier_5
+		gold = yurt_internal_building_gold_cost_tier_5
+	}
+
+	character_modifier = {
+		stress_gain_mult = -0.05
+		stress_loss_mult = 0.05
+		health = 0.05
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_5
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_recreation_chamber_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+recreation_chamber_yurt_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = recreation_chamber_yurt_05
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_6
+		prestige = yurt_internal_building_prestige_cost_tier_6
+		gold = yurt_internal_building_gold_cost_tier_6
+	}
+
+	character_modifier = {
+		stress_gain_mult = -0.05
+		stress_loss_mult = 0.05
+		health = 0.05
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_6
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_recreation_chamber_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+marriage_yurt_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = family_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_1
+		prestige = yurt_internal_building_prestige_cost_tier_1
+		gold = yurt_internal_building_gold_cost_tier_1
+	}
+
+	parameters = {
+		nomad_yurt_marriage_acceptance_lvl_1 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.2
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_1
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_marriage_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+marriage_yurt_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = marriage_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_2
+		prestige = yurt_internal_building_prestige_cost_tier_2
+		gold = yurt_internal_building_gold_cost_tier_2
+	}
+
+	parameters = {
+		nomad_yurt_marriage_acceptance_lvl_1 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_2
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_marriage_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+marriage_yurt_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = marriage_yurt_02
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_3
+		prestige = yurt_internal_building_prestige_cost_tier_3
+		gold = yurt_internal_building_gold_cost_tier_3
+	}
+
+	parameters = {
+		nomad_yurt_marriage_acceptance_lvl_2 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_3
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_marriage_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+marriage_yurt_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = marriage_yurt_03
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_4
+		prestige = yurt_internal_building_prestige_cost_tier_4
+		gold = yurt_internal_building_gold_cost_tier_4
+	}
+
+	parameters = {
+		nomad_yurt_marriage_acceptance_lvl_2 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.2
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_4
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_marriage_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+marriage_yurt_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = marriage_yurt_04
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_5
+		prestige = yurt_internal_building_prestige_cost_tier_5
+		gold = yurt_internal_building_gold_cost_tier_5
+	}
+
+	parameters = {
+		nomad_yurt_marriage_acceptance_lvl_3 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.2
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_5
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_marriage_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+marriage_yurt_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = marriage_yurt_05
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_6
+		prestige = yurt_internal_building_prestige_cost_tier_6
+		gold = yurt_internal_building_gold_cost_tier_6
+	}
+
+	parameters = {
+		nomad_yurt_marriage_acceptance_lvl_4 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.2
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_6
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_marriage_yurt.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+better_children_yurt_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = family_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_1
+		prestige = yurt_internal_building_prestige_cost_tier_1
+		gold = yurt_internal_building_gold_cost_tier_1
+	}
+
+	parameters = {
+		nomad_yurt_better_children_lvl_1 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.2
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_1
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_single_nomad.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+better_children_yurt_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = better_children_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_2
+		prestige = yurt_internal_building_prestige_cost_tier_2
+		gold = yurt_internal_building_gold_cost_tier_2
+	}
+
+	parameters = {
+		nomad_yurt_better_children_lvl_1 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_2
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_single_nomad.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+better_children_yurt_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = better_children_yurt_02
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_3
+		prestige = yurt_internal_building_prestige_cost_tier_3
+		gold = yurt_internal_building_gold_cost_tier_3
+	}
+
+	parameters = {
+		nomad_yurt_better_children_lvl_2 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_3
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_single_nomad.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+better_children_yurt_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = better_children_yurt_03
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_4
+		prestige = yurt_internal_building_prestige_cost_tier_4
+		gold = yurt_internal_building_gold_cost_tier_4
+	}
+
+	parameters = {
+		nomad_yurt_better_children_lvl_2 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_4
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_single_nomad.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+better_children_yurt_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = better_children_yurt_04
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_5
+		prestige = yurt_internal_building_prestige_cost_tier_5
+		gold = yurt_internal_building_gold_cost_tier_5
+	}
+
+	parameters = {
+		nomad_yurt_better_children_lvl_2 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_5
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_single_nomad.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+better_children_yurt_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = better_children_yurt_05
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_6
+		prestige = yurt_internal_building_prestige_cost_tier_6
+		gold = yurt_internal_building_gold_cost_tier_6
+	}
+
+	parameters = {
+		nomad_yurt_better_children_lvl_3 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_6
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_single_nomad.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+friend_yurt_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = family_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_1
+		prestige = yurt_internal_building_prestige_cost_tier_1
+		gold = yurt_internal_building_gold_cost_tier_1
+	}
+
+	parameters = {
+		nomad_yurt_friend_bonus_lvl_1 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.2
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_1
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_friendly.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+friend_yurt_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = friend_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_2
+		prestige = yurt_internal_building_prestige_cost_tier_2
+		gold = yurt_internal_building_gold_cost_tier_2
+	}
+
+	parameters = {
+		nomad_yurt_friend_bonus_lvl_1 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_2
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_friendly.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+friend_yurt_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = friend_yurt_02
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_3
+		prestige = yurt_internal_building_prestige_cost_tier_3
+		gold = yurt_internal_building_gold_cost_tier_3
+	}
+
+	parameters = {
+		nomad_yurt_friend_bonus_lvl_1 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_3
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_friendly.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+friend_yurt_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = friend_yurt_03
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_4
+		prestige = yurt_internal_building_prestige_cost_tier_4
+		gold = yurt_internal_building_gold_cost_tier_4
+	}
+
+	parameters = {
+		nomad_yurt_friend_bonus_lvl_2 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_4
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_friendly.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+friend_yurt_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = friend_yurt_04
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_5
+		prestige = yurt_internal_building_prestige_cost_tier_5
+		gold = yurt_internal_building_gold_cost_tier_5
+	}
+
+	parameters = {
+		nomad_yurt_friend_bonus_lvl_2 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_5
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_friendly.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+friend_yurt_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = friend_yurt_05
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_6
+		prestige = yurt_internal_building_prestige_cost_tier_6
+		gold = yurt_internal_building_gold_cost_tier_6
+	}
+
+	parameters = {
+		nomad_yurt_friend_bonus_lvl_3 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_6
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_friendly.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+hostage_ward_yurt_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = family_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_1
+		prestige = yurt_internal_building_prestige_cost_tier_1
+		gold = yurt_internal_building_gold_cost_tier_1
+	}
+
+	parameters = {
+		nomad_yurt_hostage_bonus_lvl_1 = yes
+		nomad_yurt_ward_bonus_lvl_1 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.2
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_1
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_many_nomads.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+hostage_ward_yurt_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = hostage_ward_yurt_01
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_2
+		prestige = yurt_internal_building_prestige_cost_tier_2
+		gold = yurt_internal_building_gold_cost_tier_2
+	}
+
+	parameters = {
+		nomad_yurt_hostage_bonus_lvl_1 = yes
+		nomad_yurt_ward_bonus_lvl_1 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_2
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_many_nomads.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+hostage_ward_yurt_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = hostage_ward_yurt_02
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_3
+		prestige = yurt_internal_building_prestige_cost_tier_3
+		gold = yurt_internal_building_gold_cost_tier_3
+	}
+
+	parameters = {
+		nomad_yurt_hostage_bonus_lvl_1 = yes
+		nomad_yurt_ward_bonus_lvl_1 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_3
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_many_nomads.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+hostage_ward_yurt_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = hostage_ward_yurt_03
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_4
+		prestige = yurt_internal_building_prestige_cost_tier_4
+		gold = yurt_internal_building_gold_cost_tier_4
+	}
+
+	parameters = {
+		nomad_yurt_hostage_bonus_lvl_2 = yes
+		nomad_yurt_ward_bonus_lvl_2 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_4
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_many_nomads.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+hostage_ward_yurt_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = hostage_ward_yurt_04
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_5
+		prestige = yurt_internal_building_prestige_cost_tier_5
+		gold = yurt_internal_building_gold_cost_tier_5
+	}
+
+	parameters = {
+		nomad_yurt_hostage_bonus_lvl_2 = yes
+		nomad_yurt_ward_bonus_lvl_2 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_5
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_many_nomads.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}
+
+hostage_ward_yurt_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { yurt }
+	slot_type = internal
+	previous_building = hostage_ward_yurt_05
+
+	cost = {
+		herd = yurt_internal_building_herd_cost_tier_6
+		prestige = yurt_internal_building_prestige_cost_tier_6
+		gold = yurt_internal_building_gold_cost_tier_6
+	}
+
+	parameters = {
+		nomad_yurt_hostage_bonus_lvl_3 = yes
+		nomad_yurt_ward_bonus_lvl_3 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = 0.1
+	}
+
+	ai_value = {
+		value = nomadic_capital_interior_building_6
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_many_nomads.dds"
+		texture = "gfx/interface/window_domiciles/family_yurt.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/family_yurt_mask.png"
+		soundeffect = "event:/DLC/CE2/UI/camp_buildings/ce2_ui_domicile_buildings_familyYurt"
+	}
+}

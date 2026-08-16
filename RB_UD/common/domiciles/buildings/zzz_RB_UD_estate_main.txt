@@ -1,0 +1,2789 @@
+﻿############################################################
+# GENERATED FILE - DO NOT EDIT BY HAND
+# Generator: tools/Generate-RBUDOverrides.ps1
+# CK3: 1.19.0.6
+# Plan SHA-256: EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC
+############################################################
+
+@RB_UD_construction_time_days = 10
+
+estate_main_01 = {
+	slot_type = main
+	internal_slots = 15
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+
+	cost = {
+		gold = estate_external_building_high_cost_tier_2_value
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.25
+		domicile_monthly_influence_add = 1
+		domicile_external_slots_capacity_add = 14
+	}
+
+	ai_value = {
+		value = 100
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_villa.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_chinese_main_building"
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_villa.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_villa.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_villa.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+}
+
+estate_main_02 = {
+	slot_type = main
+	internal_slots = 15
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = estate_main_01
+	
+	can_construct = {
+		culture ?= { has_innovation = innovation_city_planning }
+	}
+
+	cost = {
+		gold = estate_external_building_high_cost_tier_3_value
+	}
+	
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		estate_increase_house_member_investment_cap_1 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.25
+		domicile_monthly_influence_add = 0.5
+	}
+
+	ai_value = {
+		value = 100
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_manor.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_manor_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_manor_chinese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_chinese_main_building"
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_manor.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_manor_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_manor_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_manor.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_manor_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_manor_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_manor.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_manor_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_manor_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+}
+
+estate_main_03 = {
+	slot_type = main
+	internal_slots = 15
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = estate_main_02
+	
+	can_construct = {
+		culture ?= { has_innovation = innovation_manorialism }
+	}
+
+	cost = {
+		gold = estate_external_building_high_cost_tier_4_value
+	}
+	
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		estate_increase_house_member_investment_cap_2 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.5
+		domicile_monthly_gold_mult = 0.02
+		domicile_monthly_influence_add = 0.5
+	}
+
+	ai_value = {
+		value = 100
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_mansion.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_mansion_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_mansion_chinese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_chinese_main_building"
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_mansion.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_mansion_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_mansion_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_mansion.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_mansion_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_mansion_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_mansion.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_mansion_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_mansion_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+}
+
+estate_main_04 = {
+	slot_type = main
+	internal_slots = 15
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = estate_main_03
+	
+	can_construct = {
+		culture ?= { has_innovation = innovation_development_03 }
+	}
+
+	cost = {
+		gold = estate_external_building_high_cost_tier_5_value
+	}
+	
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		estate_increase_house_member_investment_cap_3 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.5
+		domicile_monthly_gold_mult = 0.03
+		domicile_monthly_influence_add = 0.5
+	}
+
+	ai_value = {
+		value = 100
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_estate_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_estate_chinese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_chinese_main_building"
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_estate_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_estate_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_estate_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_estate_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_estate_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_estate_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+}
+
+estate_main_05 = {
+	slot_type = main
+	internal_slots = 15
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = estate_main_04
+	
+	can_construct = {
+		culture ?= { has_innovation = innovation_cranes }
+	}
+
+	cost = {
+		gold = estate_external_building_high_cost_tier_6_value
+	}
+	
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		estate_increase_house_member_investment_cap_4 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.75
+		domicile_monthly_gold_mult = 0.05
+		domicile_monthly_influence_add = 0.5
+	}
+
+	ai_value = {
+		value = 100
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grand_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grand_estate_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grand_estate_chinese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_chinese_main_building"
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grand_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grand_estate_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grand_estate_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grand_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grand_estate_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grand_estate_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grand_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grand_estate_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grand_estate_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+}
+
+living_quarters_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_living_quarters }
+				multiply = 0.75
+				desc = raid_insight_quarters
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_diplomacy_lifestyle_xp_gain_mult = 0.05
+		personal_scheme_phase_duration_add = -10
+	}
+
+	parameters = {
+		estate_unlock_ingratiate_family_interaction = yes
+	}
+	
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_living_quarters.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+living_quarters_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = living_quarters_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_living_quarters }
+				multiply = 0.75
+				desc = raid_insight_quarters
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_diplomacy_lifestyle_xp_gain_mult = 0.05
+		dynasty_house_opinion = 5
+		personal_scheme_phase_duration_add = -10
+		owned_personal_scheme_success_chance_add = 5
+	}
+
+	parameters = {
+		estate_unlock_ingratiate_family_interaction = yes
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_living_quarters.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+living_quarters_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = living_quarters_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_living_quarters }
+				multiply = 0.75
+				desc = raid_insight_quarters
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_diplomacy_lifestyle_xp_gain_mult = 0.05
+		personal_scheme_phase_duration_add = -10
+		owned_personal_scheme_success_chance_add = 5
+	}
+
+	parameters = {
+		estate_unlock_ingratiate_family_interaction = yes
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_living_quarters.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+living_quarters_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = living_quarters_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_living_quarters }
+				multiply = 0.75
+				desc = raid_insight_quarters
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_diplomacy_lifestyle_xp_gain_mult = 0.05
+		dynasty_house_opinion = 5
+		personal_scheme_phase_duration_add = -10
+		owned_personal_scheme_success_chance_add = 5
+	}
+
+	parameters = {
+		estate_unlock_ingratiate_family_interaction = yes
+	}
+	
+	ai_value = {
+		value = 4
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_living_quarters.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+trophy_room_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_trophy_room }
+				multiply = 0.75
+				desc = raid_insight_trophy_room
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_martial_lifestyle_xp_gain_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_trophy.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+trophy_room_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = trophy_room_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_trophy_room }
+				multiply = 0.75
+				desc = raid_insight_trophy_room
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_martial_lifestyle_xp_gain_mult = 0.05
+		prowess = 1
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_trophy.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+trophy_room_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = trophy_room_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_trophy_room }
+				multiply = 0.75
+				desc = raid_insight_trophy_room
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_martial_lifestyle_xp_gain_mult = 0.05
+		advantage = 3
+	}
+
+	parameters = {
+		trophy_room_victory_influence = yes
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_trophy.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+trophy_room_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = trophy_room_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_trophy_room }
+				multiply = 0.75
+				desc = raid_insight_trophy_room
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_martial_lifestyle_xp_gain_mult = 0.05
+		advantage = 3
+		prowess = 1
+	}
+
+	parameters = {
+		trophy_room_victory_influence = yes
+	}
+	
+	ai_value = {
+		value = 4
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_trophy.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+office_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_office }
+				multiply = 0.75
+				desc = raid_insight_office
+			}
+		}
+	}
+	
+	parameters = {
+		estate_local_theme_cost_reduction = yes
+		estate_unlock_teach_governor_interaction = yes
+	}
+
+	character_modifier = {
+		monthly_stewardship_lifestyle_xp_gain_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_office.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+office_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = office_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_office }
+				multiply = 0.75
+				desc = raid_insight_office
+			}
+		}
+	}
+	
+	parameters = {
+		estate_local_theme_cost_reduction = yes
+		estate_governor_efficiency_bonus = yes
+		estate_unlock_teach_governor_interaction = yes
+	}
+
+	character_modifier = {
+		monthly_stewardship_lifestyle_xp_gain_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_office.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+office_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = office_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_office }
+				multiply = 0.75
+				desc = raid_insight_office
+			}
+		}
+	}
+	
+	parameters = {
+		estate_local_theme_cost_reduction = yes
+		estate_governor_efficiency_bonus = yes
+		estate_governor_efficiency_bonus_for_house_members = yes
+		estate_unlock_teach_governor_interaction = yes
+	}
+
+	character_modifier = {
+		monthly_stewardship_lifestyle_xp_gain_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_office.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+office_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = office_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_office }
+				multiply = 0.75
+				desc = raid_insight_office
+			}
+		}
+	}
+	
+	parameters = {
+		estate_local_theme_cost_reduction = yes
+		estate_governor_efficiency_bonus = yes
+		estate_governor_efficiency_bonus_for_house_members = yes
+		estate_governor_trait_xp_bonus_for_contracts = yes
+		estate_unlock_teach_governor_interaction = yes
+	}
+
+	character_modifier = {
+		monthly_stewardship_lifestyle_xp_gain_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 4
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_office.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+servants_quarters_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_servants_quarters }
+				multiply = 0.75
+				desc = raid_insight_servants_quarters
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_intrigue_lifestyle_xp_gain_mult = 0.05
+		hostile_scheme_phase_duration_add = minor_scheme_phase_duration_bonus_value
+	}
+	
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_servant.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+servants_quarters_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = servants_quarters_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_servants_quarters }
+				multiply = 0.75
+				desc = raid_insight_servants_quarters
+			}
+		}
+	}
+	
+	parameters = {
+		estate_unlock_hire_agents_decision = yes
+	}
+
+	character_modifier = {
+		monthly_intrigue_lifestyle_xp_gain_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_servant.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+servants_quarters_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = servants_quarters_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_servants_quarters }
+				multiply = 0.75
+				desc = raid_insight_servants_quarters
+			}
+		}
+	}
+	
+	parameters = {
+		estate_unlock_hire_agents_decision = yes
+	}
+
+	character_modifier = {
+		monthly_intrigue_lifestyle_xp_gain_mult = 0.05
+		owned_hostile_scheme_success_chance_add = 5
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_servant.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+servants_quarters_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = servants_quarters_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_servants_quarters }
+				multiply = 0.75
+				desc = raid_insight_servants_quarters
+			}
+		}
+	}
+	
+	parameters = {
+		estate_unlock_hire_agents_decision = yes
+		estate_improve_political_scheme_countermeasure = yes
+	}
+
+	character_modifier = {
+		monthly_intrigue_lifestyle_xp_gain_mult = 0.05
+		owned_hostile_scheme_success_chance_add = 5
+		max_hostile_schemes_add = 1
+	}
+	
+	ai_value = {
+		value = 4
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_servant.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+library_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_library }
+				multiply = 0.75
+				desc = raid_insight_library
+			}
+		}
+	}
+
+	parameters = {
+		estate_increase_physician_aptitude_1 = yes
+	}
+
+	character_modifier = {
+		monthly_learning_lifestyle_xp_gain_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_library.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+library_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = library_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_library }
+				multiply = 0.75
+				desc = raid_insight_library
+			}
+		}
+	}
+	
+	parameters = {
+		estate_increase_physician_aptitude_2 = yes
+	}
+
+	character_modifier = {
+		monthly_learning_lifestyle_xp_gain_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_library.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+library_observatory_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+		domicile ?= { has_domicile_building_or_higher = library_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_library }
+				multiply = 0.75
+				desc = raid_insight_library
+			}
+		}
+	}
+	
+	parameters = {
+		estate_increase_physician_aptitude_3 = yes
+	}
+
+	character_modifier = {
+		monthly_learning_lifestyle_xp_gain_mult = 0.05
+		owned_legend_spread_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_observatory.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+library_observatory_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = library_observatory_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_library }
+				multiply = 0.75
+				desc = raid_insight_library
+			}
+		}
+	}
+	
+	parameters = {
+		estate_increase_physician_aptitude_4 = yes
+	}
+
+	character_modifier = {
+		monthly_learning_lifestyle_xp_gain_mult = 0.05
+		owned_legend_spread_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 4
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_observatory.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+library_education_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+		domicile ?= { has_domicile_building_or_higher = library_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_library }
+				multiply = 0.75
+				desc = raid_insight_library
+			}
+		}
+	}
+	
+	parameters = {
+		estate_reduced_tutor_cost = yes
+		estate_increased_tutor_aptitude_2 = yes
+		estate_increase_physician_aptitude_3 = yes
+	}
+
+	character_modifier = {
+		monthly_learning_lifestyle_xp_gain_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tutor.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+library_education_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = library_education_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_library }
+				multiply = 0.75
+				desc = raid_insight_library
+			}
+		}
+	}
+	
+	parameters = {
+		estate_unlock_tier_5_education = yes
+		estate_reduced_tutor_cost = yes
+		estate_increased_tutor_aptitude_4 = yes
+		estate_increase_physician_aptitude_4 = yes
+	}
+
+	character_modifier = {
+		monthly_learning_lifestyle_xp_gain_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 4
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tutor.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+bath_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_bath }
+				multiply = 0.75
+				desc = raid_insight_bath
+			}
+		}
+	}
+
+	character_modifier = {
+		negate_health_penalty_add = 0.05
+		attraction_opinion = 3
+	}
+
+	parameters = {
+		estate_increase_safe_treatment_success_1 = yes
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bath.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+bath_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = bath_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_bath }
+				multiply = 0.75
+				desc = raid_insight_bath
+			}
+		}
+	}
+
+	character_modifier = {
+		negate_health_penalty_add = 0.05
+		attraction_opinion = 3
+		epidemic_resistance = 2
+	}
+
+	parameters = {
+		estate_increase_safe_treatment_success_1 = yes
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bath.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+bath_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = bath_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_bath }
+				multiply = 0.75
+				desc = raid_insight_bath
+			}
+		}
+	}
+
+	character_modifier = {
+		negate_health_penalty_add = 0.05
+		attraction_opinion = 3
+		epidemic_resistance = 3
+	}
+
+	parameters = {
+		estate_increase_safe_treatment_success_1 = yes
+	}
+	
+	ai_value = {
+		value = 4
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bath.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+bath_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = bath_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_bath }
+				multiply = 0.75
+				desc = raid_insight_bath
+			}
+		}
+	}
+
+	character_modifier = {
+		negate_health_penalty_add = 0.05
+		attraction_opinion = 3
+		epidemic_resistance = 5
+	}
+
+	parameters = {
+		estate_increase_safe_treatment_success_2 = yes
+	}
+	
+	ai_value = {
+		value = 3
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bath.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+guest_room_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_guest_room }
+				multiply = 0.75
+				desc = raid_insight_guest_room
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_mult = 0.02
+		courtier_and_guest_opinion = 2
+	}
+	
+	ai_value = {
+		value = 8
+		if = {
+			limit = {
+				scope:owner.culture ?= {
+					has_cultural_tradition = tradition_esteemed_hospitality
+				}
+			}
+			add = 2
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+guest_room_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = guest_room_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_guest_room }
+				multiply = 0.75
+				desc = raid_insight_guest_room
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_mult = 0.02
+	}
+
+	parameters = {
+		increased_success_personal_schemes_1 = yes
+	}
+	
+	ai_value = {
+		value = 7
+		if = {
+			limit = {
+				scope:owner.culture ?= {
+					has_cultural_tradition = tradition_esteemed_hospitality
+				}
+			}
+			add = 2
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+guest_room_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = guest_room_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_guest_room }
+				multiply = 0.75
+				desc = raid_insight_guest_room
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_mult = 0.02
+		courtier_and_guest_opinion = 2
+	}
+
+	parameters = {
+		increased_success_personal_schemes_1 = yes
+	}
+	
+	ai_value = {
+		value = 6
+		if = {
+			limit = {
+				scope:owner.culture ?= {
+					has_cultural_tradition = tradition_esteemed_hospitality
+				}
+			}
+			add = 2
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+guest_room_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = guest_room_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_guest_room }
+				multiply = 0.75
+				desc = raid_insight_guest_room
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_mult = 0.02
+	}
+
+	parameters = {
+		increased_success_personal_schemes_2 = yes
+	}
+	
+	ai_value = {
+		value = 5
+		if = {
+			limit = {
+				scope:owner.culture ?= {
+					has_cultural_tradition = tradition_esteemed_hospitality
+				}
+			}
+			add = 2
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+guest_room_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = guest_room_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_5_value
+			if = {
+				limit = { has_character_modifier = raid_insight_guest_room }
+				multiply = 0.75
+				desc = raid_insight_guest_room
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_mult = 0.02
+		courtier_and_guest_opinion = 2
+	}
+
+	parameters = {
+		increased_success_personal_schemes_2 = yes
+	}
+	
+	ai_value = {
+		value = 4
+		if = {
+			limit = {
+				scope:owner.culture ?= {
+					has_cultural_tradition = tradition_esteemed_hospitality
+				}
+			}
+			add = 2
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+guest_room_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = guest_room_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_6_value
+			if = {
+				limit = { has_character_modifier = raid_insight_guest_room }
+				multiply = 0.75
+				desc = raid_insight_guest_room
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_mult = 0.02
+	}
+
+	parameters = {
+		increased_success_personal_schemes_3 = yes
+	}
+	
+	ai_value = {
+		value = 3
+		if = {
+			limit = {
+				scope:owner.culture ?= {
+					has_cultural_tradition = tradition_esteemed_hospitality
+				}
+			}
+			add = 2
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+wine_cellar_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_wine_cellar }
+				multiply = 0.75
+			}
+		}
+	}
+	
+	parameters = {
+		estate_unlock_feast_influence_option_1 = yes
+	}
+	
+	ai_value = {
+		value = 8
+		if = {
+			limit = {
+				scope:owner.culture ?= {
+					OR = {
+						has_cultural_pillar = heritage_byzantine
+						has_cultural_tradition = tradition_culinary_art
+					}
+				}
+			}
+			add = 3
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_cellar.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+wine_cellar_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = wine_cellar_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_wine_cellar }
+				multiply = 0.75
+			}
+		}
+	}
+	
+	parameters = {
+		estate_unlock_feast_influence_option_2 = yes
+	}
+	
+	ai_value = {
+		value = 6
+		if = {
+			limit = {
+				scope:owner.culture ?= {
+					OR = {
+						has_cultural_pillar = heritage_byzantine
+						has_cultural_tradition = tradition_culinary_art
+					}
+				}
+			}
+			add = 3
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_cellar.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+wine_cellar_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = wine_cellar_02
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_wine_cellar }
+				multiply = 0.75
+			}
+		}
+	}
+	
+	parameters = {
+		estate_unlock_feast_influence_option_3 = yes
+	}
+	
+	ai_value = {
+		value = 4
+		if = {
+			limit = {
+				scope:owner.culture ?= {
+					OR = {
+						has_cultural_pillar = heritage_byzantine
+						has_cultural_tradition = tradition_culinary_art
+					}
+				}
+			}
+			add = 3
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_cellar.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+courtyard_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_courtyard }
+				multiply = 0.75
+				desc = raid_insight_courtyard
+			}
+		}
+	}
+	
+	parameters = {
+		estate_improved_feast_opinion = yes
+	}
+	
+	character_modifier = {
+		political_scheme_phase_duration_add = -3
+	}
+	
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_courtyard.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+courtyard_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = courtyard_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_courtyard }
+				multiply = 0.75
+				desc = raid_insight_courtyard
+			}
+		}
+	}
+	
+	parameters = {
+		estate_improved_feast_opinion = yes
+		estate_cheaper_feast_cost = yes
+	}
+	
+	character_modifier = {
+		political_scheme_phase_duration_add = -3
+	}
+	
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_courtyard.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+courtyard_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = courtyard_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_courtyard }
+				multiply = 0.75
+				desc = raid_insight_courtyard
+			}
+		}
+	}
+	
+	parameters = {
+		estate_improved_feast_opinion = yes
+		estate_cheaper_feast_cost = yes
+	}
+	
+	character_modifier = {
+		political_scheme_phase_duration_add = -3
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_courtyard.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+courtyard_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = courtyard_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_courtyard }
+				multiply = 0.75
+				desc = raid_insight_courtyard
+			}
+		}
+	}
+	
+	parameters = {
+		estate_improved_feast_opinion = yes
+		estate_cheaper_feast_cost = yes
+	}
+	
+	character_modifier = {
+		political_scheme_phase_duration_add = -3
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_courtyard.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+prison_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_prison }
+				multiply = 0.75
+				desc = raid_insight_prison
+			}
+		}
+	}
+	
+	character_modifier = {
+		dread_gain_mult = 0.05
+		hostage_income_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 7
+		if = {
+			limit = {
+				scope:owner = {
+					OR = {
+						has_trait = vengeful
+						has_trait = callous
+						has_trait = sadistic
+					}
+				}
+			}
+			add = 5
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+prison_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = prison_01
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_prison }
+				multiply = 0.75
+				desc = raid_insight_prison
+			}
+		}
+	}
+	
+	parameters = {
+		estate_torture_grants_influence = yes
+	}
+	
+	character_modifier = {
+		dread_gain_mult = 0.05
+		hostage_income_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 6
+		if = {
+			limit = {
+				scope:owner = {
+					OR = {
+						has_trait = vengeful
+						has_trait = callous
+						has_trait = sadistic
+					}
+				}
+			}
+			add = 5
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+prison_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = prison_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_prison }
+				multiply = 0.75
+				desc = raid_insight_prison
+			}
+		}
+	}
+	
+	parameters = {
+		estate_torture_grants_influence = yes
+	}
+	
+	character_modifier = {
+		dread_gain_mult = 0.05
+		hostage_income_mult = 0.05
+		hostage_renown_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 5
+		if = {
+			limit = {
+				scope:owner = {
+					OR = {
+						has_trait = vengeful
+						has_trait = callous
+						has_trait = sadistic
+					}
+				}
+			}
+			add = 5
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+prison_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = prison_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_prison }
+				multiply = 0.75
+				desc = raid_insight_prison
+			}
+		}
+	}
+	
+	parameters = {
+		estate_torture_grants_influence = yes
+	}
+	
+	character_modifier = {
+		dread_gain_mult = 0.05
+		hostage_income_mult = 0.05
+		hostage_renown_mult = 0.05
+	}
+	
+	ai_value = {
+		value = 4
+		if = {
+			limit = {
+				scope:owner = {
+					OR = {
+						has_trait = vengeful
+						has_trait = callous
+						has_trait = sadistic
+					}
+				}
+			}
+			add = 5
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+reception_hall_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	can_construct = {
+		dynasty ?= { has_dynasty_perk = ep3_administrative_legacy_3 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_reception_hall }
+				multiply = 0.75
+				desc = raid_insight_reception_hall
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_mult = 0.02
+	}
+
+	parameters = {
+		legitimacy_counter = yes
+		reception_hall_legitimacy_loss_01 = yes
+	}
+
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_reception_hall.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+reception_hall_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = reception_hall_01
+
+	can_construct = {
+		dynasty ?= { has_dynasty_perk = ep3_administrative_legacy_3 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_reception_hall }
+				multiply = 0.75
+				desc = raid_insight_reception_hall
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_mult = 0.04
+	}
+
+	parameters = {
+		legitimacy_counter = yes
+		reception_hall_legitimacy_loss_02 = yes
+		estate_increase_house_member_investment_cap_1 = yes
+	}
+
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_reception_hall.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+reception_hall_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = reception_hall_02
+
+	can_construct = {
+		dynasty ?= { has_dynasty_perk = ep3_administrative_legacy_3 }
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_reception_hall }
+				multiply = 0.75
+				desc = raid_insight_reception_hall
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_mult = 0.06
+	}
+
+	parameters = {
+		legitimacy_counter = yes
+		reception_hall_legitimacy_loss_03 = yes
+		estate_increase_house_member_investment_cap_2 = yes
+	}
+
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_reception_hall.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+reception_hall_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = reception_hall_03
+
+	can_construct = {
+		dynasty ?= { has_dynasty_perk = ep3_administrative_legacy_3 }
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_reception_hall }
+				multiply = 0.75
+				desc = raid_insight_reception_hall
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_mult = 0.08
+	}
+
+	parameters = {
+		legitimacy_counter = yes
+		reception_hall_legitimacy_loss_04 = yes
+		estate_increase_house_member_investment_cap_3 = yes
+	}
+
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_reception_hall.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+reception_hall_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = reception_hall_04
+
+	can_construct = {
+		dynasty ?= { has_dynasty_perk = ep3_administrative_legacy_3 }
+		domicile ?= { has_domicile_building_or_higher = estate_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_5_value
+			if = {
+				limit = { has_character_modifier = raid_insight_reception_hall }
+				multiply = 0.75
+				desc = raid_insight_reception_hall
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_influence_mult = 0.1
+	}
+
+	parameters = {
+		legitimacy_counter = yes
+		reception_hall_legitimacy_loss_05 = yes
+		estate_increase_house_member_investment_cap_4 = yes
+	}
+
+	ai_value = {
+		value = 4
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_reception_hall.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+cabinet_of_curiosities_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	can_construct = {
+		dynasty ?= { has_dynasty_perk = ep3_administrative_legacy_4 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_cabinet_of_curiosities }
+				multiply = 0.75
+				desc = raid_insight_cabinet_of_curiosities
+			}
+		}
+	}
+
+	character_modifier = {
+		learning_per_influence_level = 1
+		domicile_monthly_influence_add = 0.1
+	}
+	
+	parameters = {
+		can_receive_artifacts = yes
+		estate_improved_inspirations_1 = yes
+		house_head_can_ask_for_artifacts = yes
+	}
+
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_cabinet_of_curiosities.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+cabinet_of_curiosities_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = cabinet_of_curiosities_01
+
+	can_construct = {
+		dynasty ?= {
+			has_dynasty_perk = ep3_administrative_legacy_4
+			custom_description = {
+				text = cabinet_of_curiosities_upgrade_trigger_2
+				dynast.house ?= { cabinet_of_curiosities_artifact_score >= 15 }
+			}
+		}
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_cabinet_of_curiosities }
+				multiply = 0.75
+				desc = raid_insight_cabinet_of_curiosities
+			}
+		}
+	}
+
+	character_modifier = {
+		stewardship_per_influence_level = 1
+		monthly_dynasty_prestige = 0.5
+		domicile_monthly_influence_add = 0.2
+		monthly_court_grandeur_change_add = 0.2
+	}
+	
+	parameters = {
+		can_receive_artifacts = yes
+		estate_improved_inspirations_2 = yes
+		estate_reduce_commission_artifact_cost = yes
+		estate_increase_antiquarian_aptitude = yes
+		house_head_can_ask_for_artifacts = yes
+	}
+
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_cabinet_of_curiosities.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+cabinet_of_curiosities_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = cabinet_of_curiosities_02
+
+	can_construct = {
+		dynasty ?= {
+			has_dynasty_perk = ep3_administrative_legacy_4
+			custom_description = {
+				text = cabinet_of_curiosities_upgrade_trigger_3
+				dynast.house ?= { cabinet_of_curiosities_artifact_score >= 35 }
+			}
+		}
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_cabinet_of_curiosities }
+				multiply = 0.75
+				desc = raid_insight_cabinet_of_curiosities
+			}
+		}
+	}
+
+	character_modifier = {
+		learning_per_influence_level = 1
+		stewardship_per_influence_level = 1
+		monthly_dynasty_prestige = 0.5
+		domicile_monthly_influence_add = 0.3
+		monthly_court_grandeur_change_add = 0.3
+		general_opinion = 10
+	}
+	
+	parameters = {
+		can_receive_artifacts = yes
+		estate_improved_inspirations_2 = yes
+		estate_reduce_commission_artifact_cost = yes
+		estate_increase_antiquarian_aptitude = yes
+		house_head_can_ask_for_artifacts = yes
+	}
+
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_cabinet_of_curiosities.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+grand_solar_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = estate_main_01
+
+	can_construct = {
+		custom_tooltip = {
+			text = unlocked_via_event
+			house.house_head = { has_character_flag = ep3_construct_grand_solar }
+		}
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grand_solar }
+				multiply = 0.75
+				desc = raid_insight_grand_solar
+			}
+		}
+	}
+
+	character_modifier = {
+		dynasty_opinion = 5
+		stress_gain_mult = -0.05
+	}
+
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_solar.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+grand_solar_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = grand_solar_01
+
+	can_construct = {
+		custom_tooltip = {
+			text = unlocked_via_event
+			house.house_head = { has_character_flag = ep3_construct_grand_solar }
+		}
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grand_solar }
+				multiply = 0.75
+				desc = raid_insight_grand_solar
+			}
+		}
+	}
+
+	character_modifier = {
+		dynasty_opinion = 5
+		stress_gain_mult = -0.05
+	}
+
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_solar.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+grand_solar_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = grand_solar_02
+
+	can_construct = {
+		custom_tooltip = {
+			text = unlocked_via_event
+			house.house_head = { has_character_flag = ep3_construct_grand_solar }
+		}
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grand_solar }
+				multiply = 0.75
+				desc = raid_insight_grand_solar
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige = 0.1
+		dynasty_opinion = 5
+		stress_gain_mult = -0.1
+	}
+
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_solar.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}
+
+grand_solar_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	slot_type = internal
+	previous_building = grand_solar_03
+
+	can_construct = {
+		custom_tooltip = {
+			text = unlocked_via_event
+			house.house_head = { has_character_flag = ep3_construct_grand_solar }
+		}
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	parameters = {
+		solar_white_peace_stress_loss = yes
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_high_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grand_solar }
+				multiply = 0.75
+				desc = raid_insight_grand_solar
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige = 0.1
+		dynasty_opinion = 5
+		stress_gain_mult = -0.1
+	}
+
+	ai_value = {
+		value = 4
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_solar.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.dds"
+	}
+}

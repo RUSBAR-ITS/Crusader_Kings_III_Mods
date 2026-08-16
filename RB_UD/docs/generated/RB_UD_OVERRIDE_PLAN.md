@@ -1,14 +1,16 @@
 ﻿# RB_UD — план переопределений ванильных домицилей
 
-Версия CK3: **1.19.0.6**. Сигнатура плана: `B05007B8F44088488A84284CBF3B8A0CBDFD6DFDC6A3AB297D8333067F790C8A`.
+Версия CK3: **1.19.0.6**. Сигнатура плана: `EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC`.
 
 Документ определяет точные объекты и преобразования, которые затем воспроизводимо применяет генератор `tools/Generate-RBUDOverrides.ps1`.
 
 ## Принципы
 
-- Override only affected vanilla objects; never use replace_path.
+- Mirror all vanilla domicile-building objects; never use replace_path.
+- Emit one generated file per vanilla root family and exactly one copy of every vanilla building.
 - Vanilla objects retain vanilla IDs; new helper objects use the RB_UD_ prefix.
-- Preserve vanilla costs, construction times, effects, upgrade order, and unrelated prerequisites.
+- Normalize construction time through a file-local RB_UD_ @ constant because this database field rejects global script values.
+- Preserve vanilla costs, effects, upgrade order, and unrelated prerequisites.
 - Remove only mutual-exclusivity access gates and camp-purpose cleanup targeted by this plan.
 - Grant complete slot capacity from the first main or anchor level; progression still controls higher building tiers.
 - No mass-build action and no construction-speed modifier are part of this mod.
@@ -192,11 +194,11 @@
 ## Файлы реализации
 
 - `common/domiciles/types/zzz_RB_UD_domicile_types.txt` — пять точечных переопределений типов.
-- `common\domiciles\buildings\zzz_RB_UD_camp_buildings.txt` — переопределения соответствующего семейства зданий.
-- `common\domiciles\buildings\zzz_RB_UD_estate_buildings.txt` — переопределения соответствующего семейства зданий.
-- `common\domiciles\buildings\zzz_RB_UD_yurt_buildings.txt` — переопределения соответствующего семейства зданий.
-- `common\domiciles\buildings\zzz_RB_UD_east_asian_estate_buildings.txt` — переопределения соответствующего семейства зданий.
-- `common\domiciles\buildings\zzz_RB_UD_japanese_manor_buildings.txt` — переопределения соответствующего семейства зданий.
+- `common\domiciles\buildings\zzz_RB_UD_camp_<family>.txt` — переопределения соответствующего семейства зданий.
+- `common\domiciles\buildings\zzz_RB_UD_estate_<family>.txt` — переопределения соответствующего семейства зданий.
+- `common\domiciles\buildings\zzz_RB_UD_yurt_<family>.txt` — переопределения соответствующего семейства зданий.
+- `common\domiciles\buildings\zzz_RB_UD_east_asian_estate_<family>.txt` — переопределения соответствующего семейства зданий.
+- `common\domiciles\buildings\zzz_RB_UD_japanese_manor_<family>.txt` — переопределения соответствующего семейства зданий.
 - `common\scripted_effects\zzz_RB_UD_domicile_effects.txt` — безопасные стартовые fill-циклы и отключение очистки построек при смене темы лагеря.
 - `replace_path` не используется.
 
@@ -208,12 +210,13 @@
 - Внутренние развилки: 1/1.
 - Флаги тем лагеря: 23/23.
 - Ручные условные линии: 24/24; переписать 21, сохранить 3.
-- Уникальных затронутых ванильных зданий: 478.
+- Полностью зеркалируемых ванильных зданий: 1620.
+- Из них структурно изменяемых зданий: 478.
 - Неизвестные условия, циклы и потерянные родители: 0.
 
 ## Что остаётся перед генерацией кода
 
-- Generate balanced coordinates for the additional external visual slots and visually test all five domicile windows.
-- After emitting gameplay overrides, compare every overridden object against the source manifest and reject unrelated drift.
+- Visually test all five generated domicile windows after gameplay generation.
+- Verify construction time and every split specialization family in game.
 - Run CK3 with error.log and debug.log checks after each domicile family is enabled.
 - Regenerate Stage 1 and this plan after every supported CK3 update; signatures must be reviewed before code regeneration.

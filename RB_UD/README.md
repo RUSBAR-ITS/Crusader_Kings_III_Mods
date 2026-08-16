@@ -38,12 +38,20 @@ after branch conversion; and explicitly separates the 21 access-restriction
 groups to rewrite from the three false-positive main-building conditions that
 must remain vanilla.
 
-The generator then copies only the affected vanilla objects into late-loaded
-override files and applies the plan. It does not use `replace_path`. It also
-performs semantic post-generation checks: capacities, internal slots, valid
-branch anchors, preserved tier prerequisites, removed access gates, bounded
-initial-fill loops, local vanilla constant definitions, UTF-8 BOM encoding,
-and disabled camp-purpose cleanup are verified before files are accepted.
+The generator now mirrors all 1,620 vanilla domicile-building objects into
+late-loaded override files and applies the reviewed structural plan. It does
+not use `replace_path`. Buildings are split into 62 deterministic files: one
+file per vanilla main/external root family together with all descendants.
+Construction time is controlled from one generation setting and emitted as a
+file-local `@RB_UD_` constant because the engine rejects global script values
+in `construction_time`. Direct numeric resource costs are converted to global
+generated script values; existing vanilla cost script values remain intact.
+
+Semantic post-generation checks cover exact 1,620-object coverage, unique
+ownership by one root family, valid parent links, capacities, internal slots,
+valid branch anchors, preserved tier prerequisites, removed access gates,
+bounded initial-fill loops, local constant definitions, UTF-8 BOM encoding,
+and disabled camp-purpose cleanup.
 
 - Human-readable audit: `docs/generated/RB_UD_VANILLA_AUDIT.md`
 - Machine-readable manifest: `tools/generated/RB_UD_vanilla_manifest.json`
@@ -52,6 +60,7 @@ and disabled camp-purpose cleanup are verified before files are accepted.
 - Machine-readable override plan: `tools/generated/RB_UD_override_plan.json`
 - Override-plan builder: `../tools/Build-RBUDOverridePlan.ps1`
 - Editable domicile layouts: `tools/RB_UD_layouts.json`
+- Generation settings: `tools/RB_UD_generation_settings.json`
 - Gameplay generator: `../tools/Generate-RBUDOverrides.ps1`
 - Generation manifest: `tools/generated/RB_UD_generation_manifest.json`
 - Generation report: `docs/generated/RB_UD_GENERATION_REPORT.md`
@@ -79,10 +88,20 @@ accepting new overrides. Files named `zzz_RB_UD_*` are generated output and
 must not be edited manually. Visual slot positions belong in
 `tools/RB_UD_layouts.json`.
 
+Construction time and other generation-wide scalar policies belong in
+`tools/RB_UD_generation_settings.json`. Do not edit the repeated local
+constants in generated family files.
+
 ## Generated gameplay scope
 
 - five overridden domicile types with expanded external layouts;
-- 438 affected vanilla building objects reproduced with targeted changes;
+- all 1,620 vanilla domicile-building objects reproduced exactly once;
+- 62 generated building files, grouped by vanilla root family: camp 8,
+  Byzantine estate 17, yurt 8, East Asian estate 16, Japanese manor 13;
+- uniform 10-day base construction time emitted through a local constant in
+  every family file;
+- direct numeric resource costs centralized as generated global script values,
+  while existing vanilla script-value costs are reused unchanged;
 - external specialization tails converted into independent internal tracks;
 - converted roots re-anchored to valid external base buildings while retaining
   their former common tier as an explicit construction prerequisite;
@@ -98,16 +117,7 @@ must not be edited manually. Visual slot positions belong in
 - costs, effects, icons, textures, upgrade order, and unrelated vanilla
   prerequisites preserved by copying the current vanilla objects.
 
-The five domicile windows still require a manual visual pass in game. Their
-geometry is data-driven so any overlap can be corrected without altering the
-generator.
-
-Planned scope:
-
-- allow all compatible external domicile building lines to coexist;
-- allow normally exclusive internal building branches to coexist;
-- preserve vanilla costs, prerequisites, effects, and progression wherever
-  they are unrelated to building exclusivity;
-- keep camp buildings when the camp purpose/theme changes;
-- do not add a mass "build everything" action;
-- do not add another domicile construction-speed modifier.
+The five domicile windows and all split specialization paths still require a
+complete manual gameplay pass. Their geometry is data-driven so any overlap
+can be corrected without altering the generator. The mod does not add a mass
+"build everything" action or another domicile construction-speed modifier.

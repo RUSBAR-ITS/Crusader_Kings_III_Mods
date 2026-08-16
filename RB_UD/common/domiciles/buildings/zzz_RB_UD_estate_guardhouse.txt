@@ -1,0 +1,355 @@
+﻿############################################################
+# GENERATED FILE - DO NOT EDIT BY HAND
+# Generator: tools/Generate-RBUDOverrides.ps1
+# CK3: 1.19.0.6
+# Plan SHA-256: EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC
+############################################################
+
+@RB_UD_construction_time_days = 10
+
+guardhouse_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_guardhouse }
+				multiply = 0.75
+				desc = raid_insight_guardhouse
+			}
+		}
+	}
+
+	character_modifier = {
+		enemy_hostile_scheme_success_chance_add = -2
+		character_travel_safety = 2
+	}
+
+	parameters = {
+		estate_increase_bodyguard_aptitude_1 = yes
+		house_head_can_ask_for_knight = yes
+		reduce_success_of_raid_estate = yes
+		raids_less_likely_to_make_prisoners_1 = yes
+	}
+	
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barracks.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_chinese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guardhouse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guardhouse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guardhouse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+}
+
+guardhouse_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = guardhouse_01
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_guardhouse }
+				multiply = 0.75
+				desc = raid_insight_guardhouse
+			}
+		}
+	}
+	
+	parameters = {
+		estate_increase_bodyguard_aptitude_2 = yes
+		house_head_can_ask_for_knight = yes
+		reduce_success_of_raid_estate = yes
+		raids_less_likely_to_make_prisoners_1 = yes
+	}
+
+	character_modifier = {
+		enemy_hostile_scheme_success_chance_add = -2
+		character_travel_safety = 2
+	}
+	
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barracks.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_chinese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guardhouse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guardhouse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guardhouse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+}
+
+guardhouse_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = guardhouse_02
+
+	can_construct = {
+		estate_can_construct_guardhouse_03_trigger = yes
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_guardhouse }
+				multiply = 0.75
+				desc = raid_insight_guardhouse
+			}
+		}
+	}
+	
+	parameters = {
+		estate_unlock_bolster_security_decision = yes
+		estate_increase_bodyguard_aptitude_3 = yes
+		house_head_can_ask_for_knight = yes
+		house_head_can_ask_for_maa = yes
+		reduce_success_of_raid_estate = yes
+		raids_less_likely_to_make_prisoners_2 = yes
+	}
+
+	character_modifier = {
+		enemy_hostile_scheme_success_chance_add = -2
+		character_travel_safety = 2
+	}
+	
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barracks.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_chinese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guardhouse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guardhouse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guardhouse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+}
+
+guardhouse_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = guardhouse_03
+
+	can_construct = {
+		estate_can_construct_guardhouse_04_trigger = yes
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_guardhouse }
+				multiply = 0.75
+				desc = raid_insight_guardhouse
+			}
+		}
+	}
+	
+	parameters = {
+		estate_unlock_bolster_security_decision = yes
+		estate_increase_bodyguard_aptitude_4 = yes
+		house_head_can_ask_for_knight = yes
+		house_head_can_ask_for_maa = yes
+		reduce_success_of_raid_estate = yes
+		raids_less_likely_to_make_prisoners_2 = yes
+	}
+
+	character_modifier = {
+		enemy_hostile_scheme_success_chance_add = -4
+		character_travel_safety = 2
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_barracks.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_chinese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guardhouse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guardhouse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_guardhouse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_guard_house_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_guard_house_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_guardhouse"
+	}
+}

@@ -1,0 +1,1006 @@
+﻿############################################################
+# GENERATED FILE - DO NOT EDIT BY HAND
+# Generator: tools/Generate-RBUDOverrides.ps1
+# CK3: 1.19.0.6
+# Plan SHA-256: EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC
+############################################################
+
+@east_asian_manor_development_growth_factor_1 = 0.015
+@east_asian_manor_monthly_gold_add_1 = 0.15
+@east_asian_manor_monthly_gold_add_2 = 0.25
+@east_asian_manor_monthly_influence_add_2 = 0.25
+@east_asian_manor_monthly_merit_1 = 0.15
+@east_asian_manor_monthly_merit_mult_2 = 0.01
+@east_asian_manor_monthly_treasury_from_military_budget_mult_1 = 0.01
+@east_asian_manor_study_confucian_classics_scheme_phase_duration_add_1 = -2
+@RB_UD_construction_time_days = 10
+
+east_asian_estate_health_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	internal_slots = 5
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_1_value
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.2
+		epidemic_resistance = 3
+	}
+	
+	province_modifier = {
+		development_growth_factor = @east_asian_manor_development_growth_factor_1
+	}
+	
+	parameters = {
+		estate_increase_safe_treatment_success_1 = yes
+		estate_increase_physician_aptitude_1 = yes
+	}
+	
+	ai_value = {
+		value = 10
+		if = { # Let's make sure the AI builds at least one good income building
+			limit = {
+				NOR = {
+					has_domicile_building_or_higher = east_asian_estate_rice_field_01
+					has_domicile_building_or_higher = east_asian_estate_market_01
+				}
+			}
+			add = 20
+		}
+		add = estate_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_health.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_herb_hall_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_herb_hall_chinese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_herbal_hall"
+	}
+}
+
+east_asian_estate_health_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_health_01
+	internal_slots = 5
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_2_value
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.2
+		epidemic_resistance = 3
+	}
+	
+	province_modifier = {
+		development_growth_factor = @east_asian_manor_development_growth_factor_1
+	}
+	
+	parameters = {
+		estate_increase_safe_treatment_success_1 = yes
+		estate_increase_physician_aptitude_2 = yes
+	}
+	
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_health.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_herb_hall_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_herb_hall_chinese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_herbal_hall"
+	}
+}
+
+east_asian_estate_health_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_health_02
+	internal_slots = 5
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_3_value
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.2
+		epidemic_resistance = 3
+	}
+	
+	province_modifier = {
+		development_growth_factor = @east_asian_manor_development_growth_factor_1
+	}
+	
+	parameters = {
+		estate_increase_safe_treatment_success_1 = yes
+		estate_increase_physician_aptitude_3 = yes
+	}
+	
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_health.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_herb_hall_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_herb_hall_chinese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_herbal_hall"
+	}
+}
+
+east_asian_estate_health_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_health_03
+	internal_slots = 5
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_4_value
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.2
+		epidemic_resistance = 3
+	}
+	
+	province_modifier = {
+		development_growth_factor = @east_asian_manor_development_growth_factor_1
+	}
+	
+	parameters = {
+		estate_increase_safe_treatment_success_2 = yes
+		estate_increase_physician_aptitude_4 = yes
+	}
+	
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_health.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_herb_hall_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_herb_hall_chinese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_herbal_hall"
+	}
+}
+
+east_asian_estate_health_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_health_04
+	internal_slots = 5
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_5_value
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.2
+		epidemic_resistance = 3
+	}
+	
+	province_modifier = {
+		development_growth_factor = @east_asian_manor_development_growth_factor_1
+	}
+	
+	parameters = {
+		estate_increase_safe_treatment_success_2 = yes
+		estate_increase_physician_aptitude_5 = yes
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_health.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_herb_hall_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_herb_hall_chinese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_herbal_hall"
+	}
+}
+
+east_asian_estate_health_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_health_05
+	internal_slots = 5
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_6_value
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.2
+		epidemic_resistance = 3
+	}
+	
+	province_modifier = {
+		development_growth_factor = @east_asian_manor_development_growth_factor_1
+	}
+	
+	parameters = {
+		estate_increase_safe_treatment_success_2 = yes
+		estate_increase_physician_aptitude_6 = yes
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_health.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_herb_hall_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_herb_hall_chinese_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_herbal_hall"
+	}
+}
+
+east_asian_estate_pharmacy_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_health_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_influence_add = @east_asian_manor_monthly_influence_add_2
+		life_expectancy = 0.5
+	}
+	province_modifier = {
+		epidemic_resistance = 3
+		development_decline_factor = -0.1
+	}
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_physician_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_pharmacy_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_pharmacy_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_influence_add = @east_asian_manor_monthly_influence_add_2
+		life_expectancy = 0.5
+	}
+	province_modifier = {
+		epidemic_resistance = 3
+		development_decline_factor = -0.1
+	}
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_physician_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_pharmacy_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_pharmacy_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_influence_add = @east_asian_manor_monthly_influence_add_2
+		life_expectancy = 0.5
+	}
+	province_modifier = {
+		epidemic_resistance = 3
+		development_decline_factor = -0.1
+	}
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_physician_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_pharmacy_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_pharmacy_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_influence_add = @east_asian_manor_monthly_influence_add_2
+		life_expectancy = 0.5
+	}
+	province_modifier = {
+		epidemic_resistance = 3
+		development_decline_factor = -0.1
+	}
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_physician_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_hot_baths_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_health_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_gold_add = @east_asian_manor_monthly_gold_add_1
+		stress_loss_mult = 0.02
+		owned_personal_scheme_success_chance_max_add = 2
+		owned_personal_scheme_success_chance_growth_add = 0.5
+	}
+	province_modifier = {
+	}
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_hot_baths.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_hot_baths_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_hot_baths_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_gold_add = @east_asian_manor_monthly_gold_add_1
+		stress_loss_mult = 0.02
+		owned_personal_scheme_success_chance_max_add = 2
+		owned_personal_scheme_success_chance_growth_add = 0.5
+	}
+	province_modifier = {
+	}
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_hot_baths.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_hot_baths_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_hot_baths_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_gold_add = @east_asian_manor_monthly_gold_add_1
+		stress_loss_mult = 0.02
+		owned_personal_scheme_success_chance_max_add = 2
+		owned_personal_scheme_success_chance_growth_add = 0.5
+	}
+	province_modifier = {
+	}
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_hot_baths.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_hot_baths_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_hot_baths_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_gold_add = @east_asian_manor_monthly_gold_add_1
+		stress_loss_mult = 0.02
+		owned_personal_scheme_success_chance_max_add = 2
+		owned_personal_scheme_success_chance_growth_add = 0.5
+	}
+	province_modifier = {
+	}
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_hot_baths.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_medical_library_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_health_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		monthly_merit_mult = @east_asian_manor_monthly_merit_mult_2
+		negate_health_penalty_add = 0.05
+		mentoring_scheme_phase_duration_add = -10
+		study_confucian_classics_scheme_phase_duration_add = @east_asian_manor_study_confucian_classics_scheme_phase_duration_add_1
+	}
+	province_modifier = {
+	}
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_wintner_halls.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_medical_library_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_medical_library_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		monthly_merit_mult = @east_asian_manor_monthly_merit_mult_2
+		negate_health_penalty_add = 0.05
+		mentoring_scheme_phase_duration_add = -10
+		study_confucian_classics_scheme_phase_duration_add = @east_asian_manor_study_confucian_classics_scheme_phase_duration_add_1
+	}
+	province_modifier = {
+	}
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_wintner_halls.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_medical_library_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_medical_library_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		monthly_merit_mult = @east_asian_manor_monthly_merit_mult_2
+		negate_health_penalty_add = 0.05
+		mentoring_scheme_phase_duration_add = -10
+		study_confucian_classics_scheme_phase_duration_add = @east_asian_manor_study_confucian_classics_scheme_phase_duration_add_1
+	}
+	province_modifier = {
+	}
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_wintner_halls.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_medical_library_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_medical_library_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		monthly_merit_mult = @east_asian_manor_monthly_merit_mult_2
+		negate_health_penalty_add = 0.05
+		mentoring_scheme_phase_duration_add = -10
+		study_confucian_classics_scheme_phase_duration_add = @east_asian_manor_study_confucian_classics_scheme_phase_duration_add_1
+	}
+	province_modifier = {
+	}
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_wintner_halls.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_field_surgeon_cart_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_health_01
+
+	can_construct = {
+		trigger_if = {
+			limit = {
+				this != top_liege
+			}
+			custom_tooltip = {
+				text = is_a_military_governor_county_or_above_desc
+				highest_held_title_tier >= tier_county
+				OR = {
+					vassal_contract_has_flag = celestial_military_appointment
+					vassal_contract_has_flag = meritocratic_military_appointment
+				}
+			}
+		}
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		hard_casualty_modifier = -0.05
+		maa_screen_mult = 0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+	province_modifier = {
+		stationed_maa_screen_mult = 0.1
+		stationed_maa_toughness_mult = 0.02
+	}
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_field_surgeon_cart_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_field_surgeon_cart_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		hard_casualty_modifier = -0.05
+		maa_screen_mult = 0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+	province_modifier = {
+		stationed_maa_screen_mult = 0.1
+		stationed_maa_toughness_mult = 0.02
+	}
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_field_surgeon_cart_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_field_surgeon_cart_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		hard_casualty_modifier = -0.05
+		maa_screen_mult = 0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+	province_modifier = {
+		stationed_maa_screen_mult = 0.1
+		stationed_maa_toughness_mult = 0.02
+	}
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_field_surgeon_cart_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_field_surgeon_cart_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		hard_casualty_modifier = -0.05
+		maa_screen_mult = 0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+	province_modifier = {
+		stationed_maa_screen_mult = 0.1
+		stationed_maa_toughness_mult = 0.02
+	}
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_bagage.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_herb_drying_terrace_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_health_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_gold_add = @east_asian_manor_monthly_gold_add_2
+		monthly_merit = @east_asian_manor_monthly_merit_1
+		owned_hostile_scheme_success_chance_growth_add = 0.5
+	}
+	province_modifier = {
+	}
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_drying_lofts.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_herb_drying_terrace_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_herb_drying_terrace_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_gold_add = @east_asian_manor_monthly_gold_add_2
+		monthly_merit = @east_asian_manor_monthly_merit_1
+		owned_hostile_scheme_success_chance_growth_add = 0.5
+	}
+	province_modifier = {
+	}
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_drying_lofts.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_herb_drying_terrace_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_herb_drying_terrace_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_gold_add = @east_asian_manor_monthly_gold_add_2
+		monthly_merit = @east_asian_manor_monthly_merit_1
+		owned_hostile_scheme_success_chance_growth_add = 0.5
+	}
+	province_modifier = {
+	}
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_drying_lofts.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_herb_drying_terrace_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_herb_drying_terrace_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_gold_add = @east_asian_manor_monthly_gold_add_2
+		monthly_merit = @east_asian_manor_monthly_merit_1
+		owned_hostile_scheme_success_chance_growth_add = 0.5
+	}
+	province_modifier = {
+	}
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_drying_lofts.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}

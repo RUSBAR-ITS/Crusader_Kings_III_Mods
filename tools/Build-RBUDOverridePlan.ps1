@@ -144,11 +144,11 @@ $targetExternalSlots = [ordered]@{
     japanese_manor = 12
 }
 $buildingOverrideFiles = [ordered]@{
-    camp = 'common\domiciles\buildings\zzz_RB_UD_camp_buildings.txt'
-    estate = 'common\domiciles\buildings\zzz_RB_UD_estate_buildings.txt'
-    yurt = 'common\domiciles\buildings\zzz_RB_UD_yurt_buildings.txt'
-    east_asian_estate = 'common\domiciles\buildings\zzz_RB_UD_east_asian_estate_buildings.txt'
-    japanese_manor = 'common\domiciles\buildings\zzz_RB_UD_japanese_manor_buildings.txt'
+    camp = 'common\domiciles\buildings\zzz_RB_UD_camp_<family>.txt'
+    estate = 'common\domiciles\buildings\zzz_RB_UD_estate_<family>.txt'
+    yurt = 'common\domiciles\buildings\zzz_RB_UD_yurt_<family>.txt'
+    east_asian_estate = 'common\domiciles\buildings\zzz_RB_UD_east_asian_estate_<family>.txt'
+    japanese_manor = 'common\domiciles\buildings\zzz_RB_UD_japanese_manor_<family>.txt'
 }
 $scriptedEffectOverrideFile = 'common\scripted_effects\zzz_RB_UD_domicile_effects.txt'
 
@@ -204,7 +204,7 @@ foreach ($domicile in $manifest.Domiciles) {
         LayoutStrategy = 'preserve_existing_slots_and_generate_balanced_additional_slots_then_validate_in_game'
         CapacityStrategy = 'grant_full_external_capacity_from_first_main_building'
         MainTrackCapacityChanges = @($capacityChanges)
-        Preserve = @('main-building costs', 'construction time', 'effects', 'main progression requirements')
+        Preserve = @('main-building costs', 'effects', 'main progression requirements')
     })
 }
 
@@ -555,7 +555,7 @@ if ($validation.ExpectedDomicileTypes -ne $validation.PlannedDomicileTypes -or
 }
 
 $planCore = [ordered]@{
-    SchemaVersion = 1
+    SchemaVersion = 2
     Status = 'generation_ready'
     SourceManifest = [ordered]@{
         Path = 'tools/generated/RB_UD_vanilla_manifest.json'
@@ -564,9 +564,11 @@ $planCore = [ordered]@{
         VanillaSignatures = $manifest.VanillaSignatures
     }
     Principles = @(
-        'Override only affected vanilla objects; never use replace_path.',
+        'Mirror all vanilla domicile-building objects; never use replace_path.',
+        'Emit one generated file per vanilla root family and exactly one copy of every vanilla building.',
         'Vanilla objects retain vanilla IDs; new helper objects use the RB_UD_ prefix.',
-        'Preserve vanilla costs, construction times, effects, upgrade order, and unrelated prerequisites.',
+        'Normalize construction time through a file-local RB_UD_ @ constant because this database field rejects global script values.',
+        'Preserve vanilla costs, effects, upgrade order, and unrelated prerequisites.',
         'Remove only mutual-exclusivity access gates and camp-purpose cleanup targeted by this plan.',
         'Grant complete slot capacity from the first main or anchor level; progression still controls higher building tiers.',
         'No mass-build action and no construction-speed modifier are part of this mod.'
@@ -601,6 +603,7 @@ $planCore = [ordered]@{
         OverriddenDomicileTypeIds = @($targetExternalSlots.Keys)
         AffectedVanillaBuildingCount = $affectedBuildingIds.Count
         AffectedVanillaBuildingIds = $affectedBuildingIds
+        MirroredVanillaBuildingCount = @(Convert-ToArray $manifest.Buildings).Count
         OverriddenVanillaEventIds = @()
         OverriddenVanillaScriptedEffectIds = @(
             @($initialFillEffectOverrides | ForEach-Object { $_.Effect }) +
@@ -610,8 +613,8 @@ $planCore = [ordered]@{
     }
     Validation = $validation
     RemainingImplementationChecks = @(
-        'Generate balanced coordinates for the additional external visual slots and visually test all five domicile windows.',
-        'After emitting gameplay overrides, compare every overridden object against the source manifest and reject unrelated drift.',
+        'Visually test all five generated domicile windows after gameplay generation.',
+        'Verify construction time and every split specialization family in game.',
         'Run CK3 with error.log and debug.log checks after each domicile family is enabled.',
         'Regenerate Stage 1 and this plan after every supported CK3 update; signatures must be reviewed before code regeneration.'
     )
@@ -761,7 +764,8 @@ $lines.Add("- Внешние развилки: $($validation.PlannedExternalBran
 $lines.Add("- Внутренние развилки: $($validation.PlannedInternalBranchGroups)/$($validation.ExpectedInternalBranchGroups).")
 $lines.Add("- Флаги тем лагеря: $($validation.PlannedCampPurposeFlags)/$($validation.ExpectedCampPurposeFlags).")
 $lines.Add("- Ручные условные линии: $($validation.PlannedManualConditionTracks)/$($validation.ExpectedManualConditionTracks); переписать $($validation.RewrittenManualConditionTracks), сохранить $($validation.PreservedFalsePositiveMainTracks).")
-$lines.Add("- Уникальных затронутых ванильных зданий: $($affectedBuildingIds.Count).")
+$lines.Add("- Полностью зеркалируемых ванильных зданий: $(@(Convert-ToArray $manifest.Buildings).Count).")
+$lines.Add("- Из них структурно изменяемых зданий: $($affectedBuildingIds.Count).")
 $lines.Add('- Неизвестные условия, циклы и потерянные родители: 0.')
 $lines.Add('')
 $lines.Add('## Что остаётся перед генерацией кода')

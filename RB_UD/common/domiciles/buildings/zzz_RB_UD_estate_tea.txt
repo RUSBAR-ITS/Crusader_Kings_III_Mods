@@ -1,0 +1,473 @@
+﻿############################################################
+# GENERATED FILE - DO NOT EDIT BY HAND
+# Generator: tools/Generate-RBUDOverrides.ps1
+# CK3: 1.19.0.6
+# Plan SHA-256: EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC
+############################################################
+
+@RB_UD_construction_time_days = 10
+
+tea_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_1_value
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.25
+		negate_health_penalty_add = 0.01
+	}
+	
+	ai_value = {
+		value = 10
+		if = { # Let's make sure the AI builds at least one good income building
+			limit = {
+				NOT = {
+					has_domicile_building_or_higher = market_01
+				}
+			}
+			add = 20
+		}
+		add = estate_building_ai_modifier_value
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_tea_plantation_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_tea_plantation_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+}
+
+tea_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = tea_01
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_vineyard }
+				multiply = 0.75
+				desc = raid_insight_vineyard
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.25
+		negate_health_penalty_add = 0.02
+	}
+	
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_tea_plantation_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_tea_plantation_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+}
+
+tea_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = tea_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_vineyard }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.25
+		negate_health_penalty_add = 0.04
+	}
+	
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_tea_plantation_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_tea_plantation_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+}
+
+tea_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = tea_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_4_value
+		}
+	}
+	
+	character_modifier = {
+		domicile_monthly_gold_add = 0.25
+		negate_health_penalty_add = 0.06
+	}
+	
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_tea_plantation_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_tea_plantation_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+}
+
+tea_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = tea_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_5_value
+		}
+	}
+	
+	character_modifier = {
+		domicile_monthly_gold_add = 0.25
+		negate_health_penalty_add = 0.08
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_tea_plantation_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_tea_plantation_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+}
+
+tea_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = tea_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_6_value
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.25
+		negate_health_penalty_add = 0.1
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_tea_plantation_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_tea_plantation_asian_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_vinyard_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_vinyard_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_vineyard"
+	}
+}

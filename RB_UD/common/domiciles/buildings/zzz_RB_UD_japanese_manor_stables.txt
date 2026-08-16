@@ -1,0 +1,946 @@
+﻿############################################################
+# GENERATED FILE - DO NOT EDIT BY HAND
+# Generator: tools/Generate-RBUDOverrides.ps1
+# CK3: 1.19.0.6
+# Plan SHA-256: EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC
+############################################################
+
+@japanese_manor_character_travel_speed_mult = 0.025
+@japanese_manor_maa_effectiveness_mult_1 = 0.025
+@japanese_manor_monthly_prestige_add_1 = 0.1
+@japanese_manor_monthly_prestige_mult_1 = 0.025
+@japanese_manor_movement_speed_1 = 0.025
+@japanese_manor_opinion_add_1 = 2
+@japanese_manor_pursue_efficiency_1 = 0.025
+@RB_UD_construction_time_days = 10
+
+japanese_stables_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	internal_slots = 3
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_high_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_stable }
+				multiply = 0.75
+				desc = raid_insight_stable
+			}
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
+		character_travel_speed_mult = @japanese_manor_character_travel_speed_mult
+		courtier_opinion = @japanese_manor_opinion_add_1
+	}
+	
+	ai_value = {
+		value = 9
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_stable.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_stable_japanese.dds" 
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_stable_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_stable"
+	}
+}
+
+japanese_stables_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	internal_slots = 3
+	previous_building = japanese_stables_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_high_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_stable }
+				multiply = 0.75
+				desc = raid_insight_stable
+			}
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
+		character_travel_speed_mult = @japanese_manor_character_travel_speed_mult
+		courtier_opinion = @japanese_manor_opinion_add_1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_stable.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_stable_japanese.dds" 
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_stable_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_stable"
+	}
+}
+
+japanese_stables_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	internal_slots = 3
+	previous_building = japanese_stables_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_high_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_stable }
+				multiply = 0.75
+				desc = raid_insight_stable
+			}
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
+		character_travel_speed_mult = @japanese_manor_character_travel_speed_mult
+		courtier_opinion = @japanese_manor_opinion_add_1
+	}
+
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_stable.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_stable_japanese.dds" 
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_stable_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_stable"
+	}
+}
+
+japanese_stables_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	internal_slots = 3
+	previous_building = japanese_stables_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_high_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_stable }
+				multiply = 0.75
+				desc = raid_insight_stable
+			}
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
+		character_travel_speed_mult = @japanese_manor_character_travel_speed_mult
+		courtier_opinion = @japanese_manor_opinion_add_1
+	}
+
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_stable.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_stable_japanese.dds" 
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_stable_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_stable"
+	}
+}
+
+japanese_stables_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	internal_slots = 3
+	previous_building = japanese_stables_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_high_cost_tier_5_value
+			if = {
+				limit = { has_character_modifier = raid_insight_stable }
+				multiply = 0.75
+				desc = raid_insight_stable
+			}
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
+		character_travel_speed_mult = @japanese_manor_character_travel_speed_mult
+		courtier_opinion = @japanese_manor_opinion_add_1
+	}
+
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_stable.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_stable_japanese.dds" 
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_stable_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_stable"
+	}
+}
+
+japanese_stables_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	internal_slots = 3
+	previous_building = japanese_stables_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_06 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_high_cost_tier_6_value
+			if = {
+				limit = { has_character_modifier = raid_insight_stable }
+				multiply = 0.75
+				desc = raid_insight_stable
+			}
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
+		character_travel_speed_mult = @japanese_manor_character_travel_speed_mult
+		courtier_opinion = @japanese_manor_opinion_add_1
+	}
+
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_stable.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_stable_japanese.dds" 
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_stable_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_stable"
+	}
+}
+
+japanese_yabusame_ground_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_stables_01
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_1_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+		archer_cavalry_damage_mult = @japanese_manor_maa_effectiveness_mult_1
+		archer_cavalry_screen_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_life_in_the_saddle.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_yabusame_ground_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_yabusame_ground_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_02 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_2_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+		archer_cavalry_damage_mult = @japanese_manor_maa_effectiveness_mult_1
+		archer_cavalry_screen_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_life_in_the_saddle.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_yabusame_ground_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_yabusame_ground_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_4_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+		archer_cavalry_damage_mult = @japanese_manor_maa_effectiveness_mult_1
+		archer_cavalry_screen_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_life_in_the_saddle.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_yabusame_ground_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_yabusame_ground_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_4_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+		archer_cavalry_damage_mult = @japanese_manor_maa_effectiveness_mult_1
+		archer_cavalry_screen_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_life_in_the_saddle.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_yabusame_ground_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_yabusame_ground_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_05 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_5_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+		archer_cavalry_damage_mult = @japanese_manor_maa_effectiveness_mult_1
+		archer_cavalry_screen_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_life_in_the_saddle.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_yabusame_ground_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_yabusame_ground_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_06 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_6_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+		archer_cavalry_damage_mult = @japanese_manor_maa_effectiveness_mult_1
+		archer_cavalry_screen_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_life_in_the_saddle.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_farrier_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_stables_01
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		pursue_efficiency = @japanese_manor_pursue_efficiency_1
+		movement_speed = @japanese_manor_movement_speed_1
+		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_farrier.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}
+
+japanese_farrier_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_farrier_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		pursue_efficiency = @japanese_manor_pursue_efficiency_1
+		movement_speed = @japanese_manor_movement_speed_1
+		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_farrier.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}
+
+japanese_farrier_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_farrier_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		pursue_efficiency = @japanese_manor_pursue_efficiency_1
+		movement_speed = @japanese_manor_movement_speed_1
+		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_farrier.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}
+
+japanese_farrier_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_farrier_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		pursue_efficiency = @japanese_manor_pursue_efficiency_1
+		movement_speed = @japanese_manor_movement_speed_1
+		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_farrier.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}
+
+japanese_farrier_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_farrier_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_5_value
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		pursue_efficiency = @japanese_manor_pursue_efficiency_1
+		movement_speed = @japanese_manor_movement_speed_1
+		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_farrier.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}
+
+japanese_farrier_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_farrier_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_06 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_6_value
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		pursue_efficiency = @japanese_manor_pursue_efficiency_1
+		movement_speed = @japanese_manor_movement_speed_1
+		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_farrier.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}
+
+japanese_hunting_lodge_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_stables_01
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		pursue_efficiency = @japanese_manor_pursue_efficiency_1
+		movement_speed = @japanese_manor_movement_speed_1
+	}
+
+	parameters = {
+		estate_cheaper_hunt_cost = yes
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_hunt.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}
+
+japanese_hunting_lodge_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_hunting_lodge_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		pursue_efficiency = @japanese_manor_pursue_efficiency_1
+		movement_speed = @japanese_manor_movement_speed_1
+	}
+
+	parameters = {
+		estate_cheaper_hunt_cost = yes
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_hunt.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}
+
+japanese_hunting_lodge_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_hunting_lodge_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		pursue_efficiency = @japanese_manor_pursue_efficiency_1
+		movement_speed = @japanese_manor_movement_speed_1
+	}
+
+	parameters = {
+		estate_cheaper_hunt_cost = yes
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_hunt.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}
+
+japanese_hunting_lodge_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_hunting_lodge_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		pursue_efficiency = @japanese_manor_pursue_efficiency_1
+		movement_speed = @japanese_manor_movement_speed_1
+	}
+
+	parameters = {
+		estate_cheaper_hunt_cost = yes
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_hunt.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}
+
+japanese_hunting_lodge_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_hunting_lodge_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_5_value
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		pursue_efficiency = @japanese_manor_pursue_efficiency_1
+		movement_speed = @japanese_manor_movement_speed_1
+	}
+
+	parameters = {
+		estate_cheaper_hunt_cost = yes
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_hunt.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}
+
+japanese_hunting_lodge_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_hunting_lodge_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_06 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_internal_building_normal_cost_tier_6_value
+			if = {
+				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
+				multiply = 0.75
+			}
+		}
+	}
+
+	character_modifier = {
+		pursue_efficiency = @japanese_manor_pursue_efficiency_1
+		movement_speed = @japanese_manor_movement_speed_1
+	}
+
+	parameters = {
+		estate_cheaper_hunt_cost = yes
+	}
+	
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_hunt.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}

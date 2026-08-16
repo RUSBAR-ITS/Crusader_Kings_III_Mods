@@ -1,0 +1,782 @@
+﻿############################################################
+# GENERATED FILE - DO NOT EDIT BY HAND
+# Generator: tools/Generate-RBUDOverrides.ps1
+# CK3: 1.19.0.6
+# Plan SHA-256: EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC
+############################################################
+
+@RB_UD_construction_time_days = 10
+
+grain_field_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+
+	cost = {
+		gold = {
+			add = {
+				value = estate_external_building_high_cost_tier_1_value
+				if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_1 }
+					}
+					multiply = 0.85
+					desc = grazing_land_in_domicile
+				}
+				else_if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_2 }
+					}
+					multiply = 0.75
+					desc = grazing_land_in_domicile
+				}
+				else_if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_3 }
+					}
+					multiply = 0.65
+					desc = grazing_land_in_domicile
+				}
+				if = {
+					limit = { has_character_modifier = raid_insight_grain_field }
+					multiply = 0.75
+					desc = raid_insight_grain_field
+				}
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.4
+		development_growth_factor = 0.04
+		supply_limit_mult = 0.05
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_grain_field
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 10
+		if = { # Let's make sure the AI builds at least one good income building
+			limit = {
+				NOR = {
+					has_domicile_building_or_higher = vineyard_01
+					has_domicile_building_or_higher = olive_01
+					has_domicile_building_or_higher = market_01
+				}
+			}
+			add = 20
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_rice_paddies_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_rice_paddies_asian_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_rice_paddies"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+}
+
+grain_field_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = grain_field_01
+
+	cost = {
+		gold = {
+			add = {
+				value = estate_external_building_high_cost_tier_2_value
+				if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_1 }
+					}
+					multiply = 0.85
+					desc = grazing_land_in_domicile
+				}
+				else_if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_2 }
+					}
+					multiply = 0.75
+					desc = grazing_land_in_domicile
+				}
+				else_if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_3 }
+					}
+					multiply = 0.65
+					desc = grazing_land_in_domicile
+				}
+				if = {
+					limit = { has_character_modifier = raid_insight_grain_field }
+					multiply = 0.75
+					desc = raid_insight_grain_field
+				}
+			}
+		}
+	}
+	character_modifier = {
+		domicile_monthly_gold_add = 0.4
+		development_growth_factor = 0.04
+		supply_limit_mult = 0.05
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_grain_field
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_rice_paddies_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_rice_paddies_asian_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_rice_paddies"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+}
+
+grain_field_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = grain_field_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			add = {
+				value = estate_external_building_high_cost_tier_3_value
+				if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_1 }
+					}
+					multiply = 0.85
+					desc = grazing_land_in_domicile
+				}
+				else_if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_2 }
+					}
+					multiply = 0.75
+					desc = grazing_land_in_domicile
+				}
+				else_if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_3 }
+					}
+					multiply = 0.65
+					desc = grazing_land_in_domicile
+				}
+				if = {
+					limit = { has_character_modifier = raid_insight_grain_field }
+					multiply = 0.75
+					desc = raid_insight_grain_field
+				}
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.4
+		development_growth_factor = 0.04
+		supply_limit_mult = 0.05
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_grain_field
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_rice_paddies_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_rice_paddies_asian_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_rice_paddies"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+}
+
+grain_field_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = grain_field_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			add = {
+				value = estate_external_building_high_cost_tier_4_value
+				if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_1 }
+					}
+					multiply = 0.85
+					desc = grazing_land_in_domicile
+				}
+				else_if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_2 }
+					}
+					multiply = 0.75
+					desc = grazing_land_in_domicile
+				}
+				else_if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_3 }
+					}
+					multiply = 0.65
+					desc = grazing_land_in_domicile
+				}
+				if = {
+					limit = { has_character_modifier = raid_insight_grain_field }
+					multiply = 0.75
+					desc = raid_insight_grain_field
+				}
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.4
+		development_growth_factor = 0.04
+		supply_limit_mult = 0.05
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_grain_field
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_rice_paddies_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_rice_paddies_asian_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_rice_paddies"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+}
+
+grain_field_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = grain_field_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_04 }
+	}
+
+	cost = {
+		gold = {
+			add = {
+				value = estate_external_building_high_cost_tier_5_value
+				if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_1 }
+					}
+					multiply = 0.85
+					desc = grazing_land_in_domicile
+				}
+				else_if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_2 }
+					}
+					multiply = 0.75
+					desc = grazing_land_in_domicile
+				}
+				else_if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_3 }
+					}
+					multiply = 0.65
+					desc = grazing_land_in_domicile
+				}
+				if = {
+					limit = { has_character_modifier = raid_insight_grain_field }
+					multiply = 0.75
+					desc = raid_insight_grain_field
+				}
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.4
+		development_growth_factor = 0.04
+		supply_limit_mult = 0.05
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_grain_field
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_rice_paddies_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_rice_paddies_asian_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_rice_paddies"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+}
+
+grain_field_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { estate }
+	previous_building = grain_field_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = estate_main_05 }
+	}
+
+	cost = {
+		gold = {
+			add = {
+				value = estate_external_building_high_cost_tier_6_value
+				if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_1 }
+					}
+					multiply = 0.85
+					desc = grazing_land_in_domicile
+				}
+				else_if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_2 }
+					}
+					multiply = 0.75
+					desc = grazing_land_in_domicile
+				}
+				else_if = {
+					limit = {
+						domicile ?= { has_domicile_parameter = cheaper_grain_fields_buildings_3 }
+					}
+					multiply = 0.65
+					desc = grazing_land_in_domicile
+				}
+				if = {
+					limit = { has_character_modifier = raid_insight_grain_field }
+					multiply = 0.75
+					desc = raid_insight_grain_field
+				}
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.4
+		development_growth_factor = 0.04
+		supply_limit_mult = 0.05
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_grain_field
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_rice_paddies_asian.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_rice_paddies_asian_mask.png"
+		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_rice_paddies"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_iranian_culture_group_trigger = yes
+					has_graphical_mena_culture_group_trigger = yes
+					has_graphical_steppe_culture_group_trigger = yes
+					has_graphical_african_culture_group_trigger = yes
+					has_graphical_india_culture_group_trigger = yes
+					has_graphical_iberian_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				OR = {
+					has_graphical_western_culture_group_trigger = yes
+					has_graphical_norse_culture_group_trigger = yes
+				}
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grain.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grain_fields_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grain_fields_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grain_fields"
+	}
+}

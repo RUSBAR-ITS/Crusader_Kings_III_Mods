@@ -1,0 +1,821 @@
+﻿############################################################
+# GENERATED FILE - DO NOT EDIT BY HAND
+# Generator: tools/Generate-RBUDOverrides.ps1
+# CK3: 1.19.0.6
+# Plan SHA-256: EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC
+############################################################
+
+@japanese_manor_maa_effectiveness_mult_1 = 0.025
+@japanese_manor_maa_maintenance_mult_1 = -0.025
+@japanese_manor_maa_recruitment_cost_mult_1 = -0.04
+@japanese_manor_monthly_gold_add_0 = 0.1
+@japanese_manor_monthly_gold_add_1 = 0.2
+@japanese_manor_monthly_prestige_add_2 = 0.25
+@RB_UD_construction_time_days = 10
+
+japanese_horse_pastures_01 = {
+	construction_time = @RB_UD_construction_time_days
+	internal_slots = 3
+	allowed_domicile_types = { japanese_manor }
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
+		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+	}
+	
+	ai_value = {
+		value = 9
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_finest_horse.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_horse_pastures_02 = {
+	construction_time = @RB_UD_construction_time_days
+	internal_slots = 3
+	allowed_domicile_types = { japanese_manor }
+	previous_building = japanese_horse_pastures_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_finest_horse.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_horse_pastures_03 = {
+	construction_time = @RB_UD_construction_time_days
+	internal_slots = 3
+	allowed_domicile_types = { japanese_manor }
+	previous_building = japanese_horse_pastures_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_finest_horse.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_horse_pastures_04 = {
+	construction_time = @RB_UD_construction_time_days
+	internal_slots = 3
+	allowed_domicile_types = { japanese_manor }
+	previous_building = japanese_horse_pastures_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_finest_horse.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_horse_pastures_05 = {
+	construction_time = @RB_UD_construction_time_days
+	internal_slots = 3
+	allowed_domicile_types = { japanese_manor }
+	previous_building = japanese_horse_pastures_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_normal_cost_tier_5_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_finest_horse.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_horse_pastures_06 = {
+	construction_time = @RB_UD_construction_time_days
+	internal_slots = 3
+	allowed_domicile_types = { japanese_manor }
+	previous_building = japanese_horse_pastures_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_06 }
+	}
+
+	cost = {
+		gold = {
+			value = japanese_manor_external_building_normal_cost_tier_6_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_finest_horse.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_stud_farm_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_horse_pastures_01
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_1_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_2
+		light_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
+		archer_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_stud_farm.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_stud_farm_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_stud_farm_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_02 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_2_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_2
+		light_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
+		archer_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_stud_farm.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_stud_farm_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_stud_farm_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_4_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_2
+		light_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
+		archer_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_stud_farm.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_stud_farm_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_stud_farm_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_4_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_2
+		light_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
+		archer_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_stud_farm.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_stud_farm_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_stud_farm_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_05 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_5_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_2
+		light_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
+		archer_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_stud_farm.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_stud_farm_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_stud_farm_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_06 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_6_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_2
+		light_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
+		archer_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_stud_farm.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_ox_breeder_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_horse_pastures_01
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_1_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
+		character_travel_speed = 2
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grazing.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_ox_breeder_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_ox_breeder_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_02 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_2_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		character_travel_speed = 2
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grazing.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_ox_breeder_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_ox_breeder_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_03 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_3_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		character_travel_speed = 2
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grazing.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_ox_breeder_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_ox_breeder_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_4_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		character_travel_speed = 2
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grazing.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_ox_breeder_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_ox_breeder_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_05 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_5_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		character_travel_speed = 2
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grazing.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_ox_breeder_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_ox_breeder_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_06 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_6_value }
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		character_travel_speed = 2
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grazing.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_riding_school_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_horse_pastures_01
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_1_value }
+	}
+
+	character_modifier = {
+		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+		light_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+		prowess_no_portrait = 1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_horse_run.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_riding_school_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_riding_school_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_02 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_2_value }
+	}
+
+	character_modifier = {
+		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+		light_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_horse_run.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_riding_school_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_riding_school_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_4_value }
+	}
+
+	character_modifier = {
+		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+		light_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_horse_run.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_riding_school_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_riding_school_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_04 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_4_value }
+	}
+
+	character_modifier = {
+		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+		light_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+		prowess_no_portrait = 1
+	}
+
+	ai_value = {
+		value = 8
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_horse_run.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_riding_school_05 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_riding_school_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_05 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_5_value }
+	}
+
+	character_modifier = {
+		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+		light_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_horse_run.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+japanese_riding_school_06 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { japanese_manor }
+	slot_type = internal
+	previous_building = japanese_riding_school_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = japanese_manor_main_06 }
+	}
+
+	cost = {
+		gold = { value = japanese_manor_external_building_normal_cost_tier_6_value }
+	}
+
+	character_modifier = {
+		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+		light_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
+	}
+	
+	ai_value = {
+		value = 7
+		add = japanese_manor_building_ai_modifier_value
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_horse_run.dds"
+		texture =  "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}

@@ -6,7 +6,8 @@ param(
     [string]$ModPath,
     [string]$ManifestPath,
     [string]$PlanPath,
-    [string]$LayoutPath
+    [string]$LayoutPath,
+    [string]$SettingsPath
 )
 
 $ErrorActionPreference = 'Stop'
@@ -27,9 +28,13 @@ if ([string]::IsNullOrWhiteSpace($PlanPath)) {
 if ([string]::IsNullOrWhiteSpace($LayoutPath)) {
     $LayoutPath = Join-Path $ModPath 'tools\RB_UD_layouts.json'
 }
+if ([string]::IsNullOrWhiteSpace($SettingsPath)) {
+    $SettingsPath = Join-Path $ModPath 'tools\RB_UD_generation_settings.json'
+}
 $ManifestPath = [IO.Path]::GetFullPath($ManifestPath)
 $PlanPath = [IO.Path]::GetFullPath($PlanPath)
 $LayoutPath = [IO.Path]::GetFullPath($LayoutPath)
+$SettingsPath = [IO.Path]::GetFullPath($SettingsPath)
 
 function Convert-ToArray {
     param($Value)
@@ -388,15 +393,98 @@ function Get-RequiredConstantDefinitionLines {
     }
     $definitions = [Collections.Generic.List[string]]::new()
     foreach ($token in @($tokens | Sort-Object)) {
-        if (-not $script:VanillaConstantDefinitions.ContainsKey($token)) {
-            throw "No validated vanilla definition found for generated constant $token."
+        if ($script:CustomConstantDefinitions.ContainsKey($token)) {
+            $definitions.Add("$token = $($script:CustomConstantDefinitions[$token])")
+            continue
         }
-        $definitions.Add("$token = $($script:VanillaConstantDefinitions[$token])")
+        if ($script:VanillaConstantDefinitions.ContainsKey($token)) {
+            $definitions.Add("$token = $($script:VanillaConstantDefinitions[$token])")
+            continue
+        }
+        throw "No validated definition found for generated constant $token."
     }
     return $definitions.ToArray()
 }
 
-foreach ($requiredPath in @($ManifestPath, $PlanPath, $LayoutPath)) {
+function Get-CostConstantId {
+    param([string]$Resource, [string]$NumericValue)
+    $suffix = $NumericValue.Trim()
+    if ($suffix.StartsWith('-')) {
+        $suffix = 'neg_' + $suffix.Substring(1)
+    }
+    $suffix = $suffix.Replace('.', '_')
+    return "RB_UD_cost_${Resource}_${suffix}_value"
+}
+
+function Convert-DirectNumericCostsToScriptValues {
+    param([string[]]$Lines)
+    $range = Get-DirectBlockRange $Lines 'cost'
+    if ($null -eq $range) { return $Lines }
+
+    $result = @($Lines)
+    $pattern = '(?<![A-Za-z0-9_])(' + $script:CostResourcePattern + ')\s*=\s*(-?[0-9]+(?:\.[0-9]+)?)(?=\s*(?:#|\}|$))'
+    for ($index = $range.Start; $index -le $range.End; $index++) {
+        $result[$index] = [regex]::Replace(
+            $result[$index],
+            $pattern,
+            {
+                param($match)
+                $resource = $match.Groups[1].Value
+                $numericValue = $match.Groups[2].Value
+                $constantId = Get-CostConstantId $resource $numericValue
+                if (
+                    $script:GeneratedCostConstantDefinitions.ContainsKey($constantId) -and
+                    $script:GeneratedCostConstantDefinitions[$constantId] -ne $numericValue
+                ) {
+                    throw "Conflicting generated cost value for $constantId."
+                }
+                $script:GeneratedCostConstantDefinitions[$constantId] = $numericValue
+                return "$resource = $constantId"
+            }
+        )
+    }
+    return $result
+}
+
+function Get-BuildingFamilyRootId {
+    param([string]$BuildingId, [hashtable]$RecordsById)
+    $visited = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    $currentId = $BuildingId
+    while ($true) {
+        if (-not $visited.Add($currentId)) {
+            throw "Cycle detected in vanilla domicile-building chain at '$currentId'."
+        }
+        if (-not $RecordsById.ContainsKey($currentId)) {
+            throw "Unknown domicile-building chain member '$currentId'."
+        }
+        $previousId = [string]$RecordsById[$currentId].PreviousBuilding
+        if ([string]::IsNullOrWhiteSpace($previousId)) { return $currentId }
+        if (-not $RecordsById.ContainsKey($previousId)) {
+            throw "Building '$currentId' references missing previous building '$previousId'."
+        }
+        $currentId = $previousId
+    }
+}
+
+function Get-FamilyTargetRelativePath {
+    param([string]$DomicileType, [string]$FamilyRootId)
+    $familyName = $FamilyRootId -replace '_01$', ''
+    $typePrefix = "${DomicileType}_"
+    if ($familyName.StartsWith($typePrefix, [StringComparison]::Ordinal)) {
+        $familyName = $familyName.Substring($typePrefix.Length)
+    }
+    elseif ($DomicileType -eq 'japanese_manor' -and $familyName.StartsWith('japanese_', [StringComparison]::Ordinal)) {
+        $familyName = $familyName.Substring('japanese_'.Length)
+    }
+    if ($DomicileType -eq 'yurt' -and $familyName.EndsWith('_yurt', [StringComparison]::Ordinal)) {
+        $familyName = $familyName.Substring(0, $familyName.Length - '_yurt'.Length)
+    }
+    $safeType = $DomicileType -replace '[^A-Za-z0-9_]', '_'
+    $safeFamily = $familyName -replace '[^A-Za-z0-9_]', '_'
+    return "common\domiciles\buildings\zzz_RB_UD_${safeType}_${safeFamily}.txt"
+}
+
+foreach ($requiredPath in @($ManifestPath, $PlanPath, $LayoutPath, $SettingsPath)) {
     if (-not (Test-Path -LiteralPath $requiredPath -PathType Leaf)) {
         throw "Required input not found: $requiredPath"
     }
@@ -405,7 +493,31 @@ foreach ($requiredPath in @($ManifestPath, $PlanPath, $LayoutPath)) {
 $manifest = Get-Content -LiteralPath $ManifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
 $planWrapper = Get-Content -LiteralPath $PlanPath -Raw -Encoding UTF8 | ConvertFrom-Json
 $layoutConfig = Get-Content -LiteralPath $LayoutPath -Raw -Encoding UTF8 | ConvertFrom-Json
+$generationSettings = Get-Content -LiteralPath $SettingsPath -Raw -Encoding UTF8 | ConvertFrom-Json
 $plan = $planWrapper.Plan
+
+if ([int]$generationSettings.SchemaVersion -ne 1) {
+    throw "Unsupported generation-settings schema $($generationSettings.SchemaVersion)."
+}
+if ([string]$generationSettings.OutputGrouping -ne 'vanilla_root_family') {
+    throw "Unsupported output grouping '$($generationSettings.OutputGrouping)'."
+}
+$constructionTimeDays = [int]$generationSettings.ConstructionTime.DefaultDays
+if ($constructionTimeDays -lt 1) {
+    throw 'ConstructionTime.DefaultDays must be a positive integer.'
+}
+$constructionTimeToken = [string]$generationSettings.ConstructionTime.LocalConstant
+if ($constructionTimeToken -notmatch '^@[A-Za-z0-9_]+$') {
+    throw "Invalid local construction-time constant '$constructionTimeToken'."
+}
+$costResources = @(
+    Convert-ToArray $generationSettings.Costs.ReplaceDirectNumericResources |
+        ForEach-Object { [string]$_ }
+)
+if ($costResources.Count -eq 0 -or @($costResources | Where-Object { $_ -notmatch '^[A-Za-z0-9_]+$' }).Count -gt 0) {
+    throw 'Costs.ReplaceDirectNumericResources must contain valid database field names.'
+}
+$script:CostResourcePattern = ($costResources | ForEach-Object { [regex]::Escape($_) }) -join '|'
 
 $computedPlanHash = Get-StringSha256 ($plan | ConvertTo-Json -Depth 100 -Compress)
 if ($computedPlanHash -ne $planWrapper.PlanSha256) {
@@ -434,6 +546,9 @@ foreach ($input in Convert-ToArray $manifest.InputFiles) {
 
 $script:SourceBlockCache = @{}
 $script:VanillaConstantDefinitions = @{}
+$script:CustomConstantDefinitions = @{}
+$script:GeneratedCostConstantDefinitions = @{}
+$script:CustomConstantDefinitions[$constructionTimeToken] = [string]$constructionTimeDays
 foreach ($input in Convert-ToArray $manifest.InputFiles) {
     $normalizedInputPath = ([string]$input.Path) -replace '/', '\'
     if ($normalizedInputPath -notmatch '^common\\domiciles\\buildings\\.*\.txt$') { continue }
@@ -456,14 +571,37 @@ $buildingRecordById = @{}
 foreach ($building in $manifest.Buildings) { $buildingRecordById[$building.Id] = $building }
 $buildingLines = @{}
 $originalBuildingText = @{}
-foreach ($buildingId in Convert-ToArray $plan.ObjectInventory.AffectedVanillaBuildingIds) {
-    if (-not $buildingRecordById.ContainsKey($buildingId)) {
-        throw "Plan references unknown building '$buildingId'."
-    }
+foreach ($buildingId in @($buildingRecordById.Keys | Sort-Object)) {
     $record = $buildingRecordById[$buildingId]
     $lines = Get-VanillaObjectLines $record.SourceFile $buildingId
     $buildingLines[$buildingId] = $lines
     $originalBuildingText[$buildingId] = $lines -join "`n"
+}
+$expectedBuildingCount = @(Convert-ToArray $manifest.Buildings).Count
+if ($buildingLines.Count -ne $expectedBuildingCount) {
+    throw "Full building inventory mismatch: expected $expectedBuildingCount, loaded $($buildingLines.Count)."
+}
+
+$familyRootByBuildingId = @{}
+foreach ($buildingId in @($buildingRecordById.Keys | Sort-Object)) {
+    $familyRootByBuildingId[$buildingId] = Get-BuildingFamilyRootId $buildingId $buildingRecordById
+}
+$familyRoots = @($familyRootByBuildingId.Values | Sort-Object -Unique)
+$expectedCoverage = $generationSettings.ExpectedCoverage
+if ($expectedBuildingCount -ne [int]$expectedCoverage.BuildingCount) {
+    throw "Configured building coverage is $($expectedCoverage.BuildingCount), but the manifest contains $expectedBuildingCount."
+}
+foreach ($expectedFamilyProperty in $expectedCoverage.FamiliesByDomicileType.PSObject.Properties) {
+    $domicileType = $expectedFamilyProperty.Name
+    $actualFamilyCount = @(
+        $buildingRecordById.Values |
+            Where-Object { $_.AllowedDomicileTypes -contains $domicileType } |
+            ForEach-Object { $familyRootByBuildingId[$_.Id] } |
+            Sort-Object -Unique
+    ).Count
+    if ($actualFamilyCount -ne [int]$expectedFamilyProperty.Value) {
+        throw "Family coverage mismatch for '$domicileType': expected $($expectedFamilyProperty.Value), got $actualFamilyCount."
+    }
 }
 
 # External capacity is moved to the first main-building level.
@@ -607,6 +745,18 @@ foreach ($branch in Convert-ToArray $plan.ExternalBranchOverrides) {
                 ([string]$branch.RootConstructionPrerequisite)
         }
     }
+}
+
+# Full-mirror scalar normalization. construction_time is an integer database
+# field and therefore uses a file-local @ constant. Direct numeric resource
+# costs are moved to generated global script values; existing vanilla script
+# values remain intact.
+foreach ($buildingId in @($buildingLines.Keys | Sort-Object)) {
+    $buildingLines[$buildingId] = Set-DirectScalar `
+        $buildingLines[$buildingId] `
+        'construction_time' `
+        $constructionTimeToken
+    $buildingLines[$buildingId] = Convert-DirectNumericCostsToScriptValues $buildingLines[$buildingId]
 }
 
 # Build the five domicile-type overrides from vanilla objects and a separate,
@@ -841,6 +991,27 @@ if (
 ) {
     throw 'The elephant-reserve temporary character-state restriction was lost.'
 }
+foreach ($buildingId in @($buildingLines.Keys | Sort-Object)) {
+    $actualConstructionTime = Get-DirectScalarValue $buildingLines[$buildingId] 'construction_time'
+    if ($actualConstructionTime -ne $constructionTimeToken) {
+        throw "Building '$buildingId' was not normalized to $constructionTimeToken."
+    }
+    $generatedPreviousBuilding = Get-DirectScalarValue $buildingLines[$buildingId] 'previous_building'
+    if (
+        -not [string]::IsNullOrWhiteSpace([string]$generatedPreviousBuilding) -and
+        -not $buildingLines.ContainsKey($generatedPreviousBuilding)
+    ) {
+        throw "Generated building '$buildingId' references missing previous building '$generatedPreviousBuilding'."
+    }
+    $buildingCostText = (Get-DirectBlock $buildingLines[$buildingId] 'cost') -join "`n"
+    $remainingNumericCost = [regex]::Match(
+        $buildingCostText,
+        '(?<![A-Za-z0-9_])(' + $script:CostResourcePattern + ')\s*=\s*-?[0-9]+(?:\.[0-9]+)?(?=\s*(?:#|\}|$))'
+    )
+    if ($remainingNumericCost.Success) {
+        throw "Generated building '$buildingId' retains direct numeric cost '$($remainingNumericCost.Value)'."
+    }
+}
 foreach ($fillOverride in Convert-ToArray $plan.InitialFillEffectOverrides) {
     $generatedEffect = @($scriptedEffectObjects | Where-Object { $_.Id -eq $fillOverride.Effect }) | Select-Object -First 1
     if ($null -eq $generatedEffect) { throw "Missing generated fill effect $($fillOverride.Effect)." }
@@ -893,49 +1064,43 @@ foreach ($group in $typeGroups) {
     })
 }
 
-# Write only building objects whose text actually changed.
-$changedBuildingObjects = [Collections.Generic.List[object]]::new()
+# Write every vanilla domicile building. Each output file owns one vanilla
+# root family (main or external anchor) together with all of its descendants.
+$generatedBuildingObjects = [Collections.Generic.List[object]]::new()
 foreach ($buildingId in @($buildingLines.Keys | Sort-Object)) {
-    $newText = $buildingLines[$buildingId] -join "`n"
-    if ($newText -eq $originalBuildingText[$buildingId]) { continue }
     $record = $buildingRecordById[$buildingId]
     $domicileId = @(Convert-ToArray $record.AllowedDomicileTypes) | Select-Object -First 1
-    $targetOverride = $plan.DomicileTypeOverrides |
-        Where-Object { $_.DomicileType -eq $domicileId } |
-        Select-Object -First 1
-    if ($null -eq $targetOverride) { throw "No target type override for building $buildingId." }
-    $targetFile = $plan.TargetFiles.DomicileBuildings |
-        Where-Object { $_ -match ([regex]::Escape($domicileId)) } |
-        Select-Object -First 1
-    if ($null -eq $targetFile) {
-        $targetFile = $plan.ExternalBranchOverrides |
-            Where-Object { $_.DomicileType -eq $domicileId } |
-            Select-Object -First 1 -ExpandProperty TargetOverrideFile
+    if ([string]::IsNullOrWhiteSpace([string]$domicileId)) {
+        throw "Building '$buildingId' has no allowed domicile type."
     }
-    if ($null -eq $targetFile) {
-        # Camp/yurt/Japanese may have no external branch; use the deterministic
-        # target file declared by an internal-slot or condition override.
-        $candidate = @(
-            $plan.InternalSlotOverrides |
-                Where-Object { $_.DomicileType -eq $domicileId } |
-                Select-Object -First 1
-        )
-        if ($candidate.Count -gt 0) { $targetFile = $candidate[0].TargetOverrideFile }
-    }
-    if ($null -eq $targetFile) { throw "Cannot resolve output file for building $buildingId ($domicileId)." }
-    $changedBuildingObjects.Add([pscustomobject]@{
+    $familyRootId = [string]$familyRootByBuildingId[$buildingId]
+    $targetFile = Get-FamilyTargetRelativePath $domicileId $familyRootId
+    $generatedBuildingObjects.Add([pscustomobject]@{
         Id = $buildingId
         SourceFile = $record.SourceFile
         StartLine = [int]$record.StartLine
         Lines = $buildingLines[$buildingId]
         TargetFile = $targetFile
+        DomicileType = $domicileId
+        FamilyRootId = $familyRootId
     })
 }
 
-foreach ($group in ($changedBuildingObjects | Group-Object TargetFile)) {
+if ($generatedBuildingObjects.Count -ne $expectedBuildingCount) {
+    throw "Generated building inventory mismatch: expected $expectedBuildingCount, got $($generatedBuildingObjects.Count)."
+}
+if (@($generatedBuildingObjects | Group-Object Id | Where-Object Count -ne 1).Count -ne 0) {
+    throw 'A domicile building was emitted more than once.'
+}
+
+foreach ($group in ($generatedBuildingObjects | Group-Object TargetFile)) {
     $content = [Collections.Generic.List[string]]::new()
     foreach ($line in $headerLines) { $content.Add($line) }
     $objects = @($group.Group | Sort-Object SourceFile, StartLine, Id)
+    $rootsInFile = @($objects.FamilyRootId | Sort-Object -Unique)
+    if ($rootsInFile.Count -ne 1) {
+        throw "Generated family file '$($group.Name)' contains multiple roots: $($rootsInFile -join ', ')."
+    }
     $constantDefinitions = @(Get-RequiredConstantDefinitionLines $objects)
     foreach ($definition in $constantDefinitions) { $content.Add($definition) }
     if ($constantDefinitions.Count -gt 0) { $content.Add('') }
@@ -949,6 +1114,38 @@ foreach ($group in ($changedBuildingObjects | Group-Object TargetFile)) {
     $generatedFiles.Add([pscustomobject]@{
         Path = $group.Name
         ObjectCount = $objects.Count
+        Sha256 = Get-StringSha256 $text
+    })
+}
+
+# Generate the small set of numeric resource costs that were literal in
+# vanilla. Most domicile costs already reference vanilla global script values.
+$costValueRelativePath = [string]$generationSettings.Costs.GeneratedScriptValuesFile
+$costValueObjects = [Collections.Generic.List[object]]::new()
+foreach ($constantId in @($script:GeneratedCostConstantDefinitions.Keys | Sort-Object)) {
+    $numericValue = $script:GeneratedCostConstantDefinitions[$constantId]
+    $costValueObjects.Add([pscustomobject]@{
+        Id = $constantId
+        Lines = @(
+            "$constantId = {",
+            "`tvalue = $numericValue",
+            '}'
+        )
+    })
+}
+if ($costValueObjects.Count -gt 0) {
+    $content = [Collections.Generic.List[string]]::new()
+    foreach ($line in $headerLines) { $content.Add($line) }
+    for ($index = 0; $index -lt $costValueObjects.Count; $index++) {
+        foreach ($line in $costValueObjects[$index].Lines) { $content.Add($line) }
+        if ($index -lt ($costValueObjects.Count - 1)) { $content.Add('') }
+    }
+    $targetPath = Convert-ToGeneratedPath $costValueRelativePath
+    $text = ($content -join "`r`n") + "`r`n"
+    Write-GeneratedText $targetPath $text $true
+    $generatedFiles.Add([pscustomobject]@{
+        Path = $costValueRelativePath
+        ObjectCount = $costValueObjects.Count
         Sha256 = Get-StringSha256 $text
     })
 }
@@ -984,6 +1181,26 @@ if (Test-Path -LiteralPath $legacyEventPath -PathType Leaf) {
     [IO.File]::Delete($legacyEventPath)
 }
 
+# Remove stale generated aggregate/family building files only after all new
+# family files have been written. Hand-authored files are preserved because
+# deletion requires the generator marker in their header.
+$expectedBuildingPaths = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+foreach ($object in $generatedBuildingObjects) {
+    [void]$expectedBuildingPaths.Add([IO.Path]::GetFullPath((Convert-ToGeneratedPath $object.TargetFile)))
+}
+$buildingOutputDirectory = [IO.Path]::GetFullPath((Join-Path $ModPath 'common\domiciles\buildings'))
+if (-not $buildingOutputDirectory.StartsWith($safeModRoot, [StringComparison]::OrdinalIgnoreCase)) {
+    throw "Unsafe generated-building directory: $buildingOutputDirectory"
+}
+foreach ($candidateFile in Get-ChildItem -LiteralPath $buildingOutputDirectory -Filter 'zzz_RB_UD_*.txt' -File) {
+    $candidatePath = [IO.Path]::GetFullPath($candidateFile.FullName)
+    if ($expectedBuildingPaths.Contains($candidatePath)) { continue }
+    $candidateHeader = (Get-Content -LiteralPath $candidatePath -Encoding UTF8 -TotalCount 6) -join "`n"
+    if ($candidateHeader -notmatch 'GENERATED FILE - DO NOT EDIT BY HAND') { continue }
+    if ($candidateHeader -notmatch 'Generator: tools/Generate-RBUDOverrides.ps1') { continue }
+    [IO.File]::Delete($candidatePath)
+}
+
 # Parse every emitted database/effect file again. This catches broken braces and
 # duplicate objects inside a generated file before the game sees it.
 foreach ($generatedFile in $generatedFiles) {
@@ -1013,22 +1230,44 @@ foreach ($generatedFile in $generatedFiles) {
     }
 }
 
+$familySummary = @(
+    $generatedBuildingObjects |
+        Group-Object DomicileType |
+        Sort-Object Name |
+        ForEach-Object {
+            [ordered]@{
+                DomicileType = $_.Name
+                BuildingCount = $_.Count
+                FamilyCount = @($_.Group.FamilyRootId | Sort-Object -Unique).Count
+            }
+        }
+)
+
 $generationManifest = [ordered]@{
-    SchemaVersion = 1
+    SchemaVersion = 2
     GeneratedAtUtc = [DateTime]::UtcNow.ToString('o')
     GameVersion = $manifest.GameVersion
     PlanSha256 = $planWrapper.PlanSha256
+    SettingsSha256 = Get-FileSha256 $SettingsPath
     VanillaSignatures = $manifest.VanillaSignatures
     InputHashValidation = 'passed'
     LayoutSchemaVersion = $layoutConfig.SchemaVersion
     GeneratedFiles = @($generatedFiles | Sort-Object Path)
     GeneratedDomicileTypeCount = $generatedTypeBlocks.Count
-    GeneratedBuildingObjectCount = $changedBuildingObjects.Count
+    GeneratedBuildingObjectCount = $generatedBuildingObjects.Count
+    GeneratedBuildingFamilyCount = $familyRoots.Count
+    BuildingFamiliesByDomicileType = $familySummary
     GeneratedScriptedEffectObjectCount = $scriptedEffectObjects.Count
+    GeneratedCostScriptValueCount = $costValueObjects.Count
+    ConstructionTimeDays = $constructionTimeDays
+    ConstructionTimeLocalConstant = $constructionTimeToken
     RewrittenSpecialAccessBuildingCount = @($rewrittenAccessBuildings | Sort-Object -Unique).Count
     RemovedCampPurposeCleanupCount = @(Convert-ToArray $plan.ConditionalOverrides.CampPurpose).Count
     Validation = [ordered]@{
         BracesAndObjectCounts = 'passed'
+        ExactVanillaBuildingCoverage = 'passed'
+        OneRootFamilyPerBuildingFile = 'passed'
+        ConstructionTimeNormalization = 'passed'
         PlanSignature = 'passed'
         VanillaInputHashes = 'passed'
         Utf8Bom = 'passed'
@@ -1046,12 +1285,24 @@ $report.Add('# RB_UD generation report')
 $report.Add('')
 $report.Add("- CK3: **$($manifest.GameVersion)**")
 $report.Add("- Plan: ``$($planWrapper.PlanSha256)``")
+$report.Add("- Settings: ``$(Get-FileSha256 $SettingsPath)``")
 $report.Add('- Vanilla input hashes: **passed**')
 $report.Add("- Generated domicile types: **$($generatedTypeBlocks.Count)**")
-$report.Add("- Generated changed building objects: **$($changedBuildingObjects.Count)**")
+$report.Add("- Generated building objects: **$($generatedBuildingObjects.Count) / $expectedBuildingCount**")
+$report.Add("- Generated root-family files: **$($familyRoots.Count)**")
+$report.Add("- Construction time: **$constructionTimeDays days** via local ``$constructionTimeToken``")
+$report.Add("- Generated numeric cost script values: **$($costValueObjects.Count)**")
 $report.Add("- Generated scripted-effect overrides: **$($scriptedEffectObjects.Count)**")
 $report.Add("- Rewritten specialization-access buildings: **$(@($rewrittenAccessBuildings | Sort-Object -Unique).Count)**")
 $report.Add("- Disabled camp-purpose cleanup pairs: **$(@(Convert-ToArray $plan.ConditionalOverrides.CampPurpose).Count)**")
+$report.Add('')
+$report.Add('## Building families')
+$report.Add('')
+$report.Add('| Domicile type | Buildings | Root-family files |')
+$report.Add('|---|---:|---:|')
+foreach ($summary in $familySummary) {
+    $report.Add("| ``$($summary.DomicileType)`` | $($summary.BuildingCount) | $($summary.FamilyCount) |")
+}
 $report.Add('')
 $report.Add('## Files')
 $report.Add('')
@@ -1069,7 +1320,9 @@ Write-GeneratedText $reportPath (($report -join "`r`n") + "`r`n") $true
 
 Write-Output "RB_UD gameplay overrides generated for CK3 $($manifest.GameVersion)."
 Write-Output "Domicile types: $($generatedTypeBlocks.Count)"
-Write-Output "Changed building objects: $($changedBuildingObjects.Count)"
+Write-Output "Building objects: $($generatedBuildingObjects.Count) / $expectedBuildingCount"
+Write-Output "Building root families: $($familyRoots.Count)"
+Write-Output "Construction time: $constructionTimeDays days"
 Write-Output "Special-access rewrites: $(@($rewrittenAccessBuildings | Sort-Object -Unique).Count)"
 Write-Output "Camp cleanup removals disabled: $(@(Convert-ToArray $plan.ConditionalOverrides.CampPurpose).Count)"
 Write-Output "Generation manifest: $generationManifestPath"

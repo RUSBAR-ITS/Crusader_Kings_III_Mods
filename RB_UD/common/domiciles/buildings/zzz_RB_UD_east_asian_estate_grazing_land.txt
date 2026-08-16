@@ -1,0 +1,1762 @@
+﻿############################################################
+# GENERATED FILE - DO NOT EDIT BY HAND
+# Generator: tools/Generate-RBUDOverrides.ps1
+# CK3: 1.19.0.6
+# Plan SHA-256: EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC
+############################################################
+
+@east_asian_manor_build_gold_cost_3 = -0.03
+@east_asian_manor_character_travel_speed_mult = 0.025
+@east_asian_manor_development_growth_factor_1 = 0.015
+@east_asian_manor_development_growth_factor_3 = 0.035
+@east_asian_manor_maa_recruitment_cost_mult_1 = -0.04
+@east_asian_manor_monthly_gold_add_2 = 0.25
+@east_asian_manor_monthly_gold_mult_3 = 0.05
+@east_asian_manor_monthly_influence_add_2 = 0.25
+@east_asian_manor_monthly_merit_1 = 0.15
+@east_asian_manor_monthly_merit_mult_1 = 0.005
+@east_asian_manor_monthly_merit_per_liege_tax_1 = 0.002
+@east_asian_manor_monthly_merit_per_title_maa_value_1 = 0.0005
+@east_asian_manor_monthly_treasury_from_military_budget_mult_1 = 0.01
+@east_asian_manor_trait_track_travel_xp_gain_mult_2 = 0.1
+@east_asian_manor_travel_danger_1 = -2
+@RB_UD_construction_time_days = 10
+
+east_asian_estate_grazing_land_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	internal_slots = 9
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		light_cavalry_damage_mult = 0.02
+		light_cavalry_toughness_mult = 0.01
+		light_cavalry_maintenance_mult = -0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+	
+	province_modifier = {
+		development_growth_factor = @east_asian_manor_development_growth_factor_1
+	}
+
+	parameters = {
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_grazing_land
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 9
+		if = {
+			limit = {
+				scope:owner = {
+					OR = {
+						can_recruit_archer_cavalry_trigger = yes
+						culture ?= {
+							OR = {
+								has_innovation = innovation_elephantry
+								has_innovation = innovation_war_camels
+							}
+						}
+					}
+				}
+			}
+			add = 4
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_finest_horse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+east_asian_estate_grazing_land_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_grazing_land_01
+	internal_slots = 9
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		light_cavalry_damage_mult = 0.02
+		light_cavalry_toughness_mult = 0.01
+		light_cavalry_maintenance_mult = -0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+	
+	province_modifier = {
+		development_growth_factor = @east_asian_manor_development_growth_factor_1
+	}
+
+	parameters = {
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_grazing_land
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 8
+		if = {
+			limit = {
+				scope:owner = {
+					OR = {
+						can_recruit_archer_cavalry_trigger = yes
+						culture ?= {
+							OR = {
+								has_innovation = innovation_elephantry
+								has_innovation = innovation_war_camels
+							}
+						}
+					}
+				}
+			}
+			add = 4
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_finest_horse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+east_asian_estate_grazing_land_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_grazing_land_02
+	internal_slots = 9
+	
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		light_cavalry_damage_mult = 0.02
+		light_cavalry_toughness_mult = 0.01
+		light_cavalry_maintenance_mult = -0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+	
+	province_modifier = {
+		development_growth_factor = @east_asian_manor_development_growth_factor_1
+	}
+
+	parameters = {
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_grazing_land
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 7
+		if = {
+			limit = {
+				scope:owner = {
+					OR = {
+						can_recruit_archer_cavalry_trigger = yes
+						culture ?= {
+							OR = {
+								has_innovation = innovation_elephantry
+								has_innovation = innovation_war_camels
+							}
+						}
+					}
+				}
+			}
+			add = 4
+		}
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_finest_horse.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+east_asian_estate_grazing_land_04 = {
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_grazing_land_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_grazing_land_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		light_cavalry_damage_mult = 0.02
+		light_cavalry_toughness_mult = 0.01
+		light_cavalry_maintenance_mult = -0.05
+		heavy_cavalry_damage_mult = 0.04
+		heavy_cavalry_toughness_mult = 0.02
+		heavy_cavalry_maintenance_mult = -0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+
+	parameters = {
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_grazing_land
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_horse_run.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+east_asian_estate_grazing_land_05 = {
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_grazing_land_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_5_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		light_cavalry_damage_mult = 0.02
+		light_cavalry_toughness_mult = 0.01
+		light_cavalry_maintenance_mult = -0.05
+		heavy_cavalry_damage_mult = 0.04
+		heavy_cavalry_toughness_mult = 0.02
+		heavy_cavalry_maintenance_mult = -0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+
+	parameters = {
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_grazing_land
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_horse_run.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+east_asian_estate_grazing_land_06 = {
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_grazing_land_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_6_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		light_cavalry_damage_mult = 0.02
+		light_cavalry_toughness_mult = 0.01
+		light_cavalry_maintenance_mult = -0.05
+		heavy_cavalry_damage_mult = 0.04
+		heavy_cavalry_toughness_mult = 0.02
+		heavy_cavalry_maintenance_mult = -0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+
+	parameters = {
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_grazing_land
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 4
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_horse_run.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands"
+	}
+}
+
+east_asian_estate_horse_pasture_04 = {
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_grazing_land_01
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_grazing_land_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		archer_cavalry_damage_mult = 0.04
+		archer_cavalry_toughness_mult = 0.02
+		archer_cavalry_maintenance_mult = -0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_horse_pasture
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_life_in_the_saddle.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands_horse"
+	}
+}
+
+east_asian_estate_horse_pasture_05 = {
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_horse_pasture_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_5_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		archer_cavalry_damage_mult = 0.04
+		archer_cavalry_toughness_mult = 0.02
+		archer_cavalry_maintenance_mult = -0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_horse_pasture
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_life_in_the_saddle.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands_horse"
+	}
+}
+
+east_asian_estate_horse_pasture_06 = {
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_horse_pasture_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_6_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		archer_cavalry_damage_mult = 0.04
+		archer_cavalry_toughness_mult = 0.02
+		archer_cavalry_maintenance_mult = -0.1
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_horse_pasture
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_life_in_the_saddle.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands_horse"
+	}
+}
+
+east_asian_estate_camel_pasture_04 = {
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_grazing_land_01
+	
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_grazing_land_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		camel_cavalry_damage_mult = 0.04
+		camel_cavalry_toughness_mult = 0.02
+		camel_cavalry_maintenance_mult = -0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_camel_pasture
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_camel_run.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands_camel"
+	}
+}
+
+east_asian_estate_camel_pasture_05 = {
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_camel_pasture_04
+	
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_5_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		camel_cavalry_damage_mult = 0.04
+		camel_cavalry_toughness_mult = 0.02
+		camel_cavalry_maintenance_mult = -0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_camel_pasture
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_camel_run.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands_camel"
+	}
+}
+
+east_asian_estate_camel_pasture_06 = {
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_camel_pasture_05
+	
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_6_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		camel_cavalry_damage_mult = 0.04
+		camel_cavalry_toughness_mult = 0.02
+		camel_cavalry_maintenance_mult = -0.1
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				scope:owner = {
+					is_alive = yes
+				}
+				years_from_game_start >= 1
+			}
+			scope:owner = {
+				random = {
+					chance = 75
+					add_character_flag = {
+						flag = domicile_new_built_camel_pasture
+						months = 1
+					}
+					trigger_event = {
+						id = ep3_governor_yearly.3001
+						days = 5
+					}
+				}
+			}
+		}
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_camel_run.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands_camel"
+	}
+}
+
+east_asian_estate_elephant_pasture_04 = {
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_grazing_land_01
+	
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_grazing_land_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		elephant_cavalry_damage_mult = 0.06
+		elephant_cavalry_toughness_mult = 0.03
+		elephant_cavalry_maintenance_mult = -0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+	
+	ai_value = {
+		value = 12
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_elephantry_reserves.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands_elephant"
+	}
+}
+
+east_asian_estate_elephant_pasture_05 = {
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_elephant_pasture_04
+	
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_5_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		elephant_cavalry_damage_mult = 0.06
+		elephant_cavalry_toughness_mult = 0.03
+		elephant_cavalry_maintenance_mult = -0.05
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+	
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_elephantry_reserves.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands_elephant"
+	}
+}
+
+east_asian_estate_elephant_pasture_06 = {
+	slot_type = internal
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	previous_building = east_asian_estate_elephant_pasture_05
+	
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_high_cost_tier_6_value
+			if = {
+				limit = { has_character_modifier = raid_insight_grazing_land }
+				multiply = 0.75
+				desc = raid_insight_grazing_land
+			}
+		}
+	}
+
+	character_modifier = {
+		elephant_cavalry_damage_mult = 0.06
+		elephant_cavalry_toughness_mult = 0.03
+		elephant_cavalry_maintenance_mult = -0.1
+		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
+	}
+	
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_elephantry_reserves.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_grazing_lands_elephant"
+	}
+}
+
+east_asian_estate_seasonal_shelters_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_grazing_land_01
+
+	can_construct = {
+		trigger_if = {
+			limit = {
+				this != top_liege
+			}
+			is_governor = yes
+		}
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		monthly_merit_per_liege_tax = @east_asian_manor_monthly_merit_per_liege_tax_1
+	}
+	province_modifier = {
+		development_growth_factor = @east_asian_manor_development_growth_factor_1
+		build_gold_cost = @east_asian_manor_build_gold_cost_3
+	}
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_lcav_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_seasonal_shelters_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_seasonal_shelters_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		monthly_merit_per_liege_tax = @east_asian_manor_monthly_merit_per_liege_tax_1
+	}
+	province_modifier = {
+		development_growth_factor = @east_asian_manor_development_growth_factor_1
+		build_gold_cost = @east_asian_manor_build_gold_cost_3
+	}
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_lcav_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_seasonal_shelters_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_seasonal_shelters_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		monthly_merit_per_liege_tax = @east_asian_manor_monthly_merit_per_liege_tax_1
+	}
+	province_modifier = {
+		development_growth_factor = @east_asian_manor_development_growth_factor_1
+		build_gold_cost = @east_asian_manor_build_gold_cost_3
+	}
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_lcav_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_seasonal_shelters_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_seasonal_shelters_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		monthly_merit_per_liege_tax = @east_asian_manor_monthly_merit_per_liege_tax_1
+	}
+	province_modifier = {
+		development_growth_factor = @east_asian_manor_development_growth_factor_1
+		build_gold_cost = @east_asian_manor_build_gold_cost_3
+	}
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_lcav_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_veterinary_shed_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_grazing_land_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+		}
+	}
+	parameters = {
+		estate_unlock_adopt_puppy_decision = yes
+	}
+	character_modifier = {
+		domicile_monthly_influence_add = @east_asian_manor_monthly_influence_add_2
+	}
+	province_modifier = {
+		epidemic_resistance = 3
+		travel_danger = @east_asian_manor_travel_danger_1
+	}
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_physician_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_veterinary_shed_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_veterinary_shed_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+		}
+	}
+	parameters = {
+		estate_unlock_adopt_puppy_decision = yes
+	}
+	character_modifier = {
+		domicile_monthly_influence_add = @east_asian_manor_monthly_influence_add_2
+	}
+	province_modifier = {
+		epidemic_resistance = 3
+		travel_danger = @east_asian_manor_travel_danger_1
+	}
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_physician_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_veterinary_shed_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_veterinary_shed_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+		}
+	}
+	parameters = {
+		estate_unlock_adopt_puppy_decision = yes
+	}
+	character_modifier = {
+		domicile_monthly_influence_add = @east_asian_manor_monthly_influence_add_2
+	}
+	province_modifier = {
+		epidemic_resistance = 3
+		travel_danger = @east_asian_manor_travel_danger_1
+	}
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_physician_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_veterinary_shed_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_veterinary_shed_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+		}
+	}
+	parameters = {
+		estate_unlock_adopt_puppy_decision = yes
+	}
+	character_modifier = {
+		domicile_monthly_influence_add = @east_asian_manor_monthly_influence_add_2
+	}
+	province_modifier = {
+		epidemic_resistance = 3
+		travel_danger = @east_asian_manor_travel_danger_1
+	}
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_physician_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_watering_ditches_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_grazing_land_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		monthly_merit = @east_asian_manor_monthly_merit_1
+		domicile_monthly_gold_mult = @east_asian_manor_monthly_gold_mult_3
+	}
+	province_modifier = {
+		tax_mult = 0.03
+	}
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_reserve_water.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_watering_ditches_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_watering_ditches_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		monthly_merit = @east_asian_manor_monthly_merit_1
+		domicile_monthly_gold_mult = @east_asian_manor_monthly_gold_mult_3
+	}
+	province_modifier = {
+		tax_mult = 0.03
+	}
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_reserve_water.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_watering_ditches_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_watering_ditches_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		monthly_merit = @east_asian_manor_monthly_merit_1
+		domicile_monthly_gold_mult = @east_asian_manor_monthly_gold_mult_3
+	}
+	province_modifier = {
+		tax_mult = 0.03
+	}
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_reserve_water.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_watering_ditches_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_watering_ditches_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		monthly_merit = @east_asian_manor_monthly_merit_1
+		domicile_monthly_gold_mult = @east_asian_manor_monthly_gold_mult_3
+	}
+	province_modifier = {
+		tax_mult = 0.03
+	}
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_reserve_water.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_salt_lick_terraces_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_grazing_land_01
+
+	can_construct = {
+		trigger_if = {
+			limit = {
+				this != top_liege
+			}
+			custom_tooltip = {
+				text = is_a_military_governor_county_or_above_desc
+				highest_held_title_tier >= tier_county
+				OR = {
+					vassal_contract_has_flag = celestial_military_appointment
+					vassal_contract_has_flag = meritocratic_military_appointment
+				}
+			}
+		}
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_gold_add = @east_asian_manor_monthly_gold_add_2
+		monthly_merit_per_title_maa_value = @east_asian_manor_monthly_merit_per_title_maa_value_1
+		light_cavalry_recruitment_cost_mult = @east_asian_manor_maa_recruitment_cost_mult_1
+	}
+	province_modifier = {
+		stationed_maa_toughness_mult = 0.03
+	}
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_salt_lick_terraces.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_salt_lick_terraces_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_salt_lick_terraces_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_gold_add = @east_asian_manor_monthly_gold_add_2
+		monthly_merit_per_title_maa_value = @east_asian_manor_monthly_merit_per_title_maa_value_1
+		light_cavalry_recruitment_cost_mult = @east_asian_manor_maa_recruitment_cost_mult_1
+	}
+	province_modifier = {
+		stationed_maa_toughness_mult = 0.03
+	}
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_salt_lick_terraces.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_salt_lick_terraces_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_salt_lick_terraces_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_gold_add = @east_asian_manor_monthly_gold_add_2
+		monthly_merit_per_title_maa_value = @east_asian_manor_monthly_merit_per_title_maa_value_1
+		light_cavalry_recruitment_cost_mult = @east_asian_manor_maa_recruitment_cost_mult_1
+	}
+	province_modifier = {
+		stationed_maa_toughness_mult = 0.03
+	}
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_salt_lick_terraces.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_salt_lick_terraces_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_salt_lick_terraces_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		domicile_monthly_gold_add = @east_asian_manor_monthly_gold_add_2
+		monthly_merit_per_title_maa_value = @east_asian_manor_monthly_merit_per_title_maa_value_1
+		light_cavalry_recruitment_cost_mult = @east_asian_manor_maa_recruitment_cost_mult_1
+	}
+	province_modifier = {
+		stationed_maa_toughness_mult = 0.03
+	}
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/east_asian_estate_salt_lick_terraces.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_rotation_paddocks_01 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_grazing_land_01
+
+	can_construct = {
+		trigger_if = {
+			limit = {
+				this != top_liege
+			}
+			is_governor = yes
+		}
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_1_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		trait_track_travel_xp_gain_mult = @east_asian_manor_trait_track_travel_xp_gain_mult_2
+		character_travel_speed_mult = @east_asian_manor_character_travel_speed_mult
+		monthly_merit_mult = @east_asian_manor_monthly_merit_mult_1
+	}
+	province_modifier = {
+		wetlands_construction_gold_cost = @east_asian_manor_build_gold_cost_3
+		wetlands_development_growth_factor = @east_asian_manor_development_growth_factor_3
+		wetlands_tax_mult = 0.04
+		hills_construction_gold_cost = @east_asian_manor_build_gold_cost_3
+		hills_development_growth_factor = @east_asian_manor_development_growth_factor_3
+		hills_tax_mult = 0.04
+	}
+	ai_value = {
+		value = 10
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_herd_capacity_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_rotation_paddocks_02 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_rotation_paddocks_01
+
+	can_construct = {
+		
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_2_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		trait_track_travel_xp_gain_mult = @east_asian_manor_trait_track_travel_xp_gain_mult_2
+		character_travel_speed_mult = @east_asian_manor_character_travel_speed_mult
+		monthly_merit_mult = @east_asian_manor_monthly_merit_mult_1
+	}
+	province_modifier = {
+		wetlands_construction_gold_cost = @east_asian_manor_build_gold_cost_3
+		wetlands_development_growth_factor = @east_asian_manor_development_growth_factor_3
+		wetlands_tax_mult = 0.04
+		hills_construction_gold_cost = @east_asian_manor_build_gold_cost_3
+		hills_development_growth_factor = @east_asian_manor_development_growth_factor_3
+		hills_tax_mult = 0.04
+	}
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_herd_capacity_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_rotation_paddocks_03 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_rotation_paddocks_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_3_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		trait_track_travel_xp_gain_mult = @east_asian_manor_trait_track_travel_xp_gain_mult_2
+		character_travel_speed_mult = @east_asian_manor_character_travel_speed_mult
+		monthly_merit_mult = @east_asian_manor_monthly_merit_mult_1
+	}
+	province_modifier = {
+		wetlands_construction_gold_cost = @east_asian_manor_build_gold_cost_3
+		wetlands_development_growth_factor = @east_asian_manor_development_growth_factor_3
+		wetlands_tax_mult = 0.04
+		hills_construction_gold_cost = @east_asian_manor_build_gold_cost_3
+		hills_development_growth_factor = @east_asian_manor_development_growth_factor_3
+		hills_tax_mult = 0.04
+	}
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_herd_capacity_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
+
+east_asian_estate_rotation_paddocks_04 = {
+	construction_time = @RB_UD_construction_time_days
+	allowed_domicile_types = { east_asian_estate }
+	slot_type = internal
+	previous_building = east_asian_estate_rotation_paddocks_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_internal_building_normal_cost_tier_4_value
+		}
+	}
+	parameters = {
+	}
+	character_modifier = {
+		trait_track_travel_xp_gain_mult = @east_asian_manor_trait_track_travel_xp_gain_mult_2
+		character_travel_speed_mult = @east_asian_manor_character_travel_speed_mult
+		monthly_merit_mult = @east_asian_manor_monthly_merit_mult_1
+	}
+	province_modifier = {
+		wetlands_construction_gold_cost = @east_asian_manor_build_gold_cost_3
+		wetlands_development_growth_factor = @east_asian_manor_development_growth_factor_3
+		wetlands_tax_mult = 0.04
+		hills_construction_gold_cost = @east_asian_manor_build_gold_cost_3
+		hills_development_growth_factor = @east_asian_manor_development_growth_factor_3
+		hills_tax_mult = 0.04
+	}
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_herd_capacity_yurt.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_chinese.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_chinese_mask.png"
+	}
+}
