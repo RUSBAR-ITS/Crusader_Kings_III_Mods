@@ -36,7 +36,7 @@ east_asian_estate_gate_01 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = { has_title = title:h_china }
+				scope:owner ?= { has_title = title:h_china }
 			}
 			set_family_accomplishment_effect = { ACCOMPLISHMENT = family_accomplishment_dynasty }
 		}

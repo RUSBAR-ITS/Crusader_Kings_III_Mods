@@ -27,8 +27,12 @@ DICM_RBE_retraining_court_position_selected = {
 	saved_scopes = { court_position_type }
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_court_position_profile
-		var:DICM_RBE_retraining_court_position = scope:court_position_type
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_court_position_profile }
+		trigger_if = {
+			limit = { has_variable = DICM_RBE_retraining_court_position }
+			var:DICM_RBE_retraining_court_position = scope:court_position_type
+		}
+		trigger_else = { always = no }
 	}
 }
 
@@ -98,7 +102,7 @@ DICM_RBE_retraining_true_sovereign_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_true_sovereign_profile }
 	}
 }
 
@@ -120,7 +124,7 @@ DICM_RBE_retraining_true_sovereign_consort_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_consort_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_true_sovereign_consort_profile }
 	}
 }
 
@@ -142,7 +146,7 @@ DICM_RBE_retraining_ceasar_child_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_ceasar_child_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_ceasar_child_profile }
 	}
 }
 
@@ -164,7 +168,7 @@ DICM_RBE_retraining_minor_ceasar_child_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_minor_ceasar_child_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_minor_ceasar_child_profile }
 	}
 }
 
@@ -173,11 +177,14 @@ DICM_RBE_retraining_minor_ceasar_child_visible = {
 	scope = character
 
 	is_valid = {
-		has_variable = DICM_RBE_retraining_target
-		var:DICM_RBE_retraining_target = {
-			is_alive = yes
-			is_adult = no
+		trigger_if = {
+			limit = { has_variable = DICM_RBE_retraining_target }
+			var:DICM_RBE_retraining_target = {
+				is_alive = yes
+				is_adult = no
+			}
 		}
+		trigger_else = { always = no }
 	}
 }
 
@@ -199,7 +206,7 @@ DICM_RBE_retraining_chancellor_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_chancellor_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_chancellor_profile }
 	}
 }
 
@@ -221,7 +228,7 @@ DICM_RBE_retraining_marshal_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_marshal_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_marshal_profile }
 	}
 }
 
@@ -243,7 +250,7 @@ DICM_RBE_retraining_steward_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_steward_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_steward_profile }
 	}
 }
 
@@ -265,7 +272,7 @@ DICM_RBE_retraining_spymaster_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_spymaster_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_spymaster_profile }
 	}
 }
 
@@ -287,7 +294,7 @@ DICM_RBE_retraining_court_chaplain_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_court_chaplain_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_court_chaplain_profile }
 	}
 }
 
@@ -309,7 +316,7 @@ DICM_RBE_retraining_knight_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_knight_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_knight_profile }
 	}
 }
 
@@ -331,7 +338,7 @@ DICM_RBE_retraining_commander_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_commander_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_commander_profile }
 	}
 }
 
@@ -353,7 +360,7 @@ DICM_RBE_retraining_official_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_official_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_official_profile }
 	}
 }
 
@@ -375,7 +382,7 @@ DICM_RBE_retraining_charioteer_blue_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_blue_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_charioteer_blue_profile }
 	}
 }
 
@@ -397,7 +404,7 @@ DICM_RBE_retraining_charioteer_green_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_green_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_charioteer_green_profile }
 	}
 }
 
@@ -419,7 +426,7 @@ DICM_RBE_retraining_charioteer_white_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_white_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_charioteer_white_profile }
 	}
 }
 
@@ -441,7 +448,7 @@ DICM_RBE_retraining_charioteer_red_selected = {
 	scope = character
 
 	is_valid = {
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_red_profile
+		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_charioteer_red_profile }
 	}
 }
 

@@ -63,12 +63,12 @@ east_asian_estate_grazing_land_01 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -147,12 +147,12 @@ east_asian_estate_grazing_land_02 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -235,12 +235,12 @@ east_asian_estate_grazing_land_03 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -323,12 +323,12 @@ east_asian_estate_grazing_land_04 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -394,12 +394,12 @@ east_asian_estate_grazing_land_05 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -465,12 +465,12 @@ east_asian_estate_grazing_land_06 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -532,12 +532,12 @@ east_asian_estate_horse_pasture_04 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -598,12 +598,12 @@ east_asian_estate_horse_pasture_05 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -664,12 +664,12 @@ east_asian_estate_horse_pasture_06 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -731,12 +731,12 @@ east_asian_estate_camel_pasture_04 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -797,12 +797,12 @@ east_asian_estate_camel_pasture_05 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -863,12 +863,12 @@ east_asian_estate_camel_pasture_06 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {

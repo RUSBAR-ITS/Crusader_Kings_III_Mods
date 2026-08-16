@@ -36,12 +36,12 @@ grazing_land_01 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -159,12 +159,12 @@ grazing_land_02 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -282,12 +282,12 @@ grazing_land_03 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -413,12 +413,12 @@ grazing_land_04 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -527,12 +527,12 @@ grazing_land_05 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -641,12 +641,12 @@ grazing_land_06 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -750,12 +750,12 @@ horse_pasture_04 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -858,12 +858,12 @@ horse_pasture_05 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -966,12 +966,12 @@ horse_pasture_06 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -1075,12 +1075,12 @@ camel_pasture_04 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -1183,12 +1183,12 @@ camel_pasture_05 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -1291,12 +1291,12 @@ camel_pasture_06 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {

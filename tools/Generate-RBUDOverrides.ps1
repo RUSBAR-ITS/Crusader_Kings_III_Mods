@@ -456,6 +456,43 @@ function Get-ConstructionTimeConstantId {
     return $constantId
 }
 
+function Protect-DomicileBuildingLifecycleCallbacks {
+    param([string[]]$Lines)
+
+    $range = Get-DirectBlockRange $Lines 'on_complete'
+    if ($null -eq $range) { return $Lines }
+
+    $result = @($Lines)
+    for ($index = $range.Start; $index -le $range.End; $index++) {
+        $code = Get-CodeLine $result[$index]
+
+        # Several vanilla on_complete blocks assume that the saved owner scope
+        # always exists. That is not guaranteed for every completion context,
+        # so use CK3's null-safe context switch without changing the effect
+        # when an owner is present.
+        if ($code -match 'scope:owner\s*=\s*\{') {
+            $result[$index] = $result[$index] -replace 'scope:owner(\s*)=(\s*)\{', 'scope:owner$1?=$2{'
+            $script:ProtectedLifecycleOwnerSwitchCount++
+        }
+
+        # A mobile domicile can temporarily lack a resolvable county. The yurt
+        # fishing callbacks should then do nothing instead of emitting a failed
+        # context-switch error.
+        if ($code -match 'domicile_location\.county\s*=\s*\{') {
+            $result[$index] = $result[$index] -replace 'domicile_location\.county(\s*)=(\s*)\{', 'domicile_location.county$1?=$2{'
+            $script:ProtectedLifecycleLocationSwitchCount++
+        }
+
+        # The vanilla helper itself performs a hard scope:owner switch. Route
+        # generated Japanese field callbacks through our null-safe equivalent.
+        if ($code -match '^\s*estate_newly_built_grain_field_effect\s*=\s*yes\s*$') {
+            $result[$index] = $result[$index] -replace '\bestate_newly_built_grain_field_effect\b', 'RB_UD_estate_newly_built_grain_field_effect'
+            $script:ProtectedLifecycleIndirectOwnerSwitchCount++
+        }
+    }
+    return $result
+}
+
 function Convert-DirectNumericCostsToScriptValues {
     param([string[]]$Lines)
     $range = Get-DirectBlockRange $Lines 'cost'
@@ -593,6 +630,9 @@ $script:VanillaConstantDefinitions = @{}
 $script:CustomConstantDefinitions = @{}
 $script:GeneratedConstructionTimeDefinitions = @{}
 $script:GeneratedCostConstantDefinitions = @{}
+$script:ProtectedLifecycleOwnerSwitchCount = 0
+$script:ProtectedLifecycleLocationSwitchCount = 0
+$script:ProtectedLifecycleIndirectOwnerSwitchCount = 0
 foreach ($input in Convert-ToArray $manifest.InputFiles) {
     $normalizedInputPath = ([string]$input.Path) -replace '/', '\'
     if ($normalizedInputPath -notmatch '^common\\domiciles\\buildings\\.*\.txt$') { continue }
@@ -758,6 +798,22 @@ foreach ($buildingId in @($buildingLines.Keys | Sort-Object)) {
     $buildingLines[$buildingId] = Convert-DirectNumericCostsToScriptValues $buildingLines[$buildingId]
 }
 
+# Preserve every vanilla completion effect while making optional callback
+# scopes safe in the wider set of track combinations enabled by RB_UD.
+foreach ($buildingId in @($buildingLines.Keys | Sort-Object)) {
+    $buildingLines[$buildingId] = Protect-DomicileBuildingLifecycleCallbacks $buildingLines[$buildingId]
+}
+
+if ($script:ProtectedLifecycleOwnerSwitchCount -ne 147) {
+    throw "Unexpected hard owner-switch inventory in vanilla on_complete blocks: protected $($script:ProtectedLifecycleOwnerSwitchCount), expected 147."
+}
+if ($script:ProtectedLifecycleLocationSwitchCount -ne 22) {
+    throw "Unexpected hard domicile-location inventory in vanilla on_complete blocks: protected $($script:ProtectedLifecycleLocationSwitchCount), expected 22."
+}
+if ($script:ProtectedLifecycleIndirectOwnerSwitchCount -ne 6) {
+    throw "Unexpected indirect owner-switch inventory in vanilla on_complete blocks: protected $($script:ProtectedLifecycleIndirectOwnerSwitchCount), expected 6."
+}
+
 # Build the five domicile-type overrides from vanilla objects and a separate,
 # hand-tunable layout preset. Empty/construction asset blocks are cloned from
 # existing vanilla slots; only slot name, position, and size are changed.
@@ -880,6 +936,36 @@ $scriptedEffectObjects.Add([pscustomobject]@{
     Lines = @(
         "$cleanupEffectId = {",
         "`t# RB_UD: purpose-specific camp buildings are intentionally retained.",
+        '}'
+    )
+    TargetFile = $plan.TargetFiles.ScriptedEffects
+})
+$safeGrainFieldCompletionEffectId = 'RB_UD_estate_newly_built_grain_field_effect'
+$scriptedEffectObjects.Add([pscustomobject]@{
+    Id = $safeGrainFieldCompletionEffectId
+    SourceFile = 'common/scripted_effects/07_dlc_ep3_scripted_effects.txt'
+    StartLine = 13488
+    Lines = @(
+        "$safeGrainFieldCompletionEffectId = {",
+        "`tscope:owner ?= {",
+        "`t`tif = {",
+        "`t`t`tlimit = {",
+        "`t`t`t`tis_alive = yes",
+        "`t`t`t`tyears_from_game_start >= 1",
+        "`t`t`t}",
+        "`t`t`trandom = {",
+        "`t`t`t`tchance = 75",
+        "`t`t`t`tadd_character_flag = {",
+        "`t`t`t`t`tflag = domicile_new_built_grain_field",
+        "`t`t`t`t`tmonths = 1",
+        "`t`t`t`t}",
+        "`t`t`t`ttrigger_event = {",
+        "`t`t`t`t`tid = ep3_governor_yearly.3001",
+        "`t`t`t`t`tdays = 5",
+        "`t`t`t`t}",
+        "`t`t`t}",
+        "`t`t}",
+        "`t}",
         '}'
     )
     TargetFile = $plan.TargetFiles.ScriptedEffects
@@ -1014,6 +1100,17 @@ foreach ($buildingId in @($buildingLines.Keys | Sort-Object)) {
     if ($remainingNumericCost.Success) {
         throw "Generated building '$buildingId' retains direct numeric cost '$($remainingNumericCost.Value)'."
     }
+
+    $completionText = (Get-DirectBlock $buildingLines[$buildingId] 'on_complete') -join "`n"
+    if ($completionText -match 'scope:owner\s*=\s*\{') {
+        throw "Generated building '$buildingId' retains a hard owner switch in on_complete."
+    }
+    if ($completionText -match 'domicile_location\.county\s*=\s*\{') {
+        throw "Generated building '$buildingId' retains a hard domicile-location switch in on_complete."
+    }
+    if ($completionText -match '(?<!RB_UD_)estate_newly_built_grain_field_effect\s*=\s*yes') {
+        throw "Generated building '$buildingId' still calls the unsafe vanilla grain-field completion helper."
+    }
 }
 foreach ($fillOverride in Convert-ToArray $plan.InitialFillEffectOverrides) {
     $generatedEffect = @($scriptedEffectObjects | Where-Object { $_.Id -eq $fillOverride.Effect }) | Select-Object -First 1
@@ -1033,6 +1130,17 @@ foreach ($fillOverride in Convert-ToArray $plan.InitialFillEffectOverrides) {
 $cleanupEffect = @($scriptedEffectObjects | Where-Object { $_.Id -eq $cleanupEffectId }) | Select-Object -First 1
 if ($null -eq $cleanupEffect -or ($cleanupEffect.Lines -join "`n") -match 'trigger_event|remove_domicile_building') {
     throw 'Camp-purpose cleanup scripted effect was not safely disabled.'
+}
+$safeGrainFieldCompletionEffect = @(
+    $scriptedEffectObjects |
+        Where-Object { $_.Id -eq $safeGrainFieldCompletionEffectId }
+) | Select-Object -First 1
+if (
+    $null -eq $safeGrainFieldCompletionEffect -or
+    (($safeGrainFieldCompletionEffect.Lines -join "`n") -notmatch 'scope:owner\s*\?=\s*\{') -or
+    (($safeGrainFieldCompletionEffect.Lines -join "`n") -match 'scope:owner\s*=\s*\{')
+) {
+    throw 'The generated grain-field completion helper is not null-safe.'
 }
 
 $headerLines = @(
@@ -1247,7 +1355,7 @@ $familySummary = @(
 )
 
 $generationManifest = [ordered]@{
-    SchemaVersion = 2
+    SchemaVersion = 3
     GeneratedAtUtc = [DateTime]::UtcNow.ToString('o')
     GameVersion = $manifest.GameVersion
     PlanSha256 = $planWrapper.PlanSha256
@@ -1269,6 +1377,9 @@ $generationManifest = [ordered]@{
     PreservedSpecialAccessBuildingCount = @($preservedAccessBuildings | Sort-Object -Unique).Count
     RewrittenSpecialAccessBuildingCount = 0
     RemovedCampPurposeCleanupCount = @(Convert-ToArray $plan.ConditionalOverrides.CampPurpose).Count
+    ProtectedLifecycleOwnerSwitchCount = $script:ProtectedLifecycleOwnerSwitchCount
+    ProtectedLifecycleLocationSwitchCount = $script:ProtectedLifecycleLocationSwitchCount
+    ProtectedLifecycleIndirectOwnerSwitchCount = $script:ProtectedLifecycleIndirectOwnerSwitchCount
     Validation = [ordered]@{
         BracesAndObjectCounts = 'passed'
         ExactVanillaBuildingCoverage = 'passed'
@@ -1279,6 +1390,7 @@ $generationManifest = [ordered]@{
         Utf8Bom = 'passed'
         LocalConstantDefinitions = 'passed'
         InitialFillLoopCaps = 'passed'
+        NullSafeLifecycleCallbacks = 'passed'
         ManualVisualValidationRequired = $true
     }
 }
@@ -1304,6 +1416,9 @@ $report.Add("- Generated scripted-effect overrides: **$($scriptedEffectObjects.C
 $report.Add("- Preserved vanilla special-access buildings: **$(@($preservedAccessBuildings | Sort-Object -Unique).Count)**")
 $report.Add('- Rewritten specialization-access buildings: **0**')
 $report.Add("- Disabled camp-purpose cleanup pairs: **$(@(Convert-ToArray $plan.ConditionalOverrides.CampPurpose).Count)**")
+$report.Add("- Protected hard owner switches in completion callbacks: **$($script:ProtectedLifecycleOwnerSwitchCount)**")
+$report.Add("- Protected hard domicile-location switches in completion callbacks: **$($script:ProtectedLifecycleLocationSwitchCount)**")
+$report.Add("- Replaced indirect unsafe owner callbacks: **$($script:ProtectedLifecycleIndirectOwnerSwitchCount)**")
 $report.Add('')
 $report.Add('## Building families')
 $report.Add('')
@@ -1335,5 +1450,7 @@ Write-Output "Construction time: vanilla values via $($script:GeneratedConstruct
 Write-Output "Preserved special-access buildings: $(@($preservedAccessBuildings | Sort-Object -Unique).Count)"
 Write-Output 'Special-access rewrites: 0'
 Write-Output "Camp cleanup removals disabled: $(@(Convert-ToArray $plan.ConditionalOverrides.CampPurpose).Count)"
+Write-Output "Lifecycle owner switches protected: $($script:ProtectedLifecycleOwnerSwitchCount) direct, $($script:ProtectedLifecycleIndirectOwnerSwitchCount) indirect"
+Write-Output "Lifecycle location switches protected: $($script:ProtectedLifecycleLocationSwitchCount)"
 Write-Output "Generation manifest: $generationManifestPath"
 Write-Output "Generation report:   $reportPath"

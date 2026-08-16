@@ -54,12 +54,12 @@ grain_field_01 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -188,12 +188,12 @@ grain_field_02 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -317,12 +317,12 @@ grain_field_03 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -446,12 +446,12 @@ grain_field_04 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -575,12 +575,12 @@ grain_field_05 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -704,12 +704,12 @@ grain_field_06 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {

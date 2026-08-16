@@ -5,6 +5,28 @@
 # Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
+RB_UD_estate_newly_built_grain_field_effect = {
+	scope:owner ?= {
+		if = {
+			limit = {
+				is_alive = yes
+				years_from_game_start >= 1
+			}
+			random = {
+				chance = 75
+				add_character_flag = {
+					flag = domicile_new_built_grain_field
+					months = 1
+				}
+				trigger_event = {
+					id = ep3_governor_yearly.3001
+					days = 5
+				}
+			}
+		}
+	}
+}
+
 laamp_clear_inappropriate_buildings_effect = {
 	# RB_UD: purpose-specific camp buildings are intentionally retained.
 }

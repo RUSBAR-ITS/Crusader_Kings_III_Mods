@@ -37,6 +37,15 @@ DICM_RBE_retraining_regular_court_position_trigger = {
 	}
 }
 
+# Safely compares the optional retraining-profile variable with a flag.
+DICM_RBE_retraining_profile_is_trigger = {
+	trigger_if = {
+		limit = { has_variable = DICM_RBE_retraining_profile }
+		var:DICM_RBE_retraining_profile = flag:$PROFILE$
+	}
+	trigger_else = { always = no }
+}
+
 DICM_RBE_retraining_administrative_court_position_trigger = {
 	scope:court_position_type = court_position_type:eparch_court_position
 }
@@ -107,33 +116,38 @@ DICM_RBE_retraining_nomadic_court_position_trigger = {
 
 # Returns true when the current retraining selection can be applied to a living target.
 DICM_RBE_retraining_selection_ready_trigger = {
-	has_variable = DICM_RBE_retraining_target
-	has_variable = DICM_RBE_retraining_profile
-	var:DICM_RBE_retraining_target = { is_alive = yes }
-	OR = {
-		AND = {
-			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_court_position_profile
-			has_variable = DICM_RBE_retraining_court_position
+	trigger_if = {
+		limit = {
+			has_variable = DICM_RBE_retraining_target
+			has_variable = DICM_RBE_retraining_profile
 		}
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_blue_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_green_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_white_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_red_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_chancellor_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_marshal_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_steward_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_spymaster_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_court_chaplain_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_knight_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_commander_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_official_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_consort_profile
-		var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_ceasar_child_profile
-		AND = {
-			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_minor_ceasar_child_profile
-			var:DICM_RBE_retraining_target = { is_adult = no }
+		var:DICM_RBE_retraining_target = { is_alive = yes }
+		OR = {
+			AND = {
+				var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_court_position_profile
+				has_variable = DICM_RBE_retraining_court_position
+			}
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_blue_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_green_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_white_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_charioteer_red_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_chancellor_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_marshal_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_steward_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_spymaster_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_court_chaplain_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_knight_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_commander_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_official_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_consort_profile
+			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_ceasar_child_profile
+			AND = {
+				var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_minor_ceasar_child_profile
+				var:DICM_RBE_retraining_target = { is_adult = no }
+			}
 		}
 	}
+	trigger_else = { always = no }
 }
 

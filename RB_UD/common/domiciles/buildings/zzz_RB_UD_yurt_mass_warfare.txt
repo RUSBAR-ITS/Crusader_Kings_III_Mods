@@ -748,7 +748,7 @@ merc_yurt_04 = {
 	}
 
 	on_complete = {
-		scope:owner = {
+		scope:owner ?= {
 			hidden_effect = {
 				if = {
 					limit = {
@@ -830,7 +830,7 @@ merc_yurt_06 = {
 	}
 
 	on_complete = {
-		scope:owner = {
+		scope:owner ?= {
 			hidden_effect = {
 				if = {
 					limit = {

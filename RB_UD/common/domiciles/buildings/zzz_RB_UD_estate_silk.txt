@@ -41,12 +41,12 @@ silk_01 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -122,12 +122,12 @@ silk_02 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -204,12 +204,12 @@ silk_03 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -287,12 +287,12 @@ silk_04 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -370,12 +370,12 @@ silk_05 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-		scope:owner = {
+		scope:owner ?= {
 			random = {
 				chance = 75
 				add_character_flag = {
@@ -453,12 +453,12 @@ silk_06 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {

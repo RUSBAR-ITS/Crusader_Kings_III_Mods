@@ -35,12 +35,12 @@ garden_01 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -158,12 +158,12 @@ garden_02 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -281,12 +281,12 @@ garden_03 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -411,12 +411,12 @@ garden_leisure_04 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -540,12 +540,12 @@ garden_leisure_05 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-		scope:owner = {
+		scope:owner ?= {
 			random = {
 				chance = 75
 				add_character_flag = {
@@ -669,12 +669,12 @@ garden_leisure_06 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -798,12 +798,12 @@ garden_fruit_04 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -926,12 +926,12 @@ garden_fruit_05 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
@@ -1054,12 +1054,12 @@ garden_fruit_06 = {
 	on_complete = {
 		if = {
 			limit = {
-				scope:owner = {
+				scope:owner ?= {
 					is_alive = yes
 				}
 				years_from_game_start >= 1
 			}
-			scope:owner = {
+			scope:owner ?= {
 				random = {
 					chance = 75
 					add_character_flag = {
