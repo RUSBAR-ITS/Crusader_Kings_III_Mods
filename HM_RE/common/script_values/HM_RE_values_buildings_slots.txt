@@ -589,21 +589,6 @@ HM_RE_value_ai_potential_slots = {
 	}
 }
 
-#HM_RE_value_max_slots_cost = { #scope: province
-#	value = HM_RE_value_player_slot_cost
-#	multiply = HM_RE_value_player_potential_slots
-#	add = {
-#		value = HM_RE_value_player_slot_step_cost
-#		multiply = {
-#			value = HM_RE_value_player_potential_slots
-#			multiply = {
-#				value = HM_RE_value_player_potential_slots
-#				add = 1
-#			}
-#		}
-#		divide = 2
-#	}
-#}
 HM_RE_value_max_slots_cost = { #scope: province
 	value = HM_RE_value_player_slot_cost
 	add = HM_RE_value_player_slot_step_cost
