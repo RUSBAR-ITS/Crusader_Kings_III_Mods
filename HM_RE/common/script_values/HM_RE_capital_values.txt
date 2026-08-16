@@ -1,35 +1,35 @@
-﻿hm_value_move_duchy_capital_cooldown_very_short = 1
-hm_value_move_duchy_capital_cooldown_short = 2
-hm_value_move_duchy_capital_cooldown_default = 3
-hm_value_move_duchy_capital_cooldown_long = 4
-hm_value_move_duchy_capital_cooldown_very_long = 5
+﻿HM_RE_value_move_duchy_capital_cooldown_very_short = 1
+HM_RE_value_move_duchy_capital_cooldown_short = 2
+HM_RE_value_move_duchy_capital_cooldown_default = 3
+HM_RE_value_move_duchy_capital_cooldown_long = 4
+HM_RE_value_move_duchy_capital_cooldown_very_long = 5
 
-hm_value_move_duchy_capital_cooldown = {
+HM_RE_value_move_duchy_capital_cooldown = {
 	if = {
 		limit = {
-			has_game_rule = hm_rule_move_duchy_capital_cooldown_very_short
+			has_game_rule = HM_RE_rule_move_duchy_capital_cooldown_very_short
 		}
-		value = hm_value_move_duchy_capital_cooldown_very_short
+		value = HM_RE_value_move_duchy_capital_cooldown_very_short
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_move_duchy_capital_cooldown_short
+			has_game_rule = HM_RE_rule_move_duchy_capital_cooldown_short
 		}
-		value = hm_value_move_duchy_capital_cooldown_short
+		value = HM_RE_value_move_duchy_capital_cooldown_short
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_move_duchy_capital_cooldown_long
+			has_game_rule = HM_RE_rule_move_duchy_capital_cooldown_long
 		}
-		value = hm_value_move_duchy_capital_cooldown_long
+		value = HM_RE_value_move_duchy_capital_cooldown_long
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_move_duchy_capital_cooldown_very_long
+			has_game_rule = HM_RE_rule_move_duchy_capital_cooldown_very_long
 		}
-		value = hm_value_move_duchy_capital_cooldown_very_long
+		value = HM_RE_value_move_duchy_capital_cooldown_very_long
 	}
 	else = {
-		value = hm_value_move_duchy_capital_cooldown_default
+		value = HM_RE_value_move_duchy_capital_cooldown_default
 	}
 }

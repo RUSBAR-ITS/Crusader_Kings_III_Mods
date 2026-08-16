@@ -1,4 +1,4 @@
-﻿hm_effect_construct_caravanserai = {
+﻿HM_RE_effect_construct_caravanserai = {
 	if = {
 		limit = { HM_RE_can_construct_caravanserai = yes }
 		if = {
@@ -6,13 +6,13 @@
 			add_building = caravanserai_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = caravanserai_01
 		}
 	}
 }
-hm_effect_upgrade_caravanserai = {
+HM_RE_effect_upgrade_caravanserai = {
 	if = {
 		limit = { HM_RE_can_construct_caravanserai_02 = yes }
 		add_building = caravanserai_02
@@ -42,7 +42,7 @@ hm_effect_upgrade_caravanserai = {
 		add_building = caravanserai_08
 	}
 }
-hm_effect_remove_caravanserai = {
+HM_RE_effect_remove_caravanserai = {
 	if = {
 		limit = { has_building = caravanserai_01 }
 		remove_building = caravanserai_01
@@ -77,7 +77,7 @@ hm_effect_remove_caravanserai = {
 	}
 }
 
-hm_effect_construct_watermills = {
+HM_RE_effect_construct_watermills = {
 	if = {
 		limit = { HM_RE_can_construct_watermills = yes }
 		if = {
@@ -85,13 +85,13 @@ hm_effect_construct_watermills = {
 			add_building = watermills_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = watermills_01
 		}
 	}
 }
-hm_effect_upgrade_watermills = {
+HM_RE_effect_upgrade_watermills = {
 	if = {
 		limit = { HM_RE_can_construct_watermills_02 = yes }
 		add_building = watermills_02
@@ -121,7 +121,7 @@ hm_effect_upgrade_watermills = {
 		add_building = watermills_08
 	}
 }
-hm_effect_remove_watermills = {
+HM_RE_effect_remove_watermills = {
 	if = {
 		limit = { has_building = watermills_01 }
 		remove_building = watermills_01
@@ -156,7 +156,7 @@ hm_effect_remove_watermills = {
 	}
 }
 
-hm_effect_construct_windmills = {
+HM_RE_effect_construct_windmills = {
 	if = {
 		limit = { HM_RE_can_construct_windmills = yes }
 		if = {
@@ -164,13 +164,13 @@ hm_effect_construct_windmills = {
 			add_building = windmills_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = windmills_01
 		}
 	}
 }
-hm_effect_upgrade_windmills = {
+HM_RE_effect_upgrade_windmills = {
 	if = {
 		limit = { HM_RE_can_construct_windmills_02 = yes }
 		add_building = windmills_02
@@ -200,7 +200,7 @@ hm_effect_upgrade_windmills = {
 		add_building = windmills_08
 	}
 }
-hm_effect_remove_windmills = {
+HM_RE_effect_remove_windmills = {
 	if = {
 		limit = { has_building = windmills_01 }
 		remove_building = windmills_01
@@ -235,7 +235,7 @@ hm_effect_remove_windmills = {
 	}
 }
 
-hm_effect_construct_common_tradeport = {
+HM_RE_effect_construct_common_tradeport = {
 	if = {
 		limit = { HM_RE_can_construct_common_tradeport = yes }
 		if = {
@@ -243,13 +243,13 @@ hm_effect_construct_common_tradeport = {
 			add_building = common_tradeport_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = common_tradeport_01
 		}
 	}
 }
-hm_effect_upgrade_common_tradeport = {
+HM_RE_effect_upgrade_common_tradeport = {
 	if = {
 		limit = { HM_RE_can_construct_common_tradeport_02 = yes }
 		add_building = common_tradeport_02
@@ -279,7 +279,7 @@ hm_effect_upgrade_common_tradeport = {
 		add_building = common_tradeport_08
 	}
 }
-hm_effect_remove_common_tradeport = {
+HM_RE_effect_remove_common_tradeport = {
 	if = {
 		limit = { has_building = common_tradeport_01 }
 		remove_building = common_tradeport_01
@@ -314,7 +314,7 @@ hm_effect_remove_common_tradeport = {
 	}
 }
 
-hm_effect_construct_pastures = {
+HM_RE_effect_construct_pastures = {
 	if = {
 		limit = { HM_RE_can_construct_pastures = yes }
 		if = {
@@ -322,13 +322,13 @@ hm_effect_construct_pastures = {
 			add_building = pastures_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = pastures_01
 		}
 	}
 }
-hm_effect_upgrade_pastures = {
+HM_RE_effect_upgrade_pastures = {
 	if = {
 		limit = { HM_RE_can_construct_pastures_02 = yes }
 		add_building = pastures_02
@@ -358,7 +358,7 @@ hm_effect_upgrade_pastures = {
 		add_building = pastures_08
 	}
 }
-hm_effect_remove_pastures = {
+HM_RE_effect_remove_pastures = {
 	if = {
 		limit = { has_building = pastures_01 }
 		remove_building = pastures_01
@@ -393,7 +393,7 @@ hm_effect_remove_pastures = {
 	}
 }
 
-hm_effect_construct_hunting_grounds = {
+HM_RE_effect_construct_hunting_grounds = {
 	if = {
 		limit = { HM_RE_can_construct_hunting_grounds = yes }
 		if = {
@@ -401,13 +401,13 @@ hm_effect_construct_hunting_grounds = {
 			add_building = hunting_grounds_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = hunting_grounds_01
 		}
 	}
 }
-hm_effect_upgrade_hunting_grounds = {
+HM_RE_effect_upgrade_hunting_grounds = {
 	if = {
 		limit = { HM_RE_can_construct_hunting_grounds_02 = yes }
 		add_building = hunting_grounds_02
@@ -437,7 +437,7 @@ hm_effect_upgrade_hunting_grounds = {
 		add_building = hunting_grounds_08
 	}
 }
-hm_effect_remove_hunting_grounds = {
+HM_RE_effect_remove_hunting_grounds = {
 	if = {
 		limit = { has_building = hunting_grounds_01 }
 		remove_building = hunting_grounds_01
@@ -472,7 +472,7 @@ hm_effect_remove_hunting_grounds = {
 	}
 }
 
-hm_effect_construct_orchards = {
+HM_RE_effect_construct_orchards = {
 	if = {
 		limit = { HM_RE_can_construct_orchards = yes }
 		if = {
@@ -480,13 +480,13 @@ hm_effect_construct_orchards = {
 			add_building = orchards_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = orchards_01
 		}
 	}
 }
-hm_effect_upgrade_orchards = {
+HM_RE_effect_upgrade_orchards = {
 	if = {
 		limit = { HM_RE_can_construct_orchards_02 = yes }
 		add_building = orchards_02
@@ -516,7 +516,7 @@ hm_effect_upgrade_orchards = {
 		add_building = orchards_08
 	}
 }
-hm_effect_remove_orchards = {
+HM_RE_effect_remove_orchards = {
 	if = {
 		limit = { has_building = orchards_01 }
 		remove_building = orchards_01
@@ -551,7 +551,7 @@ hm_effect_remove_orchards = {
 	}
 }
 
-hm_effect_construct_farm_estates = {
+HM_RE_effect_construct_farm_estates = {
 	if = {
 		limit = { HM_RE_can_construct_farm_estates = yes }
 		if = {
@@ -559,13 +559,13 @@ hm_effect_construct_farm_estates = {
 			add_building = farm_estates_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = farm_estates_01
 		}
 	}
 }
-hm_effect_upgrade_farm_estates = {
+HM_RE_effect_upgrade_farm_estates = {
 	if = {
 		limit = { HM_RE_can_construct_farm_estates_02 = yes }
 		add_building = farm_estates_02
@@ -595,7 +595,7 @@ hm_effect_upgrade_farm_estates = {
 		add_building = farm_estates_08
 	}
 }
-hm_effect_remove_farm_estates = {
+HM_RE_effect_remove_farm_estates = {
 	if = {
 		limit = { has_building = farm_estates_01 }
 		remove_building = farm_estates_01
@@ -630,7 +630,7 @@ hm_effect_remove_farm_estates = {
 	}
 }
 
-hm_effect_construct_cereal_fields = {
+HM_RE_effect_construct_cereal_fields = {
 	if = {
 		limit = { HM_RE_can_construct_cereal_fields = yes }
 		if = {
@@ -638,13 +638,13 @@ hm_effect_construct_cereal_fields = {
 			add_building = cereal_fields_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = cereal_fields_01
 		}
 	}
 }
-hm_effect_upgrade_cereal_fields = {
+HM_RE_effect_upgrade_cereal_fields = {
 	if = {
 		limit = { HM_RE_can_construct_cereal_fields_02 = yes }
 		add_building = cereal_fields_02
@@ -674,7 +674,7 @@ hm_effect_upgrade_cereal_fields = {
 		add_building = cereal_fields_08
 	}
 }
-hm_effect_remove_cereal_fields = {
+HM_RE_effect_remove_cereal_fields = {
 	if = {
 		limit = { has_building = cereal_fields_01 }
 		remove_building = cereal_fields_01
@@ -709,7 +709,7 @@ hm_effect_remove_cereal_fields = {
 	}
 }
 
-hm_effect_construct_logging_camps = {
+HM_RE_effect_construct_logging_camps = {
 	if = {
 		limit = { HM_RE_can_construct_logging_camps = yes }
 		if = {
@@ -717,13 +717,13 @@ hm_effect_construct_logging_camps = {
 			add_building = logging_camps_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = logging_camps_01
 		}
 	}
 }
-hm_effect_upgrade_logging_camps = {
+HM_RE_effect_upgrade_logging_camps = {
 	if = {
 		limit = { HM_RE_can_construct_logging_camps_02 = yes }
 		add_building = logging_camps_02
@@ -753,7 +753,7 @@ hm_effect_upgrade_logging_camps = {
 		add_building = logging_camps_08
 	}
 }
-hm_effect_remove_logging_camps = {
+HM_RE_effect_remove_logging_camps = {
 	if = {
 		limit = { has_building = logging_camps_01 }
 		remove_building = logging_camps_01
@@ -788,7 +788,7 @@ hm_effect_remove_logging_camps = {
 	}
 }
 
-hm_effect_construct_peat_quarries = {
+HM_RE_effect_construct_peat_quarries = {
 	if = {
 		limit = { HM_RE_can_construct_peat_quarries = yes }
 		if = {
@@ -796,13 +796,13 @@ hm_effect_construct_peat_quarries = {
 			add_building = peat_quarries_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = peat_quarries_01
 		}
 	}
 }
-hm_effect_upgrade_peat_quarries = {
+HM_RE_effect_upgrade_peat_quarries = {
 	if = {
 		limit = { HM_RE_can_construct_peat_quarries_02 = yes }
 		add_building = peat_quarries_02
@@ -832,7 +832,7 @@ hm_effect_upgrade_peat_quarries = {
 		add_building = peat_quarries_08
 	}
 }
-hm_effect_remove_peat_quarries = {
+HM_RE_effect_remove_peat_quarries = {
 	if = {
 		limit = { has_building = peat_quarries_01 }
 		remove_building = peat_quarries_01
@@ -867,7 +867,7 @@ hm_effect_remove_peat_quarries = {
 	}
 }
 
-hm_effect_construct_hill_farms = {
+HM_RE_effect_construct_hill_farms = {
 	if = {
 		limit = { HM_RE_can_construct_hill_farms = yes }
 		if = {
@@ -875,13 +875,13 @@ hm_effect_construct_hill_farms = {
 			add_building = hill_farms_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = hill_farms_01
 		}
 	}
 }
-hm_effect_upgrade_hill_farms = {
+HM_RE_effect_upgrade_hill_farms = {
 	if = {
 		limit = { HM_RE_can_construct_hill_farms_02 = yes }
 		add_building = hill_farms_02
@@ -911,7 +911,7 @@ hm_effect_upgrade_hill_farms = {
 		add_building = hill_farms_08
 	}
 }
-hm_effect_remove_hill_farms = {
+HM_RE_effect_remove_hill_farms = {
 	if = {
 		limit = { has_building = hill_farms_01 }
 		remove_building = hill_farms_01
@@ -946,7 +946,7 @@ hm_effect_remove_hill_farms = {
 	}
 }
 
-hm_effect_construct_elephant_pens = {
+HM_RE_effect_construct_elephant_pens = {
 	if = {
 		limit = { HM_RE_can_construct_elephant_pens = yes }
 		if = {
@@ -954,13 +954,13 @@ hm_effect_construct_elephant_pens = {
 			add_building = elephant_pens_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = elephant_pens_01
 		}
 	}
 }
-hm_effect_upgrade_elephant_pens = {
+HM_RE_effect_upgrade_elephant_pens = {
 	if = {
 		limit = { HM_RE_can_construct_elephant_pens_02 = yes }
 		add_building = elephant_pens_02
@@ -990,7 +990,7 @@ hm_effect_upgrade_elephant_pens = {
 		add_building = elephant_pens_08
 	}
 }
-hm_effect_remove_elephant_pens = {
+HM_RE_effect_remove_elephant_pens = {
 	if = {
 		limit = { has_building = elephant_pens_01 }
 		remove_building = elephant_pens_01
@@ -1025,7 +1025,7 @@ hm_effect_remove_elephant_pens = {
 	}
 }
 
-hm_effect_construct_plantations = {
+HM_RE_effect_construct_plantations = {
 	if = {
 		limit = { HM_RE_can_construct_plantations = yes }
 		if = {
@@ -1033,13 +1033,13 @@ hm_effect_construct_plantations = {
 			add_building = plantations_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = plantations_01
 		}
 	}
 }
-hm_effect_upgrade_plantations = {
+HM_RE_effect_upgrade_plantations = {
 	if = {
 		limit = { HM_RE_can_construct_plantations_02 = yes }
 		add_building = plantations_02
@@ -1069,7 +1069,7 @@ hm_effect_upgrade_plantations = {
 		add_building = plantations_08
 	}
 }
-hm_effect_remove_plantations = {
+HM_RE_effect_remove_plantations = {
 	if = {
 		limit = { has_building = plantations_01 }
 		remove_building = plantations_01
@@ -1104,7 +1104,7 @@ hm_effect_remove_plantations = {
 	}
 }
 
-hm_effect_construct_quarries = {
+HM_RE_effect_construct_quarries = {
 	if = {
 		limit = { HM_RE_can_construct_quarries = yes }
 		if = {
@@ -1112,13 +1112,13 @@ hm_effect_construct_quarries = {
 			add_building = quarries_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = quarries_01
 		}
 	}
 }
-hm_effect_upgrade_quarries = {
+HM_RE_effect_upgrade_quarries = {
 	if = {
 		limit = { HM_RE_can_construct_quarries_02 = yes }
 		add_building = quarries_02
@@ -1148,7 +1148,7 @@ hm_effect_upgrade_quarries = {
 		add_building = quarries_08
 	}
 }
-hm_effect_remove_quarries = {
+HM_RE_effect_remove_quarries = {
 	if = {
 		limit = { has_building = quarries_01 }
 		remove_building = quarries_01
@@ -1183,7 +1183,7 @@ hm_effect_remove_quarries = {
 	}
 }
 
-hm_effect_construct_qanats = {
+HM_RE_effect_construct_qanats = {
 	if = {
 		limit = { HM_RE_can_construct_qanats = yes }
 		if = {
@@ -1191,13 +1191,13 @@ hm_effect_construct_qanats = {
 			add_building = qanats_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = qanats_01
 		}
 	}
 }
-hm_effect_upgrade_qanats = {
+HM_RE_effect_upgrade_qanats = {
 	if = {
 		limit = { HM_RE_can_construct_qanats_02 = yes }
 		add_building = qanats_02
@@ -1227,7 +1227,7 @@ hm_effect_upgrade_qanats = {
 		add_building = qanats_08
 	}
 }
-hm_effect_remove_qanats = {
+HM_RE_effect_remove_qanats = {
 	if = {
 		limit = { has_building = qanats_01 }
 		remove_building = qanats_01
@@ -1262,7 +1262,7 @@ hm_effect_remove_qanats = {
 	}
 }
 
-hm_effect_construct_murex_farm = {
+HM_RE_effect_construct_murex_farm = {
 	if = {
 		limit = { HM_RE_can_construct_murex_farm = yes }
 		if = {
@@ -1270,13 +1270,13 @@ hm_effect_construct_murex_farm = {
 			add_building = murex_farm_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = murex_farm_01
 		}
 	}
 }
-hm_effect_upgrade_murex_farm = {
+HM_RE_effect_upgrade_murex_farm = {
 	if = {
 		limit = { HM_RE_can_construct_murex_farm_02 = yes }
 		add_building = murex_farm_02
@@ -1306,7 +1306,7 @@ hm_effect_upgrade_murex_farm = {
 		add_building = murex_farm_08
 	}
 }
-hm_effect_remove_murex_farm = {
+HM_RE_effect_remove_murex_farm = {
 	if = {
 		limit = { has_building = murex_farm_01 }
 		remove_building = murex_farm_01
@@ -1342,7 +1342,7 @@ hm_effect_remove_murex_farm = {
 }
 
 
-hm_effect_construct_paddy_fields = {
+HM_RE_effect_construct_paddy_fields = {
 	if = {
 		limit = { HM_RE_can_construct_paddy_fields = yes }
 		if = {
@@ -1350,13 +1350,13 @@ hm_effect_construct_paddy_fields = {
 			add_building = paddy_fields_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = paddy_fields_01
 		}
 	}
 }
-hm_effect_upgrade_paddy_fields = {
+HM_RE_effect_upgrade_paddy_fields = {
 	if = {
 		limit = { HM_RE_can_construct_paddy_fields_02 = yes }
 		add_building = paddy_fields_02
@@ -1386,7 +1386,7 @@ hm_effect_upgrade_paddy_fields = {
 		add_building = paddy_fields_08
 	}
 }
-hm_effect_remove_paddy_fields = {
+HM_RE_effect_remove_paddy_fields = {
 	if = {
 		limit = { has_building = paddy_fields_01 }
 		remove_building = paddy_fields_01
@@ -1421,7 +1421,7 @@ hm_effect_remove_paddy_fields = {
 	}
 }
 
-hm_effect_construct_waterworks = {
+HM_RE_effect_construct_waterworks = {
 	if = {
 		limit = { HM_RE_can_construct_waterworks = yes }
 		if = {
@@ -1429,13 +1429,13 @@ hm_effect_construct_waterworks = {
 			add_building = waterworks_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = waterworks_01
 		}
 	}
 }
-hm_effect_upgrade_waterworks = {
+HM_RE_effect_upgrade_waterworks = {
 	if = {
 		limit = { HM_RE_can_construct_waterworks_02 = yes }
 		add_building = waterworks_02
@@ -1465,7 +1465,7 @@ hm_effect_upgrade_waterworks = {
 		add_building = waterworks_08
 	}
 }
-hm_effect_remove_waterworks = {
+HM_RE_effect_remove_waterworks = {
 	if = {
 		limit = { has_building = waterworks_01 }
 		remove_building = waterworks_01
@@ -1500,7 +1500,7 @@ hm_effect_remove_waterworks = {
 	}
 }
 
-hm_effect_construct_spice_plantation = {
+HM_RE_effect_construct_spice_plantation = {
 	if = {
 		limit = { HM_RE_can_construct_spice_plantation = yes }
 		if = {
@@ -1508,13 +1508,13 @@ hm_effect_construct_spice_plantation = {
 			add_building = spice_plantation_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = spice_plantation_01
 		}
 	}
 }
-hm_effect_upgrade_spice_plantation = {
+HM_RE_effect_upgrade_spice_plantation = {
 	if = {
 		limit = { HM_RE_can_construct_spice_plantation_02 = yes }
 		add_building = spice_plantation_02
@@ -1544,7 +1544,7 @@ hm_effect_upgrade_spice_plantation = {
 		add_building = spice_plantation_08
 	}
 }
-hm_effect_remove_spice_plantation = {
+HM_RE_effect_remove_spice_plantation = {
 	if = {
 		limit = { has_building = spice_plantation_01 }
 		remove_building = spice_plantation_01

@@ -1,12 +1,12 @@
-﻿hmc_add_slots_decision = { 
+﻿HM_RE_hmc_add_slots_decision = {
 	picture = { 
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_city.dds" 
 	}
 	ai_check_interval = 0
-	desc = hmc_add_slots_decision_desc
+	desc = HM_RE_hmc_add_slots_decision_desc
 
 	widget = {
-		gui = decision_view_widget_hmc_building_special
+		gui = HM_RE_decision_view_widget_building_special
 		controller = create_holy_order
 
 		barony_valid = {
@@ -28,8 +28,8 @@
 	}
 
 	is_shown = {
-		has_game_rule = hm_player_add_slots_decision_on
-		global_var:hm_show_decisions ?= yes
+		has_game_rule = HM_RE_player_add_slots_decision_on
+		global_var:HM_RE_show_decisions ?= yes
 		is_ai = no
 		is_landed = yes
 	}
@@ -47,7 +47,7 @@
 						is_leased_out = no
 					}
 				}
-				add = hm_value_player_add_slots_decision_gold_cost
+				add = HM_RE_value_player_add_slots_decision_gold_cost
 			}
 		}
 	}
@@ -69,9 +69,9 @@
         hidden_effect = {
             send_interface_message = {
                 type = event_generic_good
-                title = hmc_add_slots_decision_msg_t
+                title = HM_RE_hmc_add_slots_decision_msg_t
                 right_icon = root
-                custom_tooltip = hmc_add_slots_decision_msg_tt
+                custom_tooltip = HM_RE_hmc_add_slots_decision_msg_tt
             }
         }
 	}

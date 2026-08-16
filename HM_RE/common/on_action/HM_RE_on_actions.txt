@@ -1,26 +1,26 @@
 ﻿on_game_start = {
 	on_actions = {
-		hm_on_action_game_start
+		HM_RE_on_action_game_start
 	}
 }
 
-hm_on_action_game_start = {
+HM_RE_on_action_game_start = {
 	effect = {
 		if = {
 			limit = {
-				NOT = { exists = global_var:hm_is_loaded }
+				NOT = { exists = global_var:HM_RE_is_loaded }
 			}
 			set_global_variable = {
-				name = hm_is_loaded
+				name = HM_RE_is_loaded
 				value = yes
 			}
 		}
 		if = {
 			limit = {
-				NOT = { exists = global_var:hm_show_decisions }
+				NOT = { exists = global_var:HM_RE_show_decisions }
 			}
 			set_global_variable = {
-				name = hm_show_decisions
+				name = HM_RE_show_decisions
 				value = no
 			}
 		}

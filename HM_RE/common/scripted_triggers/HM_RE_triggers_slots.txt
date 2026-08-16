@@ -1,52 +1,52 @@
-﻿hm_trigger_player_add_slot = { #scope: province
+﻿HM_RE_trigger_player_add_slot = { #scope: province
 	trigger_if = {
 		limit = {
-			has_game_rule = hm_rule_player_extra_slots_enabled
+			has_game_rule = HM_RE_rule_player_extra_slots_enabled
 		}
-		hm_value_max_slots > building_slots
+		HM_RE_value_max_slots > building_slots
 	}
 	trigger_else_if = {
 		limit = {
-			has_game_rule = hm_rule_player_extra_slots_per_holding_level
+			has_game_rule = HM_RE_rule_player_extra_slots_per_holding_level
 		}
-		hm_value_available_slots_for_holding_level > 0
+		HM_RE_value_available_slots_for_holding_level > 0
 	}
 	trigger_else_if = {
 		limit = {
-			has_game_rule = hm_rule_player_extra_slots_per_development_level
+			has_game_rule = HM_RE_rule_player_extra_slots_per_development_level
 		}
-		hm_value_available_slots_for_development_level > 0
+		HM_RE_value_available_slots_for_development_level > 0
 	}
 	trigger_else = {
 		always = no
 	}
 }
 
-hm_trigger_ai_add_slot = { #scope: province
+HM_RE_trigger_ai_add_slot = { #scope: province
 	trigger_if = {
 		limit = {
-			has_game_rule = hm_rule_ai_extra_slots_enabled
+			has_game_rule = HM_RE_rule_ai_extra_slots_enabled
 		}
-		hm_value_max_slots > building_slots
+		HM_RE_value_max_slots > building_slots
 	}
 	trigger_else_if = {
 		limit = {
-			has_game_rule = hm_rule_ai_extra_slots_per_holding_level
+			has_game_rule = HM_RE_rule_ai_extra_slots_per_holding_level
 		}
-		hm_value_available_slots_for_holding_level > 0
+		HM_RE_value_available_slots_for_holding_level > 0
 	}
 	trigger_else_if = {
 		limit = {
-			has_game_rule = hm_rule_ai_extra_slots_per_development_level
+			has_game_rule = HM_RE_rule_ai_extra_slots_per_development_level
 		}
-		hm_value_available_slots_for_development_level > 0
+		HM_RE_value_available_slots_for_development_level > 0
 	}
 	trigger_else = {
 		always = no
 	}
 }
 
-hm_trigger_add_slot = { #scope: province
+HM_RE_trigger_add_slot = { #scope: province
 	trigger_if = {
 		limit = {
 			trigger_if = {
@@ -63,9 +63,9 @@ hm_trigger_add_slot = { #scope: province
 				}
 			}
 		}
-		hm_trigger_player_add_slot = yes
+		HM_RE_trigger_player_add_slot = yes
 	}
 	trigger_else = {
-		hm_trigger_ai_add_slot = yes
+		HM_RE_trigger_ai_add_slot = yes
 	}
 }

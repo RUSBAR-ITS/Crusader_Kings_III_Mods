@@ -1,9 +1,9 @@
-﻿hm_decision_buildings_upgrade = {
+﻿HM_RE_decision_buildings_upgrade = {
 	picture = {
 		reference ="gfx/interface/illustrations/decisions/ep3_decision_city.dds"
 	}
-    desc = hm_decision_buildings_upgrade_desc
-	selection_tooltip = hm_decision_buildings_upgrade_tooltip
+    desc = HM_RE_decision_buildings_upgrade_desc
+	selection_tooltip = HM_RE_decision_buildings_upgrade_tooltip
 
 	cost = {
 		gold = {
@@ -14,7 +14,7 @@
 						is_leased_out = no
 					}
 				}
-				add = hm_value_upgrade_buildings_gold_cost
+				add = HM_RE_value_upgrade_buildings_gold_cost
 			}
 		}
 		prestige = {
@@ -25,13 +25,13 @@
 						is_leased_out = no
 					}
 				}
-				add = hm_value_upgrade_buildings_prestige_cost
+				add = HM_RE_value_upgrade_buildings_prestige_cost
 			}
 		}
 	}
 
 	is_shown = {
-		global_var:hm_show_decisions ?= yes
+		global_var:HM_RE_show_decisions ?= yes
 		is_landed = yes
 		any_directly_owned_province = {
 			count > 0
@@ -49,7 +49,7 @@
 	}
 
 	effect = {
-		custom_tooltip = hm_effect_upgrade_buildings_tooltip
+		custom_tooltip = HM_RE_effect_upgrade_buildings_tooltip
 		hidden_effect = {
 			every_directly_owned_province = {
 				limit = {
@@ -58,7 +58,7 @@
 						is_leased_out = no
 					}
 				}
-				hm_effect_upgrade_buildings = yes
+				HM_RE_effect_upgrade_buildings = yes
 			}
 		}
 	}

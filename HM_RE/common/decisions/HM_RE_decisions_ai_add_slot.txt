@@ -1,4 +1,4 @@
-﻿hm_decision_ai_add_slot = {
+﻿HM_RE_decision_ai_add_slot = {
 	picture = {
 		reference= "gfx/interface/illustrations/decisions/decision_major_religion.dds"
 	}
@@ -7,7 +7,7 @@
 
 	is_shown = {
 		is_ai = yes
-		NOT = { has_game_rule = hm_rule_ai_extra_slots_disabled }
+		NOT = { has_game_rule = HM_RE_rule_ai_extra_slots_disabled }
 		OR = {
             stewardship >= 18
             has_trait = architect
@@ -26,8 +26,8 @@
 			any_directly_owned_province = {
 				has_ongoing_construction = no
 				has_free_building_slot = no
-				hm_trigger_ai_add_slot = yes
-				hm_value_ai_potential_slots > 0
+				HM_RE_trigger_ai_add_slot = yes
+				HM_RE_value_ai_potential_slots > 0
 			}
 		}
 		trigger_else = {
@@ -47,8 +47,8 @@
 					is_leased_out = yes
 					is_under_holy_order_lease = no
 				}
-				hm_trigger_ai_add_slot = yes
-				hm_value_ai_potential_slots > 0
+				HM_RE_trigger_ai_add_slot = yes
+				HM_RE_value_ai_potential_slots > 0
 			}
 		}
 	}
@@ -68,10 +68,10 @@
 				limit = {
 					has_ongoing_construction = no
 					has_free_building_slot = no
-					hm_trigger_ai_add_slot = yes
-					hm_value_ai_potential_slots > 0
+					HM_RE_trigger_ai_add_slot = yes
+					HM_RE_value_ai_potential_slots > 0
 				}
-				save_temporary_scope_as = hm_decision_scope_lotto
+				save_temporary_scope_as = HM_RE_decision_scope_lotto
 			}
 		}
 		else_if = {
@@ -94,31 +94,31 @@
 						is_leased_out = yes
 						is_under_holy_order_lease = no
 					}
-					hm_trigger_ai_add_slot = yes
-					hm_value_ai_potential_slots > 0
+					HM_RE_trigger_ai_add_slot = yes
+					HM_RE_value_ai_potential_slots > 0
 				}
-				save_temporary_scope_as = hm_decision_scope_lotto
+				save_temporary_scope_as = HM_RE_decision_scope_lotto
 			}
 		}
 		
-		scope:hm_decision_scope_lotto ?= {
+		scope:HM_RE_decision_scope_lotto ?= {
 			save_temporary_scope_value_as = {
-				name = hm_decision_scope_add_building_slot_cost_ai
-				value = hm_value_ai_slot_cost
+				name = HM_RE_decision_scope_add_building_slot_cost_ai
+				value = HM_RE_value_ai_slot_cost
 			}
 			save_temporary_scope_value_as = {
-				name = hm_decision_scope_add_building_slot_minimum_gold_ai
-				value = hm_value_ai_slot_minimum_cost
+				name = HM_RE_decision_scope_add_building_slot_minimum_gold_ai
+				value = HM_RE_value_ai_slot_minimum_cost
 			}
 			if = {
 				limit = {
 					root = {
-						long_term_gold >= scope:hm_decision_scope_add_building_slot_minimum_gold_ai
+						long_term_gold >= scope:HM_RE_decision_scope_add_building_slot_minimum_gold_ai
 					}
 				}
 				add_province_modifier = extra_building_slot
 				root = {
-					remove_long_term_gold = scope:hm_decision_scope_add_building_slot_cost_ai
+					remove_long_term_gold = scope:HM_RE_decision_scope_add_building_slot_cost_ai
 				}
 			}
 		}

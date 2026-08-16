@@ -1,71 +1,71 @@
-﻿hm_value_change_holding_type_cost_very_cheap = 125
-hm_value_change_holding_type_cost_cheap = 250
-hm_value_change_holding_type_cost_default = 500
-hm_value_change_holding_type_cost_expensive = 1000
-hm_value_change_holding_type_cost_very_expensive = 2000
+﻿HM_RE_value_change_holding_type_cost_very_cheap = 125
+HM_RE_value_change_holding_type_cost_cheap = 250
+HM_RE_value_change_holding_type_cost_default = 500
+HM_RE_value_change_holding_type_cost_expensive = 1000
+HM_RE_value_change_holding_type_cost_very_expensive = 2000
 
-hm_value_change_holding_type_cooldown_very_short = 1
-hm_value_change_holding_type_cooldown_short = 2
-hm_value_change_holding_type_cooldown_default = 3
-hm_value_change_holding_type_cooldown_long = 4
-hm_value_change_holding_type_cooldown_very_long = 5
+HM_RE_value_change_holding_type_cooldown_very_short = 1
+HM_RE_value_change_holding_type_cooldown_short = 2
+HM_RE_value_change_holding_type_cooldown_default = 3
+HM_RE_value_change_holding_type_cooldown_long = 4
+HM_RE_value_change_holding_type_cooldown_very_long = 5
 
-hm_value_change_holding_type_cost = {
+HM_RE_value_change_holding_type_cost = {
 	if = {
 		limit = {
-			has_game_rule = hm_rule_change_holding_type_cost_very_cheap
+			has_game_rule = HM_RE_rule_change_holding_type_cost_very_cheap
 		}
-		value = hm_value_change_holding_type_cost_very_cheap
+		value = HM_RE_value_change_holding_type_cost_very_cheap
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_change_holding_type_cost_cheap
+			has_game_rule = HM_RE_rule_change_holding_type_cost_cheap
 		}
-		value = hm_value_change_holding_type_cost_cheap
+		value = HM_RE_value_change_holding_type_cost_cheap
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_change_holding_type_cost_expensive
+			has_game_rule = HM_RE_rule_change_holding_type_cost_expensive
 		}
-		value = hm_value_change_holding_type_cost_expensive
+		value = HM_RE_value_change_holding_type_cost_expensive
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_change_holding_type_cost_very_expensive
+			has_game_rule = HM_RE_rule_change_holding_type_cost_very_expensive
 		}
-		value = hm_value_change_holding_type_cost_very_expensive
+		value = HM_RE_value_change_holding_type_cost_very_expensive
 	}
 	else = {
-		value = hm_value_change_holding_type_cost_default
+		value = HM_RE_value_change_holding_type_cost_default
 	}
 }
 
-hm_value_change_holding_type_cooldown = {
+HM_RE_value_change_holding_type_cooldown = {
 	if = {
 		limit = {
-			has_game_rule = hm_rule_change_holding_type_cooldown_very_short
+			has_game_rule = HM_RE_rule_change_holding_type_cooldown_very_short
 		}
-		value = hm_value_change_holding_type_cooldown_very_short
+		value = HM_RE_value_change_holding_type_cooldown_very_short
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_change_holding_type_cooldown_short
+			has_game_rule = HM_RE_rule_change_holding_type_cooldown_short
 		}
-		value = hm_value_change_holding_type_cooldown_short
+		value = HM_RE_value_change_holding_type_cooldown_short
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_change_holding_type_cooldown_long
+			has_game_rule = HM_RE_rule_change_holding_type_cooldown_long
 		}
-		value = hm_value_change_holding_type_cooldown_long
+		value = HM_RE_value_change_holding_type_cooldown_long
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_change_holding_type_cooldown_very_long
+			has_game_rule = HM_RE_rule_change_holding_type_cooldown_very_long
 		}
-		value = hm_value_change_holding_type_cooldown_very_long
+		value = HM_RE_value_change_holding_type_cooldown_very_long
 	}
 	else = {
-		value = hm_value_change_holding_type_cooldown_default
+		value = HM_RE_value_change_holding_type_cooldown_default
 	}
 }

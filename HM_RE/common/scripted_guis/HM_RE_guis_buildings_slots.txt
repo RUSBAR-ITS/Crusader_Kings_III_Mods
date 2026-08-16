@@ -1,14 +1,14 @@
-hm_build_all_button = {
+HM_RE_build_all_button = {
     scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
-		NOT = { has_game_rule = hm_rule_player_extra_slots_disabled }
-		has_game_rule = hm_build_all_button_on
+		NOT = { has_game_rule = HM_RE_rule_player_extra_slots_disabled }
+		has_game_rule = HM_RE_build_all_button_on
 		scope:gui_holding = {
 			NOT = { has_holding_type = nomad_holding }
 			barony = { is_under_holy_order_lease = no }
 			OR = {
-				hm_trigger_player_add_slot = yes
+				HM_RE_trigger_player_add_slot = yes
 				has_free_building_slot = yes
 			}
 		}
@@ -44,17 +44,17 @@ hm_build_all_button = {
 					root = {
 						has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
-				hm_value_max_building_slots_and_construct_buildings_gold_cost <= root.treasury
-				hm_value_construct_buildings_prestige_cost <= root.prestige
+				HM_RE_value_max_building_slots_and_construct_buildings_gold_cost <= root.treasury
+				HM_RE_value_construct_buildings_prestige_cost <= root.prestige
 			}
 			trigger_else = {
 				limit = {
 					always = yes
 				}
-				hm_value_max_building_slots_and_construct_buildings_gold_cost <= root.gold
-				hm_value_construct_buildings_prestige_cost <= root.prestige
+				HM_RE_value_max_building_slots_and_construct_buildings_gold_cost <= root.gold
+				HM_RE_value_construct_buildings_prestige_cost <= root.prestige
 			}
 		}
     }
@@ -66,22 +66,22 @@ hm_build_all_button = {
 					root = {
 						has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_max_building_slots_and_buildings_construction_treasury
-					value = hm_value_max_building_slots_and_construct_buildings_gold_cost
+					name = HM_RE_gui_scope_max_building_slots_and_buildings_construction_treasury
+					value = HM_RE_value_max_building_slots_and_construct_buildings_gold_cost
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_buildings_construction_prestige_cost
+					name = HM_RE_gui_scope_buildings_construction_prestige_cost
 					value = {
-						value = hm_value_construct_buildings_prestige_cost
+						value = HM_RE_value_construct_buildings_prestige_cost
 						multiply = -1
 					}
 				}
 				root = {
-					remove_treasury = scope:hm_gui_scope_max_building_slots_and_buildings_construction_treasury
-					add_prestige = scope:hm_gui_scope_buildings_construction_prestige_cost
+					remove_treasury = scope:HM_RE_gui_scope_max_building_slots_and_buildings_construction_treasury
+					add_prestige = scope:HM_RE_gui_scope_buildings_construction_prestige_cost
 				}
 			}
 			else_if = {
@@ -89,30 +89,30 @@ hm_build_all_button = {
 					always = yes
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_max_building_slots_and_buildings_construction_gold
-					value = hm_value_max_building_slots_and_construct_buildings_gold_cost
+					name = HM_RE_gui_scope_max_building_slots_and_buildings_construction_gold
+					value = HM_RE_value_max_building_slots_and_construct_buildings_gold_cost
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_buildings_construction_prestige_cost
+					name = HM_RE_gui_scope_buildings_construction_prestige_cost
 					value = {
-						value = hm_value_construct_buildings_prestige_cost
+						value = HM_RE_value_construct_buildings_prestige_cost
 						multiply = -1
 					}
 				}
 				root = {
-					remove_long_term_gold = scope:hm_gui_scope_max_building_slots_and_buildings_construction_gold
-					add_prestige = scope:hm_gui_scope_buildings_construction_prestige_cost
+					remove_long_term_gold = scope:HM_RE_gui_scope_max_building_slots_and_buildings_construction_gold
+					add_prestige = scope:HM_RE_gui_scope_buildings_construction_prestige_cost
 				}
 			}
-			custom_tooltip = hm_build_all.tt
+			custom_tooltip = HM_RE_build_all.tt
 			hidden_effect = {
-				hm_effect_construct_buildings = yes
+				HM_RE_effect_construct_buildings = yes
 			}
 		}
     }
 }
 
-hm_upgrade_all_button = {
+HM_RE_upgrade_all_button = {
     scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
@@ -120,7 +120,7 @@ hm_upgrade_all_button = {
 			NOT = { has_holding_type = nomad_holding }
 			barony = { is_under_holy_order_lease = no }
 		}
-		has_game_rule = hm_upgrade_all_button_on
+		has_game_rule = HM_RE_upgrade_all_button_on
 		trigger_if = {
 			limit = {
 				always = yes
@@ -152,17 +152,17 @@ hm_upgrade_all_button = {
 					root = {
 						has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
-				hm_value_upgrade_buildings_gold_cost <= root.treasury
-				hm_value_construct_buildings_prestige_cost <= root.prestige
+				HM_RE_value_upgrade_buildings_gold_cost <= root.treasury
+				HM_RE_value_construct_buildings_prestige_cost <= root.prestige
 			}
 			trigger_else = {
 				limit = {
 					always = yes
 				}
-				hm_value_upgrade_buildings_gold_cost <= root.gold
-				hm_value_upgrade_buildings_prestige_cost <= root.prestige
+				HM_RE_value_upgrade_buildings_gold_cost <= root.gold
+				HM_RE_value_upgrade_buildings_prestige_cost <= root.prestige
 			}
 		}
     }
@@ -174,22 +174,22 @@ hm_upgrade_all_button = {
 					root = {
 						has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_buildings_upgrade_treasury_cost
-					value = hm_value_upgrade_buildings_gold_cost
+					name = HM_RE_gui_scope_buildings_upgrade_treasury_cost
+					value = HM_RE_value_upgrade_buildings_gold_cost
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_buildings_upgrade_prestige_cost
+					name = HM_RE_gui_scope_buildings_upgrade_prestige_cost
 					value = {
-						value = hm_value_upgrade_buildings_prestige_cost
+						value = HM_RE_value_upgrade_buildings_prestige_cost
 						multiply = -1
 					}
 				}
 				root = {
-					remove_treasury = scope:hm_gui_scope_buildings_upgrade_treasury_cost
-					add_prestige = scope:hm_gui_scope_buildings_upgrade_prestige_cost
+					remove_treasury = scope:HM_RE_gui_scope_buildings_upgrade_treasury_cost
+					add_prestige = scope:HM_RE_gui_scope_buildings_upgrade_prestige_cost
 				}
 			}
 			else_if = {
@@ -197,30 +197,30 @@ hm_upgrade_all_button = {
 					always = yes
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_buildings_upgrade_gold_cost
-					value = hm_value_upgrade_buildings_gold_cost
+					name = HM_RE_gui_scope_buildings_upgrade_gold_cost
+					value = HM_RE_value_upgrade_buildings_gold_cost
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_buildings_upgrade_prestige_cost
+					name = HM_RE_gui_scope_buildings_upgrade_prestige_cost
 					value = {
-						value = hm_value_upgrade_buildings_prestige_cost
+						value = HM_RE_value_upgrade_buildings_prestige_cost
 						multiply = -1
 					}
 				}
 				root = {
-					remove_long_term_gold = scope:hm_gui_scope_buildings_upgrade_gold_cost
-					add_prestige = scope:hm_gui_scope_buildings_upgrade_prestige_cost
+					remove_long_term_gold = scope:HM_RE_gui_scope_buildings_upgrade_gold_cost
+					add_prestige = scope:HM_RE_gui_scope_buildings_upgrade_prestige_cost
 				}
 			}			
-			custom_tooltip = hm_upgrade_all.tt
+			custom_tooltip = HM_RE_upgrade_all.tt
 			hidden_effect = {
-				hm_effect_upgrade_buildings = yes
+				HM_RE_effect_upgrade_buildings = yes
 			}
 		}
     }
 }
 
-hm_remove_all_button = {
+HM_RE_remove_all_button = {
     scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
@@ -232,21 +232,21 @@ hm_remove_all_button = {
     }
 	is_valid = {
 		scope:gui_holding = {
-			hm_trigger_remove_buildings = yes
+			HM_RE_trigger_remove_buildings = yes
 			has_ongoing_construction = no
 		}
     }
     effect = {
-		custom_tooltip = hm_remove_all.tt
+		custom_tooltip = HM_RE_remove_all.tt
 		scope:gui_holding = {
 			hidden_effect = {
-				hm_effect_remove_buildings = yes
+				HM_RE_effect_remove_buildings = yes
 			}
 		}
     }
 }
 
-hm_remove_special_buildings_button = {
+HM_RE_remove_special_buildings_button = {
     scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
@@ -264,25 +264,25 @@ hm_remove_special_buildings_button = {
 		}
     }
     effect = {
-		custom_tooltip = hm_remove_special_buildings.tt
+		custom_tooltip = HM_RE_remove_special_buildings.tt
 		scope:gui_holding = {
 			hidden_effect = {
-				hm_effect_remove_special_buildings = yes
+				HM_RE_effect_remove_special_buildings = yes
 			}
 		}
     }
 }
 
-hm_add_slot_button = {
+HM_RE_add_slot_button = {
     scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
-		NOT = { has_game_rule = hm_rule_player_extra_slots_disabled }
+		NOT = { has_game_rule = HM_RE_rule_player_extra_slots_disabled }
 		scope:gui_holding = {
 			barony = { is_under_holy_order_lease = no }
 			NOT = { has_holding_type = nomad_holding }
-			hm_trigger_player_add_slot = yes
-			hm_value_player_potential_slots > 0
+			HM_RE_trigger_player_add_slot = yes
+			HM_RE_value_player_potential_slots > 0
 		}
 		trigger_if = {
 			limit = {
@@ -315,15 +315,15 @@ hm_add_slot_button = {
 					root = {
 						has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
-				hm_value_player_slot_cost <= root.treasury
+				HM_RE_value_player_slot_cost <= root.treasury
 			}
 			trigger_else = {
 				limit = {
 					always = yes
 				}
-				hm_value_player_slot_cost <= root.gold
+				HM_RE_value_player_slot_cost <= root.gold
 			}
 		}
     }
@@ -335,14 +335,14 @@ hm_add_slot_button = {
 					root = {
 						has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_add_building_slot_cost
-					value = hm_value_player_slot_cost
+					name = HM_RE_gui_scope_add_building_slot_cost
+					value = HM_RE_value_player_slot_cost
 				}
 				root = {
-					remove_treasury = scope:hm_gui_scope_add_building_slot_cost
+					remove_treasury = scope:HM_RE_gui_scope_add_building_slot_cost
 				}
 			}
 			else_if = {
@@ -350,11 +350,11 @@ hm_add_slot_button = {
 					always = yes
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_add_building_slot_cost
-					value = hm_value_player_slot_cost
+					name = HM_RE_gui_scope_add_building_slot_cost
+					value = HM_RE_value_player_slot_cost
 				}
 				root = {
-					remove_long_term_gold = scope:hm_gui_scope_add_building_slot_cost
+					remove_long_term_gold = scope:HM_RE_gui_scope_add_building_slot_cost
 				}
 			}
 			add_province_modifier = extra_building_slot

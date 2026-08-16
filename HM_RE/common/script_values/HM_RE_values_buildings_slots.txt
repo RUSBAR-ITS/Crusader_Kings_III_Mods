@@ -1,192 +1,192 @@
-﻿hm_value_slot_cost_very_cheap = 75
-hm_value_slot_cost_cheap = 125
-hm_value_slot_cost_default = 250
-hm_value_slot_cost_expensive = 500
-hm_value_slot_cost_very_expensive = 1000
+﻿HM_RE_value_slot_cost_very_cheap = 75
+HM_RE_value_slot_cost_cheap = 125
+HM_RE_value_slot_cost_default = 250
+HM_RE_value_slot_cost_expensive = 500
+HM_RE_value_slot_cost_very_expensive = 1000
 
-hm_value_player_slot_base_cost = {
+HM_RE_value_player_slot_base_cost = {
 	if = {
 		limit = {
-			has_game_rule = hm_rule_player_slot_base_cost_very_cheap
+			has_game_rule = HM_RE_rule_player_slot_base_cost_very_cheap
 		}
-		value = hm_value_slot_cost_very_cheap
+		value = HM_RE_value_slot_cost_very_cheap
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_player_slot_base_cost_cheap
+			has_game_rule = HM_RE_rule_player_slot_base_cost_cheap
 		}
-		value = hm_value_slot_cost_cheap
+		value = HM_RE_value_slot_cost_cheap
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_player_slot_base_cost_expensive
+			has_game_rule = HM_RE_rule_player_slot_base_cost_expensive
 		}
-		value = hm_value_slot_cost_expensive
+		value = HM_RE_value_slot_cost_expensive
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_player_slot_base_cost_very_expensive
+			has_game_rule = HM_RE_rule_player_slot_base_cost_very_expensive
 		}
-		value = hm_value_slot_cost_very_expensive
+		value = HM_RE_value_slot_cost_very_expensive
 	}
 	else = {
-		value = hm_value_slot_cost_default
+		value = HM_RE_value_slot_cost_default
 	}
 }
 
-hm_value_player_slot_step_cost = {
+HM_RE_value_player_slot_step_cost = {
 	if = {
 		limit = {
-			has_game_rule = hm_rule_player_slot_step_cost_very_cheap
+			has_game_rule = HM_RE_rule_player_slot_step_cost_very_cheap
 		}
-		value = hm_value_slot_cost_very_cheap
+		value = HM_RE_value_slot_cost_very_cheap
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_player_slot_step_cost_cheap
+			has_game_rule = HM_RE_rule_player_slot_step_cost_cheap
 		}
-		value = hm_value_slot_cost_cheap
+		value = HM_RE_value_slot_cost_cheap
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_player_slot_step_cost_expensive
+			has_game_rule = HM_RE_rule_player_slot_step_cost_expensive
 		}
-		value = hm_value_slot_cost_expensive
+		value = HM_RE_value_slot_cost_expensive
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_player_slot_step_cost_very_expensive
+			has_game_rule = HM_RE_rule_player_slot_step_cost_very_expensive
 		}
-		value = hm_value_slot_cost_very_expensive
+		value = HM_RE_value_slot_cost_very_expensive
 	}
 	else = {
-		value = hm_value_slot_cost_default
+		value = HM_RE_value_slot_cost_default
 	}
 }
 
-hm_value_player_slot_cost = {
-	value = hm_value_player_slot_base_cost
+HM_RE_value_player_slot_cost = {
+	value = HM_RE_value_player_slot_base_cost
 	add = {
-		value = hm_value_player_slot_step_cost
+		value = HM_RE_value_player_slot_step_cost
 		multiply = {
 			value = building_slots
-			subtract = hm_value_default_slots
-			subtract = hm_value_event_buildings
+			subtract = HM_RE_value_default_slots
+			subtract = HM_RE_value_event_buildings
 			min = 0
 		}
 	}
 }
 
-hm_value_player_add_slots_decision_gold_cost = {
+HM_RE_value_player_add_slots_decision_gold_cost = {
 	if = {
 		limit = {
-			has_game_rule = hm_player_add_slots_decision_base_cost_very_cheap
+			has_game_rule = HM_RE_player_add_slots_decision_base_cost_very_cheap
 		}
-		value = hm_value_slot_cost_very_cheap
+		value = HM_RE_value_slot_cost_very_cheap
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_player_add_slots_decision_base_cost_cheap
+			has_game_rule = HM_RE_player_add_slots_decision_base_cost_cheap
 		}
-		value = hm_value_slot_cost_cheap
+		value = HM_RE_value_slot_cost_cheap
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_player_add_slots_decision_base_cost_expensive
+			has_game_rule = HM_RE_player_add_slots_decision_base_cost_expensive
 		}
-		value = hm_value_slot_cost_expensive
+		value = HM_RE_value_slot_cost_expensive
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_player_add_slots_decision_base_cost_very_expensive
+			has_game_rule = HM_RE_player_add_slots_decision_base_cost_very_expensive
 		}
-		value = hm_value_slot_cost_very_expensive
+		value = HM_RE_value_slot_cost_very_expensive
 	}
 	else = {
-		value = hm_value_slot_cost_default
+		value = HM_RE_value_slot_cost_default
 	}
 }
 
-hm_value_ai_slot_base_cost = {
+HM_RE_value_ai_slot_base_cost = {
 	if = {
 		limit = {
-			has_game_rule = hm_rule_ai_slot_base_cost_free
+			has_game_rule = HM_RE_rule_ai_slot_base_cost_free
 		}
 		value = 0
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_ai_slot_base_cost_very_cheap
+			has_game_rule = HM_RE_rule_ai_slot_base_cost_very_cheap
 		}
-		value = hm_value_slot_cost_very_cheap
+		value = HM_RE_value_slot_cost_very_cheap
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_ai_slot_base_cost_cheap
+			has_game_rule = HM_RE_rule_ai_slot_base_cost_cheap
 		}
-		value = hm_value_slot_cost_cheap
+		value = HM_RE_value_slot_cost_cheap
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_ai_slot_base_cost_expensive
+			has_game_rule = HM_RE_rule_ai_slot_base_cost_expensive
 		}
-		value = hm_value_slot_cost_expensive
+		value = HM_RE_value_slot_cost_expensive
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_ai_slot_base_cost_very_expensive
+			has_game_rule = HM_RE_rule_ai_slot_base_cost_very_expensive
 		}
-		value = hm_value_slot_cost_very_expensive
+		value = HM_RE_value_slot_cost_very_expensive
 	}
 	else = {
-		value = hm_value_slot_cost_default
+		value = HM_RE_value_slot_cost_default
 	}
 }
 
-hm_value_ai_slot_step_cost = {
+HM_RE_value_ai_slot_step_cost = {
 	if = {
 		limit = {
-			has_game_rule = hm_rule_ai_slot_step_cost_free
+			has_game_rule = HM_RE_rule_ai_slot_step_cost_free
 		}
 		value = 0
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_ai_slot_step_cost_very_cheap
+			has_game_rule = HM_RE_rule_ai_slot_step_cost_very_cheap
 		}
-		value = hm_value_slot_cost_very_cheap
+		value = HM_RE_value_slot_cost_very_cheap
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_ai_slot_step_cost_cheap
+			has_game_rule = HM_RE_rule_ai_slot_step_cost_cheap
 		}
-		value = hm_value_slot_cost_cheap
+		value = HM_RE_value_slot_cost_cheap
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_ai_slot_step_cost_expensive
+			has_game_rule = HM_RE_rule_ai_slot_step_cost_expensive
 		}
-		value = hm_value_slot_cost_expensive
+		value = HM_RE_value_slot_cost_expensive
 	}
 	else_if = {
 		limit = {
-			has_game_rule = hm_rule_ai_slot_step_cost_very_expensive
+			has_game_rule = HM_RE_rule_ai_slot_step_cost_very_expensive
 		}
-		value = hm_value_slot_cost_very_expensive
+		value = HM_RE_value_slot_cost_very_expensive
 	}
 	else = {
-		value = hm_value_slot_cost_default
+		value = HM_RE_value_slot_cost_default
 	}
 }
 
-hm_value_ai_slot_cost = {
-	value = hm_value_ai_slot_base_cost
+HM_RE_value_ai_slot_cost = {
+	value = HM_RE_value_ai_slot_base_cost
 	add = {
-		value = hm_value_ai_slot_step_cost
+		value = HM_RE_value_ai_slot_step_cost
 		multiply = {
 			value = building_slots
-			subtract = hm_value_default_slots
-			subtract = hm_value_event_buildings
+			subtract = HM_RE_value_default_slots
+			subtract = HM_RE_value_event_buildings
 			min = 0
 		}
 	}
@@ -203,14 +203,14 @@ hm_value_ai_slot_cost = {
 	}
 }
 
-hm_value_ai_slot_minimum_cost = {
-	value = hm_value_ai_slot_cost
+HM_RE_value_ai_slot_minimum_cost = {
+	value = HM_RE_value_ai_slot_cost
 	multiply = 2
 }
 
-hm_value_max_slots = 200
+HM_RE_value_max_slots = 200
 
-hm_value_default_slots = {
+HM_RE_value_default_slots = {
 	value = 0
 	if = {
 		limit = { has_holding = yes }
@@ -222,7 +222,7 @@ hm_value_default_slots = {
 	}
 }
 
-hm_value_additional_slots_for_holding_level = {
+HM_RE_value_additional_slots_for_holding_level = {
 	value = 0
 	if = {
 		limit = { building_requirement_castle_city_church = { LEVEL = 02 } }
@@ -238,24 +238,24 @@ hm_value_additional_slots_for_holding_level = {
 	}
 	if = {
 		limit = { building_requirement_castle_city_church = { LEVEL = 04 } }
-		add = hm_value_max_slots
+		add = HM_RE_value_max_slots
 	}
-	max = hm_value_max_slots
+	max = HM_RE_value_max_slots
 }
 
-hm_value_max_slots_for_holding_level = {
-	value = hm_value_default_slots
-	add = hm_value_additional_slots_for_holding_level
-	max = hm_value_max_slots
+HM_RE_value_max_slots_for_holding_level = {
+	value = HM_RE_value_default_slots
+	add = HM_RE_value_additional_slots_for_holding_level
+	max = HM_RE_value_max_slots
 }
 
-hm_value_available_slots_for_holding_level = {
-	value = hm_value_max_slots_for_holding_level
+HM_RE_value_available_slots_for_holding_level = {
+	value = HM_RE_value_max_slots_for_holding_level
 	subtract = building_slots
 	min = 0
 }
 
-hm_value_additional_slots_for_development_level = {
+HM_RE_value_additional_slots_for_development_level = {
 	value = 0
 	if = {
 		limit = { is_county_capital = yes }
@@ -272,24 +272,24 @@ hm_value_additional_slots_for_development_level = {
 		limit = {
 			county.development_level >= 100
 		}
-		add = hm_value_max_slots
+		add = HM_RE_value_max_slots
 	}
-	max = hm_value_max_slots
+	max = HM_RE_value_max_slots
 }
 
-hm_value_max_slots_for_development_level = {
-	value = hm_value_default_slots
-	add = hm_value_additional_slots_for_development_level
-	max = hm_value_max_slots
+HM_RE_value_max_slots_for_development_level = {
+	value = HM_RE_value_default_slots
+	add = HM_RE_value_additional_slots_for_development_level
+	max = HM_RE_value_max_slots
 }
 
-hm_value_available_slots_for_development_level = {
-	value = hm_value_max_slots_for_development_level
+HM_RE_value_available_slots_for_development_level = {
+	value = HM_RE_value_max_slots_for_development_level
 	subtract = building_slots
 	min = 0
 }
 
-hm_value_event_buildings = { #scope: province
+HM_RE_value_event_buildings = { #scope: province
 	value = 0
 	if = {
 		limit = { has_building = special_greenhouse_01 }
@@ -297,7 +297,7 @@ hm_value_event_buildings = { #scope: province
 	}
 }
 
-hm_value_potential_buildings = { #scope: province
+HM_RE_value_potential_buildings = { #scope: province
 	value = 0
 	# tribal buildings
 	if = {
@@ -535,80 +535,80 @@ hm_value_potential_buildings = { #scope: province
 	}
 }
 
-hm_value_potential_slots_for_holding_level = {
-	value = hm_value_potential_buildings
+HM_RE_value_potential_slots_for_holding_level = {
+	value = HM_RE_value_potential_buildings
 	subtract = free_building_slots
 	min = 0
-	max = hm_value_available_slots_for_holding_level
+	max = HM_RE_value_available_slots_for_holding_level
 }
 
-hm_value_potential_slots_for_development_level = {
-	value = hm_value_potential_buildings
+HM_RE_value_potential_slots_for_development_level = {
+	value = HM_RE_value_potential_buildings
 	subtract = free_building_slots
 	min = 0
-	max = hm_value_available_slots_for_development_level
+	max = HM_RE_value_available_slots_for_development_level
 }
 
-hm_value_player_potential_slots = {
+HM_RE_value_player_potential_slots = {
 	if = {
-		limit = { has_game_rule = hm_rule_player_extra_slots_enabled }
-		value = hm_value_potential_buildings
+		limit = { has_game_rule = HM_RE_rule_player_extra_slots_enabled }
+		value = HM_RE_value_potential_buildings
 		subtract = free_building_slots
 		min = 0
 	}
 	else_if = {
-		limit = { has_game_rule = hm_rule_player_extra_slots_per_holding_level }
-		value = hm_value_potential_slots_for_holding_level
+		limit = { has_game_rule = HM_RE_rule_player_extra_slots_per_holding_level }
+		value = HM_RE_value_potential_slots_for_holding_level
 	}
 	else_if = {
-		limit = { has_game_rule = hm_rule_player_extra_slots_per_development_level }
-		value = hm_value_potential_slots_for_development_level
+		limit = { has_game_rule = HM_RE_rule_player_extra_slots_per_development_level }
+		value = HM_RE_value_potential_slots_for_development_level
 	}
 	else = {
 		value = 0
 	}
 }
 
-hm_value_ai_potential_slots = {
+HM_RE_value_ai_potential_slots = {
 	if = {
-		limit = { has_game_rule = hm_rule_ai_extra_slots_enabled }
-		value = hm_value_potential_buildings
+		limit = { has_game_rule = HM_RE_rule_ai_extra_slots_enabled }
+		value = HM_RE_value_potential_buildings
 		subtract = free_building_slots
 		min = 0
 	}
 	else_if = {
-		limit = { has_game_rule = hm_rule_ai_extra_slots_per_holding_level }
-		value = hm_value_potential_slots_for_holding_level
+		limit = { has_game_rule = HM_RE_rule_ai_extra_slots_per_holding_level }
+		value = HM_RE_value_potential_slots_for_holding_level
 	}
 	else_if = {
-		limit = { has_game_rule = hm_rule_ai_extra_slots_per_development_level }
-		value = hm_value_potential_slots_for_development_level
+		limit = { has_game_rule = HM_RE_rule_ai_extra_slots_per_development_level }
+		value = HM_RE_value_potential_slots_for_development_level
 	}
 	else = {
 		value = 0
 	}
 }
 
-#hm_value_max_slots_cost = { #scope: province
-#	value = hm_value_player_slot_cost
-#	multiply = hm_value_player_potential_slots
+#HM_RE_value_max_slots_cost = { #scope: province
+#	value = HM_RE_value_player_slot_cost
+#	multiply = HM_RE_value_player_potential_slots
 #	add = {
-#		value = hm_value_player_slot_step_cost
+#		value = HM_RE_value_player_slot_step_cost
 #		multiply = {
-#			value = hm_value_player_potential_slots
+#			value = HM_RE_value_player_potential_slots
 #			multiply = {
-#				value = hm_value_player_potential_slots
+#				value = HM_RE_value_player_potential_slots
 #				add = 1
 #			}
 #		}
 #		divide = 2
 #	}
 #}
-hm_value_max_slots_cost = { #scope: province
-	value = hm_value_player_slot_cost
-	add = hm_value_player_slot_step_cost
+HM_RE_value_max_slots_cost = { #scope: province
+	value = HM_RE_value_player_slot_cost
+	add = HM_RE_value_player_slot_step_cost
 	multiply = {
-		value = hm_value_player_potential_slots
+		value = HM_RE_value_player_potential_slots
 		min = 1
 		max = 5
 	}

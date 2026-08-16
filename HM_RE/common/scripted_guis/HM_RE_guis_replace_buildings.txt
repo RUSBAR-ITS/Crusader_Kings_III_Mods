@@ -1,4 +1,4 @@
-﻿hm_replace_button = {
+﻿HM_RE_replace_button = {
 	scope = character
 	saved_scopes = { gui_holding }
 
@@ -8,7 +8,7 @@
 			OR = {
 				this = root
 				AND = {
-					has_game_rule = hm_rule_can_replace_buildings_vassals
+					has_game_rule = HM_RE_rule_can_replace_buildings_vassals
 					is_vassal_or_below_of = root
 				}
 			}

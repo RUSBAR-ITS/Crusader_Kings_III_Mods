@@ -1,4 +1,4 @@
-hm_make_castle_button = {
+HM_RE_make_castle_button = {
     scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
@@ -43,17 +43,17 @@ hm_make_castle_button = {
 					root = {
 						has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
-				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
-				hm_value_change_holding_type_cost <= root.treasury
+				NOT = { has_province_modifier = HM_RE_modifier_holding_type_changed_recently }
+				HM_RE_value_change_holding_type_cost <= root.treasury
 			}
 			trigger_else = {
 				limit = {
 					always = yes
 				}
-				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
-				hm_value_change_holding_type_cost <= root.gold
+				NOT = { has_province_modifier = HM_RE_modifier_holding_type_changed_recently }
+				HM_RE_value_change_holding_type_cost <= root.gold
 			}
 		}
     }
@@ -66,14 +66,14 @@ hm_make_castle_button = {
 					root = {
 					has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_change_holding_type_cost
-					value = hm_value_change_holding_type_cost
+					name = HM_RE_gui_scope_change_holding_type_cost
+					value = HM_RE_value_change_holding_type_cost
 				}
 				root = {
-					remove_treasury = scope:hm_gui_scope_change_holding_type_cost
+					remove_treasury = scope:HM_RE_gui_scope_change_holding_type_cost
 				}
 			}
 			else_if = {
@@ -81,11 +81,11 @@ hm_make_castle_button = {
 					always = yes
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_change_holding_type_cost
-					value = hm_value_change_holding_type_cost
+					name = HM_RE_gui_scope_change_holding_type_cost
+					value = HM_RE_value_change_holding_type_cost
 				}
 				root = {
-					remove_long_term_gold = scope:hm_gui_scope_change_holding_type_cost
+					remove_long_term_gold = scope:HM_RE_gui_scope_change_holding_type_cost
 				}
 			}
 			hidden_effect = {
@@ -93,18 +93,18 @@ hm_make_castle_button = {
 					limit = {
 						is_county_capital = no
 					}
-					hm_effect_resolve_holding = yes
+					HM_RE_effect_resolve_holding = yes
 				}
 				add_province_modifier = {
-					modifier = hm_modifier_holding_type_changed_recently
-					years = hm_value_change_holding_type_cooldown
+					modifier = HM_RE_modifier_holding_type_changed_recently
+					years = HM_RE_value_change_holding_type_cooldown
 				}
 			}
 		}
     }
 }
 
-hm_make_temple_button = {
+HM_RE_make_temple_button = {
     scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
@@ -149,17 +149,17 @@ hm_make_temple_button = {
 					root = {
 						has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
-				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
-				hm_value_change_holding_type_cost <= root.treasury
+				NOT = { has_province_modifier = HM_RE_modifier_holding_type_changed_recently }
+				HM_RE_value_change_holding_type_cost <= root.treasury
 			}
 			trigger_else = {
 				limit = {
 					always = yes
 				}
-				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
-				hm_value_change_holding_type_cost <= root.gold
+				NOT = { has_province_modifier = HM_RE_modifier_holding_type_changed_recently }
+				HM_RE_value_change_holding_type_cost <= root.gold
 			}
 		}
     }
@@ -172,14 +172,14 @@ hm_make_temple_button = {
 					root = {
 						has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_change_holding_type_cost
-					value = hm_value_change_holding_type_cost
+					name = HM_RE_gui_scope_change_holding_type_cost
+					value = HM_RE_value_change_holding_type_cost
 				}
 				root = {
-					remove_treasury = scope:hm_gui_scope_change_holding_type_cost
+					remove_treasury = scope:HM_RE_gui_scope_change_holding_type_cost
 				}
 			}
 			else_if = {
@@ -187,11 +187,11 @@ hm_make_temple_button = {
 					always = yes
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_change_holding_type_cost
-					value = hm_value_change_holding_type_cost
+					name = HM_RE_gui_scope_change_holding_type_cost
+					value = HM_RE_value_change_holding_type_cost
 				}
 				root = {
-					remove_long_term_gold = scope:hm_gui_scope_change_holding_type_cost
+					remove_long_term_gold = scope:HM_RE_gui_scope_change_holding_type_cost
 				}
 			}
 			hidden_effect = {
@@ -199,18 +199,18 @@ hm_make_temple_button = {
 					limit = {
 						is_county_capital = no
 					}
-					hm_effect_resolve_holding = yes
+					HM_RE_effect_resolve_holding = yes
 				}
 				add_province_modifier = {
-					modifier = hm_modifier_holding_type_changed_recently
-					years = hm_value_change_holding_type_cooldown
+					modifier = HM_RE_modifier_holding_type_changed_recently
+					years = HM_RE_value_change_holding_type_cooldown
 				}
 			}
 		}
     }
 }
 
-hm_make_city_button = {
+HM_RE_make_city_button = {
     scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
@@ -255,17 +255,17 @@ hm_make_city_button = {
 					root = {
 						has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
-				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
-				hm_value_change_holding_type_cost <= root.treasury
+				NOT = { has_province_modifier = HM_RE_modifier_holding_type_changed_recently }
+				HM_RE_value_change_holding_type_cost <= root.treasury
 			}
 			trigger_else = {
 				limit = {
 					always = yes
 				}
-				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
-				hm_value_change_holding_type_cost <= root.gold
+				NOT = { has_province_modifier = HM_RE_modifier_holding_type_changed_recently }
+				HM_RE_value_change_holding_type_cost <= root.gold
 			}
 		}
     }
@@ -278,14 +278,14 @@ hm_make_city_button = {
 					root = {
 						has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_change_holding_type_cost
-					value = hm_value_change_holding_type_cost
+					name = HM_RE_gui_scope_change_holding_type_cost
+					value = HM_RE_value_change_holding_type_cost
 				}
 				root = {
-					remove_treasury = scope:hm_gui_scope_change_holding_type_cost
+					remove_treasury = scope:HM_RE_gui_scope_change_holding_type_cost
 				}
 			}
 			else_if = {
@@ -293,11 +293,11 @@ hm_make_city_button = {
 					always = yes
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_change_holding_type_cost
-					value = hm_value_change_holding_type_cost
+					name = HM_RE_gui_scope_change_holding_type_cost
+					value = HM_RE_value_change_holding_type_cost
 				}
 				root = {
-					remove_long_term_gold = scope:hm_gui_scope_change_holding_type_cost
+					remove_long_term_gold = scope:HM_RE_gui_scope_change_holding_type_cost
 				}
 			}
 			hidden_effect = {
@@ -305,22 +305,22 @@ hm_make_city_button = {
 					limit = {
 						is_county_capital = no
 					}
-					hm_effect_resolve_holding = yes
+					HM_RE_effect_resolve_holding = yes
 				}
 				add_province_modifier = {
-					modifier = hm_modifier_holding_type_changed_recently
-					years = hm_value_change_holding_type_cooldown
+					modifier = HM_RE_modifier_holding_type_changed_recently
+					years = HM_RE_value_change_holding_type_cooldown
 				}
 			}
 		}
     }
 }
 
-hm_make_nomad_button = {
+HM_RE_make_nomad_button = {
     scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
-		has_game_rule = hm_make_nomad_button_on
+		has_game_rule = HM_RE_make_nomad_button_on
 		scope:gui_holding = {
 			barony = { is_under_holy_order_lease = no }
 			NOR = {
@@ -356,8 +356,8 @@ hm_make_nomad_button = {
 				limit = {
 					always = yes
 				}
-				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
-				hm_value_change_holding_type_cost <= root.gold
+				NOT = { has_province_modifier = HM_RE_modifier_holding_type_changed_recently }
+				HM_RE_value_change_holding_type_cost <= root.gold
 			}
 		}
     }
@@ -369,36 +369,36 @@ hm_make_nomad_button = {
 					limit = {
 						is_county_capital = no
 					}
-					hm_effect_resolve_holding = yes
+					HM_RE_effect_resolve_holding = yes
 				}
 				if = {
 					limit = {
 						always = yes
 					}
 					add_province_modifier = {
-						modifier = hm_modifier_holding_type_changed_recently
-						years = hm_value_change_holding_type_cooldown
+						modifier = HM_RE_modifier_holding_type_changed_recently
+						years = HM_RE_value_change_holding_type_cooldown
 					}
 					save_temporary_scope_value_as = {
-						name = hm_gui_scope_change_holding_type_cost
-						value = hm_value_change_holding_type_cost
+						name = HM_RE_gui_scope_change_holding_type_cost
+						value = HM_RE_value_change_holding_type_cost
 					}
 					root = {
-						remove_long_term_gold = scope:hm_gui_scope_change_holding_type_cost
+						remove_long_term_gold = scope:HM_RE_gui_scope_change_holding_type_cost
 					}
 				}
-				custom_tooltip = hm_remove_all.tt
-				hm_effect_remove_buildings = yes
+				custom_tooltip = HM_RE_remove_all.tt
+				HM_RE_effect_remove_buildings = yes
 			}
 		}
     }
 }
 
-hm_make_temple_citadel_button = {
+HM_RE_make_temple_citadel_button = {
     scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
-		has_game_rule = hm_make_temple_citadel_button_on
+		has_game_rule = HM_RE_make_temple_citadel_button_on
 		scope:gui_holding = {
 			barony = { is_under_holy_order_lease = no }
 			NOR = {
@@ -438,17 +438,17 @@ hm_make_temple_citadel_button = {
 					root = {
 						has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
-				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
-				hm_value_change_holding_type_cost <= root.treasury
+				NOT = { has_province_modifier = HM_RE_modifier_holding_type_changed_recently }
+				HM_RE_value_change_holding_type_cost <= root.treasury
 			}
 			trigger_else = {
 				limit = {
 					always = yes
 				}
-				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
-				hm_value_change_holding_type_cost <= root.gold
+				NOT = { has_province_modifier = HM_RE_modifier_holding_type_changed_recently }
+				HM_RE_value_change_holding_type_cost <= root.gold
 			}
 		}
     }
@@ -461,14 +461,14 @@ hm_make_temple_citadel_button = {
 					root = {
 						has_treasury = yes
 					}
-					has_game_rule = hm_player_cost_treasury
+					has_game_rule = HM_RE_player_cost_treasury
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_change_holding_type_cost
-					value = hm_value_change_holding_type_cost
+					name = HM_RE_gui_scope_change_holding_type_cost
+					value = HM_RE_value_change_holding_type_cost
 				}
 				root = {
-					remove_treasury = scope:hm_gui_scope_change_holding_type_cost
+					remove_treasury = scope:HM_RE_gui_scope_change_holding_type_cost
 				}
 			}
 			else_if = {
@@ -476,11 +476,11 @@ hm_make_temple_citadel_button = {
 					always = yes
 				}
 				save_temporary_scope_value_as = {
-					name = hm_gui_scope_change_holding_type_cost
-					value = hm_value_change_holding_type_cost
+					name = HM_RE_gui_scope_change_holding_type_cost
+					value = HM_RE_value_change_holding_type_cost
 				}
 				root = {
-					remove_long_term_gold = scope:hm_gui_scope_change_holding_type_cost
+					remove_long_term_gold = scope:HM_RE_gui_scope_change_holding_type_cost
 				}
 			}
 			hidden_effect = {
@@ -488,11 +488,11 @@ hm_make_temple_citadel_button = {
 					limit = {
 						is_county_capital = no
 					}
-					hm_effect_resolve_holding = yes
+					HM_RE_effect_resolve_holding = yes
 				}
 				add_province_modifier = {
-					modifier = hm_modifier_holding_type_changed_recently
-					years = hm_value_change_holding_type_cooldown
+					modifier = HM_RE_modifier_holding_type_changed_recently
+					years = HM_RE_value_change_holding_type_cooldown
 				}
 			}
 		}

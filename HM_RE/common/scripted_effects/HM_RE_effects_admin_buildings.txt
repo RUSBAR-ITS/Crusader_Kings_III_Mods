@@ -1,4 +1,4 @@
-﻿hm_effect_construct_capital_bureau = {
+﻿HM_RE_effect_construct_capital_bureau = {
 	if = {
 		limit = { HM_RE_can_construct_capital_bureau = yes }
 		if = {
@@ -6,13 +6,13 @@
 			add_building = capital_bureau_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = capital_bureau_01
 		}
 	}
 }
-hm_effect_upgrade_capital_bureau = {
+HM_RE_effect_upgrade_capital_bureau = {
 	if = {
 		limit = { HM_RE_can_construct_capital_bureau_02 = yes }
 		add_building = capital_bureau_02
@@ -42,7 +42,7 @@ hm_effect_upgrade_capital_bureau = {
 		add_building = capital_bureau_08
 	}
 }
-hm_effect_remove_capital_bureau = {
+HM_RE_effect_remove_capital_bureau = {
 	if = {
 		limit = { has_building = capital_bureau_01 }
 		remove_building = capital_bureau_01

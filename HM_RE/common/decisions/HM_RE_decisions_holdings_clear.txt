@@ -1,21 +1,21 @@
-﻿hm_decision_remove_all = {
+﻿HM_RE_decision_remove_all = {
 	picture = {
 		reference ="gfx/interface/illustrations/decisions/ep3_decision_city.dds"
 	}
 
-    desc = hm_decision_remove_all_desc
+    desc = HM_RE_decision_remove_all_desc
 	
-	selection_tooltip = hm_decision_remove_all_tooltip
+	selection_tooltip = HM_RE_decision_remove_all_tooltip
 
 	is_shown = {
-		global_var:hm_show_decisions ?= yes
+		global_var:HM_RE_show_decisions ?= yes
 		is_landed = yes
 		any_directly_owned_province = {
 			has_ongoing_construction = no
 			barony = {
 				is_leased_out = no
 			}
-			hm_trigger_remove_buildings = yes
+			HM_RE_trigger_remove_buildings = yes
 		}
 	}
 
@@ -25,7 +25,7 @@
 	}
 
 	effect = {
-		custom_tooltip = hm_remove_all_effect_tooltip
+		custom_tooltip = HM_RE_remove_all_effect_tooltip
 		hidden_effect = {
 			every_directly_owned_province = {
 				limit = {
@@ -34,7 +34,7 @@
 						is_leased_out = no
 					}
 				}
-				hm_effect_remove_buildings = yes
+				HM_RE_effect_remove_buildings = yes
 			}
 		}
 	}

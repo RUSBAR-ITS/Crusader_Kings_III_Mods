@@ -1,4 +1,4 @@
-﻿hm_effect_construct_ramparts = {
+﻿HM_RE_effect_construct_ramparts = {
 	if = {
 		limit = { HM_RE_can_construct_ramparts = yes }
 		if = {
@@ -6,13 +6,13 @@
 			add_building = ramparts_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = ramparts_01
 		}
 	}
 }
-hm_effect_upgrade_ramparts = {
+HM_RE_effect_upgrade_ramparts = {
 	if = {
 		limit = { HM_RE_can_construct_ramparts_02 = yes }
 		add_building = ramparts_02
@@ -42,7 +42,7 @@ hm_effect_upgrade_ramparts = {
 		add_building = ramparts_08
 	}
 }
-hm_effect_remove_ramparts = {
+HM_RE_effect_remove_ramparts = {
 	if = {
 		limit = { has_building = ramparts_01 }
 		remove_building = ramparts_01
@@ -77,7 +77,7 @@ hm_effect_remove_ramparts = {
 	}
 }
 
-hm_effect_construct_curtain_walls = {
+HM_RE_effect_construct_curtain_walls = {
 	if = {
 		limit = { HM_RE_can_construct_curtain_walls = yes }
 		if = {
@@ -85,13 +85,13 @@ hm_effect_construct_curtain_walls = {
 			add_building = curtain_walls_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = curtain_walls_01
 		}
 	}
 }
-hm_effect_upgrade_curtain_walls = {
+HM_RE_effect_upgrade_curtain_walls = {
 	if = {
 		limit = { HM_RE_can_construct_curtain_walls_02 = yes }
 		add_building = curtain_walls_02
@@ -121,7 +121,7 @@ hm_effect_upgrade_curtain_walls = {
 		add_building = curtain_walls_08
 	}
 }
-hm_effect_remove_curtain_walls = {
+HM_RE_effect_remove_curtain_walls = {
 	if = {
 		limit = { has_building = curtain_walls_01 }
 		remove_building = curtain_walls_01
@@ -156,7 +156,7 @@ hm_effect_remove_curtain_walls = {
 	}
 }
 
-hm_effect_construct_watchtowers = {
+HM_RE_effect_construct_watchtowers = {
 	if = {
 		limit = { HM_RE_can_construct_watchtowers = yes }
 		if = {
@@ -164,13 +164,13 @@ hm_effect_construct_watchtowers = {
 			add_building = watchtowers_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = watchtowers_01
 		}
 	}
 }
-hm_effect_upgrade_watchtowers = {
+HM_RE_effect_upgrade_watchtowers = {
 	if = {
 		limit = { HM_RE_can_construct_watchtowers_02 = yes }
 		add_building = watchtowers_02
@@ -200,7 +200,7 @@ hm_effect_upgrade_watchtowers = {
 		add_building = watchtowers_08
 	}
 }
-hm_effect_remove_watchtowers = {
+HM_RE_effect_remove_watchtowers = {
 	if = {
 		limit = { has_building = watchtowers_01 }
 		remove_building = watchtowers_01
@@ -235,7 +235,7 @@ hm_effect_remove_watchtowers = {
 	}
 }
 
-hm_effect_construct_hill_forts = {
+HM_RE_effect_construct_hill_forts = {
 	if = {
 		limit = { HM_RE_can_construct_hill_forts = yes }
 		if = {
@@ -243,13 +243,13 @@ hm_effect_construct_hill_forts = {
 			add_building = hill_forts_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = hill_forts_01
 		}
 	}
 }
-hm_effect_upgrade_hill_forts = {
+HM_RE_effect_upgrade_hill_forts = {
 	if = {
 		limit = { HM_RE_can_construct_hill_forts_02 = yes }
 		add_building = hill_forts_02
@@ -279,7 +279,7 @@ hm_effect_upgrade_hill_forts = {
 		add_building = hill_forts_08
 	}
 }
-hm_effect_remove_hill_forts = {
+HM_RE_effect_remove_hill_forts = {
 	if = {
 		limit = { has_building = hill_forts_01 }
 		remove_building = hill_forts_01

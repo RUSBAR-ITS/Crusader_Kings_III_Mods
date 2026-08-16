@@ -1,4 +1,4 @@
-hm_set_county_capital_button = {
+HM_RE_set_county_capital_button = {
 	scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
@@ -16,7 +16,7 @@ hm_set_county_capital_button = {
     }
 }
 
-hm_set_duchy_capital_button = {
+HM_RE_set_duchy_capital_button = {
 	scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
@@ -37,14 +37,14 @@ hm_set_duchy_capital_button = {
 		}
     }
 	effect = {
-		custom_tooltip = hm_set_duchy_capital.tt
+		custom_tooltip = HM_RE_set_duchy_capital.tt
 		if = {
 			limit = {
 				always = yes
 			}
 			if = {
 				limit = {
-					has_game_rule = hm_rule_move_duchy_capital_cooldown_lifetime
+					has_game_rule = HM_RE_rule_move_duchy_capital_cooldown_lifetime
 				}
 				add_character_flag = {
 					flag = duchy_capital_moved
@@ -53,13 +53,13 @@ hm_set_duchy_capital_button = {
 			else = {
 				add_character_flag = {
 					flag = duchy_capital_moved
-					years = hm_value_move_duchy_capital_cooldown
+					years = HM_RE_value_move_duchy_capital_cooldown
 				}
 			}
 		}
 		hidden_effect = {
 			scope:gui_holding.duchy = {
-				save_scope_as = hm_gui_scope_old_title
+				save_scope_as = HM_RE_gui_scope_old_title
 			}
 
 			create_dynamic_title = {
@@ -83,13 +83,13 @@ hm_set_duchy_capital_button = {
 		
 			resolve_title_and_vassal_change = scope:change
 
-			scope:hm_gui_scope_old_title = {
+			scope:HM_RE_gui_scope_old_title = {
 				set_capital_county = scope:gui_holding.county
 				every_in_de_jure_hierarchy = {
 					limit = {
 						tier = tier_county
 						NOT = { title_capital_county = de_jure_liege.title_capital_county }
-						#NOT = { this = scope:hm_gui_scope_old_title.title_capital_county }
+						#NOT = { this = scope:HM_RE_gui_scope_old_title.title_capital_county }
 					}
 					add_to_list = moved_counties
 				}
@@ -102,7 +102,7 @@ hm_set_duchy_capital_button = {
 
 			every_in_list = {
 				list = moved_counties
-				set_de_jure_liege_title = scope:hm_gui_scope_old_title
+				set_de_jure_liege_title = scope:HM_RE_gui_scope_old_title
 			}
 
 			destroy_title = scope:new_title

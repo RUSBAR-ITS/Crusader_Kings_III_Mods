@@ -1,4 +1,4 @@
-﻿hm_effect_upgrade_temple = {
+﻿HM_RE_effect_upgrade_temple = {
 	if = {
 		limit = { HM_RE_can_construct_temple_02 = yes }
 		add_building = temple_02
@@ -13,7 +13,7 @@
 	}
 }
 
-hm_effect_construct_scriptorium = {
+HM_RE_effect_construct_scriptorium = {
 	if = {
 		limit = { HM_RE_can_construct_scriptorium = yes }
 		if = {
@@ -21,13 +21,13 @@ hm_effect_construct_scriptorium = {
 			add_building = scriptorium_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = scriptorium_01
 		}
 	}
 }
-hm_effect_upgrade_scriptorium = {
+HM_RE_effect_upgrade_scriptorium = {
 	if = {
 		limit = { HM_RE_can_construct_scriptorium_02 = yes }
 		add_building = scriptorium_02
@@ -57,7 +57,7 @@ hm_effect_upgrade_scriptorium = {
 		add_building = scriptorium_08
 	}
 }
-hm_effect_remove_scriptorium = {
+HM_RE_effect_remove_scriptorium = {
 	if = {
 		limit = { has_building = scriptorium_01 }
 		remove_building = scriptorium_01
@@ -92,7 +92,7 @@ hm_effect_remove_scriptorium = {
 	}
 }
 
-hm_effect_construct_monastic_schools = {
+HM_RE_effect_construct_monastic_schools = {
 	if = {
 		limit = { HM_RE_can_construct_monastic_schools = yes }
 		if = {
@@ -100,13 +100,13 @@ hm_effect_construct_monastic_schools = {
 			add_building = monastic_schools_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = monastic_schools_01
 		}
 	}
 }
-hm_effect_upgrade_monastic_schools = {
+HM_RE_effect_upgrade_monastic_schools = {
 	if = {
 		limit = { HM_RE_can_construct_monastic_schools_02 = yes }
 		add_building = monastic_schools_02
@@ -136,7 +136,7 @@ hm_effect_upgrade_monastic_schools = {
 		add_building = monastic_schools_08
 	}
 }
-hm_effect_remove_monastic_schools = {
+HM_RE_effect_remove_monastic_schools = {
 	if = {
 		limit = { has_building = monastic_schools_01 }
 		remove_building = monastic_schools_01
@@ -171,7 +171,7 @@ hm_effect_remove_monastic_schools = {
 	}
 }
 
-hm_effect_construct_megalith = {
+HM_RE_effect_construct_megalith = {
 	if = {
 		limit = { HM_RE_can_construct_megalith = yes }
 		if = {
@@ -179,13 +179,13 @@ hm_effect_construct_megalith = {
 			add_building = megalith_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = megalith_01
 		}
 	}
 }
-hm_effect_upgrade_megalith = {
+HM_RE_effect_upgrade_megalith = {
 	if = {
 		limit = { HM_RE_can_construct_megalith_02 = yes }
 		add_building = megalith_02
@@ -215,7 +215,7 @@ hm_effect_upgrade_megalith = {
 		add_building = megalith_08
 	}
 }
-hm_effect_remove_megalith = {
+HM_RE_effect_remove_megalith = {
 	if = {
 		limit = { has_building = megalith_01 }
 		remove_building = megalith_01
@@ -250,7 +250,7 @@ hm_effect_remove_megalith = {
 	}
 }
 
-hm_effect_construct_breweries = {
+HM_RE_effect_construct_breweries = {
 	if = {
 		limit = { HM_RE_can_construct_breweries = yes }
 		if = {
@@ -258,13 +258,13 @@ hm_effect_construct_breweries = {
 			add_building = breweries_01
 		}
 		else_if = {
-			limit = { hm_trigger_add_slot = yes }
+			limit = { HM_RE_trigger_add_slot = yes }
 			add_province_modifier = extra_building_slot
 			add_building = breweries_01
 		}
 	}
 }
-hm_effect_upgrade_breweries = {
+HM_RE_effect_upgrade_breweries = {
 	if = {
 		limit = { HM_RE_can_construct_breweries_02 = yes }
 		add_building = breweries_02
@@ -294,7 +294,7 @@ hm_effect_upgrade_breweries = {
 		add_building = breweries_08
 	}
 }
-hm_effect_remove_breweries = {
+HM_RE_effect_remove_breweries = {
 	if = {
 		limit = { has_building = breweries_01 }
 		remove_building = breweries_01

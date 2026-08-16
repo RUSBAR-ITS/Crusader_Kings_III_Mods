@@ -1,9 +1,9 @@
-﻿hm_decision_buildings_construction = {
+﻿HM_RE_decision_buildings_construction = {
 	picture = {
 		reference ="gfx/interface/illustrations/decisions/ep3_decision_city.dds"
 	}
-    desc = hm_decision_buildings_construction_desc
-	selection_tooltip = hm_decision_buildings_construction_tooltip
+    desc = HM_RE_decision_buildings_construction_desc
+	selection_tooltip = HM_RE_decision_buildings_construction_tooltip
 
 	cost = {
 		gold = {
@@ -14,7 +14,7 @@
 						is_leased_out = no
 					}
 				}
-				add = hm_value_max_building_slots_and_construct_buildings_gold_cost
+				add = HM_RE_value_max_building_slots_and_construct_buildings_gold_cost
 			}
 		}
 		prestige = {
@@ -25,14 +25,14 @@
 						is_leased_out = no
 					}
 				}
-				add = hm_value_construct_buildings_prestige_cost
+				add = HM_RE_value_construct_buildings_prestige_cost
 			}
 		}
 	}
 
 	is_shown = {
-		global_var:hm_show_decisions ?= yes
-		NOT = { has_game_rule = hm_rule_ai_extra_slots_disabled }
+		global_var:HM_RE_show_decisions ?= yes
+		NOT = { has_game_rule = HM_RE_rule_ai_extra_slots_disabled }
 		is_landed = yes
 		any_directly_owned_province = {
 			count > 0
@@ -42,7 +42,7 @@
 			}
 			HM_RE_can_construct_buildings = yes
 			OR = {
-				hm_trigger_player_add_slot = yes
+				HM_RE_trigger_player_add_slot = yes
 				has_free_building_slot = yes
 			}
 		}
@@ -54,7 +54,7 @@
 	}
 
 	effect = {
-		custom_tooltip = hm_effect_construct_buildings_tooltip
+		custom_tooltip = HM_RE_effect_construct_buildings_tooltip
 		hidden_effect = {
 			every_directly_owned_province = {
 				limit = {
@@ -63,7 +63,7 @@
 						is_leased_out = no
 					}
 				}
-				hm_effect_construct_buildings = yes
+				HM_RE_effect_construct_buildings = yes
 			}
 		}
 	}

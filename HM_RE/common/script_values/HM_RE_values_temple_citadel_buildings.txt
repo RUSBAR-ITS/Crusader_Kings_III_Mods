@@ -1,240 +1,240 @@
-﻿hm_value_construct_temple_citadel_02_gold_cost = {
+﻿HM_RE_value_construct_temple_citadel_02_gold_cost = {
 	value = main_building_tier_2_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_temple_citadel_03_gold_cost = {
+HM_RE_value_construct_temple_citadel_03_gold_cost = {
 	value = main_building_tier_3_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_temple_citadel_04_gold_cost = {
+HM_RE_value_construct_temple_citadel_04_gold_cost = {
 	value = main_building_tier_4_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_upgrade_temple_citadel_gold_cost = {
+HM_RE_value_upgrade_temple_citadel_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_temple_citadel_02 = yes }
-		add = hm_value_construct_temple_citadel_02_gold_cost
+		add = HM_RE_value_construct_temple_citadel_02_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_temple_citadel_03 = yes }
-		add = hm_value_construct_temple_citadel_03_gold_cost
+		add = HM_RE_value_construct_temple_citadel_03_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_temple_citadel_04 = yes }
-		add = hm_value_construct_temple_citadel_04_gold_cost
+		add = HM_RE_value_construct_temple_citadel_04_gold_cost
 	}
 }
 
-hm_value_construct_citadel_shrine_01_gold_cost = {
+HM_RE_value_construct_citadel_shrine_01_gold_cost = {
 	value = normal_building_tier_1_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_citadel_shrine_02_gold_cost = {
+HM_RE_value_construct_citadel_shrine_02_gold_cost = {
 	value = normal_building_tier_2_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_citadel_shrine_03_gold_cost = {
+HM_RE_value_construct_citadel_shrine_03_gold_cost = {
 	value = normal_building_tier_3_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_citadel_shrine_04_gold_cost = {
+HM_RE_value_construct_citadel_shrine_04_gold_cost = {
 	value = normal_building_tier_4_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_citadel_shrine_05_gold_cost = {
+HM_RE_value_construct_citadel_shrine_05_gold_cost = {
 	value = normal_building_tier_5_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_citadel_shrine_06_gold_cost = {
+HM_RE_value_construct_citadel_shrine_06_gold_cost = {
 	value = normal_building_tier_6_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_citadel_shrine_07_gold_cost = {
+HM_RE_value_construct_citadel_shrine_07_gold_cost = {
 	value = normal_building_tier_7_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_citadel_shrine_08_gold_cost = {
+HM_RE_value_construct_citadel_shrine_08_gold_cost = {
 	value = normal_building_tier_8_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_citadel_shrine_gold_cost = {
+HM_RE_value_construct_citadel_shrine_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_citadel_shrine_01 = yes }
-		add = hm_value_construct_citadel_shrine_01_gold_cost
+		add = HM_RE_value_construct_citadel_shrine_01_gold_cost
 	}
 }
-hm_value_upgrade_citadel_shrine_gold_cost = {
+HM_RE_value_upgrade_citadel_shrine_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_citadel_shrine_02 = yes }
-		add = hm_value_construct_citadel_shrine_02_gold_cost
+		add = HM_RE_value_construct_citadel_shrine_02_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_citadel_shrine_03 = yes }
-		add = hm_value_construct_citadel_shrine_03_gold_cost
+		add = HM_RE_value_construct_citadel_shrine_03_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_citadel_shrine_04 = yes }
-		add = hm_value_construct_citadel_shrine_04_gold_cost
+		add = HM_RE_value_construct_citadel_shrine_04_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_citadel_shrine_05 = yes }
-		add = hm_value_construct_citadel_shrine_05_gold_cost
+		add = HM_RE_value_construct_citadel_shrine_05_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_citadel_shrine_06 = yes }
-		add = hm_value_construct_citadel_shrine_06_gold_cost
+		add = HM_RE_value_construct_citadel_shrine_06_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_citadel_shrine_07 = yes }
-		add = hm_value_construct_citadel_shrine_07_gold_cost
+		add = HM_RE_value_construct_citadel_shrine_07_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_citadel_shrine_08 = yes }
-		add = hm_value_construct_citadel_shrine_08_gold_cost
+		add = HM_RE_value_construct_citadel_shrine_08_gold_cost
 	}
 }
 
-hm_value_construct_sacred_pool_01_gold_cost = {
+HM_RE_value_construct_sacred_pool_01_gold_cost = {
 	value = normal_building_tier_1_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_sacred_pool_02_gold_cost = {
+HM_RE_value_construct_sacred_pool_02_gold_cost = {
 	value = normal_building_tier_2_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_sacred_pool_03_gold_cost = {
+HM_RE_value_construct_sacred_pool_03_gold_cost = {
 	value = normal_building_tier_3_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_sacred_pool_04_gold_cost = {
+HM_RE_value_construct_sacred_pool_04_gold_cost = {
 	value = normal_building_tier_4_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_sacred_pool_05_gold_cost = {
+HM_RE_value_construct_sacred_pool_05_gold_cost = {
 	value = normal_building_tier_5_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_sacred_pool_06_gold_cost = {
+HM_RE_value_construct_sacred_pool_06_gold_cost = {
 	value = normal_building_tier_6_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_sacred_pool_07_gold_cost = {
+HM_RE_value_construct_sacred_pool_07_gold_cost = {
 	value = normal_building_tier_7_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_sacred_pool_08_gold_cost = {
+HM_RE_value_construct_sacred_pool_08_gold_cost = {
 	value = normal_building_tier_8_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_sacred_pool_gold_cost = {
+HM_RE_value_construct_sacred_pool_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_sacred_pool_01 = yes }
-		add = hm_value_construct_sacred_pool_01_gold_cost
+		add = HM_RE_value_construct_sacred_pool_01_gold_cost
 	}
 }
-hm_value_upgrade_sacred_pool_gold_cost = {
+HM_RE_value_upgrade_sacred_pool_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_sacred_pool_02 = yes }
-		add = hm_value_construct_sacred_pool_02_gold_cost
+		add = HM_RE_value_construct_sacred_pool_02_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_sacred_pool_03 = yes }
-		add = hm_value_construct_sacred_pool_03_gold_cost
+		add = HM_RE_value_construct_sacred_pool_03_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_sacred_pool_04 = yes }
-		add = hm_value_construct_sacred_pool_04_gold_cost
+		add = HM_RE_value_construct_sacred_pool_04_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_sacred_pool_05 = yes }
-		add = hm_value_construct_sacred_pool_05_gold_cost
+		add = HM_RE_value_construct_sacred_pool_05_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_sacred_pool_06 = yes }
-		add = hm_value_construct_sacred_pool_06_gold_cost
+		add = HM_RE_value_construct_sacred_pool_06_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_sacred_pool_07 = yes }
-		add = hm_value_construct_sacred_pool_07_gold_cost
+		add = HM_RE_value_construct_sacred_pool_07_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_sacred_pool_08 = yes }
-		add = hm_value_construct_sacred_pool_08_gold_cost
+		add = HM_RE_value_construct_sacred_pool_08_gold_cost
 	}
 }
 
-hm_value_construct_vihara_halls_01_gold_cost = {
+HM_RE_value_construct_vihara_halls_01_gold_cost = {
 	value = normal_building_tier_1_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_vihara_halls_02_gold_cost = {
+HM_RE_value_construct_vihara_halls_02_gold_cost = {
 	value = normal_building_tier_2_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_vihara_halls_03_gold_cost = {
+HM_RE_value_construct_vihara_halls_03_gold_cost = {
 	value = normal_building_tier_3_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_vihara_halls_04_gold_cost = {
+HM_RE_value_construct_vihara_halls_04_gold_cost = {
 	value = normal_building_tier_4_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_vihara_halls_05_gold_cost = {
+HM_RE_value_construct_vihara_halls_05_gold_cost = {
 	value = normal_building_tier_5_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_vihara_halls_06_gold_cost = {
+HM_RE_value_construct_vihara_halls_06_gold_cost = {
 	value = normal_building_tier_6_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_vihara_halls_07_gold_cost = {
+HM_RE_value_construct_vihara_halls_07_gold_cost = {
 	value = normal_building_tier_7_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_vihara_halls_08_gold_cost = {
+HM_RE_value_construct_vihara_halls_08_gold_cost = {
 	value = normal_building_tier_8_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_vihara_halls_gold_cost = {
+HM_RE_value_construct_vihara_halls_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_vihara_halls_01 = yes }
-		add = hm_value_construct_vihara_halls_01_gold_cost
+		add = HM_RE_value_construct_vihara_halls_01_gold_cost
 	}
 }
-hm_value_upgrade_vihara_halls_gold_cost = {
+HM_RE_value_upgrade_vihara_halls_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_vihara_halls_02 = yes }
-		add = hm_value_construct_vihara_halls_02_gold_cost
+		add = HM_RE_value_construct_vihara_halls_02_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_vihara_halls_03 = yes }
-		add = hm_value_construct_vihara_halls_03_gold_cost
+		add = HM_RE_value_construct_vihara_halls_03_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_vihara_halls_04 = yes }
-		add = hm_value_construct_vihara_halls_04_gold_cost
+		add = HM_RE_value_construct_vihara_halls_04_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_vihara_halls_05 = yes }
-		add = hm_value_construct_vihara_halls_05_gold_cost
+		add = HM_RE_value_construct_vihara_halls_05_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_vihara_halls_06 = yes }
-		add = hm_value_construct_vihara_halls_06_gold_cost
+		add = HM_RE_value_construct_vihara_halls_06_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_vihara_halls_07 = yes }
-		add = hm_value_construct_vihara_halls_07_gold_cost
+		add = HM_RE_value_construct_vihara_halls_07_gold_cost
 	}
 	else_if = {
 		limit = { HM_RE_can_construct_vihara_halls_08 = yes }
-		add = hm_value_construct_vihara_halls_08_gold_cost
+		add = HM_RE_value_construct_vihara_halls_08_gold_cost
 	}
 }

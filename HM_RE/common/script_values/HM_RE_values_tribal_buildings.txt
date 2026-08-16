@@ -1,402 +1,402 @@
-﻿hm_value_construct_tribe_02_gold_cost = {
+﻿HM_RE_value_construct_tribe_02_gold_cost = {
 	value = expensive_building_tier_1_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_upgrade_tribe_gold_cost = {
+HM_RE_value_upgrade_tribe_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_tribe_02 = yes }
-		add = hm_value_construct_tribe_02_gold_cost
+		add = HM_RE_value_construct_tribe_02_gold_cost
 	}
 }
-hm_value_upgrade_tribe_02_prestige_cost = {
+HM_RE_value_upgrade_tribe_02_prestige_cost = {
 	value = expensive_building_tier_3_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_upgrade_tribe_prestige_cost = {
+HM_RE_value_upgrade_tribe_prestige_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_tribe_02 = yes }
-		add = hm_value_upgrade_tribe_02_prestige_cost
+		add = HM_RE_value_upgrade_tribe_02_prestige_cost
 	}
 }
 
-hm_value_construct_longhouses_01_gold_cost = {
+HM_RE_value_construct_longhouses_01_gold_cost = {
 	value = tribal_building_tier_1_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_longhouses_02_gold_cost = {
+HM_RE_value_construct_longhouses_02_gold_cost = {
 	value = tribal_building_tier_2_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_longhouses_gold_cost = {
+HM_RE_value_construct_longhouses_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_longhouses_01 = yes }
-		add = hm_value_construct_longhouses_01_gold_cost
+		add = HM_RE_value_construct_longhouses_01_gold_cost
 	}
 }
-hm_value_upgrade_longhouses_gold_cost = {
+HM_RE_value_upgrade_longhouses_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_longhouses_02 = yes }
-		add = hm_value_construct_longhouses_02_gold_cost
+		add = HM_RE_value_construct_longhouses_02_gold_cost
 	}
 }
-hm_value_construct_longhouses_01_prestige_cost = {
+HM_RE_value_construct_longhouses_01_prestige_cost = {
 	value = expensive_building_tier_1_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_longhouses_02_prestige_cost = {
+HM_RE_value_construct_longhouses_02_prestige_cost = {
 	value = expensive_building_tier_2_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_longhouses_prestige_cost = {
+HM_RE_value_construct_longhouses_prestige_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_longhouses_01 = yes }
-		add = hm_value_construct_longhouses_01_prestige_cost
+		add = HM_RE_value_construct_longhouses_01_prestige_cost
 	}
 }
-hm_value_upgrade_longhouses_prestige_cost = {
+HM_RE_value_upgrade_longhouses_prestige_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_longhouses_02 = yes }
-		add = hm_value_construct_longhouses_02_prestige_cost
+		add = HM_RE_value_construct_longhouses_02_prestige_cost
 	}
 }
 
-hm_value_construct_war_camps_01_gold_cost = {
+HM_RE_value_construct_war_camps_01_gold_cost = {
 	value = tribal_building_tier_1_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_war_camps_02_gold_cost = {
+HM_RE_value_construct_war_camps_02_gold_cost = {
 	value = tribal_building_tier_2_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_war_camps_gold_cost = {
+HM_RE_value_construct_war_camps_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_war_camps_01 = yes }
-		add = hm_value_construct_war_camps_01_gold_cost
+		add = HM_RE_value_construct_war_camps_01_gold_cost
 	}
 }
-hm_value_upgrade_war_camps_gold_cost = {
+HM_RE_value_upgrade_war_camps_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_war_camps_02 = yes }
-		add = hm_value_construct_war_camps_02_gold_cost
+		add = HM_RE_value_construct_war_camps_02_gold_cost
 	}
 }
-hm_value_construct_war_camps_01_prestige_cost = {
+HM_RE_value_construct_war_camps_01_prestige_cost = {
 	value = expensive_building_tier_1_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_war_camps_02_prestige_cost = {
+HM_RE_value_construct_war_camps_02_prestige_cost = {
 	value = expensive_building_tier_2_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_war_camps_prestige_cost = {
+HM_RE_value_construct_war_camps_prestige_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_war_camps_01 = yes }
-		add = hm_value_construct_war_camps_01_prestige_cost
+		add = HM_RE_value_construct_war_camps_01_prestige_cost
 	}
 }
-hm_value_upgrade_war_camps_prestige_cost = {
+HM_RE_value_upgrade_war_camps_prestige_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_war_camps_02 = yes }
-		add = hm_value_construct_war_camps_02_prestige_cost
+		add = HM_RE_value_construct_war_camps_02_prestige_cost
 	}
 }
 
-hm_value_construct_palisades_01_gold_cost = {
+HM_RE_value_construct_palisades_01_gold_cost = {
 	value = tribal_building_tier_1_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_palisades_02_gold_cost = {
+HM_RE_value_construct_palisades_02_gold_cost = {
 	value = tribal_building_tier_2_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_palisades_gold_cost = {
+HM_RE_value_construct_palisades_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_palisades_01 = yes }
-		add = hm_value_construct_palisades_01_gold_cost
+		add = HM_RE_value_construct_palisades_01_gold_cost
 	}
 }
-hm_value_upgrade_palisades_gold_cost = {
+HM_RE_value_upgrade_palisades_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_palisades_02 = yes }
-		add = hm_value_construct_palisades_02_gold_cost
+		add = HM_RE_value_construct_palisades_02_gold_cost
 	}
 }
-hm_value_construct_palisades_01_prestige_cost = {
+HM_RE_value_construct_palisades_01_prestige_cost = {
 	value = expensive_building_tier_1_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_palisades_02_prestige_cost = {
+HM_RE_value_construct_palisades_02_prestige_cost = {
 	value = expensive_building_tier_2_cost
-	multiply = hm_value_multiplier_standard_construction_time_cost
+	multiply = HM_RE_value_multiplier_standard_construction_time_cost
 }
-hm_value_construct_palisades_prestige_cost = {
+HM_RE_value_construct_palisades_prestige_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_palisades_01 = yes }
-		add = hm_value_construct_palisades_01_prestige_cost
+		add = HM_RE_value_construct_palisades_01_prestige_cost
 	}
 }
-hm_value_upgrade_palisades_prestige_cost = {
+HM_RE_value_upgrade_palisades_prestige_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_palisades_02 = yes }
-		add = hm_value_construct_palisades_02_prestige_cost
+		add = HM_RE_value_construct_palisades_02_prestige_cost
 	}
 }
 
-hm_value_construct_market_villages_01_gold_cost = {
+HM_RE_value_construct_market_villages_01_gold_cost = {
 	value = tribal_building_tier_1_cost
-	multiply = hm_value_multiplier_quick_construction_time_cost
+	multiply = HM_RE_value_multiplier_quick_construction_time_cost
 }
-hm_value_construct_market_villages_02_gold_cost = {
+HM_RE_value_construct_market_villages_02_gold_cost = {
 	value = tribal_building_tier_2_cost
-	multiply = hm_value_multiplier_quick_construction_time_cost
+	multiply = HM_RE_value_multiplier_quick_construction_time_cost
 }
-hm_value_construct_market_villages_gold_cost = {
+HM_RE_value_construct_market_villages_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_market_villages_01 = yes }
-		add = hm_value_construct_market_villages_01_gold_cost
+		add = HM_RE_value_construct_market_villages_01_gold_cost
 	}
 }
-hm_value_upgrade_market_villages_gold_cost = {
+HM_RE_value_upgrade_market_villages_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_market_villages_02 = yes }
-		add = hm_value_construct_market_villages_02_gold_cost
+		add = HM_RE_value_construct_market_villages_02_gold_cost
 	}
 }
-hm_value_construct_market_villages_01_prestige_cost = {
+HM_RE_value_construct_market_villages_01_prestige_cost = {
 	value = expensive_building_tier_1_cost
-	multiply = hm_value_multiplier_quick_construction_time_cost
+	multiply = HM_RE_value_multiplier_quick_construction_time_cost
 }
-hm_value_construct_market_villages_02_prestige_cost = {
+HM_RE_value_construct_market_villages_02_prestige_cost = {
 	value = expensive_building_tier_2_cost
-	multiply = hm_value_multiplier_quick_construction_time_cost
+	multiply = HM_RE_value_multiplier_quick_construction_time_cost
 }
-hm_value_construct_market_villages_prestige_cost = {
+HM_RE_value_construct_market_villages_prestige_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_market_villages_01 = yes }
-		add = hm_value_construct_market_villages_01_prestige_cost
+		add = HM_RE_value_construct_market_villages_01_prestige_cost
 	}
 }
-hm_value_upgrade_market_villages_prestige_cost = {
+HM_RE_value_upgrade_market_villages_prestige_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_market_villages_02 = yes }
-		add = hm_value_construct_market_villages_02_prestige_cost
+		add = HM_RE_value_construct_market_villages_02_prestige_cost
 	}
 }
 
 # idjang_forts
-hm_value_construct_idjang_forts_01_gold_cost = {
+HM_RE_value_construct_idjang_forts_01_gold_cost = {
 	value = tribal_building_tier_1_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_idjang_forts_02_gold_cost = {
+HM_RE_value_construct_idjang_forts_02_gold_cost = {
 	value = tribal_building_tier_2_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_idjang_forts_03_gold_cost = {
+HM_RE_value_construct_idjang_forts_03_gold_cost = {
 	value = tribal_building_tier_3_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_idjang_forts_04_gold_cost = {
+HM_RE_value_construct_idjang_forts_04_gold_cost = {
 	value = tribal_building_tier_4_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_idjang_forts_gold_cost = {
+HM_RE_value_construct_idjang_forts_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_idjang_forts_01 = yes }
-		add = hm_value_construct_idjang_forts_01_gold_cost
+		add = HM_RE_value_construct_idjang_forts_01_gold_cost
 	}
 }
-hm_value_upgrade_idjang_forts_gold_cost = {
+HM_RE_value_upgrade_idjang_forts_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_idjang_forts_02 = yes }
-		add = hm_value_construct_idjang_forts_02_gold_cost
+		add = HM_RE_value_construct_idjang_forts_02_gold_cost
 	}
 	if = {
 		limit = { HM_RE_can_construct_idjang_forts_03 = yes }
-		add = hm_value_construct_idjang_forts_03_gold_cost
+		add = HM_RE_value_construct_idjang_forts_03_gold_cost
 	}
 	if = {
 		limit = { HM_RE_can_construct_idjang_forts_04 = yes }
-		add = hm_value_construct_idjang_forts_04_gold_cost
+		add = HM_RE_value_construct_idjang_forts_04_gold_cost
 	}
 }
 
 # wantilan
-hm_value_construct_wantilan_01_gold_cost = {
+HM_RE_value_construct_wantilan_01_gold_cost = {
 	value = tribal_building_tier_1_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_wantilan_02_gold_cost = {
+HM_RE_value_construct_wantilan_02_gold_cost = {
 	value = tribal_building_tier_2_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_wantilan_03_gold_cost = {
+HM_RE_value_construct_wantilan_03_gold_cost = {
 	value = tribal_building_tier_3_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_wantilan_04_gold_cost = {
+HM_RE_value_construct_wantilan_04_gold_cost = {
 	value = tribal_building_tier_4_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_wantilan_gold_cost = {
+HM_RE_value_construct_wantilan_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_wantilan_01 = yes }
-		add = hm_value_construct_wantilan_01_gold_cost
+		add = HM_RE_value_construct_wantilan_01_gold_cost
 	}
 }
-hm_value_upgrade_wantilan_gold_cost = {
+HM_RE_value_upgrade_wantilan_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_wantilan_02 = yes }
-		add = hm_value_construct_wantilan_02_gold_cost
+		add = HM_RE_value_construct_wantilan_02_gold_cost
 	}
 	if = {
 		limit = { HM_RE_can_construct_wantilan_03 = yes }
-		add = hm_value_construct_wantilan_03_gold_cost
+		add = HM_RE_value_construct_wantilan_03_gold_cost
 	}
 	if = {
 		limit = { HM_RE_can_construct_wantilan_04 = yes }
-		add = hm_value_construct_wantilan_04_gold_cost
+		add = HM_RE_value_construct_wantilan_04_gold_cost
 	}
 }
 
 # kora_kora_yards
-hm_value_construct_kora_kora_yards_01_gold_cost = {
+HM_RE_value_construct_kora_kora_yards_01_gold_cost = {
 	value = tribal_building_tier_1_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_kora_kora_yards_02_gold_cost = {
+HM_RE_value_construct_kora_kora_yards_02_gold_cost = {
 	value = tribal_building_tier_2_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_kora_kora_yards_03_gold_cost = {
+HM_RE_value_construct_kora_kora_yards_03_gold_cost = {
 	value = tribal_building_tier_3_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_kora_kora_yards_04_gold_cost = {
+HM_RE_value_construct_kora_kora_yards_04_gold_cost = {
 	value = tribal_building_tier_4_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_kora_kora_yards_gold_cost = {
+HM_RE_value_construct_kora_kora_yards_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_kora_kora_yards_01 = yes }
-		add = hm_value_construct_kora_kora_yards_01_gold_cost
+		add = HM_RE_value_construct_kora_kora_yards_01_gold_cost
 	}
 }
-hm_value_upgrade_kora_kora_yards_gold_cost = {
+HM_RE_value_upgrade_kora_kora_yards_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_kora_kora_yards_02 = yes }
-		add = hm_value_construct_kora_kora_yards_02_gold_cost
+		add = HM_RE_value_construct_kora_kora_yards_02_gold_cost
 	}
 	if = {
 		limit = { HM_RE_can_construct_kora_kora_yards_03 = yes }
-		add = hm_value_construct_kora_kora_yards_03_gold_cost
+		add = HM_RE_value_construct_kora_kora_yards_03_gold_cost
 	}
 	if = {
 		limit = { HM_RE_can_construct_kora_kora_yards_04 = yes }
-		add = hm_value_construct_kora_kora_yards_04_gold_cost
+		add = HM_RE_value_construct_kora_kora_yards_04_gold_cost
 	}
 }
 
 # water_temples
-hm_value_construct_water_temples_01_gold_cost = {
+HM_RE_value_construct_water_temples_01_gold_cost = {
 	value = tribal_building_tier_1_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_water_temples_02_gold_cost = {
+HM_RE_value_construct_water_temples_02_gold_cost = {
 	value = tribal_building_tier_2_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_water_temples_03_gold_cost = {
+HM_RE_value_construct_water_temples_03_gold_cost = {
 	value = tribal_building_tier_3_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_water_temples_04_gold_cost = {
+HM_RE_value_construct_water_temples_04_gold_cost = {
 	value = tribal_building_tier_4_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_water_temples_gold_cost = {
+HM_RE_value_construct_water_temples_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_water_temples_01 = yes }
-		add = hm_value_construct_water_temples_01_gold_cost
+		add = HM_RE_value_construct_water_temples_01_gold_cost
 	}
 }
-hm_value_upgrade_water_temples_gold_cost = {
+HM_RE_value_upgrade_water_temples_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_water_temples_02 = yes }
-		add = hm_value_construct_water_temples_02_gold_cost
+		add = HM_RE_value_construct_water_temples_02_gold_cost
 	}
 	if = {
 		limit = { HM_RE_can_construct_water_temples_03 = yes }
-		add = hm_value_construct_water_temples_03_gold_cost
+		add = HM_RE_value_construct_water_temples_03_gold_cost
 	}
 	if = {
 		limit = { HM_RE_can_construct_water_temples_04 = yes }
-		add = hm_value_construct_water_temples_04_gold_cost
+		add = HM_RE_value_construct_water_temples_04_gold_cost
 	}
 }
 
 # stilted_granaries
-hm_value_construct_stilted_granaries_01_gold_cost = {
+HM_RE_value_construct_stilted_granaries_01_gold_cost = {
 	value = tribal_building_tier_1_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_stilted_granaries_02_gold_cost = {
+HM_RE_value_construct_stilted_granaries_02_gold_cost = {
 	value = tribal_building_tier_2_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_stilted_granaries_03_gold_cost = {
+HM_RE_value_construct_stilted_granaries_03_gold_cost = {
 	value = tribal_building_tier_3_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_stilted_granaries_04_gold_cost = {
+HM_RE_value_construct_stilted_granaries_04_gold_cost = {
 	value = tribal_building_tier_4_cost
-	multiply = hm_value_multiplier_slow_construction_time_cost
+	multiply = HM_RE_value_multiplier_slow_construction_time_cost
 }
-hm_value_construct_stilted_granaries_gold_cost = {
+HM_RE_value_construct_stilted_granaries_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_stilted_granaries_01 = yes }
-		add = hm_value_construct_stilted_granaries_01_gold_cost
+		add = HM_RE_value_construct_stilted_granaries_01_gold_cost
 	}
 }
-hm_value_upgrade_stilted_granaries_gold_cost = {
+HM_RE_value_upgrade_stilted_granaries_gold_cost = {
 	value = 0
 	if = {
 		limit = { HM_RE_can_construct_stilted_granaries_02 = yes }
-		add = hm_value_construct_stilted_granaries_02_gold_cost
+		add = HM_RE_value_construct_stilted_granaries_02_gold_cost
 	}
 	if = {
 		limit = { HM_RE_can_construct_stilted_granaries_03 = yes }
-		add = hm_value_construct_stilted_granaries_03_gold_cost
+		add = HM_RE_value_construct_stilted_granaries_03_gold_cost
 	}
 	if = {
 		limit = { HM_RE_can_construct_stilted_granaries_04 = yes }
-		add = hm_value_construct_stilted_granaries_04_gold_cost
+		add = HM_RE_value_construct_stilted_granaries_04_gold_cost
 	}
 }

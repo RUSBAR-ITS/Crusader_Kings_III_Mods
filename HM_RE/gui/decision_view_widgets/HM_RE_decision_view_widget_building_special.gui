@@ -1,5 +1,5 @@
 flowcontainer = {
-	name = "decision_view_widget_hmc_building_special"
+	name = "HM_RE_decision_view_widget_building_special"
 	direction = vertical
 	minimumsize = { 514 -1 }
 	maximumsize = { 514 -1 }
@@ -15,7 +15,7 @@ flowcontainer = {
 
 		text_single = {
 			parentanchor = vcenter
-			text = "HMC_ESTABLISH_BUILDING_NAME_LABEL"
+			text = "HM_RE_ESTABLISH_BUILDING_NAME_LABEL"
 		}
 
 		widget = { size = { 15 0 } }
@@ -47,7 +47,7 @@ flowcontainer = {
 			visible = "[And(DecisionViewWidgetCreateHolyOrder.IsCreate, DecisionViewWidgetCreateHolyOrder.HasCurrentCapital)]"
 			parentanchor = vcenter
 			fontsize_min = 14
-			text = "HMC_ESTABLISH_BUILDING_CAPITAL_LABEL"
+			text = "HM_RE_ESTABLISH_BUILDING_CAPITAL_LABEL"
 		}
 
 		text_single = {
@@ -81,7 +81,7 @@ flowcontainer = {
 			tooltip = "LEASE_OUT_BARONIES_TOOLTIP"
 
 			text_single = {
-				text = "[SelectLocalization( DecisionViewWidgetCreateHolyOrder.HasCurrentCapital, 'HMC_ESTABLISH_BUILDING_CHANGE_CAPITAL', 'HMC_ESTABLISH_BUILDING_SELECT_CAPITAL' )]"
+				text = "[SelectLocalization( DecisionViewWidgetCreateHolyOrder.HasCurrentCapital, 'HM_RE_ESTABLISH_BUILDING_CHANGE_CAPITAL', 'HM_RE_ESTABLISH_BUILDING_SELECT_CAPITAL' )]"
 				parentanchor = left|vcenter
 				align = nobaseline
 				position = { 10 0 }
