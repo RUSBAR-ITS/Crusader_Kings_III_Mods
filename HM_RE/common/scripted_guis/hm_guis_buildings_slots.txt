@@ -1,4 +1,4 @@
-﻿hm_build_all_button = {
+hm_build_all_button = {
     scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
@@ -14,7 +14,7 @@
 		}
 		trigger_if = {
 			limit = {
-				debug_only = no
+				always = yes
 			}
 			trigger_if = {
 				limit = {
@@ -36,11 +36,11 @@
     }
 	is_valid = {
 		scope:gui_holding = {
-			hm_trigger_construct_buildings = yes
+			HM_RE_can_construct_buildings = yes
 			has_ongoing_construction = no
 			trigger_if = {
 				limit = {
-					debug_only = no
+					always = yes
 					root = {
 						has_treasury = yes
 					}
@@ -51,7 +51,7 @@
 			}
 			trigger_else = {
 				limit = {
-					debug_only = no
+					always = yes
 				}
 				hm_value_max_building_slots_and_construct_buildings_gold_cost <= root.gold
 				hm_value_construct_buildings_prestige_cost <= root.prestige
@@ -62,7 +62,7 @@
 		scope:gui_holding = {
 			if = {
 				limit = {
-					debug_only = no
+					always = yes
 					root = {
 						has_treasury = yes
 					}
@@ -86,7 +86,7 @@
 			}
 			else_if = {
 				limit = {
-					debug_only = no
+					always = yes
 				}
 				save_temporary_scope_value_as = {
 					name = hm_gui_scope_max_building_slots_and_buildings_construction_gold
@@ -123,7 +123,7 @@ hm_upgrade_all_button = {
 		has_game_rule = hm_upgrade_all_button_on
 		trigger_if = {
 			limit = {
-				debug_only = no
+				always = yes
 			}
 			trigger_if = {
 				limit = {
@@ -144,11 +144,11 @@ hm_upgrade_all_button = {
     }
 	is_valid = {
 		scope:gui_holding = {
-			hm_trigger_upgrade_buildings = yes
+			HM_RE_can_upgrade_buildings = yes
 			has_ongoing_construction = no
 			trigger_if = {
 				limit = {
-					debug_only = no
+					always = yes
 					root = {
 						has_treasury = yes
 					}
@@ -159,7 +159,7 @@ hm_upgrade_all_button = {
 			}
 			trigger_else = {
 				limit = {
-					debug_only = no
+					always = yes
 				}
 				hm_value_upgrade_buildings_gold_cost <= root.gold
 				hm_value_upgrade_buildings_prestige_cost <= root.prestige
@@ -170,7 +170,7 @@ hm_upgrade_all_button = {
 		scope:gui_holding = {
 			if = {
 				limit = {
-					debug_only = no
+					always = yes
 					root = {
 						has_treasury = yes
 					}
@@ -194,7 +194,7 @@ hm_upgrade_all_button = {
 			}
 			else_if = {
 				limit = {
-					debug_only = no
+					always = yes
 				}
 				save_temporary_scope_value_as = {
 					name = hm_gui_scope_buildings_upgrade_gold_cost
@@ -286,7 +286,7 @@ hm_add_slot_button = {
 		}
 		trigger_if = {
 			limit = {
-				debug_only = no
+				always = yes
 			}
 			trigger_if = {
 				limit = {
@@ -311,7 +311,7 @@ hm_add_slot_button = {
 			has_ongoing_construction = no
 			trigger_if = {
 				limit = {
-					debug_only = no
+					always = yes
 					root = {
 						has_treasury = yes
 					}
@@ -321,7 +321,7 @@ hm_add_slot_button = {
 			}
 			trigger_else = {
 				limit = {
-					debug_only = no
+					always = yes
 				}
 				hm_value_player_slot_cost <= root.gold
 			}
@@ -331,7 +331,7 @@ hm_add_slot_button = {
 		scope:gui_holding = {
 			if = {
 				limit = {
-					debug_only = no
+					always = yes
 					root = {
 						has_treasury = yes
 					}
@@ -347,7 +347,7 @@ hm_add_slot_button = {
 			}
 			else_if = {
 				limit = {
-					debug_only = no
+					always = yes
 				}
 				save_temporary_scope_value_as = {
 					name = hm_gui_scope_add_building_slot_cost

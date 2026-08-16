@@ -1,6 +1,6 @@
 ﻿hm_effect_construct_capital_bureau = {
 	if = {
-		limit = { hm_trigger_construct_capital_bureau = yes }
+		limit = { HM_RE_can_construct_capital_bureau = yes }
 		if = {
 			limit = { has_free_building_slot = yes }
 			add_building = capital_bureau_01
@@ -14,31 +14,31 @@
 }
 hm_effect_upgrade_capital_bureau = {
 	if = {
-		limit = { hm_trigger_construct_capital_bureau_02 = yes }
+		limit = { HM_RE_can_construct_capital_bureau_02 = yes }
 		add_building = capital_bureau_02
 	}
 	else_if = {
-		limit = { hm_trigger_construct_capital_bureau_03 = yes }
+		limit = { HM_RE_can_construct_capital_bureau_03 = yes }
 		add_building = capital_bureau_03
 	}
 	else_if = {
-		limit = { hm_trigger_construct_capital_bureau_04 = yes }
+		limit = { HM_RE_can_construct_capital_bureau_04 = yes }
 		add_building = capital_bureau_04
 	}
 	else_if = {
-		limit = { hm_trigger_construct_capital_bureau_05 = yes }
+		limit = { HM_RE_can_construct_capital_bureau_05 = yes }
 		add_building = capital_bureau_05
 	}
 	else_if = {
-		limit = { hm_trigger_construct_capital_bureau_06 = yes }
+		limit = { HM_RE_can_construct_capital_bureau_06 = yes }
 		add_building = capital_bureau_06
 	}
 	else_if = {
-		limit = { hm_trigger_construct_capital_bureau_07 = yes }
+		limit = { HM_RE_can_construct_capital_bureau_07 = yes }
 		add_building = capital_bureau_07
 	}
 	else_if = {
-		limit = { hm_trigger_construct_capital_bureau_08 = yes }
+		limit = { HM_RE_can_construct_capital_bureau_08 = yes }
 		add_building = capital_bureau_08
 	}
 }

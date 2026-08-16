@@ -7,12 +7,6 @@ hm_value_feudalize_holding_cost_very_expensive = 2000
 hm_value_feudalize_holding_cost = {
 	if = {
 		limit = {
-			debug_only = yes
-		}
-		value = 0
-	}
-	else_if = {
-		limit = {
 			has_game_rule = hm_rule_feudalize_holding_cost_very_cheap
 		}
 		value = hm_value_feudalize_holding_cost_very_cheap

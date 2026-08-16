@@ -1,14 +1,14 @@
 ﻿hm_effect_upgrade_castle = {
 	if = {
-		limit = { hm_trigger_construct_castle_02 = yes }
+		limit = { HM_RE_can_construct_castle_02 = yes }
 		add_building = castle_02
 	}
 	else_if = {
-		limit = { hm_trigger_construct_castle_03 = yes }
+		limit = { HM_RE_can_construct_castle_03 = yes }
 		add_building = castle_03
 	}
 	else_if = {
-		limit = { hm_trigger_construct_castle_04 = yes }
+		limit = { HM_RE_can_construct_castle_04 = yes }
 		add_building = castle_04
 	}
 }

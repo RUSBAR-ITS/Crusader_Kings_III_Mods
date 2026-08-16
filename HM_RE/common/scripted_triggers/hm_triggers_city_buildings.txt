@@ -1,16 +1,26 @@
-﻿hm_trigger_construct_city_02 = {
+# Generated from the current vanilla building eligibility blocks.
+# Re-run tools/Sync-HMREBuildingTriggers.ps1 after CK3 updates.
+
+### city
+
+HM_RE_can_construct_city_02 = {
 	has_building = city_01
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_potential
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	trigger_if = {
 		limit = {
-			debug_only = no
 			NOT = {
 				culture = {
 					has_cultural_parameter = next_level_cities
 				}
 			}
 		}
-		culture = { has_innovation = innovation_manorialism }
+		culture = {
+			has_innovation = innovation_manorialism
+		}
 	}
 	trigger_else = {
 		culture = {
@@ -19,409 +29,298 @@
 	}
 }
 
-hm_trigger_construct_city_03 = {
+HM_RE_can_construct_city_03 = {
 	has_building = city_02
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_potential
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	trigger_if = {
 		limit = {
-			debug_only = no
 			NOT = {
 				culture = {
 					has_cultural_parameter = next_level_cities
 				}
 			}
 		}
-		culture = { has_innovation = innovation_windmills }
+		culture = {
+			has_innovation = innovation_windmills
+		}
 	}
 	trigger_else = {
 		culture = {
 			has_cultural_parameter = next_level_cities
 		}
-		culture = { has_innovation = innovation_manorialism }
+		culture = {
+			has_innovation = innovation_manorialism
+		}
 	}
 }
 
-hm_trigger_construct_city_04 = {
+HM_RE_can_construct_city_04 = {
 	has_building = city_03
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_potential
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	trigger_if = {
 		limit = {
-			debug_only = no
 			NOT = {
 				culture = {
 					has_cultural_parameter = next_level_cities
 				}
 			}
 		}
-		culture = { has_innovation = innovation_cranes }
+		culture = {
+			has_innovation = innovation_cranes
+		}
 	}
 	trigger_else = {
 		culture = {
 			has_cultural_parameter = next_level_cities
 		}
-		culture = { has_innovation = innovation_windmills }
-	}
-}
-
-hm_trigger_upgrade_city = {
-	OR = {
-		hm_trigger_construct_city_02 = yes
-		hm_trigger_construct_city_03 = yes
-		hm_trigger_construct_city_04 = yes
-	}
-}
-
-hm_trigger_construct_guild_halls_01 = {
-	NOT = { has_building_or_higher = guild_halls_01 }
-	hm_building_requirement_tribal = no
-	has_holding_type = city_holding
-	has_building_or_higher = city_01
-}
-hm_trigger_construct_guild_halls_02 = {
-	has_building = guild_halls_01
-	hm_building_requirement_tribal = no
-	has_building_or_higher = city_01
-	trigger_if = {
-		limit = { debug_only = no }
 		culture = {
-			OR = {
-				has_innovation = innovation_crop_rotation
-				has_cultural_parameter = next_level_guild_halls
-			}
+			has_innovation = innovation_windmills
 		}
 	}
 }
-hm_trigger_construct_guild_halls_03 = {
-	has_building = guild_halls_02
-	hm_building_requirement_tribal = no
-	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = next_level_guild_halls
-					}
-				}
-			}
-			culture = {
-				has_innovation = innovation_manorialism
-			}
-			has_building_or_higher = city_02
-		}
-		trigger_else = {
-			culture = {
-				has_innovation = innovation_crop_rotation
-			}
-			culture = {
-				has_cultural_parameter = next_level_guild_halls
-			}
-			has_building_or_higher = city_01
-		}
-	}
-	trigger_else = {
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = next_level_guild_halls
-					}
-				}
-			}
-			# culture = {
-			# 	has_innovation = innovation_manorialism
-			# }
-			has_building_or_higher = city_02
-		}
-		trigger_else = {
-			# culture = {
-			# 	has_innovation = innovation_crop_rotation
-			# }
-			culture = {
-				has_cultural_parameter = next_level_guild_halls
-			}
-			has_building_or_higher = city_01
-		}
-	}
-}
-hm_trigger_construct_guild_halls_04 = {
-	has_building = guild_halls_03
-	hm_building_requirement_tribal = no
-	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = next_level_guild_halls
-					}
-				}
-			}
-			culture = {
-				has_innovation = innovation_manorialism
-			}
-			has_building_or_higher = city_02
 
-		}
-		trigger_else = {
-			culture = {
-				has_innovation = innovation_crop_rotation
-			}
-			culture = {
-				has_cultural_parameter = next_level_guild_halls
-			}
-			has_building_or_higher = city_01
-		}
-	}
-	trigger_else = {
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = next_level_guild_halls
-					}
-				}
-			}
-			# culture = {
-			# 	has_innovation = innovation_manorialism
-			# }
-			has_building_or_higher = city_02
-
-		}
-		trigger_else = {
-			# culture = {
-			# 	has_innovation = innovation_crop_rotation
-			# }
-			culture = {
-				has_cultural_parameter = next_level_guild_halls
-			}
-			has_building_or_higher = city_01
-		}
-	}
-}
-hm_trigger_construct_guild_halls_05 = {
-	has_building = guild_halls_04
-	hm_building_requirement_tribal = no
-	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = next_level_guild_halls
-					}
-				}
-			}
-			culture = {
-				has_innovation = innovation_guilds
-			}
-			has_building_or_higher = city_03
-		}
-		trigger_else = {
-			culture = {
-				has_innovation = innovation_manorialism
-			}
-			culture = {
-				has_cultural_parameter = next_level_guild_halls
-			}
-			has_building_or_higher = city_02
-		}
-	}
-	trigger_else = {
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = next_level_guild_halls
-					}
-				}
-			}
-			# culture = {
-			# 	has_innovation = innovation_guilds
-			# }
-			has_building_or_higher = city_03
-		}
-		trigger_else = {
-			# culture = {
-			# 	has_innovation = innovation_manorialism
-			# }
-			culture = {
-				has_cultural_parameter = next_level_guild_halls
-			}
-			has_building_or_higher = city_02
-		}
-	}
-}
-hm_trigger_construct_guild_halls_06 = {
-	has_building = guild_halls_05
-	hm_building_requirement_tribal = no
-	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = next_level_guild_halls
-					}
-				}
-			}
-			culture = {
-				has_innovation = innovation_guilds
-			}
-			has_building_or_higher = city_03
-		}
-		trigger_else = {
-			culture = {
-				has_innovation = innovation_manorialism
-			}
-			culture = {
-				has_cultural_parameter = next_level_guild_halls
-			}
-			has_building_or_higher = city_02
-		}
-	}
-	trigger_else = {
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = next_level_guild_halls
-					}
-				}
-			}
-			# culture = {
-			# 	has_innovation = innovation_guilds
-			# }
-			has_building_or_higher = city_03
-		}
-		trigger_else = {
-			# culture = {
-			# 	has_innovation = innovation_manorialism
-			# }
-			culture = {
-				has_cultural_parameter = next_level_guild_halls
-			}
-			has_building_or_higher = city_02
-		}
-	}
-}
-hm_trigger_construct_guild_halls_07 = {
-	has_building = guild_halls_06
-	hm_building_requirement_tribal = no
-	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = next_level_guild_halls
-					}
-				}
-			}
-			culture = {
-				has_innovation = innovation_cranes
-			}
-			has_building_or_higher = city_04
-		}
-		trigger_else = {
-			culture = {
-				has_innovation = innovation_guilds
-			}
-			culture = {
-				has_cultural_parameter = next_level_guild_halls
-			}
-			has_building_or_higher = city_03
-		}
-	}
-	trigger_else = {
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = next_level_guild_halls
-					}
-				}
-			}
-			# culture = {
-			# 	has_innovation = innovation_cranes
-			# }
-			has_building_or_higher = city_04
-		}
-		trigger_else = {
-			# culture = {
-			# 	has_innovation = innovation_guilds
-			# }
-			culture = {
-				has_cultural_parameter = next_level_guild_halls
-			}
-			has_building_or_higher = city_03
-		}
-	}
-}
-hm_trigger_construct_guild_halls_08 = {
-	has_building = guild_halls_07
-	hm_building_requirement_tribal = no
-	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = next_level_guild_halls
-					}
-				}
-			}
-			culture = {
-				has_innovation = innovation_cranes
-			}
-			has_building_or_higher = city_04
-		}
-		trigger_else = {
-			culture = {
-				has_innovation = innovation_guilds
-			}
-			culture = {
-				has_cultural_parameter = next_level_guild_halls
-			}
-			has_building_or_higher = city_03
-		}
-	}
-	trigger_else = {
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = next_level_guild_halls
-					}
-				}
-			}
-			# culture = {
-			# 	has_innovation = innovation_cranes
-			# }
-			has_building_or_higher = city_04
-		}
-		trigger_else = {
-			# culture = {
-			# 	has_innovation = innovation_guilds
-			# }
-			culture = {
-				has_cultural_parameter = next_level_guild_halls
-			}
-			has_building_or_higher = city_03
-		}
-	}
-}
-hm_trigger_construct_guild_halls = {
-	hm_trigger_construct_guild_halls_01 = yes
-}
-hm_trigger_upgrade_guild_halls = {
+HM_RE_can_upgrade_city = {
 	OR = {
-		hm_trigger_construct_guild_halls_02 = yes
-		hm_trigger_construct_guild_halls_03 = yes
-		hm_trigger_construct_guild_halls_04 = yes
-		hm_trigger_construct_guild_halls_05 = yes
-		hm_trigger_construct_guild_halls_06 = yes
-		hm_trigger_construct_guild_halls_07 = yes
-		hm_trigger_construct_guild_halls_08 = yes
+		HM_RE_can_construct_city_02 = yes
+		HM_RE_can_construct_city_03 = yes
+		HM_RE_can_construct_city_04 = yes
+	}
+}
+
+### guild_halls
+
+HM_RE_can_construct_guild_halls_01 = {
+	NOT = { has_building_or_higher = guild_halls_01 }
+
+	# Vanilla can_construct_potential
+	has_building_or_higher = city_01
+}
+
+HM_RE_can_construct_guild_halls_02 = {
+	has_building = guild_halls_01
+
+	# Vanilla can_construct_potential
+	has_building_or_higher = city_01
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+	culture = {
+		trigger_if = {
+			limit = {
+				NOT = { has_cultural_parameter = next_level_guild_halls }
+			}
+			has_innovation = innovation_crop_rotation
+		}
+	}
+}
+
+HM_RE_can_construct_guild_halls_03 = {
+	has_building = guild_halls_02
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
+	trigger_if = {
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = next_level_guild_halls
+				}
+			}
+		}
+		culture = {
+			has_innovation = innovation_manorialism
+		}
+		has_building_or_higher = city_02
+	}
+	trigger_else = {
+		culture = {
+			has_innovation = innovation_crop_rotation
+		}
+		culture = {
+			has_cultural_parameter = next_level_guild_halls
+		}
+		has_building_or_higher = city_01
+	}
+}
+
+HM_RE_can_construct_guild_halls_04 = {
+	has_building = guild_halls_03
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
+	trigger_if = {
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = next_level_guild_halls
+				}
+			}
+		}
+		culture = {
+			has_innovation = innovation_manorialism
+		}
+		has_building_or_higher = city_02
+
+	}
+	trigger_else = {
+		culture = {
+			has_innovation = innovation_crop_rotation
+		}
+		culture = {
+			has_cultural_parameter = next_level_guild_halls
+		}
+		has_building_or_higher = city_01
+	}
+}
+
+HM_RE_can_construct_guild_halls_05 = {
+	has_building = guild_halls_04
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
+	trigger_if = {
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = next_level_guild_halls
+				}
+			}
+		}
+		culture = {
+			has_innovation = innovation_guilds
+		}
+		has_building_or_higher = city_03
+	}
+	trigger_else = {
+		culture = {
+			has_innovation = innovation_manorialism
+		}
+		culture = {
+			has_cultural_parameter = next_level_guild_halls
+		}
+		has_building_or_higher = city_02
+	}
+}
+
+HM_RE_can_construct_guild_halls_06 = {
+	has_building = guild_halls_05
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
+	trigger_if = {
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = next_level_guild_halls
+				}
+			}
+		}
+		culture = {
+			has_innovation = innovation_guilds
+		}
+		has_building_or_higher = city_03
+	}
+	trigger_else = {
+		culture = {
+			has_innovation = innovation_manorialism
+		}
+		culture = {
+			has_cultural_parameter = next_level_guild_halls
+		}
+		has_building_or_higher = city_02
+	}
+}
+
+HM_RE_can_construct_guild_halls_07 = {
+	has_building = guild_halls_06
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
+	trigger_if = {
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = next_level_guild_halls
+				}
+			}
+		}
+		culture = {
+			has_innovation = innovation_cranes
+		}
+		has_building_or_higher = city_04
+	}
+	trigger_else = {
+		culture = {
+			has_innovation = innovation_guilds
+		}
+		culture = {
+			has_cultural_parameter = next_level_guild_halls
+		}
+		has_building_or_higher = city_03
+	}
+}
+
+HM_RE_can_construct_guild_halls_08 = {
+	has_building = guild_halls_07
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
+	trigger_if = {
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = next_level_guild_halls
+				}
+			}
+		}
+		culture = {
+			has_innovation = innovation_cranes
+		}
+		has_building_or_higher = city_04
+	}
+	trigger_else = {
+		culture = {
+			has_innovation = innovation_guilds
+		}
+		culture = {
+			has_cultural_parameter = next_level_guild_halls
+		}
+		has_building_or_higher = city_03
+	}
+}
+
+HM_RE_can_construct_guild_halls = {
+	HM_RE_can_construct_guild_halls_01 = yes
+}
+
+HM_RE_can_upgrade_guild_halls = {
+	OR = {
+		HM_RE_can_construct_guild_halls_02 = yes
+		HM_RE_can_construct_guild_halls_03 = yes
+		HM_RE_can_construct_guild_halls_04 = yes
+		HM_RE_can_construct_guild_halls_05 = yes
+		HM_RE_can_construct_guild_halls_06 = yes
+		HM_RE_can_construct_guild_halls_07 = yes
+		HM_RE_can_construct_guild_halls_08 = yes
 	}
 }

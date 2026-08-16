@@ -1,296 +1,527 @@
-﻿hm_trigger_construct_tribe_02 = {
+# Generated from the current vanilla building eligibility blocks.
+# Re-run tools/Sync-HMREBuildingTriggers.ps1 after CK3 updates.
+
+### tribe
+
+HM_RE_can_construct_tribe_02 = {
 	has_building = tribe_01
-	trigger_if = {
-		limit = { debug_only = no }
-		county.holder.culture = { has_innovation = innovation_plenary_assemblies }
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_tribal = yes
+
+	# Vanilla can_construct_showing_failures_only
+	OR = {
+		province_owner = {
+			culture = { has_innovation = innovation_plenary_assemblies }
+		}
+		mpo_permafrost_building_trigger = yes
 	}
 }
-hm_trigger_upgrade_tribe = {
-	hm_trigger_construct_tribe_02 = yes
+
+HM_RE_can_upgrade_tribe = {
+	OR = {
+		HM_RE_can_construct_tribe_02 = yes
+	}
 }
 
-hm_trigger_construct_longhouses_01 = {
+### longhouses
+
+HM_RE_can_construct_longhouses_01 = {
 	NOT = { has_building_or_higher = longhouses_01 }
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_tribal = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = { NOT = { government_has_flag = government_is_wanua } }
+	province_owner = { NOT = { government_has_flag = government_is_wanua } }
 }
-hm_trigger_construct_longhouses_02 = {
+
+HM_RE_can_construct_longhouses_02 = {
 	has_building = longhouses_01
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_tribal = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = { NOT = { government_has_flag = government_is_wanua } }
-	trigger_if = {
-		limit = { debug_only = no }
-		county.holder.culture = { has_innovation = innovation_barracks }
+	province_owner = { NOT = { government_has_flag = government_is_wanua } }
+
+	# Vanilla can_construct_showing_failures_only
+	OR = {
+		mpo_permafrost_building_trigger = yes
+		province_owner = {
+			culture = { has_innovation = innovation_barracks }
+		}
 	}
-	
-}
-hm_trigger_construct_longhouses = {
-	hm_trigger_construct_longhouses_01 = yes
-}
-hm_trigger_upgrade_longhouses = {
-	hm_trigger_construct_longhouses_02 = yes
 }
 
-hm_trigger_construct_war_camps_01 = {
+HM_RE_can_construct_longhouses = {
+	HM_RE_can_construct_longhouses_01 = yes
+}
+
+HM_RE_can_upgrade_longhouses = {
+	OR = {
+		HM_RE_can_construct_longhouses_02 = yes
+	}
+}
+
+### war_camps
+
+HM_RE_can_construct_war_camps_01 = {
 	NOT = { has_building_or_higher = war_camps_01 }
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_tribal = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = { NOT = { government_has_flag = government_is_wanua } }
+	province_owner = { NOT = { government_has_flag = government_is_wanua } }
 }
-hm_trigger_construct_war_camps_02 = {
+
+HM_RE_can_construct_war_camps_02 = {
 	has_building = war_camps_01
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_tribal = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = { NOT = { government_has_flag = government_is_wanua } }
-	trigger_if = {
-		limit = { debug_only = no }
-		county.holder.culture = { has_innovation = innovation_barracks }
+	province_owner = { NOT = { government_has_flag = government_is_wanua } }
+
+	# Vanilla can_construct_showing_failures_only
+	OR = {
+		mpo_permafrost_building_trigger = yes
+		province_owner = {
+			culture = { has_innovation = innovation_barracks }
+		}
 	}
-	
-}
-hm_trigger_construct_war_camps = {
-	hm_trigger_construct_war_camps_01 = yes
-}
-hm_trigger_upgrade_war_camps = {
-	hm_trigger_construct_war_camps_02 = yes
 }
 
-hm_trigger_construct_palisades_01 = {
+HM_RE_can_construct_war_camps = {
+	HM_RE_can_construct_war_camps_01 = yes
+}
+
+HM_RE_can_upgrade_war_camps = {
+	OR = {
+		HM_RE_can_construct_war_camps_02 = yes
+	}
+}
+
+### palisades
+
+HM_RE_can_construct_palisades_01 = {
 	NOT = { has_building_or_higher = palisades_01 }
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_tribal = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = { NOT = { government_has_flag = government_is_wanua } }
+	province_owner = { NOT = { government_has_flag = government_is_wanua } }
 }
-hm_trigger_construct_palisades_02 = {
+
+HM_RE_can_construct_palisades_02 = {
 	has_building = palisades_01
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_tribal = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = { NOT = { government_has_flag = government_is_wanua } }
-	trigger_if = {
-		limit = { debug_only = no }
-		county.holder.culture = { has_innovation = innovation_barracks }
+	province_owner = { NOT = { government_has_flag = government_is_wanua } }
+
+	# Vanilla can_construct_showing_failures_only
+	OR = {
+		mpo_permafrost_building_trigger = yes
+		province_owner = {
+			culture = { has_innovation = innovation_barracks }
+		}
 	}
 }
-hm_trigger_construct_palisades = {
-	hm_trigger_construct_palisades_01 = yes
-}
-hm_trigger_upgrade_palisades = {
-	hm_trigger_construct_palisades_02 = yes
+
+HM_RE_can_construct_palisades = {
+	HM_RE_can_construct_palisades_01 = yes
 }
 
-hm_trigger_construct_market_villages_01 = {
+HM_RE_can_upgrade_palisades = {
+	OR = {
+		HM_RE_can_construct_palisades_02 = yes
+	}
+}
+
+### market_villages
+
+HM_RE_can_construct_market_villages_01 = {
 	NOT = { has_building_or_higher = market_villages_01 }
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_tribal = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = { NOT = { government_has_flag = government_is_wanua } }
+	province_owner = { NOT = { government_has_flag = government_is_wanua } }
 }
-hm_trigger_construct_market_villages_02 = {
+
+HM_RE_can_construct_market_villages_02 = {
 	has_building = market_villages_01
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_tribal = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = { NOT = { government_has_flag = government_is_wanua } }
-	trigger_if = {
-		limit = { debug_only = no }
-		county.holder.culture = { has_innovation = innovation_barracks }
+	province_owner = { NOT = { government_has_flag = government_is_wanua } }
+
+	# Vanilla can_construct_showing_failures_only
+	OR = {
+		mpo_permafrost_building_trigger = yes
+		province_owner = {
+			culture = { has_innovation = innovation_barracks }
+		}
 	}
 }
-hm_trigger_construct_market_villages = {
-	hm_trigger_construct_market_villages_01 = yes
-}
-hm_trigger_upgrade_market_villages = {
-	hm_trigger_construct_market_villages_02 = yes
+
+HM_RE_can_construct_market_villages = {
+	HM_RE_can_construct_market_villages_01 = yes
 }
 
-hm_trigger_construct_idjang_forts_01 = {
+HM_RE_can_upgrade_market_villages = {
+	OR = {
+		HM_RE_can_construct_market_villages_02 = yes
+	}
+}
+
+### idjang_forts
+
+HM_RE_can_construct_idjang_forts_01 = {
 	NOT = { has_building_or_higher = idjang_forts_01 }
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = {
+	province_owner ?= {
 		government_has_flag = government_is_wanua
 	}
 }
-hm_trigger_construct_idjang_forts_02 = {
+
+HM_RE_can_construct_idjang_forts_02 = {
 	has_building = idjang_forts_01
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = {
+	province_owner ?= {
 		government_has_flag = government_is_wanua
 	}
 }
-hm_trigger_construct_idjang_forts_03 = {
+
+HM_RE_can_construct_idjang_forts_03 = {
 	has_building = idjang_forts_02
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = {
+	province_owner ?= {
 		government_has_flag = government_is_wanua
 	}
 }
-hm_trigger_construct_idjang_forts_04 = {
+
+HM_RE_can_construct_idjang_forts_04 = {
 	has_building = idjang_forts_03
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = {
+	province_owner ?= {
 		government_has_flag = government_is_wanua
 	}
 }
-hm_trigger_construct_idjang_forts = {
-	hm_trigger_construct_idjang_forts_01 = yes
+
+HM_RE_can_construct_idjang_forts = {
+	HM_RE_can_construct_idjang_forts_01 = yes
 }
-hm_trigger_upgrade_idjang_forts = {
+
+HM_RE_can_upgrade_idjang_forts = {
 	OR = {
-		hm_trigger_construct_idjang_forts_02 = yes
-		hm_trigger_construct_idjang_forts_03 = yes
-		hm_trigger_construct_idjang_forts_04 = yes
+		HM_RE_can_construct_idjang_forts_02 = yes
+		HM_RE_can_construct_idjang_forts_03 = yes
+		HM_RE_can_construct_idjang_forts_04 = yes
 	}
 }
 
+### wantilan
 
-hm_trigger_construct_wantilan_01 = {
+HM_RE_can_construct_wantilan_01 = {
 	NOT = { has_building_or_higher = wantilan_01 }
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = {
+	province_owner ?= {
 		government_has_flag = government_is_wanua
-	}
-}
-hm_trigger_construct_wantilan_02 = {
-	has_building = wantilan_01
-	has_building_or_higher = tribe_01
-	county.holder = {
-		government_has_flag = government_is_wanua
-	}
-}
-hm_trigger_construct_wantilan_03 = {
-	has_building = wantilan_02
-	has_building_or_higher = tribe_01
-	county.holder = {
-		government_has_flag = government_is_wanua
-	}
-}
-hm_trigger_construct_wantilan_04 = {
-	has_building = wantilan_03
-	has_building_or_higher = tribe_01
-	county.holder = {
-		government_has_flag = government_is_wanua
-	}
-}
-hm_trigger_construct_wantilan = {
-	hm_trigger_construct_wantilan_01 = yes
-}
-hm_trigger_upgrade_wantilan = {
-	OR = {
-		hm_trigger_construct_wantilan_02 = yes
-		hm_trigger_construct_wantilan_03 = yes
-		hm_trigger_construct_wantilan_04 = yes
 	}
 }
 
-hm_trigger_construct_kora_kora_yards_01 = {
-	NOT = { has_building_or_higher = kora_kora_yards_01 }
+HM_RE_can_construct_wantilan_02 = {
+	has_building = wantilan_01
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
+	province_owner ?= {
+		government_has_flag = government_is_wanua
+	}
+}
+
+HM_RE_can_construct_wantilan_03 = {
+	has_building = wantilan_02
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
+	has_building_or_higher = tribe_01
+	province_owner ?= {
+		government_has_flag = government_is_wanua
+	}
+}
+
+HM_RE_can_construct_wantilan_04 = {
+	has_building = wantilan_03
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
+	has_building_or_higher = tribe_01
+	province_owner ?= {
+		government_has_flag = government_is_wanua
+	}
+}
+
+HM_RE_can_construct_wantilan = {
+	HM_RE_can_construct_wantilan_01 = yes
+}
+
+HM_RE_can_upgrade_wantilan = {
+	OR = {
+		HM_RE_can_construct_wantilan_02 = yes
+		HM_RE_can_construct_wantilan_03 = yes
+		HM_RE_can_construct_wantilan_04 = yes
+	}
+}
+
+### kora_kora_yards
+
+HM_RE_can_construct_kora_kora_yards_01 = {
+	NOT = { has_building_or_higher = kora_kora_yards_01 }
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	OR = {
 		is_coastal = yes
 		is_riverside_province = yes
 	}
-	county.holder = {
+	has_building_or_higher = tribe_01
+	province_owner ?= {
 		government_has_flag = government_is_wanua
 	}
 }
-hm_trigger_construct_kora_kora_yards_02 = {
+
+HM_RE_can_construct_kora_kora_yards_02 = {
 	has_building = kora_kora_yards_01
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = {
+	province_owner ?= {
 		government_has_flag = government_is_wanua
 	}
 }
-hm_trigger_construct_kora_kora_yards_03 = {
+
+HM_RE_can_construct_kora_kora_yards_03 = {
 	has_building = kora_kora_yards_02
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = {
+	province_owner ?= {
 		government_has_flag = government_is_wanua
 	}
 }
-hm_trigger_construct_kora_kora_yards_04 = {
+
+HM_RE_can_construct_kora_kora_yards_04 = {
 	has_building = kora_kora_yards_03
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = {
+	province_owner ?= {
 		government_has_flag = government_is_wanua
 	}
 }
-hm_trigger_construct_kora_kora_yards = {
-	hm_trigger_construct_kora_kora_yards_01 = yes
+
+HM_RE_can_construct_kora_kora_yards = {
+	HM_RE_can_construct_kora_kora_yards_01 = yes
 }
-hm_trigger_upgrade_kora_kora_yards = {
+
+HM_RE_can_upgrade_kora_kora_yards = {
 	OR = {
-		hm_trigger_construct_kora_kora_yards_02 = yes
-		hm_trigger_construct_kora_kora_yards_03 = yes
-		hm_trigger_construct_kora_kora_yards_04 = yes
+		HM_RE_can_construct_kora_kora_yards_02 = yes
+		HM_RE_can_construct_kora_kora_yards_03 = yes
+		HM_RE_can_construct_kora_kora_yards_04 = yes
 	}
 }
 
-hm_trigger_construct_water_temples_01 = {
+### water_temples
+
+HM_RE_can_construct_water_temples_01 = {
 	NOT = { has_building_or_higher = water_temples_01 }
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = {
+	province_owner ?= {
 		government_has_flag = government_is_wanua
-	}
-}
-hm_trigger_construct_water_temples_02 = {
-	has_building = water_temples_01
-	has_building_or_higher = tribe_01
-	county.holder = {
-		government_has_flag = government_is_wanua
-	}
-}
-hm_trigger_construct_water_temples_03 = {
-	has_building = water_temples_02
-	has_building_or_higher = tribe_01
-	county.holder = {
-		government_has_flag = government_is_wanua
-	}
-}
-hm_trigger_construct_water_temples_04 = {
-	has_building = water_temples_03
-	has_building_or_higher = tribe_01
-	county.holder = {
-		government_has_flag = government_is_wanua
-	}
-}
-hm_trigger_construct_water_temples = {
-	hm_trigger_construct_water_temples_01 = yes
-}
-hm_trigger_upgrade_water_temples = {
-	OR = {
-		hm_trigger_construct_water_temples_02 = yes
-		hm_trigger_construct_water_temples_03 = yes
-		hm_trigger_construct_water_temples_04 = yes
 	}
 }
 
-hm_trigger_construct_stilted_granaries_01 = {
-	NOT = { has_building_or_higher = stilted_granaries_01 }
+HM_RE_can_construct_water_temples_02 = {
+	has_building = water_temples_01
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = {
+	province_owner ?= {
 		government_has_flag = government_is_wanua
 	}
 }
-hm_trigger_construct_stilted_granaries_02 = {
-	has_building = stilted_granaries_01
+
+HM_RE_can_construct_water_temples_03 = {
+	has_building = water_temples_02
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = {
+	province_owner ?= {
 		government_has_flag = government_is_wanua
 	}
 }
-hm_trigger_construct_stilted_granaries_03 = {
-	has_building = stilted_granaries_02
+
+HM_RE_can_construct_water_temples_04 = {
+	has_building = water_temples_03
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = tribe_01
-	county.holder = {
+	province_owner ?= {
 		government_has_flag = government_is_wanua
 	}
 }
-hm_trigger_construct_stilted_granaries_04 = {
-	has_building = stilted_granaries_03
-	has_building_or_higher = tribe_01
-	county.holder = {
-		government_has_flag = government_is_wanua
-	}
+
+HM_RE_can_construct_water_temples = {
+	HM_RE_can_construct_water_temples_01 = yes
 }
-hm_trigger_construct_stilted_granaries = {
-	hm_trigger_construct_stilted_granaries_01 = yes
-}
-hm_trigger_upgrade_stilted_granaries = {
+
+HM_RE_can_upgrade_water_temples = {
 	OR = {
-		hm_trigger_construct_stilted_granaries_02 = yes
-		hm_trigger_construct_stilted_granaries_03 = yes
-		hm_trigger_construct_stilted_granaries_04 = yes
+		HM_RE_can_construct_water_temples_02 = yes
+		HM_RE_can_construct_water_temples_03 = yes
+		HM_RE_can_construct_water_temples_04 = yes
+	}
+}
+
+### stilted_granaries
+
+HM_RE_can_construct_stilted_granaries_01 = {
+	NOT = { has_building_or_higher = stilted_granaries_01 }
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
+	has_building_or_higher = tribe_01
+	province_owner ?= {
+		government_has_flag = government_is_wanua
+	}
+}
+
+HM_RE_can_construct_stilted_granaries_02 = {
+	has_building = stilted_granaries_01
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
+	has_building_or_higher = tribe_01
+	province_owner ?= {
+		government_has_flag = government_is_wanua
+	}
+}
+
+HM_RE_can_construct_stilted_granaries_03 = {
+	has_building = stilted_granaries_02
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
+	has_building_or_higher = tribe_01
+	province_owner ?= {
+		government_has_flag = government_is_wanua
+	}
+}
+
+HM_RE_can_construct_stilted_granaries_04 = {
+	has_building = stilted_granaries_03
+
+	# Vanilla is_enabled
+	HM_RE_building_requirement_wanua = yes
+
+	# Vanilla can_construct_potential
+	has_building_or_higher = tribe_01
+	province_owner ?= {
+		government_has_flag = government_is_wanua
+	}
+}
+
+HM_RE_can_construct_stilted_granaries = {
+	HM_RE_can_construct_stilted_granaries_01 = yes
+}
+
+HM_RE_can_upgrade_stilted_granaries = {
+	OR = {
+		HM_RE_can_construct_stilted_granaries_02 = yes
+		HM_RE_can_construct_stilted_granaries_03 = yes
+		HM_RE_can_construct_stilted_granaries_04 = yes
 	}
 }

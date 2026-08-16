@@ -1,10 +1,25 @@
-﻿hm_building_requirement_tribal = {
+# Vanilla building triggers receive scope:holder from the construction engine.
+# Holding Manager evaluates buildings from province scope, so holder-dependent
+# helpers need these small adapters. Holder-independent vanilla helpers are
+# called directly from the per-building wrappers.
+
+HM_RE_building_requirement_tribal = {
 	province_owner = {
-		government_has_flag = government_is_tribal
+		OR = {
+			government_has_flag = government_is_tribal
+			government_has_flag = government_is_nomadic
+			government_has_flag = government_is_wanua
+		}
 	}
 }
 
-hm_building_wind_furnace_requirement_terrain = {
+HM_RE_building_requirement_wanua = {
+	province_owner = {
+		government_has_flag = government_is_wanua
+	}
+}
+
+HM_RE_building_wind_furnace_requirement_terrain = {
 	geographical_region = world_india
 	OR = {
 		is_coastal = yes
@@ -17,15 +32,26 @@ hm_building_wind_furnace_requirement_terrain = {
 				}
 			}
 			duchy = {
-				any_county = {
+				any_de_jure_county = {
 					any_county_province = {
 						has_building_or_higher = konasamudram_mines_01
 					}
 				}
 			}
 		}
-		
 	}
-	
-	county.holder.culture = { has_innovation = innovation_wootz_steel }
+	province_owner.culture = {
+		has_innovation = innovation_wootz_steel
+	}
+}
+
+HM_RE_building_waterworks_requirement_terrain = {
+	is_county_capital = yes
+	NOR = {
+		terrain = mountains
+		terrain = desert_mountains
+	}
+	province_owner.culture = {
+		has_cultural_parameter = unlocks_waterworks_buildings
+	}
 }

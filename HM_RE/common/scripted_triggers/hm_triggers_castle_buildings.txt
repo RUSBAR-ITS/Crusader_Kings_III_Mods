@@ -1,31 +1,51 @@
-﻿hm_trigger_construct_castle_02 = {
+# Generated from the current vanilla building eligibility blocks.
+# Re-run tools/Sync-HMREBuildingTriggers.ps1 after CK3 updates.
+
+### castle
+
+HM_RE_can_construct_castle_02 = {
 	has_building = castle_01
-	hm_building_requirement_tribal = no
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_battlements }
+
+	# Vanilla can_construct_potential
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
+	culture = {
+		has_innovation = innovation_battlements
 	}
+	japan_castle_construction_trigger = yes
 }
-hm_trigger_construct_castle_03 = {
+
+HM_RE_can_construct_castle_03 = {
 	has_building = castle_02
-	hm_building_requirement_tribal = no
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_hoardings }
+
+	# Vanilla can_construct_potential
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
+	culture = {
+		has_innovation = innovation_hoardings
 	}
+	japan_castle_construction_trigger = yes
 }
-hm_trigger_construct_castle_04 = {
+
+HM_RE_can_construct_castle_04 = {
 	has_building = castle_03
-	hm_building_requirement_tribal = no
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_machicolations }
+
+	# Vanilla can_construct_potential
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
+	culture = {
+		has_innovation = innovation_machicolations
 	}
+	japan_castle_construction_trigger = yes
 }
-hm_trigger_upgrade_castle = {
+
+HM_RE_can_upgrade_castle = {
 	OR = {
-		hm_trigger_construct_castle_02 = yes
-		hm_trigger_construct_castle_03 = yes
-		hm_trigger_construct_castle_04 = yes
+		HM_RE_can_construct_castle_02 = yes
+		HM_RE_can_construct_castle_03 = yes
+		HM_RE_can_construct_castle_04 = yes
 	}
 }

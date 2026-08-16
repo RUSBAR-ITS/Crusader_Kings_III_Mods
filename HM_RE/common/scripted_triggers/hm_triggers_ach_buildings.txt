@@ -1,104 +1,147 @@
-﻿hm_trigger_construct_oath_warriors_building_01 = {
+# Generated from the current vanilla building eligibility blocks.
+# Re-run tools/Sync-HMREBuildingTriggers.ps1 after CK3 updates.
+
+### oath_warriors_building
+
+HM_RE_can_construct_oath_warriors_building_01 = {
 	NOT = { has_building_or_higher = oath_warriors_building_01 }
-	county.holder = {
-		has_variable = provide_for_the_warriors_oath
+
+	# Vanilla can_construct_potential
+	province_owner = {
+	    has_variable = provide_for_the_warriors_oath
 	}
 }
-hm_trigger_construct_oath_warriors_building_02 = {
+
+HM_RE_can_construct_oath_warriors_building_02 = {
 	has_building = oath_warriors_building_01
-	county.holder = {
-		has_variable = provide_for_the_warriors_oath
-	}
 }
-hm_trigger_construct_oath_warriors_building_03 = {
+
+HM_RE_can_construct_oath_warriors_building_03 = {
 	has_building = oath_warriors_building_02
-	county.holder = {
-		has_variable = provide_for_the_warriors_oath
-	}
 }
-hm_trigger_construct_oath_warriors_building_04 = {
+
+HM_RE_can_construct_oath_warriors_building_04 = {
 	has_building = oath_warriors_building_03
-	county.holder = {
-		has_variable = provide_for_the_warriors_oath
-	}
-}
-hm_trigger_construct_oath_warriors_building = {
-	hm_trigger_construct_oath_warriors_building_01 = yes
-}
-hm_trigger_upgrade_oath_warriors_building = {
-	OR = {
-		hm_trigger_construct_oath_warriors_building_02 = yes
-		hm_trigger_construct_oath_warriors_building_03 = yes
-		hm_trigger_construct_oath_warriors_building_04 = yes
+
+	# Vanilla can_construct_showing_failures_only
+	custom_tooltip = {
+	    text = oath_warriors_building_04_tooltip
+	    has_province_modifier = oath_provide_for_the_warriors_province
 	}
 }
 
-hm_trigger_construct_oath_faithful_building_01 = {
+HM_RE_can_construct_oath_warriors_building = {
+	HM_RE_can_construct_oath_warriors_building_01 = yes
+}
+
+HM_RE_can_upgrade_oath_warriors_building = {
+	OR = {
+		HM_RE_can_construct_oath_warriors_building_02 = yes
+		HM_RE_can_construct_oath_warriors_building_03 = yes
+		HM_RE_can_construct_oath_warriors_building_04 = yes
+	}
+}
+
+### oath_faithful_building
+
+HM_RE_can_construct_oath_faithful_building_01 = {
 	NOT = { has_building_or_higher = oath_faithful_building_01 }
-	county.holder = {
-		has_variable = provide_for_the_faithful_oath
+
+	# Vanilla is_enabled
+	faith = province_owner.faith
+
+	# Vanilla can_construct_potential
+	province_owner = {
+	    has_variable = provide_for_the_faithful_oath
 	}
+
+	# Vanilla can_construct_showing_failures_only
+	faith = province_owner.faith
 }
-hm_trigger_construct_oath_faithful_building_02 = {
+
+HM_RE_can_construct_oath_faithful_building_02 = {
 	has_building = oath_faithful_building_01
-	county.holder = {
-		has_variable = provide_for_the_faithful_oath
-	}
+
+	# Vanilla is_enabled
+	faith = province_owner.faith
+
+	# Vanilla can_construct_showing_failures_only
+	faith = province_owner.faith
 }
-hm_trigger_construct_oath_faithful_building_03 = {
+
+HM_RE_can_construct_oath_faithful_building_03 = {
 	has_building = oath_faithful_building_02
-	county.holder = {
-		has_variable = provide_for_the_faithful_oath
-	}
+
+	# Vanilla is_enabled
+	faith = province_owner.faith
+
+	# Vanilla can_construct_showing_failures_only
+	faith = province_owner.faith
 }
-hm_trigger_construct_oath_faithful_building_04 = {
+
+HM_RE_can_construct_oath_faithful_building_04 = {
 	has_building = oath_faithful_building_03
-	county.holder = {
-		has_variable = provide_for_the_faithful_oath
-	}
-}
-hm_trigger_construct_oath_faithful_building = {
-	hm_trigger_construct_oath_faithful_building_01 = yes
-}
-hm_trigger_upgrade_oath_faithful_building = {
-	OR = {
-		hm_trigger_construct_oath_faithful_building_02 = yes
-		hm_trigger_construct_oath_faithful_building_03 = yes
-		hm_trigger_construct_oath_faithful_building_04 = yes
+
+	# Vanilla is_enabled
+	faith = province_owner.faith
+
+	# Vanilla can_construct_showing_failures_only
+	faith = province_owner.faith
+	custom_tooltip = {
+	    text = oath_faithful_building_04_tooltip
+	    has_province_modifier = oath_provide_for_the_faithful_province
 	}
 }
 
-hm_trigger_construct_oath_poor_building_01 = {
-	NOT = { has_building_or_higher = oath_poor_building_01 }
-	county.holder = {
-		has_variable = provide_for_the_poor_oath
-	}
+HM_RE_can_construct_oath_faithful_building = {
+	HM_RE_can_construct_oath_faithful_building_01 = yes
 }
-hm_trigger_construct_oath_poor_building_02 = {
-	has_building = oath_poor_building_01
-	county.holder = {
-		has_variable = provide_for_the_poor_oath
-	}
-}
-hm_trigger_construct_oath_poor_building_03 = {
-	has_building = oath_poor_building_02
-	county.holder = {
-		has_variable = provide_for_the_poor_oath
-	}
-}
-hm_trigger_construct_oath_poor_building_04 = {
-	has_building = oath_poor_building_03
-	county.holder = {
-		has_variable = provide_for_the_poor_oath
-	}
-}
-hm_trigger_construct_oath_poor_building = {
-	hm_trigger_construct_oath_poor_building_01 = yes
-}
-hm_trigger_upgrade_oath_poor_building = {
+
+HM_RE_can_upgrade_oath_faithful_building = {
 	OR = {
-		hm_trigger_construct_oath_poor_building_02 = yes
-		hm_trigger_construct_oath_poor_building_03 = yes
-		hm_trigger_construct_oath_poor_building_04 = yes
+		HM_RE_can_construct_oath_faithful_building_02 = yes
+		HM_RE_can_construct_oath_faithful_building_03 = yes
+		HM_RE_can_construct_oath_faithful_building_04 = yes
+	}
+}
+
+### oath_poor_building
+
+HM_RE_can_construct_oath_poor_building_01 = {
+	NOT = { has_building_or_higher = oath_poor_building_01 }
+
+	# Vanilla can_construct_potential
+	province_owner = {
+	    has_variable = provide_for_the_poor_oath
+	}
+}
+
+HM_RE_can_construct_oath_poor_building_02 = {
+	has_building = oath_poor_building_01
+}
+
+HM_RE_can_construct_oath_poor_building_03 = {
+	has_building = oath_poor_building_02
+}
+
+HM_RE_can_construct_oath_poor_building_04 = {
+	has_building = oath_poor_building_03
+
+	# Vanilla can_construct_showing_failures_only
+	custom_tooltip = {
+	    text = oath_poor_building_04_tooltip
+	    has_province_modifier = oath_provide_for_the_poor_province
+	}
+}
+
+HM_RE_can_construct_oath_poor_building = {
+	HM_RE_can_construct_oath_poor_building_01 = yes
+}
+
+HM_RE_can_upgrade_oath_poor_building = {
+	OR = {
+		HM_RE_can_construct_oath_poor_building_02 = yes
+		HM_RE_can_construct_oath_poor_building_03 = yes
+		HM_RE_can_construct_oath_poor_building_04 = yes
 	}
 }

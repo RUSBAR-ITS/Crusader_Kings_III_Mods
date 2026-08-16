@@ -1,21 +1,21 @@
 ﻿hm_effect_upgrade_city = {
 	if = {
-		limit = { hm_trigger_construct_city_02 = yes }
+		limit = { HM_RE_can_construct_city_02 = yes }
 		add_building = city_02
 	}
 	else_if = {
-		limit = { hm_trigger_construct_city_03 = yes }
+		limit = { HM_RE_can_construct_city_03 = yes }
 		add_building = city_03
 	}
 	else_if = {
-		limit = { hm_trigger_construct_city_04 = yes }
+		limit = { HM_RE_can_construct_city_04 = yes }
 		add_building = city_04
 	}
 }
 
 hm_effect_construct_guild_halls = {
 	if = {
-		limit = { hm_trigger_construct_guild_halls = yes }
+		limit = { HM_RE_can_construct_guild_halls = yes }
 		if = {
 			limit = { has_free_building_slot = yes }
 			add_building = guild_halls_01
@@ -29,31 +29,31 @@ hm_effect_construct_guild_halls = {
 }
 hm_effect_upgrade_guild_halls = {
 	if = {
-		limit = { hm_trigger_construct_guild_halls_02 = yes }
+		limit = { HM_RE_can_construct_guild_halls_02 = yes }
 		add_building = guild_halls_02
 	}
 	else_if = {
-		limit = { hm_trigger_construct_guild_halls_03 = yes }
+		limit = { HM_RE_can_construct_guild_halls_03 = yes }
 		add_building = guild_halls_03
 	}
 	else_if = {
-		limit = { hm_trigger_construct_guild_halls_04 = yes }
+		limit = { HM_RE_can_construct_guild_halls_04 = yes }
 		add_building = guild_halls_04
 	}
 	else_if = {
-		limit = { hm_trigger_construct_guild_halls_05 = yes }
+		limit = { HM_RE_can_construct_guild_halls_05 = yes }
 		add_building = guild_halls_05
 	}
 	else_if = {
-		limit = { hm_trigger_construct_guild_halls_06 = yes }
+		limit = { HM_RE_can_construct_guild_halls_06 = yes }
 		add_building = guild_halls_06
 	}
 	else_if = {
-		limit = { hm_trigger_construct_guild_halls_07 = yes }
+		limit = { HM_RE_can_construct_guild_halls_07 = yes }
 		add_building = guild_halls_07
 	}
 	else_if = {
-		limit = { hm_trigger_construct_guild_halls_08 = yes }
+		limit = { HM_RE_can_construct_guild_halls_08 = yes }
 		add_building = guild_halls_08
 	}
 }

@@ -1,6 +1,6 @@
 ﻿hm_effect_construct_hospices = {
 	if = {
-		limit = { hm_trigger_construct_hospices = yes }
+		limit = { HM_RE_can_construct_hospices = yes }
 		if = {
 			limit = { has_free_building_slot = yes }
 			add_building = hospices_01
@@ -14,31 +14,31 @@
 }
 hm_effect_upgrade_hospices = {
 	if = {
-		limit = { hm_trigger_construct_hospices_02 = yes }
+		limit = { HM_RE_can_construct_hospices_02 = yes }
 		add_building = hospices_02
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hospices_03 = yes }
+		limit = { HM_RE_can_construct_hospices_03 = yes }
 		add_building = hospices_03
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hospices_04 = yes }
+		limit = { HM_RE_can_construct_hospices_04 = yes }
 		add_building = hospices_04
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hospices_05 = yes }
+		limit = { HM_RE_can_construct_hospices_05 = yes }
 		add_building = hospices_05
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hospices_06 = yes }
+		limit = { HM_RE_can_construct_hospices_06 = yes }
 		add_building = hospices_06
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hospices_07 = yes }
+		limit = { HM_RE_can_construct_hospices_07 = yes }
 		add_building = hospices_07
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hospices_08 = yes }
+		limit = { HM_RE_can_construct_hospices_08 = yes }
 		add_building = hospices_08
 	}
 }

@@ -1,6 +1,6 @@
 ﻿hm_effect_construct_ramparts = {
 	if = {
-		limit = { hm_trigger_construct_ramparts = yes }
+		limit = { HM_RE_can_construct_ramparts = yes }
 		if = {
 			limit = { has_free_building_slot = yes }
 			add_building = ramparts_01
@@ -14,31 +14,31 @@
 }
 hm_effect_upgrade_ramparts = {
 	if = {
-		limit = { hm_trigger_construct_ramparts_02 = yes }
+		limit = { HM_RE_can_construct_ramparts_02 = yes }
 		add_building = ramparts_02
 	}
 	else_if = {
-		limit = { hm_trigger_construct_ramparts_03 = yes }
+		limit = { HM_RE_can_construct_ramparts_03 = yes }
 		add_building = ramparts_03
 	}
 	else_if = {
-		limit = { hm_trigger_construct_ramparts_04 = yes }
+		limit = { HM_RE_can_construct_ramparts_04 = yes }
 		add_building = ramparts_04
 	}
 	else_if = {
-		limit = { hm_trigger_construct_ramparts_05 = yes }
+		limit = { HM_RE_can_construct_ramparts_05 = yes }
 		add_building = ramparts_05
 	}
 	else_if = {
-		limit = { hm_trigger_construct_ramparts_06 = yes }
+		limit = { HM_RE_can_construct_ramparts_06 = yes }
 		add_building = ramparts_06
 	}
 	else_if = {
-		limit = { hm_trigger_construct_ramparts_07 = yes }
+		limit = { HM_RE_can_construct_ramparts_07 = yes }
 		add_building = ramparts_07
 	}
 	else_if = {
-		limit = { hm_trigger_construct_ramparts_08 = yes }
+		limit = { HM_RE_can_construct_ramparts_08 = yes }
 		add_building = ramparts_08
 	}
 }
@@ -79,7 +79,7 @@ hm_effect_remove_ramparts = {
 
 hm_effect_construct_curtain_walls = {
 	if = {
-		limit = { hm_trigger_construct_curtain_walls = yes }
+		limit = { HM_RE_can_construct_curtain_walls = yes }
 		if = {
 			limit = { has_free_building_slot = yes }
 			add_building = curtain_walls_01
@@ -93,31 +93,31 @@ hm_effect_construct_curtain_walls = {
 }
 hm_effect_upgrade_curtain_walls = {
 	if = {
-		limit = { hm_trigger_construct_curtain_walls_02 = yes }
+		limit = { HM_RE_can_construct_curtain_walls_02 = yes }
 		add_building = curtain_walls_02
 	}
 	else_if = {
-		limit = { hm_trigger_construct_curtain_walls_03 = yes }
+		limit = { HM_RE_can_construct_curtain_walls_03 = yes }
 		add_building = curtain_walls_03
 	}
 	else_if = {
-		limit = { hm_trigger_construct_curtain_walls_04 = yes }
+		limit = { HM_RE_can_construct_curtain_walls_04 = yes }
 		add_building = curtain_walls_04
 	}
 	else_if = {
-		limit = { hm_trigger_construct_curtain_walls_05 = yes }
+		limit = { HM_RE_can_construct_curtain_walls_05 = yes }
 		add_building = curtain_walls_05
 	}
 	else_if = {
-		limit = { hm_trigger_construct_curtain_walls_06 = yes }
+		limit = { HM_RE_can_construct_curtain_walls_06 = yes }
 		add_building = curtain_walls_06
 	}
 	else_if = {
-		limit = { hm_trigger_construct_curtain_walls_07 = yes }
+		limit = { HM_RE_can_construct_curtain_walls_07 = yes }
 		add_building = curtain_walls_07
 	}
 	else_if = {
-		limit = { hm_trigger_construct_curtain_walls_08 = yes }
+		limit = { HM_RE_can_construct_curtain_walls_08 = yes }
 		add_building = curtain_walls_08
 	}
 }
@@ -158,7 +158,7 @@ hm_effect_remove_curtain_walls = {
 
 hm_effect_construct_watchtowers = {
 	if = {
-		limit = { hm_trigger_construct_watchtowers = yes }
+		limit = { HM_RE_can_construct_watchtowers = yes }
 		if = {
 			limit = { has_free_building_slot = yes }
 			add_building = watchtowers_01
@@ -172,31 +172,31 @@ hm_effect_construct_watchtowers = {
 }
 hm_effect_upgrade_watchtowers = {
 	if = {
-		limit = { hm_trigger_construct_watchtowers_02 = yes }
+		limit = { HM_RE_can_construct_watchtowers_02 = yes }
 		add_building = watchtowers_02
 	}
 	else_if = {
-		limit = { hm_trigger_construct_watchtowers_03 = yes }
+		limit = { HM_RE_can_construct_watchtowers_03 = yes }
 		add_building = watchtowers_03
 	}
 	else_if = {
-		limit = { hm_trigger_construct_watchtowers_04 = yes }
+		limit = { HM_RE_can_construct_watchtowers_04 = yes }
 		add_building = watchtowers_04
 	}
 	else_if = {
-		limit = { hm_trigger_construct_watchtowers_05 = yes }
+		limit = { HM_RE_can_construct_watchtowers_05 = yes }
 		add_building = watchtowers_05
 	}
 	else_if = {
-		limit = { hm_trigger_construct_watchtowers_06 = yes }
+		limit = { HM_RE_can_construct_watchtowers_06 = yes }
 		add_building = watchtowers_06
 	}
 	else_if = {
-		limit = { hm_trigger_construct_watchtowers_07 = yes }
+		limit = { HM_RE_can_construct_watchtowers_07 = yes }
 		add_building = watchtowers_07
 	}
 	else_if = {
-		limit = { hm_trigger_construct_watchtowers_08 = yes }
+		limit = { HM_RE_can_construct_watchtowers_08 = yes }
 		add_building = watchtowers_08
 	}
 }
@@ -237,7 +237,7 @@ hm_effect_remove_watchtowers = {
 
 hm_effect_construct_hill_forts = {
 	if = {
-		limit = { hm_trigger_construct_hill_forts = yes }
+		limit = { HM_RE_can_construct_hill_forts = yes }
 		if = {
 			limit = { has_free_building_slot = yes }
 			add_building = hill_forts_01
@@ -251,31 +251,31 @@ hm_effect_construct_hill_forts = {
 }
 hm_effect_upgrade_hill_forts = {
 	if = {
-		limit = { hm_trigger_construct_hill_forts_02 = yes }
+		limit = { HM_RE_can_construct_hill_forts_02 = yes }
 		add_building = hill_forts_02
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hill_forts_03 = yes }
+		limit = { HM_RE_can_construct_hill_forts_03 = yes }
 		add_building = hill_forts_03
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hill_forts_04 = yes }
+		limit = { HM_RE_can_construct_hill_forts_04 = yes }
 		add_building = hill_forts_04
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hill_forts_05 = yes }
+		limit = { HM_RE_can_construct_hill_forts_05 = yes }
 		add_building = hill_forts_05
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hill_forts_06 = yes }
+		limit = { HM_RE_can_construct_hill_forts_06 = yes }
 		add_building = hill_forts_06
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hill_forts_07 = yes }
+		limit = { HM_RE_can_construct_hill_forts_07 = yes }
 		add_building = hill_forts_07
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hill_forts_08 = yes }
+		limit = { HM_RE_can_construct_hill_forts_08 = yes }
 		add_building = hill_forts_08
 	}
 }

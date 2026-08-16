@@ -1,494 +1,591 @@
-﻿hm_trigger_construct_temple_citadel_02 = {
+# Generated from the current vanilla building eligibility blocks.
+# Re-run tools/Sync-HMREBuildingTriggers.ps1 after CK3 updates.
+
+### temple_citadel
+
+HM_RE_can_construct_temple_citadel_02 = {
 	has_building = temple_citadel_01
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_potential
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					county.holder.culture = {
-						has_cultural_parameter = temple_next_level
-					}
+		limit = {
+			NOT = {
+				province_owner.culture = {
+					has_cultural_parameter = temple_next_level
 				}
 			}
-			county.holder.culture = {
-				has_innovation = innovation_manorialism
-			}
 		}
-		trigger_else = {
-			county.holder.culture = {
-				has_cultural_parameter = temple_next_level
-				has_innovation = innovation_city_planning
-			}
+		province_owner.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+	trigger_else = {
+		province_owner.culture = {
+			has_cultural_parameter = temple_next_level
+			has_innovation = innovation_city_planning
 		}
 	}
 }
-hm_trigger_construct_temple_citadel_03 = {
+
+HM_RE_can_construct_temple_citadel_03 = {
 	has_building = temple_citadel_02
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_potential
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					county.holder.culture = {
-						has_cultural_parameter = temple_next_level
-					}
+		limit = {
+			NOT = {
+				province_owner.culture = {
+					has_cultural_parameter = temple_next_level
 				}
 			}
-			county.holder.culture = {
-				has_innovation = innovation_windmills
-			}
 		}
-		trigger_else = {
-			county.holder.culture = {
-				has_cultural_parameter = temple_next_level
-				has_innovation = innovation_manorialism
-			}
+		province_owner.culture = {
+			has_innovation = innovation_windmills
+		}
+	}
+	trigger_else = {
+		province_owner.culture = {
+			has_cultural_parameter = temple_next_level
+			has_innovation = innovation_manorialism
 		}
 	}
 }
-hm_trigger_construct_temple_citadel_04 = {
+
+HM_RE_can_construct_temple_citadel_04 = {
 	has_building = temple_citadel_03
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_potential
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					county.holder.culture = {
-						has_cultural_parameter = temple_next_level
-					}
+		limit = {
+			NOT = {
+				province_owner.culture = {
+					has_cultural_parameter = temple_next_level
 				}
 			}
-			county.holder.culture = {
-				has_innovation = innovation_cranes
-			}
 		}
-		trigger_else = {
-			county.holder.culture = {
-				has_cultural_parameter = temple_next_level
-				has_innovation = innovation_windmills
-			}
+		province_owner.culture = {
+			has_innovation = innovation_cranes
 		}
 	}
-}
-hm_trigger_upgrade_temple_citadel = {
-	OR = {
-		hm_trigger_construct_temple_citadel_02 = yes
-		hm_trigger_construct_temple_citadel_03 = yes
-		hm_trigger_construct_temple_citadel_04 = yes
+	trigger_else = {
+		province_owner.culture = {
+			has_cultural_parameter = temple_next_level
+			has_innovation = innovation_windmills
+		}
 	}
 }
 
-hm_trigger_construct_citadel_shrine_01 = {
+HM_RE_can_upgrade_temple_citadel = {
+	OR = {
+		HM_RE_can_construct_temple_citadel_02 = yes
+		HM_RE_can_construct_temple_citadel_03 = yes
+		HM_RE_can_construct_temple_citadel_04 = yes
+	}
+}
+
+### citadel_shrine
+
+HM_RE_can_construct_citadel_shrine_01 = {
 	NOT = { has_building_or_higher = citadel_shrine_01 }
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = temple_citadel_01
 	has_dlc = "All Under Heaven"
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
 }
-hm_trigger_construct_citadel_shrine_02 = {
+
+HM_RE_can_construct_citadel_shrine_02 = {
 	has_building = citadel_shrine_01
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = temple_citadel_01
 	has_dlc = "All Under Heaven"
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_city_planning }
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+	culture = {
+		has_innovation = innovation_city_planning
 	}
 }
-hm_trigger_construct_citadel_shrine_03 = {
+
+HM_RE_can_construct_citadel_shrine_03 = {
 	has_building = citadel_shrine_02
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_02
-	has_dlc = "All Under Heaven"
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_manorialism }
+	culture = {
+		has_innovation = innovation_manorialism
 	}
+	has_dlc = "All Under Heaven"
 }
-hm_trigger_construct_citadel_shrine_04 = {
+
+HM_RE_can_construct_citadel_shrine_04 = {
 	has_building = citadel_shrine_03
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_02
-	has_dlc = "All Under Heaven"
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_manorialism }
+	culture = {
+		has_innovation = innovation_manorialism
 	}
+	has_dlc = "All Under Heaven"
 }
-hm_trigger_construct_citadel_shrine_05 = {
+
+HM_RE_can_construct_citadel_shrine_05 = {
 	has_building = citadel_shrine_04
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_03
-	has_dlc = "All Under Heaven"
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_windmills }
+	culture = {
+		has_innovation = innovation_windmills
 	}
+	has_dlc = "All Under Heaven"
 }
-hm_trigger_construct_citadel_shrine_06 = {
+
+HM_RE_can_construct_citadel_shrine_06 = {
 	has_building = citadel_shrine_05
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_03
-	has_dlc = "All Under Heaven"
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_windmills }
+	culture = {
+		has_innovation = innovation_windmills
 	}
+	has_dlc = "All Under Heaven"
 }
-hm_trigger_construct_citadel_shrine_07 = {
+
+HM_RE_can_construct_citadel_shrine_07 = {
 	has_building = citadel_shrine_06
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_04
-	has_dlc = "All Under Heaven"
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_cranes }
+	culture = {
+		has_innovation = innovation_cranes
 	}
+	has_dlc = "All Under Heaven"
 }
 
-hm_trigger_construct_citadel_shrine_08 = {
+HM_RE_can_construct_citadel_shrine_08 = {
 	has_building = citadel_shrine_07
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_03
+	culture = {
+		has_innovation = innovation_cranes
+	}
 	has_dlc = "All Under Heaven"
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_cranes }
-	}
 }
 
-hm_trigger_construct_citadel_shrine = {
-	hm_trigger_construct_citadel_shrine_01 = yes
+HM_RE_can_construct_citadel_shrine = {
+	HM_RE_can_construct_citadel_shrine_01 = yes
 }
-hm_trigger_upgrade_citadel_shrine = {
+
+HM_RE_can_upgrade_citadel_shrine = {
 	OR = {
-		hm_trigger_construct_citadel_shrine_02 = yes
-		hm_trigger_construct_citadel_shrine_03 = yes
-		hm_trigger_construct_citadel_shrine_04 = yes
-		hm_trigger_construct_citadel_shrine_05 = yes
-		hm_trigger_construct_citadel_shrine_06 = yes
-		hm_trigger_construct_citadel_shrine_07 = yes
-		hm_trigger_construct_citadel_shrine_08 = yes
+		HM_RE_can_construct_citadel_shrine_02 = yes
+		HM_RE_can_construct_citadel_shrine_03 = yes
+		HM_RE_can_construct_citadel_shrine_04 = yes
+		HM_RE_can_construct_citadel_shrine_05 = yes
+		HM_RE_can_construct_citadel_shrine_06 = yes
+		HM_RE_can_construct_citadel_shrine_07 = yes
+		HM_RE_can_construct_citadel_shrine_08 = yes
 	}
 }
 
-hm_trigger_construct_sacred_pool_01 = {
+### sacred_pool
+
+HM_RE_can_construct_sacred_pool_01 = {
 	NOT = { has_building_or_higher = sacred_pool_01 }
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = temple_citadel_01
 	has_dlc = "All Under Heaven"
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
 }
-hm_trigger_construct_sacred_pool_02 = {
+
+HM_RE_can_construct_sacred_pool_02 = {
 	has_building = sacred_pool_01
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = temple_citadel_01
 	has_dlc = "All Under Heaven"
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
 	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-					}
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = may_build_sacred_pools_ahead_of_time
 				}
 			}
-			county.holder.culture = {
-				has_innovation = innovation_city_planning
-			}
 		}
-		trigger_else = {
-			culture = {
-				has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-			}
+		province_owner.culture = {
+			has_innovation = innovation_city_planning
+		}
+	}
+	trigger_else = {
+		culture = {
+			has_cultural_parameter = may_build_sacred_pools_ahead_of_time
 		}
 	}
 }
-hm_trigger_construct_sacred_pool_03 = {
+
+HM_RE_can_construct_sacred_pool_03 = {
 	has_building = sacred_pool_02
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_02
-	has_dlc = "All Under Heaven"
 	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-					}
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = may_build_sacred_pools_ahead_of_time
 				}
 			}
-			culture = {
-				has_innovation = innovation_manorialism
-			}
 		}
-		trigger_else = {
-			culture = {
-				has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-			}
-			county.holder.culture = {
-				has_innovation = innovation_city_planning
-			}
+		culture = {
+			has_innovation = innovation_manorialism
 		}
 	}
+	trigger_else = {
+		culture = {
+			has_cultural_parameter = may_build_sacred_pools_ahead_of_time
+		}
+		province_owner.culture = {
+			has_innovation = innovation_city_planning
+		}
+	}
+
+	has_dlc = "All Under Heaven"
 }
-hm_trigger_construct_sacred_pool_04 = {
+
+HM_RE_can_construct_sacred_pool_04 = {
 	has_building = sacred_pool_03
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_02
-	has_dlc = "All Under Heaven"
 	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-					}
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = may_build_sacred_pools_ahead_of_time
 				}
 			}
-			culture = {
-				has_innovation = innovation_manorialism
-			}
 		}
-		trigger_else = {
-			culture = {
-				has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-			}
-			county.holder.culture = {
-				has_innovation = innovation_city_planning
-			}
+		culture = {
+			has_innovation = innovation_manorialism
 		}
 	}
+	trigger_else = {
+		culture = {
+			has_cultural_parameter = may_build_sacred_pools_ahead_of_time
+		}
+		province_owner.culture = {
+			has_innovation = innovation_city_planning
+		}
+	}
+	has_dlc = "All Under Heaven"
 }
-hm_trigger_construct_sacred_pool_05 = {
+
+HM_RE_can_construct_sacred_pool_05 = {
 	has_building = sacred_pool_04
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_03
-	has_dlc = "All Under Heaven"
 	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-					}
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = may_build_sacred_pools_ahead_of_time
 				}
 			}
-			culture = {
-				has_innovation = innovation_windmills
-			}
 		}
-		trigger_else = {
-			culture = {
-				has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-			}
-			county.holder.culture = {
-				has_innovation = innovation_manorialism
-			}
+		culture = {
+			has_innovation = innovation_windmills
 		}
 	}
+	trigger_else = {
+		culture = {
+			has_cultural_parameter = may_build_sacred_pools_ahead_of_time
+		}
+		province_owner.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+	has_dlc = "All Under Heaven"
 }
-hm_trigger_construct_sacred_pool_06 = {
+
+HM_RE_can_construct_sacred_pool_06 = {
 	has_building = sacred_pool_05
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_03
-	has_dlc = "All Under Heaven"
 	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-					}
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = may_build_sacred_pools_ahead_of_time
 				}
 			}
-			culture = {
-				has_innovation = innovation_windmills
-			}
 		}
-		trigger_else = {
-			culture = {
-				has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-			}
-			county.holder.culture = {
-				has_innovation = innovation_manorialism
-			}
+		culture = {
+			has_innovation = innovation_windmills
 		}
 	}
+	trigger_else = {
+		culture = {
+			has_cultural_parameter = may_build_sacred_pools_ahead_of_time
+		}
+		province_owner.culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+	has_dlc = "All Under Heaven"
 }
-hm_trigger_construct_sacred_pool_07 = {
+
+HM_RE_can_construct_sacred_pool_07 = {
 	has_building = sacred_pool_06
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_04
-	has_dlc = "All Under Heaven"
 	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-					}
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = may_build_sacred_pools_ahead_of_time
 				}
 			}
-			culture = {
-				has_innovation = innovation_cranes
-			}
 		}
-		trigger_else = {
-			culture = {
-				has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-			}
-			county.holder.culture = {
-				has_innovation = innovation_windmills
-			}
+		culture = {
+			has_innovation = innovation_cranes
 		}
 	}
+	trigger_else = {
+		culture = {
+			has_cultural_parameter = may_build_sacred_pools_ahead_of_time
+		}
+		province_owner.culture = {
+			has_innovation = innovation_windmills
+		}
+	}
+	has_dlc = "All Under Heaven"
 }
-hm_trigger_construct_sacred_pool_08 = {
+
+HM_RE_can_construct_sacred_pool_08 = {
 	has_building = sacred_pool_07
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_03
-	has_dlc = "All Under Heaven"
 	trigger_if = {
-		limit = { debug_only = no }
-		trigger_if = {
-			limit = {
-				NOT = {
-					culture = {
-						has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-					}
+		limit = {
+			NOT = {
+				culture = {
+					has_cultural_parameter = may_build_sacred_pools_ahead_of_time
 				}
 			}
-			culture = {
-				has_innovation = innovation_cranes
-			}
 		}
-		trigger_else = {
-			culture = {
-				has_cultural_parameter = may_build_sacred_pools_ahead_of_time
-			}
-			county.holder.culture = {
-				has_innovation = innovation_windmills
-			}
+		culture = {
+			has_innovation = innovation_cranes
 		}
 	}
+	trigger_else = {
+		culture = {
+			has_cultural_parameter = may_build_sacred_pools_ahead_of_time
+		}
+		province_owner.culture = {
+			has_innovation = innovation_windmills
+		}
+	}
+	has_dlc = "All Under Heaven"
 }
 
-hm_trigger_construct_sacred_pool = {
-	hm_trigger_construct_sacred_pool_01 = yes
+HM_RE_can_construct_sacred_pool = {
+	HM_RE_can_construct_sacred_pool_01 = yes
 }
-hm_trigger_upgrade_sacred_pool = {
+
+HM_RE_can_upgrade_sacred_pool = {
 	OR = {
-		hm_trigger_construct_sacred_pool_02 = yes
-		hm_trigger_construct_sacred_pool_03 = yes
-		hm_trigger_construct_sacred_pool_04 = yes
-		hm_trigger_construct_sacred_pool_05 = yes
-		hm_trigger_construct_sacred_pool_06 = yes
-		hm_trigger_construct_sacred_pool_07 = yes
-		hm_trigger_construct_sacred_pool_08 = yes
+		HM_RE_can_construct_sacred_pool_02 = yes
+		HM_RE_can_construct_sacred_pool_03 = yes
+		HM_RE_can_construct_sacred_pool_04 = yes
+		HM_RE_can_construct_sacred_pool_05 = yes
+		HM_RE_can_construct_sacred_pool_06 = yes
+		HM_RE_can_construct_sacred_pool_07 = yes
+		HM_RE_can_construct_sacred_pool_08 = yes
 	}
 }
 
-hm_trigger_construct_vihara_halls_01 = {
+### vihara_halls
+
+HM_RE_can_construct_vihara_halls_01 = {
 	NOT = { has_building_or_higher = vihara_halls_01 }
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = temple_citadel_01
 	has_dlc = "All Under Heaven"
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
 }
-hm_trigger_construct_vihara_halls_02 = {
+
+HM_RE_can_construct_vihara_halls_02 = {
 	has_building = vihara_halls_01
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_potential
 	has_building_or_higher = temple_citadel_01
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_city_planning }
-	}
 	has_dlc = "All Under Heaven"
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+	culture = {
+		has_innovation = innovation_city_planning
+	}
 }
-hm_trigger_construct_vihara_halls_03 = {
+
+HM_RE_can_construct_vihara_halls_03 = {
 	has_building = vihara_halls_02
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_02
-	has_dlc = "All Under Heaven"
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_manorialism }
+	culture = {
+		has_innovation = innovation_manorialism
 	}
+	has_dlc = "All Under Heaven"
 }
 
-hm_trigger_construct_vihara_halls_04 = {
+HM_RE_can_construct_vihara_halls_04 = {
 	has_building = vihara_halls_03
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_02
-	has_dlc = "All Under Heaven"
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_manorialism }
+	culture = {
+		has_innovation = innovation_manorialism
 	}
+	has_dlc = "All Under Heaven"
 }
 
-hm_trigger_construct_vihara_halls_05 = {
+HM_RE_can_construct_vihara_halls_05 = {
 	has_building = vihara_halls_04
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_03
-	has_dlc = "All Under Heaven"
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_windmills }
+	culture = {
+		has_innovation = innovation_windmills
 	}
+	has_dlc = "All Under Heaven"
 }
 
-hm_trigger_construct_vihara_halls_06 = {
+HM_RE_can_construct_vihara_halls_06 = {
 	has_building = vihara_halls_05
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_03
-	has_dlc = "All Under Heaven"
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_windmills }
+	culture = {
+		has_innovation = innovation_windmills
 	}
+	has_dlc = "All Under Heaven"
 }
 
-hm_trigger_construct_vihara_halls_07 = {
+HM_RE_can_construct_vihara_halls_07 = {
 	has_building = vihara_halls_06
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_04
-	has_dlc = "All Under Heaven"
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_cranes }
+	culture = {
+		has_innovation = innovation_cranes
 	}
+	has_dlc = "All Under Heaven"
 }
 
-hm_trigger_construct_vihara_halls_08 = {
+HM_RE_can_construct_vihara_halls_08 = {
 	has_building = vihara_halls_07
-	hm_building_requirement_tribal = no
+
+	# Vanilla can_construct_showing_failures_only
+	HM_RE_building_requirement_tribal = no
+
+	# Vanilla can_construct
 	has_building_or_higher = temple_citadel_03
-	has_dlc = "All Under Heaven"
-	trigger_if = {
-		limit = { debug_only = no }
-		culture = { has_innovation = innovation_cranes }
+	culture = {
+		has_innovation = innovation_cranes
 	}
+	has_dlc = "All Under Heaven"
 }
 
-hm_trigger_construct_vihara_halls = {
-	hm_trigger_construct_vihara_halls_01 = yes
+HM_RE_can_construct_vihara_halls = {
+	HM_RE_can_construct_vihara_halls_01 = yes
 }
-hm_trigger_upgrade_vihara_halls = {
+
+HM_RE_can_upgrade_vihara_halls = {
 	OR = {
-		hm_trigger_construct_vihara_halls_02 = yes
-		hm_trigger_construct_vihara_halls_03 = yes
-		hm_trigger_construct_vihara_halls_04 = yes
-		hm_trigger_construct_vihara_halls_05 = yes
-		hm_trigger_construct_vihara_halls_06 = yes
-		hm_trigger_construct_vihara_halls_07 = yes
-		hm_trigger_construct_vihara_halls_08 = yes
+		HM_RE_can_construct_vihara_halls_02 = yes
+		HM_RE_can_construct_vihara_halls_03 = yes
+		HM_RE_can_construct_vihara_halls_04 = yes
+		HM_RE_can_construct_vihara_halls_05 = yes
+		HM_RE_can_construct_vihara_halls_06 = yes
+		HM_RE_can_construct_vihara_halls_07 = yes
+		HM_RE_can_construct_vihara_halls_08 = yes
 	}
 }

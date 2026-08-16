@@ -207,12 +207,6 @@ hm_value_upgrade_buildings_prestige_cost = { # scope:province
 hm_value_construct_buildings_gold_cost_cap = {
 	if = {
 		limit = {
-			debug_only = yes
-		}
-		value = 0
-	}
-	else_if = {
-		limit = {
 			has_game_rule = hm_value_construct_buildings_gold_cost_cap_very_cheap
 		}
 		value = hm_value_construct_buildings_gold_cost_cap_very_cheap

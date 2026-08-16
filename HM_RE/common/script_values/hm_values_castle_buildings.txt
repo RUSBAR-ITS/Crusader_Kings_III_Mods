@@ -13,15 +13,15 @@ hm_value_construct_castle_04_gold_cost = {
 hm_value_upgrade_castle_gold_cost = {
 	value = 0
 	if = {
-		limit = { hm_trigger_construct_castle_02 = yes }
+		limit = { HM_RE_can_construct_castle_02 = yes }
 		add = hm_value_construct_castle_02_gold_cost
 	}
 	else_if = {
-		limit = { hm_trigger_construct_castle_03 = yes }
+		limit = { HM_RE_can_construct_castle_03 = yes }
 		add = hm_value_construct_castle_03_gold_cost
 	}
 	else_if = {
-		limit = { hm_trigger_construct_castle_04 = yes }
+		limit = { HM_RE_can_construct_castle_04 = yes }
 		add = hm_value_construct_castle_04_gold_cost
 	}
 }

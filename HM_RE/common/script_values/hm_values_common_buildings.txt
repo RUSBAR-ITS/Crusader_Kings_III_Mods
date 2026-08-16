@@ -33,38 +33,38 @@ hm_value_construct_hospices_08_gold_cost = {
 hm_value_construct_hospices_gold_cost = {
 	value = 0
 	if = {
-		limit = { hm_trigger_construct_hospices_01 = yes }
+		limit = { HM_RE_can_construct_hospices_01 = yes }
 		add = hm_value_construct_hospices_01_gold_cost
 	}
 }
 hm_value_upgrade_hospices_gold_cost = {
 	value = 0
 	if = {
-		limit = { hm_trigger_construct_hospices_02 = yes }
+		limit = { HM_RE_can_construct_hospices_02 = yes }
 		add = hm_value_construct_hospices_02_gold_cost
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hospices_03 = yes }
+		limit = { HM_RE_can_construct_hospices_03 = yes }
 		add = hm_value_construct_hospices_03_gold_cost
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hospices_04 = yes }
+		limit = { HM_RE_can_construct_hospices_04 = yes }
 		add = hm_value_construct_hospices_04_gold_cost
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hospices_05 = yes }
+		limit = { HM_RE_can_construct_hospices_05 = yes }
 		add = hm_value_construct_hospices_05_gold_cost
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hospices_06 = yes }
+		limit = { HM_RE_can_construct_hospices_06 = yes }
 		add = hm_value_construct_hospices_06_gold_cost
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hospices_07 = yes }
+		limit = { HM_RE_can_construct_hospices_07 = yes }
 		add = hm_value_construct_hospices_07_gold_cost
 	}
 	else_if = {
-		limit = { hm_trigger_construct_hospices_08 = yes }
+		limit = { HM_RE_can_construct_hospices_08 = yes }
 		add = hm_value_construct_hospices_08_gold_cost
 	}
 }

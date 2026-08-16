@@ -16,12 +16,6 @@
 				}
 				add = hm_value_upgrade_buildings_gold_cost
 			}
-			if = {
-				limit = {
-					debug_only = yes
-				}
-				multiply = 0
-			}
 		}
 		prestige = {
 			every_directly_owned_province = {
@@ -32,12 +26,6 @@
 					}
 				}
 				add = hm_value_upgrade_buildings_prestige_cost
-			}
-			if = {
-				limit = {
-					debug_only = yes
-				}
-				multiply = 0
 			}
 		}
 	}
@@ -51,7 +39,7 @@
 			barony = {
 				is_leased_out = no
 			}
-			hm_trigger_upgrade_buildings = yes
+			HM_RE_can_upgrade_buildings = yes
 		}
 	}
 
@@ -77,4 +65,3 @@
 
 	ai_check_interval = 0
 }
-

@@ -1,4 +1,4 @@
-﻿hm_make_castle_button = {
+hm_make_castle_button = {
     scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
@@ -14,7 +14,7 @@
 		}
 		trigger_if = {
 			limit = {
-				debug_only = no
+				always = yes
 			}
 			trigger_if = {
 				limit = {
@@ -39,7 +39,7 @@
 			has_ongoing_construction = no
 			trigger_if = {
 				limit = {
-					debug_only = no
+					always = yes
 					root = {
 						has_treasury = yes
 					}
@@ -50,7 +50,7 @@
 			}
 			trigger_else = {
 				limit = {
-					debug_only = no
+					always = yes
 				}
 				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
 				hm_value_change_holding_type_cost <= root.gold
@@ -62,7 +62,7 @@
 			set_holding_type = castle_holding
 			if = {
 				limit = {
-					NOT = { debug_only = yes }
+					always = yes
 					root = {
 					has_treasury = yes
 					}
@@ -78,7 +78,7 @@
 			}
 			else_if = {
 				limit = {
-					NOT = { debug_only = yes }
+					always = yes
 				}
 				save_temporary_scope_value_as = {
 					name = hm_gui_scope_change_holding_type_cost
@@ -120,7 +120,7 @@ hm_make_temple_button = {
 		}
 		trigger_if = {
 			limit = {
-				debug_only = no
+				always = yes
 			}
 			trigger_if = {
 				limit = {
@@ -145,7 +145,7 @@ hm_make_temple_button = {
 			has_ongoing_construction = no
 			trigger_if = {
 				limit = {
-					debug_only = no
+					always = yes
 					root = {
 						has_treasury = yes
 					}
@@ -156,7 +156,7 @@ hm_make_temple_button = {
 			}
 			trigger_else = {
 				limit = {
-					debug_only = no
+					always = yes
 				}
 				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
 				hm_value_change_holding_type_cost <= root.gold
@@ -168,7 +168,7 @@ hm_make_temple_button = {
 			set_holding_type = church_holding
 			if = {
 				limit = {
-					NOT = { debug_only = yes }
+					always = yes
 					root = {
 						has_treasury = yes
 					}
@@ -184,7 +184,7 @@ hm_make_temple_button = {
 			}
 			else_if = {
 				limit = {
-					NOT = { debug_only = yes }
+					always = yes
 				}
 				save_temporary_scope_value_as = {
 					name = hm_gui_scope_change_holding_type_cost
@@ -226,7 +226,7 @@ hm_make_city_button = {
 		}
 		trigger_if = {
 			limit = {
-				debug_only = no
+				always = yes
 			}
 			trigger_if = {
 				limit = {
@@ -251,7 +251,7 @@ hm_make_city_button = {
 			has_ongoing_construction = no
 			trigger_if = {
 				limit = {
-					debug_only = no
+					always = yes
 					root = {
 						has_treasury = yes
 					}
@@ -262,7 +262,7 @@ hm_make_city_button = {
 			}
 			trigger_else = {
 				limit = {
-					debug_only = no
+					always = yes
 				}
 				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
 				hm_value_change_holding_type_cost <= root.gold
@@ -274,7 +274,7 @@ hm_make_city_button = {
 			set_holding_type = city_holding
 			if = {
 				limit = {
-					NOT = { debug_only = yes }
+					always = yes
 					root = {
 						has_treasury = yes
 					}
@@ -290,7 +290,7 @@ hm_make_city_button = {
 			}
 			else_if = {
 				limit = {
-					NOT = { debug_only = yes }
+					always = yes
 				}
 				save_temporary_scope_value_as = {
 					name = hm_gui_scope_change_holding_type_cost
@@ -329,7 +329,7 @@ hm_make_nomad_button = {
 		}
 		trigger_if = {
 			limit = {
-				debug_only = no
+				always = yes
 			}
 			trigger_if = {
 				limit = {
@@ -354,7 +354,7 @@ hm_make_nomad_button = {
 			has_ongoing_construction = no
 			trigger_if = {
 				limit = {
-					debug_only = no
+					always = yes
 				}
 				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
 				hm_value_change_holding_type_cost <= root.gold
@@ -373,7 +373,7 @@ hm_make_nomad_button = {
 				}
 				if = {
 					limit = {
-						NOT = { debug_only = yes }
+						always = yes
 					}
 					add_province_modifier = {
 						modifier = hm_modifier_holding_type_changed_recently
@@ -409,7 +409,7 @@ hm_make_temple_citadel_button = {
 		}
 		trigger_if = {
 			limit = {
-				debug_only = no
+				always = yes
 			}
 			trigger_if = {
 				limit = {
@@ -434,7 +434,7 @@ hm_make_temple_citadel_button = {
 			has_ongoing_construction = no
 			trigger_if = {
 				limit = {
-					debug_only = no
+					always = yes
 					root = {
 						has_treasury = yes
 					}
@@ -445,7 +445,7 @@ hm_make_temple_citadel_button = {
 			}
 			trigger_else = {
 				limit = {
-					debug_only = no
+					always = yes
 				}
 				NOT = { has_province_modifier = hm_modifier_holding_type_changed_recently }
 				hm_value_change_holding_type_cost <= root.gold
@@ -457,7 +457,7 @@ hm_make_temple_citadel_button = {
 			set_holding_type = temple_citadel_holding
 			if = {
 				limit = {
-					NOT = { debug_only = yes }
+					always = yes
 					root = {
 						has_treasury = yes
 					}
@@ -473,7 +473,7 @@ hm_make_temple_citadel_button = {
 			}
 			else_if = {
 				limit = {
-					NOT = { debug_only = yes }
+					always = yes
 				}
 				save_temporary_scope_value_as = {
 					name = hm_gui_scope_change_holding_type_cost

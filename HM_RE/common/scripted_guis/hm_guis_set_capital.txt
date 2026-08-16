@@ -1,4 +1,4 @@
-﻿hm_set_county_capital_button = {
+hm_set_county_capital_button = {
 	scope = character
 	saved_scopes = { gui_holding }
     is_shown = {
@@ -31,7 +31,7 @@ hm_set_duchy_capital_button = {
     is_valid = {
 		trigger_if = {
 			limit = {
-				debug_only = no
+				always = yes
 			}
     		NOT = { has_character_flag = duchy_capital_moved }
 		}
@@ -40,7 +40,7 @@ hm_set_duchy_capital_button = {
 		custom_tooltip = hm_set_duchy_capital.tt
 		if = {
 			limit = {
-				debug_only = no
+				always = yes
 			}
 			if = {
 				limit = {
