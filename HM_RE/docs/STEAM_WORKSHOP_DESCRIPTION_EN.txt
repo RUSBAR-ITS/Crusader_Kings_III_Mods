@@ -1,0 +1,74 @@
+[h1]Holding Manager (RUSBAR Edition)[/h1]
+
+[b]Version:[/b] 1.0.0
+[b]For Crusader Kings III:[/b] 1.19.0.6
+[b]Languages:[/b] English, Russian, French, German, Spanish, Korean, Simplified Chinese
+
+Holding Manager (RUSBAR Edition) is a vanilla-focused, stabilized fork of Holding Manager Continued 1.16. It keeps the convenient holding-management interface while rebuilding its internals for the current vanilla game.
+
+[h2]Features[/h2]
+
+[list]
+[*]A compact control panel integrated into the county view.
+[*]Immediate construction, upgrade, replacement, and removal of supported regular buildings.
+[*]Configurable extra building slots for the player and AI.
+[*]Conversion between supported holding types, with optional Nomad and Temple Citadel buttons.
+[*]Feudalization of eligible personal or vassal holdings according to game rules.
+[*]Personal-domain Build All, Upgrade All, and Clear All decisions.
+[*]Realm-wide Build All, Upgrade All, and Clear All decisions when vassal management is enabled.
+[*]Exact previews for all six mass decisions, grouped by county and holding: you can see every building that will be constructed, upgraded, or removed before confirming.
+[*]Configurable prices, instant-construction surcharge, cooldowns, action scope, available buttons, slot limits, and AI behavior.
+[*]Gold, prestige, and treasury costs calculated consistently for personal and vassal holdings.
+[*]Show/Hide decisions for keeping the decision list tidy.
+[/list]
+
+[h2]Why RUSBAR Edition?[/h2]
+
+Compared with Holding Manager Continued, this edition prioritizes maximum compatibility with the current vanilla mechanics instead of preserving outdated compatibility layers.
+
+[list]
+[*]The county and title windows were rebased on the supported vanilla GUI.
+[*]Building eligibility was rebuilt from current vanilla definitions.
+[*]Innovations, culture parameters, government, terrain, holding type, prerequisite chains, county limits, and other vanilla restrictions are respected.
+[*]Cultural exceptions that unlock buildings earlier than the ordinary innovation path are preserved.
+[*]Construction, upgrades, slots, costs, and mass actions now behave consistently in vassal holdings.
+[*]Mass construction can add permitted slots to vassal holdings just as it does in the personal domain.
+[*]Numerous inherited script errors, invalid references, typos, localization problems, encoding issues, and incorrect calculations were fixed.
+[*]Old City Walls/COW code, obsolete compatibility branches, duplicate data, dead rules, and unused interface copies were removed.
+[*]Fork-owned files and objects use the HM_RE_ namespace to reduce collisions.
+[*]Vanilla building requirements can be reproducibly synchronized after CK3 updates.
+[/list]
+
+Duchy buildings are intentionally excluded from mass-building catalogs in version 1.0.0.
+
+[h2]Compatibility[/h2]
+
+The base mod targets the unmodified vanilla game. Other building mods require explicit catalog support through a separate compatibility patch.
+
+HM_RE replaces:
+[list]
+[*]gui/window_county_view.gui
+[*]gui/window_title.gui
+[/list]
+
+Mods replacing either file require a GUI compatibility patch. Place such a patch after both mods.
+
+[h2]For modders[/h2]
+
+[url=https://github.com/RUSBAR-ITS/Crusader_Kings_III_Mods]Source repository[/url]
+[url=https://github.com/RUSBAR-ITS/Crusader_Kings_III_Mods/blob/main/HM_RE/docs/TECHNICAL_DOCUMENTATION_EN.md]English technical documentation and compatibility guide[/url]
+[url=https://github.com/RUSBAR-ITS/Crusader_Kings_III_Mods/blob/main/HM_RE/docs/TECHNICAL_DOCUMENTATION_RU.md]Russian technical documentation[/url]
+
+The documentation explains every file, runtime data flow, generated vanilla triggers, required integration points for new buildings, GUI load-order rules, localization requirements, and the full update/test procedure.
+
+[h2]Localization notice[/h2]
+
+Only the English and Russian localizations were reviewed manually. French, German, Spanish, Korean, and Simplified Chinese were completed with AI assistance. They may contain translation errors and probably require further community refinement.
+
+[h2]Credits[/h2]
+
+Many thanks to the authors of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3473706726]Holding Manager Continued[/url] and the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2633505646]original Holding Manager[/url] for the idea and implementation on which this fork is based.
+
+[h2]Permissions[/h2]
+
+Do whatever you want with RUSBAR Edition: use it, copy it, modify it, fork it, translate it, redistribute or re-upload it, include it in another project, or publish any compatibility patch you want. Attribution and links to the predecessors are appreciated.
