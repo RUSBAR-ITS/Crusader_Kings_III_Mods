@@ -150,6 +150,7 @@ $buildingOverrideFiles = [ordered]@{
     east_asian_estate = 'common\domiciles\buildings\zzz_RB_UD_east_asian_estate_buildings.txt'
     japanese_manor = 'common\domiciles\buildings\zzz_RB_UD_japanese_manor_buildings.txt'
 }
+$scriptedEffectOverrideFile = 'common\scripted_effects\zzz_RB_UD_domicile_effects.txt'
 
 $domicileTypeOverrides = [Collections.Generic.List[object]]::new()
 foreach ($domicile in $manifest.Domiciles) {
@@ -204,6 +205,91 @@ foreach ($domicile in $manifest.Domiciles) {
         CapacityStrategy = 'grant_full_external_capacity_from_first_main_building'
         MainTrackCapacityChanges = @($capacityChanges)
         Preserve = @('main-building costs', 'construction time', 'effects', 'main progression requirements')
+    })
+}
+
+# Expanding external capacity must not make vanilla history/setup effects fill
+# every new slot. Preserve the number of buildings that vanilla would create at
+# each main-building level by shifting the free-slot threshold by the capacity
+# increase at that level. Every generated while loop also receives a hard cap.
+$fillEffectPolicies = [ordered]@{
+    fill_external_estate_building_effect = [ordered]@{
+        DomicileType = 'estate'
+        CalledEffect = 'add_random_external_estate_building'
+    }
+    fill_external_east_asian_estate_building_effect = [ordered]@{
+        DomicileType = 'east_asian_estate'
+        CalledEffect = 'add_random_external_east_asian_estate_building'
+    }
+    fill_external_japanese_manor_building_effect = [ordered]@{
+        DomicileType = 'japanese_manor'
+        CalledEffect = 'add_random_external_japanese_manor_building'
+    }
+}
+$initialFillEffectOverrides = [Collections.Generic.List[object]]::new()
+foreach ($fillEffect in Convert-ToArray $manifest.FillEffects) {
+    if (-not $fillEffectPolicies.Contains($fillEffect.Id)) {
+        throw "No RB_UD initial-fill policy for $($fillEffect.Id)."
+    }
+    $policy = $fillEffectPolicies[$fillEffect.Id]
+    $typeOverride = @(
+        $domicileTypeOverrides |
+            Where-Object { $_.DomicileType -eq $policy.DomicileType }
+    ) | Select-Object -First 1
+    if ($null -eq $typeOverride) {
+        throw "No domicile capacity plan for fill effect $($fillEffect.Id)."
+    }
+
+    $thresholds = @(Convert-ToArray $fillEffect.FreeSlotThresholds)
+    $mainChanges = @(Convert-ToArray $typeOverride.MainTrackCapacityChanges)
+    if ($thresholds.Count -gt $mainChanges.Count) {
+        throw "Fill effect $($fillEffect.Id) has more branches than its main track."
+    }
+
+    $capacityByBuilding = @{}
+    $currentCapacity = [int]$typeOverride.BaseExternalSlots
+    foreach ($change in $mainChanges) {
+        $currentAdd = 0
+        foreach ($add in Convert-ToArray $change.CurrentCapacityAdds) {
+            if ($null -ne $add.Numeric) { $currentAdd += [int]$add.Numeric }
+        }
+        $currentCapacity += $currentAdd
+        $capacityByBuilding[$change.Building] = $currentCapacity
+    }
+
+    # Vanilla switches list the highest handled main tier first. The analyzer
+    # records thresholds in that same order, while capacity changes are sorted
+    # from the first main tier upwards.
+    $handledMainChanges = @($mainChanges | Select-Object -First $thresholds.Count)
+    [array]::Reverse($handledMainChanges)
+    $branches = [Collections.Generic.List[object]]::new()
+    for ($index = 0; $index -lt $thresholds.Count; $index++) {
+        $thresholdText = [string]$thresholds[$index]
+        if ($thresholdText -notmatch '>=\s*([0-9]+)') {
+            throw "Unsupported free-slot threshold '$thresholdText' in $($fillEffect.Id)."
+        }
+        $originalThreshold = [int]$Matches[1]
+        $mainBuilding = [string]$handledMainChanges[$index].Building
+        $originalCapacity = [int]$capacityByBuilding[$mainBuilding]
+        $targetCapacity = [int]$typeOverride.TargetMaximumExternalCapacity
+        $branches.Add([ordered]@{
+            MainBuilding = $mainBuilding
+            OriginalCapacity = $originalCapacity
+            TargetCapacity = $targetCapacity
+            OriginalFreeSlotThreshold = $originalThreshold
+            TargetFreeSlotThreshold = $originalThreshold + ($targetCapacity - $originalCapacity)
+            MaximumIterations = $targetCapacity
+        })
+    }
+
+    $initialFillEffectOverrides.Add([ordered]@{
+        Effect = $fillEffect.Id
+        DomicileType = $policy.DomicileType
+        VanillaSource = "$($fillEffect.SourceFile):$($fillEffect.StartLine)"
+        TargetOverrideFile = $scriptedEffectOverrideFile
+        CalledEffect = $policy.CalledEffect
+        Branches = @($branches)
+        Strategy = 'preserve_vanilla_initial_building_count_after_capacity_expansion'
     })
 }
 
@@ -265,9 +351,13 @@ foreach ($domicile in $manifest.Domiciles) {
             CommonBuilding = $group.CommonBuilding
             CommonExternalPrefix = @(Convert-ToArray $group.CommonExternalPrefix)
             SpecializationRoots = @(Convert-ToArray $group.Specializations | ForEach-Object { $_.Root })
+            RootPreviousBuilding = [string](Convert-ToArray $group.CommonExternalPrefix)[0]
+            RequiredCommonBuilding = [string]$group.CommonBuilding
+            RootConstructionPrerequisite = "domicile ?= { has_domicile_building_or_higher = $($group.CommonBuilding) }"
             BuildingsChangingSlotType = $specializationBuildings
             Change = 'set slot_type = internal on every specialization-tail building'
-            PreviousBuildingPolicy = 'preserve: roots remain anchored to the common external building; descendants retain their upgrade chain'
+            PreviousBuildingPolicy = 'reanchor specialization roots to the first common external building; preserve the former common tier as a construction prerequisite; descendants retain their upgrade chain'
+            RemoveInternalSlotsFromConvertedBuildings = $true
             RequiredInternalSlotsOnAnchor = [int]$group.RequiredInternalSlotsAfterTransformation
             Preserve = @('building IDs', 'icons', 'panorama textures', 'costs', 'effects', 'upgrade order', 'non-exclusivity prerequisites')
         })
@@ -347,7 +437,7 @@ foreach ($item in Convert-ToArray $manifest.CampPurposeCompatibility) {
         AffectedTracks = @(Convert-ToArray $item.AffectedTracks)
         BuildingAction = 'remove only the matching camp-purpose realm-law gate'
         CleanupContainers = @(Convert-ToArray $item.CleanupContainers)
-        CleanupAction = 'remove only the matching remove_domicile_building command from the purpose-change event'
+        CleanupAction = 'disable the dedicated purpose-change cleanup scripted effect; do not override its event ID'
         Preserve = @('all other building prerequisites', 'all other event commands', 'full camp liquidation', 'targeted gameplay removals')
     })
 }
@@ -442,6 +532,8 @@ $validation = [ordered]@{
     ManifestHasNoFatalDiagnostics = $true
     ExpectedDomicileTypes = $targetExternalSlots.Count
     PlannedDomicileTypes = $domicileTypeOverrides.Count
+    ExpectedInitialFillEffects = $fillEffectPolicies.Count
+    PlannedInitialFillEffects = $initialFillEffectOverrides.Count
     ExpectedExternalBranchGroups = [int]$manifest.TransformationSummary.ExternalBranchGroupCount
     PlannedExternalBranchGroups = $externalBranchOverrides.Count
     ExpectedInternalBranchGroups = [int]$manifest.TransformationSummary.InternalBranchGroupCount
@@ -454,6 +546,7 @@ $validation = [ordered]@{
     RewrittenManualConditionTracks = @($manualConditionOverrides | Where-Object { $_.Decision -eq 'targeted_remove_specialization_access_gate' }).Count
 }
 if ($validation.ExpectedDomicileTypes -ne $validation.PlannedDomicileTypes -or
+    $validation.ExpectedInitialFillEffects -ne $validation.PlannedInitialFillEffects -or
     $validation.ExpectedExternalBranchGroups -ne $validation.PlannedExternalBranchGroups -or
     $validation.ExpectedInternalBranchGroups -ne $validation.PlannedInternalBranchGroups -or
     $validation.ExpectedCampPurposeFlags -ne $validation.PlannedCampPurposeFlags -or
@@ -463,7 +556,7 @@ if ($validation.ExpectedDomicileTypes -ne $validation.PlannedDomicileTypes -or
 
 $planCore = [ordered]@{
     SchemaVersion = 1
-    Status = 'dry_run_complete_no_gameplay_files_generated'
+    Status = 'generation_ready'
     SourceManifest = [ordered]@{
         Path = 'tools/generated/RB_UD_vanilla_manifest.json'
         SchemaVersion = $manifest.SchemaVersion
@@ -481,10 +574,11 @@ $planCore = [ordered]@{
     TargetFiles = [ordered]@{
         DomicileTypes = 'common/domiciles/types/zzz_RB_UD_domicile_types.txt'
         DomicileBuildings = @($buildingOverrideFiles.Values)
-        CampPurposeEvent = 'events/zzz_RB_UD_camp_purpose_events.txt'
+        ScriptedEffects = $scriptedEffectOverrideFile
         ReplacePath = $false
     }
     DomicileTypeOverrides = @($domicileTypeOverrides)
+    InitialFillEffectOverrides = @($initialFillEffectOverrides)
     InternalSlotOverrides = @($internalSlotOverrides)
     ExternalBranchOverrides = @($externalBranchOverrides)
     InternalBranchOverrides = @($internalBranchOverrides)
@@ -496,9 +590,10 @@ $planCore = [ordered]@{
     RemovalOverrides = [ordered]@{
         Suppress = [ordered]@{
             Category = 'camp_purpose_change_cleanup'
-            TargetEvent = 'ep3_laamps.1021'
+            TargetScriptedEffect = 'laamp_clear_inappropriate_buildings_effect'
+            VanillaSource = 'common\scripted_effects\00_laamp_effects.txt:765'
             ReferenceCount = @(Convert-ToArray $manifest.DomicileRemovalReferences | Where-Object { $_.Category -eq 'camp_purpose_change_cleanup' }).Count
-            Policy = 'override the event and remove only the 23 mapped cleanup commands'
+            Policy = 'override the dedicated cleanup scripted effect with an empty effect; preserve ep3_laamps.1021 for all other callers'
         }
         Preserve = $preservedRemovalCategories
     }
@@ -506,7 +601,11 @@ $planCore = [ordered]@{
         OverriddenDomicileTypeIds = @($targetExternalSlots.Keys)
         AffectedVanillaBuildingCount = $affectedBuildingIds.Count
         AffectedVanillaBuildingIds = $affectedBuildingIds
-        OverriddenVanillaEventIds = @('ep3_laamps.1021')
+        OverriddenVanillaEventIds = @()
+        OverriddenVanillaScriptedEffectIds = @(
+            @($initialFillEffectOverrides | ForEach-Object { $_.Effect }) +
+            @('laamp_clear_inappropriate_buildings_effect')
+        )
         PlannedNewHelperObjects = @()
     }
     Validation = $validation
@@ -539,7 +638,7 @@ $lines.Add('# RB_UD — план переопределений ванильны
 $lines.Add('')
 $lines.Add("Версия CK3: **$($manifest.GameVersion)**. Сигнатура плана: ``$planSignature``.")
 $lines.Add('')
-$lines.Add('Это dry-run: документ определяет точные объекты и преобразования, но ещё не создаёт игровых переопределений.')
+$lines.Add('Документ определяет точные объекты и преобразования, которые затем воспроизводимо применяет генератор `tools/Generate-RBUDOverrides.ps1`.')
 $lines.Add('')
 $lines.Add('## Принципы')
 $lines.Add('')
@@ -561,6 +660,27 @@ foreach ($entry in $domicileTypeOverrides) {
 }
 $lines.Add('')
 $lines.Add('Полная внешняя ёмкость доступна с первого уровня главного здания. Это не открывает более высокие уровни построек: их ванильная прогрессия сохраняется.')
+$lines.Add('')
+$lines.Add('## Стартовое заполнение внешних ячеек')
+$lines.Add('')
+$lines.Add('Расширенная ёмкость не должна заставлять ванильные эффекты начальной генерации заполнять все новые ячейки. Пороги сдвигаются так, чтобы на каждом уровне главного здания создавалось прежнее число построек; каждый цикл получает жёсткий лимит итераций.')
+$lines.Add('')
+$lines.Add('| Эффект | Тип | Главный уровень | Было мест | Стало мест | Старый порог | Новый порог | Лимит |')
+$lines.Add('|---|---|---|---:|---:|---:|---:|---:|')
+foreach ($entry in $initialFillEffectOverrides) {
+    foreach ($branch in Convert-ToArray $entry.Branches) {
+        Add-MarkdownRow $lines @(
+            $entry.Effect,
+            $entry.DomicileType,
+            $branch.MainBuilding,
+            $branch.OriginalCapacity,
+            $branch.TargetCapacity,
+            $branch.OriginalFreeSlotThreshold,
+            $branch.TargetFreeSlotThreshold,
+            $branch.MaximumIterations
+        )
+    }
+}
 $lines.Add('')
 $lines.Add('## Внутренние ячейки')
 $lines.Add('')
@@ -598,7 +718,7 @@ $lines.Add('## Условные ограничения')
 $lines.Add('')
 $lines.Add("### Темы лагеря — $($campPurposeOverrides.Count) точечных пар")
 $lines.Add('')
-$lines.Add('Для каждой пары снимается только соответствующий `has_realm_law_flag`, а из `ep3_laamps.1021` удаляется только соответствующее удаление здания. Полная ликвидация лагеря и сюжетные удаления сохраняются.')
+$lines.Add('Для каждой пары снимается соответствующий `has_realm_law_flag`. Специализированный эффект `laamp_clear_inappropriate_buildings_effect`, вызываемый при смене темы лагеря, отключается целиком; ванильное событие `ep3_laamps.1021` не переопределяется и остаётся доступным другим механикам.')
 $lines.Add('')
 $lines.Add('| Флаг | Здание | Очистка |')
 $lines.Add('|---|---|---|')
@@ -630,12 +750,13 @@ $lines.Add('## Файлы реализации')
 $lines.Add('')
 $lines.Add('- `common/domiciles/types/zzz_RB_UD_domicile_types.txt` — пять точечных переопределений типов.')
 foreach ($file in $buildingOverrideFiles.Values) { $lines.Add("- ``$file`` — переопределения соответствующего семейства зданий.") }
-$lines.Add('- `events/zzz_RB_UD_camp_purpose_events.txt` — копия только события `ep3_laamps.1021` без 23 команд удаления тематических построек.')
+$lines.Add("- ``$scriptedEffectOverrideFile`` — безопасные стартовые fill-циклы и отключение очистки построек при смене темы лагеря.")
 $lines.Add('- `replace_path` не используется.')
 $lines.Add('')
 $lines.Add('## Покрытие и проверки')
 $lines.Add('')
 $lines.Add("- Типы домицилей: $($validation.PlannedDomicileTypes)/$($validation.ExpectedDomicileTypes).")
+$lines.Add("- Эффекты стартового заполнения: $($validation.PlannedInitialFillEffects)/$($validation.ExpectedInitialFillEffects).")
 $lines.Add("- Внешние развилки: $($validation.PlannedExternalBranchGroups)/$($validation.ExpectedExternalBranchGroups).")
 $lines.Add("- Внутренние развилки: $($validation.PlannedInternalBranchGroups)/$($validation.ExpectedInternalBranchGroups).")
 $lines.Add("- Флаги тем лагеря: $($validation.PlannedCampPurposeFlags)/$($validation.ExpectedCampPurposeFlags).")

@@ -1,8 +1,8 @@
-############################################################
+﻿############################################################
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: EB632CC3ACFD73B6C1DAA8DED064BB208912CDA33893A869A64E5AD9EAF58C67
+# Plan SHA-256: B05007B8F44088488A84284CBF3B8A0CBDFD6DFDC6A3AB297D8333067F790C8A
 ############################################################
 
 estate_main_01 = {
@@ -901,10 +901,11 @@ temple_crypt_04 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = temple_small_03
+	previous_building = temple_small_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = temple_small_03 }
 	}
 
 	cost = {
@@ -1346,10 +1347,11 @@ temple_large_04 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = temple_small_03
+	previous_building = temple_small_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = temple_small_03 }
 	}
 
 	cost = {
@@ -1756,11 +1758,12 @@ temple_monastery_04 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = temple_small_03
+	previous_building = temple_small_01
 	
 	can_construct = {
 		faith = { has_doctrine = tenet_monasticism }
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = temple_small_03 }
 	}
 	
 	cost = {
@@ -2541,10 +2544,11 @@ garden_leisure_04 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = garden_03
+	previous_building = garden_01
 
 	can_construct = {
 		estate_can_construct_garden_leisure_04_trigger = yes
+		domicile ?= { has_domicile_building_or_higher = garden_03 }
 	}
 
 	cost = {
@@ -2928,10 +2932,11 @@ garden_fruit_04 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = garden_03
+	previous_building = garden_01
 
 	can_construct = {
 		estate_can_construct_garden_fruit_04_trigger = yes
+		domicile ?= { has_domicile_building_or_higher = garden_03 }
 	}
 
 	cost = {
@@ -3573,10 +3578,11 @@ stable_grand_04 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = stable_03
+	previous_building = stable_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = stable_03 }
 	}
 
 	cost = {
@@ -3836,10 +3842,11 @@ stable_kennel_04 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = stable_03
+	previous_building = stable_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = stable_03 }
 	}
 
 	cost = {
@@ -4124,10 +4131,13 @@ stable_kennel_06 = {
 }
 
 stable_chariot_04 = {
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = stable_03 }
+	}
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = stable_03
+	previous_building = stable_01
 
 	can_construct_potential = {
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
@@ -4541,10 +4551,11 @@ workshop_carpenter_03 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = workshop_02
+	previous_building = workshop_01
 
 	can_construct = {
 		estate_can_construct_workshop_carpenter_03_trigger = yes
+		domicile ?= { has_domicile_building_or_higher = workshop_02 }
 	}
 
 	cost = {
@@ -4887,10 +4898,11 @@ workshop_mason_03 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = workshop_02
+	previous_building = workshop_01
 
 	can_construct = {
 		estate_can_construct_workshop_mason_03_trigger = yes
+		domicile ?= { has_domicile_building_or_higher = workshop_02 }
 	}
 
 	cost = {
@@ -5227,10 +5239,11 @@ workshop_textile_03 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = workshop_02
+	previous_building = workshop_01
 
 	can_construct = {
 		estate_can_construct_workshop_textile_03_trigger = yes
+		domicile ?= { has_domicile_building_or_higher = workshop_02 }
 	}
 
 	cost = {
@@ -5744,10 +5757,11 @@ storage_warehouse_03 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = storage_02
+	previous_building = storage_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+		domicile ?= { has_domicile_building_or_higher = storage_02 }
 	}
 
 	cost = {
@@ -5916,10 +5930,11 @@ storage_granary_03 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = storage_02
+	previous_building = storage_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
+		domicile ?= { has_domicile_building_or_higher = storage_02 }
 	}
 
 	cost = {
@@ -6466,10 +6481,11 @@ grazing_land_04 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = grazing_land_03
+	previous_building = grazing_land_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = grazing_land_03 }
 	}
 
 	cost = {
@@ -6808,10 +6824,11 @@ horse_pasture_04 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = grazing_land_03
+	previous_building = grazing_land_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = grazing_land_03 }
 	}
 
 	cost = {
@@ -7129,10 +7146,11 @@ camel_pasture_04 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = grazing_land_03
+	previous_building = grazing_land_01
 	
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = grazing_land_03 }
 	}
 
 	cost = {
@@ -7450,10 +7468,11 @@ elephant_pasture_04 = {
 	slot_type = internal
 	construction_time = 730
 	allowed_domicile_types = { estate }
-	previous_building = grazing_land_03
+	previous_building = grazing_land_01
 	
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = grazing_land_03 }
 	}
 
 	cost = {

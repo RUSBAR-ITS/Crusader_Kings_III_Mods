@@ -1,8 +1,8 @@
 ﻿# RB_UD — план переопределений ванильных домицилей
 
-Версия CK3: **1.19.0.6**. Сигнатура плана: `EB632CC3ACFD73B6C1DAA8DED064BB208912CDA33893A869A64E5AD9EAF58C67`.
+Версия CK3: **1.19.0.6**. Сигнатура плана: `B05007B8F44088488A84284CBF3B8A0CBDFD6DFDC6A3AB297D8333067F790C8A`.
 
-Это dry-run: документ определяет точные объекты и преобразования, но ещё не создаёт игровых переопределений.
+Документ определяет точные объекты и преобразования, которые затем воспроизводимо применяет генератор `tools/Generate-RBUDOverrides.ps1`.
 
 ## Принципы
 
@@ -24,6 +24,28 @@
 | japanese_manor | 6 | 8 | 12 | 10 | обнулить |
 
 Полная внешняя ёмкость доступна с первого уровня главного здания. Это не открывает более высокие уровни построек: их ванильная прогрессия сохраняется.
+
+## Стартовое заполнение внешних ячеек
+
+Расширенная ёмкость не должна заставлять ванильные эффекты начальной генерации заполнять все новые ячейки. Пороги сдвигаются так, чтобы на каждом уровне главного здания создавалось прежнее число построек; каждый цикл получает жёсткий лимит итераций.
+
+| Эффект | Тип | Главный уровень | Было мест | Стало мест | Старый порог | Новый порог | Лимит |
+|---|---|---|---:|---:|---:|---:|---:|
+| fill_external_estate_building_effect | estate | estate_main_05 | 8 | 16 | 1 | 9 | 16 |
+| fill_external_estate_building_effect | estate | estate_main_04 | 7 | 16 | 2 | 11 | 16 |
+| fill_external_estate_building_effect | estate | estate_main_03 | 6 | 16 | 3 | 13 | 16 |
+| fill_external_estate_building_effect | estate | estate_main_02 | 5 | 16 | 4 | 15 | 16 |
+| fill_external_estate_building_effect | estate | estate_main_01 | 4 | 16 | 5 | 17 | 16 |
+| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_05 | 8 | 12 | 1 | 5 | 12 |
+| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_04 | 8 | 12 | 2 | 6 | 12 |
+| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_03 | 8 | 12 | 3 | 7 | 12 |
+| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_02 | 6 | 12 | 4 | 10 | 12 |
+| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_01 | 4 | 12 | 5 | 13 | 12 |
+| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_05 | 8 | 15 | 2 | 9 | 15 |
+| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_04 | 8 | 15 | 3 | 10 | 15 |
+| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_03 | 7 | 15 | 4 | 12 | 15 |
+| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_02 | 6 | 15 | 5 | 14 | 15 |
+| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_01 | 5 | 15 | 6 | 16 | 15 |
 
 ## Внутренние ячейки
 
@@ -108,7 +130,7 @@
 
 ### Темы лагеря — 23 точечных пар
 
-Для каждой пары снимается только соответствующий `has_realm_law_flag`, а из `ep3_laamps.1021` удаляется только соответствующее удаление здания. Полная ликвидация лагеря и сюжетные удаления сохраняются.
+Для каждой пары снимается соответствующий `has_realm_law_flag`. Специализированный эффект `laamp_clear_inappropriate_buildings_effect`, вызываемый при смене темы лагеря, отключается целиком; ванильное событие `ep3_laamps.1021` не переопределяется и остаётся доступным другим механикам.
 
 | Флаг | Здание | Очистка |
 |---|---|---|
@@ -175,12 +197,13 @@
 - `common\domiciles\buildings\zzz_RB_UD_yurt_buildings.txt` — переопределения соответствующего семейства зданий.
 - `common\domiciles\buildings\zzz_RB_UD_east_asian_estate_buildings.txt` — переопределения соответствующего семейства зданий.
 - `common\domiciles\buildings\zzz_RB_UD_japanese_manor_buildings.txt` — переопределения соответствующего семейства зданий.
-- `events/zzz_RB_UD_camp_purpose_events.txt` — копия только события `ep3_laamps.1021` без 23 команд удаления тематических построек.
+- `common\scripted_effects\zzz_RB_UD_domicile_effects.txt` — безопасные стартовые fill-циклы и отключение очистки построек при смене темы лагеря.
 - `replace_path` не используется.
 
 ## Покрытие и проверки
 
 - Типы домицилей: 5/5.
+- Эффекты стартового заполнения: 3/3.
 - Внешние развилки: 11/11.
 - Внутренние развилки: 1/1.
 - Флаги тем лагеря: 23/23.

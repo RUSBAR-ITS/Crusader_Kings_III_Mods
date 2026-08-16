@@ -1,0 +1,133 @@
+﻿############################################################
+# GENERATED FILE - DO NOT EDIT BY HAND
+# Generator: tools/Generate-RBUDOverrides.ps1
+# CK3: 1.19.0.6
+# Plan SHA-256: B05007B8F44088488A84284CBF3B8A0CBDFD6DFDC6A3AB297D8333067F790C8A
+############################################################
+
+laamp_clear_inappropriate_buildings_effect = {
+	# RB_UD: purpose-specific camp buildings are intentionally retained.
+}
+
+fill_external_estate_building_effect = {
+	switch = {
+		trigger = has_domicile_building_or_higher
+		estate_main_05 = {
+			while = {
+				count = 16
+				limit = { free_external_domicile_building_slots >= 9 }
+				add_random_external_estate_building = yes
+			}
+		}
+		estate_main_04 = {
+			while = {
+				count = 16
+				limit = { free_external_domicile_building_slots >= 11 }
+				add_random_external_estate_building = yes
+			}
+		}
+		estate_main_03 = {
+			while = {
+				count = 16
+				limit = { free_external_domicile_building_slots >= 13 }
+				add_random_external_estate_building = yes
+			}
+		}
+		estate_main_02 = {
+			while = {
+				count = 16
+				limit = { free_external_domicile_building_slots >= 15 }
+				add_random_external_estate_building = yes
+			}
+		}
+		estate_main_01 = {
+			while = {
+				count = 16
+				limit = { free_external_domicile_building_slots >= 17 }
+				add_random_external_estate_building = yes
+			}
+		}
+	}
+}
+
+fill_external_japanese_manor_building_effect = {
+	switch = {
+		trigger = has_domicile_building_or_higher
+		japanese_manor_main_05 = {
+			while = {
+				count = 12
+				limit = { free_external_domicile_building_slots >= 5 }
+				add_random_external_japanese_manor_building = yes
+			}
+		}
+		japanese_manor_main_04 = {
+			while = {
+				count = 12
+				limit = { free_external_domicile_building_slots >= 6 }
+				add_random_external_japanese_manor_building = yes
+			}
+		}
+		japanese_manor_main_03 = {
+			while = {
+				count = 12
+				limit = { free_external_domicile_building_slots >= 7 }
+				add_random_external_japanese_manor_building = yes
+			}
+		}
+		japanese_manor_main_02 = {
+			while = {
+				count = 12
+				limit = { free_external_domicile_building_slots >= 10 }
+				add_random_external_japanese_manor_building = yes
+			}
+		}
+		japanese_manor_main_01 = {
+			while = {
+				count = 12
+				limit = { free_external_domicile_building_slots >= 13 }
+				add_random_external_japanese_manor_building = yes
+			}
+		}
+	}
+}
+
+fill_external_east_asian_estate_building_effect = {
+	switch = {
+		trigger = has_domicile_building_or_higher
+		east_asian_estate_main_05 = {
+			while = {
+				count = 15
+				limit = { free_external_domicile_building_slots >= 9 }
+				add_random_external_east_asian_estate_building = yes
+			}
+		}
+		east_asian_estate_main_04 = {
+			while = {
+				count = 15
+				limit = { free_external_domicile_building_slots >= 10 }
+				add_random_external_east_asian_estate_building = yes
+			}
+		}
+		east_asian_estate_main_03 = {
+			while = {
+				count = 15
+				limit = { free_external_domicile_building_slots >= 12 }
+				add_random_external_east_asian_estate_building = yes
+			}
+		}
+		east_asian_estate_main_02 = {
+			while = {
+				count = 15
+				limit = { free_external_domicile_building_slots >= 14 }
+				add_random_external_east_asian_estate_building = yes
+			}
+		}
+		east_asian_estate_main_01 = {
+			while = {
+				count = 15
+				limit = { free_external_domicile_building_slots >= 16 }
+				add_random_external_east_asian_estate_building = yes
+			}
+		}
+	}
+}

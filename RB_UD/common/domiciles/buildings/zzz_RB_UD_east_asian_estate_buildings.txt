@@ -1,9 +1,30 @@
-############################################################
+﻿############################################################
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: EB632CC3ACFD73B6C1DAA8DED064BB208912CDA33893A869A64E5AD9EAF58C67
+# Plan SHA-256: B05007B8F44088488A84284CBF3B8A0CBDFD6DFDC6A3AB297D8333067F790C8A
 ############################################################
+
+@east_asian_estate_building_construction_time_1 = 360
+@east_asian_estate_building_construction_time_2 = 420
+@east_asian_estate_building_construction_time_3 = 480
+@east_asian_estate_building_construction_time_4 = 540
+@east_asian_estate_building_construction_time_5 = 600
+@east_asian_estate_building_construction_time_6 = 660
+@east_asian_estate_main_construction_time = 730
+@east_asian_estate_upgrade_construction_time_1 = 180
+@east_asian_manor_confucian_education_xp_gain_mult_1 = 0.05
+@east_asian_manor_development_growth_1 = 0.05
+@east_asian_manor_development_growth_2 = 0.1
+@east_asian_manor_development_growth_factor_1 = 0.015
+@east_asian_manor_monthly_gold_mult_2 = 0.03
+@east_asian_manor_monthly_influence_add_1 = 0.1
+@east_asian_manor_monthly_influence_add_2 = 0.25
+@east_asian_manor_monthly_merit_1 = 0.15
+@east_asian_manor_monthly_prestige_add_2 = 0.15
+@east_asian_manor_monthly_treasury_from_military_budget_mult_1 = 0.01
+@east_asian_manor_monthly_treasury_from_military_budget_mult_2 = 0.02
+@east_asian_manor_trait_track_lifestyle_poet_xp_gain_mult_1 = 0.05
 
 east_asian_estate_main_01 = {
 	slot_type = main
@@ -2887,11 +2908,11 @@ east_asian_estate_garden_leisure_04 = {
 	slot_type = internal
 	construction_time = @east_asian_estate_building_construction_time_4
 	allowed_domicile_types = { east_asian_estate }
-	previous_building = east_asian_estate_garden_03
-	internal_slots = 3
+	previous_building = east_asian_estate_garden_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_garden_03 }
 	}
 
 	cost = {
@@ -2977,7 +2998,6 @@ east_asian_estate_garden_leisure_05 = {
 	construction_time = @east_asian_estate_building_construction_time_5
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_garden_leisure_04
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
@@ -3066,7 +3086,6 @@ east_asian_estate_garden_leisure_06 = {
 	construction_time = @east_asian_estate_building_construction_time_6
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_garden_leisure_05
-	internal_slots = 4
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
@@ -3154,11 +3173,11 @@ east_asian_estate_garden_fruit_04 = {
 	slot_type = internal
 	construction_time = @east_asian_estate_building_construction_time_4
 	allowed_domicile_types = { east_asian_estate }
-	previous_building = east_asian_estate_garden_03
-	internal_slots = 3
+	previous_building = east_asian_estate_garden_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_garden_03 }
 	}
 
 	cost = {
@@ -3245,7 +3264,6 @@ east_asian_estate_garden_fruit_05 = {
 	construction_time = @east_asian_estate_building_construction_time_5
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_garden_fruit_04
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
@@ -3335,7 +3353,6 @@ east_asian_estate_garden_fruit_06 = {
 	construction_time = @east_asian_estate_building_construction_time_6
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_garden_fruit_05
-	internal_slots = 4
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
@@ -3567,11 +3584,11 @@ east_asian_estate_stable_grand_04 = {
 	slot_type = internal
 	construction_time = @east_asian_estate_building_construction_time_4
 	allowed_domicile_types = { east_asian_estate }
-	previous_building = east_asian_estate_stable_03
-	internal_slots = 3
+	previous_building = east_asian_estate_stable_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_stable_03 }
 	}
 
 	cost = {
@@ -3614,7 +3631,6 @@ east_asian_estate_stable_grand_05 = {
 	construction_time = @east_asian_estate_building_construction_time_5
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_stable_grand_04
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
@@ -3661,7 +3677,6 @@ east_asian_estate_stable_grand_06 = {
 	construction_time = @east_asian_estate_building_construction_time_6
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_stable_grand_05
-	internal_slots = 4
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
@@ -3707,11 +3722,11 @@ east_asian_estate_stable_kennel_04 = {
 	slot_type = internal
 	construction_time = @east_asian_estate_building_construction_time_4
 	allowed_domicile_types = { east_asian_estate }
-	previous_building = east_asian_estate_stable_03
-	internal_slots = 3
+	previous_building = east_asian_estate_stable_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_stable_03 }
 	}
 
 	cost = {
@@ -3763,7 +3778,6 @@ east_asian_estate_stable_kennel_05 = {
 	construction_time = @east_asian_estate_building_construction_time_5
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_stable_kennel_04
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
@@ -3819,7 +3833,6 @@ east_asian_estate_stable_kennel_06 = {
 	construction_time = @east_asian_estate_building_construction_time_6
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_stable_kennel_05
-	internal_slots = 4
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
@@ -3944,11 +3957,11 @@ east_asian_estate_workshop_carpenter_03 = {
 	slot_type = internal
 	construction_time = @east_asian_estate_building_construction_time_3
 	allowed_domicile_types = { east_asian_estate }
-	previous_building = east_asian_estate_workshop_02
-	internal_slots = 2
+	previous_building = east_asian_estate_workshop_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_workshop_02 }
 	}
 
 	cost = {
@@ -3989,7 +4002,6 @@ east_asian_estate_workshop_carpenter_04 = {
 	construction_time = @east_asian_estate_building_construction_time_4
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_carpenter_03
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
@@ -4033,7 +4045,6 @@ east_asian_estate_workshop_carpenter_05 = {
 	construction_time = @east_asian_estate_building_construction_time_5
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_carpenter_04
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
@@ -4078,7 +4089,6 @@ east_asian_estate_workshop_carpenter_06 = {
 	construction_time = @east_asian_estate_building_construction_time_6
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_carpenter_05
-	internal_slots = 4
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
@@ -4122,11 +4132,11 @@ east_asian_estate_workshop_mason_03 = {
 	slot_type = internal
 	construction_time = @east_asian_estate_building_construction_time_3
 	allowed_domicile_types = { east_asian_estate }
-	previous_building = east_asian_estate_workshop_02
-	internal_slots = 2
+	previous_building = east_asian_estate_workshop_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_workshop_02 }
 	}
 
 	cost = {
@@ -4165,7 +4175,6 @@ east_asian_estate_workshop_mason_04 = {
 	construction_time = @east_asian_estate_building_construction_time_4
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_mason_03
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
@@ -4207,7 +4216,6 @@ east_asian_estate_workshop_mason_05 = {
 	construction_time = @east_asian_estate_building_construction_time_5
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_mason_04
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
@@ -4251,7 +4259,6 @@ east_asian_estate_workshop_mason_06 = {
 	construction_time = @east_asian_estate_building_construction_time_6
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_mason_05
-	internal_slots = 4
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
@@ -4294,11 +4301,11 @@ east_asian_estate_workshop_textile_03 = {
 	slot_type = internal
 	construction_time = @east_asian_estate_building_construction_time_3
 	allowed_domicile_types = { east_asian_estate }
-	previous_building = east_asian_estate_workshop_02
-	internal_slots = 2
+	previous_building = east_asian_estate_workshop_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_workshop_02 }
 	}
 
 	cost = {
@@ -4339,7 +4346,6 @@ east_asian_estate_workshop_textile_04 = {
 	construction_time = @east_asian_estate_building_construction_time_4
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_textile_03
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
@@ -4383,7 +4389,6 @@ east_asian_estate_workshop_textile_05 = {
 	construction_time = @east_asian_estate_building_construction_time_5
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_textile_04
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
@@ -4427,7 +4432,6 @@ east_asian_estate_workshop_textile_06 = {
 	construction_time = @east_asian_estate_building_construction_time_6
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_textile_05
-	internal_slots = 4
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
@@ -4557,11 +4561,11 @@ east_asian_estate_storage_warehouse_03 = {
 	slot_type = internal
 	construction_time = @east_asian_estate_building_construction_time_3
 	allowed_domicile_types = { east_asian_estate }
-	previous_building = east_asian_estate_storage_02
-	internal_slots = 2
+	previous_building = east_asian_estate_storage_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_storage_02 }
 	}
 
 	cost = {
@@ -4602,7 +4606,6 @@ east_asian_estate_storage_warehouse_04 = {
 	construction_time = @east_asian_estate_building_construction_time_4
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_storage_warehouse_03
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
@@ -4646,7 +4649,6 @@ east_asian_estate_storage_warehouse_05 = {
 	construction_time = @east_asian_estate_building_construction_time_5
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_storage_warehouse_04
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
@@ -4690,7 +4692,6 @@ east_asian_estate_storage_warehouse_06 = {
 	construction_time = @east_asian_estate_building_construction_time_6
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_storage_warehouse_05
-	internal_slots = 4
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
@@ -4733,11 +4734,11 @@ east_asian_estate_storage_granary_03 = {
 	slot_type = internal
 	construction_time = @east_asian_estate_building_construction_time_3
 	allowed_domicile_types = { east_asian_estate }
-	previous_building = east_asian_estate_storage_02
-	internal_slots = 2
+	previous_building = east_asian_estate_storage_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_storage_02 }
 	}
 
 	cost = {
@@ -4781,7 +4782,6 @@ east_asian_estate_storage_granary_04 = {
 	construction_time = @east_asian_estate_building_construction_time_4
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_storage_granary_03
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
@@ -4832,7 +4832,6 @@ east_asian_estate_storage_granary_05 = {
 	construction_time = @east_asian_estate_building_construction_time_5
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_storage_granary_04
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
@@ -4883,7 +4882,6 @@ east_asian_estate_storage_granary_06 = {
 	construction_time = @east_asian_estate_building_construction_time_6
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_storage_granary_05
-	internal_slots = 4
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
@@ -5188,11 +5186,11 @@ east_asian_estate_grazing_land_04 = {
 	slot_type = internal
 	construction_time = @east_asian_estate_building_construction_time_4
 	allowed_domicile_types = { east_asian_estate }
-	previous_building = east_asian_estate_grazing_land_03
-	internal_slots = 3
+	previous_building = east_asian_estate_grazing_land_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_grazing_land_03 }
 	}
 
 	cost = {
@@ -5261,7 +5259,6 @@ east_asian_estate_grazing_land_05 = {
 	construction_time = @east_asian_estate_building_construction_time_5
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_grazing_land_04
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
@@ -5333,7 +5330,6 @@ east_asian_estate_grazing_land_06 = {
 	construction_time = @east_asian_estate_building_construction_time_6
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_grazing_land_05
-	internal_slots = 4
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
@@ -5404,11 +5400,11 @@ east_asian_estate_horse_pasture_04 = {
 	slot_type = internal
 	construction_time = @east_asian_estate_building_construction_time_4
 	allowed_domicile_types = { east_asian_estate }
-	previous_building = east_asian_estate_grazing_land_03
-	internal_slots = 3
+	previous_building = east_asian_estate_grazing_land_01
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_grazing_land_03 }
 	}
 
 	cost = {
@@ -5471,7 +5467,6 @@ east_asian_estate_horse_pasture_05 = {
 	construction_time = @east_asian_estate_building_construction_time_5
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_horse_pasture_04
-	internal_slots = 3
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
@@ -5537,7 +5532,6 @@ east_asian_estate_horse_pasture_06 = {
 	construction_time = @east_asian_estate_building_construction_time_6
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_horse_pasture_05
-	internal_slots = 4
 
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
@@ -5602,11 +5596,11 @@ east_asian_estate_camel_pasture_04 = {
 	slot_type = internal
 	construction_time = @east_asian_estate_building_construction_time_4
 	allowed_domicile_types = { east_asian_estate }
-	previous_building = east_asian_estate_grazing_land_03
-	internal_slots = 3
+	previous_building = east_asian_estate_grazing_land_01
 	
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_grazing_land_03 }
 	}
 
 	cost = {
@@ -5669,7 +5663,6 @@ east_asian_estate_camel_pasture_05 = {
 	construction_time = @east_asian_estate_building_construction_time_5
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_camel_pasture_04
-	internal_slots = 3
 	
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
@@ -5735,7 +5728,6 @@ east_asian_estate_camel_pasture_06 = {
 	construction_time = @east_asian_estate_building_construction_time_6
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_camel_pasture_05
-	internal_slots = 4
 	
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
@@ -5800,11 +5792,11 @@ east_asian_estate_elephant_pasture_04 = {
 	slot_type = internal
 	construction_time = @east_asian_estate_building_construction_time_4
 	allowed_domicile_types = { east_asian_estate }
-	previous_building = east_asian_estate_grazing_land_03
-	internal_slots = 3
+	previous_building = east_asian_estate_grazing_land_01
 	
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
+		domicile ?= { has_domicile_building_or_higher = east_asian_estate_grazing_land_03 }
 	}
 
 	cost = {
@@ -5843,7 +5835,6 @@ east_asian_estate_elephant_pasture_05 = {
 	construction_time = @east_asian_estate_building_construction_time_5
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_elephant_pasture_04
-	internal_slots = 3
 	
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
@@ -5885,7 +5876,6 @@ east_asian_estate_elephant_pasture_06 = {
 	construction_time = @east_asian_estate_building_construction_time_6
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_elephant_pasture_05
-	internal_slots = 4
 	
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }

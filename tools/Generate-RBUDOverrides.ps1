@@ -189,6 +189,28 @@ function Remove-DirectBlock {
     return Replace-LineRange $Lines $range.Start $range.End @()
 }
 
+function Remove-DirectScalar {
+    param([string[]]$Lines, [string]$Field, [switch]$AllowMissing)
+    $depth = 0
+    $found = [Collections.Generic.List[int]]::new()
+    for ($index = 0; $index -lt $Lines.Count; $index++) {
+        $code = Get-CodeLine $Lines[$index]
+        if ($depth -eq 1 -and $code -match ('^\s*' + [regex]::Escape($Field) + '\s*=')) {
+            $found.Add($index)
+        }
+        $depth += Get-BraceDelta $Lines[$index]
+    }
+    if ($found.Count -eq 0) {
+        if ($AllowMissing) { return $Lines }
+        throw "Direct scalar '$Field' not found in $($Lines[0])."
+    }
+    $result = $Lines
+    foreach ($lineIndex in @($found | Sort-Object -Descending)) {
+        $result = Replace-LineRange $result $lineIndex $lineIndex @()
+    }
+    return $result
+}
+
 function Set-DirectScalar {
     param(
         [string[]]$Lines,
@@ -276,42 +298,21 @@ function Add-ConditionToDirectBlock {
     return Replace-LineRange $Lines $range.Start $range.End $replacement.ToArray()
 }
 
-function Get-AllNamedBlockRanges {
-    param([string[]]$Lines, [string]$Field)
-    $stack = [Collections.Generic.Stack[object]]::new()
-    $result = [Collections.Generic.List[object]]::new()
-    $depth = 0
-    for ($index = 0; $index -lt $Lines.Count; $index++) {
-        $code = Get-CodeLine $Lines[$index]
-        if ($code -match ('^\s*' + [regex]::Escape($Field) + '\s*=\s*\{')) {
-            $stack.Push([pscustomobject]@{ Start = $index; StartDepth = $depth })
-        }
-        $depth += Get-BraceDelta $Lines[$index]
-        while ($stack.Count -gt 0 -and $depth -eq $stack.Peek().StartDepth) {
-            $open = $stack.Pop()
-            $result.Add([pscustomobject]@{ Start = $open.Start; End = $index })
-        }
-    }
-    return $result.ToArray()
-}
-
-function Remove-ContainingNamedBlock {
+function Add-OrCreateConditionInDirectBlock {
     param(
         [string[]]$Lines,
         [string]$Field,
-        [string]$RequiredText
+        [string]$ConditionLine
     )
-    $candidates = @()
-    foreach ($range in Get-AllNamedBlockRanges $Lines $Field) {
-        $text = $Lines[$range.Start..$range.End] -join "`n"
-        if ($text -match [regex]::Escape($RequiredText)) {
-            $candidates += $range
-        }
+    $range = Get-DirectBlockRange $Lines $Field
+    if ($null -ne $range) {
+        return Add-ConditionToDirectBlock $Lines $Field $ConditionLine
     }
-    if ($candidates.Count -ne 1) {
-        throw "Expected one '$Field' block containing '$RequiredText'; found $($candidates.Count)."
-    }
-    return Replace-LineRange $Lines $candidates[0].Start $candidates[0].End @()
+    return Replace-LineRange $Lines 1 0 @(
+        "`t$Field = {",
+        "`t`t$ConditionLine",
+        "`t}"
+    )
 }
 
 function Get-DirectPositionY {
@@ -363,6 +364,38 @@ function Write-GeneratedText {
     [IO.File]::WriteAllText($Path, $Text, $encoding)
 }
 
+function Test-Utf8Bom {
+    param([string]$Path)
+    $bytes = [IO.File]::ReadAllBytes($Path)
+    return (
+        $bytes.Length -ge 3 -and
+        $bytes[0] -eq 0xEF -and
+        $bytes[1] -eq 0xBB -and
+        $bytes[2] -eq 0xBF
+    )
+}
+
+function Get-RequiredConstantDefinitionLines {
+    param([object[]]$Objects)
+    $tokens = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    foreach ($object in Convert-ToArray $Objects) {
+        foreach ($line in Convert-ToArray $object.Lines) {
+            $code = Get-CodeLine ([string]$line)
+            foreach ($match in [regex]::Matches($code, '@[A-Za-z0-9_]+')) {
+                [void]$tokens.Add($match.Value)
+            }
+        }
+    }
+    $definitions = [Collections.Generic.List[string]]::new()
+    foreach ($token in @($tokens | Sort-Object)) {
+        if (-not $script:VanillaConstantDefinitions.ContainsKey($token)) {
+            throw "No validated vanilla definition found for generated constant $token."
+        }
+        $definitions.Add("$token = $($script:VanillaConstantDefinitions[$token])")
+    }
+    return $definitions.ToArray()
+}
+
 foreach ($requiredPath in @($ManifestPath, $PlanPath, $LayoutPath)) {
     if (-not (Test-Path -LiteralPath $requiredPath -PathType Leaf)) {
         throw "Required input not found: $requiredPath"
@@ -400,6 +433,25 @@ foreach ($input in Convert-ToArray $manifest.InputFiles) {
 }
 
 $script:SourceBlockCache = @{}
+$script:VanillaConstantDefinitions = @{}
+foreach ($input in Convert-ToArray $manifest.InputFiles) {
+    $normalizedInputPath = ([string]$input.Path) -replace '/', '\'
+    if ($normalizedInputPath -notmatch '^common\\domiciles\\buildings\\.*\.txt$') { continue }
+    $fullPath = Join-Path $GamePath $input.Path
+    foreach ($line in Get-Content -LiteralPath $fullPath -Encoding UTF8) {
+        $code = Get-CodeLine $line
+        if ($code -notmatch '^\s*(@[A-Za-z0-9_]+)\s*=\s*(.*?)\s*$') { continue }
+        $token = $Matches[1]
+        $value = $Matches[2].Trim()
+        if (
+            $script:VanillaConstantDefinitions.ContainsKey($token) -and
+            $script:VanillaConstantDefinitions[$token] -ne $value
+        ) {
+            throw "Conflicting validated vanilla definitions for $token."
+        }
+        $script:VanillaConstantDefinitions[$token] = $value
+    }
+}
 $buildingRecordById = @{}
 foreach ($building in $manifest.Buildings) { $buildingRecordById[$building.Id] = $building }
 $buildingLines = @{}
@@ -433,10 +485,18 @@ foreach ($slotOverride in Convert-ToArray $plan.InternalSlotOverrides) {
     }
 }
 
-# Terminal external specializations become independent internal tracks.
+# Terminal external specializations become independent internal tracks. Their
+# roots must point to an external base building (not a higher external tier),
+# while the former tier remains an explicit construction prerequisite. Direct
+# internal_slots values on converted buildings are invalid engine data and are
+# therefore removed; capacity belongs to the external anchor line instead.
 foreach ($branch in Convert-ToArray $plan.ExternalBranchOverrides) {
     foreach ($buildingId in Convert-ToArray $branch.BuildingsChangingSlotType) {
         $buildingLines[$buildingId] = Set-DirectScalar $buildingLines[$buildingId] 'slot_type' 'internal'
+        $buildingLines[$buildingId] = Remove-DirectScalar `
+            $buildingLines[$buildingId] `
+            'internal_slots' `
+            -AllowMissing
     }
 }
 
@@ -531,6 +591,24 @@ foreach ($track in Convert-ToArray $plan.ConditionalOverrides.CultureTerritoryAn
     }
 }
 
+# Apply external-branch reanchoring after access-gate rewrites so the explicit
+# common-tier prerequisite cannot be discarded by a replacement condition.
+foreach ($branch in Convert-ToArray $plan.ExternalBranchOverrides) {
+    foreach ($rootId in Convert-ToArray $branch.SpecializationRoots) {
+        $buildingLines[$rootId] = Set-DirectScalar `
+            $buildingLines[$rootId] `
+            'previous_building' `
+            ([string]$branch.RootPreviousBuilding)
+        $conditionText = (Get-DirectBlock $buildingLines[$rootId] 'can_construct') -join "`n"
+        if ($conditionText -notmatch ('has_domicile_building_or_higher\s*=\s*' + [regex]::Escape([string]$branch.RequiredCommonBuilding))) {
+            $buildingLines[$rootId] = Add-OrCreateConditionInDirectBlock `
+                $buildingLines[$rootId] `
+                'can_construct' `
+                ([string]$branch.RootConstructionPrerequisite)
+        }
+    }
+}
+
 # Build the five domicile-type overrides from vanilla objects and a separate,
 # hand-tunable layout preset. Empty/construction asset blocks are cloned from
 # existing vanilla slots; only slot name, position, and size are changed.
@@ -616,21 +694,47 @@ foreach ($typeOverride in Convert-ToArray $plan.DomicileTypeOverrides) {
     })
 }
 
-# Remove only the 23 purpose-change cleanup blocks from the vanilla event.
-$eventReference = @(
-    Convert-ToArray $manifest.DomicileRemovalReferences |
-        Where-Object { $_.Category -eq 'camp_purpose_change_cleanup' }
-) | Select-Object -First 1
-if ($null -eq $eventReference) { throw 'No camp-purpose cleanup event reference in manifest.' }
-$eventLines = Get-VanillaObjectLines $eventReference.SourceFile $plan.RemovalOverrides.Suppress.TargetEvent
-foreach ($purpose in Convert-ToArray $plan.ConditionalOverrides.CampPurpose) {
-    foreach ($buildingId in Convert-ToArray $purpose.Buildings) {
-        $eventLines = Remove-ContainingNamedBlock `
-            $eventLines `
-            'if' `
-            "remove_domicile_building = $buildingId"
+# Safe scripted-effect overrides. The fill effects retain vanilla's number of
+# initially generated external buildings despite RB_UD's larger capacity. The
+# camp-purpose cleanup is disabled at its dedicated caller instead of
+# duplicating the vanilla event ID used to perform demolition.
+$scriptedEffectObjects = [Collections.Generic.List[object]]::new()
+foreach ($fillOverride in Convert-ToArray $plan.InitialFillEffectOverrides) {
+    $lines = [Collections.Generic.List[string]]::new()
+    $lines.Add("$($fillOverride.Effect) = {")
+    $lines.Add("`tswitch = {")
+    $lines.Add("`t`ttrigger = has_domicile_building_or_higher")
+    foreach ($branch in Convert-ToArray $fillOverride.Branches) {
+        $lines.Add("`t`t$($branch.MainBuilding) = {")
+        $lines.Add("`t`t`twhile = {")
+        $lines.Add("`t`t`t`tcount = $($branch.MaximumIterations)")
+        $lines.Add("`t`t`t`tlimit = { free_external_domicile_building_slots >= $($branch.TargetFreeSlotThreshold) }")
+        $lines.Add("`t`t`t`t$($fillOverride.CalledEffect) = yes")
+        $lines.Add("`t`t`t}")
+        $lines.Add("`t`t}")
     }
+    $lines.Add("`t}")
+    $lines.Add('}')
+    $scriptedEffectObjects.Add([pscustomobject]@{
+        Id = $fillOverride.Effect
+        SourceFile = Get-RelativeSourceFromLocation $fillOverride.VanillaSource
+        StartLine = [int]($fillOverride.VanillaSource -replace '^.*:', '')
+        Lines = $lines.ToArray()
+        TargetFile = $fillOverride.TargetOverrideFile
+    })
 }
+$cleanupEffectId = [string]$plan.RemovalOverrides.Suppress.TargetScriptedEffect
+$scriptedEffectObjects.Add([pscustomobject]@{
+    Id = $cleanupEffectId
+    SourceFile = Get-RelativeSourceFromLocation $plan.RemovalOverrides.Suppress.VanillaSource
+    StartLine = [int]($plan.RemovalOverrides.Suppress.VanillaSource -replace '^.*:', '')
+    Lines = @(
+        "$cleanupEffectId = {",
+        "`t# RB_UD: purpose-specific camp buildings are intentionally retained.",
+        '}'
+    )
+    TargetFile = $plan.TargetFiles.ScriptedEffects
+})
 
 # Semantic post-transform validation. These checks intentionally repeat the
 # plan from the generated in-memory objects, so a future generator regression
@@ -664,6 +768,18 @@ foreach ($branch in Convert-ToArray $plan.ExternalBranchOverrides) {
     foreach ($buildingId in Convert-ToArray $branch.BuildingsChangingSlotType) {
         if ((Get-DirectScalarValue $buildingLines[$buildingId] 'slot_type') -ne 'internal') {
             throw "External specialization '$buildingId' was not converted to internal."
+        }
+        if ($null -ne (Get-DirectScalarValue $buildingLines[$buildingId] 'internal_slots')) {
+            throw "Converted internal specialization '$buildingId' still grants nested internal slots."
+        }
+    }
+    foreach ($rootId in Convert-ToArray $branch.SpecializationRoots) {
+        if ((Get-DirectScalarValue $buildingLines[$rootId] 'previous_building') -ne $branch.RootPreviousBuilding) {
+            throw "Converted specialization root '$rootId' has an invalid previous building."
+        }
+        $conditionText = (Get-DirectBlock $buildingLines[$rootId] 'can_construct') -join "`n"
+        if ($conditionText -notmatch ('has_domicile_building_or_higher\s*=\s*' + [regex]::Escape($branch.RequiredCommonBuilding))) {
+            throw "Converted specialization root '$rootId' lost its common-tier prerequisite."
         }
     }
 }
@@ -725,12 +841,24 @@ if (
 ) {
     throw 'The elephant-reserve temporary character-state restriction was lost.'
 }
-foreach ($purpose in Convert-ToArray $plan.ConditionalOverrides.CampPurpose) {
-    foreach ($buildingId in Convert-ToArray $purpose.Buildings) {
-        if (($eventLines -join "`n") -match ('remove_domicile_building\s*=\s*' + [regex]::Escape($buildingId))) {
-            throw "Purpose cleanup for '$buildingId' remains in generated event."
+foreach ($fillOverride in Convert-ToArray $plan.InitialFillEffectOverrides) {
+    $generatedEffect = @($scriptedEffectObjects | Where-Object { $_.Id -eq $fillOverride.Effect }) | Select-Object -First 1
+    if ($null -eq $generatedEffect) { throw "Missing generated fill effect $($fillOverride.Effect)." }
+    $effectText = $generatedEffect.Lines -join "`n"
+    foreach ($branch in Convert-ToArray $fillOverride.Branches) {
+        $expected = 'count\s*=\s*' + [regex]::Escape([string]$branch.MaximumIterations) +
+            '.*?free_external_domicile_building_slots\s*>=\s*' + [regex]::Escape([string]$branch.TargetFreeSlotThreshold)
+        if ($effectText -notmatch "(?s)$expected") {
+            throw "Generated fill effect $($fillOverride.Effect) lost its cap or threshold for $($branch.MainBuilding)."
         }
     }
+    if ($effectText -notmatch ([regex]::Escape([string]$fillOverride.CalledEffect) + '\s*=\s*yes')) {
+        throw "Generated fill effect $($fillOverride.Effect) calls the wrong random-building effect."
+    }
+}
+$cleanupEffect = @($scriptedEffectObjects | Where-Object { $_.Id -eq $cleanupEffectId }) | Select-Object -First 1
+if ($null -eq $cleanupEffect -or ($cleanupEffect.Lines -join "`n") -match 'trigger_event|remove_domicile_building') {
+    throw 'Camp-purpose cleanup scripted effect was not safely disabled.'
 }
 
 $headerLines = @(
@@ -757,7 +885,7 @@ foreach ($group in $typeGroups) {
     }
     $targetPath = Convert-ToGeneratedPath $group.Name
     $text = ($content -join "`r`n") + "`r`n"
-    Write-GeneratedText $targetPath $text $false
+    Write-GeneratedText $targetPath $text $true
     $generatedFiles.Add([pscustomobject]@{
         Path = $group.Name
         ObjectCount = $objects.Count
@@ -808,13 +936,16 @@ foreach ($group in ($changedBuildingObjects | Group-Object TargetFile)) {
     $content = [Collections.Generic.List[string]]::new()
     foreach ($line in $headerLines) { $content.Add($line) }
     $objects = @($group.Group | Sort-Object SourceFile, StartLine, Id)
+    $constantDefinitions = @(Get-RequiredConstantDefinitionLines $objects)
+    foreach ($definition in $constantDefinitions) { $content.Add($definition) }
+    if ($constantDefinitions.Count -gt 0) { $content.Add('') }
     for ($index = 0; $index -lt $objects.Count; $index++) {
         foreach ($line in $objects[$index].Lines) { $content.Add($line) }
         if ($index -lt ($objects.Count - 1)) { $content.Add('') }
     }
     $targetPath = Convert-ToGeneratedPath $group.Name
     $text = ($content -join "`r`n") + "`r`n"
-    Write-GeneratedText $targetPath $text $false
+    Write-GeneratedText $targetPath $text $true
     $generatedFiles.Add([pscustomobject]@{
         Path = $group.Name
         ObjectCount = $objects.Count
@@ -822,28 +953,63 @@ foreach ($group in ($changedBuildingObjects | Group-Object TargetFile)) {
     })
 }
 
-# Write event override.
-$eventContent = [Collections.Generic.List[string]]::new()
-foreach ($line in $headerLines) { $eventContent.Add($line) }
-$eventContent.Add('namespace = ep3_laamps')
-$eventContent.Add('')
-foreach ($line in $eventLines) { $eventContent.Add($line) }
-$eventTargetPath = Convert-ToGeneratedPath $plan.TargetFiles.CampPurposeEvent
-$eventText = ($eventContent -join "`r`n") + "`r`n"
-Write-GeneratedText $eventTargetPath $eventText $false
-$generatedFiles.Add([pscustomobject]@{
-    Path = $plan.TargetFiles.CampPurposeEvent
-    ObjectCount = 1
-    Sha256 = Get-StringSha256 $eventText
-})
+# Write scripted-effect overrides.
+foreach ($group in ($scriptedEffectObjects | Group-Object TargetFile)) {
+    $content = [Collections.Generic.List[string]]::new()
+    foreach ($line in $headerLines) { $content.Add($line) }
+    $objects = @($group.Group | Sort-Object SourceFile, StartLine, Id)
+    for ($index = 0; $index -lt $objects.Count; $index++) {
+        foreach ($line in $objects[$index].Lines) { $content.Add($line) }
+        if ($index -lt ($objects.Count - 1)) { $content.Add('') }
+    }
+    $targetPath = Convert-ToGeneratedPath $group.Name
+    $text = ($content -join "`r`n") + "`r`n"
+    Write-GeneratedText $targetPath $text $true
+    $generatedFiles.Add([pscustomobject]@{
+        Path = $group.Name
+        ObjectCount = $objects.Count
+        Sha256 = Get-StringSha256 $text
+    })
+}
 
-# Parse every emitted database/event file again. This catches broken braces and
+# Stage 3 previously generated an event override with a duplicated vanilla ID.
+# It is obsolete now that the dedicated cleanup caller is overridden.
+$legacyEventRelativePath = 'events/zzz_RB_UD_camp_purpose_events.txt'
+$legacyEventPath = [IO.Path]::GetFullPath((Convert-ToGeneratedPath $legacyEventRelativePath))
+$safeModRoot = $ModPath.TrimEnd([IO.Path]::DirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
+if (-not $legacyEventPath.StartsWith($safeModRoot, [StringComparison]::OrdinalIgnoreCase)) {
+    throw "Unsafe stale generated-file path: $legacyEventPath"
+}
+if (Test-Path -LiteralPath $legacyEventPath -PathType Leaf) {
+    [IO.File]::Delete($legacyEventPath)
+}
+
+# Parse every emitted database/effect file again. This catches broken braces and
 # duplicate objects inside a generated file before the game sees it.
 foreach ($generatedFile in $generatedFiles) {
     $fullPath = Convert-ToGeneratedPath $generatedFile.Path
+    if (-not (Test-Utf8Bom $fullPath)) {
+        throw "Generated CK3 script file lacks UTF-8 BOM: $($generatedFile.Path)."
+    }
     $parsed = Get-TopLevelBlocks (Get-Content -LiteralPath $fullPath -Encoding UTF8) $generatedFile.Path
     if ($parsed.Count -ne [int]$generatedFile.ObjectCount) {
         throw "Generated object-count mismatch in $($generatedFile.Path): expected $($generatedFile.ObjectCount), parsed $($parsed.Count)."
+    }
+    $rawText = Get-Content -LiteralPath $fullPath -Raw -Encoding UTF8
+    $referencedTokens = @(
+        [regex]::Matches($rawText, '@[A-Za-z0-9_]+') |
+            ForEach-Object { $_.Value } |
+            Sort-Object -Unique
+    )
+    $definedTokens = @(
+        [regex]::Matches($rawText, '(?m)^\s*(@[A-Za-z0-9_]+)\s*=') |
+            ForEach-Object { $_.Groups[1].Value } |
+            Sort-Object -Unique
+    )
+    foreach ($token in $referencedTokens) {
+        if ($definedTokens -notcontains $token) {
+            throw "Generated file $($generatedFile.Path) references undefined local constant $token."
+        }
     }
 }
 
@@ -858,12 +1024,16 @@ $generationManifest = [ordered]@{
     GeneratedFiles = @($generatedFiles | Sort-Object Path)
     GeneratedDomicileTypeCount = $generatedTypeBlocks.Count
     GeneratedBuildingObjectCount = $changedBuildingObjects.Count
+    GeneratedScriptedEffectObjectCount = $scriptedEffectObjects.Count
     RewrittenSpecialAccessBuildingCount = @($rewrittenAccessBuildings | Sort-Object -Unique).Count
     RemovedCampPurposeCleanupCount = @(Convert-ToArray $plan.ConditionalOverrides.CampPurpose).Count
     Validation = [ordered]@{
         BracesAndObjectCounts = 'passed'
         PlanSignature = 'passed'
         VanillaInputHashes = 'passed'
+        Utf8Bom = 'passed'
+        LocalConstantDefinitions = 'passed'
+        InitialFillLoopCaps = 'passed'
         ManualVisualValidationRequired = $true
     }
 }
@@ -879,6 +1049,7 @@ $report.Add("- Plan: ``$($planWrapper.PlanSha256)``")
 $report.Add('- Vanilla input hashes: **passed**')
 $report.Add("- Generated domicile types: **$($generatedTypeBlocks.Count)**")
 $report.Add("- Generated changed building objects: **$($changedBuildingObjects.Count)**")
+$report.Add("- Generated scripted-effect overrides: **$($scriptedEffectObjects.Count)**")
 $report.Add("- Rewritten specialization-access buildings: **$(@($rewrittenAccessBuildings | Sort-Object -Unique).Count)**")
 $report.Add("- Disabled camp-purpose cleanup pairs: **$(@(Convert-ToArray $plan.ConditionalOverrides.CampPurpose).Count)**")
 $report.Add('')

@@ -11,7 +11,7 @@ validation is still required).
 ## Current implementation stage
 
 Stages 1-3 are complete. The project now contains a reproducible pipeline that
-analyzes the installed vanilla game, builds a dry-run override plan, validates
+analyzes the installed vanilla game, builds a signed override plan, validates
 that the expected vanilla inputs have not changed, and generates the gameplay
 overrides used by the mod.
 
@@ -32,7 +32,7 @@ branch that is already internal is reported separately because it requires
 splitting its shared prefix into parallel tracks rather than merely changing
 `slot_type`.
 
-The plan builder names every vanilla type, building, event, condition group,
+The plan builder names every vanilla type, building, scripted effect, condition group,
 capacity change, and target override file; consolidates internal-slot demand
 after branch conversion; and explicitly separates the 21 access-restriction
 groups to rewrite from the three false-positive main-building conditions that
@@ -40,9 +40,10 @@ must remain vanilla.
 
 The generator then copies only the affected vanilla objects into late-loaded
 override files and applies the plan. It does not use `replace_path`. It also
-performs semantic post-generation checks: capacities, internal slots, branch
-anchors, preserved tier prerequisites, removed access gates, and disabled camp
-purpose cleanup are verified before files are accepted.
+performs semantic post-generation checks: capacities, internal slots, valid
+branch anchors, preserved tier prerequisites, removed access gates, bounded
+initial-fill loops, local vanilla constant definitions, UTF-8 BOM encoding,
+and disabled camp-purpose cleanup are verified before files are accepted.
 
 - Human-readable audit: `docs/generated/RB_UD_VANILLA_AUDIT.md`
 - Machine-readable manifest: `tools/generated/RB_UD_vanilla_manifest.json`
@@ -83,9 +84,15 @@ must not be edited manually. Visual slot positions belong in
 - five overridden domicile types with expanded external layouts;
 - 438 affected vanilla building objects reproduced with targeted changes;
 - external specialization tails converted into independent internal tracks;
+- converted roots re-anchored to valid external base buildings while retaining
+  their former common tier as an explicit construction prerequisite;
 - already-internal estate library specializations split into parallel tracks;
 - camp-purpose construction gates removed while unrelated progression remains;
 - the 23 vanilla camp-purpose cleanup removals disabled;
+- initial estate generation keeps vanilla building counts instead of filling
+  all expanded slots, and every generated fill loop has a hard iteration cap;
+- the vanilla Japanese manor fill-effect typo is corrected in the override;
+- all used vanilla `@` constants are copied into their generated database file;
 - culture, territory, innovation, language, and similar specialization access
   gates removed according to the reviewed plan;
 - costs, effects, icons, textures, upgrade order, and unrelated vanilla
