@@ -362,11 +362,16 @@ function Convert-ToGeneratedPath {
     return Join-Path $ModPath ($PlanPathValue -replace '/', '\')
 }
 
+function Normalize-GeneratedText {
+    param([string]$Text)
+    return [regex]::Replace($Text, '(?m)[ \t]+(?=\r?$)', '')
+}
+
 function Write-GeneratedText {
     param([string]$Path, [string]$Text, [bool]$Bom)
     [IO.Directory]::CreateDirectory((Split-Path -Parent $Path)) | Out-Null
     $encoding = [Text.UTF8Encoding]::new($Bom)
-    [IO.File]::WriteAllText($Path, $Text, $encoding)
+    [IO.File]::WriteAllText($Path, (Normalize-GeneratedText $Text), $encoding)
 }
 
 function Test-Utf8Bom {
@@ -414,6 +419,41 @@ function Get-CostConstantId {
     }
     $suffix = $suffix.Replace('.', '_')
     return "RB_UD_cost_${Resource}_${suffix}_value"
+}
+
+function Get-ConstructionTimeConstantId {
+    param([string]$SourceValue)
+
+    if ([string]::IsNullOrWhiteSpace($SourceValue)) {
+        throw 'A vanilla domicile building has no construction_time value.'
+    }
+    $sourceToken = $SourceValue.Trim()
+    if ($sourceToken -match '^@[A-Za-z0-9_]+$') {
+        if (-not $script:VanillaConstantDefinitions.ContainsKey($sourceToken)) {
+            throw "No validated vanilla construction-time definition found for $sourceToken."
+        }
+        $resolvedDays = [string]$script:VanillaConstantDefinitions[$sourceToken]
+    }
+    else {
+        $resolvedDays = $sourceToken
+    }
+    if ($resolvedDays -notmatch '^[0-9]+$' -or [int]$resolvedDays -lt 1) {
+        throw "Vanilla construction time '$SourceValue' resolved to invalid value '$resolvedDays'."
+    }
+
+    $constantId = "$($script:ConstructionTimeConstantPrefix)$resolvedDays$($script:ConstructionTimeConstantSuffix)"
+    if ($constantId -notmatch '^@[A-Za-z0-9_]+$') {
+        throw "Generated construction-time constant '$constantId' is invalid."
+    }
+    if (
+        $script:GeneratedConstructionTimeDefinitions.ContainsKey($constantId) -and
+        $script:GeneratedConstructionTimeDefinitions[$constantId] -ne $resolvedDays
+    ) {
+        throw "Conflicting generated construction-time value for $constantId."
+    }
+    $script:GeneratedConstructionTimeDefinitions[$constantId] = $resolvedDays
+    $script:CustomConstantDefinitions[$constantId] = $resolvedDays
+    return $constantId
 }
 
 function Convert-DirectNumericCostsToScriptValues {
@@ -502,13 +542,17 @@ if ([int]$generationSettings.SchemaVersion -ne 1) {
 if ([string]$generationSettings.OutputGrouping -ne 'vanilla_root_family') {
     throw "Unsupported output grouping '$($generationSettings.OutputGrouping)'."
 }
-$constructionTimeDays = [int]$generationSettings.ConstructionTime.DefaultDays
-if ($constructionTimeDays -lt 1) {
-    throw 'ConstructionTime.DefaultDays must be a positive integer.'
+$constructionTimeMode = [string]$generationSettings.ConstructionTime.Mode
+if ($constructionTimeMode -ne 'vanilla_via_local_constants') {
+    throw "Unsupported construction-time mode '$constructionTimeMode'."
 }
-$constructionTimeToken = [string]$generationSettings.ConstructionTime.LocalConstant
-if ($constructionTimeToken -notmatch '^@[A-Za-z0-9_]+$') {
-    throw "Invalid local construction-time constant '$constructionTimeToken'."
+$script:ConstructionTimeConstantPrefix = [string]$generationSettings.ConstructionTime.LocalConstantPrefix
+$script:ConstructionTimeConstantSuffix = [string]$generationSettings.ConstructionTime.LocalConstantSuffix
+if (
+    $script:ConstructionTimeConstantPrefix -notmatch '^@[A-Za-z0-9_]+_$' -or
+    $script:ConstructionTimeConstantSuffix -notmatch '^_[A-Za-z0-9_]+$'
+) {
+    throw 'ConstructionTime local-constant prefix or suffix is invalid.'
 }
 $costResources = @(
     Convert-ToArray $generationSettings.Costs.ReplaceDirectNumericResources |
@@ -547,8 +591,8 @@ foreach ($input in Convert-ToArray $manifest.InputFiles) {
 $script:SourceBlockCache = @{}
 $script:VanillaConstantDefinitions = @{}
 $script:CustomConstantDefinitions = @{}
+$script:GeneratedConstructionTimeDefinitions = @{}
 $script:GeneratedCostConstantDefinitions = @{}
-$script:CustomConstantDefinitions[$constructionTimeToken] = [string]$constructionTimeDays
 foreach ($input in Convert-ToArray $manifest.InputFiles) {
     $normalizedInputPath = ([string]$input.Path) -replace '/', '\'
     if ($normalizedInputPath -notmatch '^common\\domiciles\\buildings\\.*\.txt$') { continue }
@@ -675,62 +719,15 @@ foreach ($purpose in Convert-ToArray $plan.ConditionalOverrides.CampPurpose) {
     }
 }
 
-# Access-gate rewrite. The only conditions retained from these reviewed tracks
-# are main-domicile progression and the elephant-meal temporary state check.
+# Availability policy. Branches are made compatible by changing their track
+# structure, never by removing vanilla culture, innovation, terrain, region,
+# language, character-state or other independent construction prerequisites.
+# The pattern is retained as a validation inventory for reviewed access rules.
 $accessGatePattern = '(?i)(innovation_war_camels|innovation_elephantry|innovation_champa_rice|innovation_fire_medicine|innovation_lacquered_armor|can_recruit_archer_cavalry_trigger|ep3_unlocked_silk|unlocks_silk_buildings_parameter|hosts_chariot_races|_internal_yurt_unlock|any_held_county|num_of_known_languages|geographical_region\s*=\s*world_innovation_elephants)'
-$rewrittenAccessBuildings = [Collections.Generic.List[string]]::new()
-foreach ($track in Convert-ToArray $plan.ConditionalOverrides.CultureTerritoryAndSpecialAccess) {
-    if ($track.Decision -ne 'targeted_remove_specialization_access_gate') { continue }
-    foreach ($profile in Convert-ToArray $track.BuildingProfiles) {
-        $field = $null
-        $scriptText = $null
-        if (-not [string]::IsNullOrWhiteSpace([string]$profile.ExistingCanConstruct)) {
-            $field = 'can_construct'
-            $scriptText = [string]$profile.ExistingCanConstruct
-        }
-        elseif (-not [string]::IsNullOrWhiteSpace([string]$profile.ExistingCanConstructPotential)) {
-            $field = 'can_construct_potential'
-            $scriptText = [string]$profile.ExistingCanConstructPotential
-        }
-        if ($null -eq $field -or $scriptText -notmatch $accessGatePattern) { continue }
+$preservedAccessBuildings = [Collections.Generic.List[string]]::new()
 
-        $buildingId = $profile.Building
-        $replacement = @()
-        $mainRequirement = [regex]::Match(
-            $scriptText,
-            'has_domicile_building_or_higher\s*=\s*([A-Za-z0-9_]+)'
-        )
-        if ($buildingId -eq 'proving_grounds_elephantry_reserve') {
-            $replacement = @(
-                "`tcan_construct = {",
-                "`t`tcustom_tooltip = {",
-                "`t`t`ttext = proving_grounds_elephantry_reserve.tt.ate_elephants",
-                "`t`t`tNOT = { has_character_flag = recently_ate_elephants }",
-                "`t`t}",
-                "`t}"
-            )
-        }
-        elseif ($mainRequirement.Success) {
-            $mainBuilding = $mainRequirement.Groups[1].Value
-            $replacement = @(
-                "`t$field = {",
-                "`t`tdomicile ?= { has_domicile_building_or_higher = $mainBuilding }",
-                "`t}"
-            )
-        }
-
-        if ($replacement.Count -eq 0) {
-            $buildingLines[$buildingId] = Remove-DirectBlock $buildingLines[$buildingId] $field
-        }
-        else {
-            $buildingLines[$buildingId] = Replace-DirectBlock $buildingLines[$buildingId] $field $replacement
-        }
-        $rewrittenAccessBuildings.Add($buildingId)
-    }
-}
-
-# Apply external-branch reanchoring after access-gate rewrites so the explicit
-# common-tier prerequisite cannot be discarded by a replacement condition.
+# Apply external-branch reanchoring without weakening the preserved vanilla
+# access rules; the former common tier becomes an additional prerequisite.
 foreach ($branch in Convert-ToArray $plan.ExternalBranchOverrides) {
     foreach ($rootId in Convert-ToArray $branch.SpecializationRoots) {
         $buildingLines[$rootId] = Set-DirectScalar `
@@ -747,11 +744,13 @@ foreach ($branch in Convert-ToArray $plan.ExternalBranchOverrides) {
     }
 }
 
-# Full-mirror scalar normalization. construction_time is an integer database
-# field and therefore uses a file-local @ constant. Direct numeric resource
-# costs are moved to generated global script values; existing vanilla script
-# values remain intact.
+# Full-mirror scalar normalization. Each vanilla construction time is resolved
+# to its original number of days and routed through a generated file-local
+# RB_UD @ constant. Direct numeric resource costs are moved to generated global
+# script values; existing vanilla script values remain intact.
 foreach ($buildingId in @($buildingLines.Keys | Sort-Object)) {
+    $sourceConstructionTime = [string]$buildingRecordById[$buildingId].ConstructionTime
+    $constructionTimeToken = Get-ConstructionTimeConstantId $sourceConstructionTime
     $buildingLines[$buildingId] = Set-DirectScalar `
         $buildingLines[$buildingId] `
         'construction_time' `
@@ -960,7 +959,9 @@ foreach ($purpose in Convert-ToArray $plan.ConditionalOverrides.CampPurpose) {
     }
 }
 foreach ($track in Convert-ToArray $plan.ConditionalOverrides.CultureTerritoryAndSpecialAccess) {
-    if ($track.Decision -ne 'targeted_remove_specialization_access_gate') { continue }
+    if ($track.Decision -ne 'preserve_entire_vanilla_condition') {
+        throw "Unsupported special-access policy '$($track.Decision)' for '$($track.TrackRoot)'."
+    }
     foreach ($profile in Convert-ToArray $track.BuildingProfiles) {
         $sourceCondition = $null
         $field = $null
@@ -972,24 +973,17 @@ foreach ($track in Convert-ToArray $plan.ConditionalOverrides.CultureTerritoryAn
             $sourceCondition = [string]$profile.ExistingCanConstructPotential
             $field = 'can_construct_potential'
         }
-        if ($null -eq $sourceCondition -or $sourceCondition -notmatch $accessGatePattern) { continue }
+        if ($null -eq $sourceCondition) { continue }
         $generatedCondition = (Get-DirectBlock $buildingLines[$profile.Building] $field) -join "`n"
-        if ($generatedCondition -match $accessGatePattern) {
-            throw "Special access gate remains on '$($profile.Building)'."
+        if ([string]::IsNullOrWhiteSpace($generatedCondition)) {
+            throw "Vanilla access condition was lost on '$($profile.Building)'."
         }
-        $sourceMainRequirement = [regex]::Match(
-            $sourceCondition,
-            'has_domicile_building_or_higher\s*=\s*([A-Za-z0-9_]+)'
-        )
-        if (
-            $sourceMainRequirement.Success -and
-            $generatedCondition -notmatch (
-                'has_domicile_building_or_higher\s*=\s*' +
-                [regex]::Escape($sourceMainRequirement.Groups[1].Value)
-            )
-        ) {
-            throw "Main-building progression was lost on '$($profile.Building)'."
+        foreach ($match in [regex]::Matches($sourceCondition, $accessGatePattern)) {
+            if ($generatedCondition -notmatch [regex]::Escape($match.Value)) {
+                throw "Vanilla access prerequisite '$($match.Value)' was lost on '$($profile.Building)'."
+            }
         }
+        $preservedAccessBuildings.Add($profile.Building)
     }
 }
 if (
@@ -999,9 +993,11 @@ if (
     throw 'The elephant-reserve temporary character-state restriction was lost.'
 }
 foreach ($buildingId in @($buildingLines.Keys | Sort-Object)) {
+    $expectedConstructionTime = Get-ConstructionTimeConstantId `
+        ([string]$buildingRecordById[$buildingId].ConstructionTime)
     $actualConstructionTime = Get-DirectScalarValue $buildingLines[$buildingId] 'construction_time'
-    if ($actualConstructionTime -ne $constructionTimeToken) {
-        throw "Building '$buildingId' was not normalized to $constructionTimeToken."
+    if ($actualConstructionTime -ne $expectedConstructionTime) {
+        throw "Building '$buildingId' was not normalized to $expectedConstructionTime."
     }
     $generatedPreviousBuilding = Get-DirectScalarValue $buildingLines[$buildingId] 'previous_building'
     if (
@@ -1062,7 +1058,7 @@ foreach ($group in $typeGroups) {
         if ($index -lt ($objects.Count - 1)) { $content.Add('') }
     }
     $targetPath = Convert-ToGeneratedPath $group.Name
-    $text = ($content -join "`r`n") + "`r`n"
+    $text = Normalize-GeneratedText (($content -join "`r`n") + "`r`n")
     Write-GeneratedText $targetPath $text $true
     $generatedFiles.Add([pscustomobject]@{
         Path = $group.Name
@@ -1116,7 +1112,7 @@ foreach ($group in ($generatedBuildingObjects | Group-Object TargetFile)) {
         if ($index -lt ($objects.Count - 1)) { $content.Add('') }
     }
     $targetPath = Convert-ToGeneratedPath $group.Name
-    $text = ($content -join "`r`n") + "`r`n"
+    $text = Normalize-GeneratedText (($content -join "`r`n") + "`r`n")
     Write-GeneratedText $targetPath $text $true
     $generatedFiles.Add([pscustomobject]@{
         Path = $group.Name
@@ -1148,7 +1144,7 @@ if ($costValueObjects.Count -gt 0) {
         if ($index -lt ($costValueObjects.Count - 1)) { $content.Add('') }
     }
     $targetPath = Convert-ToGeneratedPath $costValueRelativePath
-    $text = ($content -join "`r`n") + "`r`n"
+    $text = Normalize-GeneratedText (($content -join "`r`n") + "`r`n")
     Write-GeneratedText $targetPath $text $true
     $generatedFiles.Add([pscustomobject]@{
         Path = $costValueRelativePath
@@ -1167,7 +1163,7 @@ foreach ($group in ($scriptedEffectObjects | Group-Object TargetFile)) {
         if ($index -lt ($objects.Count - 1)) { $content.Add('') }
     }
     $targetPath = Convert-ToGeneratedPath $group.Name
-    $text = ($content -join "`r`n") + "`r`n"
+    $text = Normalize-GeneratedText (($content -join "`r`n") + "`r`n")
     Write-GeneratedText $targetPath $text $true
     $generatedFiles.Add([pscustomobject]@{
         Path = $group.Name
@@ -1266,9 +1262,12 @@ $generationManifest = [ordered]@{
     BuildingFamiliesByDomicileType = $familySummary
     GeneratedScriptedEffectObjectCount = $scriptedEffectObjects.Count
     GeneratedCostScriptValueCount = $costValueObjects.Count
-    ConstructionTimeDays = $constructionTimeDays
-    ConstructionTimeLocalConstant = $constructionTimeToken
-    RewrittenSpecialAccessBuildingCount = @($rewrittenAccessBuildings | Sort-Object -Unique).Count
+    ConstructionTimeMode = $constructionTimeMode
+    ConstructionTimeLocalConstantPrefix = $script:ConstructionTimeConstantPrefix
+    ConstructionTimeDistinctVanillaSourceCount = @($manifest.Buildings.ConstructionTime | Sort-Object -Unique).Count
+    GeneratedConstructionTimeConstantCount = $script:GeneratedConstructionTimeDefinitions.Count
+    PreservedSpecialAccessBuildingCount = @($preservedAccessBuildings | Sort-Object -Unique).Count
+    RewrittenSpecialAccessBuildingCount = 0
     RemovedCampPurposeCleanupCount = @(Convert-ToArray $plan.ConditionalOverrides.CampPurpose).Count
     Validation = [ordered]@{
         BracesAndObjectCounts = 'passed'
@@ -1297,10 +1296,13 @@ $report.Add('- Vanilla input hashes: **passed**')
 $report.Add("- Generated domicile types: **$($generatedTypeBlocks.Count)**")
 $report.Add("- Generated building objects: **$($generatedBuildingObjects.Count) / $expectedBuildingCount**")
 $report.Add("- Generated root-family files: **$($familyRoots.Count)**")
-$report.Add("- Construction time: **$constructionTimeDays days** via local ``$constructionTimeToken``")
+$report.Add('- Construction time: **vanilla values preserved** via generated local ``@RB_UD_*`` constants')
+$report.Add("- Distinct vanilla construction-time sources: **$(@($manifest.Buildings.ConstructionTime | Sort-Object -Unique).Count)**")
+$report.Add("- Generated construction-time constants: **$($script:GeneratedConstructionTimeDefinitions.Count)**")
 $report.Add("- Generated numeric cost script values: **$($costValueObjects.Count)**")
 $report.Add("- Generated scripted-effect overrides: **$($scriptedEffectObjects.Count)**")
-$report.Add("- Rewritten specialization-access buildings: **$(@($rewrittenAccessBuildings | Sort-Object -Unique).Count)**")
+$report.Add("- Preserved vanilla special-access buildings: **$(@($preservedAccessBuildings | Sort-Object -Unique).Count)**")
+$report.Add('- Rewritten specialization-access buildings: **0**')
 $report.Add("- Disabled camp-purpose cleanup pairs: **$(@(Convert-ToArray $plan.ConditionalOverrides.CampPurpose).Count)**")
 $report.Add('')
 $report.Add('## Building families')
@@ -1329,8 +1331,9 @@ Write-Output "RB_UD gameplay overrides generated for CK3 $($manifest.GameVersion
 Write-Output "Domicile types: $($generatedTypeBlocks.Count)"
 Write-Output "Building objects: $($generatedBuildingObjects.Count) / $expectedBuildingCount"
 Write-Output "Building root families: $($familyRoots.Count)"
-Write-Output "Construction time: $constructionTimeDays days"
-Write-Output "Special-access rewrites: $(@($rewrittenAccessBuildings | Sort-Object -Unique).Count)"
+Write-Output "Construction time: vanilla values via $($script:GeneratedConstructionTimeDefinitions.Count) local RB_UD constants"
+Write-Output "Preserved special-access buildings: $(@($preservedAccessBuildings | Sort-Object -Unique).Count)"
+Write-Output 'Special-access rewrites: 0'
 Write-Output "Camp cleanup removals disabled: $(@(Convert-ToArray $plan.ConditionalOverrides.CampPurpose).Count)"
 Write-Output "Generation manifest: $generationManifestPath"
 Write-Output "Generation report:   $reportPath"

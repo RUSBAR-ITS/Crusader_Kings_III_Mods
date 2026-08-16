@@ -2,14 +2,14 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_730_days = 730
 
 grazing_land_01 = {
 	internal_slots = 4
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 
 	cost = {
@@ -56,7 +56,7 @@ grazing_land_01 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 9
 		if = {
@@ -77,7 +77,7 @@ grazing_land_01 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -131,7 +131,7 @@ grazing_land_01 = {
 
 grazing_land_02 = {
 	internal_slots = 4
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = grazing_land_01
 
@@ -179,7 +179,7 @@ grazing_land_02 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 8
 		if = {
@@ -200,7 +200,7 @@ grazing_land_02 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -254,7 +254,7 @@ grazing_land_02 = {
 
 grazing_land_03 = {
 	internal_slots = 4
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = grazing_land_02
 
@@ -302,7 +302,7 @@ grazing_land_03 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 7
 		if = {
@@ -323,7 +323,7 @@ grazing_land_03 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -377,7 +377,7 @@ grazing_land_03 = {
 
 grazing_land_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = grazing_land_01
 
@@ -433,12 +433,12 @@ grazing_land_04 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -492,7 +492,7 @@ grazing_land_04 = {
 
 grazing_land_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = grazing_land_04
 
@@ -547,12 +547,12 @@ grazing_land_05 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -606,7 +606,7 @@ grazing_land_05 = {
 
 grazing_land_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = grazing_land_05
 
@@ -661,12 +661,12 @@ grazing_land_06 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -720,11 +720,12 @@ grazing_land_06 = {
 
 horse_pasture_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = grazing_land_01
 
 	can_construct = {
+		can_recruit_archer_cavalry_trigger = yes
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
 		domicile ?= { has_domicile_building_or_higher = grazing_land_03 }
 	}
@@ -769,12 +770,12 @@ horse_pasture_04 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 10
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -828,11 +829,12 @@ horse_pasture_04 = {
 
 horse_pasture_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = horse_pasture_04
 
 	can_construct = {
+		can_recruit_archer_cavalry_trigger = yes
 		domicile ?= { has_domicile_building_or_higher = estate_main_04 }
 	}
 
@@ -876,12 +878,12 @@ horse_pasture_05 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -935,11 +937,12 @@ horse_pasture_05 = {
 
 horse_pasture_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = horse_pasture_05
 
 	can_construct = {
+		can_recruit_archer_cavalry_trigger = yes
 		domicile ?= { has_domicile_building_or_higher = estate_main_05 }
 	}
 
@@ -983,12 +986,12 @@ horse_pasture_06 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1042,11 +1045,12 @@ horse_pasture_06 = {
 
 camel_pasture_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = grazing_land_01
-	
+
 	can_construct = {
+		culture ?= { has_innovation = innovation_war_camels }
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
 		domicile ?= { has_domicile_building_or_higher = grazing_land_03 }
 	}
@@ -1091,12 +1095,12 @@ camel_pasture_04 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 10
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1150,11 +1154,12 @@ camel_pasture_04 = {
 
 camel_pasture_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = camel_pasture_04
-	
+
 	can_construct = {
+		culture ?= { has_innovation = innovation_war_camels }
 		domicile ?= { has_domicile_building_or_higher = estate_main_04 }
 	}
 
@@ -1198,12 +1203,12 @@ camel_pasture_05 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1257,11 +1262,12 @@ camel_pasture_05 = {
 
 camel_pasture_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = camel_pasture_05
-	
+
 	can_construct = {
+		culture ?= { has_innovation = innovation_war_camels }
 		domicile ?= { has_domicile_building_or_higher = estate_main_05 }
 	}
 
@@ -1305,12 +1311,12 @@ camel_pasture_06 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1364,11 +1370,12 @@ camel_pasture_06 = {
 
 elephant_pasture_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = grazing_land_01
-	
+
 	can_construct = {
+		culture ?= { has_innovation = innovation_elephantry }
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
 		domicile ?= { has_domicile_building_or_higher = grazing_land_03 }
 	}
@@ -1389,12 +1396,12 @@ elephant_pasture_04 = {
 		elephant_cavalry_toughness_mult = 0.03
 		elephant_cavalry_maintenance_mult = -0.05
 	}
-	
+
 	ai_value = {
 		value = 12
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1448,11 +1455,12 @@ elephant_pasture_04 = {
 
 elephant_pasture_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = elephant_pasture_04
-	
+
 	can_construct = {
+		culture ?= { has_innovation = innovation_elephantry }
 		domicile ?= { has_domicile_building_or_higher = estate_main_04 }
 	}
 
@@ -1472,12 +1480,12 @@ elephant_pasture_05 = {
 		elephant_cavalry_toughness_mult = 0.03
 		elephant_cavalry_maintenance_mult = -0.05
 	}
-	
+
 	ai_value = {
 		value = 10
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1531,11 +1539,12 @@ elephant_pasture_05 = {
 
 elephant_pasture_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = elephant_pasture_05
-	
+
 	can_construct = {
+		culture ?= { has_innovation = innovation_elephantry }
 		domicile ?= { has_domicile_building_or_higher = estate_main_05 }
 	}
 
@@ -1555,12 +1564,12 @@ elephant_pasture_06 = {
 		elephant_cavalry_toughness_mult = 0.03
 		elephant_cavalry_maintenance_mult = -0.1
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {

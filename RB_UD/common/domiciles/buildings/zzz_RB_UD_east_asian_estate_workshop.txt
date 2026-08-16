@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @east_asian_manor_confucian_education_xp_gain_mult_1 = 0.05
@@ -18,10 +18,18 @@
 @east_asian_manor_monthly_prestige_add_2 = 0.15
 @east_asian_manor_study_confucian_classics_scheme_phase_duration_add_2 = -3
 @east_asian_manor_trait_track_lifestyle_poet_xp_gain_mult_1 = 0.05
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_480_days = 480
+@RB_UD_construction_time_540_days = 540
+@RB_UD_construction_time_600_days = 600
+@RB_UD_construction_time_660_days = 660
 
 east_asian_estate_workshop_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	internal_slots = 8
 
@@ -40,12 +48,12 @@ east_asian_estate_workshop_01 = {
 		domicile_monthly_gold_add = 0.2
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_workshop.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -55,7 +63,7 @@ east_asian_estate_workshop_01 = {
 }
 
 east_asian_estate_workshop_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_01
 	internal_slots = 8
@@ -75,12 +83,12 @@ east_asian_estate_workshop_02 = {
 		domicile_monthly_gold_add = 0.1
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_workshop.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -91,7 +99,7 @@ east_asian_estate_workshop_02 = {
 
 east_asian_estate_workshop_carpenter_03 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_480_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_01
 
@@ -115,16 +123,16 @@ east_asian_estate_workshop_carpenter_03 = {
 		domicile_monthly_gold_add = 0.1
 		domicile_build_speed = -0.05
 	}
-	
+
 	parameters = {
 		estate_improved_inspirations_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -135,7 +143,7 @@ east_asian_estate_workshop_carpenter_03 = {
 
 east_asian_estate_workshop_carpenter_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_carpenter_03
 
@@ -153,7 +161,7 @@ east_asian_estate_workshop_carpenter_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_inspirations_1 = yes
 		estate_reduce_commission_artifact_cost = yes
@@ -162,12 +170,12 @@ east_asian_estate_workshop_carpenter_04 = {
 	character_modifier = {
 		domicile_monthly_gold_add = 0.1
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -178,7 +186,7 @@ east_asian_estate_workshop_carpenter_04 = {
 
 east_asian_estate_workshop_carpenter_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_carpenter_04
 
@@ -196,7 +204,7 @@ east_asian_estate_workshop_carpenter_05 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_inspirations_2 = yes
 		estate_reduce_commission_artifact_cost = yes
@@ -206,12 +214,12 @@ east_asian_estate_workshop_carpenter_05 = {
 		domicile_monthly_gold_add = 0.1
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -222,7 +230,7 @@ east_asian_estate_workshop_carpenter_05 = {
 
 east_asian_estate_workshop_carpenter_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_carpenter_05
 
@@ -240,7 +248,7 @@ east_asian_estate_workshop_carpenter_06 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_inspirations_2 = yes
 		estate_reduce_commission_artifact_cost = yes
@@ -250,12 +258,12 @@ east_asian_estate_workshop_carpenter_06 = {
 	character_modifier = {
 		domicile_monthly_gold_add = 0.1
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -266,7 +274,7 @@ east_asian_estate_workshop_carpenter_06 = {
 
 east_asian_estate_workshop_mason_03 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_480_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_01
 
@@ -292,12 +300,12 @@ east_asian_estate_workshop_mason_03 = {
 		build_gold_cost = -0.05
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_mason.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -308,7 +316,7 @@ east_asian_estate_workshop_mason_03 = {
 
 east_asian_estate_workshop_mason_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_mason_03
 
@@ -333,12 +341,12 @@ east_asian_estate_workshop_mason_04 = {
 		build_gold_cost = -0.05
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_mason.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -349,7 +357,7 @@ east_asian_estate_workshop_mason_04 = {
 
 east_asian_estate_workshop_mason_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_mason_04
 
@@ -376,12 +384,12 @@ east_asian_estate_workshop_mason_05 = {
 		holding_build_speed = -0.05
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_mason.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -392,7 +400,7 @@ east_asian_estate_workshop_mason_05 = {
 
 east_asian_estate_workshop_mason_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_mason_05
 
@@ -419,12 +427,12 @@ east_asian_estate_workshop_mason_06 = {
 		holding_build_speed = -0.05
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_mason.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -435,7 +443,7 @@ east_asian_estate_workshop_mason_06 = {
 
 east_asian_estate_workshop_textile_03 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_480_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_01
 
@@ -463,12 +471,12 @@ east_asian_estate_workshop_textile_03 = {
 	parameters = {
 		estate_improved_inspirations_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -479,7 +487,7 @@ east_asian_estate_workshop_textile_03 = {
 
 east_asian_estate_workshop_textile_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_textile_03
 
@@ -506,12 +514,12 @@ east_asian_estate_workshop_textile_04 = {
 	parameters = {
 		estate_improved_inspirations_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -522,7 +530,7 @@ east_asian_estate_workshop_textile_04 = {
 
 east_asian_estate_workshop_textile_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_textile_04
 
@@ -549,12 +557,12 @@ east_asian_estate_workshop_textile_05 = {
 	parameters = {
 		estate_improved_inspirations_2 = yes
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -565,7 +573,7 @@ east_asian_estate_workshop_textile_05 = {
 
 east_asian_estate_workshop_textile_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_workshop_textile_05
 
@@ -592,12 +600,12 @@ east_asian_estate_workshop_textile_06 = {
 	parameters = {
 		estate_improved_inspirations_2 = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_workshop_chinese.dds"
@@ -607,13 +615,13 @@ east_asian_estate_workshop_textile_06 = {
 }
 
 east_asian_estate_paper_mill_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_workshop_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -642,13 +650,13 @@ east_asian_estate_paper_mill_01 = {
 }
 
 east_asian_estate_paper_mill_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_paper_mill_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -677,7 +685,7 @@ east_asian_estate_paper_mill_02 = {
 }
 
 east_asian_estate_paper_mill_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_paper_mill_02
@@ -712,7 +720,7 @@ east_asian_estate_paper_mill_03 = {
 }
 
 east_asian_estate_paper_mill_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_paper_mill_03
@@ -747,13 +755,13 @@ east_asian_estate_paper_mill_04 = {
 }
 
 east_asian_estate_ink_brush_makers_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_workshop_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -783,13 +791,13 @@ east_asian_estate_ink_brush_makers_01 = {
 }
 
 east_asian_estate_ink_brush_makers_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ink_brush_makers_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -819,7 +827,7 @@ east_asian_estate_ink_brush_makers_02 = {
 }
 
 east_asian_estate_ink_brush_makers_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ink_brush_makers_02
@@ -855,7 +863,7 @@ east_asian_estate_ink_brush_makers_03 = {
 }
 
 east_asian_estate_ink_brush_makers_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ink_brush_makers_03
@@ -891,7 +899,7 @@ east_asian_estate_ink_brush_makers_04 = {
 }
 
 east_asian_estate_ceramics_kiln_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_workshop_01
@@ -931,13 +939,13 @@ east_asian_estate_ceramics_kiln_01 = {
 }
 
 east_asian_estate_ceramics_kiln_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ceramics_kiln_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -966,7 +974,7 @@ east_asian_estate_ceramics_kiln_02 = {
 }
 
 east_asian_estate_ceramics_kiln_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ceramics_kiln_02
@@ -1001,7 +1009,7 @@ east_asian_estate_ceramics_kiln_03 = {
 }
 
 east_asian_estate_ceramics_kiln_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ceramics_kiln_03
@@ -1036,11 +1044,14 @@ east_asian_estate_ceramics_kiln_04 = {
 }
 
 east_asian_estate_lacquer_studio_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_workshop_01
 
+	can_construct = {
+		culture ?= { has_innovation = innovation_lacquered_armor }
+	}
 
 	cost = {
 		gold = {
@@ -1069,13 +1080,13 @@ east_asian_estate_lacquer_studio_01 = {
 }
 
 east_asian_estate_lacquer_studio_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_lacquer_studio_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1105,7 +1116,7 @@ east_asian_estate_lacquer_studio_02 = {
 }
 
 east_asian_estate_lacquer_studio_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_lacquer_studio_02
@@ -1141,7 +1152,7 @@ east_asian_estate_lacquer_studio_03 = {
 }
 
 east_asian_estate_lacquer_studio_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_lacquer_studio_03
@@ -1177,7 +1188,7 @@ east_asian_estate_lacquer_studio_04 = {
 }
 
 east_asian_estate_leatherworks_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_workshop_01
@@ -1222,13 +1233,13 @@ east_asian_estate_leatherworks_01 = {
 }
 
 east_asian_estate_leatherworks_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_leatherworks_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1261,7 +1272,7 @@ east_asian_estate_leatherworks_02 = {
 }
 
 east_asian_estate_leatherworks_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_leatherworks_02
@@ -1300,7 +1311,7 @@ east_asian_estate_leatherworks_03 = {
 }
 
 east_asian_estate_leatherworks_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_leatherworks_03

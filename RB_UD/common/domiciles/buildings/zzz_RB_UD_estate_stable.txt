@@ -2,14 +2,14 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_730_days = 730
 
 stable_01 = {
 	internal_slots = 3
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 
 	cost = {
@@ -26,7 +26,7 @@ stable_01 = {
 	character_modifier = {
 		movement_speed = 0.01
 	}
-	
+
 	ai_value = {
 		value = 9
 		if = {
@@ -39,7 +39,7 @@ stable_01 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -93,7 +93,7 @@ stable_01 = {
 
 stable_02 = {
 	internal_slots = 3
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = stable_01
 
@@ -107,7 +107,7 @@ stable_02 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_mount_travel_option = yes
 	}
@@ -115,7 +115,7 @@ stable_02 = {
 	character_modifier = {
 		movement_speed = 0.01
 	}
-	
+
 	ai_value = {
 		value = 8
 		if = {
@@ -128,7 +128,7 @@ stable_02 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -182,7 +182,7 @@ stable_02 = {
 
 stable_03 = {
 	internal_slots = 3
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = stable_02
 
@@ -196,7 +196,7 @@ stable_03 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_mount_travel_option = yes
 	}
@@ -204,7 +204,7 @@ stable_03 = {
 	character_modifier = {
 		movement_speed = 0.01
 	}
-	
+
 	ai_value = {
 		value = 7
 		if = {
@@ -217,7 +217,7 @@ stable_03 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -271,7 +271,7 @@ stable_03 = {
 
 stable_grand_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = stable_01
 
@@ -290,7 +290,7 @@ stable_grand_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_mount_travel_option = yes
 	}
@@ -300,12 +300,12 @@ stable_grand_04 = {
 		domicile_monthly_prestige_add = 0.2
 		movement_speed = 0.01
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -359,7 +359,7 @@ stable_grand_04 = {
 
 stable_grand_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = stable_grand_04
 
@@ -377,7 +377,7 @@ stable_grand_05 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_mount_travel_option = yes
 		estate_increase_master_of_horse_aptitude = yes
@@ -388,12 +388,12 @@ stable_grand_05 = {
 		domicile_monthly_prestige_add = 0.2
 		movement_speed = 0.01
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -447,7 +447,7 @@ stable_grand_05 = {
 
 stable_grand_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = stable_grand_05
 
@@ -465,7 +465,7 @@ stable_grand_06 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_mount_travel_option = yes
 		estate_increase_master_of_horse_aptitude = yes
@@ -476,12 +476,12 @@ stable_grand_06 = {
 		domicile_monthly_prestige_add = 0.3
 		movement_speed = 0.01
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -535,7 +535,7 @@ stable_grand_06 = {
 
 stable_kennel_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = stable_01
 
@@ -554,7 +554,7 @@ stable_kennel_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_mount_travel_option = yes
 		estate_unlock_adopt_puppy_decision = yes
@@ -565,7 +565,7 @@ stable_kennel_04 = {
 		stress_gain_mult = -0.1
 		prowess = 1
 	}
-	
+
 	ai_value = {
 		value = 6
 		if = {
@@ -578,7 +578,7 @@ stable_kennel_04 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -632,7 +632,7 @@ stable_kennel_04 = {
 
 stable_kennel_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = stable_kennel_04
 
@@ -650,7 +650,7 @@ stable_kennel_05 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_mount_travel_option = yes
 		estate_unlock_adopt_puppy_decision = yes
@@ -662,7 +662,7 @@ stable_kennel_05 = {
 		stress_gain_mult = -0.1
 		diplomacy = 1
 	}
-	
+
 	ai_value = {
 		value = 5
 		if = {
@@ -675,7 +675,7 @@ stable_kennel_05 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -729,7 +729,7 @@ stable_kennel_05 = {
 
 stable_kennel_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = stable_kennel_05
 
@@ -747,7 +747,7 @@ stable_kennel_06 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_mount_travel_option = yes
 		estate_unlock_adopt_puppy_decision = yes
@@ -760,7 +760,7 @@ stable_kennel_06 = {
 		stress_gain_mult = -0.2
 		prowess = 1
 	}
-	
+
 	ai_value = {
 		value = 4
 		if = {
@@ -773,7 +773,7 @@ stable_kennel_06 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -830,11 +830,12 @@ stable_chariot_04 = {
 		domicile ?= { has_domicile_building_or_higher = stable_03 }
 	}
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = stable_01
 
 	can_construct_potential = {
+		culture = { has_cultural_parameter = hosts_chariot_races }
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
 	}
 
@@ -848,7 +849,7 @@ stable_chariot_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_mount_travel_option = yes
 		estate_charioteer_training_task = yes
@@ -856,12 +857,12 @@ stable_chariot_04 = {
 
 	character_modifier = {
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -915,7 +916,7 @@ stable_chariot_04 = {
 
 stable_chariot_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = stable_chariot_04
 
@@ -933,7 +934,7 @@ stable_chariot_05 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_mount_travel_option = yes
 		estate_charioteer_training_task = yes
@@ -943,12 +944,12 @@ stable_chariot_05 = {
 	character_modifier = {
 		same_culture_opinion = 2
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1002,7 +1003,7 @@ stable_chariot_05 = {
 
 stable_chariot_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = stable_chariot_05
 
@@ -1020,7 +1021,7 @@ stable_chariot_06 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_mount_travel_option = yes
 		estate_charioteer_training_task = yes
@@ -1030,12 +1031,12 @@ stable_chariot_06 = {
 	character_modifier = {
 		same_culture_opinion = 3
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {

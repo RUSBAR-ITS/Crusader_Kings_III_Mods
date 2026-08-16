@@ -2,14 +2,19 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_210_days = 210
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
 
 camp_fire_01 = {
 	internal_slots = 8
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 
 	cost = { gold = camp_fire_01_domicile_building_gold_cost_value }
@@ -58,7 +63,7 @@ camp_fire_01 = {
 }
 
 camp_fire_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_210_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_fire_01
 	internal_slots = 8
@@ -109,7 +114,7 @@ camp_fire_02 = {
 }
 
 camp_fire_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_fire_02
 	internal_slots = 8
@@ -161,7 +166,7 @@ camp_fire_03 = {
 }
 
 camp_fire_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_fire_03
 	internal_slots = 8
@@ -215,7 +220,7 @@ camp_fire_04 = {
 }
 
 camp_fire_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_fire_04
 	internal_slots = 8
@@ -269,7 +274,7 @@ camp_fire_05 = {
 }
 
 camp_fire_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_fire_05
 	internal_slots = 8
@@ -325,7 +330,7 @@ camp_fire_06 = {
 
 camp_fire_trailing_musicians = { # Trailing Musicians
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_fire_01
 
@@ -383,7 +388,7 @@ camp_fire_trailing_musicians = { # Trailing Musicians
 
 camp_fire_wandering_poets = { # Wandering Poets
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_fire_01
 
@@ -442,7 +447,7 @@ camp_fire_wandering_poets = { # Wandering Poets
 
 camp_fire_capering_fools = { # Capering Fools
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_fire_01
 
@@ -500,7 +505,7 @@ camp_fire_capering_fools = { # Capering Fools
 
 camp_fire_libations_for_the_lost = { # Libations for the Lost
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_fire_01
 
@@ -556,7 +561,7 @@ camp_fire_libations_for_the_lost = { # Libations for the Lost
 
 camp_fire_local_hangers_on = { # Local Hangers-On
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_fire_01
 
@@ -615,7 +620,7 @@ camp_fire_local_hangers_on = { # Local Hangers-On
 
 camp_fire_future_dreams = { # Future Dreams
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_fire_01
 
@@ -674,7 +679,7 @@ camp_fire_future_dreams = { # Future Dreams
 
 camp_fire_nightly_debates = { # Nightly Debates
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_fire_01
 
@@ -729,7 +734,7 @@ camp_fire_nightly_debates = { # Nightly Debates
 
 camp_fire_juicy_rumors = { # Juicy Rumors
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_fire_01
 

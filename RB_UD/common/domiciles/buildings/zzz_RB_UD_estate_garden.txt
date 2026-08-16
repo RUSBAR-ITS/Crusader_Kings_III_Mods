@@ -2,14 +2,14 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_730_days = 730
 
 garden_01 = {
 	internal_slots = 2
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 
 	cost = {
@@ -55,7 +55,7 @@ garden_01 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 9
 		if = {
@@ -77,7 +77,7 @@ garden_01 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -131,7 +131,7 @@ garden_01 = {
 
 garden_02 = {
 	internal_slots = 2
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = garden_01
 
@@ -178,7 +178,7 @@ garden_02 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 8
 		if = {
@@ -200,7 +200,7 @@ garden_02 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -254,7 +254,7 @@ garden_02 = {
 
 garden_03 = {
 	internal_slots = 2
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = garden_02
 
@@ -301,7 +301,7 @@ garden_03 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 7
 		if = {
@@ -323,7 +323,7 @@ garden_03 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -377,7 +377,7 @@ garden_03 = {
 
 garden_leisure_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = garden_01
 
@@ -431,7 +431,7 @@ garden_leisure_04 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 6
 		if = {
@@ -453,7 +453,7 @@ garden_leisure_04 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -507,7 +507,7 @@ garden_leisure_04 = {
 
 garden_leisure_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = garden_leisure_04
 
@@ -560,7 +560,7 @@ garden_leisure_05 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 5
 		if = {
@@ -582,7 +582,7 @@ garden_leisure_05 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -636,7 +636,7 @@ garden_leisure_05 = {
 
 garden_leisure_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = garden_leisure_05
 
@@ -689,7 +689,7 @@ garden_leisure_06 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 4
 		if = {
@@ -711,7 +711,7 @@ garden_leisure_06 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -765,7 +765,7 @@ garden_leisure_06 = {
 
 garden_fruit_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = garden_01
 
@@ -818,7 +818,7 @@ garden_fruit_04 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 6
 		if = {
@@ -840,7 +840,7 @@ garden_fruit_04 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -894,7 +894,7 @@ garden_fruit_04 = {
 
 garden_fruit_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = garden_fruit_04
 
@@ -946,7 +946,7 @@ garden_fruit_05 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 5
 		if = {
@@ -968,7 +968,7 @@ garden_fruit_05 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1022,7 +1022,7 @@ garden_fruit_05 = {
 
 garden_fruit_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = garden_fruit_05
 
@@ -1074,7 +1074,7 @@ garden_fruit_06 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 4
 		if = {
@@ -1095,7 +1095,7 @@ garden_fruit_06 = {
 			add = 10
 		}
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {

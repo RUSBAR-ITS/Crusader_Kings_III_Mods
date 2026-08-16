@@ -2,14 +2,19 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_210_days = 210
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
 
 mess_tent_01 = {
 	internal_slots = 5
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 
 	cost = { gold = mess_tent_01_domicile_building_gold_cost_value }
@@ -59,7 +64,7 @@ mess_tent_01 = {
 }
 
 mess_tent_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_210_days
 	allowed_domicile_types = { camp }
 	previous_building = mess_tent_01
 	internal_slots = 5
@@ -112,7 +117,7 @@ mess_tent_02 = {
 }
 
 mess_tent_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = mess_tent_02
 	internal_slots = 5
@@ -166,7 +171,7 @@ mess_tent_03 = {
 }
 
 mess_tent_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = mess_tent_03
 	internal_slots = 5
@@ -221,7 +226,7 @@ mess_tent_04 = {
 }
 
 mess_tent_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { camp }
 	previous_building = mess_tent_04
 	internal_slots = 5
@@ -277,7 +282,7 @@ mess_tent_05 = {
 }
 
 mess_tent_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { camp }
 	previous_building = mess_tent_05
 	internal_slots = 5
@@ -335,7 +340,7 @@ mess_tent_06 = {
 
 mess_tent_herbalists = { # Herbalists
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = mess_tent_01
 
@@ -394,7 +399,7 @@ mess_tent_herbalists = { # Herbalists
 
 mess_tent_brewers = { # Brewers
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = mess_tent_01
 
@@ -454,7 +459,7 @@ mess_tent_brewers = { # Brewers
 
 mess_tent_curers = { # Curers
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = mess_tent_01
 
@@ -509,7 +514,7 @@ mess_tent_curers = { # Curers
 
 mess_tent_bakers = { # Bakers
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = mess_tent_01
 
@@ -566,7 +571,7 @@ mess_tent_bakers = { # Bakers
 
 mess_tent_cooks = { # Cooks
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = mess_tent_01
 

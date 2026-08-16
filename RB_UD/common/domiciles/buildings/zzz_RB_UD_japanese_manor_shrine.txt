@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @japanese_manor_character_travel_safety = 2
@@ -15,10 +15,20 @@
 @japanese_manor_monthly_piety_add_3 = 0.5
 @japanese_manor_monthly_piety_mult_1 = 0.025
 @japanese_manor_opinion_add_1 = 2
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_120_days = 120
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_200_days = 200
+@RB_UD_construction_time_270_days = 270
+@RB_UD_construction_time_30_days = 30
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_320_days = 320
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_60_days = 60
+@RB_UD_construction_time_90_days = 90
 
 japanese_shrine_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 
@@ -45,22 +55,22 @@ japanese_shrine_01 = {
 		clergy_opinion = @japanese_manor_opinion_add_1
 		learning_per_prestige_level = 1
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
-	asset = { 
+
+	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_temple_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_temple_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_temple_japanese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_temple_shinto"
 	}
 }
 
 japanese_shrine_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_shrine_01
@@ -88,22 +98,22 @@ japanese_shrine_02 = {
 		domicile_monthly_piety_add = @japanese_manor_monthly_piety_add_2
 		clergy_opinion = @japanese_manor_opinion_add_1
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
-	asset = { 
+
+	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_temple_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_temple_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_temple_japanese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_temple_shinto"
 	}
 }
 
 japanese_shrine_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_270_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_shrine_02
@@ -131,22 +141,22 @@ japanese_shrine_03 = {
 		domicile_monthly_piety_add = @japanese_manor_monthly_piety_add_2
 		clergy_opinion = @japanese_manor_opinion_add_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
-	asset = { 
+
+	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_temple_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_temple_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_temple_japanese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_temple_shinto"
 	}
 }
 
 japanese_shrine_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_shrine_03
@@ -175,22 +185,22 @@ japanese_shrine_04 = {
 		clergy_opinion = @japanese_manor_opinion_add_1
 		learning_per_prestige_level = 1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
-	asset = { 
+
+	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_temple_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_temple_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_temple_japanese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_temple_shinto"
 	}
 }
 
 japanese_shrine_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_shrine_04
@@ -218,22 +228,22 @@ japanese_shrine_05 = {
 		domicile_monthly_piety_add = @japanese_manor_monthly_piety_add_2
 		clergy_opinion = @japanese_manor_opinion_add_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
-	asset = { 
+
+	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_temple_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_temple_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_temple_japanese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_temple_shinto"
 	}
 }
 
 japanese_shrine_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_shrine_05
@@ -261,22 +271,22 @@ japanese_shrine_06 = {
 		domicile_monthly_piety_add = @japanese_manor_monthly_piety_add_2
 		clergy_opinion = @japanese_manor_opinion_add_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
-	asset = { 
+
+	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_temple_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_temple_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_temple_japanese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_temple_shinto"
 	}
 }
 
 japanese_cemetery_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_shrine_01
@@ -293,12 +303,12 @@ japanese_cemetery_01 = {
 	parameters = {
 		estate_cheaper_funeral_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_crypt.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -307,7 +317,7 @@ japanese_cemetery_01 = {
 }
 
 japanese_cemetery_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_cemetery_01
@@ -333,7 +343,7 @@ japanese_cemetery_02 = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_crypt.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -342,7 +352,7 @@ japanese_cemetery_02 = {
 }
 
 japanese_cemetery_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_cemetery_02
@@ -363,12 +373,12 @@ japanese_cemetery_03 = {
 	parameters = {
 		estate_cheaper_funeral_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_crypt.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -377,7 +387,7 @@ japanese_cemetery_03 = {
 }
 
 japanese_cemetery_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_cemetery_03
@@ -398,12 +408,12 @@ japanese_cemetery_04 = {
 	parameters = {
 		estate_cheaper_funeral_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_crypt.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -412,7 +422,7 @@ japanese_cemetery_04 = {
 }
 
 japanese_cemetery_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_cemetery_04
@@ -433,12 +443,12 @@ japanese_cemetery_05 = {
 	parameters = {
 		estate_cheaper_funeral_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_crypt.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -447,7 +457,7 @@ japanese_cemetery_05 = {
 }
 
 japanese_cemetery_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_cemetery_05
@@ -468,12 +478,12 @@ japanese_cemetery_06 = {
 	parameters = {
 		estate_cheaper_funeral_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_crypt.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -482,7 +492,7 @@ japanese_cemetery_06 = {
 }
 
 japanese_shokubo_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_shrine_01
@@ -501,12 +511,12 @@ japanese_shokubo_01 = {
 	parameters = {
 		estate_cheaper_pilgrimage_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_ascetics.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -515,7 +525,7 @@ japanese_shokubo_01 = {
 }
 
 japanese_shokubo_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_shokubo_01
@@ -542,7 +552,7 @@ japanese_shokubo_02 = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_ascetics.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -551,7 +561,7 @@ japanese_shokubo_02 = {
 }
 
 japanese_shokubo_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_shokubo_02
@@ -573,12 +583,12 @@ japanese_shokubo_03 = {
 	parameters = {
 		estate_cheaper_pilgrimage_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_ascetics.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -587,7 +597,7 @@ japanese_shokubo_03 = {
 }
 
 japanese_shokubo_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_shokubo_03
@@ -610,12 +620,12 @@ japanese_shokubo_04 = {
 	parameters = {
 		estate_cheaper_pilgrimage_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_ascetics.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -624,7 +634,7 @@ japanese_shokubo_04 = {
 }
 
 japanese_shokubo_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_shokubo_04
@@ -646,12 +656,12 @@ japanese_shokubo_05 = {
 	parameters = {
 		estate_cheaper_pilgrimage_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_ascetics.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -660,7 +670,7 @@ japanese_shokubo_05 = {
 }
 
 japanese_shokubo_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_shokubo_05
@@ -682,12 +692,12 @@ japanese_shokubo_06 = {
 	parameters = {
 		estate_cheaper_pilgrimage_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_ascetics.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -696,7 +706,7 @@ japanese_shokubo_06 = {
 }
 
 japanese_monastery_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_shrine_01
@@ -717,12 +727,12 @@ japanese_monastery_01 = {
 	parameters = {
 		influence_gain_from_hof_support_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_camp_shrine.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -731,7 +741,7 @@ japanese_monastery_01 = {
 }
 
 japanese_monastery_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_monastery_01
@@ -760,7 +770,7 @@ japanese_monastery_02 = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_camp_shrine.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -769,7 +779,7 @@ japanese_monastery_02 = {
 }
 
 japanese_monastery_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_monastery_02
@@ -793,12 +803,12 @@ japanese_monastery_03 = {
 	parameters = {
 		influence_gain_from_hof_support_3 = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_camp_shrine.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -807,7 +817,7 @@ japanese_monastery_03 = {
 }
 
 japanese_monastery_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_monastery_03
@@ -832,12 +842,12 @@ japanese_monastery_04 = {
 	parameters = {
 		influence_gain_from_hof_support_4 = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_camp_shrine.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -846,7 +856,7 @@ japanese_monastery_04 = {
 }
 
 japanese_monastery_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_monastery_04
@@ -870,12 +880,12 @@ japanese_monastery_05 = {
 	parameters = {
 		influence_gain_from_hof_support_5 = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_camp_shrine.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -884,7 +894,7 @@ japanese_monastery_05 = {
 }
 
 japanese_monastery_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_monastery_05
@@ -908,12 +918,12 @@ japanese_monastery_06 = {
 	parameters = {
 		influence_gain_from_hof_support_6 = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_camp_shrine.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"

@@ -2,14 +2,14 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_730_days = 730
 
 workshop_01 = {
 	internal_slots = 3
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 
 	cost = {
@@ -27,12 +27,12 @@ workshop_01 = {
 		domicile_monthly_gold_add = 0.2
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -86,7 +86,7 @@ workshop_01 = {
 
 workshop_02 = {
 	internal_slots = 3
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = workshop_01
 
@@ -105,12 +105,12 @@ workshop_02 = {
 		domicile_monthly_gold_add = 0.1
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -164,7 +164,7 @@ workshop_02 = {
 
 workshop_carpenter_03 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = workshop_01
 
@@ -188,16 +188,16 @@ workshop_carpenter_03 = {
 		domicile_monthly_gold_add = 0.1
 		domicile_build_speed = -0.05
 	}
-	
+
 	parameters = {
 		estate_improved_inspirations_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -251,7 +251,7 @@ workshop_carpenter_03 = {
 
 workshop_carpenter_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = workshop_carpenter_03
 
@@ -269,7 +269,7 @@ workshop_carpenter_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_inspirations_1 = yes
 		estate_reduce_commission_artifact_cost = yes
@@ -278,12 +278,12 @@ workshop_carpenter_04 = {
 	character_modifier = {
 		domicile_monthly_gold_add = 0.1
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -337,7 +337,7 @@ workshop_carpenter_04 = {
 
 workshop_carpenter_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = workshop_carpenter_04
 
@@ -355,7 +355,7 @@ workshop_carpenter_05 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_inspirations_2 = yes
 		estate_reduce_commission_artifact_cost = yes
@@ -365,12 +365,12 @@ workshop_carpenter_05 = {
 		domicile_monthly_gold_add = 0.1
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -424,7 +424,7 @@ workshop_carpenter_05 = {
 
 workshop_carpenter_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = workshop_carpenter_05
 
@@ -442,7 +442,7 @@ workshop_carpenter_06 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_inspirations_2 = yes
 		estate_reduce_commission_artifact_cost = yes
@@ -452,12 +452,12 @@ workshop_carpenter_06 = {
 	character_modifier = {
 		domicile_monthly_gold_add = 0.1
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -511,7 +511,7 @@ workshop_carpenter_06 = {
 
 workshop_mason_03 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = workshop_01
 
@@ -537,12 +537,12 @@ workshop_mason_03 = {
 		build_gold_cost = -0.05
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -596,7 +596,7 @@ workshop_mason_03 = {
 
 workshop_mason_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = workshop_mason_03
 
@@ -621,12 +621,12 @@ workshop_mason_04 = {
 		build_gold_cost = -0.05
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -680,7 +680,7 @@ workshop_mason_04 = {
 
 workshop_mason_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = workshop_mason_04
 
@@ -707,12 +707,12 @@ workshop_mason_05 = {
 		holding_build_speed = -0.05
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -766,7 +766,7 @@ workshop_mason_05 = {
 
 workshop_mason_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = workshop_mason_05
 
@@ -793,12 +793,12 @@ workshop_mason_06 = {
 		holding_build_speed = -0.05
 		domicile_build_speed = -0.05
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -852,7 +852,7 @@ workshop_mason_06 = {
 
 workshop_textile_03 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = workshop_01
 
@@ -880,12 +880,12 @@ workshop_textile_03 = {
 	parameters = {
 		estate_improved_inspirations_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -939,7 +939,7 @@ workshop_textile_03 = {
 
 workshop_textile_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = workshop_textile_03
 
@@ -966,12 +966,12 @@ workshop_textile_04 = {
 	parameters = {
 		estate_improved_inspirations_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1025,7 +1025,7 @@ workshop_textile_04 = {
 
 workshop_textile_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = workshop_textile_04
 
@@ -1052,12 +1052,12 @@ workshop_textile_05 = {
 	parameters = {
 		estate_improved_inspirations_2 = yes
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1111,7 +1111,7 @@ workshop_textile_05 = {
 
 workshop_textile_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = workshop_textile_05
 
@@ -1138,12 +1138,12 @@ workshop_textile_06 = {
 	parameters = {
 		estate_improved_inspirations_2 = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {

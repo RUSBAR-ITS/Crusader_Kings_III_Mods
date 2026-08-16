@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @japanese_manor_development_growth_factor_1 = 0.025
@@ -13,10 +13,20 @@
 @japanese_manor_monthly_prestige_add_1 = 0.1
 @japanese_manor_monthly_prestige_mult_1 = 0.025
 @japanese_manor_opinion_add_1 = 2
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_120_days = 120
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_200_days = 200
+@RB_UD_construction_time_270_days = 270
+@RB_UD_construction_time_30_days = 30
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_320_days = 320
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_60_days = 60
+@RB_UD_construction_time_90_days = 90
 
 japanese_brewery_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 
@@ -41,7 +51,7 @@ japanese_brewery_01 = {
 	parameters = {
 		estate_cheaper_feast_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
@@ -49,14 +59,14 @@ japanese_brewery_01 = {
 
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_brewers.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_brewery_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_brewery_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_brewery_japanese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_brewery_japanese"
 	}
 }
 
 japanese_brewery_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_brewery_01
@@ -90,14 +100,14 @@ japanese_brewery_02 = {
 
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_brewers.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_brewery_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_brewery_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_brewery_japanese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_brewery_japanese"
 	}
 }
 
 japanese_brewery_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_270_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_brewery_02
@@ -123,7 +133,7 @@ japanese_brewery_03 = {
 	parameters = {
 		estate_cheaper_feast_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -131,14 +141,14 @@ japanese_brewery_03 = {
 
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_brewers.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_brewery_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_brewery_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_brewery_japanese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_brewery_japanese"
 	}
 }
 
 japanese_brewery_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_brewery_03
@@ -165,7 +175,7 @@ japanese_brewery_04 = {
 	parameters = {
 		estate_cheaper_feast_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -173,14 +183,14 @@ japanese_brewery_04 = {
 
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_brewers.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_brewery_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_brewery_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_brewery_japanese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_brewery_japanese"
 	}
 }
 
 japanese_brewery_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_brewery_04
@@ -206,7 +216,7 @@ japanese_brewery_05 = {
 	parameters = {
 		estate_cheaper_feast_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -214,14 +224,14 @@ japanese_brewery_05 = {
 
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_brewers.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_brewery_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_brewery_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_brewery_japanese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_brewery_japanese"
 	}
 }
 
 japanese_brewery_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_brewery_05
@@ -247,7 +257,7 @@ japanese_brewery_06 = {
 	parameters = {
 		estate_cheaper_feast_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -255,14 +265,14 @@ japanese_brewery_06 = {
 
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_brewers.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_brewery_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_brewery_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_brewery_japanese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_brewery_japanese"
 	}
 }
 
 japanese_koshu_cellars_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_brewery_01
@@ -275,7 +285,7 @@ japanese_koshu_cellars_01 = {
 		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
@@ -289,7 +299,7 @@ japanese_koshu_cellars_01 = {
 }
 
 japanese_koshu_cellars_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_koshu_cellars_01
@@ -320,7 +330,7 @@ japanese_koshu_cellars_02 = {
 }
 
 japanese_koshu_cellars_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_koshu_cellars_02
@@ -337,7 +347,7 @@ japanese_koshu_cellars_03 = {
 		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -351,7 +361,7 @@ japanese_koshu_cellars_03 = {
 }
 
 japanese_koshu_cellars_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_koshu_cellars_03
@@ -368,7 +378,7 @@ japanese_koshu_cellars_04 = {
 		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -382,7 +392,7 @@ japanese_koshu_cellars_04 = {
 }
 
 japanese_koshu_cellars_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_koshu_cellars_04
@@ -399,7 +409,7 @@ japanese_koshu_cellars_05 = {
 		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -413,7 +423,7 @@ japanese_koshu_cellars_05 = {
 }
 
 japanese_koshu_cellars_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_koshu_cellars_05
@@ -430,7 +440,7 @@ japanese_koshu_cellars_06 = {
 		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -444,7 +454,7 @@ japanese_koshu_cellars_06 = {
 }
 
 japanese_gambling_den_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_brewery_01
@@ -458,7 +468,7 @@ japanese_gambling_den_01 = {
 
 		dread_decay_mult = -0.025
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
@@ -472,7 +482,7 @@ japanese_gambling_den_01 = {
 }
 
 japanese_gambling_den_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_gambling_den_01
@@ -502,7 +512,7 @@ japanese_gambling_den_02 = {
 }
 
 japanese_gambling_den_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_gambling_den_02
@@ -518,7 +528,7 @@ japanese_gambling_den_03 = {
 	character_modifier = {
 		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -532,7 +542,7 @@ japanese_gambling_den_03 = {
 }
 
 japanese_gambling_den_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_gambling_den_03
@@ -548,7 +558,7 @@ japanese_gambling_den_04 = {
 	character_modifier = {
 		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -562,7 +572,7 @@ japanese_gambling_den_04 = {
 }
 
 japanese_gambling_den_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_gambling_den_04
@@ -578,7 +588,7 @@ japanese_gambling_den_05 = {
 	character_modifier = {
 		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -592,7 +602,7 @@ japanese_gambling_den_05 = {
 }
 
 japanese_gambling_den_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_gambling_den_05
@@ -608,7 +618,7 @@ japanese_gambling_den_06 = {
 	character_modifier = {
 		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -622,7 +632,7 @@ japanese_gambling_den_06 = {
 }
 
 japanese_sumo_hall_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_brewery_01
@@ -636,7 +646,7 @@ japanese_sumo_hall_01 = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		trait_track_foot_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
@@ -650,7 +660,7 @@ japanese_sumo_hall_01 = {
 }
 
 japanese_sumo_hall_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_sumo_hall_01
@@ -682,7 +692,7 @@ japanese_sumo_hall_02 = {
 }
 
 japanese_sumo_hall_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_sumo_hall_02
@@ -700,7 +710,7 @@ japanese_sumo_hall_03 = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		trait_track_foot_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -714,7 +724,7 @@ japanese_sumo_hall_03 = {
 }
 
 japanese_sumo_hall_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_sumo_hall_03
@@ -732,7 +742,7 @@ japanese_sumo_hall_04 = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		trait_track_foot_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -746,7 +756,7 @@ japanese_sumo_hall_04 = {
 }
 
 japanese_sumo_hall_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_sumo_hall_04
@@ -764,7 +774,7 @@ japanese_sumo_hall_05 = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		trait_track_foot_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -778,7 +788,7 @@ japanese_sumo_hall_05 = {
 }
 
 japanese_sumo_hall_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_sumo_hall_05
@@ -796,7 +806,7 @@ japanese_sumo_hall_06 = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		trait_track_foot_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value

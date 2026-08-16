@@ -2,13 +2,23 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_120_days = 120
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_200_days = 200
+@RB_UD_construction_time_270_days = 270
+@RB_UD_construction_time_30_days = 30
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_320_days = 320
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_60_days = 60
+@RB_UD_construction_time_90_days = 90
 
 character_warfare_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	internal_slots = 5
 
@@ -46,7 +56,7 @@ character_warfare_yurt_01 = {
 }
 
 character_warfare_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { yurt }
 	previous_building = character_warfare_yurt_01
 	internal_slots = 5
@@ -84,7 +94,7 @@ character_warfare_yurt_02 = {
 }
 
 character_warfare_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_270_days
 	allowed_domicile_types = { yurt }
 	previous_building = character_warfare_yurt_02
 	internal_slots = 5
@@ -123,7 +133,7 @@ character_warfare_yurt_03 = {
 }
 
 character_warfare_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { yurt }
 	previous_building = character_warfare_yurt_03
 	internal_slots = 5
@@ -167,7 +177,7 @@ character_warfare_yurt_04 = {
 }
 
 character_warfare_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { yurt }
 	previous_building = character_warfare_yurt_04
 	internal_slots = 5
@@ -212,7 +222,7 @@ character_warfare_yurt_05 = {
 }
 
 character_warfare_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { yurt }
 	previous_building = character_warfare_yurt_05
 	internal_slots = 5
@@ -263,7 +273,7 @@ character_warfare_yurt_06 = {
 }
 
 falconry_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = character_warfare_yurt_01
@@ -296,7 +306,7 @@ falconry_yurt_01 = {
 }
 
 falconry_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = falconry_yurt_01
@@ -329,7 +339,7 @@ falconry_yurt_02 = {
 }
 
 falconry_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = falconry_yurt_02
@@ -363,7 +373,7 @@ falconry_yurt_03 = {
 }
 
 falconry_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = falconry_yurt_03
@@ -396,7 +406,7 @@ falconry_yurt_04 = {
 }
 
 falconry_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = falconry_yurt_04
@@ -429,7 +439,7 @@ falconry_yurt_05 = {
 }
 
 falconry_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = falconry_yurt_05
@@ -463,7 +473,7 @@ falconry_yurt_06 = {
 }
 
 knight_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = character_warfare_yurt_01
@@ -492,7 +502,7 @@ knight_yurt_01 = {
 }
 
 knight_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = knight_yurt_01
@@ -520,7 +530,7 @@ knight_yurt_02 = {
 }
 
 knight_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = knight_yurt_02
@@ -549,7 +559,7 @@ knight_yurt_03 = {
 }
 
 knight_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = knight_yurt_03
@@ -577,7 +587,7 @@ knight_yurt_04 = {
 }
 
 knight_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = knight_yurt_04
@@ -606,7 +616,7 @@ knight_yurt_05 = {
 }
 
 knight_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = knight_yurt_05
@@ -635,7 +645,7 @@ knight_yurt_06 = {
 }
 
 commander_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = character_warfare_yurt_01
@@ -665,7 +675,7 @@ commander_yurt_01 = {
 }
 
 commander_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = commander_yurt_01
@@ -694,7 +704,7 @@ commander_yurt_02 = {
 }
 
 commander_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = commander_yurt_02
@@ -724,7 +734,7 @@ commander_yurt_03 = {
 }
 
 commander_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = commander_yurt_03
@@ -753,7 +763,7 @@ commander_yurt_04 = {
 }
 
 commander_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = commander_yurt_04
@@ -784,7 +794,7 @@ commander_yurt_05 = {
 }
 
 commander_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = commander_yurt_05
@@ -815,7 +825,7 @@ commander_yurt_06 = {
 }
 
 bodyguard_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = character_warfare_yurt_01
@@ -848,7 +858,7 @@ bodyguard_yurt_01 = {
 }
 
 bodyguard_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = bodyguard_yurt_01
@@ -881,7 +891,7 @@ bodyguard_yurt_02 = {
 }
 
 bodyguard_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = bodyguard_yurt_02
@@ -914,7 +924,7 @@ bodyguard_yurt_03 = {
 }
 
 bodyguard_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = bodyguard_yurt_03
@@ -948,7 +958,7 @@ bodyguard_yurt_04 = {
 }
 
 bodyguard_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = bodyguard_yurt_04
@@ -981,7 +991,7 @@ bodyguard_yurt_05 = {
 }
 
 bodyguard_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = bodyguard_yurt_05
@@ -1015,7 +1025,7 @@ bodyguard_yurt_06 = {
 }
 
 accolade_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = character_warfare_yurt_01
@@ -1045,7 +1055,7 @@ accolade_yurt_01 = {
 }
 
 accolade_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = accolade_yurt_01
@@ -1075,7 +1085,7 @@ accolade_yurt_02 = {
 }
 
 accolade_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = accolade_yurt_02
@@ -1105,7 +1115,7 @@ accolade_yurt_03 = {
 }
 
 accolade_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = accolade_yurt_03
@@ -1135,7 +1145,7 @@ accolade_yurt_04 = {
 }
 
 accolade_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = accolade_yurt_04
@@ -1165,7 +1175,7 @@ accolade_yurt_05 = {
 }
 
 accolade_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = accolade_yurt_05

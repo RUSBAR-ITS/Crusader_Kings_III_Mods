@@ -2,13 +2,13 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_730_days = 730
 
 vineyard_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 
 	cost = {
@@ -21,7 +21,7 @@ vineyard_01 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_wine_cellar_1 = yes
 	}
@@ -53,7 +53,7 @@ vineyard_01 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 10
 		if = { # Let's make sure the AI builds at least one good income building
@@ -68,7 +68,7 @@ vineyard_01 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -121,7 +121,7 @@ vineyard_01 = {
 }
 
 vineyard_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = vineyard_01
 
@@ -135,7 +135,7 @@ vineyard_02 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_wine_cellar_1 = yes
 	}
@@ -167,12 +167,12 @@ vineyard_02 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -225,7 +225,7 @@ vineyard_02 = {
 }
 
 vineyard_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = vineyard_02
 
@@ -242,7 +242,7 @@ vineyard_03 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_wine_cellar_1 = yes
 	}
@@ -274,12 +274,12 @@ vineyard_03 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -332,7 +332,7 @@ vineyard_03 = {
 }
 
 vineyard_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = vineyard_03
 
@@ -349,7 +349,7 @@ vineyard_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_wine_cellar_2 = yes
 	}
@@ -381,12 +381,12 @@ vineyard_04 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -439,7 +439,7 @@ vineyard_04 = {
 }
 
 vineyard_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = vineyard_04
 
@@ -456,7 +456,7 @@ vineyard_05 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_wine_cellar_2 = yes
 	}
@@ -488,12 +488,12 @@ vineyard_05 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -546,7 +546,7 @@ vineyard_05 = {
 }
 
 vineyard_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = vineyard_05
 
@@ -563,7 +563,7 @@ vineyard_06 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_wine_cellar_3 = yes
 	}
@@ -595,12 +595,12 @@ vineyard_06 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {

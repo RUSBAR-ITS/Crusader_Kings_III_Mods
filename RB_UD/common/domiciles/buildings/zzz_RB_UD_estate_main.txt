@@ -2,15 +2,16 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_1000_days = 1000
+@RB_UD_construction_time_730_days = 730
 
 estate_main_01 = {
 	slot_type = main
 	internal_slots = 15
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 
 	cost = {
@@ -84,10 +85,10 @@ estate_main_01 = {
 estate_main_02 = {
 	slot_type = main
 	internal_slots = 15
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = estate_main_01
-	
+
 	can_construct = {
 		culture ?= { has_innovation = innovation_city_planning }
 	}
@@ -95,7 +96,7 @@ estate_main_02 = {
 	cost = {
 		gold = estate_external_building_high_cost_tier_3_value
 	}
-	
+
 	parameters = {
 		reduce_success_of_raid_estate = yes
 		estate_increase_house_member_investment_cap_1 = yes
@@ -109,7 +110,7 @@ estate_main_02 = {
 	ai_value = {
 		value = 100
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -121,7 +122,7 @@ estate_main_02 = {
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_manor_chinese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_chinese_main_building"
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -167,10 +168,10 @@ estate_main_02 = {
 estate_main_03 = {
 	slot_type = main
 	internal_slots = 15
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = estate_main_02
-	
+
 	can_construct = {
 		culture ?= { has_innovation = innovation_manorialism }
 	}
@@ -178,7 +179,7 @@ estate_main_03 = {
 	cost = {
 		gold = estate_external_building_high_cost_tier_4_value
 	}
-	
+
 	parameters = {
 		reduce_success_of_raid_estate = yes
 		estate_increase_house_member_investment_cap_2 = yes
@@ -193,7 +194,7 @@ estate_main_03 = {
 	ai_value = {
 		value = 100
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -205,7 +206,7 @@ estate_main_03 = {
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_mansion_chinese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_chinese_main_building"
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -251,10 +252,10 @@ estate_main_03 = {
 estate_main_04 = {
 	slot_type = main
 	internal_slots = 15
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = estate_main_03
-	
+
 	can_construct = {
 		culture ?= { has_innovation = innovation_development_03 }
 	}
@@ -262,7 +263,7 @@ estate_main_04 = {
 	cost = {
 		gold = estate_external_building_high_cost_tier_5_value
 	}
-	
+
 	parameters = {
 		reduce_success_of_raid_estate = yes
 		estate_increase_house_member_investment_cap_3 = yes
@@ -277,7 +278,7 @@ estate_main_04 = {
 	ai_value = {
 		value = 100
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -289,7 +290,7 @@ estate_main_04 = {
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_estate_chinese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_chinese_main_building"
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -335,10 +336,10 @@ estate_main_04 = {
 estate_main_05 = {
 	slot_type = main
 	internal_slots = 15
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = estate_main_04
-	
+
 	can_construct = {
 		culture ?= { has_innovation = innovation_cranes }
 	}
@@ -346,7 +347,7 @@ estate_main_05 = {
 	cost = {
 		gold = estate_external_building_high_cost_tier_6_value
 	}
-	
+
 	parameters = {
 		reduce_success_of_raid_estate = yes
 		estate_increase_house_member_investment_cap_4 = yes
@@ -361,7 +362,7 @@ estate_main_05 = {
 	ai_value = {
 		value = 100
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -373,7 +374,7 @@ estate_main_05 = {
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grand_estate_chinese_mask.png"
 		soundeffect = "event:/DLC/EP4/SFX/UI/domicile_buildings/tgp_ui_domicile_building_chinese_main_building"
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -407,7 +408,7 @@ estate_main_05 = {
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grand_estate_western_mask.png"
 		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_grand_estate.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_grand_estate_byzantine.dds"
@@ -417,7 +418,7 @@ estate_main_05 = {
 }
 
 living_quarters_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -441,12 +442,12 @@ living_quarters_01 = {
 	parameters = {
 		estate_unlock_ingratiate_family_interaction = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_living_quarters.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -455,7 +456,7 @@ living_quarters_01 = {
 }
 
 living_quarters_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = living_quarters_01
@@ -481,12 +482,12 @@ living_quarters_02 = {
 	parameters = {
 		estate_unlock_ingratiate_family_interaction = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_living_quarters.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -495,7 +496,7 @@ living_quarters_02 = {
 }
 
 living_quarters_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = living_quarters_02
@@ -524,12 +525,12 @@ living_quarters_03 = {
 	parameters = {
 		estate_unlock_ingratiate_family_interaction = yes
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_living_quarters.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -538,7 +539,7 @@ living_quarters_03 = {
 }
 
 living_quarters_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = living_quarters_03
@@ -568,12 +569,12 @@ living_quarters_04 = {
 	parameters = {
 		estate_unlock_ingratiate_family_interaction = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_living_quarters.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -582,7 +583,7 @@ living_quarters_04 = {
 }
 
 trophy_room_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -601,12 +602,12 @@ trophy_room_01 = {
 	character_modifier = {
 		monthly_martial_lifestyle_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_trophy.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -615,7 +616,7 @@ trophy_room_01 = {
 }
 
 trophy_room_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = trophy_room_01
@@ -635,12 +636,12 @@ trophy_room_02 = {
 		monthly_martial_lifestyle_xp_gain_mult = 0.05
 		prowess = 1
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_trophy.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -649,7 +650,7 @@ trophy_room_02 = {
 }
 
 trophy_room_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = trophy_room_02
@@ -677,12 +678,12 @@ trophy_room_03 = {
 	parameters = {
 		trophy_room_victory_influence = yes
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_trophy.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -691,7 +692,7 @@ trophy_room_03 = {
 }
 
 trophy_room_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = trophy_room_03
@@ -720,12 +721,12 @@ trophy_room_04 = {
 	parameters = {
 		trophy_room_victory_influence = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_trophy.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -734,7 +735,7 @@ trophy_room_04 = {
 }
 
 office_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -749,7 +750,7 @@ office_01 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_local_theme_cost_reduction = yes
 		estate_unlock_teach_governor_interaction = yes
@@ -758,12 +759,12 @@ office_01 = {
 	character_modifier = {
 		monthly_stewardship_lifestyle_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_office.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -772,7 +773,7 @@ office_01 = {
 }
 
 office_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = office_01
@@ -787,7 +788,7 @@ office_02 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_local_theme_cost_reduction = yes
 		estate_governor_efficiency_bonus = yes
@@ -797,12 +798,12 @@ office_02 = {
 	character_modifier = {
 		monthly_stewardship_lifestyle_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_office.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -811,7 +812,7 @@ office_02 = {
 }
 
 office_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = office_02
@@ -830,7 +831,7 @@ office_03 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_local_theme_cost_reduction = yes
 		estate_governor_efficiency_bonus = yes
@@ -841,12 +842,12 @@ office_03 = {
 	character_modifier = {
 		monthly_stewardship_lifestyle_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_office.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -855,7 +856,7 @@ office_03 = {
 }
 
 office_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = office_03
@@ -874,7 +875,7 @@ office_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_local_theme_cost_reduction = yes
 		estate_governor_efficiency_bonus = yes
@@ -886,12 +887,12 @@ office_04 = {
 	character_modifier = {
 		monthly_stewardship_lifestyle_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_office.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -900,7 +901,7 @@ office_04 = {
 }
 
 servants_quarters_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -920,12 +921,12 @@ servants_quarters_01 = {
 		monthly_intrigue_lifestyle_xp_gain_mult = 0.05
 		hostile_scheme_phase_duration_add = minor_scheme_phase_duration_bonus_value
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_servant.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -934,7 +935,7 @@ servants_quarters_01 = {
 }
 
 servants_quarters_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = servants_quarters_01
@@ -949,7 +950,7 @@ servants_quarters_02 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_hire_agents_decision = yes
 	}
@@ -957,12 +958,12 @@ servants_quarters_02 = {
 	character_modifier = {
 		monthly_intrigue_lifestyle_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_servant.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -971,7 +972,7 @@ servants_quarters_02 = {
 }
 
 servants_quarters_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = servants_quarters_02
@@ -990,7 +991,7 @@ servants_quarters_03 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_hire_agents_decision = yes
 	}
@@ -999,12 +1000,12 @@ servants_quarters_03 = {
 		monthly_intrigue_lifestyle_xp_gain_mult = 0.05
 		owned_hostile_scheme_success_chance_add = 5
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_servant.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1013,7 +1014,7 @@ servants_quarters_03 = {
 }
 
 servants_quarters_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = servants_quarters_03
@@ -1032,7 +1033,7 @@ servants_quarters_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_hire_agents_decision = yes
 		estate_improve_political_scheme_countermeasure = yes
@@ -1043,12 +1044,12 @@ servants_quarters_04 = {
 		owned_hostile_scheme_success_chance_add = 5
 		max_hostile_schemes_add = 1
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_servant.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1057,7 +1058,7 @@ servants_quarters_04 = {
 }
 
 library_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -1080,12 +1081,12 @@ library_01 = {
 	character_modifier = {
 		monthly_learning_lifestyle_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_library.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1094,7 +1095,7 @@ library_01 = {
 }
 
 library_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = library_01
@@ -1109,7 +1110,7 @@ library_02 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_increase_physician_aptitude_2 = yes
 	}
@@ -1117,12 +1118,12 @@ library_02 = {
 	character_modifier = {
 		monthly_learning_lifestyle_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_library.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1131,7 +1132,7 @@ library_02 = {
 }
 
 library_observatory_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -1151,7 +1152,7 @@ library_observatory_03 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_increase_physician_aptitude_3 = yes
 	}
@@ -1160,12 +1161,12 @@ library_observatory_03 = {
 		monthly_learning_lifestyle_xp_gain_mult = 0.05
 		owned_legend_spread_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_observatory.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1174,7 +1175,7 @@ library_observatory_03 = {
 }
 
 library_observatory_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = library_observatory_03
@@ -1193,7 +1194,7 @@ library_observatory_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_increase_physician_aptitude_4 = yes
 	}
@@ -1202,12 +1203,12 @@ library_observatory_04 = {
 		monthly_learning_lifestyle_xp_gain_mult = 0.05
 		owned_legend_spread_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_observatory.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1216,7 +1217,7 @@ library_observatory_04 = {
 }
 
 library_education_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -1236,7 +1237,7 @@ library_education_03 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_reduced_tutor_cost = yes
 		estate_increased_tutor_aptitude_2 = yes
@@ -1246,12 +1247,12 @@ library_education_03 = {
 	character_modifier = {
 		monthly_learning_lifestyle_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_tutor.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1260,7 +1261,7 @@ library_education_03 = {
 }
 
 library_education_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = library_education_03
@@ -1279,7 +1280,7 @@ library_education_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_tier_5_education = yes
 		estate_reduced_tutor_cost = yes
@@ -1290,12 +1291,12 @@ library_education_04 = {
 	character_modifier = {
 		monthly_learning_lifestyle_xp_gain_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_tutor.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1304,7 +1305,7 @@ library_education_04 = {
 }
 
 bath_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -1328,12 +1329,12 @@ bath_01 = {
 	parameters = {
 		estate_increase_safe_treatment_success_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_bath.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1342,7 +1343,7 @@ bath_01 = {
 }
 
 bath_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = bath_01
@@ -1367,12 +1368,12 @@ bath_02 = {
 	parameters = {
 		estate_increase_safe_treatment_success_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_bath.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1381,7 +1382,7 @@ bath_02 = {
 }
 
 bath_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = bath_02
@@ -1410,12 +1411,12 @@ bath_03 = {
 	parameters = {
 		estate_increase_safe_treatment_success_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_bath.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1424,7 +1425,7 @@ bath_03 = {
 }
 
 bath_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = bath_03
@@ -1453,12 +1454,12 @@ bath_04 = {
 	parameters = {
 		estate_increase_safe_treatment_success_2 = yes
 	}
-	
+
 	ai_value = {
 		value = 3
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_bath.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1467,7 +1468,7 @@ bath_04 = {
 }
 
 guest_room_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -1487,7 +1488,7 @@ guest_room_01 = {
 		domicile_monthly_influence_mult = 0.02
 		courtier_and_guest_opinion = 2
 	}
-	
+
 	ai_value = {
 		value = 8
 		if = {
@@ -1500,7 +1501,7 @@ guest_room_01 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1509,7 +1510,7 @@ guest_room_01 = {
 }
 
 guest_room_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = guest_room_01
@@ -1532,7 +1533,7 @@ guest_room_02 = {
 	parameters = {
 		increased_success_personal_schemes_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		if = {
@@ -1545,7 +1546,7 @@ guest_room_02 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1554,7 +1555,7 @@ guest_room_02 = {
 }
 
 guest_room_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = guest_room_02
@@ -1582,7 +1583,7 @@ guest_room_03 = {
 	parameters = {
 		increased_success_personal_schemes_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		if = {
@@ -1595,7 +1596,7 @@ guest_room_03 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1604,7 +1605,7 @@ guest_room_03 = {
 }
 
 guest_room_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = guest_room_03
@@ -1631,7 +1632,7 @@ guest_room_04 = {
 	parameters = {
 		increased_success_personal_schemes_2 = yes
 	}
-	
+
 	ai_value = {
 		value = 5
 		if = {
@@ -1644,7 +1645,7 @@ guest_room_04 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1653,7 +1654,7 @@ guest_room_04 = {
 }
 
 guest_room_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = guest_room_04
@@ -1681,7 +1682,7 @@ guest_room_05 = {
 	parameters = {
 		increased_success_personal_schemes_2 = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		if = {
@@ -1694,7 +1695,7 @@ guest_room_05 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1703,7 +1704,7 @@ guest_room_05 = {
 }
 
 guest_room_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = guest_room_05
@@ -1730,7 +1731,7 @@ guest_room_06 = {
 	parameters = {
 		increased_success_personal_schemes_3 = yes
 	}
-	
+
 	ai_value = {
 		value = 3
 		if = {
@@ -1743,7 +1744,7 @@ guest_room_06 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1752,7 +1753,7 @@ guest_room_06 = {
 }
 
 wine_cellar_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -1766,11 +1767,11 @@ wine_cellar_01 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_feast_influence_option_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		if = {
@@ -1786,7 +1787,7 @@ wine_cellar_01 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_cellar.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1795,7 +1796,7 @@ wine_cellar_01 = {
 }
 
 wine_cellar_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = wine_cellar_01
@@ -1809,11 +1810,11 @@ wine_cellar_02 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_feast_influence_option_2 = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		if = {
@@ -1829,7 +1830,7 @@ wine_cellar_02 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_cellar.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1838,7 +1839,7 @@ wine_cellar_02 = {
 }
 
 wine_cellar_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = wine_cellar_02
@@ -1852,11 +1853,11 @@ wine_cellar_03 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_feast_influence_option_3 = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		if = {
@@ -1872,7 +1873,7 @@ wine_cellar_03 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_cellar.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1881,7 +1882,7 @@ wine_cellar_03 = {
 }
 
 courtyard_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -1896,20 +1897,20 @@ courtyard_01 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_feast_opinion = yes
 	}
-	
+
 	character_modifier = {
 		political_scheme_phase_duration_add = -3
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_courtyard.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1918,7 +1919,7 @@ courtyard_01 = {
 }
 
 courtyard_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = courtyard_01
@@ -1933,21 +1934,21 @@ courtyard_02 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_feast_opinion = yes
 		estate_cheaper_feast_cost = yes
 	}
-	
+
 	character_modifier = {
 		political_scheme_phase_duration_add = -3
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_courtyard.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1956,7 +1957,7 @@ courtyard_02 = {
 }
 
 courtyard_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = courtyard_02
@@ -1975,21 +1976,21 @@ courtyard_03 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_feast_opinion = yes
 		estate_cheaper_feast_cost = yes
 	}
-	
+
 	character_modifier = {
 		political_scheme_phase_duration_add = -3
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_courtyard.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -1998,7 +1999,7 @@ courtyard_03 = {
 }
 
 courtyard_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = courtyard_03
@@ -2017,21 +2018,21 @@ courtyard_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_improved_feast_opinion = yes
 		estate_cheaper_feast_cost = yes
 	}
-	
+
 	character_modifier = {
 		political_scheme_phase_duration_add = -3
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_courtyard.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2040,7 +2041,7 @@ courtyard_04 = {
 }
 
 prison_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -2055,12 +2056,12 @@ prison_01 = {
 			}
 		}
 	}
-	
+
 	character_modifier = {
 		dread_gain_mult = 0.05
 		hostage_income_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 7
 		if = {
@@ -2077,7 +2078,7 @@ prison_01 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2086,7 +2087,7 @@ prison_01 = {
 }
 
 prison_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = prison_01
@@ -2101,16 +2102,16 @@ prison_02 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_torture_grants_influence = yes
 	}
-	
+
 	character_modifier = {
 		dread_gain_mult = 0.05
 		hostage_income_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 6
 		if = {
@@ -2127,7 +2128,7 @@ prison_02 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2136,7 +2137,7 @@ prison_02 = {
 }
 
 prison_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = prison_02
@@ -2155,17 +2156,17 @@ prison_03 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_torture_grants_influence = yes
 	}
-	
+
 	character_modifier = {
 		dread_gain_mult = 0.05
 		hostage_income_mult = 0.05
 		hostage_renown_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 5
 		if = {
@@ -2182,7 +2183,7 @@ prison_03 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2191,7 +2192,7 @@ prison_03 = {
 }
 
 prison_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = prison_03
@@ -2210,17 +2211,17 @@ prison_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_torture_grants_influence = yes
 	}
-	
+
 	character_modifier = {
 		dread_gain_mult = 0.05
 		hostage_income_mult = 0.05
 		hostage_renown_mult = 0.05
 	}
-	
+
 	ai_value = {
 		value = 4
 		if = {
@@ -2237,7 +2238,7 @@ prison_04 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2246,7 +2247,7 @@ prison_04 = {
 }
 
 reception_hall_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_1000_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -2279,7 +2280,7 @@ reception_hall_01 = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_reception_hall.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2288,7 +2289,7 @@ reception_hall_01 = {
 }
 
 reception_hall_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_1000_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = reception_hall_01
@@ -2322,7 +2323,7 @@ reception_hall_02 = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_reception_hall.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2331,7 +2332,7 @@ reception_hall_02 = {
 }
 
 reception_hall_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_1000_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = reception_hall_02
@@ -2366,7 +2367,7 @@ reception_hall_03 = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_reception_hall.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2375,7 +2376,7 @@ reception_hall_03 = {
 }
 
 reception_hall_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_1000_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = reception_hall_03
@@ -2410,7 +2411,7 @@ reception_hall_04 = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_reception_hall.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2419,7 +2420,7 @@ reception_hall_04 = {
 }
 
 reception_hall_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_1000_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = reception_hall_04
@@ -2454,7 +2455,7 @@ reception_hall_05 = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_reception_hall.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2463,7 +2464,7 @@ reception_hall_05 = {
 }
 
 cabinet_of_curiosities_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_1000_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -2487,7 +2488,7 @@ cabinet_of_curiosities_01 = {
 		learning_per_influence_level = 1
 		domicile_monthly_influence_add = 0.1
 	}
-	
+
 	parameters = {
 		can_receive_artifacts = yes
 		estate_improved_inspirations_1 = yes
@@ -2498,7 +2499,7 @@ cabinet_of_curiosities_01 = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_cabinet_of_curiosities.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2507,7 +2508,7 @@ cabinet_of_curiosities_01 = {
 }
 
 cabinet_of_curiosities_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_1000_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = cabinet_of_curiosities_01
@@ -2539,7 +2540,7 @@ cabinet_of_curiosities_02 = {
 		domicile_monthly_influence_add = 0.2
 		monthly_court_grandeur_change_add = 0.2
 	}
-	
+
 	parameters = {
 		can_receive_artifacts = yes
 		estate_improved_inspirations_2 = yes
@@ -2552,7 +2553,7 @@ cabinet_of_curiosities_02 = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_cabinet_of_curiosities.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2561,7 +2562,7 @@ cabinet_of_curiosities_02 = {
 }
 
 cabinet_of_curiosities_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_1000_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = cabinet_of_curiosities_02
@@ -2595,7 +2596,7 @@ cabinet_of_curiosities_03 = {
 		monthly_court_grandeur_change_add = 0.3
 		general_opinion = 10
 	}
-	
+
 	parameters = {
 		can_receive_artifacts = yes
 		estate_improved_inspirations_2 = yes
@@ -2608,7 +2609,7 @@ cabinet_of_curiosities_03 = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_cabinet_of_curiosities.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2617,7 +2618,7 @@ cabinet_of_curiosities_03 = {
 }
 
 grand_solar_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = estate_main_01
@@ -2649,7 +2650,7 @@ grand_solar_01 = {
 		value = 10
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_solar.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2658,7 +2659,7 @@ grand_solar_01 = {
 }
 
 grand_solar_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = grand_solar_01
@@ -2690,7 +2691,7 @@ grand_solar_02 = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_solar.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2699,7 +2700,7 @@ grand_solar_02 = {
 }
 
 grand_solar_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = grand_solar_02
@@ -2733,7 +2734,7 @@ grand_solar_03 = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_solar.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -2742,7 +2743,7 @@ grand_solar_03 = {
 }
 
 grand_solar_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	slot_type = internal
 	previous_building = grand_solar_03
@@ -2780,7 +2781,7 @@ grand_solar_04 = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_solar.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"

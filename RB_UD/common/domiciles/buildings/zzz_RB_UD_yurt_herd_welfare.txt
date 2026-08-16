@@ -2,13 +2,23 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_120_days = 120
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_200_days = 200
+@RB_UD_construction_time_270_days = 270
+@RB_UD_construction_time_30_days = 30
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_320_days = 320
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_60_days = 60
+@RB_UD_construction_time_90_days = 90
 
 herd_welfare_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	internal_slots = 9
 
@@ -36,7 +46,7 @@ herd_welfare_yurt_01 = {
 }
 
 herd_welfare_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { yurt }
 	previous_building = herd_welfare_yurt_01
 	internal_slots = 9
@@ -74,7 +84,7 @@ herd_welfare_yurt_02 = {
 }
 
 herd_welfare_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_270_days
 	allowed_domicile_types = { yurt }
 	previous_building = herd_welfare_yurt_02
 	internal_slots = 9
@@ -102,7 +112,7 @@ herd_welfare_yurt_03 = {
 			}
 			add = 2
 		}
-		
+
 	}
 
 	asset = {
@@ -114,7 +124,7 @@ herd_welfare_yurt_03 = {
 }
 
 herd_welfare_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { yurt }
 	previous_building = herd_welfare_yurt_03
 	internal_slots = 9
@@ -163,7 +173,7 @@ herd_welfare_yurt_04 = {
 }
 
 herd_welfare_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { yurt }
 	previous_building = herd_welfare_yurt_04
 	internal_slots = 9
@@ -208,7 +218,7 @@ herd_welfare_yurt_05 = {
 }
 
 herd_welfare_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { yurt }
 	previous_building = herd_welfare_yurt_05
 	internal_slots = 9
@@ -257,7 +267,7 @@ herd_welfare_yurt_06 = {
 }
 
 herd_capacity_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_welfare_yurt_01
@@ -285,7 +295,7 @@ herd_capacity_yurt_01 = {
 }
 
 herd_capacity_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_capacity_yurt_01
@@ -313,7 +323,7 @@ herd_capacity_yurt_02 = {
 }
 
 herd_capacity_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_capacity_yurt_02
@@ -330,7 +340,7 @@ herd_capacity_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
-		
+
 	}
 
 	asset = {
@@ -342,7 +352,7 @@ herd_capacity_yurt_03 = {
 }
 
 herd_capacity_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_capacity_yurt_03
@@ -360,7 +370,7 @@ herd_capacity_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
-		
+
 	}
 
 	asset = {
@@ -372,7 +382,7 @@ herd_capacity_yurt_04 = {
 }
 
 herd_capacity_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_capacity_yurt_04
@@ -390,7 +400,7 @@ herd_capacity_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
-		
+
 	}
 
 	asset = {
@@ -402,7 +412,7 @@ herd_capacity_yurt_05 = {
 }
 
 herd_capacity_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_capacity_yurt_05
@@ -420,7 +430,7 @@ herd_capacity_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
-		
+
 	}
 
 	asset = {
@@ -432,11 +442,21 @@ herd_capacity_yurt_06 = {
 }
 
 camel_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_welfare_yurt_01
 
+	can_construct = {
+		custom_tooltip = {
+			text = camel_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					terrain = desert
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_1
@@ -464,11 +484,21 @@ camel_yurt_01 = {
 }
 
 camel_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = camel_yurt_01
 
+	can_construct = {
+		custom_tooltip = {
+			text = camel_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					terrain = desert
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_2
@@ -496,11 +526,21 @@ camel_yurt_02 = {
 }
 
 camel_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = camel_yurt_02
 
+	can_construct = {
+		custom_tooltip = {
+			text = camel_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					terrain = desert
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_3
@@ -528,11 +568,21 @@ camel_yurt_03 = {
 }
 
 camel_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = camel_yurt_03
 
+	can_construct = {
+		custom_tooltip = {
+			text = camel_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					terrain = desert
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_4
@@ -560,11 +610,21 @@ camel_yurt_04 = {
 }
 
 camel_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = camel_yurt_04
 
+	can_construct = {
+		custom_tooltip = {
+			text = camel_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					terrain = desert
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_5
@@ -592,11 +652,21 @@ camel_yurt_05 = {
 }
 
 camel_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = camel_yurt_05
 
+	can_construct = {
+		custom_tooltip = {
+			text = camel_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					terrain = desert
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_6
@@ -624,11 +694,24 @@ camel_yurt_06 = {
 }
 
 goat_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_welfare_yurt_01
 
+	can_construct = {
+		custom_tooltip = {
+			text = goat_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = mountains
+						terrain = hills
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_1
@@ -656,11 +739,24 @@ goat_yurt_01 = {
 }
 
 goat_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = goat_yurt_01
 
+	can_construct = {
+		custom_tooltip = {
+			text = goat_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = mountains
+						terrain = hills
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_2
@@ -688,11 +784,24 @@ goat_yurt_02 = {
 }
 
 goat_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = goat_yurt_02
 
+	can_construct = {
+		custom_tooltip = {
+			text = goat_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = mountains
+						terrain = hills
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_3
@@ -720,11 +829,24 @@ goat_yurt_03 = {
 }
 
 goat_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = goat_yurt_03
 
+	can_construct = {
+		custom_tooltip = {
+			text = goat_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = mountains
+						terrain = hills
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_4
@@ -752,11 +874,24 @@ goat_yurt_04 = {
 }
 
 goat_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = goat_yurt_04
 
+	can_construct = {
+		custom_tooltip = {
+			text = goat_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = mountains
+						terrain = hills
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_5
@@ -784,11 +919,24 @@ goat_yurt_05 = {
 }
 
 goat_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = goat_yurt_05
 
+	can_construct = {
+		custom_tooltip = {
+			text = goat_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = mountains
+						terrain = hills
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_6
@@ -816,11 +964,24 @@ goat_yurt_06 = {
 }
 
 reindeer_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_welfare_yurt_01
 
+	can_construct = {
+		custom_tooltip = {
+			text = reindeer_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = forest
+						terrain = taiga
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_1
@@ -847,11 +1008,24 @@ reindeer_yurt_01 = {
 }
 
 reindeer_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = reindeer_yurt_01
 
+	can_construct = {
+		custom_tooltip = {
+			text = reindeer_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = forest
+						terrain = taiga
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_2
@@ -878,11 +1052,24 @@ reindeer_yurt_02 = {
 }
 
 reindeer_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = reindeer_yurt_02
 
+	can_construct = {
+		custom_tooltip = {
+			text = reindeer_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = forest
+						terrain = taiga
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_3
@@ -897,7 +1084,7 @@ reindeer_yurt_03 = {
 	}
 
 	ai_value = {
-		value = nomadic_capital_interior_building_2	
+		value = nomadic_capital_interior_building_2
 	}
 
 	asset = {
@@ -909,11 +1096,24 @@ reindeer_yurt_03 = {
 }
 
 reindeer_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = reindeer_yurt_03
 
+	can_construct = {
+		custom_tooltip = {
+			text = reindeer_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = forest
+						terrain = taiga
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_4
@@ -928,7 +1128,7 @@ reindeer_yurt_04 = {
 	}
 
 	ai_value = {
-		value = nomadic_capital_interior_building_3		
+		value = nomadic_capital_interior_building_3
 	}
 
 	asset = {
@@ -940,11 +1140,24 @@ reindeer_yurt_04 = {
 }
 
 reindeer_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = reindeer_yurt_04
 
+	can_construct = {
+		custom_tooltip = {
+			text = reindeer_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = forest
+						terrain = taiga
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_5
@@ -971,11 +1184,24 @@ reindeer_yurt_05 = {
 }
 
 reindeer_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = reindeer_yurt_05
 
+	can_construct = {
+		custom_tooltip = {
+			text = reindeer_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = forest
+						terrain = taiga
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_6
@@ -990,7 +1216,7 @@ reindeer_yurt_06 = {
 	}
 
 	ai_value = {
-		value = nomadic_capital_interior_building_5	
+		value = nomadic_capital_interior_building_5
 	}
 
 	asset = {
@@ -1002,11 +1228,24 @@ reindeer_yurt_06 = {
 }
 
 sheep_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_welfare_yurt_01
 
+	can_construct = {
+		custom_tooltip = {
+			text = sheep_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = steppe
+						terrain = plains
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_1
@@ -1034,11 +1273,24 @@ sheep_yurt_01 = {
 }
 
 sheep_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = sheep_yurt_01
 
+	can_construct = {
+		custom_tooltip = {
+			text = sheep_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = steppe
+						terrain = plains
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_2
@@ -1066,11 +1318,24 @@ sheep_yurt_02 = {
 }
 
 sheep_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = sheep_yurt_02
 
+	can_construct = {
+		custom_tooltip = {
+			text = sheep_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = steppe
+						terrain = plains
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_3
@@ -1098,11 +1363,24 @@ sheep_yurt_03 = {
 }
 
 sheep_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = sheep_yurt_03
 
+	can_construct = {
+		custom_tooltip = {
+			text = sheep_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = steppe
+						terrain = plains
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_4
@@ -1130,11 +1408,24 @@ sheep_yurt_04 = {
 }
 
 sheep_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = sheep_yurt_04
 
+	can_construct = {
+		custom_tooltip = {
+			text = sheep_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = steppe
+						terrain = plains
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_5
@@ -1162,11 +1453,24 @@ sheep_yurt_05 = {
 }
 
 sheep_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = sheep_yurt_05
 
+	can_construct = {
+		custom_tooltip = {
+			text = sheep_yurt_unlock_terrain
+			any_held_county ?= {
+				any_county_province ={
+					OR = {
+						terrain = steppe
+						terrain = plains
+					}
+				}
+			}
+		}
+	}
 
 	cost = {
 		herd = yurt_internal_building_herd_cost_tier_6
@@ -1194,7 +1498,7 @@ sheep_yurt_06 = {
 }
 
 steal_herd_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_welfare_yurt_01
@@ -1226,7 +1530,7 @@ steal_herd_yurt_01 = {
 }
 
 steal_herd_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = steal_herd_yurt_01
@@ -1259,7 +1563,7 @@ steal_herd_yurt_02 = {
 }
 
 steal_herd_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = steal_herd_yurt_02
@@ -1293,7 +1597,7 @@ steal_herd_yurt_03 = {
 }
 
 steal_herd_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = steal_herd_yurt_03
@@ -1326,7 +1630,7 @@ steal_herd_yurt_04 = {
 }
 
 steal_herd_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = steal_herd_yurt_04
@@ -1359,7 +1663,7 @@ steal_herd_yurt_05 = {
 }
 
 steal_herd_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = steal_herd_yurt_05
@@ -1392,7 +1696,7 @@ steal_herd_yurt_06 = {
 }
 
 consumption_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_welfare_yurt_01
@@ -1421,7 +1725,7 @@ consumption_yurt_01 = {
 }
 
 consumption_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = consumption_yurt_01
@@ -1451,7 +1755,7 @@ consumption_yurt_02 = {
 }
 
 consumption_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = consumption_yurt_02
@@ -1481,7 +1785,7 @@ consumption_yurt_03 = {
 }
 
 consumption_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = consumption_yurt_03
@@ -1510,7 +1814,7 @@ consumption_yurt_04 = {
 }
 
 consumption_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = consumption_yurt_04
@@ -1539,7 +1843,7 @@ consumption_yurt_05 = {
 }
 
 consumption_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = consumption_yurt_05
@@ -1568,7 +1872,7 @@ consumption_yurt_06 = {
 }
 
 herd_wealth_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_welfare_yurt_01
@@ -1597,7 +1901,7 @@ herd_wealth_yurt_01 = {
 }
 
 herd_wealth_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_wealth_yurt_01
@@ -1627,7 +1931,7 @@ herd_wealth_yurt_02 = {
 }
 
 herd_wealth_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_wealth_yurt_02
@@ -1657,7 +1961,7 @@ herd_wealth_yurt_03 = {
 }
 
 herd_wealth_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_wealth_yurt_03
@@ -1686,7 +1990,7 @@ herd_wealth_yurt_04 = {
 }
 
 herd_wealth_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_wealth_yurt_04
@@ -1715,7 +2019,7 @@ herd_wealth_yurt_05 = {
 }
 
 herd_wealth_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_wealth_yurt_05
@@ -1744,7 +2048,7 @@ herd_wealth_yurt_06 = {
 }
 
 herder_yurt_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herd_welfare_yurt_01
@@ -1774,7 +2078,7 @@ herder_yurt_01 = {
 }
 
 herder_yurt_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herder_yurt_01
@@ -1804,7 +2108,7 @@ herder_yurt_02 = {
 }
 
 herder_yurt_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herder_yurt_02
@@ -1833,7 +2137,7 @@ herder_yurt_03 = {
 }
 
 herder_yurt_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herder_yurt_03
@@ -1861,7 +2165,7 @@ herder_yurt_04 = {
 }
 
 herder_yurt_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herder_yurt_04
@@ -1890,7 +2194,7 @@ herder_yurt_05 = {
 }
 
 herder_yurt_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { yurt }
 	slot_type = internal
 	previous_building = herder_yurt_05

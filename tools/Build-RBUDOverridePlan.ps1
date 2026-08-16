@@ -448,33 +448,13 @@ foreach ($item in Convert-ToArray $manifest.CampPurposeCompatibility) {
     })
 }
 
-$mainTracksToPreserve = @(
-    'estate_main_01',
-    'east_asian_estate_main_01',
-    'japanese_manor_main_01'
-)
 $manualConditionOverrides = [Collections.Generic.List[object]]::new()
 foreach ($domicile in $manifest.Domiciles) {
     foreach ($track in @(Convert-ToArray $domicile.ConditionalAvailability.Tracks | Where-Object { $_.RequiresManualReview })) {
-        $preserveWholeTrack = $mainTracksToPreserve -contains $track.TrackRoot
         $notes = [Collections.Generic.List[string]]::new()
-        if ($preserveWholeTrack) {
-            $notes.Add('Analyzer classification is a false positive caused by culture scope around universal main-building innovations.')
-            $notes.Add('Keep the entire vanilla construction condition unchanged.')
-        }
-        else {
-            $notes.Add('Remove the complete specialization-access expression, not merely one side of an OR fallback.')
-            $notes.Add('Keep previous_building and main-domicile tier requirements.')
-            if ($track.TrackRoot -eq 'proving_grounds_elephantry_reserve') {
-                $notes.Add('Remove the elephant-region gate but preserve the recently_ate_elephants temporary character-state restriction.')
-            }
-            if ($track.TrackRoot -eq 'forbearing_yurt_01') {
-                $notes.Add('Remove the whole unlock OR: both the cultural parameter and the five-patient-courtiers fallback are access alternatives.')
-            }
-            if ($track.TrackRoot -eq 'language_yurt_01') {
-                $notes.Add('Remove the known-language-count access gate for this specialization.')
-            }
-        }
+        $notes.Add('Keep every vanilla can_construct and can_construct_potential prerequisite unchanged.')
+        $notes.Add('Mutual exclusivity is removed structurally by parallelizing branch tracks, not by weakening their availability rules.')
+        $notes.Add('Culture, innovation, terrain, region, character-state, language-count, main-tier and other independent requirements remain mandatory.')
 
         $dependencySummary = [ordered]@{}
         foreach ($property in $track.Dependencies.PSObject.Properties) {
@@ -499,9 +479,9 @@ foreach ($domicile in $manifest.Domiciles) {
             TrackRoot = $track.TrackRoot
             SlotType = $track.SlotType
             AnchorTrack = $track.AnchorTrack
-            Decision = $(if ($preserveWholeTrack) { 'preserve_entire_vanilla_condition' } else { 'targeted_remove_specialization_access_gate' })
-            RemoveCategories = $(if ($preserveWholeTrack) { @() } else { @(Convert-ToArray $track.ExclusivityCandidateCategories) })
-            PreserveCategories = $(if ($preserveWholeTrack) { @(Convert-ToArray $track.RestrictionCategories) } else { @(Convert-ToArray $track.PreservedPrerequisiteCategories) })
+            Decision = 'preserve_entire_vanilla_condition'
+            RemoveCategories = @()
+            PreserveCategories = @(Convert-ToArray $track.RestrictionCategories)
             Dependencies = $dependencySummary
             ConditionalBuildings = @(Convert-ToArray $track.ConditionalBuildings)
             BuildingProfiles = $profiles
@@ -548,8 +528,8 @@ $validation = [ordered]@{
     PlannedCampPurposeFlags = $campPurposeOverrides.Count
     ExpectedManualConditionTracks = [int]$manifest.ConditionalCompatibilitySummary.ManualReviewTrackCount
     PlannedManualConditionTracks = $manualConditionOverrides.Count
-    PreservedFalsePositiveMainTracks = @($manualConditionOverrides | Where-Object { $_.Decision -eq 'preserve_entire_vanilla_condition' }).Count
-    RewrittenManualConditionTracks = @($manualConditionOverrides | Where-Object { $_.Decision -eq 'targeted_remove_specialization_access_gate' }).Count
+    PreservedManualConditionTracks = @($manualConditionOverrides | Where-Object { $_.Decision -eq 'preserve_entire_vanilla_condition' }).Count
+    RewrittenManualConditionTracks = @($manualConditionOverrides | Where-Object { $_.Decision -ne 'preserve_entire_vanilla_condition' }).Count
 }
 if ($validation.ExpectedDomicileTypes -ne $validation.PlannedDomicileTypes -or
     $validation.ExpectedInitialFillEffects -ne $validation.PlannedInitialFillEffects -or
@@ -573,9 +553,9 @@ $planCore = [ordered]@{
         'Mirror all vanilla domicile-building objects; never use replace_path.',
         'Emit one generated file per vanilla root family and exactly one copy of every vanilla building.',
         'Vanilla objects retain vanilla IDs; new helper objects use the RB_UD_ prefix.',
-        'Normalize construction time through a file-local RB_UD_ @ constant because this database field rejects global script values.',
-        'Preserve vanilla costs, effects, upgrade order, and unrelated prerequisites.',
-        'Remove only mutual-exclusivity access gates and camp-purpose cleanup targeted by this plan.',
+        'Preserve vanilla construction time through generated file-local RB_UD_ @ constants because this database field rejects global script values.',
+        'Preserve vanilla costs, effects, upgrade order, culture, innovation, territory, terrain and all other independent prerequisites.',
+        'Remove branch mutual exclusivity structurally; remove only camp-purpose gates and their targeted purpose-change cleanup.',
         'Grant complete slot capacity from the first main or anchor level; base_external_slots is a pre-main fallback and is not subtracted from that target.',
         'No mass-build action and no construction-speed modifier are part of this mod.'
     )
@@ -769,7 +749,7 @@ $lines.Add("- Эффекты стартового заполнения: $($valid
 $lines.Add("- Внешние развилки: $($validation.PlannedExternalBranchGroups)/$($validation.ExpectedExternalBranchGroups).")
 $lines.Add("- Внутренние развилки: $($validation.PlannedInternalBranchGroups)/$($validation.ExpectedInternalBranchGroups).")
 $lines.Add("- Флаги тем лагеря: $($validation.PlannedCampPurposeFlags)/$($validation.ExpectedCampPurposeFlags).")
-$lines.Add("- Ручные условные линии: $($validation.PlannedManualConditionTracks)/$($validation.ExpectedManualConditionTracks); переписать $($validation.RewrittenManualConditionTracks), сохранить $($validation.PreservedFalsePositiveMainTracks).")
+$lines.Add("- Ручные условные линии: $($validation.PlannedManualConditionTracks)/$($validation.ExpectedManualConditionTracks); переписать $($validation.RewrittenManualConditionTracks), сохранить $($validation.PreservedManualConditionTracks).")
 $lines.Add("- Полностью зеркалируемых ванильных зданий: $(@(Convert-ToArray $manifest.Buildings).Count).")
 $lines.Add("- Из них структурно изменяемых зданий: $($affectedBuildingIds.Count).")
 $lines.Add('- Неизвестные условия, циклы и потерянные родители: 0.')

@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @japanese_manor_knight_effectiveness_mult_1 = 0.01
@@ -10,10 +10,20 @@
 @japanese_manor_maa_maintenance_mult_1 = -0.025
 @japanese_manor_maa_recruitment_cost_mult_1 = -0.04
 @japanese_manor_mercenary_hire_cost_mult_1 = -0.025
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_120_days = 120
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_200_days = 200
+@RB_UD_construction_time_270_days = 270
+@RB_UD_construction_time_30_days = 30
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_320_days = 320
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_60_days = 60
+@RB_UD_construction_time_90_days = 90
 
 japanese_armory_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 
@@ -31,7 +41,7 @@ japanese_armory_01 = {
 				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
 				multiply = 0.75
 			}
-		}	
+		}
 	}
 
 	character_modifier = {
@@ -39,7 +49,7 @@ japanese_armory_01 = {
 		mercenary_hire_cost_mult = @japanese_manor_mercenary_hire_cost_mult_1
 		martial_per_prestige_level = 1
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
@@ -47,14 +57,14 @@ japanese_armory_01 = {
 
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_knight_yurt.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_armory_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_armory_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_armory_japanese_mask.png"
 		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_barracks"
 	}
 }
 
 japanese_armory_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_armory_01
@@ -89,14 +99,14 @@ japanese_armory_02 = {
 
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_knight_yurt.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_armory_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_armory_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_armory_japanese_mask.png"
 		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_barracks"
 	}
 }
 
 japanese_armory_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_270_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_armory_02
@@ -131,14 +141,14 @@ japanese_armory_03 = {
 
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_knight_yurt.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_armory_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_armory_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_armory_japanese_mask.png"
 		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_barracks"
 	}
 }
 
 japanese_armory_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_armory_03
@@ -166,7 +176,7 @@ japanese_armory_04 = {
 		mercenary_hire_cost_mult = @japanese_manor_mercenary_hire_cost_mult_1
 		martial_per_prestige_level = 1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -174,14 +184,14 @@ japanese_armory_04 = {
 
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_knight_yurt.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_armory_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_armory_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_armory_japanese_mask.png"
 		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_barracks"
 	}
 }
 
 japanese_armory_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_armory_04
@@ -208,7 +218,7 @@ japanese_armory_05 = {
 		men_at_arms_recruitment_cost = @japanese_manor_maa_recruitment_cost_mult_1
 		mercenary_hire_cost_mult = @japanese_manor_mercenary_hire_cost_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -216,14 +226,14 @@ japanese_armory_05 = {
 
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_knight_yurt.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_armory_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_armory_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_armory_japanese_mask.png"
 		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_barracks"
 	}
 }
 
 japanese_armory_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_armory_05
@@ -250,7 +260,7 @@ japanese_armory_06 = {
 		men_at_arms_recruitment_cost = @japanese_manor_maa_recruitment_cost_mult_1
 		mercenary_hire_cost_mult = @japanese_manor_mercenary_hire_cost_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -258,14 +268,14 @@ japanese_armory_06 = {
 
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_knight_yurt.dds"
-		texture =  "gfx/interface/window_domiciles/estate_building_armory_japanese.dds" 
+		texture =  "gfx/interface/window_domiciles/estate_building_armory_japanese.dds"
 		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_armory_japanese_mask.png"
 		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_barracks"
 	}
 }
 
 japanese_bladesmith_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_armory_01
@@ -291,12 +301,12 @@ japanese_bladesmith_01 = {
 	parameters = {
 		cheaper_commission_weapon_artifact_parameter_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_bladesmith.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -306,7 +316,7 @@ japanese_bladesmith_01 = {
 }
 
 japanese_bladesmith_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_bladesmith_01
@@ -337,12 +347,12 @@ japanese_bladesmith_02 = {
 	parameters = {
 		cheaper_commission_weapon_artifact_parameter_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_bladesmith.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -352,7 +362,7 @@ japanese_bladesmith_02 = {
 }
 
 japanese_bladesmith_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_bladesmith_02
@@ -382,12 +392,12 @@ japanese_bladesmith_03 = {
 	parameters = {
 		cheaper_commission_weapon_artifact_parameter_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_bladesmith.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -397,7 +407,7 @@ japanese_bladesmith_03 = {
 }
 
 japanese_bladesmith_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_bladesmith_03
@@ -428,12 +438,12 @@ japanese_bladesmith_04 = {
 	parameters = {
 		cheaper_commission_weapon_artifact_parameter_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_bladesmith.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -443,7 +453,7 @@ japanese_bladesmith_04 = {
 }
 
 japanese_bladesmith_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_bladesmith_04
@@ -473,12 +483,12 @@ japanese_bladesmith_05 = {
 	parameters = {
 		cheaper_commission_weapon_artifact_parameter_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_bladesmith.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -488,7 +498,7 @@ japanese_bladesmith_05 = {
 }
 
 japanese_bladesmith_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_bladesmith_05
@@ -519,12 +529,12 @@ japanese_bladesmith_06 = {
 	parameters = {
 		cheaper_commission_weapon_artifact_parameter_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_bladesmith.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -534,7 +544,7 @@ japanese_bladesmith_06 = {
 }
 
 japanese_armorer_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_armory_01
@@ -559,12 +569,12 @@ japanese_armorer_01 = {
 	parameters = {
 		cheaper_commission_armor_artifact_parameter_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_forge_yurt.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -574,7 +584,7 @@ japanese_armorer_01 = {
 }
 
 japanese_armorer_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_armorer_01
@@ -603,12 +613,12 @@ japanese_armorer_02 = {
 	parameters = {
 		cheaper_commission_armor_artifact_parameter_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_forge_yurt.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -618,7 +628,7 @@ japanese_armorer_02 = {
 }
 
 japanese_armorer_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_armorer_02
@@ -647,12 +657,12 @@ japanese_armorer_03 = {
 	parameters = {
 		cheaper_commission_armor_artifact_parameter_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_forge_yurt.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -662,7 +672,7 @@ japanese_armorer_03 = {
 }
 
 japanese_armorer_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_armorer_03
@@ -691,12 +701,12 @@ japanese_armorer_04 = {
 	parameters = {
 		cheaper_commission_armor_artifact_parameter_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_forge_yurt.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -706,7 +716,7 @@ japanese_armorer_04 = {
 }
 
 japanese_armorer_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_armorer_04
@@ -735,12 +745,12 @@ japanese_armorer_05 = {
 	parameters = {
 		cheaper_commission_armor_artifact_parameter_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_forge_yurt.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -750,7 +760,7 @@ japanese_armorer_05 = {
 }
 
 japanese_armorer_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_armorer_05
@@ -779,12 +789,12 @@ japanese_armorer_06 = {
 	parameters = {
 		cheaper_commission_armor_artifact_parameter_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_forge_yurt.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -794,7 +804,7 @@ japanese_armorer_06 = {
 }
 
 japanese_barracks_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_armory_01
@@ -817,12 +827,12 @@ japanese_barracks_01 = {
 		house_head_can_ask_for_maa = yes
 		reduce_success_of_raid_estate = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_barrack.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -832,7 +842,7 @@ japanese_barracks_01 = {
 }
 
 japanese_barracks_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_barracks_01
@@ -859,12 +869,12 @@ japanese_barracks_02 = {
 		house_head_can_ask_for_maa = yes
 		reduce_success_of_raid_estate = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_barrack.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -874,7 +884,7 @@ japanese_barracks_02 = {
 }
 
 japanese_barracks_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_barracks_02
@@ -901,12 +911,12 @@ japanese_barracks_03 = {
 		house_head_can_ask_for_maa = yes
 		reduce_success_of_raid_estate = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_barrack.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -916,7 +926,7 @@ japanese_barracks_03 = {
 }
 
 japanese_barracks_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_barracks_03
@@ -939,12 +949,12 @@ japanese_barracks_04 = {
 		house_head_can_ask_for_maa = yes
 		reduce_success_of_raid_estate = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_barrack.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -954,7 +964,7 @@ japanese_barracks_04 = {
 }
 
 japanese_barracks_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_barracks_04
@@ -981,12 +991,12 @@ japanese_barracks_05 = {
 		house_head_can_ask_for_maa = yes
 		reduce_success_of_raid_estate = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_barrack.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"
@@ -996,7 +1006,7 @@ japanese_barracks_05 = {
 }
 
 japanese_barracks_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_barracks_05
@@ -1023,12 +1033,12 @@ japanese_barracks_06 = {
 		house_head_can_ask_for_maa = yes
 		reduce_success_of_raid_estate = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_barrack.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_workshop_japanese.dds"

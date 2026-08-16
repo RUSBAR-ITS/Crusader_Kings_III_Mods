@@ -2,14 +2,19 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_210_days = 210
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
 
 proving_grounds_01 = {
 	internal_slots = 13
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 
 	cost = { gold = proving_grounds_01_domicile_building_gold_cost_value }
@@ -56,7 +61,7 @@ proving_grounds_01 = {
 }
 
 proving_grounds_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_210_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 	internal_slots = 13
@@ -106,7 +111,7 @@ proving_grounds_02 = {
 }
 
 proving_grounds_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_02
 	internal_slots = 13
@@ -156,7 +161,7 @@ proving_grounds_03 = {
 }
 
 proving_grounds_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_03
 	internal_slots = 13
@@ -209,7 +214,7 @@ proving_grounds_04 = {
 }
 
 proving_grounds_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_04
 	internal_slots = 13
@@ -261,7 +266,7 @@ proving_grounds_05 = {
 }
 
 proving_grounds_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_05
 	internal_slots = 13
@@ -316,7 +321,7 @@ proving_grounds_06 = {
 
 proving_grounds_horse_run = { # Horse Run
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 
@@ -382,7 +387,7 @@ proving_grounds_horse_run = { # Horse Run
 
 proving_grounds_camel_run = { # Camel Run
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 
@@ -395,6 +400,9 @@ proving_grounds_camel_run = { # Camel Run
 		}
 	}
 
+	can_construct = {
+		culture ?= { has_innovation = innovation_war_camels }
+	}
 
 	character_modifier = {
 		camel_cavalry_toughness_mult = 0.3
@@ -449,7 +457,7 @@ proving_grounds_camel_run = { # Camel Run
 
 proving_grounds_elephantry_reserve = { # Elephantry Reserve
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 
@@ -463,6 +471,7 @@ proving_grounds_elephantry_reserve = { # Elephantry Reserve
 	}
 
 	can_construct = {
+		domicile.domicile_location ?= { geographical_region = world_innovation_elephants }
 		custom_tooltip = {
 			text = proving_grounds_elephantry_reserve.tt.ate_elephants
 			NOT = { has_character_flag = recently_ate_elephants }
@@ -512,7 +521,7 @@ proving_grounds_elephantry_reserve = { # Elephantry Reserve
 
 proving_grounds_nightly_barding_drills = { # Nightly Barding Drills
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 
@@ -578,7 +587,7 @@ proving_grounds_nightly_barding_drills = { # Nightly Barding Drills
 
 proving_grounds_life_in_the_saddle = { # Life in the Saddle
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 
@@ -652,7 +661,7 @@ proving_grounds_life_in_the_saddle = { # Life in the Saddle
 
 proving_grounds_the_stump = { # The Stump
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 
@@ -718,7 +727,7 @@ proving_grounds_the_stump = { # The Stump
 
 proving_grounds_personal_bouts = { # Personal Bouts
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 
@@ -785,7 +794,7 @@ proving_grounds_personal_bouts = { # Personal Bouts
 
 proving_grounds_training_circle = { # Training Circle
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 
@@ -852,7 +861,7 @@ proving_grounds_training_circle = { # Training Circle
 
 proving_grounds_mock_battle_drills = { # Mock Battle Drills
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 
@@ -918,7 +927,7 @@ proving_grounds_mock_battle_drills = { # Mock Battle Drills
 
 proving_grounds_lockwagon = { # Lockwagon
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 
@@ -978,7 +987,7 @@ proving_grounds_lockwagon = { # Lockwagon
 
 proving_grounds_martial_study = { # Martial Study
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 
@@ -1035,7 +1044,7 @@ proving_grounds_martial_study = { # Martial Study
 
 proving_grounds_the_stick_game = { # The Stick Game
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 
@@ -1090,7 +1099,7 @@ proving_grounds_the_stick_game = { # The Stick Game
 
 proving_grounds_bodyguard_drills = { # Bodyguard Drills
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = proving_grounds_01
 

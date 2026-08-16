@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @east_asian_manor_confucian_education_xp_gain_mult_2 = 0.1
@@ -14,13 +14,30 @@
 @east_asian_manor_monthly_prestige_add_2 = 0.15
 @east_asian_manor_monthly_treasury_from_salary_budget_mult_1 = 0.01
 @east_asian_manor_study_confucian_classics_scheme_phase_duration_add_3 = -4
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_480_days = 480
+@RB_UD_construction_time_540_days = 540
+@RB_UD_construction_time_600_days = 600
+@RB_UD_construction_time_660_days = 660
 
 east_asian_estate_silk_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	internal_slots = 5
 
+	can_construct = {
+		custom_tooltip = {
+			OR = {
+				house = { has_house_modifier = ep3_unlocked_silk }
+				culture = { has_cultural_parameter = unlocks_silk_buildings_parameter }
+			}
+			text = has_unlocked_estate_silk
+		}
+	}
 
 	cost = {
 		gold = {
@@ -62,12 +79,12 @@ east_asian_estate_silk_01 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 15
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_magnanery.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_silk_farm_chinese.dds"
@@ -76,11 +93,20 @@ east_asian_estate_silk_01 = {
 }
 
 east_asian_estate_silk_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_silk_01
 	internal_slots = 5
 
+	can_construct = {
+		OR = {
+			custom_tooltip = {
+				house = { has_house_modifier = ep3_unlocked_silk }
+				text = has_unlocked_estate_silk
+			}
+			culture = { has_cultural_parameter = unlocks_silk_buildings_parameter }
+		}
+	}
 
 	cost = {
 		gold = {
@@ -92,7 +118,7 @@ east_asian_estate_silk_02 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 	}
 
@@ -125,12 +151,12 @@ east_asian_estate_silk_02 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 13
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_magnanery.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_silk_farm_chinese.dds"
@@ -139,12 +165,19 @@ east_asian_estate_silk_02 = {
 }
 
 east_asian_estate_silk_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_480_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_silk_02
 	internal_slots = 5
-	
+
 	can_construct = {
+		OR = {
+			custom_tooltip = {
+				house = { has_house_modifier = ep3_unlocked_silk }
+				text = has_unlocked_estate_silk
+			}
+			culture = { has_cultural_parameter = unlocks_silk_buildings_parameter }
+		}
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
 	}
 
@@ -158,7 +191,7 @@ east_asian_estate_silk_03 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 	}
 
@@ -191,12 +224,12 @@ east_asian_estate_silk_03 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 11
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_magnanery.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_silk_farm_chinese.dds"
@@ -205,12 +238,19 @@ east_asian_estate_silk_03 = {
 }
 
 east_asian_estate_silk_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_silk_03
 	internal_slots = 5
-	
+
 	can_construct = {
+		OR = {
+			custom_tooltip = {
+				house = { has_house_modifier = ep3_unlocked_silk }
+				text = has_unlocked_estate_silk
+			}
+			culture = { has_cultural_parameter = unlocks_silk_buildings_parameter }
+		}
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
 	}
 
@@ -224,7 +264,7 @@ east_asian_estate_silk_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 	}
 
@@ -257,12 +297,12 @@ east_asian_estate_silk_04 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_magnanery.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_silk_farm_chinese.dds"
@@ -271,12 +311,19 @@ east_asian_estate_silk_04 = {
 }
 
 east_asian_estate_silk_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_silk_04
 	internal_slots = 5
-	
+
 	can_construct = {
+		OR = {
+			custom_tooltip = {
+				house = { has_house_modifier = ep3_unlocked_silk }
+				text = has_unlocked_estate_silk
+			}
+			culture = { has_cultural_parameter = unlocks_silk_buildings_parameter }
+		}
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
 	}
 
@@ -290,7 +337,7 @@ east_asian_estate_silk_05 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 	}
 
@@ -323,12 +370,12 @@ east_asian_estate_silk_05 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_magnanery.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_silk_farm_chinese.dds"
@@ -337,12 +384,19 @@ east_asian_estate_silk_05 = {
 }
 
 east_asian_estate_silk_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_silk_05
 	internal_slots = 5
-	
+
 	can_construct = {
+		OR = {
+			custom_tooltip = {
+				house = { has_house_modifier = ep3_unlocked_silk }
+				text = has_unlocked_estate_silk
+			}
+			culture = { has_cultural_parameter = unlocks_silk_buildings_parameter }
+		}
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
 	}
 
@@ -356,7 +410,7 @@ east_asian_estate_silk_06 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 	}
 
@@ -389,12 +443,12 @@ east_asian_estate_silk_06 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_magnanery.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_silk_farm_chinese.dds"
@@ -403,13 +457,13 @@ east_asian_estate_silk_06 = {
 }
 
 east_asian_estate_dye_works_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_silk_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -438,13 +492,13 @@ east_asian_estate_dye_works_01 = {
 }
 
 east_asian_estate_dye_works_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_dye_works_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -473,7 +527,7 @@ east_asian_estate_dye_works_02 = {
 }
 
 east_asian_estate_dye_works_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_dye_works_02
@@ -508,7 +562,7 @@ east_asian_estate_dye_works_03 = {
 }
 
 east_asian_estate_dye_works_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_dye_works_03
@@ -543,13 +597,13 @@ east_asian_estate_dye_works_04 = {
 }
 
 east_asian_estate_sericulture_school_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_silk_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -578,13 +632,13 @@ east_asian_estate_sericulture_school_01 = {
 }
 
 east_asian_estate_sericulture_school_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_sericulture_school_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -613,7 +667,7 @@ east_asian_estate_sericulture_school_02 = {
 }
 
 east_asian_estate_sericulture_school_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_sericulture_school_02
@@ -648,7 +702,7 @@ east_asian_estate_sericulture_school_03 = {
 }
 
 east_asian_estate_sericulture_school_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_sericulture_school_03
@@ -683,13 +737,13 @@ east_asian_estate_sericulture_school_04 = {
 }
 
 east_asian_estate_inspection_office_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_silk_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -717,13 +771,13 @@ east_asian_estate_inspection_office_01 = {
 }
 
 east_asian_estate_inspection_office_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_inspection_office_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -751,7 +805,7 @@ east_asian_estate_inspection_office_02 = {
 }
 
 east_asian_estate_inspection_office_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_inspection_office_02
@@ -785,7 +839,7 @@ east_asian_estate_inspection_office_03 = {
 }
 
 east_asian_estate_inspection_office_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_inspection_office_03
@@ -819,13 +873,13 @@ east_asian_estate_inspection_office_04 = {
 }
 
 east_asian_estate_mulberry_nursery_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_silk_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -854,13 +908,13 @@ east_asian_estate_mulberry_nursery_01 = {
 }
 
 east_asian_estate_mulberry_nursery_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_mulberry_nursery_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -889,7 +943,7 @@ east_asian_estate_mulberry_nursery_02 = {
 }
 
 east_asian_estate_mulberry_nursery_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_mulberry_nursery_02
@@ -924,7 +978,7 @@ east_asian_estate_mulberry_nursery_03 = {
 }
 
 east_asian_estate_mulberry_nursery_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_mulberry_nursery_03
@@ -959,13 +1013,13 @@ east_asian_estate_mulberry_nursery_04 = {
 }
 
 east_asian_estate_silk_storage_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_silk_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -994,13 +1048,13 @@ east_asian_estate_silk_storage_01 = {
 }
 
 east_asian_estate_silk_storage_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_silk_storage_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1029,7 +1083,7 @@ east_asian_estate_silk_storage_02 = {
 }
 
 east_asian_estate_silk_storage_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_silk_storage_02
@@ -1064,7 +1118,7 @@ east_asian_estate_silk_storage_03 = {
 }
 
 east_asian_estate_silk_storage_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_silk_storage_03

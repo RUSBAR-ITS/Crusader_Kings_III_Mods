@@ -2,14 +2,14 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_730_days = 730
 
 storage_01 = {
 	internal_slots = 2
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 
 	cost = {
@@ -30,7 +30,7 @@ storage_01 = {
 	parameters = {
 		house_head_can_ask_building_support = yes
 	}
-	
+
 	ai_value = {
 		value = 9
 		if = {
@@ -41,7 +41,7 @@ storage_01 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -95,7 +95,7 @@ storage_01 = {
 
 storage_02 = {
 	internal_slots = 2
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = storage_01
 
@@ -117,7 +117,7 @@ storage_02 = {
 	parameters = {
 		house_head_can_ask_building_support = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		if = {
@@ -128,7 +128,7 @@ storage_02 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -182,7 +182,7 @@ storage_02 = {
 
 storage_warehouse_03 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = storage_01
 
@@ -210,12 +210,12 @@ storage_warehouse_03 = {
 	parameters = {
 		house_head_can_ask_building_support = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -269,7 +269,7 @@ storage_warehouse_03 = {
 
 storage_warehouse_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = storage_warehouse_03
 
@@ -296,12 +296,12 @@ storage_warehouse_04 = {
 	parameters = {
 		house_head_can_ask_building_support = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -355,7 +355,7 @@ storage_warehouse_04 = {
 
 storage_granary_03 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = storage_01
 
@@ -380,7 +380,7 @@ storage_granary_03 = {
 		epidemic_resistance = 2
 		county_opinion_add = 10
 	}
-	
+
 	ai_value = {
 		value = 7
 		if = {
@@ -391,7 +391,7 @@ storage_granary_03 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -445,7 +445,7 @@ storage_granary_03 = {
 
 storage_granary_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = storage_granary_03
 
@@ -463,7 +463,7 @@ storage_granary_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_granary_decision = yes
 	}
@@ -473,7 +473,7 @@ storage_granary_04 = {
 		epidemic_resistance = 5
 		county_opinion_add = 10
 	}
-	
+
 	ai_value = {
 		value = 6
 		if = {
@@ -484,7 +484,7 @@ storage_granary_04 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {

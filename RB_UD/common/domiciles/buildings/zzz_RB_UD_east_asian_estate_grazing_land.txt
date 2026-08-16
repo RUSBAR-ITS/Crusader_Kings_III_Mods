@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @east_asian_manor_build_gold_cost_3 = -0.03
@@ -20,10 +20,18 @@
 @east_asian_manor_monthly_treasury_from_military_budget_mult_1 = 0.01
 @east_asian_manor_trait_track_travel_xp_gain_mult_2 = 0.1
 @east_asian_manor_travel_danger_1 = -2
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_480_days = 480
+@RB_UD_construction_time_540_days = 540
+@RB_UD_construction_time_600_days = 600
+@RB_UD_construction_time_660_days = 660
 
 east_asian_estate_grazing_land_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	internal_slots = 9
 
@@ -44,7 +52,7 @@ east_asian_estate_grazing_land_01 = {
 		light_cavalry_maintenance_mult = -0.05
 		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
 	}
-	
+
 	province_modifier = {
 		development_growth_factor = @east_asian_manor_development_growth_factor_1
 	}
@@ -75,7 +83,7 @@ east_asian_estate_grazing_land_01 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 9
 		if = {
@@ -96,7 +104,7 @@ east_asian_estate_grazing_land_01 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_finest_horse.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -106,7 +114,7 @@ east_asian_estate_grazing_land_01 = {
 }
 
 east_asian_estate_grazing_land_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_grazing_land_01
 	internal_slots = 9
@@ -128,7 +136,7 @@ east_asian_estate_grazing_land_02 = {
 		light_cavalry_maintenance_mult = -0.05
 		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
 	}
-	
+
 	province_modifier = {
 		development_growth_factor = @east_asian_manor_development_growth_factor_1
 	}
@@ -159,7 +167,7 @@ east_asian_estate_grazing_land_02 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 8
 		if = {
@@ -180,7 +188,7 @@ east_asian_estate_grazing_land_02 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_finest_horse.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -190,11 +198,11 @@ east_asian_estate_grazing_land_02 = {
 }
 
 east_asian_estate_grazing_land_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_480_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_grazing_land_02
 	internal_slots = 9
-	
+
 	can_construct = {
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_02 }
 	}
@@ -216,7 +224,7 @@ east_asian_estate_grazing_land_03 = {
 		light_cavalry_maintenance_mult = -0.05
 		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
 	}
-	
+
 	province_modifier = {
 		development_growth_factor = @east_asian_manor_development_growth_factor_1
 	}
@@ -247,7 +255,7 @@ east_asian_estate_grazing_land_03 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 7
 		if = {
@@ -268,7 +276,7 @@ east_asian_estate_grazing_land_03 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_finest_horse.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -279,7 +287,7 @@ east_asian_estate_grazing_land_03 = {
 
 east_asian_estate_grazing_land_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_grazing_land_01
 
@@ -335,12 +343,12 @@ east_asian_estate_grazing_land_04 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_horse_run.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -351,7 +359,7 @@ east_asian_estate_grazing_land_04 = {
 
 east_asian_estate_grazing_land_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_grazing_land_04
 
@@ -406,12 +414,12 @@ east_asian_estate_grazing_land_05 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_horse_run.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -422,7 +430,7 @@ east_asian_estate_grazing_land_05 = {
 
 east_asian_estate_grazing_land_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_grazing_land_05
 
@@ -477,12 +485,12 @@ east_asian_estate_grazing_land_06 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_horse_run.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -493,11 +501,12 @@ east_asian_estate_grazing_land_06 = {
 
 east_asian_estate_horse_pasture_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_grazing_land_01
 
 	can_construct = {
+		can_recruit_archer_cavalry_trigger = yes
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_grazing_land_03 }
 	}
@@ -543,12 +552,12 @@ east_asian_estate_horse_pasture_04 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 10
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_life_in_the_saddle.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -559,11 +568,12 @@ east_asian_estate_horse_pasture_04 = {
 
 east_asian_estate_horse_pasture_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_horse_pasture_04
 
 	can_construct = {
+		can_recruit_archer_cavalry_trigger = yes
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
 	}
 
@@ -608,12 +618,12 @@ east_asian_estate_horse_pasture_05 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_life_in_the_saddle.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -624,11 +634,12 @@ east_asian_estate_horse_pasture_05 = {
 
 east_asian_estate_horse_pasture_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_horse_pasture_05
 
 	can_construct = {
+		can_recruit_archer_cavalry_trigger = yes
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
 	}
 
@@ -673,12 +684,12 @@ east_asian_estate_horse_pasture_06 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_life_in_the_saddle.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -689,11 +700,12 @@ east_asian_estate_horse_pasture_06 = {
 
 east_asian_estate_camel_pasture_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_grazing_land_01
-	
+
 	can_construct = {
+		culture ?= { has_innovation = innovation_war_camels }
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_grazing_land_03 }
 	}
@@ -739,12 +751,12 @@ east_asian_estate_camel_pasture_04 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 10
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_camel_run.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -755,11 +767,12 @@ east_asian_estate_camel_pasture_04 = {
 
 east_asian_estate_camel_pasture_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_camel_pasture_04
-	
+
 	can_construct = {
+		culture ?= { has_innovation = innovation_war_camels }
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
 	}
 
@@ -804,12 +817,12 @@ east_asian_estate_camel_pasture_05 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_camel_run.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -820,11 +833,12 @@ east_asian_estate_camel_pasture_05 = {
 
 east_asian_estate_camel_pasture_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_camel_pasture_05
-	
+
 	can_construct = {
+		culture ?= { has_innovation = innovation_war_camels }
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
 	}
 
@@ -869,12 +883,12 @@ east_asian_estate_camel_pasture_06 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_camel_run.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -885,11 +899,12 @@ east_asian_estate_camel_pasture_06 = {
 
 east_asian_estate_elephant_pasture_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_grazing_land_01
-	
+
 	can_construct = {
+		culture ?= { has_innovation = innovation_elephantry }
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_03 }
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_grazing_land_03 }
 	}
@@ -911,12 +926,12 @@ east_asian_estate_elephant_pasture_04 = {
 		elephant_cavalry_maintenance_mult = -0.05
 		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
 	}
-	
+
 	ai_value = {
 		value = 12
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_elephantry_reserves.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -927,11 +942,12 @@ east_asian_estate_elephant_pasture_04 = {
 
 east_asian_estate_elephant_pasture_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_elephant_pasture_04
-	
+
 	can_construct = {
+		culture ?= { has_innovation = innovation_elephantry }
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_04 }
 	}
 
@@ -952,12 +968,12 @@ east_asian_estate_elephant_pasture_05 = {
 		elephant_cavalry_maintenance_mult = -0.05
 		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
 	}
-	
+
 	ai_value = {
 		value = 10
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_elephantry_reserves.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -968,11 +984,12 @@ east_asian_estate_elephant_pasture_05 = {
 
 east_asian_estate_elephant_pasture_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_elephant_pasture_05
-	
+
 	can_construct = {
+		culture ?= { has_innovation = innovation_elephantry }
 		domicile ?= { has_domicile_building_or_higher = east_asian_estate_main_05 }
 	}
 
@@ -993,12 +1010,12 @@ east_asian_estate_elephant_pasture_06 = {
 		elephant_cavalry_maintenance_mult = -0.1
 		monthly_treasury_from_military_budget_mult = @east_asian_manor_monthly_treasury_from_military_budget_mult_1
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_elephantry_reserves.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_horse_pastures_japanese.dds"
@@ -1008,7 +1025,7 @@ east_asian_estate_elephant_pasture_06 = {
 }
 
 east_asian_estate_seasonal_shelters_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_grazing_land_01
@@ -1048,13 +1065,13 @@ east_asian_estate_seasonal_shelters_01 = {
 }
 
 east_asian_estate_seasonal_shelters_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_seasonal_shelters_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1083,7 +1100,7 @@ east_asian_estate_seasonal_shelters_02 = {
 }
 
 east_asian_estate_seasonal_shelters_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_seasonal_shelters_02
@@ -1118,7 +1135,7 @@ east_asian_estate_seasonal_shelters_03 = {
 }
 
 east_asian_estate_seasonal_shelters_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_seasonal_shelters_03
@@ -1153,13 +1170,13 @@ east_asian_estate_seasonal_shelters_04 = {
 }
 
 east_asian_estate_veterinary_shed_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_grazing_land_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1189,13 +1206,13 @@ east_asian_estate_veterinary_shed_01 = {
 }
 
 east_asian_estate_veterinary_shed_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_veterinary_shed_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1225,7 +1242,7 @@ east_asian_estate_veterinary_shed_02 = {
 }
 
 east_asian_estate_veterinary_shed_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_veterinary_shed_02
@@ -1261,7 +1278,7 @@ east_asian_estate_veterinary_shed_03 = {
 }
 
 east_asian_estate_veterinary_shed_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_veterinary_shed_03
@@ -1297,13 +1314,13 @@ east_asian_estate_veterinary_shed_04 = {
 }
 
 east_asian_estate_watering_ditches_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_grazing_land_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1332,13 +1349,13 @@ east_asian_estate_watering_ditches_01 = {
 }
 
 east_asian_estate_watering_ditches_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_watering_ditches_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1367,7 +1384,7 @@ east_asian_estate_watering_ditches_02 = {
 }
 
 east_asian_estate_watering_ditches_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_watering_ditches_02
@@ -1402,7 +1419,7 @@ east_asian_estate_watering_ditches_03 = {
 }
 
 east_asian_estate_watering_ditches_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_watering_ditches_03
@@ -1437,7 +1454,7 @@ east_asian_estate_watering_ditches_04 = {
 }
 
 east_asian_estate_salt_lick_terraces_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_grazing_land_01
@@ -1485,13 +1502,13 @@ east_asian_estate_salt_lick_terraces_01 = {
 }
 
 east_asian_estate_salt_lick_terraces_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_salt_lick_terraces_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1521,7 +1538,7 @@ east_asian_estate_salt_lick_terraces_02 = {
 }
 
 east_asian_estate_salt_lick_terraces_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_salt_lick_terraces_02
@@ -1557,7 +1574,7 @@ east_asian_estate_salt_lick_terraces_03 = {
 }
 
 east_asian_estate_salt_lick_terraces_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_salt_lick_terraces_03
@@ -1593,7 +1610,7 @@ east_asian_estate_salt_lick_terraces_04 = {
 }
 
 east_asian_estate_rotation_paddocks_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_grazing_land_01
@@ -1639,13 +1656,13 @@ east_asian_estate_rotation_paddocks_01 = {
 }
 
 east_asian_estate_rotation_paddocks_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_rotation_paddocks_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1680,7 +1697,7 @@ east_asian_estate_rotation_paddocks_02 = {
 }
 
 east_asian_estate_rotation_paddocks_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_rotation_paddocks_02
@@ -1721,7 +1738,7 @@ east_asian_estate_rotation_paddocks_03 = {
 }
 
 east_asian_estate_rotation_paddocks_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_rotation_paddocks_03

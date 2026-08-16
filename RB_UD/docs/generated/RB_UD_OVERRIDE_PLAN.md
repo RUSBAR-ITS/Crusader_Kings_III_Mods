@@ -1,6 +1,6 @@
 ﻿# RB_UD — план переопределений ванильных домицилей
 
-Версия CK3: **1.19.0.6**. Сигнатура плана: `5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309`.
+Версия CK3: **1.19.0.6**. Сигнатура плана: `B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C`.
 
 Документ определяет точные объекты и преобразования, которые затем воспроизводимо применяет генератор `tools/Generate-RBUDOverrides.ps1`.
 
@@ -9,9 +9,9 @@
 - Mirror all vanilla domicile-building objects; never use replace_path.
 - Emit one generated file per vanilla root family and exactly one copy of every vanilla building.
 - Vanilla objects retain vanilla IDs; new helper objects use the RB_UD_ prefix.
-- Normalize construction time through a file-local RB_UD_ @ constant because this database field rejects global script values.
-- Preserve vanilla costs, effects, upgrade order, and unrelated prerequisites.
-- Remove only mutual-exclusivity access gates and camp-purpose cleanup targeted by this plan.
+- Preserve vanilla construction time through generated file-local RB_UD_ @ constants because this database field rejects global script values.
+- Preserve vanilla costs, effects, upgrade order, culture, innovation, territory, terrain and all other independent prerequisites.
+- Remove branch mutual exclusivity structurally; remove only camp-purpose gates and their targeted purpose-change cleanup.
 - Grant complete slot capacity from the first main or anchor level; base_external_slots is a pre-main fallback and is not subtracted from that target.
 - No mass-build action and no construction-speed modifier are part of this mod.
 
@@ -164,28 +164,28 @@
 
 | Тип | Линия | Решение | Затронутые здания | Зависимости |
 |---|---|---|---|---|
-| camp | proving_grounds_camel_run | targeted_remove_specialization_access_gate | proving_grounds_camel_run | Innovations: innovation_war_camels |
-| camp | proving_grounds_elephantry_reserve | targeted_remove_specialization_access_gate | proving_grounds_elephantry_reserve | Regions: world_innovation_elephants; CharacterFlags: recently_ate_elephants |
-| estate | grazing_land_01 | targeted_remove_specialization_access_gate | camel_pasture_04, camel_pasture_05, camel_pasture_06, elephant_pasture_04, elephant_pasture_05, elephant_pasture_06, grazing_land_04, grazing_land_05, grazing_land_06, horse_pasture_04, horse_pasture_05, horse_pasture_06 | Innovations: innovation_elephantry, innovation_war_camels; RequiredDomicileBuildings: estate_main_03, estate_main_04, estate_main_05; ScriptedTriggers: can_recruit_archer_cavalry_trigger |
-| estate | rice_field_01 | targeted_remove_specialization_access_gate | rice_field_01, rice_field_03, rice_field_04, rice_field_05, rice_field_06 | Innovations: innovation_champa_rice; RequiredDomicileBuildings: estate_main_02, estate_main_03, estate_main_04, estate_main_05 |
-| estate | silk_01 | targeted_remove_specialization_access_gate | silk_01, silk_02, silk_03, silk_04, silk_05, silk_06 | CulturalParameters: unlocks_silk_buildings_parameter; RequiredDomicileBuildings: estate_main_02, estate_main_03, estate_main_04, estate_main_05 |
-| estate | stable_01 | targeted_remove_specialization_access_gate | stable_chariot_04, stable_chariot_05, stable_chariot_06, stable_grand_04, stable_grand_05, stable_grand_06, stable_kennel_04, stable_kennel_05, stable_kennel_06 | CulturalParameters: hosts_chariot_races; RequiredDomicileBuildings: estate_main_03, estate_main_04, estate_main_05 |
-| estate | tea_01 | targeted_remove_specialization_access_gate | tea_01, tea_03, tea_04, tea_05, tea_06 | Innovations: innovation_champa_rice; RequiredDomicileBuildings: estate_main_02, estate_main_03, estate_main_04, estate_main_05 |
+| camp | proving_grounds_camel_run | preserve_entire_vanilla_condition | proving_grounds_camel_run | Innovations: innovation_war_camels |
+| camp | proving_grounds_elephantry_reserve | preserve_entire_vanilla_condition | proving_grounds_elephantry_reserve | Regions: world_innovation_elephants; CharacterFlags: recently_ate_elephants |
+| estate | grazing_land_01 | preserve_entire_vanilla_condition | camel_pasture_04, camel_pasture_05, camel_pasture_06, elephant_pasture_04, elephant_pasture_05, elephant_pasture_06, grazing_land_04, grazing_land_05, grazing_land_06, horse_pasture_04, horse_pasture_05, horse_pasture_06 | Innovations: innovation_elephantry, innovation_war_camels; RequiredDomicileBuildings: estate_main_03, estate_main_04, estate_main_05; ScriptedTriggers: can_recruit_archer_cavalry_trigger |
+| estate | rice_field_01 | preserve_entire_vanilla_condition | rice_field_01, rice_field_03, rice_field_04, rice_field_05, rice_field_06 | Innovations: innovation_champa_rice; RequiredDomicileBuildings: estate_main_02, estate_main_03, estate_main_04, estate_main_05 |
+| estate | silk_01 | preserve_entire_vanilla_condition | silk_01, silk_02, silk_03, silk_04, silk_05, silk_06 | CulturalParameters: unlocks_silk_buildings_parameter; RequiredDomicileBuildings: estate_main_02, estate_main_03, estate_main_04, estate_main_05 |
+| estate | stable_01 | preserve_entire_vanilla_condition | stable_chariot_04, stable_chariot_05, stable_chariot_06, stable_grand_04, stable_grand_05, stable_grand_06, stable_kennel_04, stable_kennel_05, stable_kennel_06 | CulturalParameters: hosts_chariot_races; RequiredDomicileBuildings: estate_main_03, estate_main_04, estate_main_05 |
+| estate | tea_01 | preserve_entire_vanilla_condition | tea_01, tea_03, tea_04, tea_05, tea_06 | Innovations: innovation_champa_rice; RequiredDomicileBuildings: estate_main_02, estate_main_03, estate_main_04, estate_main_05 |
 | estate | estate_main_01 | preserve_entire_vanilla_condition | estate_main_02, estate_main_03, estate_main_04, estate_main_05 | Innovations: innovation_city_planning, innovation_cranes, innovation_development_03, innovation_manorialism |
-| yurt | camel_yurt_01 | targeted_remove_specialization_access_gate | camel_yurt_01, camel_yurt_02, camel_yurt_03, camel_yurt_04, camel_yurt_05, camel_yurt_06 | Terrains: desert |
-| yurt | forbearing_yurt_01 | targeted_remove_specialization_access_gate | forbearing_yurt_01, forbearing_yurt_02, forbearing_yurt_03, forbearing_yurt_04, forbearing_yurt_05, forbearing_yurt_06 | CulturalParameters: forbearing_internal_yurt_unlock; Traits: patient |
-| yurt | goat_yurt_01 | targeted_remove_specialization_access_gate | goat_yurt_01, goat_yurt_02, goat_yurt_03, goat_yurt_04, goat_yurt_05, goat_yurt_06 | Terrains: hills, mountains |
-| yurt | horse_breeder_yurt_01 | targeted_remove_specialization_access_gate | horse_breeder_yurt_01, horse_breeder_yurt_02, horse_breeder_yurt_03, horse_breeder_yurt_04, horse_breeder_yurt_05, horse_breeder_yurt_06 | CulturalParameters: horse_breeder_internal_yurt_unlock |
-| yurt | language_yurt_01 | targeted_remove_specialization_access_gate | language_yurt_01, language_yurt_02, language_yurt_03, language_yurt_04, language_yurt_05, language_yurt_06 |  |
-| yurt | metalworkers_cultrad_yurt_01 | targeted_remove_specialization_access_gate | metalworkers_cultrad_yurt_01, metalworkers_cultrad_yurt_02, metalworkers_cultrad_yurt_03, metalworkers_cultrad_yurt_04, metalworkers_cultrad_yurt_05, metalworkers_cultrad_yurt_06 | CulturalParameters: metalworkers_internal_yurt_unlock |
-| yurt | reindeer_yurt_01 | targeted_remove_specialization_access_gate | reindeer_yurt_01, reindeer_yurt_02, reindeer_yurt_03, reindeer_yurt_04, reindeer_yurt_05, reindeer_yurt_06 | Terrains: forest, taiga |
-| yurt | sheep_yurt_01 | targeted_remove_specialization_access_gate | sheep_yurt_01, sheep_yurt_02, sheep_yurt_03, sheep_yurt_04, sheep_yurt_05, sheep_yurt_06 | Terrains: plains, steppe |
-| yurt | stalwart_defenders_yurt_01 | targeted_remove_specialization_access_gate | stalwart_defenders_yurt_01, stalwart_defenders_yurt_02, stalwart_defenders_yurt_03, stalwart_defenders_yurt_04, stalwart_defenders_yurt_05, stalwart_defenders_yurt_06 | CulturalParameters: stalwart_defenders_internal_yurt_unlock |
-| yurt | zealous_people_yurt_01 | targeted_remove_specialization_access_gate | zealous_people_yurt_01, zealous_people_yurt_02, zealous_people_yurt_03, zealous_people_yurt_04, zealous_people_yurt_05, zealous_people_yurt_06 | CulturalParameters: zealous_people_internal_yurt_unlock |
-| east_asian_estate | east_asian_estate_grazing_land_01 | targeted_remove_specialization_access_gate | east_asian_estate_camel_pasture_04, east_asian_estate_camel_pasture_05, east_asian_estate_camel_pasture_06, east_asian_estate_elephant_pasture_04, east_asian_estate_elephant_pasture_05, east_asian_estate_elephant_pasture_06, east_asian_estate_grazing_land_03, east_asian_estate_grazing_land_04, east_asian_estate_grazing_land_05, east_asian_estate_grazing_land_06, east_asian_estate_horse_pasture_04, east_asian_estate_horse_pasture_05, east_asian_estate_horse_pasture_06 | Innovations: innovation_elephantry, innovation_war_camels; RequiredDomicileBuildings: east_asian_estate_main_02, east_asian_estate_main_03, east_asian_estate_main_04, east_asian_estate_main_05; ScriptedTriggers: can_recruit_archer_cavalry_trigger |
-| east_asian_estate | east_asian_estate_silk_01 | targeted_remove_specialization_access_gate | east_asian_estate_silk_01, east_asian_estate_silk_02, east_asian_estate_silk_03, east_asian_estate_silk_04, east_asian_estate_silk_05, east_asian_estate_silk_06 | CulturalParameters: unlocks_silk_buildings_parameter; RequiredDomicileBuildings: east_asian_estate_main_02, east_asian_estate_main_03, east_asian_estate_main_04, east_asian_estate_main_05 |
-| east_asian_estate | east_asian_estate_gunpowder_storage_01 | targeted_remove_specialization_access_gate | east_asian_estate_gunpowder_storage_01, east_asian_estate_gunpowder_storage_03, east_asian_estate_gunpowder_storage_04 | Innovations: innovation_fire_medicine; RequiredDomicileBuildings: east_asian_estate_main_02, east_asian_estate_main_03 |
-| east_asian_estate | east_asian_estate_lacquer_studio_01 | targeted_remove_specialization_access_gate | east_asian_estate_lacquer_studio_01, east_asian_estate_lacquer_studio_03, east_asian_estate_lacquer_studio_04 | Innovations: innovation_lacquered_armor; RequiredDomicileBuildings: east_asian_estate_main_02, east_asian_estate_main_03 |
+| yurt | camel_yurt_01 | preserve_entire_vanilla_condition | camel_yurt_01, camel_yurt_02, camel_yurt_03, camel_yurt_04, camel_yurt_05, camel_yurt_06 | Terrains: desert |
+| yurt | forbearing_yurt_01 | preserve_entire_vanilla_condition | forbearing_yurt_01, forbearing_yurt_02, forbearing_yurt_03, forbearing_yurt_04, forbearing_yurt_05, forbearing_yurt_06 | CulturalParameters: forbearing_internal_yurt_unlock; Traits: patient |
+| yurt | goat_yurt_01 | preserve_entire_vanilla_condition | goat_yurt_01, goat_yurt_02, goat_yurt_03, goat_yurt_04, goat_yurt_05, goat_yurt_06 | Terrains: hills, mountains |
+| yurt | horse_breeder_yurt_01 | preserve_entire_vanilla_condition | horse_breeder_yurt_01, horse_breeder_yurt_02, horse_breeder_yurt_03, horse_breeder_yurt_04, horse_breeder_yurt_05, horse_breeder_yurt_06 | CulturalParameters: horse_breeder_internal_yurt_unlock |
+| yurt | language_yurt_01 | preserve_entire_vanilla_condition | language_yurt_01, language_yurt_02, language_yurt_03, language_yurt_04, language_yurt_05, language_yurt_06 |  |
+| yurt | metalworkers_cultrad_yurt_01 | preserve_entire_vanilla_condition | metalworkers_cultrad_yurt_01, metalworkers_cultrad_yurt_02, metalworkers_cultrad_yurt_03, metalworkers_cultrad_yurt_04, metalworkers_cultrad_yurt_05, metalworkers_cultrad_yurt_06 | CulturalParameters: metalworkers_internal_yurt_unlock |
+| yurt | reindeer_yurt_01 | preserve_entire_vanilla_condition | reindeer_yurt_01, reindeer_yurt_02, reindeer_yurt_03, reindeer_yurt_04, reindeer_yurt_05, reindeer_yurt_06 | Terrains: forest, taiga |
+| yurt | sheep_yurt_01 | preserve_entire_vanilla_condition | sheep_yurt_01, sheep_yurt_02, sheep_yurt_03, sheep_yurt_04, sheep_yurt_05, sheep_yurt_06 | Terrains: plains, steppe |
+| yurt | stalwart_defenders_yurt_01 | preserve_entire_vanilla_condition | stalwart_defenders_yurt_01, stalwart_defenders_yurt_02, stalwart_defenders_yurt_03, stalwart_defenders_yurt_04, stalwart_defenders_yurt_05, stalwart_defenders_yurt_06 | CulturalParameters: stalwart_defenders_internal_yurt_unlock |
+| yurt | zealous_people_yurt_01 | preserve_entire_vanilla_condition | zealous_people_yurt_01, zealous_people_yurt_02, zealous_people_yurt_03, zealous_people_yurt_04, zealous_people_yurt_05, zealous_people_yurt_06 | CulturalParameters: zealous_people_internal_yurt_unlock |
+| east_asian_estate | east_asian_estate_grazing_land_01 | preserve_entire_vanilla_condition | east_asian_estate_camel_pasture_04, east_asian_estate_camel_pasture_05, east_asian_estate_camel_pasture_06, east_asian_estate_elephant_pasture_04, east_asian_estate_elephant_pasture_05, east_asian_estate_elephant_pasture_06, east_asian_estate_grazing_land_03, east_asian_estate_grazing_land_04, east_asian_estate_grazing_land_05, east_asian_estate_grazing_land_06, east_asian_estate_horse_pasture_04, east_asian_estate_horse_pasture_05, east_asian_estate_horse_pasture_06 | Innovations: innovation_elephantry, innovation_war_camels; RequiredDomicileBuildings: east_asian_estate_main_02, east_asian_estate_main_03, east_asian_estate_main_04, east_asian_estate_main_05; ScriptedTriggers: can_recruit_archer_cavalry_trigger |
+| east_asian_estate | east_asian_estate_silk_01 | preserve_entire_vanilla_condition | east_asian_estate_silk_01, east_asian_estate_silk_02, east_asian_estate_silk_03, east_asian_estate_silk_04, east_asian_estate_silk_05, east_asian_estate_silk_06 | CulturalParameters: unlocks_silk_buildings_parameter; RequiredDomicileBuildings: east_asian_estate_main_02, east_asian_estate_main_03, east_asian_estate_main_04, east_asian_estate_main_05 |
+| east_asian_estate | east_asian_estate_gunpowder_storage_01 | preserve_entire_vanilla_condition | east_asian_estate_gunpowder_storage_01, east_asian_estate_gunpowder_storage_03, east_asian_estate_gunpowder_storage_04 | Innovations: innovation_fire_medicine; RequiredDomicileBuildings: east_asian_estate_main_02, east_asian_estate_main_03 |
+| east_asian_estate | east_asian_estate_lacquer_studio_01 | preserve_entire_vanilla_condition | east_asian_estate_lacquer_studio_01, east_asian_estate_lacquer_studio_03, east_asian_estate_lacquer_studio_04 | Innovations: innovation_lacquered_armor; RequiredDomicileBuildings: east_asian_estate_main_02, east_asian_estate_main_03 |
 | east_asian_estate | east_asian_estate_main_01 | preserve_entire_vanilla_condition | east_asian_estate_main_02, east_asian_estate_main_03, east_asian_estate_main_04, east_asian_estate_main_05 | Innovations: innovation_city_planning, innovation_cranes, innovation_development_03, innovation_manorialism |
 | japanese_manor | japanese_manor_main_01 | preserve_entire_vanilla_condition | japanese_manor_main_02, japanese_manor_main_03, japanese_manor_main_04, japanese_manor_main_05, japanese_manor_main_06 | Innovations: innovation_city_planning, innovation_cranes, innovation_development_03, innovation_manorialism |
 
@@ -209,9 +209,9 @@
 - Внешние развилки: 11/11.
 - Внутренние развилки: 1/1.
 - Флаги тем лагеря: 23/23.
-- Ручные условные линии: 24/24; переписать 21, сохранить 3.
+- Ручные условные линии: 24/24; переписать 0, сохранить 24.
 - Полностью зеркалируемых ванильных зданий: 1620.
-- Из них структурно изменяемых зданий: 478.
+- Из них структурно изменяемых зданий: 394.
 - Неизвестные условия, циклы и потерянные родители: 0.
 
 ## Что остаётся перед генерацией кода

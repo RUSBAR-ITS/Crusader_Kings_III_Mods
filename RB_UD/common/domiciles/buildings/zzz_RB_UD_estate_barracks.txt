@@ -2,13 +2,13 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_730_days = 730
 
 barracks_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 
 	cost = {
@@ -34,12 +34,12 @@ barracks_01 = {
 		house_head_can_ask_for_maa = yes
 		reduce_success_of_raid_estate = yes
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -92,7 +92,7 @@ barracks_01 = {
 }
 
 barracks_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = barracks_01
 
@@ -123,12 +123,12 @@ barracks_02 = {
 		house_head_can_ask_for_maa = yes
 		reduce_success_of_raid_estate = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -181,7 +181,7 @@ barracks_02 = {
 }
 
 barracks_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = barracks_02
 
@@ -216,12 +216,12 @@ barracks_03 = {
 		house_head_can_ask_for_maa = yes
 		reduce_success_of_raid_estate = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -274,7 +274,7 @@ barracks_03 = {
 }
 
 barracks_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = barracks_03
 
@@ -309,12 +309,12 @@ barracks_04 = {
 		house_head_can_ask_for_maa = yes
 		reduce_success_of_raid_estate = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -367,7 +367,7 @@ barracks_04 = {
 }
 
 barracks_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = barracks_04
 
@@ -402,12 +402,12 @@ barracks_05 = {
 		house_head_can_ask_for_maa = yes
 		reduce_success_of_raid_estate = yes
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -460,7 +460,7 @@ barracks_05 = {
 }
 
 barracks_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = barracks_05
 
@@ -495,12 +495,12 @@ barracks_06 = {
 		house_head_can_ask_for_maa = yes
 		reduce_success_of_raid_estate = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {

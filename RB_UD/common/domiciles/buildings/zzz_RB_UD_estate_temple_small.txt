@@ -2,14 +2,14 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_730_days = 730
 
 temple_small_01 = {
 	internal_slots = 3
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 
 	can_construct = {
@@ -35,12 +35,12 @@ temple_small_01 = {
 	parameters = {
 		influence_gain_from_hof_support_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -143,7 +143,7 @@ temple_small_01 = {
 
 temple_small_02 = {
 	internal_slots = 3
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = temple_small_01
 
@@ -164,12 +164,12 @@ temple_small_02 = {
 	parameters = {
 		influence_gain_from_hof_support_2 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -272,7 +272,7 @@ temple_small_02 = {
 
 temple_small_03 = {
 	internal_slots = 3
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = temple_small_02
 
@@ -297,12 +297,12 @@ temple_small_03 = {
 	parameters = {
 		influence_gain_from_hof_support_3 = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -405,7 +405,7 @@ temple_small_03 = {
 
 temple_crypt_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = temple_small_01
 
@@ -424,7 +424,7 @@ temple_crypt_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_inherit_influence_small_bonus = yes
 		influence_gain_from_hof_support_3 = yes
@@ -433,7 +433,7 @@ temple_crypt_04 = {
 	character_modifier = {
 		monthly_dynasty_prestige_mult = 0.03
 	}
-	
+
 	ai_value = {
 		value = 6
 		if = {
@@ -451,7 +451,7 @@ temple_crypt_04 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -554,7 +554,7 @@ temple_crypt_04 = {
 
 temple_crypt_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = temple_crypt_04
 
@@ -572,7 +572,7 @@ temple_crypt_05 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_inherit_influence_medium_bonus = yes
 		influence_gain_from_hof_support_3 = yes
@@ -581,7 +581,7 @@ temple_crypt_05 = {
 	character_modifier = {
 		monthly_dynasty_prestige_mult = 0.03
 	}
-	
+
 	ai_value = {
 		value = 5
 		if = {
@@ -599,7 +599,7 @@ temple_crypt_05 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -702,7 +702,7 @@ temple_crypt_05 = {
 
 temple_crypt_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = temple_crypt_05
 
@@ -720,7 +720,7 @@ temple_crypt_06 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_inherit_influence_large_bonus = yes
 		influence_gain_from_hof_support_3 = yes
@@ -730,7 +730,7 @@ temple_crypt_06 = {
 	character_modifier = {
 		monthly_dynasty_prestige_mult = 0.04
 	}
-	
+
 	ai_value = {
 		value = 4
 		if = {
@@ -748,7 +748,7 @@ temple_crypt_06 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -851,7 +851,7 @@ temple_crypt_06 = {
 
 temple_large_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = temple_small_01
 
@@ -880,12 +880,12 @@ temple_large_04 = {
 		influence_gain_from_hof_support_4 = yes
 		reduce_state_faith_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -988,7 +988,7 @@ temple_large_04 = {
 
 temple_large_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = temple_large_04
 
@@ -1016,12 +1016,12 @@ temple_large_05 = {
 		influence_gain_from_hof_support_5 = yes
 		reduce_state_faith_cost = yes
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1124,7 +1124,7 @@ temple_large_05 = {
 
 temple_large_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = temple_large_05
 
@@ -1154,12 +1154,12 @@ temple_large_06 = {
 		reduce_state_faith_cost = yes
 		more_successful_heresies = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1262,16 +1262,16 @@ temple_large_06 = {
 
 temple_monastery_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = temple_small_01
-	
+
 	can_construct = {
 		faith = { has_doctrine = tenet_monasticism }
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
 		domicile ?= { has_domicile_building_or_higher = temple_small_03 }
 	}
-	
+
 	cost = {
 		gold = {
 			value = estate_external_building_normal_cost_tier_4_value
@@ -1294,12 +1294,12 @@ temple_monastery_04 = {
 	parameters = {
 		estate_unlocks_commission_icon = yes
 	}
-	
+
 	ai_value = {
 		value = 10
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1402,15 +1402,15 @@ temple_monastery_04 = {
 
 temple_monastery_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = temple_monastery_04
-	
+
 	can_construct = {
 		faith = { has_doctrine = tenet_monasticism }
 		domicile ?= { has_domicile_building_or_higher = estate_main_04 }
 	}
-	
+
 	cost = {
 		gold = {
 			value = estate_external_building_normal_cost_tier_5_value
@@ -1433,12 +1433,12 @@ temple_monastery_05 = {
 	parameters = {
 		estate_unlocks_commission_icon = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -1541,15 +1541,15 @@ temple_monastery_05 = {
 
 temple_monastery_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = temple_monastery_05
-	
+
 	can_construct = {
 		faith = { has_doctrine = tenet_monasticism }
 		domicile ?= { has_domicile_building_or_higher = estate_main_05 }
 	}
-	
+
 	cost = {
 		gold = {
 			value = estate_external_building_normal_cost_tier_6_value
@@ -1572,12 +1572,12 @@ temple_monastery_06 = {
 	parameters = {
 		estate_unlocks_commission_icon = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {

@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @japanese_manor_advantage_add_1 = 1
@@ -16,10 +16,20 @@
 @japanese_manor_owned_scheme_phase_duration_add = -5
 @japanese_manor_owned_scheme_success_growth_add = 2
 @japanese_manor_prestige_gain_per_dread_mult_1 = 0.05
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_120_days = 120
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_200_days = 200
+@RB_UD_construction_time_270_days = 270
+@RB_UD_construction_time_30_days = 30
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_320_days = 320
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_60_days = 60
+@RB_UD_construction_time_90_days = 90
 
 japanese_watch_house_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 
@@ -52,7 +62,7 @@ japanese_watch_house_01 = {
 		reduce_success_of_raid_estate = yes
 		raids_less_likely_to_make_prisoners_1_japanese = yes
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
@@ -67,7 +77,7 @@ japanese_watch_house_01 = {
 }
 
 japanese_watch_house_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_watch_house_01
@@ -116,7 +126,7 @@ japanese_watch_house_02 = {
 }
 
 japanese_watch_house_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_270_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_watch_house_02
@@ -145,12 +155,12 @@ japanese_watch_house_03 = {
 		defender_holding_advantage = @japanese_manor_advantage_add_1
 		hostile_raid_time = @japanese_manor_hostile_raid_time_1
 	}
-	
+
 	parameters = {
 		reduce_success_of_raid_estate = yes
 		raids_less_likely_to_make_prisoners_2_japanese = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -165,7 +175,7 @@ japanese_watch_house_03 = {
 }
 
 japanese_watch_house_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_watch_house_03
@@ -195,7 +205,7 @@ japanese_watch_house_04 = {
 		hostile_raid_time = @japanese_manor_hostile_raid_time_1
 		intrigue_per_prestige_level = 1
 	}
-	
+
 	parameters = {
 		reduce_success_of_raid_estate = yes
 		raids_less_likely_to_make_prisoners_2_japanese = yes
@@ -215,7 +225,7 @@ japanese_watch_house_04 = {
 }
 
 japanese_watch_house_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_watch_house_04
@@ -244,12 +254,12 @@ japanese_watch_house_05 = {
 		defender_holding_advantage = @japanese_manor_advantage_add_1
 		hostile_raid_time = @japanese_manor_hostile_raid_time_1
 	}
-	
+
 	parameters = {
 		reduce_success_of_raid_estate = yes
 		raids_less_likely_to_make_prisoners_3_japanese = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -264,7 +274,7 @@ japanese_watch_house_05 = {
 }
 
 japanese_watch_house_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_watch_house_05
@@ -293,12 +303,12 @@ japanese_watch_house_06 = {
 		defender_holding_advantage = @japanese_manor_advantage_add_1
 		hostile_raid_time = @japanese_manor_hostile_raid_time_1
 	}
-	
+
 	parameters = {
 		reduce_success_of_raid_estate = yes
 		raids_less_likely_to_make_prisoners_3_japanese = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -313,7 +323,7 @@ japanese_watch_house_06 = {
 }
 
 japanese_spy_network_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_watch_house_01
@@ -332,7 +342,7 @@ japanese_spy_network_01 = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_juicy_rumors.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -341,7 +351,7 @@ japanese_spy_network_01 = {
 }
 
 japanese_spy_network_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_spy_network_01
@@ -359,12 +369,12 @@ japanese_spy_network_02 = {
 		owned_hostile_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
 		monthly_county_control_growth_add = @japanese_manor_county_control_growth_add_1
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_juicy_rumors.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -373,7 +383,7 @@ japanese_spy_network_02 = {
 }
 
 japanese_spy_network_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_spy_network_02
@@ -391,12 +401,12 @@ japanese_spy_network_03 = {
 		owned_hostile_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
 		monthly_county_control_growth_add = @japanese_manor_county_control_growth_add_1
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_juicy_rumors.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -405,7 +415,7 @@ japanese_spy_network_03 = {
 }
 
 japanese_spy_network_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_spy_network_03
@@ -423,12 +433,12 @@ japanese_spy_network_04 = {
 		owned_hostile_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
 		monthly_county_control_growth_add = @japanese_manor_county_control_growth_add_1
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_juicy_rumors.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -437,7 +447,7 @@ japanese_spy_network_04 = {
 }
 
 japanese_spy_network_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_spy_network_04
@@ -455,12 +465,12 @@ japanese_spy_network_05 = {
 		owned_hostile_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
 		monthly_county_control_growth_add = @japanese_manor_county_control_growth_add_1
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_juicy_rumors.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -469,7 +479,7 @@ japanese_spy_network_05 = {
 }
 
 japanese_spy_network_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_spy_network_05
@@ -487,12 +497,12 @@ japanese_spy_network_06 = {
 		owned_hostile_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
 		monthly_county_control_growth_add = @japanese_manor_county_control_growth_add_1
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_juicy_rumors.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -501,7 +511,7 @@ japanese_spy_network_06 = {
 }
 
 japanese_infiltrators_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_watch_house_01
@@ -520,7 +530,7 @@ japanese_infiltrators_01 = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_subdued_gear.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -529,7 +539,7 @@ japanese_infiltrators_01 = {
 }
 
 japanese_infiltrators_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_infiltrators_01
@@ -550,12 +560,12 @@ japanese_infiltrators_02 = {
 	parameters = {
 		estate_unlock_hire_agents_decision = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_subdued_gear.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -564,7 +574,7 @@ japanese_infiltrators_02 = {
 }
 
 japanese_infiltrators_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_infiltrators_02
@@ -585,12 +595,12 @@ japanese_infiltrators_03 = {
 	parameters = {
 		estate_unlock_hire_agents_decision = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_subdued_gear.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -599,7 +609,7 @@ japanese_infiltrators_03 = {
 }
 
 japanese_infiltrators_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_infiltrators_03
@@ -621,12 +631,12 @@ japanese_infiltrators_04 = {
 	parameters = {
 		estate_unlock_hire_agents_decision = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_subdued_gear.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -635,7 +645,7 @@ japanese_infiltrators_04 = {
 }
 
 japanese_infiltrators_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_infiltrators_04
@@ -655,12 +665,12 @@ japanese_infiltrators_05 = {
 	parameters = {
 		estate_unlock_hire_agents_decision = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_subdued_gear.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -669,7 +679,7 @@ japanese_infiltrators_05 = {
 }
 
 japanese_infiltrators_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_infiltrators_05
@@ -690,12 +700,12 @@ japanese_infiltrators_06 = {
 	parameters = {
 		estate_unlock_hire_agents_decision = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_subdued_gear.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -704,7 +714,7 @@ japanese_infiltrators_06 = {
 }
 
 japanese_prison_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_watch_house_01
@@ -723,7 +733,7 @@ japanese_prison_01 = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -732,7 +742,7 @@ japanese_prison_01 = {
 }
 
 japanese_prison_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_prison_01
@@ -750,12 +760,12 @@ japanese_prison_02 = {
 		dread_decay_mult = @japanese_manor_dread_decay_mult_1
 		dread_gain_mult = @japanese_manor_dread_gain_mult_1
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -764,7 +774,7 @@ japanese_prison_02 = {
 }
 
 japanese_prison_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_prison_02
@@ -782,12 +792,12 @@ japanese_prison_03 = {
 		dread_decay_mult = @japanese_manor_dread_decay_mult_1
 		dread_gain_mult = @japanese_manor_dread_gain_mult_1
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -796,7 +806,7 @@ japanese_prison_03 = {
 }
 
 japanese_prison_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_prison_03
@@ -814,12 +824,12 @@ japanese_prison_04 = {
 		dread_decay_mult = @japanese_manor_dread_decay_mult_1
 		dread_gain_mult = @japanese_manor_dread_gain_mult_1
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -828,7 +838,7 @@ japanese_prison_04 = {
 }
 
 japanese_prison_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_prison_04
@@ -846,12 +856,12 @@ japanese_prison_05 = {
 		dread_decay_mult = @japanese_manor_dread_decay_mult_1
 		dread_gain_mult = @japanese_manor_dread_gain_mult_1
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"
@@ -860,7 +870,7 @@ japanese_prison_05 = {
 }
 
 japanese_prison_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_prison_05
@@ -878,12 +888,12 @@ japanese_prison_06 = {
 		dread_decay_mult = @japanese_manor_dread_decay_mult_1
 		dread_gain_mult = @japanese_manor_dread_gain_mult_1
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_prison.dds"
 		texture =  "gfx/interface/icons/domicile_building/domicile_japan_family_shrine.dds"

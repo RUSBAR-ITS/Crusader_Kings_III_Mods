@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @east_asian_manor_development_growth_factor_1 = 0.015
@@ -13,10 +13,18 @@
 @east_asian_manor_monthly_merit_mult_2 = 0.01
 @east_asian_manor_monthly_treasury_from_military_budget_mult_1 = 0.01
 @east_asian_manor_study_confucian_classics_scheme_phase_duration_add_1 = -2
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_480_days = 480
+@RB_UD_construction_time_540_days = 540
+@RB_UD_construction_time_600_days = 600
+@RB_UD_construction_time_660_days = 660
 
 east_asian_estate_health_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	internal_slots = 5
 
@@ -30,16 +38,16 @@ east_asian_estate_health_01 = {
 		domicile_monthly_gold_add = 0.2
 		epidemic_resistance = 3
 	}
-	
+
 	province_modifier = {
 		development_growth_factor = @east_asian_manor_development_growth_factor_1
 	}
-	
+
 	parameters = {
 		estate_increase_safe_treatment_success_1 = yes
 		estate_increase_physician_aptitude_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 10
 		if = { # Let's make sure the AI builds at least one good income building
@@ -63,7 +71,7 @@ east_asian_estate_health_01 = {
 }
 
 east_asian_estate_health_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_health_01
 	internal_slots = 5
@@ -78,16 +86,16 @@ east_asian_estate_health_02 = {
 		domicile_monthly_gold_add = 0.2
 		epidemic_resistance = 3
 	}
-	
+
 	province_modifier = {
 		development_growth_factor = @east_asian_manor_development_growth_factor_1
 	}
-	
+
 	parameters = {
 		estate_increase_safe_treatment_success_1 = yes
 		estate_increase_physician_aptitude_2 = yes
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = estate_building_ai_modifier_value
@@ -102,7 +110,7 @@ east_asian_estate_health_02 = {
 }
 
 east_asian_estate_health_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_480_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_health_02
 	internal_slots = 5
@@ -121,16 +129,16 @@ east_asian_estate_health_03 = {
 		domicile_monthly_gold_add = 0.2
 		epidemic_resistance = 3
 	}
-	
+
 	province_modifier = {
 		development_growth_factor = @east_asian_manor_development_growth_factor_1
 	}
-	
+
 	parameters = {
 		estate_increase_safe_treatment_success_1 = yes
 		estate_increase_physician_aptitude_3 = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
@@ -145,7 +153,7 @@ east_asian_estate_health_03 = {
 }
 
 east_asian_estate_health_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_health_03
 	internal_slots = 5
@@ -164,16 +172,16 @@ east_asian_estate_health_04 = {
 		domicile_monthly_gold_add = 0.2
 		epidemic_resistance = 3
 	}
-	
+
 	province_modifier = {
 		development_growth_factor = @east_asian_manor_development_growth_factor_1
 	}
-	
+
 	parameters = {
 		estate_increase_safe_treatment_success_2 = yes
 		estate_increase_physician_aptitude_4 = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
@@ -188,7 +196,7 @@ east_asian_estate_health_04 = {
 }
 
 east_asian_estate_health_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_health_04
 	internal_slots = 5
@@ -207,16 +215,16 @@ east_asian_estate_health_05 = {
 		domicile_monthly_gold_add = 0.2
 		epidemic_resistance = 3
 	}
-	
+
 	province_modifier = {
 		development_growth_factor = @east_asian_manor_development_growth_factor_1
 	}
-	
+
 	parameters = {
 		estate_increase_safe_treatment_success_2 = yes
 		estate_increase_physician_aptitude_5 = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
@@ -231,7 +239,7 @@ east_asian_estate_health_05 = {
 }
 
 east_asian_estate_health_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_health_05
 	internal_slots = 5
@@ -250,16 +258,16 @@ east_asian_estate_health_06 = {
 		domicile_monthly_gold_add = 0.2
 		epidemic_resistance = 3
 	}
-	
+
 	province_modifier = {
 		development_growth_factor = @east_asian_manor_development_growth_factor_1
 	}
-	
+
 	parameters = {
 		estate_increase_safe_treatment_success_2 = yes
 		estate_increase_physician_aptitude_6 = yes
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
@@ -274,13 +282,13 @@ east_asian_estate_health_06 = {
 }
 
 east_asian_estate_pharmacy_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_health_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -310,13 +318,13 @@ east_asian_estate_pharmacy_01 = {
 }
 
 east_asian_estate_pharmacy_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_pharmacy_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -346,7 +354,7 @@ east_asian_estate_pharmacy_02 = {
 }
 
 east_asian_estate_pharmacy_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_pharmacy_02
@@ -382,7 +390,7 @@ east_asian_estate_pharmacy_03 = {
 }
 
 east_asian_estate_pharmacy_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_pharmacy_03
@@ -418,13 +426,13 @@ east_asian_estate_pharmacy_04 = {
 }
 
 east_asian_estate_hot_baths_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_health_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -454,13 +462,13 @@ east_asian_estate_hot_baths_01 = {
 }
 
 east_asian_estate_hot_baths_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_hot_baths_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -490,7 +498,7 @@ east_asian_estate_hot_baths_02 = {
 }
 
 east_asian_estate_hot_baths_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_hot_baths_02
@@ -526,7 +534,7 @@ east_asian_estate_hot_baths_03 = {
 }
 
 east_asian_estate_hot_baths_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_hot_baths_03
@@ -562,13 +570,13 @@ east_asian_estate_hot_baths_04 = {
 }
 
 east_asian_estate_medical_library_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_health_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -598,13 +606,13 @@ east_asian_estate_medical_library_01 = {
 }
 
 east_asian_estate_medical_library_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_medical_library_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -634,7 +642,7 @@ east_asian_estate_medical_library_02 = {
 }
 
 east_asian_estate_medical_library_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_medical_library_02
@@ -670,7 +678,7 @@ east_asian_estate_medical_library_03 = {
 }
 
 east_asian_estate_medical_library_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_medical_library_03
@@ -706,7 +714,7 @@ east_asian_estate_medical_library_04 = {
 }
 
 east_asian_estate_field_surgeon_cart_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_health_01
@@ -755,13 +763,13 @@ east_asian_estate_field_surgeon_cart_01 = {
 }
 
 east_asian_estate_field_surgeon_cart_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_field_surgeon_cart_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -792,7 +800,7 @@ east_asian_estate_field_surgeon_cart_02 = {
 }
 
 east_asian_estate_field_surgeon_cart_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_field_surgeon_cart_02
@@ -829,7 +837,7 @@ east_asian_estate_field_surgeon_cart_03 = {
 }
 
 east_asian_estate_field_surgeon_cart_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_field_surgeon_cart_03
@@ -866,13 +874,13 @@ east_asian_estate_field_surgeon_cart_04 = {
 }
 
 east_asian_estate_herb_drying_terrace_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_health_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -901,13 +909,13 @@ east_asian_estate_herb_drying_terrace_01 = {
 }
 
 east_asian_estate_herb_drying_terrace_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_herb_drying_terrace_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -936,7 +944,7 @@ east_asian_estate_herb_drying_terrace_02 = {
 }
 
 east_asian_estate_herb_drying_terrace_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_herb_drying_terrace_02
@@ -971,7 +979,7 @@ east_asian_estate_herb_drying_terrace_03 = {
 }
 
 east_asian_estate_herb_drying_terrace_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_herb_drying_terrace_03

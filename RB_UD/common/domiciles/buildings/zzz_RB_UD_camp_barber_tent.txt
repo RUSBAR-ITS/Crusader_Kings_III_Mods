@@ -2,14 +2,19 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_210_days = 210
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
 
 barber_tent_01 = {
 	internal_slots = 5
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 
 	cost = { gold = barber_tent_01_domicile_building_gold_cost_value }
@@ -48,7 +53,7 @@ barber_tent_01 = {
 		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_barber_asian_mask.png"
 		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_barber_tent"
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_barber.dds"
 		texture = "gfx/interface/window_domiciles/laamp_building_barber.dds"
@@ -59,7 +64,7 @@ barber_tent_01 = {
 }
 
 barber_tent_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_210_days
 	allowed_domicile_types = { camp }
 	previous_building = barber_tent_01
 	internal_slots = 5
@@ -111,7 +116,7 @@ barber_tent_02 = {
 }
 
 barber_tent_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = barber_tent_02
 	internal_slots = 5
@@ -164,7 +169,7 @@ barber_tent_03 = {
 }
 
 barber_tent_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = barber_tent_03
 	internal_slots = 5
@@ -218,7 +223,7 @@ barber_tent_04 = {
 }
 
 barber_tent_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { camp }
 	previous_building = barber_tent_04
 	internal_slots = 5
@@ -273,7 +278,7 @@ barber_tent_05 = {
 }
 
 barber_tent_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { camp }
 	previous_building = barber_tent_05
 	internal_slots = 5
@@ -330,7 +335,7 @@ barber_tent_06 = {
 
 barber_tent_surgeons_tools = { # Surgeon's Tools
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = barber_tent_01
 
@@ -388,7 +393,7 @@ barber_tent_surgeons_tools = { # Surgeon's Tools
 
 barber_tent_dentists_tools = { # Dentist's Tools
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = barber_tent_01
 
@@ -442,7 +447,7 @@ barber_tent_dentists_tools = { # Dentist's Tools
 
 barber_tent_torturers_tools = { # Torturer's Tools
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = barber_tent_01
 
@@ -508,7 +513,7 @@ barber_tent_torturers_tools = { # Torturer's Tools
 
 barber_tent_reference_corpus = { # Reference Corpus
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = barber_tent_01
 
@@ -564,7 +569,7 @@ barber_tent_reference_corpus = { # Reference Corpus
 
 barber_tent_morticians_tools = { # Mortician's Tools
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = barber_tent_01
 

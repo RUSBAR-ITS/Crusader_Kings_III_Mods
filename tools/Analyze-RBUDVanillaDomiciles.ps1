@@ -437,10 +437,10 @@ function Get-AvailabilityPolicy {
         $actions.Add('remove_camp_purpose_gate_and_disable_corresponding_cleanup')
     }
     if ($exclusivityCandidates -contains 'culture_or_language') {
-        $actions.Add('review_culture_condition_and_remove_only_track_exclusivity')
+        $actions.Add('review_culture_condition_and_preserve_independent_prerequisite')
     }
     if ($exclusivityCandidates -contains 'territory') {
-        $actions.Add('review_territory_condition_and_remove_only_track_exclusivity')
+        $actions.Add('review_territory_condition_and_preserve_independent_prerequisite')
     }
     if ($preservedPrerequisites.Count -gt 0) {
         $actions.Add('preserve_unrelated_vanilla_prerequisites')
@@ -2353,8 +2353,8 @@ $manifest = [pscustomobject]@{
         UnresolvedScriptedTriggerReferences = $unresolvedAvailabilityTriggerIds
         Policy = [pscustomobject]@{
             CampPurpose = 'remove_gate_and_disable_only_corresponding_purpose_change_cleanup'
-            CultureOrLanguage = 'manual_review_remove_only_mutual_exclusivity'
-            Territory = 'manual_review_remove_only_mutual_exclusivity'
+            CultureOrLanguage = 'manual_review_then_preserve_independent_prerequisite'
+            Territory = 'manual_review_then_preserve_independent_prerequisite'
             Progression = 'preserve_vanilla_prerequisite'
             GovernmentOrStatus = 'preserve_vanilla_prerequisite'
             Faith = 'preserve_vanilla_prerequisite'

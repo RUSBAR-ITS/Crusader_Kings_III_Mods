@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @japanese_manor_monthly_prestige_add_1 = 0.1
@@ -12,10 +12,20 @@
 @japanese_manor_owned_scheme_phase_duration_add = -5
 @japanese_manor_owned_scheme_success_chance_add = 2
 @japanese_manor_owned_scheme_success_growth_add = 2
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_120_days = 120
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_200_days = 200
+@RB_UD_construction_time_270_days = 270
+@RB_UD_construction_time_30_days = 30
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_320_days = 320
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_60_days = 60
+@RB_UD_construction_time_90_days = 90
 
 japanese_tea_house_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 
@@ -35,7 +45,7 @@ japanese_tea_house_01 = {
 		owned_personal_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
 		diplomacy_per_prestige_level = 1
 	}
-	
+
 	parameters = {
 		estate_unlock_tea_ceremony = yes
 	}
@@ -44,7 +54,7 @@ japanese_tea_house_01 = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_tea_house_japanese.dds"
@@ -54,7 +64,7 @@ japanese_tea_house_01 = {
 }
 
 japanese_tea_house_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_tea_house_01
@@ -75,7 +85,7 @@ japanese_tea_house_02 = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		owned_personal_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
 	}
-	
+
 	parameters = {
 		estate_unlock_tea_ceremony = yes
 	}
@@ -84,7 +94,7 @@ japanese_tea_house_02 = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_tea_house_japanese.dds"
@@ -94,7 +104,7 @@ japanese_tea_house_02 = {
 }
 
 japanese_tea_house_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_270_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_tea_house_02
@@ -115,16 +125,16 @@ japanese_tea_house_03 = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		owned_personal_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
 	}
-	
+
 	parameters = {
 		estate_unlock_tea_ceremony = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_tea_house_japanese.dds"
@@ -134,7 +144,7 @@ japanese_tea_house_03 = {
 }
 
 japanese_tea_house_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_tea_house_03
@@ -156,16 +166,16 @@ japanese_tea_house_04 = {
 		owned_personal_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
 		diplomacy_per_prestige_level = 1
 	}
-	
+
 	parameters = {
 		estate_unlock_tea_ceremony = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_tea_house_japanese.dds"
@@ -175,7 +185,7 @@ japanese_tea_house_04 = {
 }
 
 japanese_tea_house_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_tea_house_04
@@ -196,16 +206,16 @@ japanese_tea_house_05 = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		owned_personal_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
 	}
-	
+
 	parameters = {
 		estate_unlock_tea_ceremony = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_tea_house_japanese.dds"
@@ -215,7 +225,7 @@ japanese_tea_house_05 = {
 }
 
 japanese_tea_house_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { japanese_manor }
 	internal_slots = 3
 	previous_building = japanese_tea_house_05
@@ -236,16 +246,16 @@ japanese_tea_house_06 = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		owned_personal_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
 	}
-	
+
 	parameters = {
 		estate_unlock_tea_ceremony = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_tea_house_japanese.dds"
@@ -255,7 +265,7 @@ japanese_tea_house_06 = {
 }
 
 japanese_guest_house_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_tea_house_01
@@ -278,12 +288,12 @@ japanese_guest_house_01 = {
 	parameters = {
 		estate_unlock_ingratiate_family_interaction = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -292,7 +302,7 @@ japanese_guest_house_01 = {
 }
 
 japanese_guest_house_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_guest_house_01
@@ -319,12 +329,12 @@ japanese_guest_house_02 = {
 	parameters = {
 		estate_unlock_ingratiate_family_interaction = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -333,7 +343,7 @@ japanese_guest_house_02 = {
 }
 
 japanese_guest_house_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_guest_house_02
@@ -361,12 +371,12 @@ japanese_guest_house_03 = {
 	parameters = {
 		estate_unlock_ingratiate_family_interaction = yes
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -375,7 +385,7 @@ japanese_guest_house_03 = {
 }
 
 japanese_guest_house_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_guest_house_03
@@ -404,12 +414,12 @@ japanese_guest_house_04 = {
 	parameters = {
 		estate_unlock_ingratiate_family_interaction = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -418,7 +428,7 @@ japanese_guest_house_04 = {
 }
 
 japanese_guest_house_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_guest_house_04
@@ -447,12 +457,12 @@ japanese_guest_house_05 = {
 	parameters = {
 		estate_unlock_ingratiate_family_interaction = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -461,7 +471,7 @@ japanese_guest_house_05 = {
 }
 
 japanese_guest_house_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_guest_house_05
@@ -490,12 +500,12 @@ japanese_guest_house_06 = {
 	parameters = {
 		estate_unlock_ingratiate_family_interaction = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_guest.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
@@ -504,7 +514,7 @@ japanese_guest_house_06 = {
 }
 
 japanese_performance_stage_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_tea_house_01
@@ -520,12 +530,12 @@ japanese_performance_stage_01 = {
 	parameters = {
 		estate_improved_feast_opinion = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_performance.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
@@ -534,7 +544,7 @@ japanese_performance_stage_01 = {
 }
 
 japanese_performance_stage_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_performance_stage_01
@@ -556,12 +566,12 @@ japanese_performance_stage_02 = {
 	parameters = {
 		estate_improved_feast_opinion = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_performance.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
@@ -570,7 +580,7 @@ japanese_performance_stage_02 = {
 }
 
 japanese_performance_stage_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_performance_stage_02
@@ -591,12 +601,12 @@ japanese_performance_stage_03 = {
 	parameters = {
 		estate_improved_feast_opinion = yes
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_performance.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
@@ -605,7 +615,7 @@ japanese_performance_stage_03 = {
 }
 
 japanese_performance_stage_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_performance_stage_03
@@ -627,12 +637,12 @@ japanese_performance_stage_04 = {
 	parameters = {
 		estate_improved_feast_opinion = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_performance.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
@@ -641,7 +651,7 @@ japanese_performance_stage_04 = {
 }
 
 japanese_performance_stage_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_performance_stage_04
@@ -663,12 +673,12 @@ japanese_performance_stage_05 = {
 	parameters = {
 		estate_improved_feast_opinion = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_performance.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
@@ -677,7 +687,7 @@ japanese_performance_stage_05 = {
 }
 
 japanese_performance_stage_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_performance_stage_05
@@ -697,12 +707,12 @@ japanese_performance_stage_06 = {
 	parameters = {
 		estate_improved_feast_opinion = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_performance.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
@@ -711,7 +721,7 @@ japanese_performance_stage_06 = {
 }
 
 japanese_asobi_colony_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_tea_house_01
@@ -727,12 +737,12 @@ japanese_asobi_colony_01 = {
 	parameters = {
 		increased_musician_aptitude_1 = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_asobi.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
@@ -741,7 +751,7 @@ japanese_asobi_colony_01 = {
 }
 
 japanese_asobi_colony_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_asobi_colony_01
@@ -762,12 +772,12 @@ japanese_asobi_colony_02 = {
 	parameters = {
 		increased_musician_aptitude_2 = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_asobi.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
@@ -776,7 +786,7 @@ japanese_asobi_colony_02 = {
 }
 
 japanese_asobi_colony_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_asobi_colony_02
@@ -802,7 +812,7 @@ japanese_asobi_colony_03 = {
 		value = 5
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_asobi.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
@@ -811,7 +821,7 @@ japanese_asobi_colony_03 = {
 }
 
 japanese_asobi_colony_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_asobi_colony_03
@@ -832,12 +842,12 @@ japanese_asobi_colony_04 = {
 	parameters = {
 		increased_musician_aptitude_4 = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_asobi.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
@@ -846,7 +856,7 @@ japanese_asobi_colony_04 = {
 }
 
 japanese_asobi_colony_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_asobi_colony_04
@@ -867,12 +877,12 @@ japanese_asobi_colony_05 = {
 	parameters = {
 		increased_musician_aptitude_5 = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_asobi.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"
@@ -881,7 +891,7 @@ japanese_asobi_colony_05 = {
 }
 
 japanese_asobi_colony_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_asobi_colony_05
@@ -901,12 +911,12 @@ japanese_asobi_colony_06 = {
 	parameters = {
 		increased_musician_aptitude_6 = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = japanese_manor_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_asobi.dds"
 		texture =  "gfx/interface/window_domiciles/estate_building_garden_japanese.dds"

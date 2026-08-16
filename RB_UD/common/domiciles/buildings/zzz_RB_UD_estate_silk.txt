@@ -2,15 +2,24 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_730_days = 730
 
 silk_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
-	
+
+	can_construct = {
+		custom_tooltip = {
+			text = has_unlocked_estate_silk
+			OR = {
+				house = { has_house_modifier = ep3_unlocked_silk }
+				culture = { has_cultural_parameter = unlocks_silk_buildings_parameter }
+			}
+		}
+	}
 
 	cost = {
 		gold = {
@@ -52,12 +61,12 @@ silk_01 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 15
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -76,10 +85,19 @@ silk_01 = {
 }
 
 silk_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = silk_01
-	
+
+	can_construct = {
+		OR = {
+			custom_tooltip = {
+				house = { has_house_modifier = ep3_unlocked_silk }
+				text = has_unlocked_estate_silk
+			}
+			culture = { has_cultural_parameter = unlocks_silk_buildings_parameter }
+		}
+	}
 
 	cost = {
 		gold = {
@@ -91,7 +109,7 @@ silk_02 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 	}
 
@@ -124,12 +142,12 @@ silk_02 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 13
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -148,11 +166,18 @@ silk_02 = {
 }
 
 silk_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = silk_02
-	
+
 	can_construct = {
+		OR = {
+			custom_tooltip = {
+				house = { has_house_modifier = ep3_unlocked_silk }
+				text = has_unlocked_estate_silk
+			}
+			culture = { has_cultural_parameter = unlocks_silk_buildings_parameter }
+		}
 		domicile ?= { has_domicile_building_or_higher = estate_main_02 }
 	}
 
@@ -166,7 +191,7 @@ silk_03 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 	}
 
@@ -199,12 +224,12 @@ silk_03 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 11
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -223,11 +248,18 @@ silk_03 = {
 }
 
 silk_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = silk_03
-	
+
 	can_construct = {
+		OR = {
+			custom_tooltip = {
+				house = { has_house_modifier = ep3_unlocked_silk }
+				text = has_unlocked_estate_silk
+			}
+			culture = { has_cultural_parameter = unlocks_silk_buildings_parameter }
+		}
 		domicile ?= { has_domicile_building_or_higher = estate_main_03 }
 	}
 
@@ -241,7 +273,7 @@ silk_04 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_silk_regalia_decision = yes
 	}
@@ -275,12 +307,12 @@ silk_04 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -299,11 +331,18 @@ silk_04 = {
 }
 
 silk_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = silk_04
-	
+
 	can_construct = {
+		OR = {
+			custom_tooltip = {
+				house = { has_house_modifier = ep3_unlocked_silk }
+				text = has_unlocked_estate_silk
+			}
+			culture = { has_cultural_parameter = unlocks_silk_buildings_parameter }
+		}
 		domicile ?= { has_domicile_building_or_higher = estate_main_04 }
 	}
 
@@ -317,7 +356,7 @@ silk_05 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_silk_regalia_decision = yes
 	}
@@ -351,12 +390,12 @@ silk_05 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {
@@ -375,11 +414,18 @@ silk_05 = {
 }
 
 silk_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_730_days
 	allowed_domicile_types = { estate }
 	previous_building = silk_05
-	
+
 	can_construct = {
+		OR = {
+			custom_tooltip = {
+				house = { has_house_modifier = ep3_unlocked_silk }
+				text = has_unlocked_estate_silk
+			}
+			culture = { has_cultural_parameter = unlocks_silk_buildings_parameter }
+		}
 		domicile ?= { has_domicile_building_or_higher = estate_main_05 }
 	}
 
@@ -393,7 +439,7 @@ silk_06 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_silk_regalia_decision = yes
 	}
@@ -427,12 +473,12 @@ silk_06 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		trigger = {
 			domicile_location.culture = {

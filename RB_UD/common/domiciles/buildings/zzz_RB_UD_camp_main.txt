@@ -2,15 +2,18 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_1_days = 1
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
 
 camp_main_01 = {
 	slot_type = main
 	# Always built, so construction time doesn't matter.
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_1_days
 	allowed_domicile_types = { camp }
 
 	character_modifier = {
@@ -107,7 +110,7 @@ camp_main_01 = {
 
 camp_main_02 = {
 	slot_type = main
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_main_01
 
@@ -223,7 +226,7 @@ camp_main_02 = {
 
 camp_main_03 = {
 	slot_type = main
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_main_02
 
@@ -340,7 +343,7 @@ camp_main_03 = {
 
 camp_main_04 = {
 	slot_type = main
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_main_03
 
@@ -392,7 +395,7 @@ camp_main_04 = {
 		intersectionmask_texture = "gfx/interface/window_domiciles/laamp_building_pavillion_asian_level_03_mask.png"
 		soundeffect = "event:/DLC/EP3/SFX/UI/camp_buildings/ep3_ui_domicile_buildings_main_building"
 	}
-	
+
 	### WESTERN
 	asset = {
 		trigger = {

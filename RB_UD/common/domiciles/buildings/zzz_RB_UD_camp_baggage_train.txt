@@ -2,14 +2,19 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_210_days = 210
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
 
 baggage_train_01 = {
 	internal_slots = 13
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 
 	cost = { gold = baggage_train_01_domicile_building_gold_cost_value }
@@ -60,7 +65,7 @@ baggage_train_01 = {
 }
 
 baggage_train_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_210_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 	internal_slots = 13
@@ -114,7 +119,7 @@ baggage_train_02 = {
 }
 
 baggage_train_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_02
 	internal_slots = 13
@@ -169,7 +174,7 @@ baggage_train_03 = {
 }
 
 baggage_train_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_03
 	internal_slots = 13
@@ -225,7 +230,7 @@ baggage_train_04 = {
 }
 
 baggage_train_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_04
 	internal_slots = 13
@@ -282,7 +287,7 @@ baggage_train_05 = {
 }
 
 baggage_train_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_05
 	internal_slots = 13
@@ -341,7 +346,7 @@ baggage_train_06 = {
 
 baggage_train_ample_steeds = { # Ample Steeds
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 
@@ -409,7 +414,7 @@ baggage_train_ample_steeds = { # Ample Steeds
 
 baggage_train_porters = { # Porters
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 
@@ -474,7 +479,7 @@ baggage_train_porters = { # Porters
 
 baggage_train_trackers = { # Trackers
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 
@@ -538,7 +543,7 @@ baggage_train_trackers = { # Trackers
 
 baggage_train_kennel = { # Kennel
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 
@@ -596,7 +601,7 @@ baggage_train_kennel = { # Kennel
 
 baggage_train_siege_engineers = { # Siege Engineers
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 
@@ -654,7 +659,7 @@ baggage_train_siege_engineers = { # Siege Engineers
 
 baggage_train_shrine = { # Shrine
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 
@@ -723,7 +728,7 @@ baggage_train_shrine = { # Shrine
 
 baggage_train_scribes = { # Scribes
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 
@@ -781,7 +786,7 @@ baggage_train_scribes = { # Scribes
 
 baggage_train_bartering_grounds = { # Bartering Grounds
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 
@@ -839,7 +844,7 @@ baggage_train_bartering_grounds = { # Bartering Grounds
 
 baggage_train_proof_of_claims = { # Proof of Claims
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 
@@ -897,7 +902,7 @@ baggage_train_proof_of_claims = { # Proof of Claims
 
 baggage_train_ransom_cages = { # Ransom Cages
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 
@@ -955,7 +960,7 @@ baggage_train_ransom_cages = { # Ransom Cages
 
 baggage_train_negotiators = { # Negotiators
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 
@@ -1013,7 +1018,7 @@ baggage_train_negotiators = { # Negotiators
 
 baggage_train_ascetics = { # Ascetics
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 
@@ -1069,7 +1074,7 @@ baggage_train_ascetics = { # Ascetics
 
 baggage_train_pleasure_tents = { # Pleasure Tents
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = baggage_train_01
 

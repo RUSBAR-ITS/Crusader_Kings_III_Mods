@@ -2,14 +2,19 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_210_days = 210
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
 
 camp_perimeter_01 = {
 	internal_slots = 6
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 
 	cost = { gold = camp_perimeter_01_domicile_building_gold_cost_value }
@@ -58,7 +63,7 @@ camp_perimeter_01 = {
 }
 
 camp_perimeter_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_210_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_perimeter_01
 	internal_slots = 6
@@ -110,7 +115,7 @@ camp_perimeter_02 = {
 }
 
 camp_perimeter_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_perimeter_02
 	internal_slots = 6
@@ -163,7 +168,7 @@ camp_perimeter_03 = {
 }
 
 camp_perimeter_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_perimeter_03
 	internal_slots = 6
@@ -217,7 +222,7 @@ camp_perimeter_04 = {
 }
 
 camp_perimeter_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_perimeter_04
 	internal_slots = 6
@@ -272,7 +277,7 @@ camp_perimeter_05 = {
 }
 
 camp_perimeter_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_perimeter_05
 	internal_slots = 6
@@ -329,7 +334,7 @@ camp_perimeter_06 = {
 
 camp_perimeter_good_siting = { # Good Siting
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_perimeter_01
 
@@ -383,7 +388,7 @@ camp_perimeter_good_siting = { # Good Siting
 
 camp_perimeter_fixed_layout = { # Fixed Layout
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_perimeter_01
 
@@ -437,7 +442,7 @@ camp_perimeter_fixed_layout = { # Fixed Layout
 
 camp_perimeter_extra_watch = { # Extra Watch
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_perimeter_01
 
@@ -494,7 +499,7 @@ camp_perimeter_extra_watch = { # Extra Watch
 
 camp_perimeter_palisade = { # Palisade
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_perimeter_01
 
@@ -550,7 +555,7 @@ camp_perimeter_palisade = { # Palisade
 
 camp_perimeter_ditch = { # Ditch
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_perimeter_01
 
@@ -605,7 +610,7 @@ camp_perimeter_ditch = { # Ditch
 
 camp_perimeter_camp_hygiene = { # Camp Hygiene
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { camp }
 	previous_building = camp_perimeter_01
 

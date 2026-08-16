@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @east_asian_manor_governor_xp_gain_mult_1 = 0.025
@@ -14,10 +14,18 @@
 @east_asian_manor_monthly_merit_per_title_maa_value_1 = 0.0005
 @east_asian_manor_monthly_prestige_add_2 = 0.15
 @east_asian_manor_trait_track_travel_xp_gain_mult_3 = 0.15
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_480_days = 480
+@RB_UD_construction_time_540_days = 540
+@RB_UD_construction_time_600_days = 600
+@RB_UD_construction_time_660_days = 660
 
 east_asian_estate_tea_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	internal_slots = 5
 
@@ -29,7 +37,7 @@ east_asian_estate_tea_01 = {
 			value = estate_external_building_normal_cost_tier_1_value
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_tea_ceremony = yes
 	}
@@ -38,7 +46,7 @@ east_asian_estate_tea_01 = {
 		domicile_monthly_gold_add = 0.25
 		negate_health_penalty_add = 0.01
 	}
-	
+
 	ai_value = {
 		value = 10
 		if = { # Let's make sure the AI builds at least one good income building
@@ -61,7 +69,7 @@ east_asian_estate_tea_01 = {
 }
 
 east_asian_estate_tea_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_tea_01
 	internal_slots = 5
@@ -76,7 +84,7 @@ east_asian_estate_tea_02 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_tea_ceremony = yes
 	}
@@ -85,7 +93,7 @@ east_asian_estate_tea_02 = {
 		domicile_monthly_gold_add = 0.25
 		negate_health_penalty_add = 0.02
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = estate_building_ai_modifier_value
@@ -100,7 +108,7 @@ east_asian_estate_tea_02 = {
 }
 
 east_asian_estate_tea_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_480_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_tea_02
 	internal_slots = 5
@@ -114,7 +122,7 @@ east_asian_estate_tea_03 = {
 			}
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_tea_ceremony = yes
 	}
@@ -123,7 +131,7 @@ east_asian_estate_tea_03 = {
 		domicile_monthly_gold_add = 0.25
 		negate_health_penalty_add = 0.04
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
@@ -138,7 +146,7 @@ east_asian_estate_tea_03 = {
 }
 
 east_asian_estate_tea_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_tea_03
 	internal_slots = 5
@@ -148,16 +156,16 @@ east_asian_estate_tea_04 = {
 			value = estate_external_building_normal_cost_tier_4_value
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_tea_ceremony = yes
 	}
-	
+
 	character_modifier = {
 		domicile_monthly_gold_add = 0.25
 		negate_health_penalty_add = 0.06
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
@@ -172,7 +180,7 @@ east_asian_estate_tea_04 = {
 }
 
 east_asian_estate_tea_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_tea_04
 	internal_slots = 5
@@ -182,16 +190,16 @@ east_asian_estate_tea_05 = {
 			value = estate_external_building_normal_cost_tier_5_value
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_tea_ceremony = yes
 	}
-	
+
 	character_modifier = {
 		domicile_monthly_gold_add = 0.25
 		negate_health_penalty_add = 0.08
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
@@ -206,7 +214,7 @@ east_asian_estate_tea_05 = {
 }
 
 east_asian_estate_tea_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_tea_05
 	internal_slots = 5
@@ -216,7 +224,7 @@ east_asian_estate_tea_06 = {
 			value = estate_external_building_normal_cost_tier_6_value
 		}
 	}
-	
+
 	parameters = {
 		estate_unlock_tea_ceremony = yes
 	}
@@ -225,12 +233,12 @@ east_asian_estate_tea_06 = {
 		domicile_monthly_gold_add = 0.25
 		negate_health_penalty_add = 0.1
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_tea.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_tea_plantation_asian.dds"
@@ -240,13 +248,13 @@ east_asian_estate_tea_06 = {
 }
 
 east_asian_estate_roasting_house_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_tea_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -274,13 +282,13 @@ east_asian_estate_roasting_house_01 = {
 }
 
 east_asian_estate_roasting_house_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_roasting_house_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -308,7 +316,7 @@ east_asian_estate_roasting_house_02 = {
 }
 
 east_asian_estate_roasting_house_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_roasting_house_02
@@ -342,7 +350,7 @@ east_asian_estate_roasting_house_03 = {
 }
 
 east_asian_estate_roasting_house_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_roasting_house_03
@@ -376,13 +384,13 @@ east_asian_estate_roasting_house_04 = {
 }
 
 east_asian_estate_grading_hall_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_tea_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -411,13 +419,13 @@ east_asian_estate_grading_hall_01 = {
 }
 
 east_asian_estate_grading_hall_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_grading_hall_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -446,7 +454,7 @@ east_asian_estate_grading_hall_02 = {
 }
 
 east_asian_estate_grading_hall_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_grading_hall_02
@@ -481,7 +489,7 @@ east_asian_estate_grading_hall_03 = {
 }
 
 east_asian_estate_grading_hall_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_grading_hall_03
@@ -516,7 +524,7 @@ east_asian_estate_grading_hall_04 = {
 }
 
 east_asian_estate_tea_horse_road_office_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_tea_01
@@ -567,13 +575,13 @@ east_asian_estate_tea_horse_road_office_01 = {
 }
 
 east_asian_estate_tea_horse_road_office_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_tea_horse_road_office_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -606,7 +614,7 @@ east_asian_estate_tea_horse_road_office_02 = {
 }
 
 east_asian_estate_tea_horse_road_office_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_tea_horse_road_office_02
@@ -645,7 +653,7 @@ east_asian_estate_tea_horse_road_office_03 = {
 }
 
 east_asian_estate_tea_horse_road_office_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_tea_horse_road_office_03
@@ -685,7 +693,7 @@ east_asian_estate_tea_horse_road_office_04 = {
 }
 
 east_asian_estate_tea_tax_office_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_tea_01
@@ -723,13 +731,13 @@ east_asian_estate_tea_tax_office_01 = {
 }
 
 east_asian_estate_tea_tax_office_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_tea_tax_office_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -758,7 +766,7 @@ east_asian_estate_tea_tax_office_02 = {
 }
 
 east_asian_estate_tea_tax_office_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_tea_tax_office_02
@@ -793,7 +801,7 @@ east_asian_estate_tea_tax_office_03 = {
 }
 
 east_asian_estate_tea_tax_office_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_tea_tax_office_03
@@ -828,7 +836,7 @@ east_asian_estate_tea_tax_office_04 = {
 }
 
 east_asian_estate_teahouse_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_tea_01
@@ -836,7 +844,7 @@ east_asian_estate_teahouse_01 = {
 	can_construct_potential = {
 		any_character_situation = { situation_type = dynastic_cycle }
 	}
-	
+
 	can_construct = {
 		is_any_movement_leader = yes
 	}
@@ -867,13 +875,13 @@ east_asian_estate_teahouse_01 = {
 }
 
 east_asian_estate_teahouse_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_teahouse_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -902,7 +910,7 @@ east_asian_estate_teahouse_02 = {
 }
 
 east_asian_estate_teahouse_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_teahouse_02
@@ -937,7 +945,7 @@ east_asian_estate_teahouse_03 = {
 }
 
 east_asian_estate_teahouse_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_teahouse_03

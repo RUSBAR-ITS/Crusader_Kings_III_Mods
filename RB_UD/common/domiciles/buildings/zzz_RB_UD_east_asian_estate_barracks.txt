@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @east_asian_manor_confucian_education_xp_gain_mult_1 = 0.05
@@ -15,10 +15,18 @@
 @east_asian_manor_monthly_prestige_add_2 = 0.15
 @east_asian_manor_monthly_treasury_from_military_budget_mult_1 = 0.01
 @east_asian_manor_monthly_treasury_from_military_budget_mult_2 = 0.02
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_480_days = 480
+@RB_UD_construction_time_540_days = 540
+@RB_UD_construction_time_600_days = 600
+@RB_UD_construction_time_660_days = 660
 
 east_asian_estate_barracks_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	internal_slots = 6
 
@@ -46,12 +54,12 @@ east_asian_estate_barracks_01 = {
 		house_head_can_ask_for_knight = yes
 		house_head_can_ask_for_maa = yes
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_barrack.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_barracks_chinese.dds"
@@ -61,7 +69,7 @@ east_asian_estate_barracks_01 = {
 }
 
 east_asian_estate_barracks_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_barracks_01
 	internal_slots = 6
@@ -94,12 +102,12 @@ east_asian_estate_barracks_02 = {
 		house_head_can_ask_for_knight = yes
 		house_head_can_ask_for_maa = yes
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_barrack.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_barracks_chinese.dds"
@@ -109,7 +117,7 @@ east_asian_estate_barracks_02 = {
 }
 
 east_asian_estate_barracks_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_480_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_barracks_02
 	internal_slots = 6
@@ -146,12 +154,12 @@ east_asian_estate_barracks_03 = {
 		house_head_can_ask_for_knight = yes
 		house_head_can_ask_for_maa = yes
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_barrack.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_barracks_chinese.dds"
@@ -161,7 +169,7 @@ east_asian_estate_barracks_03 = {
 }
 
 east_asian_estate_barracks_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_barracks_03
 	internal_slots = 6
@@ -198,12 +206,12 @@ east_asian_estate_barracks_04 = {
 		house_head_can_ask_for_knight = yes
 		house_head_can_ask_for_maa = yes
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_barrack.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_barracks_chinese.dds"
@@ -213,7 +221,7 @@ east_asian_estate_barracks_04 = {
 }
 
 east_asian_estate_barracks_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_barracks_04
 	internal_slots = 6
@@ -250,12 +258,12 @@ east_asian_estate_barracks_05 = {
 		house_head_can_ask_for_knight = yes
 		house_head_can_ask_for_maa = yes
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_barrack.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_barracks_chinese.dds"
@@ -265,7 +273,7 @@ east_asian_estate_barracks_05 = {
 }
 
 east_asian_estate_barracks_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_barracks_05
 	internal_slots = 6
@@ -302,12 +310,12 @@ east_asian_estate_barracks_06 = {
 		house_head_can_ask_for_knight = yes
 		house_head_can_ask_for_maa = yes
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_barrack.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_barracks_chinese.dds"
@@ -317,7 +325,7 @@ east_asian_estate_barracks_06 = {
 }
 
 east_asian_estate_ration_wine_stores_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_barracks_01
@@ -359,13 +367,13 @@ east_asian_estate_ration_wine_stores_01 = {
 }
 
 east_asian_estate_ration_wine_stores_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ration_wine_stores_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -395,7 +403,7 @@ east_asian_estate_ration_wine_stores_02 = {
 }
 
 east_asian_estate_ration_wine_stores_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ration_wine_stores_02
@@ -431,7 +439,7 @@ east_asian_estate_ration_wine_stores_03 = {
 }
 
 east_asian_estate_ration_wine_stores_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ration_wine_stores_03
@@ -467,7 +475,7 @@ east_asian_estate_ration_wine_stores_04 = {
 }
 
 east_asian_estate_armorer_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_barracks_01
@@ -514,13 +522,13 @@ east_asian_estate_armorer_01 = {
 }
 
 east_asian_estate_armorer_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_armorer_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -549,7 +557,7 @@ east_asian_estate_armorer_02 = {
 }
 
 east_asian_estate_armorer_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_armorer_02
@@ -584,7 +592,7 @@ east_asian_estate_armorer_03 = {
 }
 
 east_asian_estate_armorer_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_armorer_03
@@ -619,13 +627,13 @@ east_asian_estate_armorer_04 = {
 }
 
 east_asian_estate_veterans_hall_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_barracks_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -655,13 +663,13 @@ east_asian_estate_veterans_hall_01 = {
 }
 
 east_asian_estate_veterans_hall_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_veterans_hall_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -691,7 +699,7 @@ east_asian_estate_veterans_hall_02 = {
 }
 
 east_asian_estate_veterans_hall_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_veterans_hall_02
@@ -727,7 +735,7 @@ east_asian_estate_veterans_hall_03 = {
 }
 
 east_asian_estate_veterans_hall_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_veterans_hall_03
@@ -763,13 +771,13 @@ east_asian_estate_veterans_hall_04 = {
 }
 
 east_asian_estate_quartermaster_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_barracks_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -799,13 +807,13 @@ east_asian_estate_quartermaster_01 = {
 }
 
 east_asian_estate_quartermaster_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_quartermaster_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -835,7 +843,7 @@ east_asian_estate_quartermaster_02 = {
 }
 
 east_asian_estate_quartermaster_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_quartermaster_02
@@ -871,7 +879,7 @@ east_asian_estate_quartermaster_03 = {
 }
 
 east_asian_estate_quartermaster_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_quartermaster_03
@@ -907,7 +915,7 @@ east_asian_estate_quartermaster_04 = {
 }
 
 east_asian_estate_sergeants_school_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_barracks_01
@@ -954,13 +962,13 @@ east_asian_estate_sergeants_school_01 = {
 }
 
 east_asian_estate_sergeants_school_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_sergeants_school_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -989,7 +997,7 @@ east_asian_estate_sergeants_school_02 = {
 }
 
 east_asian_estate_sergeants_school_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_sergeants_school_02
@@ -1024,7 +1032,7 @@ east_asian_estate_sergeants_school_03 = {
 }
 
 east_asian_estate_sergeants_school_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_sergeants_school_03
@@ -1059,7 +1067,7 @@ east_asian_estate_sergeants_school_04 = {
 }
 
 east_asian_estate_drill_yard_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_barracks_01
@@ -1107,13 +1115,13 @@ east_asian_estate_drill_yard_01 = {
 }
 
 east_asian_estate_drill_yard_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_drill_yard_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1142,7 +1150,7 @@ east_asian_estate_drill_yard_02 = {
 }
 
 east_asian_estate_drill_yard_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_drill_yard_02
@@ -1177,7 +1185,7 @@ east_asian_estate_drill_yard_03 = {
 }
 
 east_asian_estate_drill_yard_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_drill_yard_03

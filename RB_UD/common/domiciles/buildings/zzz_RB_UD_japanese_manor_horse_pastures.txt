@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @japanese_manor_maa_effectiveness_mult_1 = 0.025
@@ -11,10 +11,20 @@
 @japanese_manor_monthly_gold_add_0 = 0.1
 @japanese_manor_monthly_gold_add_1 = 0.2
 @japanese_manor_monthly_prestige_add_2 = 0.25
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_120_days = 120
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_200_days = 200
+@RB_UD_construction_time_270_days = 270
+@RB_UD_construction_time_30_days = 30
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_320_days = 320
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_60_days = 60
+@RB_UD_construction_time_90_days = 90
 
 japanese_horse_pastures_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	internal_slots = 3
 	allowed_domicile_types = { japanese_manor }
 
@@ -34,7 +44,7 @@ japanese_horse_pastures_01 = {
 		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 	}
-	
+
 	ai_value = {
 		value = 9
 		add = japanese_manor_building_ai_modifier_value
@@ -49,7 +59,7 @@ japanese_horse_pastures_01 = {
 }
 
 japanese_horse_pastures_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	internal_slots = 3
 	allowed_domicile_types = { japanese_manor }
 	previous_building = japanese_horse_pastures_01
@@ -89,7 +99,7 @@ japanese_horse_pastures_02 = {
 }
 
 japanese_horse_pastures_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_270_days
 	internal_slots = 3
 	allowed_domicile_types = { japanese_manor }
 	previous_building = japanese_horse_pastures_02
@@ -114,7 +124,7 @@ japanese_horse_pastures_03 = {
 		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -129,7 +139,7 @@ japanese_horse_pastures_03 = {
 }
 
 japanese_horse_pastures_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	internal_slots = 3
 	allowed_domicile_types = { japanese_manor }
 	previous_building = japanese_horse_pastures_03
@@ -154,7 +164,7 @@ japanese_horse_pastures_04 = {
 		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -169,7 +179,7 @@ japanese_horse_pastures_04 = {
 }
 
 japanese_horse_pastures_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	internal_slots = 3
 	allowed_domicile_types = { japanese_manor }
 	previous_building = japanese_horse_pastures_04
@@ -194,7 +204,7 @@ japanese_horse_pastures_05 = {
 		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -209,7 +219,7 @@ japanese_horse_pastures_05 = {
 }
 
 japanese_horse_pastures_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	internal_slots = 3
 	allowed_domicile_types = { japanese_manor }
 	previous_building = japanese_horse_pastures_05
@@ -234,7 +244,7 @@ japanese_horse_pastures_06 = {
 		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -249,7 +259,7 @@ japanese_horse_pastures_06 = {
 }
 
 japanese_stud_farm_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_horse_pastures_01
@@ -278,7 +288,7 @@ japanese_stud_farm_01 = {
 }
 
 japanese_stud_farm_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_stud_farm_01
@@ -311,7 +321,7 @@ japanese_stud_farm_02 = {
 }
 
 japanese_stud_farm_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_stud_farm_02
@@ -344,7 +354,7 @@ japanese_stud_farm_03 = {
 }
 
 japanese_stud_farm_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_stud_farm_03
@@ -377,7 +387,7 @@ japanese_stud_farm_04 = {
 }
 
 japanese_stud_farm_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_stud_farm_04
@@ -395,7 +405,7 @@ japanese_stud_farm_05 = {
 		light_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
 		archer_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -410,7 +420,7 @@ japanese_stud_farm_05 = {
 }
 
 japanese_stud_farm_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_stud_farm_05
@@ -428,7 +438,7 @@ japanese_stud_farm_06 = {
 		light_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
 		archer_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -443,7 +453,7 @@ japanese_stud_farm_06 = {
 }
 
 japanese_ox_breeder_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_horse_pastures_01
@@ -471,7 +481,7 @@ japanese_ox_breeder_01 = {
 }
 
 japanese_ox_breeder_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_ox_breeder_01
@@ -503,7 +513,7 @@ japanese_ox_breeder_02 = {
 }
 
 japanese_ox_breeder_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_ox_breeder_02
@@ -535,7 +545,7 @@ japanese_ox_breeder_03 = {
 }
 
 japanese_ox_breeder_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_ox_breeder_03
@@ -567,7 +577,7 @@ japanese_ox_breeder_04 = {
 }
 
 japanese_ox_breeder_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_ox_breeder_04
@@ -584,7 +594,7 @@ japanese_ox_breeder_05 = {
 		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
 		character_travel_speed = 2
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -599,7 +609,7 @@ japanese_ox_breeder_05 = {
 }
 
 japanese_ox_breeder_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_ox_breeder_05
@@ -616,7 +626,7 @@ japanese_ox_breeder_06 = {
 		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
 		character_travel_speed = 2
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -631,7 +641,7 @@ japanese_ox_breeder_06 = {
 }
 
 japanese_riding_school_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_30_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_horse_pastures_01
@@ -660,7 +670,7 @@ japanese_riding_school_01 = {
 }
 
 japanese_riding_school_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_60_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_riding_school_01
@@ -692,7 +702,7 @@ japanese_riding_school_02 = {
 }
 
 japanese_riding_school_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_90_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_riding_school_02
@@ -724,7 +734,7 @@ japanese_riding_school_03 = {
 }
 
 japanese_riding_school_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_120_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_riding_school_03
@@ -757,7 +767,7 @@ japanese_riding_school_04 = {
 }
 
 japanese_riding_school_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_200_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_riding_school_04
@@ -774,7 +784,7 @@ japanese_riding_school_05 = {
 		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
 		light_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value
@@ -789,7 +799,7 @@ japanese_riding_school_05 = {
 }
 
 japanese_riding_school_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_320_days
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_riding_school_05
@@ -806,7 +816,7 @@ japanese_riding_school_06 = {
 		archer_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
 		light_cavalry_pursuit_mult = @japanese_manor_maa_effectiveness_mult_1
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = japanese_manor_building_ai_modifier_value

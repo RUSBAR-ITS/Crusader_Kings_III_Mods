@@ -32,24 +32,25 @@ branch that is already internal is reported separately because it requires
 splitting its shared prefix into parallel tracks rather than merely changing
 `slot_type`.
 
-The plan builder names every vanilla type, building, scripted effect, condition group,
-capacity change, and target override file; consolidates internal-slot demand
-after branch conversion; and explicitly separates the 21 access-restriction
-groups to rewrite from the three false-positive main-building conditions that
-must remain vanilla.
+The plan builder names every vanilla type, building, scripted effect, condition
+group, capacity change, and target override file; consolidates internal-slot
+demand after branch conversion; and explicitly records all 24 reviewed
+conditional tracks as preserved vanilla prerequisites.
 
 The generator now mirrors all 1,620 vanilla domicile-building objects into
 late-loaded override files and applies the reviewed structural plan. It does
 not use `replace_path`. Buildings are split into 62 deterministic files: one
 file per vanilla main/external root family together with all descendants.
-Construction time is controlled from one generation setting and emitted as a
-file-local `@RB_UD_` constant because the engine rejects global script values
-in `construction_time`. Direct numeric resource costs are converted to global
-generated script values; existing vanilla cost script values remain intact.
+Vanilla construction time is preserved and routed through generated file-local
+`@RB_UD_` constants because the engine rejects global script values in
+`construction_time`. Buildings sharing the same vanilla duration reuse the
+same RB_UD constant within their generated family file. Direct numeric resource
+costs are converted to global generated script values; existing vanilla cost
+script values remain intact.
 
 Semantic post-generation checks cover exact 1,620-object coverage, unique
 ownership by one root family, valid parent links, capacities, internal slots,
-valid branch anchors, preserved tier prerequisites, removed access gates,
+valid branch anchors, preserved vanilla access prerequisites,
 bounded initial-fill loops, local constant definitions, UTF-8 BOM encoding,
 and disabled camp-purpose cleanup.
 
@@ -98,8 +99,8 @@ constants in generated family files.
 - all 1,620 vanilla domicile-building objects reproduced exactly once;
 - 62 generated building files, grouped by vanilla root family: camp 8,
   Byzantine estate 17, yurt 8, East Asian estate 16, Japanese manor 13;
-- uniform 10-day base construction time emitted through a local constant in
-  every family file;
+- vanilla construction times emitted through generated local `@RB_UD_`
+  constants in every family file;
 - direct numeric resource costs centralized as generated global script values,
   while existing vanilla script-value costs are reused unchanged;
 - external specialization tails converted into independent internal tracks;
@@ -112,8 +113,8 @@ constants in generated family files.
   all expanded slots, and every generated fill loop has a hard iteration cap;
 - the vanilla Japanese manor fill-effect typo is corrected in the override;
 - all used vanilla `@` constants are copied into their generated database file;
-- culture, territory, innovation, language, and similar specialization access
-  gates removed according to the reviewed plan;
+- culture, territory, terrain, innovation, language, character-state, and
+  similar vanilla access requirements preserved unchanged;
 - costs, effects, icons, textures, upgrade order, and unrelated vanilla
   prerequisites preserved by copying the current vanilla objects.
 

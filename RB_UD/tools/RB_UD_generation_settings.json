@@ -12,8 +12,9 @@
     }
   },
   "ConstructionTime": {
-    "DefaultDays": 10,
-    "LocalConstant": "@RB_UD_construction_time_days"
+    "Mode": "vanilla_via_local_constants",
+    "LocalConstantPrefix": "@RB_UD_construction_time_",
+    "LocalConstantSuffix": "_days"
   },
   "Costs": {
     "ReplaceDirectNumericResources": [

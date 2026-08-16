@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @east_asian_manor_confucian_education_xp_gain_mult_1 = 0.05
@@ -17,10 +17,18 @@
 @east_asian_manor_monthly_treasury_from_salary_budget_mult_2 = 0.02
 @east_asian_manor_study_confucian_classics_scheme_phase_duration_add_2 = -3
 @east_asian_manor_trait_track_lifestyle_poet_xp_gain_mult_2 = 0.1
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_480_days = 480
+@RB_UD_construction_time_540_days = 540
+@RB_UD_construction_time_600_days = 600
+@RB_UD_construction_time_660_days = 660
 
 east_asian_estate_ancestral_shrine_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	internal_slots = 5
 
@@ -50,7 +58,7 @@ east_asian_estate_ancestral_shrine_01 = {
 }
 
 east_asian_estate_ancestral_shrine_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_ancestral_shrine_01
 	internal_slots = 5
@@ -67,7 +75,7 @@ east_asian_estate_ancestral_shrine_02 = {
 		confucian_education_xp_gain_mult = @east_asian_manor_confucian_education_xp_gain_mult_1
 		domicile_monthly_influence_add = @east_asian_manor_monthly_influence_add_2
 	}
-	
+
 	ai_value = {
 		value = 8
 		add = estate_building_ai_modifier_value
@@ -82,7 +90,7 @@ east_asian_estate_ancestral_shrine_02 = {
 }
 
 east_asian_estate_ancestral_shrine_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_480_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_ancestral_shrine_02
 	internal_slots = 5
@@ -103,7 +111,7 @@ east_asian_estate_ancestral_shrine_03 = {
 		confucian_education_xp_gain_mult = @east_asian_manor_confucian_education_xp_gain_mult_1
 		domicile_monthly_influence_add = @east_asian_manor_monthly_influence_add_2
 	}
-	
+
 	ai_value = {
 		value = 7
 		add = estate_building_ai_modifier_value
@@ -118,7 +126,7 @@ east_asian_estate_ancestral_shrine_03 = {
 }
 
 east_asian_estate_ancestral_shrine_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_ancestral_shrine_03
 	internal_slots = 5
@@ -132,7 +140,7 @@ east_asian_estate_ancestral_shrine_04 = {
 			value = estate_external_building_normal_cost_tier_3_value
 		}
 	}
-	
+
 	parameters = {
 		estate_inherit_influence_small_bonus = yes
 	}
@@ -143,7 +151,7 @@ east_asian_estate_ancestral_shrine_04 = {
 		confucian_education_xp_gain_mult = @east_asian_manor_confucian_education_xp_gain_mult_1
 		domicile_monthly_influence_add = @east_asian_manor_monthly_influence_add_2
 	}
-	
+
 	ai_value = {
 		value = 6
 		add = estate_building_ai_modifier_value
@@ -158,7 +166,7 @@ east_asian_estate_ancestral_shrine_04 = {
 }
 
 east_asian_estate_ancestral_shrine_05 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_ancestral_shrine_04
 	internal_slots = 5
@@ -172,7 +180,7 @@ east_asian_estate_ancestral_shrine_05 = {
 			value = estate_external_building_normal_cost_tier_4_value
 		}
 	}
-	
+
 	parameters = {
 		estate_inherit_influence_medium_bonus = yes
 	}
@@ -183,12 +191,12 @@ east_asian_estate_ancestral_shrine_05 = {
 		confucian_education_xp_gain_mult = @east_asian_manor_confucian_education_xp_gain_mult_1
 		domicile_monthly_influence_add = @east_asian_manor_monthly_influence_add_2
 	}
-	
+
 	ai_value = {
 		value = 5
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_ancestral_shrine.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_ancestral_shrine_chinese.dds"
@@ -198,7 +206,7 @@ east_asian_estate_ancestral_shrine_05 = {
 }
 
 east_asian_estate_ancestral_shrine_06 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_ancestral_shrine_05
 	internal_slots = 5
@@ -212,7 +220,7 @@ east_asian_estate_ancestral_shrine_06 = {
 			value = estate_external_building_normal_cost_tier_5_value
 		}
 	}
-	
+
 	parameters = {
 		estate_inherit_influence_large_bonus = yes
 		estate_powerful_family_rating_per_dynasty_level = yes
@@ -224,12 +232,12 @@ east_asian_estate_ancestral_shrine_06 = {
 		confucian_education_xp_gain_mult = @east_asian_manor_confucian_education_xp_gain_mult_1
 		domicile_monthly_influence_add = @east_asian_manor_monthly_influence_add_2
 	}
-	
+
 	ai_value = {
 		value = 4
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_ancestral_shrine.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_ancestral_shrine_chinese.dds"
@@ -239,13 +247,13 @@ east_asian_estate_ancestral_shrine_06 = {
 }
 
 east_asian_estate_genealogy_hall_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ancestral_shrine_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -274,13 +282,13 @@ east_asian_estate_genealogy_hall_01 = {
 }
 
 east_asian_estate_genealogy_hall_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_genealogy_hall_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -309,7 +317,7 @@ east_asian_estate_genealogy_hall_02 = {
 }
 
 east_asian_estate_genealogy_hall_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_genealogy_hall_02
@@ -344,7 +352,7 @@ east_asian_estate_genealogy_hall_03 = {
 }
 
 east_asian_estate_genealogy_hall_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_genealogy_hall_03
@@ -379,13 +387,13 @@ east_asian_estate_genealogy_hall_04 = {
 }
 
 east_asian_estate_history_school_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ancestral_shrine_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -415,13 +423,13 @@ east_asian_estate_history_school_01 = {
 }
 
 east_asian_estate_history_school_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_history_school_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -451,7 +459,7 @@ east_asian_estate_history_school_02 = {
 }
 
 east_asian_estate_history_school_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_history_school_02
@@ -487,7 +495,7 @@ east_asian_estate_history_school_03 = {
 }
 
 east_asian_estate_history_school_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_history_school_03
@@ -523,13 +531,13 @@ east_asian_estate_history_school_04 = {
 }
 
 east_asian_estate_ancestral_orchard_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ancestral_shrine_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -558,13 +566,13 @@ east_asian_estate_ancestral_orchard_01 = {
 }
 
 east_asian_estate_ancestral_orchard_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ancestral_orchard_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -593,7 +601,7 @@ east_asian_estate_ancestral_orchard_02 = {
 }
 
 east_asian_estate_ancestral_orchard_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ancestral_orchard_02
@@ -628,7 +636,7 @@ east_asian_estate_ancestral_orchard_03 = {
 }
 
 east_asian_estate_ancestral_orchard_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ancestral_orchard_03
@@ -663,7 +671,7 @@ east_asian_estate_ancestral_orchard_04 = {
 }
 
 east_asian_estate_rites_office_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ancestral_shrine_01
@@ -703,13 +711,13 @@ east_asian_estate_rites_office_01 = {
 }
 
 east_asian_estate_rites_office_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_rites_office_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -738,7 +746,7 @@ east_asian_estate_rites_office_02 = {
 }
 
 east_asian_estate_rites_office_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_rites_office_02
@@ -773,7 +781,7 @@ east_asian_estate_rites_office_03 = {
 }
 
 east_asian_estate_rites_office_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_rites_office_03
@@ -808,13 +816,13 @@ east_asian_estate_rites_office_04 = {
 }
 
 east_asian_estate_memorial_archway_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_ancestral_shrine_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -843,13 +851,13 @@ east_asian_estate_memorial_archway_01 = {
 }
 
 east_asian_estate_memorial_archway_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_memorial_archway_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -878,7 +886,7 @@ east_asian_estate_memorial_archway_02 = {
 }
 
 east_asian_estate_memorial_archway_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_memorial_archway_02
@@ -913,7 +921,7 @@ east_asian_estate_memorial_archway_03 = {
 }
 
 east_asian_estate_memorial_archway_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_memorial_archway_03

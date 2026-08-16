@@ -2,7 +2,7 @@
 # GENERATED FILE - DO NOT EDIT BY HAND
 # Generator: tools/Generate-RBUDOverrides.ps1
 # CK3: 1.19.0.6
-# Plan SHA-256: 5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309
+# Plan SHA-256: B67EDA92FCFC46CBFF4BA32267A7822B1094E6D04A8E197839239AA11A6CCB3C
 ############################################################
 
 @east_asian_manor_build_gold_cost_3 = -0.03
@@ -20,10 +20,18 @@
 @east_asian_manor_trait_track_lifestyle_poet_xp_gain_mult_1 = 0.05
 @east_asian_manor_trait_track_lifestyle_poet_xp_gain_mult_2 = 0.1
 @east_asian_manor_trait_track_lifestyle_poet_xp_gain_mult_3 = 0.15
-@RB_UD_construction_time_days = 10
+@RB_UD_construction_time_180_days = 180
+@RB_UD_construction_time_240_days = 240
+@RB_UD_construction_time_300_days = 300
+@RB_UD_construction_time_360_days = 360
+@RB_UD_construction_time_420_days = 420
+@RB_UD_construction_time_480_days = 480
+@RB_UD_construction_time_540_days = 540
+@RB_UD_construction_time_600_days = 600
+@RB_UD_construction_time_660_days = 660
 
 east_asian_estate_garden_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	internal_slots = 8
 
@@ -72,7 +80,7 @@ east_asian_estate_garden_01 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 9
 		if = {
@@ -94,7 +102,7 @@ east_asian_estate_garden_01 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_garden.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_garden_chinese.dds"
@@ -104,7 +112,7 @@ east_asian_estate_garden_01 = {
 }
 
 east_asian_estate_garden_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_420_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_garden_01
 	internal_slots = 8
@@ -154,7 +162,7 @@ east_asian_estate_garden_02 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 8
 		if = {
@@ -176,7 +184,7 @@ east_asian_estate_garden_02 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_garden.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_garden_chinese.dds"
@@ -186,7 +194,7 @@ east_asian_estate_garden_02 = {
 }
 
 east_asian_estate_garden_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_480_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_garden_02
 	internal_slots = 8
@@ -240,7 +248,7 @@ east_asian_estate_garden_03 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 7
 		if = {
@@ -262,7 +270,7 @@ east_asian_estate_garden_03 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_garden.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_garden_chinese.dds"
@@ -273,7 +281,7 @@ east_asian_estate_garden_03 = {
 
 east_asian_estate_garden_leisure_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_garden_01
 
@@ -329,7 +337,7 @@ east_asian_estate_garden_leisure_04 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 6
 		if = {
@@ -351,7 +359,7 @@ east_asian_estate_garden_leisure_04 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_leisure_garden.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_garden_chinese.dds"
@@ -362,7 +370,7 @@ east_asian_estate_garden_leisure_04 = {
 
 east_asian_estate_garden_leisure_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_garden_leisure_04
 
@@ -417,7 +425,7 @@ east_asian_estate_garden_leisure_05 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 5
 		if = {
@@ -439,7 +447,7 @@ east_asian_estate_garden_leisure_05 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_leisure_garden.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_garden_chinese.dds"
@@ -450,7 +458,7 @@ east_asian_estate_garden_leisure_05 = {
 
 east_asian_estate_garden_leisure_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_garden_leisure_05
 
@@ -505,7 +513,7 @@ east_asian_estate_garden_leisure_06 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 4
 		if = {
@@ -527,7 +535,7 @@ east_asian_estate_garden_leisure_06 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_leisure_garden.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_garden_chinese.dds"
@@ -538,7 +546,7 @@ east_asian_estate_garden_leisure_06 = {
 
 east_asian_estate_garden_fruit_04 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_540_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_garden_01
 
@@ -563,7 +571,7 @@ east_asian_estate_garden_fruit_04 = {
 		development_growth = 0.1
 		negate_health_penalty_add = 0.05
 	}
-	
+
 	province_modifier = {
 		development_growth = @east_asian_manor_development_growth_2
 	}
@@ -595,7 +603,7 @@ east_asian_estate_garden_fruit_04 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 6
 		if = {
@@ -617,7 +625,7 @@ east_asian_estate_garden_fruit_04 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_fruit_garden.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_garden_chinese.dds"
@@ -628,7 +636,7 @@ east_asian_estate_garden_fruit_04 = {
 
 east_asian_estate_garden_fruit_05 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_600_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_garden_fruit_04
 
@@ -652,7 +660,7 @@ east_asian_estate_garden_fruit_05 = {
 		development_growth = 0.1
 		negate_health_penalty_add = 0.1
 	}
-	
+
 	province_modifier = {
 		development_growth = @east_asian_manor_development_growth_2
 	}
@@ -684,7 +692,7 @@ east_asian_estate_garden_fruit_05 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 5
 		if = {
@@ -706,7 +714,7 @@ east_asian_estate_garden_fruit_05 = {
 		}
 		add = estate_building_ai_modifier_value
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_fruit_garden.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_garden_chinese.dds"
@@ -717,7 +725,7 @@ east_asian_estate_garden_fruit_05 = {
 
 east_asian_estate_garden_fruit_06 = {
 	slot_type = internal
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_660_days
 	allowed_domicile_types = { east_asian_estate }
 	previous_building = east_asian_estate_garden_fruit_05
 
@@ -741,7 +749,7 @@ east_asian_estate_garden_fruit_06 = {
 		development_growth = 0.1
 		negate_health_penalty_add = 0.15
 	}
-	
+
 	province_modifier = {
 		development_growth = @east_asian_manor_development_growth_2
 	}
@@ -773,7 +781,7 @@ east_asian_estate_garden_fruit_06 = {
 			}
 		}
 	}
-	
+
 	ai_value = {
 		value = 4
 		if = {
@@ -794,7 +802,7 @@ east_asian_estate_garden_fruit_06 = {
 			add = 10
 		}
 	}
-	
+
 	asset = {
 		icon = "gfx/interface/icons/domicile_building/domicile_building_fruit_garden.dds"
 		texture = "gfx/interface/window_domiciles/estate_building_garden_chinese.dds"
@@ -804,13 +812,13 @@ east_asian_estate_garden_fruit_06 = {
 }
 
 east_asian_estate_cellar_cave_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_garden_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -838,13 +846,13 @@ east_asian_estate_cellar_cave_01 = {
 }
 
 east_asian_estate_cellar_cave_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_cellar_cave_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -872,7 +880,7 @@ east_asian_estate_cellar_cave_02 = {
 }
 
 east_asian_estate_cellar_cave_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_cellar_cave_02
@@ -906,7 +914,7 @@ east_asian_estate_cellar_cave_03 = {
 }
 
 east_asian_estate_cellar_cave_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_cellar_cave_03
@@ -940,13 +948,13 @@ east_asian_estate_cellar_cave_04 = {
 }
 
 east_asian_estate_aviary_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_garden_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -976,13 +984,13 @@ east_asian_estate_aviary_01 = {
 }
 
 east_asian_estate_aviary_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_aviary_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1012,7 +1020,7 @@ east_asian_estate_aviary_02 = {
 }
 
 east_asian_estate_aviary_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_aviary_02
@@ -1048,7 +1056,7 @@ east_asian_estate_aviary_03 = {
 }
 
 east_asian_estate_aviary_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_aviary_03
@@ -1084,13 +1092,13 @@ east_asian_estate_aviary_04 = {
 }
 
 east_asian_estate_four_gentlemen_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_garden_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1118,13 +1126,13 @@ east_asian_estate_four_gentlemen_01 = {
 }
 
 east_asian_estate_four_gentlemen_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_four_gentlemen_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1152,7 +1160,7 @@ east_asian_estate_four_gentlemen_02 = {
 }
 
 east_asian_estate_four_gentlemen_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_four_gentlemen_02
@@ -1186,7 +1194,7 @@ east_asian_estate_four_gentlemen_03 = {
 }
 
 east_asian_estate_four_gentlemen_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_four_gentlemen_03
@@ -1220,13 +1228,13 @@ east_asian_estate_four_gentlemen_04 = {
 }
 
 east_asian_estate_scholars_rocks_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_garden_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1255,13 +1263,13 @@ east_asian_estate_scholars_rocks_01 = {
 }
 
 east_asian_estate_scholars_rocks_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_scholars_rocks_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1290,7 +1298,7 @@ east_asian_estate_scholars_rocks_02 = {
 }
 
 east_asian_estate_scholars_rocks_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_scholars_rocks_02
@@ -1325,7 +1333,7 @@ east_asian_estate_scholars_rocks_03 = {
 }
 
 east_asian_estate_scholars_rocks_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_scholars_rocks_03
@@ -1360,13 +1368,13 @@ east_asian_estate_scholars_rocks_04 = {
 }
 
 east_asian_estate_lotus_pond_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_garden_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1398,13 +1406,13 @@ east_asian_estate_lotus_pond_01 = {
 }
 
 east_asian_estate_lotus_pond_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_lotus_pond_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1436,7 +1444,7 @@ east_asian_estate_lotus_pond_02 = {
 }
 
 east_asian_estate_lotus_pond_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_lotus_pond_02
@@ -1474,7 +1482,7 @@ east_asian_estate_lotus_pond_03 = {
 }
 
 east_asian_estate_lotus_pond_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_lotus_pond_03
@@ -1512,13 +1520,13 @@ east_asian_estate_lotus_pond_04 = {
 }
 
 east_asian_estate_fruit_trees_01 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_180_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_garden_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1546,13 +1554,13 @@ east_asian_estate_fruit_trees_01 = {
 }
 
 east_asian_estate_fruit_trees_02 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_240_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_fruit_trees_01
 
 	can_construct = {
-		
+
 	}
 
 	cost = {
@@ -1580,7 +1588,7 @@ east_asian_estate_fruit_trees_02 = {
 }
 
 east_asian_estate_fruit_trees_03 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_300_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_fruit_trees_02
@@ -1614,7 +1622,7 @@ east_asian_estate_fruit_trees_03 = {
 }
 
 east_asian_estate_fruit_trees_04 = {
-	construction_time = @RB_UD_construction_time_days
+	construction_time = @RB_UD_construction_time_360_days
 	allowed_domicile_types = { east_asian_estate }
 	slot_type = internal
 	previous_building = east_asian_estate_fruit_trees_03
