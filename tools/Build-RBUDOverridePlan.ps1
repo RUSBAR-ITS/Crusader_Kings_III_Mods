@@ -182,7 +182,10 @@ foreach ($domicile in $manifest.Domiciles) {
         $capacityChanges.Add([ordered]@{
             Building = $building.Id
             CurrentCapacityAdds = $currentAdds
-            TargetCapacityAdd = $(if ($index -eq 0) { $target - $base } else { 0 })
+            # base_external_slots is a pre-main-building fallback, not an
+            # additive bonus on top of the inherited main-track capacity.
+            # The first main level therefore receives the complete target.
+            TargetCapacityAdd = $(if ($index -eq 0) { $target } else { 0 })
             Operation = $(if ($index -eq 0) { 'replace_with_full_capacity' } else { 'remove_later_capacity_additions' })
         })
     }
@@ -247,14 +250,17 @@ foreach ($fillEffect in Convert-ToArray $manifest.FillEffects) {
     }
 
     $capacityByBuilding = @{}
-    $currentCapacity = [int]$typeOverride.BaseExternalSlots
+    $currentCapacity = 0
     foreach ($change in $mainChanges) {
         $currentAdd = 0
         foreach ($add in Convert-ToArray $change.CurrentCapacityAdds) {
             if ($null -ne $add.Numeric) { $currentAdd += [int]$add.Numeric }
         }
         $currentCapacity += $currentAdd
-        $capacityByBuilding[$change.Building] = $currentCapacity
+        $capacityByBuilding[$change.Building] = [Math]::Max(
+            [int]$typeOverride.BaseExternalSlots,
+            $currentCapacity
+        )
     }
 
     # Vanilla switches list the highest handled main tier first. The analyzer
@@ -570,7 +576,7 @@ $planCore = [ordered]@{
         'Normalize construction time through a file-local RB_UD_ @ constant because this database field rejects global script values.',
         'Preserve vanilla costs, effects, upgrade order, and unrelated prerequisites.',
         'Remove only mutual-exclusivity access gates and camp-purpose cleanup targeted by this plan.',
-        'Grant complete slot capacity from the first main or anchor level; progression still controls higher building tiers.',
+        'Grant complete slot capacity from the first main or anchor level; base_external_slots is a pre-main fallback and is not subtracted from that target.',
         'No mass-build action and no construction-speed modifier are part of this mod.'
     )
     TargetFiles = [ordered]@{

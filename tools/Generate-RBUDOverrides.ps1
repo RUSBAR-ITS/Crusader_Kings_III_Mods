@@ -890,6 +890,7 @@ $scriptedEffectObjects.Add([pscustomobject]@{
 # plan from the generated in-memory objects, so a future generator regression
 # cannot silently produce syntactically valid but functionally wrong output.
 foreach ($domicileOverride in Convert-ToArray $plan.DomicileTypeOverrides) {
+    $generatedCapacity = 0
     foreach ($change in Convert-ToArray $domicileOverride.MainTrackCapacityChanges) {
         $text = $buildingLines[$change.Building] -join "`n"
         $values = @(
@@ -904,6 +905,12 @@ foreach ($domicileOverride in Convert-ToArray $plan.DomicileTypeOverrides) {
         elseif ($values.Count -ne 1 -or [int]$values[0] -ne [int]$change.TargetCapacityAdd) {
             throw "Wrong generated capacity modifier on $($change.Building)."
         }
+        foreach ($value in $values) {
+            $generatedCapacity += [int]$value
+        }
+    }
+    if ($generatedCapacity -ne [int]$domicileOverride.TargetMaximumExternalCapacity) {
+        throw "Generated external capacity for $($domicileOverride.DomicileType) is $generatedCapacity; expected $($domicileOverride.TargetMaximumExternalCapacity)."
     }
 }
 foreach ($slotOverride in Convert-ToArray $plan.InternalSlotOverrides) {

@@ -1,6 +1,6 @@
 ﻿# RB_UD — план переопределений ванильных домицилей
 
-Версия CK3: **1.19.0.6**. Сигнатура плана: `EF2688A0A50776788645EFE1B68DBE3372709B9A19D0DC7650246860EEC7B6CC`.
+Версия CK3: **1.19.0.6**. Сигнатура плана: `5F734AE720B1E26A0D53D588ED03BDA468E57531F58121A7EAC3DD2FC217C309`.
 
 Документ определяет точные объекты и преобразования, которые затем воспроизводимо применяет генератор `tools/Generate-RBUDOverrides.ps1`.
 
@@ -12,18 +12,18 @@
 - Normalize construction time through a file-local RB_UD_ @ constant because this database field rejects global script values.
 - Preserve vanilla costs, effects, upgrade order, and unrelated prerequisites.
 - Remove only mutual-exclusivity access gates and camp-purpose cleanup targeted by this plan.
-- Grant complete slot capacity from the first main or anchor level; progression still controls higher building tiers.
+- Grant complete slot capacity from the first main or anchor level; base_external_slots is a pre-main fallback and is not subtracted from that target.
 - No mass-build action and no construction-speed modifier are part of this mod.
 
 ## Типы домицилей и внешняя ёмкость
 
 | Тип | Видимых сейчас | Максимум сейчас | Цель | Добавка на первом главном здании | Последующие добавки |
 |---|---:|---:|---:|---:|---|
-| camp | 4 | 6 | 7 | 5 | обнулить |
-| estate | 6 | 8 | 16 | 14 | обнулить |
-| yurt | 6 | 8 | 7 | 5 | обнулить |
-| east_asian_estate | 6 | 8 | 15 | 13 | обнулить |
-| japanese_manor | 6 | 8 | 12 | 10 | обнулить |
+| camp | 4 | 4 | 7 | 7 | обнулить |
+| estate | 6 | 6 | 16 | 16 | обнулить |
+| yurt | 6 | 6 | 7 | 7 | обнулить |
+| east_asian_estate | 6 | 6 | 15 | 15 | обнулить |
+| japanese_manor | 6 | 6 | 12 | 12 | обнулить |
 
 Полная внешняя ёмкость доступна с первого уровня главного здания. Это не открывает более высокие уровни построек: их ванильная прогрессия сохраняется.
 
@@ -33,21 +33,21 @@
 
 | Эффект | Тип | Главный уровень | Было мест | Стало мест | Старый порог | Новый порог | Лимит |
 |---|---|---|---:|---:|---:|---:|---:|
-| fill_external_estate_building_effect | estate | estate_main_05 | 8 | 16 | 1 | 9 | 16 |
-| fill_external_estate_building_effect | estate | estate_main_04 | 7 | 16 | 2 | 11 | 16 |
-| fill_external_estate_building_effect | estate | estate_main_03 | 6 | 16 | 3 | 13 | 16 |
-| fill_external_estate_building_effect | estate | estate_main_02 | 5 | 16 | 4 | 15 | 16 |
-| fill_external_estate_building_effect | estate | estate_main_01 | 4 | 16 | 5 | 17 | 16 |
-| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_05 | 8 | 12 | 1 | 5 | 12 |
-| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_04 | 8 | 12 | 2 | 6 | 12 |
-| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_03 | 8 | 12 | 3 | 7 | 12 |
-| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_02 | 6 | 12 | 4 | 10 | 12 |
-| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_01 | 4 | 12 | 5 | 13 | 12 |
-| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_05 | 8 | 15 | 2 | 9 | 15 |
-| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_04 | 8 | 15 | 3 | 10 | 15 |
-| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_03 | 7 | 15 | 4 | 12 | 15 |
-| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_02 | 6 | 15 | 5 | 14 | 15 |
-| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_01 | 5 | 15 | 6 | 16 | 15 |
+| fill_external_estate_building_effect | estate | estate_main_05 | 6 | 16 | 1 | 11 | 16 |
+| fill_external_estate_building_effect | estate | estate_main_04 | 5 | 16 | 2 | 13 | 16 |
+| fill_external_estate_building_effect | estate | estate_main_03 | 4 | 16 | 3 | 15 | 16 |
+| fill_external_estate_building_effect | estate | estate_main_02 | 3 | 16 | 4 | 17 | 16 |
+| fill_external_estate_building_effect | estate | estate_main_01 | 2 | 16 | 5 | 19 | 16 |
+| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_05 | 6 | 12 | 1 | 7 | 12 |
+| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_04 | 6 | 12 | 2 | 8 | 12 |
+| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_03 | 6 | 12 | 3 | 9 | 12 |
+| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_02 | 4 | 12 | 4 | 12 | 12 |
+| fill_external_japanese_manor_building_effect | japanese_manor | japanese_manor_main_01 | 2 | 12 | 5 | 15 | 12 |
+| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_05 | 6 | 15 | 2 | 11 | 15 |
+| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_04 | 6 | 15 | 3 | 12 | 15 |
+| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_03 | 5 | 15 | 4 | 14 | 15 |
+| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_02 | 4 | 15 | 5 | 16 | 15 |
+| fill_external_east_asian_estate_building_effect | east_asian_estate | east_asian_estate_main_01 | 3 | 15 | 6 | 18 | 15 |
 
 ## Внутренние ячейки
 

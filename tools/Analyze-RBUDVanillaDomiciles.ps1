@@ -1125,7 +1125,16 @@ function Get-DomicileAnalysis {
 
     $currentCapacity = $null
     if ($null -ne $TypeRecord.BaseExternalSlots) {
-        $currentCapacity = $TypeRecord.BaseExternalSlots + $maxCapacityAddition
+        # base_external_slots is the capacity available before a main building
+        # exists.  Once the main track is present, its inherited
+        # domicile_external_slots_capacity_add values describe the resulting
+        # capacity; the base value is not added a second time.  Keep the base
+        # as a fallback for domicile types whose main track grants less (or no)
+        # capacity.
+        $currentCapacity = [Math]::Max(
+            [int]$TypeRecord.BaseExternalSlots,
+            [int]$maxCapacityAddition
+        )
     }
 
     $visualSlotDeficit = [Math]::Max(
@@ -1701,7 +1710,7 @@ function Write-MarkdownReport {
     $output.Add('')
     $output.Add('> Политика RB_UD: одна физическая корневая линия занимает одну внешнюю ячейку. Взаимоисключающие внешние специализации после общей части переводятся в параллельные внутренние треки. Поэтому рекомендуемое число внешних ячеек равно числу физических корневых линий, а не числу всех конечных листьев графа.')
     $output.Add('')
-    $output.Add('> Уже внутренние развилки нельзя исправить простой сменой `slot_type`: для их одновременного существования общую внутреннюю начальную часть необходимо расщепить на независимые параллельные линии. Теоретическая вместимость внешних ячеек равна `base_external_slots` плюс унаследованная сумма `domicile_external_slots_capacity_add` по главной линии.')
+    $output.Add('> Уже внутренние развилки нельзя исправить простой сменой `slot_type`: для их одновременного существования общую внутреннюю начальную часть необходимо расщепить на независимые параллельные линии. `base_external_slots` задаёт вместимость до появления главного здания; после его появления итоговую вместимость определяет унаследованная сумма `domicile_external_slots_capacity_add` по главной линии, без повторного прибавления базового значения.')
     $output.Add('')
     $output.Add('### Масштаб планируемого преобразования')
     $output.Add('')
