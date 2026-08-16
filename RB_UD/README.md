@@ -5,18 +5,22 @@ expanded domicile concept.
 
 Internal object prefix: `RB_UD_`.
 
-Current version: `0.0.0` (analysis and override-planning scaffold; no gameplay
-changes yet).
+Current version: `0.0.0` (generated gameplay prototype; in-game layout
+validation is still required).
 
 ## Current implementation stage
 
-Stage 1 is complete: the project has a read-only vanilla domicile analyzer.
-It builds the upgrade graph; distinguishes physical external lines from their
-terminal specializations; detects external and internal branch groups; records
-the exact specialization tails, tiers, icons, and panorama textures needed by
-the planned conversion; calculates external and internal slot demand;
-classifies construction restrictions and all explicit building-removal paths;
-resolves referenced vanilla scripted triggers; separates compatibility
+Stages 1-3 are complete. The project now contains a reproducible pipeline that
+analyzes the installed vanilla game, builds a dry-run override plan, validates
+that the expected vanilla inputs have not changed, and generates the gameplay
+overrides used by the mod.
+
+The analyzer builds the upgrade graph; distinguishes physical external lines
+from their terminal specializations; detects external and internal branch
+groups; records the exact specialization tails, tiers, icons, and panorama
+textures needed by the conversion; calculates external and internal slot
+demand; classifies construction restrictions and all explicit building-removal
+paths; resolves referenced vanilla scripted triggers; separates compatibility
 candidates from prerequisites that should be preserved; records initial-fill
 effects; hashes all relevant vanilla inputs; and emits stable fingerprints for
 the structure, availability rules, visual assets, and removal logic.
@@ -28,12 +32,17 @@ branch that is already internal is reported separately because it requires
 splitting its shared prefix into parallel tracks rather than merely changing
 `slot_type`.
 
-Stage 2 is also complete: a second read-only tool converts the audit into a
-validated dry-run override plan. It names every vanilla type, building, event,
-condition group, capacity change, and target override file; consolidates
-internal-slot demand after branch conversion; and explicitly separates the 21
-access restrictions to rewrite from the three false-positive main-building
-conditions that must remain vanilla. It does not emit gameplay objects.
+The plan builder names every vanilla type, building, event, condition group,
+capacity change, and target override file; consolidates internal-slot demand
+after branch conversion; and explicitly separates the 21 access-restriction
+groups to rewrite from the three false-positive main-building conditions that
+must remain vanilla.
+
+The generator then copies only the affected vanilla objects into late-loaded
+override files and applies the plan. It does not use `replace_path`. It also
+performs semantic post-generation checks: capacities, internal slots, branch
+anchors, preserved tier prerequisites, removed access gates, and disabled camp
+purpose cleanup are verified before files are accepted.
 
 - Human-readable audit: `docs/generated/RB_UD_VANILLA_AUDIT.md`
 - Machine-readable manifest: `tools/generated/RB_UD_vanilla_manifest.json`
@@ -41,8 +50,12 @@ conditions that must remain vanilla. It does not emit gameplay objects.
 - Human-readable override plan: `docs/generated/RB_UD_OVERRIDE_PLAN.md`
 - Machine-readable override plan: `tools/generated/RB_UD_override_plan.json`
 - Override-plan builder: `../tools/Build-RBUDOverridePlan.ps1`
+- Editable domicile layouts: `tools/RB_UD_layouts.json`
+- Gameplay generator: `../tools/Generate-RBUDOverrides.ps1`
+- Generation manifest: `tools/generated/RB_UD_generation_manifest.json`
+- Generation report: `docs/generated/RB_UD_GENERATION_REPORT.md`
 
-Regenerate both artifacts after a CK3 update:
+Regenerate all artifacts after a CK3 update:
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
@@ -52,7 +65,35 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
 
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
   tools/Build-RBUDOverridePlan.ps1
+
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
+  tools/Generate-RBUDOverrides.ps1 `
+  -GamePath "E:\SteamLibrary\steamapps\common\Crusader Kings III\game" `
+  -ModPath "RB_UD"
 ```
+
+The generator deliberately stops when a recorded vanilla hash or structural
+signature differs. In that case, rerun and review the analyzer and plan before
+accepting new overrides. Files named `zzz_RB_UD_*` are generated output and
+must not be edited manually. Visual slot positions belong in
+`tools/RB_UD_layouts.json`.
+
+## Generated gameplay scope
+
+- five overridden domicile types with expanded external layouts;
+- 438 affected vanilla building objects reproduced with targeted changes;
+- external specialization tails converted into independent internal tracks;
+- already-internal estate library specializations split into parallel tracks;
+- camp-purpose construction gates removed while unrelated progression remains;
+- the 23 vanilla camp-purpose cleanup removals disabled;
+- culture, territory, innovation, language, and similar specialization access
+  gates removed according to the reviewed plan;
+- costs, effects, icons, textures, upgrade order, and unrelated vanilla
+  prerequisites preserved by copying the current vanilla objects.
+
+The five domicile windows still require a manual visual pass in game. Their
+geometry is data-driven so any overlap can be corrected without altering the
+generator.
 
 Planned scope:
 
