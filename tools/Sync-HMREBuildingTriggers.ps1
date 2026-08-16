@@ -144,6 +144,7 @@ function Convert-VanillaConstraintBody {
     return @(
         $Lines | ForEach-Object {
             $converted = $_ -replace 'scope:holder', 'province_owner' `
+                           -replace '\bcapital_province\s*=\s*root\b', 'capital_province = prev' `
                            -replace '\bbuilding_requirement_tribal\b', 'HM_RE_building_requirement_tribal' `
                            -replace '\bbuilding_requirement_wanua\b', 'HM_RE_building_requirement_wanua' `
                            -replace '\bbuilding_wind_furnace_requirement_terrain\b', 'HM_RE_building_wind_furnace_requirement_terrain' `
@@ -195,7 +196,7 @@ $constraintFields = @(
     'can_construct'
 )
 
-$utf8WithoutBom = [Text.UTF8Encoding]::new($false)
+$utf8WithBom = [Text.UTF8Encoding]::new($true)
 
 foreach ($triggerFile in $triggerFiles) {
     $targetPath = Join-Path $triggerPath $triggerFile
@@ -301,6 +302,6 @@ foreach ($triggerFile in $triggerFiles) {
     }
 
     $content = ($output -join "`r`n").TrimEnd() + "`r`n"
-    [IO.File]::WriteAllText($targetPath, $content, $utf8WithoutBom)
+    [IO.File]::WriteAllText($targetPath, $content, $utf8WithBom)
     Write-Output "Updated $triggerFile ($($buildingIds.Count) building tiers)."
 }
