@@ -73,6 +73,18 @@
 	}
 }
 
+HM_RE_can_mass_construct_buildings = { # scope: province
+	has_ongoing_construction = no
+	barony = {
+		is_leased_out = no
+	}
+	HM_RE_can_construct_buildings = yes
+	OR = {
+		HM_RE_trigger_player_add_slot = yes
+		has_free_building_slot = yes
+	}
+}
+
 HM_RE_can_upgrade_buildings = {
 	OR = {
 		# tribal buildings

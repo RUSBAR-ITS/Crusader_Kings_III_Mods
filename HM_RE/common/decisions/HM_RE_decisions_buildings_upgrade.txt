@@ -65,3 +65,73 @@
 
 	ai_check_interval = 0
 }
+
+HM_RE_decision_buildings_upgrade_realm = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_city.dds"
+	}
+	desc = HM_RE_decision_buildings_upgrade_realm_desc
+	selection_tooltip = HM_RE_decision_buildings_upgrade_realm_tooltip
+
+	cost = {
+		gold = {
+			every_realm_province = {
+				limit = {
+					has_ongoing_construction = no
+					barony = {
+						is_leased_out = no
+					}
+				}
+				add = HM_RE_value_upgrade_buildings_gold_cost
+			}
+		}
+		prestige = {
+			every_realm_province = {
+				limit = {
+					has_ongoing_construction = no
+					barony = {
+						is_leased_out = no
+					}
+				}
+				add = HM_RE_value_upgrade_buildings_prestige_cost
+			}
+		}
+	}
+
+	is_shown = {
+		global_var:HM_RE_show_decisions ?= yes
+		has_game_rule = HM_RE_rule_can_replace_buildings_vassals
+		has_game_rule = HM_RE_upgrade_all_button_on
+		is_landed = yes
+		any_realm_province = {
+			count > 0
+			has_ongoing_construction = no
+			barony = {
+				is_leased_out = no
+			}
+			HM_RE_can_upgrade_buildings = yes
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_at_war = no
+	}
+
+	effect = {
+		custom_tooltip = HM_RE_effect_upgrade_buildings_realm_tooltip
+		hidden_effect = {
+			every_realm_province = {
+				limit = {
+					has_ongoing_construction = no
+					barony = {
+						is_leased_out = no
+					}
+				}
+				HM_RE_effect_upgrade_buildings = yes
+			}
+		}
+	}
+
+	ai_check_interval = 0
+}

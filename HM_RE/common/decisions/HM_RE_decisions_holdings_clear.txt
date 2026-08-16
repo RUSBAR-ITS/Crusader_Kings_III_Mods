@@ -41,3 +41,47 @@
 
 	ai_check_interval = 0
 }
+
+HM_RE_decision_remove_all_realm = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_city.dds"
+	}
+
+	desc = HM_RE_decision_remove_all_realm_desc
+	selection_tooltip = HM_RE_decision_remove_all_realm_tooltip
+
+	is_shown = {
+		global_var:HM_RE_show_decisions ?= yes
+		has_game_rule = HM_RE_rule_can_replace_buildings_vassals
+		is_landed = yes
+		any_realm_province = {
+			has_ongoing_construction = no
+			barony = {
+				is_leased_out = no
+			}
+			HM_RE_trigger_remove_buildings = yes
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_at_war = no
+	}
+
+	effect = {
+		custom_tooltip = HM_RE_remove_all_realm_effect_tooltip
+		hidden_effect = {
+			every_realm_province = {
+				limit = {
+					has_ongoing_construction = no
+					barony = {
+						is_leased_out = no
+					}
+				}
+				HM_RE_effect_remove_buildings = yes
+			}
+		}
+	}
+
+	ai_check_interval = 0
+}

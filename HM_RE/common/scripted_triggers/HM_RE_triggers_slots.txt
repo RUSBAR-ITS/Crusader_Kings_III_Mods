@@ -49,18 +49,8 @@ HM_RE_trigger_ai_add_slot = { #scope: province
 HM_RE_trigger_add_slot = { #scope: province
 	trigger_if = {
 		limit = {
-			trigger_if = {
-				limit = {
-					barony = { is_leased_out = no }
-				}
-				province_owner = {
-					is_ai = no
-				}
-			}
-			trigger_else = {
-				barony.lessee = {
-					is_ai = no
-				}
+			root = {
+				is_ai = no
 			}
 		}
 		HM_RE_trigger_player_add_slot = yes
