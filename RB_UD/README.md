@@ -15,7 +15,10 @@ terminal specializations; detects external and internal branch groups; records
 the exact specialization tails, tiers, icons, and panorama textures needed by
 the planned conversion; calculates external and internal slot demand;
 classifies construction restrictions and all explicit building-removal paths;
-records initial-fill effects; and hashes all relevant vanilla inputs.
+resolves referenced vanilla scripted triggers; separates compatibility
+candidates from prerequisites that should be preserved; records initial-fill
+effects; hashes all relevant vanilla inputs; and emits stable fingerprints for
+the structure, availability rules, visual assets, and removal logic.
 
 The generated schema v2 follows the implementation policy selected for this
 mod: keep one external slot per physical building line, then turn each normally

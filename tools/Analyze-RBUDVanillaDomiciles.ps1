@@ -7,6 +7,7 @@
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 2.0
+$script:ScriptedTriggerBlocks = @{}
 
 if ([string]::IsNullOrWhiteSpace($ModPath)) {
     $ModPath = Join-Path $PSScriptRoot '..\RB_UD'
@@ -240,6 +241,19 @@ function Convert-ToNullableInt {
     return $null
 }
 
+function Get-StringSha256 {
+    param([string]$Text)
+
+    $sha256 = [Security.Cryptography.SHA256]::Create()
+    try {
+        $bytes = [Text.Encoding]::UTF8.GetBytes($Text)
+        return ([BitConverter]::ToString($sha256.ComputeHash($bytes))).Replace('-', '')
+    }
+    finally {
+        $sha256.Dispose()
+    }
+}
+
 function Get-RestrictionAnalysis {
     param([string]$Text)
 
@@ -272,16 +286,224 @@ function Get-RestrictionAnalysis {
     if ($Text -match '(?i)has_innovation|has_era|domicile_building_or_higher|num_domicile_buildings|main_0[1-9]') {
         $categories.Add('progression')
     }
-    if ($Text -match '(?i)government|administrative|nomad|landless|ruler|title|vassal_contract') {
+    if ($Text -match '(?i)government|administrative|nomad|landless|ruler|title|vassal_contract|is_governor|top_liege') {
         $categories.Add('government_or_status')
     }
     if ($Text -match '(?i)faith|religion|doctrine|holy_site|piety') {
         $categories.Add('faith')
     }
+    if ($Text -match '(?m)^\s*[A-Za-z0-9_]+_trigger\s*=\s*(?:yes|\{)') {
+        $categories.Add('scripted_trigger')
+    }
+    if ($Text -match '(?i)has_dynasty_perk|house_aspiration|dynasty|\bhouse\b|any_relation|has_character_flag|has_trait|is_adult|is_alive|is_landed|is_ruler|is_ai') {
+        $categories.Add('character_dynasty_or_house')
+    }
+    if ($Text -match '(?i)has_domicile_building_parameter|has_domicile_parameter|has_variable|has_dlc_feature|has_game_rule|has_perk|has_lifestyle|is_any_movement_leader|any_character_situation|situation_type|number_maa_regiments') {
+        $categories.Add('state_or_feature')
+    }
 
     return [pscustomobject]@{
         Categories = $categories.ToArray()
         RealmLawFlags = $realmLawFlags
+    }
+}
+
+function Resolve-ScriptedTriggerReferences {
+    param([string]$Text)
+
+    $referencePattern = '(?m)^\s*([A-Za-z0-9_]+_trigger)\s*=\s*(?:yes|\{)'
+    $pending = [System.Collections.Generic.Queue[string]]::new()
+    foreach ($name in @(
+        [regex]::Matches($Text, $referencePattern) |
+            ForEach-Object { $_.Groups[1].Value } |
+            Sort-Object -Unique
+    )) {
+        $pending.Enqueue($name)
+    }
+
+    $visited = [System.Collections.Generic.HashSet[string]]::new()
+    $resolved = [System.Collections.Generic.List[object]]::new()
+    $unresolved = [System.Collections.Generic.List[string]]::new()
+    $expandedTexts = [System.Collections.Generic.List[string]]::new()
+
+    while ($pending.Count -gt 0) {
+        $name = $pending.Dequeue()
+        if ($visited.Contains($name)) {
+            continue
+        }
+        $null = $visited.Add($name)
+        if (-not $script:ScriptedTriggerBlocks.ContainsKey($name)) {
+            $unresolved.Add($name)
+            continue
+        }
+
+        $block = $script:ScriptedTriggerBlocks[$name]
+        $blockText = Get-BlockText $block.Lines
+        $expandedTexts.Add($blockText)
+        $resolved.Add([pscustomobject]@{
+            Id = $name
+            SourceFile = $block.SourceFile
+            StartLine = $block.StartLine
+        })
+        foreach ($nestedName in @(
+            [regex]::Matches($blockText, $referencePattern) |
+                ForEach-Object { $_.Groups[1].Value } |
+                Sort-Object -Unique
+        )) {
+            if (-not $visited.Contains($nestedName)) {
+                $pending.Enqueue($nestedName)
+            }
+        }
+    }
+
+    return [pscustomobject]@{
+        AnalysisText = @($Text, $expandedTexts.ToArray()) -join "`n"
+        Resolved = @($resolved.ToArray() | Sort-Object Id)
+        Unresolved = @($unresolved.ToArray() | Sort-Object -Unique)
+    }
+}
+
+function Get-ConstraintDependencyAnalysis {
+    param([string]$Text)
+
+    $definitions = @(
+        [pscustomobject]@{ Name = 'RealmLawFlags'; Pattern = '\bhas_realm_law(?:_flag)?\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'CulturalParameters'; Pattern = '\bhas_cultural_parameter\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'CulturalTraditions'; Pattern = '\bhas_(?:cultural_)?tradition\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'Innovations'; Pattern = '\bhas_innovation\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'Eras'; Pattern = '\bhas_era\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'Terrains'; Pattern = '(?m)^\s*terrain\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'Regions'; Pattern = '\b(?:geographical_region|region)\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'GovernmentFlags'; Pattern = '\bgovernment_has_flag\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'Governments'; Pattern = '(?m)^\s*(?:government|government_type)\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'FaithDoctrines'; Pattern = '\bhas_doctrine\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'Faiths'; Pattern = '(?m)^\s*faith\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'Religions'; Pattern = '(?m)^\s*religion\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'DynastyPerks'; Pattern = '\bhas_dynasty_perk\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'HouseAspirationParameters'; Pattern = '\bhas_house_aspiration_parameter\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'CharacterFlags'; Pattern = '\bhas_character_flag\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'Traits'; Pattern = '\bhas_trait\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'Relations'; Pattern = '\btype\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'DomicileBuildingParameters'; Pattern = '\bhas_domicile_building_parameter\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'DomicileParameters'; Pattern = '\bhas_domicile_parameter\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'DlcFeatures'; Pattern = '\bhas_dlc_feature\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'GameRules'; Pattern = '\bhas_game_rule\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'SituationTypes'; Pattern = '\bsituation_type\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'MenAtArmsBaseTypes'; Pattern = '\bnumber_maa_regiments_of_base_type:([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'RequiredDomicileBuildings'; Pattern = '\bhas_domicile_building_or_higher\s*=\s*([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'RequiredDomicileBuildingCounts'; Pattern = '\bnum_domicile_buildings\s*[^\r\n}]*?([A-Za-z0-9_]+)' },
+        [pscustomobject]@{ Name = 'ScriptedTriggers'; Pattern = '(?m)^\s*([A-Za-z0-9_]+_trigger)\s*=\s*(?:yes|\{)' }
+    )
+
+    $result = [ordered]@{}
+    foreach ($definition in $definitions) {
+        $result[$definition.Name] = @(
+            [regex]::Matches($Text, $definition.Pattern) |
+                ForEach-Object { $_.Groups[1].Value } |
+                Sort-Object -Unique
+        )
+    }
+    return [pscustomobject]$result
+}
+
+function Get-AvailabilityPolicy {
+    param(
+        [string[]]$Categories,
+        [bool]$HasConditions
+    )
+
+    $exclusivityCandidates = @(
+        $Categories |
+            Where-Object { $_ -in @('camp_purpose', 'culture_or_language', 'territory') } |
+            Sort-Object -Unique
+    )
+    $preservedPrerequisites = @(
+        $Categories |
+            Where-Object {
+                $_ -in @(
+                    'progression',
+                    'government_or_status',
+                    'faith',
+                    'realm_law',
+                    'scripted_trigger',
+                    'character_dynasty_or_house',
+                    'state_or_feature'
+                )
+            } |
+            Sort-Object -Unique
+    )
+    $actions = [System.Collections.Generic.List[string]]::new()
+    if ($exclusivityCandidates -contains 'camp_purpose') {
+        $actions.Add('remove_camp_purpose_gate_and_disable_corresponding_cleanup')
+    }
+    if ($exclusivityCandidates -contains 'culture_or_language') {
+        $actions.Add('review_culture_condition_and_remove_only_track_exclusivity')
+    }
+    if ($exclusivityCandidates -contains 'territory') {
+        $actions.Add('review_territory_condition_and_remove_only_track_exclusivity')
+    }
+    if ($preservedPrerequisites.Count -gt 0) {
+        $actions.Add('preserve_unrelated_vanilla_prerequisites')
+    }
+    if ($actions.Count -eq 0 -and $HasConditions) {
+        $actions.Add('preserve_until_manually_classified')
+    }
+
+    $disposition = 'unrestricted'
+    if ($exclusivityCandidates.Count -gt 0) {
+        if (
+            $exclusivityCandidates -contains 'culture_or_language' -or
+            $exclusivityCandidates -contains 'territory'
+        ) {
+            $disposition = 'manual_review_required'
+        }
+        else {
+            $disposition = 'split_exclusivity_from_prerequisites'
+        }
+    }
+    elseif ($Categories.Count -gt 0) {
+        $disposition = 'preserve_vanilla_prerequisites'
+    }
+    elseif ($HasConditions) {
+        $disposition = 'unclassified_conditions'
+    }
+
+    return [pscustomobject]@{
+        Disposition = $disposition
+        ExclusivityCandidateCategories = $exclusivityCandidates
+        PreservedPrerequisiteCategories = $preservedPrerequisites
+        RecommendedActions = $actions.ToArray()
+        RequiresManualReview = $disposition -eq 'manual_review_required'
+    }
+}
+
+function Get-AvailabilityBlockRecord {
+    param([string[]]$Lines)
+
+    $text = Get-BlockText $Lines
+    if ([string]::IsNullOrWhiteSpace($text)) {
+        return $null
+    }
+    $substantiveLines = @(
+        for ($index = 1; $index -lt ($Lines.Count - 1); $index++) {
+            $codeLine = (Get-CodeLine $Lines[$index]).Trim()
+            if (-not [string]::IsNullOrWhiteSpace($codeLine)) {
+                $codeLine
+            }
+        }
+    )
+    if ($substantiveLines.Count -eq 0) {
+        return $null
+    }
+    $resolution = Resolve-ScriptedTriggerReferences $text
+    $restrictionAnalysis = Get-RestrictionAnalysis $resolution.AnalysisText
+    return [pscustomobject]@{
+        Script = $text
+        DirectDependencies = Get-ConstraintDependencyAnalysis $text
+        ResolvedDependencies = Get-ConstraintDependencyAnalysis $resolution.AnalysisText
+        RestrictionCategories = @($restrictionAnalysis.Categories)
+        ResolvedScriptedTriggers = @($resolution.Resolved)
+        UnresolvedScriptedTriggers = @($resolution.Unresolved)
     }
 }
 
@@ -323,11 +545,23 @@ function Get-BuildingRecord {
 
     $canConstruct = @(Get-ChildBlock $Block.Lines 'can_construct')
     $canConstructPotential = @(Get-ChildBlock $Block.Lines 'can_construct_potential')
-    $constraintText = @(
-        Get-BlockText $canConstruct
-        Get-BlockText $canConstructPotential
-    ) -join "`n"
-    $restrictionAnalysis = Get-RestrictionAnalysis $constraintText
+    $canConstructRecord = Get-AvailabilityBlockRecord $canConstruct
+    $canConstructPotentialRecord = Get-AvailabilityBlockRecord $canConstructPotential
+    $restrictionCategories = @(
+        @($canConstructRecord, $canConstructPotentialRecord) |
+            Where-Object { $null -ne $_ } |
+            ForEach-Object { $_.RestrictionCategories } |
+            Sort-Object -Unique
+    )
+    $realmLawFlags = @(
+        @($canConstructRecord, $canConstructPotentialRecord) |
+            Where-Object { $null -ne $_ } |
+            ForEach-Object { $_.ResolvedDependencies.RealmLawFlags } |
+            Sort-Object -Unique
+    )
+    $availabilityPolicy = Get-AvailabilityPolicy `
+        $restrictionCategories `
+        ($null -ne $canConstructRecord -or $null -ne $canConstructPotentialRecord)
     $blockText = Get-BlockText $Block.Lines
     $icons = @(
         [regex]::Matches($blockText, '(?m)^\s*icon\s*=\s*"([^"]+)"') |
@@ -354,10 +588,15 @@ function Get-BuildingRecord {
         InternalSlots = Convert-ToNullableInt (Get-DirectScalar $Block.Lines 'internal_slots')
         ConstructionTime = Get-DirectScalar $Block.Lines 'construction_time'
         ExternalCapacityAdds = @(Get-ExternalCapacityAdds $Block.Lines)
-        RestrictionCategories = @($restrictionAnalysis.Categories)
-        RealmLawFlags = @($restrictionAnalysis.RealmLawFlags)
-        HasCanConstruct = $canConstruct.Count -gt 0
-        HasCanConstructPotential = $canConstructPotential.Count -gt 0
+        RestrictionCategories = $restrictionCategories
+        RealmLawFlags = $realmLawFlags
+        HasCanConstruct = $null -ne $canConstructRecord
+        HasCanConstructPotential = $null -ne $canConstructPotentialRecord
+        Availability = [pscustomobject]@{
+            CanConstruct = $canConstructRecord
+            CanConstructPotential = $canConstructPotentialRecord
+            Policy = $availabilityPolicy
+        }
         Icons = $icons
         Textures = $textures
     }
@@ -919,7 +1158,10 @@ function Get-DomicileAnalysis {
         'territory',
         'progression',
         'government_or_status',
-        'faith'
+        'faith',
+        'scripted_trigger',
+        'character_dynasty_or_house',
+        'state_or_feature'
     )) {
         $matching = @(
             $selected |
@@ -963,6 +1205,144 @@ function Get-DomicileAnalysis {
         })
     }
 
+    $conditionalTrackBuilders = @{}
+    foreach ($building in @(
+        $selected | Where-Object { $_.HasCanConstruct -or $_.HasCanConstructPotential }
+    )) {
+        $trackRoot = Get-TrackRootId $building.Id $building.SlotType $buildingById
+        $trackKey = "$($building.SlotType)|$trackRoot"
+        if (-not $conditionalTrackBuilders.ContainsKey($trackKey)) {
+            $conditionalTrackBuilders[$trackKey] = [System.Collections.Generic.List[object]]::new()
+        }
+        $conditionalTrackBuilders[$trackKey].Add($building)
+    }
+
+    $dependencyNames = @(
+        'RealmLawFlags',
+        'CulturalParameters',
+        'CulturalTraditions',
+        'Innovations',
+        'Eras',
+        'Terrains',
+        'Regions',
+        'GovernmentFlags',
+        'Governments',
+        'FaithDoctrines',
+        'Faiths',
+        'Religions',
+        'DynastyPerks',
+        'HouseAspirationParameters',
+        'CharacterFlags',
+        'Traits',
+        'Relations',
+        'DomicileBuildingParameters',
+        'DomicileParameters',
+        'DlcFeatures',
+        'GameRules',
+        'SituationTypes',
+        'MenAtArmsBaseTypes',
+        'RequiredDomicileBuildings',
+        'RequiredDomicileBuildingCounts',
+        'ScriptedTriggers'
+    )
+    $conditionalTracks = [System.Collections.Generic.List[object]]::new()
+    foreach ($trackKey in @($conditionalTrackBuilders.Keys | Sort-Object)) {
+        $members = @($conditionalTrackBuilders[$trackKey].ToArray() | Sort-Object Id)
+        $slotType = $members[0].SlotType
+        $trackRoot = Get-TrackRootId $members[0].Id $slotType $buildingById
+        $anchorTrack = $trackRoot
+        if ($slotType -eq 'internal') {
+            $parentId = $buildingById[$trackRoot].PreviousBuilding
+            if (-not [string]::IsNullOrWhiteSpace($parentId) -and $buildingById.ContainsKey($parentId)) {
+                $anchorTrack = Get-TrackRootId `
+                    $parentId `
+                    $buildingById[$parentId].SlotType `
+                    $buildingById
+            }
+        }
+
+        $categories = @(
+            $members |
+                ForEach-Object { $_.RestrictionCategories } |
+                Sort-Object -Unique
+        )
+        $dependencySummary = [ordered]@{}
+        foreach ($dependencyName in $dependencyNames) {
+            $values = [System.Collections.Generic.List[string]]::new()
+            foreach ($member in $members) {
+                foreach ($blockName in @('CanConstruct', 'CanConstructPotential')) {
+                    $availabilityBlock = $member.Availability.$blockName
+                    if ($null -eq $availabilityBlock) {
+                        continue
+                    }
+                    foreach ($value in @($availabilityBlock.ResolvedDependencies.$dependencyName)) {
+                        $values.Add($value)
+                    }
+                }
+            }
+            $dependencySummary[$dependencyName] = @($values.ToArray() | Sort-Object -Unique)
+        }
+
+        $allTrackBuildings = @(
+            $selected |
+                Where-Object {
+                    $_.SlotType -eq $slotType -and
+                    (Get-TrackRootId $_.Id $_.SlotType $buildingById) -eq $trackRoot
+                } |
+                Select-Object -ExpandProperty Id |
+                Sort-Object
+        )
+        $profiles = @(
+            $members | ForEach-Object {
+                [pscustomobject]@{
+                    Building = $_.Id
+                    Categories = @($_.RestrictionCategories)
+                    Disposition = $_.Availability.Policy.Disposition
+                    RecommendedActions = @($_.Availability.Policy.RecommendedActions)
+                    SourceFile = $_.SourceFile
+                    StartLine = $_.StartLine
+                }
+            }
+        )
+        $exclusivityCandidateCategories = @(
+            $members |
+                ForEach-Object { $_.Availability.Policy.ExclusivityCandidateCategories } |
+                Sort-Object -Unique
+        )
+        $conditionalTracks.Add([pscustomobject]@{
+            TrackRoot = $trackRoot
+            SlotType = $slotType
+            AnchorTrack = $anchorTrack
+            AllTrackBuildings = $allTrackBuildings
+            ConditionalBuildings = @($members.Id)
+            RestrictionCategories = $categories
+            Dependencies = [pscustomobject]$dependencySummary
+            ExclusivityCandidateCategories = $exclusivityCandidateCategories
+            PreservedPrerequisiteCategories = @(
+                $members |
+                    ForEach-Object { $_.Availability.Policy.PreservedPrerequisiteCategories } |
+                    Sort-Object -Unique
+            )
+            RecommendedActions = @(
+                $members |
+                    ForEach-Object { $_.Availability.Policy.RecommendedActions } |
+                    Sort-Object -Unique
+            )
+            PossibleMutualExclusion = $exclusivityCandidateCategories.Count -gt 0
+            RequiresManualReview = @(
+                $members | Where-Object { $_.Availability.Policy.RequiresManualReview }
+            ).Count -gt 0
+            ContainsUnclassifiedConditions = @(
+                $members | Where-Object {
+                    $_.Availability.Policy.Disposition -eq 'unclassified_conditions'
+                }
+            ).Count -gt 0
+            BuildingProfiles = $profiles
+        })
+    }
+
+    $conditionalTrackArray = @($conditionalTracks.ToArray() | Sort-Object SlotType, TrackRoot)
+
     return [pscustomobject]@{
         Type = $TypeRecord
         BuildingCount = $selected.Count
@@ -1000,6 +1380,22 @@ function Get-DomicileAnalysis {
             ExternalSpecializationGroupsToInternalize = $externalBranchGroups.Count
             ExistingInternalBranchGroupsToSplit = $internalBranchGroups.Count
             Strategy = 'preserve_physical_external_roots_and_materialize_specializations_as_parallel_internal_tracks'
+        }
+        ConditionalAvailability = [pscustomobject]@{
+            ConditionalBuildingCount = @(
+                $selected | Where-Object { $_.HasCanConstruct -or $_.HasCanConstructPotential }
+            ).Count
+            ConditionalTrackCount = $conditionalTrackArray.Count
+            PossibleMutualExclusionTrackCount = @(
+                $conditionalTrackArray | Where-Object { $_.PossibleMutualExclusion }
+            ).Count
+            ManualReviewTrackCount = @(
+                $conditionalTrackArray | Where-Object { $_.RequiresManualReview }
+            ).Count
+            UnclassifiedConditionTrackCount = @(
+                $conditionalTrackArray | Where-Object { $_.ContainsUnclassifiedConditions }
+            ).Count
+            Tracks = $conditionalTrackArray
         }
         Restrictions = $restrictionSummary
         RealmLawFlags = @(
@@ -1205,6 +1601,47 @@ function Add-MarkdownTableRow {
     $Output.Add('| ' + ($escaped -join ' | ') + ' |')
 }
 
+function Format-DependencySummary {
+    param([object]$Dependencies)
+
+    $labels = [ordered]@{
+        RealmLawFlags = 'laws'
+        CulturalParameters = 'culture_parameters'
+        CulturalTraditions = 'traditions'
+        Innovations = 'innovations'
+        Eras = 'eras'
+        Terrains = 'terrains'
+        Regions = 'regions'
+        GovernmentFlags = 'government_flags'
+        Governments = 'governments'
+        FaithDoctrines = 'doctrines'
+        Faiths = 'faiths'
+        Religions = 'religions'
+        DynastyPerks = 'dynasty_perks'
+        HouseAspirationParameters = 'house_aspirations'
+        CharacterFlags = 'character_flags'
+        Traits = 'traits'
+        Relations = 'relations'
+        DomicileBuildingParameters = 'domicile_building_parameters'
+        DomicileParameters = 'domicile_parameters'
+        DlcFeatures = 'dlc_features'
+        GameRules = 'game_rules'
+        SituationTypes = 'situation_types'
+        MenAtArmsBaseTypes = 'men_at_arms_base_types'
+        RequiredDomicileBuildings = 'domicile_buildings'
+        RequiredDomicileBuildingCounts = 'domicile_building_counts'
+        ScriptedTriggers = 'scripted_triggers'
+    }
+    $parts = [System.Collections.Generic.List[string]]::new()
+    foreach ($name in $labels.Keys) {
+        $values = @($Dependencies.$name)
+        if ($values.Count -gt 0) {
+            $parts.Add("$($labels[$name]): " + ($values -join ', '))
+        }
+    }
+    return $parts -join '; '
+}
+
 function Write-MarkdownReport {
     param(
         [string]$Path,
@@ -1252,6 +1689,32 @@ function Write-MarkdownReport {
     $output.Add("- Уже внутренних развилок с общей начальной частью: $($Manifest.TransformationSummary.InternalBranchGroupCount).")
     $output.Add("- Домицилии с внешними развилками: ``$($Manifest.TransformationSummary.DomicilesWithExternalBranches -join '`, `')``.")
     $output.Add("- Домицилии с внутренними развилками: ``$($Manifest.TransformationSummary.DomicilesWithInternalBranches -join '`, `')``.")
+    $output.Add('')
+    $output.Add('### Политика условной совместимости')
+    $output.Add('')
+    $output.Add("- Всего зданий с условиями доступности: $($Manifest.ConditionalCompatibilitySummary.ConditionalBuildingCount).")
+    $output.Add("- Линий-кандидатов на условное взаимоисключение: $($Manifest.ConditionalCompatibilitySummary.PossibleMutualExclusionTrackCount).")
+    $output.Add("- Линий, требующих ручной проверки: $($Manifest.ConditionalCompatibilitySummary.ManualReviewTrackCount).")
+    $output.Add("- Линий с не классифицированными автоматически условиями: $($Manifest.ConditionalCompatibilitySummary.UnclassifiedConditionTrackCount).")
+    $output.Add("- Раскрыто определений scripted triggers: $($Manifest.ConditionalCompatibilitySummary.ResolvedScriptedTriggerDefinitionCount).")
+    $output.Add("- Неразрешённых ссылок на scripted triggers: $($Manifest.ConditionalCompatibilitySummary.UnresolvedScriptedTriggerReferenceCount).")
+    $output.Add('')
+    $output.Add('| Категория | Политика |')
+    $output.Add('|---|---|')
+    foreach ($property in $Manifest.ConditionalCompatibilitySummary.Policy.PSObject.Properties) {
+        Add-MarkdownTableRow $output @($property.Name, $property.Value)
+    }
+    $output.Add('')
+    $output.Add('### Сигнатуры ванильных данных')
+    $output.Add('')
+    $output.Add('Эти стабильные SHA-256 позволяют после обновления CK3 отличить изменение графа, условий, ассетов или сценариев удаления. Обычный `git diff` перегенерированного JSON покажет, какая именно часть изменилась.')
+    $output.Add('')
+    $output.Add('| Область | SHA-256 |')
+    $output.Add('|---|---|')
+    $output.Add("| Структура | ``$($Manifest.VanillaSignatures.StructureSha256)`` |")
+    $output.Add("| Условная доступность | ``$($Manifest.VanillaSignatures.AvailabilitySha256)`` |")
+    $output.Add("| Иконки и панорамы | ``$($Manifest.VanillaSignatures.AssetsSha256)`` |")
+    $output.Add("| Явные удаления | ``$($Manifest.VanillaSignatures.ExplicitRemovalSha256)`` |")
     $output.Add('')
 
     foreach ($analysis in $Manifest.Domiciles) {
@@ -1366,6 +1829,41 @@ function Write-MarkdownReport {
         }
         $output.Add('')
 
+        $output.Add('### Условная доступность и кандидаты на взаимоисключение')
+        $output.Add('')
+        $output.Add('- Зданий с `can_construct`/`can_construct_potential`: ' + $analysis.ConditionalAvailability.ConditionalBuildingCount + '.')
+        $output.Add("- Затронутых линий: $($analysis.ConditionalAvailability.ConditionalTrackCount).")
+        $output.Add("- Линий с возможным взаимоисключением: $($analysis.ConditionalAvailability.PossibleMutualExclusionTrackCount).")
+        $output.Add("- Линий, требующих ручной проверки культурных или территориальных условий: $($analysis.ConditionalAvailability.ManualReviewTrackCount).")
+        $output.Add("- Линий с пока не классифицированными условиями: $($analysis.ConditionalAvailability.UnclassifiedConditionTrackCount).")
+        $output.Add('')
+        $output.Add('| Линия | Тип | Внешняя опора | Категории-кандидаты | Условные здания | Извлечённые зависимости | Рекомендуемые действия | Ручная проверка |')
+        $output.Add('|---|---|---|---|---|---|---|---|')
+        $candidateTracks = @(
+            $analysis.ConditionalAvailability.Tracks |
+                Where-Object {
+                    $_.PossibleMutualExclusion -or $_.ContainsUnclassifiedConditions
+                }
+        )
+        foreach ($track in $candidateTracks) {
+            Add-MarkdownTableRow $output @(
+                $track.TrackRoot,
+                $track.SlotType,
+                $track.AnchorTrack,
+                ($track.ExclusivityCandidateCategories -join ', '),
+                ($track.ConditionalBuildings -join ', '),
+                (Format-DependencySummary $track.Dependencies),
+                ($track.RecommendedActions -join ', '),
+                $(if ($track.RequiresManualReview) { 'да' } else { 'нет' })
+            )
+        }
+        if ($candidateTracks.Count -eq 0) {
+            $output.Add('| — | — | — | — | — | — | — | — |')
+        }
+        $output.Add('')
+        $output.Add('Полные исходные блоки условий и поключевые профили зданий сохранены в JSON. Культурные и территориальные совпадения являются кандидатами, а не автоматически удаляемыми ограничениями: сначала следует отделить взаимоисключение специализаций от обычных требований прогресса.')
+        $output.Add('')
+
         $output.Add('### Классифицированные ограничения')
         $output.Add('')
         $output.Add('| Категория | Количество | Здания |')
@@ -1388,13 +1886,21 @@ function Write-MarkdownReport {
 
     $output.Add('## Флаги назначения лагеря')
     $output.Add('')
-    if ($Manifest.CampPurposeFlags.Count -eq 0) {
-        $output.Add('Флаги назначения лагеря в ограничениях зданий не обнаружены.')
+    $output.Add('| Флаг закона | Здания | Линии | Удалений при смене назначения | Контейнеры очистки | Политика RB_UD |')
+    $output.Add('|---|---|---|---:|---|---|')
+    foreach ($item in $Manifest.CampPurposeCompatibility) {
+        Add-MarkdownTableRow $output @(
+            $item.RealmLawFlag,
+            ($item.Buildings -join ', '),
+            ($item.AffectedTracks -join ', '),
+            $item.CleanupReferenceCount,
+            ($item.CleanupContainers -join ', '),
+            $item.RecommendedPolicy
+        )
     }
-    else {
-        foreach ($flag in $Manifest.CampPurposeFlags) {
-            $output.Add("- ``$flag``")
-        }
+    if ($Manifest.CampPurposeCompatibility.Count -eq 0) {
+        $output.Add('| — | — | — | 0 | — | — |')
+        $output.Add('Флаги назначения лагеря в ограничениях зданий не обнаружены.')
     }
     $output.Add('')
 
@@ -1461,6 +1967,13 @@ function Write-MarkdownReport {
     $output.Add("- Циклические ссылки: $($Manifest.Diagnostics.GraphCycles.Count)")
     $output.Add("- Повторно определённые ID зданий в ванильной базе: $($Manifest.Diagnostics.DuplicateBuildingDefinitions.Count)")
     $output.Add("- Повторно определённые ID типов домицилей: $($Manifest.Diagnostics.DuplicateTypeDefinitions.Count)")
+    $output.Add("- Повторно определённые scripted triggers: $($Manifest.Diagnostics.DuplicateScriptedTriggerDefinitions.Count)")
+    $output.Add("- Специализации без корневых иконок: $($Manifest.Diagnostics.Transformation.SpecializationsMissingRootIcons.Count)")
+    $output.Add("- Специализации без корневых панорам: $($Manifest.Diagnostics.Transformation.SpecializationsMissingRootTextures.Count)")
+    $output.Add("- Не классифицированные типы структурных развилок: $($Manifest.Diagnostics.Transformation.UnclassifiedSameSlotBranchPoints.Count)")
+    $output.Add("- Условные линии, требующие ручной проверки: $($Manifest.Diagnostics.Availability.ManualReviewTracks.Count)")
+    $output.Add("- Условные линии без автоматической классификации: $($Manifest.Diagnostics.Availability.UnclassifiedConditionTracks.Count)")
+    $output.Add("- Неразрешённые ссылки на scripted triggers: $($Manifest.Diagnostics.Availability.UnresolvedScriptedTriggerReferences.Count)")
     if ($Manifest.Diagnostics.GraphCycles.Count -gt 0) {
         $output.Add('- Циклы: ' + ($Manifest.Diagnostics.GraphCycles -join ', '))
     }
@@ -1484,13 +1997,15 @@ $resolvedModPath = [IO.Path]::GetFullPath($ModPath).TrimEnd('\', '/')
 $domicileBuildingDirectory = Join-Path $script:ResolvedGamePath 'common\domiciles\buildings'
 $domicileTypeDirectory = Join-Path $script:ResolvedGamePath 'common\domiciles\types'
 $scriptedEffectsDirectory = Join-Path $script:ResolvedGamePath 'common\scripted_effects'
+$scriptedTriggersDirectory = Join-Path $script:ResolvedGamePath 'common\scripted_triggers'
 $commonDirectory = Join-Path $script:ResolvedGamePath 'common'
 $eventsDirectory = Join-Path $script:ResolvedGamePath 'events'
 
 foreach ($requiredDirectory in @(
     $domicileBuildingDirectory,
     $domicileTypeDirectory,
-    $scriptedEffectsDirectory
+    $scriptedEffectsDirectory,
+    $scriptedTriggersDirectory
 )) {
     if (-not (Test-Path -LiteralPath $requiredDirectory -PathType Container)) {
         throw "Required vanilla directory was not found: $requiredDirectory"
@@ -1519,6 +2034,9 @@ Write-Host "Reading vanilla domicile types from $domicileTypeDirectory"
 $typeDatabase = Get-DatabaseBlocks $domicileTypeDirectory
 Write-Host "Reading vanilla domicile buildings from $domicileBuildingDirectory"
 $buildingDatabase = Get-DatabaseBlocks $domicileBuildingDirectory
+Write-Host "Reading vanilla scripted triggers from $scriptedTriggersDirectory"
+$scriptedTriggerDatabase = Get-DatabaseBlocks $scriptedTriggersDirectory
+$script:ScriptedTriggerBlocks = $scriptedTriggerDatabase.Blocks
 
 $typeIds = @('camp', 'estate', 'yurt', 'east_asian_estate', 'japanese_manor')
 $typeRecords = [System.Collections.Generic.List[object]]::new()
@@ -1584,6 +2102,15 @@ $null = $extraInputPaths.Add(
 foreach ($relativePath in @(
     $domicileRemovalReferences | Select-Object -ExpandProperty SourceFile
     $fillEffects | Select-Object -ExpandProperty SourceFile
+    $buildingRecords |
+        ForEach-Object {
+            @($_.Availability.CanConstruct, $_.Availability.CanConstructPotential) |
+                Where-Object { $null -ne $_ } |
+                ForEach-Object {
+                    $_.ResolvedScriptedTriggers |
+                        ForEach-Object { $_.SourceFile }
+                }
+        }
 )) {
     $null = $extraInputPaths.Add((Join-Path $script:ResolvedGamePath $relativePath))
 }
@@ -1618,6 +2145,114 @@ $sharedInternalPrefixBuildings = @(
         ForEach-Object { $_.SharedInternalPrefix } |
         Sort-Object -Unique
 )
+$campPurposeFlags = @(
+    $campAnalysis.RealmLawFlags | Where-Object { $_ -match '^unlocks_' }
+)
+$campPurposeCompatibility = [System.Collections.Generic.List[object]]::new()
+foreach ($flag in @($campPurposeFlags | Sort-Object)) {
+    $affectedBuildings = @(
+        $buildingRecords |
+            Where-Object {
+                $_.AllowedDomicileTypes -contains 'camp' -and
+                $_.RealmLawFlags -contains $flag
+            } |
+            Sort-Object Id
+    )
+    $affectedIds = @($affectedBuildings.Id)
+    $cleanupReferences = @(
+        $domicileRemovalReferences |
+            Where-Object {
+                $_.Category -eq 'camp_purpose_change_cleanup' -and
+                $affectedIds -contains $_.Building
+            }
+    )
+    $campPurposeCompatibility.Add([pscustomobject]@{
+        RealmLawFlag = $flag
+        Buildings = $affectedIds
+        AffectedTracks = @(
+            $campAnalysis.ConditionalAvailability.Tracks |
+                Where-Object { $_.Dependencies.RealmLawFlags -contains $flag } |
+                Select-Object -ExpandProperty TrackRoot |
+                Sort-Object -Unique
+        )
+        CleanupReferenceCount = $cleanupReferences.Count
+        CleanupContainers = @($cleanupReferences.Container | Sort-Object -Unique)
+        RecommendedPolicy = 'remove_gate_and_disable_only_purpose_change_cleanup'
+    })
+}
+
+$structureSignatureLines = [System.Collections.Generic.List[string]]::new()
+$availabilitySignatureLines = [System.Collections.Generic.List[string]]::new()
+$assetSignatureLines = [System.Collections.Generic.List[string]]::new()
+foreach ($building in @($buildingRecords | Sort-Object Id)) {
+    $capacityText = @(
+        $building.ExternalCapacityAdds |
+            ForEach-Object { $_.Raw }
+    ) -join ','
+    $structureSignatureLines.Add(@(
+        $building.Id,
+        ($building.AllowedDomicileTypes -join ','),
+        $building.SlotType,
+        $building.PreviousBuilding,
+        $building.InternalSlotsRaw,
+        $capacityText
+    ) -join '|')
+
+    $canConstructScript = ''
+    $canConstructPotentialScript = ''
+    $resolvedTriggerIds = [System.Collections.Generic.List[string]]::new()
+    if ($null -ne $building.Availability.CanConstruct) {
+        $canConstructScript = $building.Availability.CanConstruct.Script
+        foreach ($item in @($building.Availability.CanConstruct.ResolvedScriptedTriggers)) {
+            $resolvedTriggerIds.Add($item.Id)
+        }
+    }
+    if ($null -ne $building.Availability.CanConstructPotential) {
+        $canConstructPotentialScript = $building.Availability.CanConstructPotential.Script
+        foreach ($item in @($building.Availability.CanConstructPotential.ResolvedScriptedTriggers)) {
+            $resolvedTriggerIds.Add($item.Id)
+        }
+    }
+    $availabilitySignatureLines.Add(@(
+        $building.Id,
+        $canConstructScript,
+        $canConstructPotentialScript,
+        (@($resolvedTriggerIds.ToArray() | Sort-Object -Unique) -join ',')
+    ) -join '|')
+    $assetSignatureLines.Add(@(
+        $building.Id,
+        ($building.Icons -join ','),
+        ($building.Textures -join ',')
+    ) -join '|')
+}
+$removalSignatureLines = @(
+    $domicileRemovalReferences |
+        Sort-Object SourceFile, Line, Effect, Building |
+        ForEach-Object {
+            @($_.Category, $_.Container, $_.Effect, $_.Building, $_.SourceFile, $_.Line) -join '|'
+        }
+)
+$resolvedAvailabilityTriggerIds = @(
+    $buildingRecords |
+        ForEach-Object {
+            @($_.Availability.CanConstruct, $_.Availability.CanConstructPotential) |
+                Where-Object { $null -ne $_ } |
+                ForEach-Object {
+                    $_.ResolvedScriptedTriggers |
+                        ForEach-Object { $_.Id }
+                }
+        } |
+        Sort-Object -Unique
+)
+$unresolvedAvailabilityTriggerIds = @(
+    $buildingRecords |
+        ForEach-Object {
+            @($_.Availability.CanConstruct, $_.Availability.CanConstructPotential) |
+                Where-Object { $null -ne $_ } |
+                ForEach-Object { $_.UnresolvedScriptedTriggers }
+        } |
+        Sort-Object -Unique
+)
 
 $manifest = [pscustomobject]@{
     SchemaVersion = 2
@@ -1627,6 +2262,13 @@ $manifest = [pscustomobject]@{
     DomicileTypeIds = $typeIds
     Domiciles = $domicileAnalyses.ToArray()
     Buildings = $buildingRecords.ToArray()
+    VanillaSignatures = [pscustomobject]@{
+        StructureSha256 = Get-StringSha256 ($structureSignatureLines -join "`n")
+        AvailabilitySha256 = Get-StringSha256 ($availabilitySignatureLines -join "`n")
+        AssetsSha256 = Get-StringSha256 ($assetSignatureLines -join "`n")
+        ExplicitRemovalSha256 = Get-StringSha256 ($removalSignatureLines -join "`n")
+        Purpose = 'stable fingerprints for detecting relevant vanilla changes between regenerated manifests'
+    }
     TransformationSummary = [pscustomobject]@{
         Policy = 'preserve_physical_external_roots_and_materialize_specializations_as_parallel_internal_tracks'
         RecommendedExternalSlotsTotal = @(
@@ -1652,9 +2294,46 @@ $manifest = [pscustomobject]@{
                 ForEach-Object { $_.Type.Id }
         )
     }
-    CampPurposeFlags = @(
-        $campAnalysis.RealmLawFlags | Where-Object { $_ -match '^unlocks_' }
-    )
+    ConditionalCompatibilitySummary = [pscustomobject]@{
+        ConditionalBuildingCount = @(
+            $buildingRecords |
+                Where-Object { $_.HasCanConstruct -or $_.HasCanConstructPotential }
+        ).Count
+        PossibleMutualExclusionTrackCount = @(
+            $domicileAnalyses |
+                ForEach-Object { $_.ConditionalAvailability.Tracks } |
+                Where-Object { $_.PossibleMutualExclusion }
+        ).Count
+        ManualReviewTrackCount = @(
+            $domicileAnalyses |
+                ForEach-Object { $_.ConditionalAvailability.Tracks } |
+                Where-Object { $_.RequiresManualReview }
+        ).Count
+        UnclassifiedConditionTrackCount = @(
+            $domicileAnalyses |
+                ForEach-Object { $_.ConditionalAvailability.Tracks } |
+                Where-Object { $_.ContainsUnclassifiedConditions }
+        ).Count
+        ResolvedScriptedTriggerDefinitionCount = $resolvedAvailabilityTriggerIds.Count
+        ResolvedScriptedTriggerDefinitions = $resolvedAvailabilityTriggerIds
+        UnresolvedScriptedTriggerReferenceCount = $unresolvedAvailabilityTriggerIds.Count
+        UnresolvedScriptedTriggerReferences = $unresolvedAvailabilityTriggerIds
+        Policy = [pscustomobject]@{
+            CampPurpose = 'remove_gate_and_disable_only_corresponding_purpose_change_cleanup'
+            CultureOrLanguage = 'manual_review_remove_only_mutual_exclusivity'
+            Territory = 'manual_review_remove_only_mutual_exclusivity'
+            Progression = 'preserve_vanilla_prerequisite'
+            GovernmentOrStatus = 'preserve_vanilla_prerequisite'
+            Faith = 'preserve_vanilla_prerequisite'
+            OtherRealmLaw = 'preserve_vanilla_prerequisite'
+            ScriptedTrigger = 'resolve_definition_then_preserve_unrelated_prerequisite'
+            CharacterDynastyOrHouse = 'preserve_vanilla_prerequisite'
+            StateOrFeature = 'preserve_vanilla_prerequisite'
+            Unclassified = 'preserve_until_manually_classified'
+        }
+    }
+    CampPurposeFlags = $campPurposeFlags
+    CampPurposeCompatibility = $campPurposeCompatibility.ToArray()
     DomicileRemovalReferences = $domicileRemovalReferences
     RemovalSummary = $removalSummary
     FillEffects = $fillEffects
@@ -1662,6 +2341,55 @@ $manifest = [pscustomobject]@{
         GraphCycles = @($script:GraphCycles | Sort-Object)
         DuplicateBuildingDefinitions = @($buildingDatabase.Duplicates)
         DuplicateTypeDefinitions = @($typeDatabase.Duplicates)
+        DuplicateScriptedTriggerDefinitions = @($scriptedTriggerDatabase.Duplicates)
+        Transformation = [pscustomobject]@{
+            SpecializationsMissingRootIcons = @(
+                @($externalSpecializationTracks + $internalSpecializationTracks) |
+                    Where-Object { $_.RootIcons.Count -eq 0 } |
+                    Select-Object -ExpandProperty Root |
+                    Sort-Object -Unique
+            )
+            SpecializationsMissingRootTextures = @(
+                @($externalSpecializationTracks + $internalSpecializationTracks) |
+                    Where-Object { $_.RootTextures.Count -eq 0 } |
+                    Select-Object -ExpandProperty Root |
+                    Sort-Object -Unique
+            )
+            UnclassifiedSameSlotBranchPoints = @(
+                $domicileAnalyses |
+                    ForEach-Object { $_.BranchPoints } |
+                    Where-Object { $_.SlotType -notin @('external', 'internal') }
+            )
+        }
+        Availability = [pscustomobject]@{
+            UnresolvedScriptedTriggerReferences = $unresolvedAvailabilityTriggerIds
+            UnclassifiedConditionTracks = @(
+                $domicileAnalyses |
+                    ForEach-Object { $_.ConditionalAvailability.Tracks } |
+                    Where-Object { $_.ContainsUnclassifiedConditions } |
+                    ForEach-Object {
+                        [pscustomobject]@{
+                            TrackRoot = $_.TrackRoot
+                            SlotType = $_.SlotType
+                            ConditionalBuildings = $_.ConditionalBuildings
+                            ScriptedTriggers = $_.Dependencies.ScriptedTriggers
+                        }
+                    }
+            )
+            ManualReviewTracks = @(
+                $domicileAnalyses |
+                    ForEach-Object { $_.ConditionalAvailability.Tracks } |
+                    Where-Object { $_.RequiresManualReview } |
+                    ForEach-Object {
+                        [pscustomobject]@{
+                            TrackRoot = $_.TrackRoot
+                            SlotType = $_.SlotType
+                            Categories = $_.ExclusivityCandidateCategories
+                            ConditionalBuildings = $_.ConditionalBuildings
+                        }
+                    }
+            )
+        }
     }
     InputFiles = @($inputFiles.ToArray() | Sort-Object Path)
 }
@@ -1674,7 +2402,7 @@ $null = New-Item -ItemType Directory -Path $manifestDirectory -Force
 $manifestPath = Join-Path $manifestDirectory 'RB_UD_vanilla_manifest.json'
 $reportPath = Join-Path $reportDirectory 'RB_UD_VANILLA_AUDIT.md'
 
-$manifestJson = $manifest | ConvertTo-Json -Depth 100
+$manifestJson = $manifest | ConvertTo-Json -Depth 100 -Compress
 [IO.File]::WriteAllText($manifestPath, $manifestJson + "`n", [Text.UTF8Encoding]::new($false))
 Write-MarkdownReport -Path $reportPath -Manifest $manifest
 
