@@ -5,7 +5,8 @@ expanded domicile concept.
 
 Internal object prefix: `RB_UD_`.
 
-Current version: `0.0.0` (analysis scaffold; no gameplay changes yet).
+Current version: `0.0.0` (analysis and override-planning scaffold; no gameplay
+changes yet).
 
 ## Current implementation stage
 
@@ -27,9 +28,19 @@ branch that is already internal is reported separately because it requires
 splitting its shared prefix into parallel tracks rather than merely changing
 `slot_type`.
 
+Stage 2 is also complete: a second read-only tool converts the audit into a
+validated dry-run override plan. It names every vanilla type, building, event,
+condition group, capacity change, and target override file; consolidates
+internal-slot demand after branch conversion; and explicitly separates the 21
+access restrictions to rewrite from the three false-positive main-building
+conditions that must remain vanilla. It does not emit gameplay objects.
+
 - Human-readable audit: `docs/generated/RB_UD_VANILLA_AUDIT.md`
 - Machine-readable manifest: `tools/generated/RB_UD_vanilla_manifest.json`
 - Analyzer: `../tools/Analyze-RBUDVanillaDomiciles.ps1`
+- Human-readable override plan: `docs/generated/RB_UD_OVERRIDE_PLAN.md`
+- Machine-readable override plan: `tools/generated/RB_UD_override_plan.json`
+- Override-plan builder: `../tools/Build-RBUDOverridePlan.ps1`
 
 Regenerate both artifacts after a CK3 update:
 
@@ -38,6 +49,9 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
   tools/Analyze-RBUDVanillaDomiciles.ps1 `
   -GamePath "E:\SteamLibrary\steamapps\common\Crusader Kings III\game" `
   -ModPath "RB_UD"
+
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
+  tools/Build-RBUDOverridePlan.ps1
 ```
 
 Planned scope:

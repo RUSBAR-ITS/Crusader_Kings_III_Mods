@@ -2,7 +2,7 @@
 
 - Версия схемы отчёта: `2`
 - Версия CK3: `1.19.0.6`
-- Время анализа (UTC): `2026-08-16T14:04:33Z`
+- Время анализа (UTC): `2026-08-16T14:18:45Z`
 - Корень ванили: `E:\SteamLibrary\steamapps\common\Crusader Kings III\game`
 - Отчёт только описывает ванильные данные и ничего в них не изменяет.
 
@@ -81,9 +81,9 @@
 
 ### Внешние развилки, переводимые во внутренние треки
 
-| Общая внешняя часть | Уровень развилки | Специализации | Новых внутренних ячеек | Всего внутренних ячеек у родителя | Иконки различаются | Панорамы совпадают | Стратегия | Источник |
-|---|---:|---|---:|---:|---|---|---|---|
-| — | — | — | 0 | 0 | — | — | — | — |
+| Общая внешняя часть | Опорная линия | Уровень развилки | Специализации | Существующих внутренних ячеек | Новых внутренних ячеек | Итого после преобразования | Иконки различаются | Панорамы совпадают | Стратегия | Источник |
+|---|---|---:|---|---:|---:|---:|---|---|---|---|
+| — | — | — | — | 0 | 0 | 0 | — | — | — | — |
 
 ### Уже внутренние развилки, требующие расщепления общей части
 
@@ -189,14 +189,14 @@
 
 ### Внешние развилки, переводимые во внутренние треки
 
-| Общая внешняя часть | Уровень развилки | Специализации | Новых внутренних ячеек | Всего внутренних ячеек у родителя | Иконки различаются | Панорамы совпадают | Стратегия | Источник |
-|---|---:|---|---:|---:|---|---|---|---|
-| garden_03 | 3 | garden_fruit_04, garden_leisure_04 | 2 | 2 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_estate_buildings.txt:6086 |
-| grazing_land_03 | 3 | camel_pasture_04, elephant_pasture_04, grazing_land_04, horse_pasture_04 | 4 | 4 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_estate_buildings.txt:10468 |
-| stable_03 | 3 | stable_chariot_04, stable_grand_04, stable_kennel_04 | 3 | 3 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_estate_buildings.txt:7140 |
-| storage_02 | 2 | storage_granary_03, storage_warehouse_03 | 2 | 2 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_estate_buildings.txt:9280 |
-| temple_small_03 | 3 | temple_crypt_04, temple_large_04, temple_monastery_04 | 3 | 3 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_estate_buildings.txt:3043 |
-| workshop_02 | 2 | workshop_carpenter_03, workshop_mason_03, workshop_textile_03 | 3 | 3 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_estate_buildings.txt:8106 |
+| Общая внешняя часть | Опорная линия | Уровень развилки | Специализации | Существующих внутренних ячеек | Новых внутренних ячеек | Итого после преобразования | Иконки различаются | Панорамы совпадают | Стратегия | Источник |
+|---|---|---:|---|---:|---:|---:|---|---|---|---|
+| garden_03 | garden_01 | 3 | garden_fruit_04, garden_leisure_04 | 0 | 2 | 2 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_estate_buildings.txt:6086 |
+| grazing_land_03 | grazing_land_01 | 3 | camel_pasture_04, elephant_pasture_04, grazing_land_04, horse_pasture_04 | 0 | 4 | 4 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_estate_buildings.txt:10468 |
+| stable_03 | stable_01 | 3 | stable_chariot_04, stable_grand_04, stable_kennel_04 | 0 | 3 | 3 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_estate_buildings.txt:7140 |
+| storage_02 | storage_01 | 2 | storage_granary_03, storage_warehouse_03 | 0 | 2 | 2 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_estate_buildings.txt:9280 |
+| temple_small_03 | temple_small_01 | 3 | temple_crypt_04, temple_large_04, temple_monastery_04 | 0 | 3 | 3 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_estate_buildings.txt:3043 |
+| workshop_02 | workshop_01 | 2 | workshop_carpenter_03, workshop_mason_03, workshop_textile_03 | 0 | 3 | 3 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_estate_buildings.txt:8106 |
 
 #### Специализации после `garden_03`
 
@@ -321,9 +321,9 @@
 
 ### Внешние развилки, переводимые во внутренние треки
 
-| Общая внешняя часть | Уровень развилки | Специализации | Новых внутренних ячеек | Всего внутренних ячеек у родителя | Иконки различаются | Панорамы совпадают | Стратегия | Источник |
-|---|---:|---|---:|---:|---|---|---|---|
-| — | — | — | 0 | 0 | — | — | — | — |
+| Общая внешняя часть | Опорная линия | Уровень развилки | Специализации | Существующих внутренних ячеек | Новых внутренних ячеек | Итого после преобразования | Иконки различаются | Панорамы совпадают | Стратегия | Источник |
+|---|---|---:|---|---:|---:|---:|---|---|---|---|
+| — | — | — | — | 0 | 0 | 0 | — | — | — | — |
 
 ### Уже внутренние развилки, требующие расщепления общей части
 
@@ -414,13 +414,13 @@
 
 ### Внешние развилки, переводимые во внутренние треки
 
-| Общая внешняя часть | Уровень развилки | Специализации | Новых внутренних ячеек | Всего внутренних ячеек у родителя | Иконки различаются | Панорамы совпадают | Стратегия | Источник |
-|---|---:|---|---:|---:|---|---|---|---|
-| east_asian_estate_garden_03 | 3 | east_asian_estate_garden_fruit_04, east_asian_estate_garden_leisure_04 | 2 | 2 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_chinese_estate_buildings.txt:7007 |
-| east_asian_estate_grazing_land_03 | 3 | east_asian_estate_camel_pasture_04, east_asian_estate_elephant_pasture_04, east_asian_estate_grazing_land_04, east_asian_estate_horse_pasture_04 | 4 | 4 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_chinese_estate_buildings.txt:9258 |
-| east_asian_estate_stable_03 | 3 | east_asian_estate_stable_grand_04, east_asian_estate_stable_kennel_04 | 2 | 2 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_chinese_estate_buildings.txt:7713 |
-| east_asian_estate_storage_02 | 2 | east_asian_estate_storage_granary_03, east_asian_estate_storage_warehouse_03 | 2 | 2 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_chinese_estate_buildings.txt:8684 |
-| east_asian_estate_workshop_02 | 2 | east_asian_estate_workshop_carpenter_03, east_asian_estate_workshop_mason_03, east_asian_estate_workshop_textile_03 | 3 | 3 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_chinese_estate_buildings.txt:8098 |
+| Общая внешняя часть | Опорная линия | Уровень развилки | Специализации | Существующих внутренних ячеек | Новых внутренних ячеек | Итого после преобразования | Иконки различаются | Панорамы совпадают | Стратегия | Источник |
+|---|---|---:|---|---:|---:|---:|---|---|---|---|
+| east_asian_estate_garden_03 | east_asian_estate_garden_01 | 3 | east_asian_estate_garden_fruit_04, east_asian_estate_garden_leisure_04 | 6 | 2 | 8 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_chinese_estate_buildings.txt:7007 |
+| east_asian_estate_grazing_land_03 | east_asian_estate_grazing_land_01 | 3 | east_asian_estate_camel_pasture_04, east_asian_estate_elephant_pasture_04, east_asian_estate_grazing_land_04, east_asian_estate_horse_pasture_04 | 5 | 4 | 9 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_chinese_estate_buildings.txt:9258 |
+| east_asian_estate_stable_03 | east_asian_estate_stable_01 | 3 | east_asian_estate_stable_grand_04, east_asian_estate_stable_kennel_04 | 5 | 2 | 7 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_chinese_estate_buildings.txt:7713 |
+| east_asian_estate_storage_02 | east_asian_estate_storage_01 | 2 | east_asian_estate_storage_granary_03, east_asian_estate_storage_warehouse_03 | 6 | 2 | 8 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_chinese_estate_buildings.txt:8684 |
+| east_asian_estate_workshop_02 | east_asian_estate_workshop_01 | 2 | east_asian_estate_workshop_carpenter_03, east_asian_estate_workshop_mason_03, east_asian_estate_workshop_textile_03 | 5 | 3 | 8 | да | да | internalize_external_specialization_tails | common\domiciles\buildings\00_chinese_estate_buildings.txt:8098 |
 
 #### Специализации после `east_asian_estate_garden_03`
 
@@ -553,9 +553,9 @@
 
 ### Внешние развилки, переводимые во внутренние треки
 
-| Общая внешняя часть | Уровень развилки | Специализации | Новых внутренних ячеек | Всего внутренних ячеек у родителя | Иконки различаются | Панорамы совпадают | Стратегия | Источник |
-|---|---:|---|---:|---:|---|---|---|---|
-| — | — | — | 0 | 0 | — | — | — | — |
+| Общая внешняя часть | Опорная линия | Уровень развилки | Специализации | Существующих внутренних ячеек | Новых внутренних ячеек | Итого после преобразования | Иконки различаются | Панорамы совпадают | Стратегия | Источник |
+|---|---|---:|---|---:|---:|---:|---|---|---|---|
+| — | — | — | — | 0 | 0 | 0 | — | — | — | — |
 
 ### Уже внутренние развилки, требующие расщепления общей части
 

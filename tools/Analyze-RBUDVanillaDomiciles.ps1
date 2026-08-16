@@ -1205,6 +1205,28 @@ function Get-DomicileAnalysis {
         })
     }
 
+    foreach ($group in $externalBranchGroups) {
+        $anchorTrack = Get-TrackRootId `
+            $group.CommonBuilding `
+            'external' `
+            $buildingById
+        $existingTrackRequirement = @(
+            $internalAnchorSummary |
+                Where-Object { $_.AnchorTrack -eq $anchorTrack }
+        ) | Select-Object -First 1
+        $existingSlotsOnAnchorTrack = 0
+        if ($null -ne $existingTrackRequirement) {
+            $existingSlotsOnAnchorTrack = $existingTrackRequirement.RequiredSlotsForAllBranches
+        }
+        $group | Add-Member -NotePropertyName AnchorTrack -NotePropertyValue $anchorTrack
+        $group | Add-Member `
+            -NotePropertyName ExistingInternalSlotsOnAnchorTrack `
+            -NotePropertyValue $existingSlotsOnAnchorTrack
+        $group | Add-Member `
+            -NotePropertyName RequiredInternalSlotsAfterTransformation `
+            -NotePropertyValue ($existingSlotsOnAnchorTrack + $group.RequiredNewInternalSlots)
+    }
+
     $conditionalTrackBuilders = @{}
     foreach ($building in @(
         $selected | Where-Object { $_.HasCanConstruct -or $_.HasCanConstructPotential }
@@ -1738,15 +1760,17 @@ function Write-MarkdownReport {
 
         $output.Add('### Внешние развилки, переводимые во внутренние треки')
         $output.Add('')
-        $output.Add('| Общая внешняя часть | Уровень развилки | Специализации | Новых внутренних ячеек | Всего внутренних ячеек у родителя | Иконки различаются | Панорамы совпадают | Стратегия | Источник |')
-        $output.Add('|---|---:|---|---:|---:|---|---|---|---|')
+        $output.Add('| Общая внешняя часть | Опорная линия | Уровень развилки | Специализации | Существующих внутренних ячеек | Новых внутренних ячеек | Итого после преобразования | Иконки различаются | Панорамы совпадают | Стратегия | Источник |')
+        $output.Add('|---|---|---:|---|---:|---:|---:|---|---|---|---|')
         foreach ($group in $analysis.ExternalBranchGroups) {
             Add-MarkdownTableRow $output @(
                 $group.CommonBuilding,
+                $group.AnchorTrack,
                 $group.CommonTier,
                 ($group.Specializations.Root -join ', '),
+                $group.ExistingInternalSlotsOnAnchorTrack,
                 $group.RequiredNewInternalSlots,
-                $group.RequiredInternalSlotsAtCommonBuilding,
+                $group.RequiredInternalSlotsAfterTransformation,
                 $(if ($group.UniqueSpecializationRootIcons) { 'да' } else { 'нет/не определено' }),
                 $(if ($group.SharedSpecializationRootTextures) { 'да' } else { 'нет/не определено' }),
                 $group.RecommendedStrategy,
@@ -1754,7 +1778,7 @@ function Write-MarkdownReport {
             )
         }
         if ($analysis.ExternalBranchGroups.Count -eq 0) {
-            $output.Add('| — | — | — | 0 | 0 | — | — | — | — |')
+            $output.Add('| — | — | — | — | 0 | 0 | 0 | — | — | — | — |')
         }
         $output.Add('')
 
