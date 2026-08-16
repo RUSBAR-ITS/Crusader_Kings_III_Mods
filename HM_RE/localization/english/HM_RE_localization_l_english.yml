@@ -262,9 +262,9 @@
  setting_HM_RE_make_temple_citadel_button_off_desc:0 "Convert to Temple Citadel Disabled, Disabled by default."
 
  rule_HM_RE_player_add_slots_decision:0 "#HM_RE_rule HM#!Building Slot Expansion Decision#HM_RE_basis_player (Player)#!"
- setting_HM_RE_player_add_slots_decision_on:0 "#HM_RE_basis_enabled Enabled#"
+ setting_HM_RE_player_add_slots_decision_on:0 "#HM_RE_basis_enabled Enabled#!"
  setting_HM_RE_player_add_slots_decision_on_desc:0 "Building slot expansion decision. Enabled by default"
- setting_HM_RE_player_add_slots_decision_off:0 "#HM_RE_basis_disabled Disabled#"
+ setting_HM_RE_player_add_slots_decision_off:0 "#HM_RE_basis_disabled Disabled#!"
  setting_HM_RE_player_add_slots_decision_off_desc:0 "Building slot expansion decision disabled."
  rule_HM_RE_player_add_slots_decision_base_cost:0 "$HM_RE_idiom_rule$Building Slot Expansion Decision Cost#HM_RE_basis_player (Player)#!"
  setting_HM_RE_player_add_slots_decision_base_cost_very_cheap:0 "#HM_RE_green Very Cheap#!"
@@ -279,9 +279,9 @@
  setting_HM_RE_player_add_slots_decision_base_cost_very_expensive_desc:0 "#HM_RE_red [gold_i|E][EmptyScope.ScriptValue('HM_RE_value_change_holding_type_cost_very_expensive')|0]#!"
  
  rule_HM_RE_player_cost_gold_or_treasury:0 "#HM_RE_rule HM#! Construction Costs: State Treasury or Gold#HM_RE_basis_player (Player)#!"
- setting_HM_RE_player_cost_treasury:0 "#HM_RE_basis_enabled Use State Treasury#"
+ setting_HM_RE_player_cost_treasury:0 "#HM_RE_basis_enabled Use State Treasury#!"
  setting_HM_RE_player_cost_treasury_desc:0 "One-click construction and upgrades will use state treasury resources (enabled by default)"
- setting_HM_RE_player_cost_gold:0 "#HM_RE_basis_disabled Use Gold#"
+ setting_HM_RE_player_cost_gold:0 "#HM_RE_basis_disabled Use Gold#!"
  setting_HM_RE_player_cost_gold_desc:0 "One-click construction and upgrades will consume gold"
 
  rule_HM_RE_rule_construct_buildings_gold_cost_cap:0 "$HM_RE_idiom_rule$Building Upgrade Cost#HM_RE_basis_player (Player)#!"

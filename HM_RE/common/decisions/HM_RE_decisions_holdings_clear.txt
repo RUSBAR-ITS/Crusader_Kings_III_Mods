@@ -22,6 +22,14 @@
 
 	effect = {
 		custom_tooltip = HM_RE_remove_all_effect_tooltip
+		show_as_tooltip = {
+			every_directly_owned_province = {
+				limit = {
+					HM_RE_can_mass_remove_buildings = yes
+				}
+				HM_RE_effect_remove_buildings = yes
+			}
+		}
 		hidden_effect = {
 			every_directly_owned_province = {
 				limit = {
@@ -59,6 +67,14 @@ HM_RE_decision_remove_all_realm = {
 
 	effect = {
 		custom_tooltip = HM_RE_remove_all_realm_effect_tooltip
+		show_as_tooltip = {
+			every_realm_province = {
+				limit = {
+					HM_RE_can_mass_remove_buildings = yes
+				}
+				HM_RE_effect_remove_buildings = yes
+			}
+		}
 		hidden_effect = {
 			every_realm_province = {
 				limit = {

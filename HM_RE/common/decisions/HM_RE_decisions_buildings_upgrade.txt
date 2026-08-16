@@ -40,6 +40,14 @@
 
 	effect = {
 		custom_tooltip = HM_RE_effect_upgrade_buildings_tooltip
+		show_as_tooltip = {
+			every_directly_owned_province = {
+				limit = {
+					HM_RE_can_mass_manage_buildings = yes
+				}
+				HM_RE_effect_upgrade_buildings = yes
+			}
+		}
 		hidden_effect = {
 			every_directly_owned_province = {
 				limit = {
@@ -97,6 +105,14 @@ HM_RE_decision_buildings_upgrade_realm = {
 
 	effect = {
 		custom_tooltip = HM_RE_effect_upgrade_buildings_realm_tooltip
+		show_as_tooltip = {
+			every_realm_province = {
+				limit = {
+					HM_RE_can_mass_manage_buildings = yes
+				}
+				HM_RE_effect_upgrade_buildings = yes
+			}
+		}
 		hidden_effect = {
 			every_realm_province = {
 				limit = {

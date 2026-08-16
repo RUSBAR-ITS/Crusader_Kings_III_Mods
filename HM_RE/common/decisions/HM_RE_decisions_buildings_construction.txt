@@ -41,6 +41,14 @@
 
 	effect = {
 		custom_tooltip = HM_RE_effect_construct_buildings_tooltip
+		show_as_tooltip = {
+			every_directly_owned_province = {
+				limit = {
+					HM_RE_can_mass_construct_buildings = yes
+				}
+				HM_RE_effect_construct_buildings = yes
+			}
+		}
 		hidden_effect = {
 			every_directly_owned_province = {
 				limit = {
@@ -98,6 +106,14 @@ HM_RE_decision_buildings_construction_realm = {
 
 	effect = {
 		custom_tooltip = HM_RE_effect_construct_buildings_realm_tooltip
+		show_as_tooltip = {
+			every_realm_province = {
+				limit = {
+					HM_RE_can_mass_construct_buildings = yes
+				}
+				HM_RE_effect_construct_buildings = yes
+			}
+		}
 		hidden_effect = {
 			every_realm_province = {
 				limit = {
