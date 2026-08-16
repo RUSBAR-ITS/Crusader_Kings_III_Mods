@@ -7,7 +7,7 @@
 		hm_trigger_construct_market_villages = yes
 		hm_trigger_construct_idjang_forts = yes
 		hm_trigger_construct_wantilan = yes
-		hm_trigger_construct_war_kora_kora_yards = yes
+		hm_trigger_construct_kora_kora_yards = yes
 		hm_trigger_construct_water_temples = yes
 		hm_trigger_construct_stilted_granaries = yes
 		# castle buildings
@@ -67,21 +67,9 @@
 		# admin buildings
 		hm_trigger_construct_capital_bureau = yes
 		# oath buildings
-		hm_trigger_construct_oath_warriors_building_01
-		hm_trigger_construct_oath_faithful_building_01
-		hm_trigger_construct_oath_poor_building_01
-		#################COW################
-		#hm_trigger_construct_cow_generic_university = yes
-		#hm_trigger_construct_cow_royal_palace = yes
-		#hm_trigger_construct_cow_great_harbor = yes
-		#hm_trigger_construct_cow_great_lighthouse = yes
-		#hm_trigger_construct_cow_grand_amphitheatre = yes
-		#hm_trigger_construct_cow_grand_fortress = yes
-		#hm_trigger_construct_cow_generic_library = yes
-		#################COW################
-		#################City Walls################
-		hm_trigger_construct_city_walls = yes
-		#################City Walls################
+		hm_trigger_construct_oath_warriors_building_01 = yes
+		hm_trigger_construct_oath_faithful_building_01 = yes
+		hm_trigger_construct_oath_poor_building_01 = yes
 	}
 }
 
@@ -95,7 +83,7 @@ hm_trigger_upgrade_buildings = {
 		hm_trigger_upgrade_market_villages = yes
 		hm_trigger_upgrade_idjang_forts = yes
 		hm_trigger_upgrade_wantilan = yes
-		hm_trigger_upgrade_war_kora_kora_yards = yes
+		hm_trigger_upgrade_kora_kora_yards = yes
 		hm_trigger_upgrade_water_temples = yes
 		hm_trigger_upgrade_stilted_granaries = yes
 		# castle buildings
@@ -159,15 +147,9 @@ hm_trigger_upgrade_buildings = {
 		# admin buildings
 		hm_trigger_upgrade_capital_bureau = yes
 		# oath buildings
-		hm_trigger_upgrade_oath_warriors_building_01
-		hm_trigger_upgrade_oath_faithful_building_01
-		hm_trigger_upgrade_oath_poor_building_01
-		#################COW################
-		
-		#################COW################
-		#################City Walls################
-		hm_trigger_upgrade_city_walls = yes
-		#################City Walls################
+		hm_trigger_upgrade_oath_warriors_building = yes
+		hm_trigger_upgrade_oath_faithful_building = yes
+		hm_trigger_upgrade_oath_poor_building = yes
 	}
 }
 
@@ -243,17 +225,5 @@ hm_trigger_remove_buildings = {
 		has_building_or_higher = oath_warriors_building_01
 		has_building_or_higher = oath_faithful_building_01
 		has_building_or_higher = oath_poor_building_01
-		#################COW################
-		#has_building_or_higher = cow_generic_university_01
-		#has_building_or_higher = cow_royal_palace_01
-		#has_building_or_higher = cow_great_harbor_01
-		#has_building_or_higher = cow_great_lighthouse_01
-		#has_building_or_higher = cow_grand_amphitheatre_01
-		#has_building_or_higher = cow_grand_fortress_01
-		#has_building_or_higher = cow_generic_library_01
-		#################COW################
-		#################City Walls################
-		has_building_or_higher = city_walls_01
-		#################City Walls################
 	}
 }

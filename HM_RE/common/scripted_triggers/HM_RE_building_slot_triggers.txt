@@ -1,0 +1,10 @@
+# Scope: barony title.
+# CHARACTER: character who must directly hold the barony.
+HM_RE_barony_is_valid_for_building_slot_trigger = {
+	holder = $CHARACTER$
+	is_leased_out = no
+	title_province = {
+		has_holding = yes
+		has_ongoing_construction = no
+	}
+}

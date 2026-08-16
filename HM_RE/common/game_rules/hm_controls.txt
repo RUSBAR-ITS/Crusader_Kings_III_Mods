@@ -25,6 +25,17 @@ hm_control_change_holding_type_cooldown = {
 	hm_rule_change_holding_type_cooldown_very_long = {}
 }
 
+hm_control_move_duchy_capital_cooldown = {
+	categories = { holding_manager }
+	default = hm_rule_move_duchy_capital_cooldown_default
+	hm_rule_move_duchy_capital_cooldown_very_short = {}
+	hm_rule_move_duchy_capital_cooldown_short = {}
+	hm_rule_move_duchy_capital_cooldown_default = {}
+	hm_rule_move_duchy_capital_cooldown_long = {}
+	hm_rule_move_duchy_capital_cooldown_very_long = {}
+	hm_rule_move_duchy_capital_cooldown_lifetime = {}
+}
+
 hm_control_can_replace_buildings = {
 	categories = { holding_manager }
 	default = hm_rule_can_replace_buildings_default
@@ -37,6 +48,16 @@ hm_control_can_feudalize_holdings = {
 	default = hm_rule_can_feudalize_holdings_default
 	hm_rule_can_feudalize_holdings_default = {}
 	hm_rule_can_feudalize_holdings_vassals = {}
+}
+
+hm_control_feudalize_holding_cost = {
+	categories = { holding_manager }
+	default = hm_rule_feudalize_holding_cost_default
+	hm_rule_feudalize_holding_cost_very_cheap = {}
+	hm_rule_feudalize_holding_cost_cheap = {}
+	hm_rule_feudalize_holding_cost_default = {}
+	hm_rule_feudalize_holding_cost_expensive = {}
+	hm_rule_feudalize_holding_cost_very_expensive = {}
 }
 
 hm_rule_construct_buildings_gold_cost_cap = {
