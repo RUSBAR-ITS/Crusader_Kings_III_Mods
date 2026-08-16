@@ -167,17 +167,17 @@ if (-not (Test-Path -LiteralPath $triggerPath -PathType Container)) {
 }
 
 $triggerFiles = @(
-    'hm_triggers_ach_buildings.txt'
-    'hm_triggers_admin_buildings.txt'
-    'hm_triggers_castle_buildings.txt'
-    'hm_triggers_city_buildings.txt'
-    'hm_triggers_common_buildings.txt'
-    'hm_triggers_standard_economy_buildings.txt'
-    'hm_triggers_standard_fortification_buildings.txt'
-    'hm_triggers_standard_military_buildings.txt'
-    'hm_triggers_temple_buildings.txt'
-    'hm_triggers_temple_citadel_buildings.txt'
-    'hm_triggers_tribal_buildings.txt'
+    'HM_RE_triggers_ach_buildings.txt'
+    'HM_RE_triggers_admin_buildings.txt'
+    'HM_RE_triggers_castle_buildings.txt'
+    'HM_RE_triggers_city_buildings.txt'
+    'HM_RE_triggers_common_buildings.txt'
+    'HM_RE_triggers_standard_economy_buildings.txt'
+    'HM_RE_triggers_standard_fortification_buildings.txt'
+    'HM_RE_triggers_standard_military_buildings.txt'
+    'HM_RE_triggers_temple_buildings.txt'
+    'HM_RE_triggers_temple_citadel_buildings.txt'
+    'HM_RE_triggers_tribal_buildings.txt'
 )
 
 $vanillaBuildings = @{}
