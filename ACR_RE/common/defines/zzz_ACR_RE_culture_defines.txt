@@ -5,16 +5,15 @@
 # to be easy for players and compatibility patches to adjust manually.
 
 NCulture = {
-	# Vanilla: 1.66. Recommended after testing: 8.34 (~12 months).
-	# Temporary test value: 50 (~2 months before county slowdown).
-	REFORMATION_PROGRESS_GAIN_BASE = 50
+	# Standard: 1.66. ACR_RE: 8.34 (~12 months before county slowdown).
+	REFORMATION_PROGRESS_GAIN_BASE = 8.34
 
-	# Vanilla: 0.2 per county. Use 0 to disable culture-size slowdown.
+	# Standard: 0.2 per county. Use 0 to disable culture-size slowdown.
 	REFORMATION_PROGRESS_SLOWDOWN_PER_COUNTY_WITH_CULTURE = 0.2
 
-	# Vanilla: 30 years. Caps slowdown caused by the number of culture counties.
+	# Standard: 30 years. Caps slowdown caused by the number of culture counties.
 	REFORMATION_MAX_YEARS = 1
 
-	# Vanilla: 0.75. Use 1.0 to make replacement as fast as adding a tradition.
+	# Standard: 0.75. Use 1.0 to make replacement as fast as adding a tradition.
 	REFORMATION_PROGRESS_REPLACE_TRADITION_MULT = 0.75
 }

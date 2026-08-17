@@ -1,0 +1,57 @@
+[h1]Additional Campaign Rules. Rusbar Edition[/h1]
+
+[b]Version:[/b] 1.0.0
+[b]For Crusader Kings III:[/b] 1.19.0.6
+[b]Languages:[/b] English and Russian
+
+Additional Campaign Rules provides campaign-start options for cultural traditions, truces, and finite council tasks. Standard behavior remains the default for every selectable rule.
+
+[h2]Game Rules[/h2]
+
+[list]
+[*][b]Additional cultural traditions:[/b] default, +5, +10, +15, +45, or +95 slots for every culture.
+[*][b]Cultural tradition cost:[/b] 100%, 75%, 50%, 25%, 10%, or free for cultures with a player-controlled culture head.
+[*][b]Cultural reform cooldown:[/b] default, at most 25, 10, 5, or 1 year, or no cooldown for cultures with a player-controlled culture head.
+[*][b]Truce duration:[/b] 100%, 75%, 50%, 25%, 10%, or 5% of the ordinary duration.
+[*][b]Truce scope:[/b] all standard post-war truces, or only wars where a player was the primary attacker or primary defender. Participation only as an ally does not qualify.
+[*][b]Finite council tasks:[/b] standard duration or no longer than 1 year, 6 months, 3 months, or 1 month. Acceleration applies only to councillors serving player-controlled rulers.
+[/list]
+
+[h2]Council Tasks[/h2]
+
+Supported tasks are Integrate Title, Bestow Royal Favor, Increase Control, Develop County, Promote Culture, Convince De Jure, Find Secrets, Convert Faith in County, and Fabricate Claim.
+
+Standard requirements, penalties, targets, events, outcomes, and side effects are preserved. Continuous tasks have no completion time and are intentionally outside this rule.
+
+[h2]Global Manual Settings[/h2]
+
+The CK3 engine does not expose several parameters to conditional game rules. They therefore apply campaign-wide, including to AI, and can be edited manually:
+
+[list]
+[*][b]common/defines/zzz_ACR_RE_culture_defines.txt[/b] — base cultural-reform progress, per-county slowdown, maximum duration, and tradition-replacement multiplier.
+[*][b]common/defines/zzz_ACR_RE_lifestyle_defines.txt[/b] — adult lifestyle focus changes every 12 months instead of the standard 60.
+[/list]
+
+Both files include comments with the standard values. Exit the game completely before editing and change only the number to the right of “=”. A small personal patch loaded after ACR_RE is recommended for permanent custom values.
+
+[h2]Technical Notes[/h2]
+
+[list]
+[*]Extra slots use hidden system innovations and are automatically applied to new hybrid and divergent cultures.
+[*]Council acceleration is added after standard percentage penalties, preventing those penalties from consuming the selected boost.
+[*]Council-task overrides are synchronized with Crusader Kings III 1.19.0.6.
+[*]Mod-owned script objects use the ACR_RE_ prefix.
+[/list]
+
+[h2]Compatibility[/h2]
+
+Mods changing the same cultural calculations, standard truce calculation, listed council tasks, or corresponding defines may require a compatibility patch. Finalize the rules before starting a new campaign whenever possible.
+
+[h2]Source Code[/h2]
+
+[url=https://github.com/RUSBAR-ITS/Crusader_Kings_III_Mods]Project repository[/url]
+[url=https://github.com/RUSBAR-ITS/Crusader_Kings_III_Mods/tree/main/ACR_RE]Additional Campaign Rules README and files[/url]
+
+[h2]Permissions[/h2]
+
+You may freely study, modify, translate, include, and extend the mod or publish any compatibility patch.
