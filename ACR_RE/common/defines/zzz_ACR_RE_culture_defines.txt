@@ -1,0 +1,17 @@
+﻿# Additional Campaign Rules. Rusbar Edition
+#
+# Culture-reformation progress is engine-owned and cannot be changed through a
+# scripted effect or a conditional game rule. These global values are intended
+# to be easy for players and compatibility patches to adjust manually.
+
+NCulture = {
+	# Vanilla: 1.66. Recommended after testing: 8.34 (~12 months).
+	# Temporary test value: 50 (~2 months before county slowdown).
+	REFORMATION_PROGRESS_GAIN_BASE = 50
+
+	# Vanilla: 30 years. Caps slowdown caused by the number of culture counties.
+	REFORMATION_MAX_YEARS = 1
+
+	# Vanilla: 0.75. Use 1.0 to make replacement as fast as adding a tradition.
+	REFORMATION_PROGRESS_REPLACE_TRADITION_MULT = 0.75
+}
