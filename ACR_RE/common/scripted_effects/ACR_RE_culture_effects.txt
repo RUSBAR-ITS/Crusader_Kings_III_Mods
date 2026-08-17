@@ -1,0 +1,78 @@
+# Root: culture
+#
+# Keeps exactly one rule innovation on every culture. The effect is idempotent
+# and also removes stale innovations if the rule configuration of a save was
+# changed outside the normal game-rule interface.
+ACR_RE_apply_culture_tradition_slots_effect = {
+	if = {
+		limit = {
+			has_innovation = ACR_RE_innovation_tradition_slots_plus_5
+			NOT = { has_game_rule = ACR_RE_tradition_slots_plus_5 }
+		}
+		remove_innovation = ACR_RE_innovation_tradition_slots_plus_5
+	}
+	if = {
+		limit = {
+			has_innovation = ACR_RE_innovation_tradition_slots_plus_10
+			NOT = { has_game_rule = ACR_RE_tradition_slots_plus_10 }
+		}
+		remove_innovation = ACR_RE_innovation_tradition_slots_plus_10
+	}
+	if = {
+		limit = {
+			has_innovation = ACR_RE_innovation_tradition_slots_plus_15
+			NOT = { has_game_rule = ACR_RE_tradition_slots_plus_15 }
+		}
+		remove_innovation = ACR_RE_innovation_tradition_slots_plus_15
+	}
+	if = {
+		limit = {
+			has_innovation = ACR_RE_innovation_tradition_slots_plus_45
+			NOT = { has_game_rule = ACR_RE_tradition_slots_plus_45 }
+		}
+		remove_innovation = ACR_RE_innovation_tradition_slots_plus_45
+	}
+	if = {
+		limit = {
+			has_innovation = ACR_RE_innovation_tradition_slots_plus_95
+			NOT = { has_game_rule = ACR_RE_tradition_slots_plus_95 }
+		}
+		remove_innovation = ACR_RE_innovation_tradition_slots_plus_95
+	}
+
+	if = {
+		limit = {
+			has_game_rule = ACR_RE_tradition_slots_plus_5
+			NOT = { has_innovation = ACR_RE_innovation_tradition_slots_plus_5 }
+		}
+		add_innovation = ACR_RE_innovation_tradition_slots_plus_5
+	}
+	if = {
+		limit = {
+			has_game_rule = ACR_RE_tradition_slots_plus_10
+			NOT = { has_innovation = ACR_RE_innovation_tradition_slots_plus_10 }
+		}
+		add_innovation = ACR_RE_innovation_tradition_slots_plus_10
+	}
+	if = {
+		limit = {
+			has_game_rule = ACR_RE_tradition_slots_plus_15
+			NOT = { has_innovation = ACR_RE_innovation_tradition_slots_plus_15 }
+		}
+		add_innovation = ACR_RE_innovation_tradition_slots_plus_15
+	}
+	if = {
+		limit = {
+			has_game_rule = ACR_RE_tradition_slots_plus_45
+			NOT = { has_innovation = ACR_RE_innovation_tradition_slots_plus_45 }
+		}
+		add_innovation = ACR_RE_innovation_tradition_slots_plus_45
+	}
+	if = {
+		limit = {
+			has_game_rule = ACR_RE_tradition_slots_plus_95
+			NOT = { has_innovation = ACR_RE_innovation_tradition_slots_plus_95 }
+		}
+		add_innovation = ACR_RE_innovation_tradition_slots_plus_95
+	}
+}

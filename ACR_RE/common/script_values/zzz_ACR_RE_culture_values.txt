@@ -1,0 +1,148 @@
+# Additional Campaign Rules. Rusbar Edition
+#
+# These four values intentionally override their vanilla counterparts. The
+# vanilla Kurultai modifier is preserved first; ACR_RE then scales or caps the
+# result only when the culture has a human culture head.
+
+add_tradition_cooldown = {
+	value = 50
+	if = {
+		limit = {
+			culture_head ?= {
+				has_variable = kurultai_culture_variable_value
+			}
+		}
+		multiply = {
+			value = 100
+			subtract = culture_head.var:kurultai_culture_variable_value
+			divide = 100
+		}
+	}
+
+	if = {
+		limit = {
+			culture_head ?= { is_ai = no }
+			has_game_rule = ACR_RE_tradition_cooldown_25_years
+		}
+		max = 25
+	}
+	if = {
+		limit = {
+			culture_head ?= { is_ai = no }
+			has_game_rule = ACR_RE_tradition_cooldown_10_years
+		}
+		max = 10
+	}
+	if = {
+		limit = {
+			culture_head ?= { is_ai = no }
+			has_game_rule = ACR_RE_tradition_cooldown_5_years
+		}
+		max = 5
+	}
+	if = {
+		limit = {
+			culture_head ?= { is_ai = no }
+			has_game_rule = ACR_RE_tradition_cooldown_1_year
+		}
+		max = 1
+	}
+	if = {
+		limit = {
+			culture_head ?= { is_ai = no }
+			has_game_rule = ACR_RE_tradition_cooldown_none
+		}
+		multiply = 0
+	}
+}
+
+tradition_base_cost = {
+	value = 2000
+	if = {
+		limit = {
+			culture_head ?= {
+				has_variable = kurultai_culture_variable_value
+			}
+		}
+		multiply = {
+			value = 100
+			subtract = culture_head.var:kurultai_culture_variable_value
+			divide = 100
+		}
+	}
+	multiply = ACR_RE_player_tradition_cost_multiplier
+}
+
+tradition_incompatible_ethos_penalty = {
+	value = 2000
+	if = {
+		limit = {
+			culture_head ?= {
+				has_variable = kurultai_culture_variable_value
+			}
+		}
+		multiply = {
+			value = 100
+			subtract = culture_head.var:kurultai_culture_variable_value
+			divide = 100
+		}
+	}
+	multiply = ACR_RE_player_tradition_cost_multiplier
+}
+
+tradition_unfulfilled_criteria_penalty = {
+	value = 3000
+	if = {
+		limit = {
+			culture_head ?= {
+				has_variable = kurultai_culture_variable_value
+			}
+		}
+		multiply = {
+			value = 100
+			subtract = culture_head.var:kurultai_culture_variable_value
+			divide = 100
+		}
+	}
+	multiply = ACR_RE_player_tradition_cost_multiplier
+}
+
+# Root remains the culture whose reform cost is evaluated.
+ACR_RE_player_tradition_cost_multiplier = {
+	value = 1
+	if = {
+		limit = {
+			culture_head ?= { is_ai = no }
+			has_game_rule = ACR_RE_tradition_cost_75
+		}
+		multiply = 0.75
+	}
+	if = {
+		limit = {
+			culture_head ?= { is_ai = no }
+			has_game_rule = ACR_RE_tradition_cost_50
+		}
+		multiply = 0.5
+	}
+	if = {
+		limit = {
+			culture_head ?= { is_ai = no }
+			has_game_rule = ACR_RE_tradition_cost_25
+		}
+		multiply = 0.25
+	}
+	if = {
+		limit = {
+			culture_head ?= { is_ai = no }
+			has_game_rule = ACR_RE_tradition_cost_10
+		}
+		multiply = 0.1
+	}
+	if = {
+		limit = {
+			culture_head ?= { is_ai = no }
+			has_game_rule = ACR_RE_tradition_cost_free
+		}
+		multiply = 0
+	}
+}

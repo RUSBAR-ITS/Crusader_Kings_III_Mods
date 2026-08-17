@@ -1,0 +1,85 @@
+# Additional Campaign Rules. Rusbar Edition
+#
+# Hidden system innovations carry culture-wide rule modifiers. Innovations are
+# used instead of hidden traditions so the implementation neither consumes a
+# tradition slot nor fires the vanilla on_tradition_added cooldown.
+
+ACR_RE_innovation_tradition_slots_plus_5 = {
+	skill = learning
+	group = culture_group_civic
+	culture_era = culture_era_tribal
+	icon = "gfx/interface/icons/culture_innovations/innovation_nobility_01.dds"
+
+	potential = { always = no }
+	can_progress = { always = no }
+
+	culture_modifier = {
+		culture_tradition_max_add = 5
+	}
+
+	ai_weight_for_fascination = { value = 0 }
+}
+
+ACR_RE_innovation_tradition_slots_plus_10 = {
+	skill = learning
+	group = culture_group_civic
+	culture_era = culture_era_tribal
+	icon = "gfx/interface/icons/culture_innovations/innovation_nobility_01.dds"
+
+	potential = { always = no }
+	can_progress = { always = no }
+
+	culture_modifier = {
+		culture_tradition_max_add = 10
+	}
+
+	ai_weight_for_fascination = { value = 0 }
+}
+
+ACR_RE_innovation_tradition_slots_plus_15 = {
+	skill = learning
+	group = culture_group_civic
+	culture_era = culture_era_tribal
+	icon = "gfx/interface/icons/culture_innovations/innovation_nobility_01.dds"
+
+	potential = { always = no }
+	can_progress = { always = no }
+
+	culture_modifier = {
+		culture_tradition_max_add = 15
+	}
+
+	ai_weight_for_fascination = { value = 0 }
+}
+
+ACR_RE_innovation_tradition_slots_plus_45 = {
+	skill = learning
+	group = culture_group_civic
+	culture_era = culture_era_tribal
+	icon = "gfx/interface/icons/culture_innovations/innovation_nobility_01.dds"
+
+	potential = { always = no }
+	can_progress = { always = no }
+
+	culture_modifier = {
+		culture_tradition_max_add = 45
+	}
+
+	ai_weight_for_fascination = { value = 0 }
+}
+
+ACR_RE_innovation_tradition_slots_plus_95 = {
+	skill = learning
+	group = culture_group_civic
+	culture_era = culture_era_tribal
+	icon = "gfx/interface/icons/culture_innovations/innovation_nobility_01.dds"
+
+	potential = { always = no }
+	can_progress = { always = no }
+
+	culture_modifier = {
+		culture_tradition_max_add = 95
+	}
+
+	ai_weight_for_fascination = { value = 0 }
+}
