@@ -7,3 +7,4 @@ tags={
 }
 name="Additional Campaign Rules. Rusbar Edition"
 supported_version="1.19.0.6"
+remote_file_id="3785098740"
