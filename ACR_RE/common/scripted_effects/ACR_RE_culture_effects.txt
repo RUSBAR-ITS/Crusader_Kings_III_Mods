@@ -4,6 +4,10 @@
 # and also removes stale innovations if the rule configuration of a save was
 # changed outside the normal game-rule interface.
 ACR_RE_apply_culture_tradition_slots_effect = {
+	# Also repairs saves affected by the engine's handling of
+	# set_variable = { years = 0 } in vanilla on_tradition_added.
+	ACR_RE_clear_disabled_tradition_cooldown_effect = yes
+
 	if = {
 		limit = {
 			has_innovation = ACR_RE_innovation_tradition_slots_plus_5
@@ -74,5 +78,22 @@ ACR_RE_apply_culture_tradition_slots_effect = {
 			NOT = { has_innovation = ACR_RE_innovation_tradition_slots_plus_95 }
 		}
 		add_innovation = ACR_RE_innovation_tradition_slots_plus_95
+	}
+}
+
+# Root: culture
+#
+# A zero-year timed variable remains present and permanently blocks the
+# vanilla can_add_tradition rule. This effect is intentionally limited to the
+# human culture-head rule so AI cultures and every non-zero setting retain the
+# standard cooldown behavior.
+ACR_RE_clear_disabled_tradition_cooldown_effect = {
+	if = {
+		limit = {
+			has_game_rule = ACR_RE_tradition_cooldown_none
+			culture_head ?= { is_ai = no }
+			has_variable = tradition_cooldown
+		}
+		remove_variable = tradition_cooldown
 	}
 }
