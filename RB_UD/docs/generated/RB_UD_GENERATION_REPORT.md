@@ -96,7 +96,7 @@
 | `common\domiciles\buildings\zzz_RB_UD_yurt_mass_warfare.txt` | 42 | `608CC51E092A2B5AD53D7226F6C7728C47E4CA3FC3C252014244B5FB9F41CCF1` |
 | `common\domiciles\buildings\zzz_RB_UD_yurt_mystical.txt` | 48 | `C13E180356A0741C40CFB8C1701B14B46B283E6D353AC40D4A9FA2F0855402B2` |
 | `common\domiciles\buildings\zzz_RB_UD_yurt_trade.txt` | 48 | `7B00FC57DC6B3C852EAD4B78E85F2E135F6CDDE71D528FE38E039B0DEAD434B1` |
-| `common\domiciles\types\zzz_RB_UD_domicile_types.txt` | 5 | `65B5B77783863041518259C0B2A5EFCD98720AF3EEA380FE43A8D679AE6FA524` |
+| `common\domiciles\types\zzz_RB_UD_domicile_types.txt` | 5 | `B9A2ACF8C7C600EC77CE46AABB8EB79C9F37006FCBB449E2048B0C5B26AD83A6` |
 | `common\scripted_effects\zzz_RB_UD_domicile_effects.txt` | 5 | `C19D178F7B4E89C0B1A95C3A16A1D4A59E3952414D86AC27F2913F384CC7BBCC` |
 
 ## Required manual check

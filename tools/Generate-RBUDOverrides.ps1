@@ -843,6 +843,7 @@ foreach ($typeOverride in Convert-ToArray $plan.DomicileTypeOverrides) {
 
     $renderItems = [Collections.Generic.List[object]]::new()
     $renderItems.Add([pscustomobject]@{
+        Name = 'main_slot'
         SortY = Get-DirectPositionY $mainSlot
         SortX = 50.0
         Lines = $mainSlot
@@ -866,6 +867,7 @@ foreach ($typeOverride in Convert-ToArray $plan.DomicileTypeOverrides) {
         $clone = Set-DirectInlineValue $clone 'position' "{ $($layoutSlot.X)% $($layoutSlot.Y)% }"
         $clone = Set-DirectInlineValue $clone 'size' "{ $($layoutSlot.Width)% $($layoutSlot.Height)% }"
         $renderItems.Add([pscustomobject]@{
+            Name = "external_slot_$slotId"
             SortY = [double]$layoutSlot.Y
             SortX = [double]$layoutSlot.X
             Lines = $clone
@@ -874,7 +876,38 @@ foreach ($typeOverride in Convert-ToArray $plan.DomicileTypeOverrides) {
 
     $newSlots = [Collections.Generic.List[string]]::new()
     $newSlots.Add("`tdomicile_building_slots = {")
-    $orderedItems = @($renderItems | Sort-Object SortY, SortX)
+    $renderSequenceProperty = $layoutProperty.Value.PSObject.Properties['RenderSequence']
+    $renderSequence = @(
+        if ($null -ne $renderSequenceProperty) {
+            Convert-ToArray $renderSequenceProperty.Value
+        }
+    )
+    if ($renderSequence.Count -gt 0) {
+        if ($renderSequence.Count -ne $renderItems.Count) {
+            throw "Render sequence $domicileId has $($renderSequence.Count) entries; expected $($renderItems.Count)."
+        }
+        $renderItemByName = @{}
+        foreach ($item in $renderItems) {
+            if ($renderItemByName.ContainsKey($item.Name)) {
+                throw "Duplicate render item '$($item.Name)' in layout $domicileId."
+            }
+            $renderItemByName[$item.Name] = $item
+        }
+        $orderedItems = @(
+            foreach ($name in $renderSequence) {
+                if (-not $renderItemByName.ContainsKey([string]$name)) {
+                    throw "Unknown render item '$name' in layout $domicileId."
+                }
+                $renderItemByName[[string]$name]
+            }
+        )
+        if (@($renderSequence | Select-Object -Unique).Count -ne $renderSequence.Count) {
+            throw "Render sequence $domicileId contains duplicate entries."
+        }
+    }
+    else {
+        $orderedItems = @($renderItems | Sort-Object SortY, SortX)
+    }
     for ($index = 0; $index -lt $orderedItems.Count; $index++) {
         foreach ($line in $orderedItems[$index].Lines) { $newSlots.Add($line) }
         if ($index -lt ($orderedItems.Count - 1)) { $newSlots.Add('') }
