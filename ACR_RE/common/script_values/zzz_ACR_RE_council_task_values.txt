@@ -1,4 +1,4 @@
-# Additional Campaign Rules. Rusbar Edition
+﻿# Additional Campaign Rules. Rusbar Edition
 #
 # Player-only acceleration for the finite tasks of the five standard council
 # positions. We override only the small vanilla progress inputs consumed by
@@ -16,15 +16,24 @@ ACR_RE_council_task_progress_boost = {
 		}
 		if = {
 			limit = { has_game_rule = ACR_RE_council_task_speed_1_year }
-			add = 8.333333
+			add = {
+				value = 100
+				divide = 12
+			}
 		}
 		else_if = {
 			limit = { has_game_rule = ACR_RE_council_task_speed_6_months }
-			add = 16.666667
+			add = {
+				value = 100
+				divide = 6
+			}
 		}
 		else_if = {
 			limit = { has_game_rule = ACR_RE_council_task_speed_3_months }
-			add = 33.333333
+			add = {
+				value = 100
+				divide = 3
+			}
 		}
 		else_if = {
 			limit = { has_game_rule = ACR_RE_council_task_speed_1_month }
