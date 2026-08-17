@@ -17,3 +17,7 @@
  DICM_RBE_Cunning_Courtier: "Most Cunning Courtier"
  DICM_RBE_Wisest_Philosopher: "Wisest Philosopher"
  DICM_RBE_Legendary_Traveler: "Legendary Traveler"
+
+ # Standard localization correction: the current game references the obsolete
+ # plural scheme key "elope_schemes" instead of the actual "elope" scheme.
+ max_elope_schemes_add: "Max [GetScheme('elope').GetTypeName] [schemes|E]"
