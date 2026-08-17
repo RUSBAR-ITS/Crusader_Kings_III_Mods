@@ -1,0 +1,145 @@
+# Additional Campaign Rules. Rusbar Edition
+#
+# Stage 1 defines the public game-rule interface only. The rule settings are
+# consumed by scripted mechanics added in later implementation stages.
+
+ACR_RE_culture_tradition_slots = {
+	categories = {
+		game_modes
+	}
+
+	default = ACR_RE_tradition_slots_vanilla
+
+	ACR_RE_tradition_slots_vanilla = {
+	}
+
+	ACR_RE_tradition_slots_plus_5 = {
+	}
+
+	ACR_RE_tradition_slots_plus_10 = {
+	}
+
+	ACR_RE_tradition_slots_plus_15 = {
+	}
+
+	ACR_RE_tradition_slots_plus_45 = {
+	}
+
+	ACR_RE_tradition_slots_plus_95 = {
+	}
+}
+
+ACR_RE_culture_tradition_cost = {
+	categories = {
+		game_modes
+	}
+
+	default = ACR_RE_tradition_cost_vanilla
+
+	ACR_RE_tradition_cost_vanilla = {
+	}
+
+	ACR_RE_tradition_cost_75 = {
+	}
+
+	ACR_RE_tradition_cost_50 = {
+	}
+
+	ACR_RE_tradition_cost_25 = {
+	}
+
+	ACR_RE_tradition_cost_10 = {
+	}
+
+	ACR_RE_tradition_cost_free = {
+	}
+}
+
+ACR_RE_culture_tradition_cooldown = {
+	categories = {
+		game_modes
+	}
+
+	default = ACR_RE_tradition_cooldown_vanilla
+
+	ACR_RE_tradition_cooldown_vanilla = {
+	}
+
+	ACR_RE_tradition_cooldown_25_years = {
+	}
+
+	ACR_RE_tradition_cooldown_10_years = {
+	}
+
+	ACR_RE_tradition_cooldown_5_years = {
+	}
+
+	ACR_RE_tradition_cooldown_1_year = {
+	}
+
+	ACR_RE_tradition_cooldown_none = {
+	}
+}
+
+ACR_RE_truce_duration = {
+	categories = {
+		game_modes
+	}
+
+	default = ACR_RE_truce_duration_vanilla
+
+	ACR_RE_truce_duration_vanilla = {
+	}
+
+	ACR_RE_truce_duration_75 = {
+	}
+
+	ACR_RE_truce_duration_50 = {
+	}
+
+	ACR_RE_truce_duration_25 = {
+	}
+
+	ACR_RE_truce_duration_10 = {
+	}
+
+	ACR_RE_truce_duration_5 = {
+	}
+}
+
+ACR_RE_truce_scope = {
+	categories = {
+		game_modes
+	}
+
+	default = ACR_RE_truce_scope_all
+
+	ACR_RE_truce_scope_all = {
+	}
+
+	ACR_RE_truce_scope_player_primary = {
+	}
+}
+
+ACR_RE_council_task_speed = {
+	categories = {
+		game_modes
+	}
+
+	default = ACR_RE_council_task_speed_vanilla
+
+	ACR_RE_council_task_speed_vanilla = {
+	}
+
+	ACR_RE_council_task_speed_1_year = {
+	}
+
+	ACR_RE_council_task_speed_6_months = {
+	}
+
+	ACR_RE_council_task_speed_3_months = {
+	}
+
+	ACR_RE_council_task_speed_1_month = {
+	}
+}
