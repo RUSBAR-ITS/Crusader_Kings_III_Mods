@@ -1,9 +1,9 @@
 ﻿# Additional Campaign Rules. Rusbar Edition
 #
-# Player-only acceleration for the finite tasks of the five standard council
-# positions. We override only the small vanilla progress inputs consumed by
-# the current task definitions; the tasks, their targets, side effects and
-# completion logic remain entirely standard.
+# Player-only acceleration for the selected tasks of the five standard council
+# positions. Generated task overrides consume these values only after all
+# standard penalties and multipliers; targets, side effects and completion
+# logic otherwise remain unchanged.
 
 # Percentage/value tasks whose completion scale is 0..100 receive this extra
 # monthly progress. Existing progress is preserved, so a naturally faster task
@@ -68,68 +68,8 @@ ACR_RE_council_task_integration_boost = {
 	}
 }
 
-# Chancellor: Integrate Title.
-# Standard value: diplomacy * 0.035.
-chancellor_integrate_title_progress_gain = {
-	add = diplomacy
-	multiply = 0.035
-	add = ACR_RE_council_task_integration_boost
-}
-
-# Chancellor: Bestow Royal Favor.
-# Standard value: diplomacy * 0.5.
-chancellor_bestow_royal_favor_progress_gain = {
-	add = diplomacy
-	multiply = 0.5
-	add = ACR_RE_council_task_progress_boost
-}
-
-# Court Chaplain: Convert Faith in County.
-# Standard base value: 0.5.
-court_chaplain_conversion_base = {
-	add = 0.5
-	add = ACR_RE_council_task_progress_boost
-}
-
-# Court Chaplain: Fabricate Claim on County.
-# Standard base value: 3.
-court_chaplain_fabricate_claim_base = {
-	add = 3
-	add = ACR_RE_council_task_progress_boost
-}
-
-# Marshal: Increase Control in County.
-# Standard base value: 0.2. This is also consumed by the corresponding
-# Kurultai control tasks, which therefore receive the same player-only cap.
-marshal_increase_control_base = {
-	add = 0.2
-	add = ACR_RE_council_task_progress_boost
-}
-
-# Spymaster: Find Secrets.
-# Standard base value: 5.
-spymaster_find_secrets_base = {
-	add = 5
-	add = ACR_RE_council_task_progress_boost
-}
-
-# Steward: Increase Development in County.
-# Standard base value: 0.1.
-steward_develop_county_base = {
-	add = 0.1
-	add = ACR_RE_council_task_progress_boost
-}
-
-# Steward: Promote Culture.
-# Standard base value: 0.25.
-steward_promote_culture_base = {
-	add = 0.25
-	add = ACR_RE_council_task_progress_boost
-}
-
-# Steward: Convince De Jure Territory.
-# Standard base value: 0.1.
-steward_convince_dejure_base = {
-	add = 0.1
-	add = ACR_RE_council_task_progress_boost
-}
+# The standard base values are deliberately not overridden. The generated
+# council-task objects add these boosts only after every standard modifier,
+# multiplier and minimum-value clamp has finished. This prevents religious,
+# cultural, relationship, development and government penalties from reducing
+# the selected acceleration.
