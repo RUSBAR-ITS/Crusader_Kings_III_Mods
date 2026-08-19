@@ -1,0 +1,83 @@
+# Rebuilds the short-lived list displayed by the title-capital window.
+TCC_prepare_title_capital_window_effect = {
+	clear_variable_list = TCC_candidate_counties
+	remove_variable = TCC_selected_county
+	remove_variable = TCC_target_title
+	remove_variable = TCC_window_open
+
+	set_variable = {
+		name = TCC_target_title
+		value = scope:target_title
+	}
+
+	scope:target_title = {
+		title_capital_county = { save_scope_as = TCC_current_capital }
+		every_de_jure_county = {
+			limit = {
+				holder = root
+				NOT = { this = scope:TCC_current_capital }
+			}
+			root = {
+				add_to_variable_list = {
+					name = TCC_candidate_counties
+					target = prev
+				}
+			}
+		}
+	}
+
+	set_variable = {
+		name = TCC_window_open
+		value = flag:TCC_window_open
+	}
+}
+
+TCC_clear_title_capital_window_effect = {
+	clear_variable_list = TCC_candidate_counties
+	remove_variable = TCC_selected_county
+	remove_variable = TCC_target_title
+	remove_variable = TCC_window_open
+}
+
+# Performs the actual relocation after the scripted-GUI validation has passed.
+TCC_change_de_jure_capital_effect = {
+	var:TCC_target_title = { save_scope_as = TCC_target_title }
+	var:TCC_selected_county = { save_scope_as = TCC_selected_county }
+
+	if = {
+		limit = { scope:TCC_target_title = { tier = tier_duchy } }
+		add_prestige = -500
+	}
+	else_if = {
+		limit = { scope:TCC_target_title = { tier = tier_kingdom } }
+		add_prestige = -750
+	}
+	else = {
+		add_prestige = -1000
+	}
+
+	scope:TCC_target_title = {
+		set_capital_county = scope:TCC_selected_county
+	}
+
+	# The duchy-building slot only refreshes after the other counties briefly
+	# leave the duchy's de jure hierarchy. This mirrors the current vanilla fix,
+	# but uses a private, permanently uncreatable placeholder title.
+	if = {
+		limit = { scope:TCC_target_title = { tier = tier_duchy } }
+		scope:TCC_target_title = {
+			every_de_jure_county = {
+				limit = { NOT = { this = scope:TCC_selected_county } }
+				set_de_jure_liege_title = title:d_TCC_capital_placeholder
+				add_to_list = TCC_duchy_slot_refresh_counties
+			}
+		}
+		every_in_list = {
+			list = TCC_duchy_slot_refresh_counties
+			set_de_jure_liege_title = scope:TCC_target_title
+		}
+	}
+
+	TCC_clear_title_capital_window_effect = yes
+}
+

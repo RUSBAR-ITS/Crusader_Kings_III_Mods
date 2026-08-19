@@ -1,0 +1,134 @@
+TCC_open_title_capital_window = {
+	scope = character
+	saved_scopes = { target_title }
+
+	is_shown = {
+		scope:target_title = {
+			TCC_supported_title_trigger = yes
+			holder = root
+			TCC_title_has_candidate_county_trigger = yes
+		}
+	}
+
+	is_valid = {
+		custom_tooltip = {
+			text = TCC_must_be_adult_tt
+			is_available_adult = yes
+		}
+		custom_tooltip = {
+			text = TCC_must_be_at_peace_tt
+			is_at_war = no
+		}
+		scope:target_title.title_capital_county = {
+			save_temporary_scope_as = TCC_current_capital
+		}
+		custom_tooltip = {
+			text = TCC_current_capital_must_be_in_realm_tt
+			any_sub_realm_county = { this = scope:TCC_current_capital }
+		}
+		custom_tooltip = {
+			text = TCC_need_prestige_tt
+			trigger_if = {
+				limit = { scope:target_title = { tier = tier_duchy } }
+				prestige >= 500
+			}
+			trigger_else_if = {
+				limit = { scope:target_title = { tier = tier_kingdom } }
+				prestige >= 750
+			}
+			trigger_else = { prestige >= 1000 }
+		}
+	}
+
+	effect = {
+		TCC_prepare_title_capital_window_effect = yes
+	}
+}
+
+TCC_close_title_capital_window = {
+	scope = character
+	effect = { TCC_clear_title_capital_window_effect = yes }
+}
+
+TCC_select_title_capital = {
+	scope = character
+	saved_scopes = { candidate_county }
+
+	is_valid = {
+		has_variable = TCC_target_title
+		var:TCC_target_title = {
+			is_de_jure_liege_or_above_target = scope:candidate_county
+		}
+		scope:candidate_county = {
+			tier = tier_county
+			holder = root
+		}
+	}
+
+	effect = {
+		set_variable = {
+			name = TCC_selected_county
+			value = scope:candidate_county
+		}
+	}
+}
+
+TCC_title_capital_is_selected = {
+	scope = character
+	saved_scopes = { candidate_county }
+
+	is_valid = {
+		trigger_if = {
+			limit = { has_variable = TCC_selected_county }
+			var:TCC_selected_county = scope:candidate_county
+		}
+		trigger_else = { always = no }
+	}
+}
+
+TCC_confirm_title_capital = {
+	scope = character
+
+	is_valid = {
+		custom_tooltip = {
+			text = TCC_select_county_tt
+			has_variable = TCC_selected_county
+		}
+		TCC_selected_capital_is_valid_trigger = yes
+		custom_tooltip = {
+			text = TCC_must_be_adult_tt
+			is_available_adult = yes
+		}
+		custom_tooltip = {
+			text = TCC_must_be_at_peace_tt
+			is_at_war = no
+		}
+		trigger_if = {
+			limit = { has_variable = TCC_target_title }
+			var:TCC_target_title.title_capital_county = {
+				save_temporary_scope_as = TCC_current_capital
+			}
+			custom_tooltip = {
+				text = TCC_current_capital_must_be_in_realm_tt
+				any_sub_realm_county = { this = scope:TCC_current_capital }
+			}
+			custom_tooltip = {
+				text = TCC_need_prestige_tt
+				trigger_if = {
+					limit = { var:TCC_target_title = { tier = tier_duchy } }
+					prestige >= 500
+				}
+				trigger_else_if = {
+					limit = { var:TCC_target_title = { tier = tier_kingdom } }
+					prestige >= 750
+				}
+				trigger_else = { prestige >= 1000 }
+			}
+		}
+		trigger_else = { always = no }
+	}
+
+	effect = {
+		TCC_change_de_jure_capital_effect = yes
+	}
+}

@@ -1,0 +1,52 @@
+# Shared validation for the title-capital selector.
+
+TCC_supported_title_trigger = {
+	tier >= tier_duchy
+	tier <= tier_empire
+	NOR = {
+		is_landless_type_title = yes
+		is_noble_family_title = yes
+		is_mercenary_company = yes
+		is_holy_order = yes
+	}
+}
+
+TCC_title_has_candidate_county_trigger = {
+	title_capital_county = { save_temporary_scope_as = TCC_current_capital }
+	any_de_jure_county = {
+		holder = root
+		NOT = { this = scope:TCC_current_capital }
+	}
+}
+
+TCC_selected_capital_is_valid_trigger = {
+	trigger_if = {
+		limit = {
+			has_variable = TCC_target_title
+			has_variable = TCC_selected_county
+		}
+
+		var:TCC_target_title = {
+			save_temporary_scope_as = TCC_target_title
+		}
+		var:TCC_selected_county = {
+			save_temporary_scope_as = TCC_selected_county
+		}
+
+		scope:TCC_target_title = {
+			TCC_supported_title_trigger = yes
+			holder = root
+			is_de_jure_liege_or_above_target = scope:TCC_selected_county
+			title_capital_county = {
+				save_temporary_scope_as = TCC_old_capital
+			}
+		}
+
+		scope:TCC_selected_county = {
+			tier = tier_county
+			holder = root
+			NOT = { this = scope:TCC_old_capital }
+		}
+	}
+	trigger_else = { always = no }
+}

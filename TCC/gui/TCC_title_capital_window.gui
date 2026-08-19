@@ -1,0 +1,183 @@
+window = {
+	name = "TCC_title_capital_window"
+	parentanchor = center
+	layer = windows_layer
+	filter_mouse = all
+	allow_outside = yes
+	alwaystransparent = no
+	datacontext = "[GetPlayer.MakeScope.Var('TCC_target_title').Title]"
+	visible = "[GetPlayer.MakeScope.Var('TCC_window_open').IsSet]"
+
+	using = Window_Background
+	using = Window_Decoration
+	movable = yes
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+		on_finish = "[PdxGuiWidget.StackTop]"
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+	}
+
+	vbox = {
+		set_parent_size_to_minimum = yes
+		using = Window_Margins
+
+		header_pattern = {
+			layoutpolicy_horizontal = expanding
+
+			blockoverride "header_text" {
+				text = TCC_window_title
+			}
+
+			blockoverride "button_close" {
+				onclick = "[GetScriptedGui('TCC_close_title_capital_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+			}
+		}
+
+		vbox = {
+			minimumsize = { 660 0 }
+			margin = { 12 14 }
+			spacing = 10
+			layoutpolicy_horizontal = expanding
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 12
+
+				coa_title_medium_crown = {}
+
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					spacing = 3
+
+					text_single = {
+						text = "[Title.GetName|U]"
+						default_format = "#high"
+					}
+
+					text_single = {
+						text = TCC_choose_new_capital
+						default_format = "#I"
+					}
+
+					hbox = {
+						spacing = 6
+						text_single = { text = TCC_current_capital }
+						hbox = {
+							datacontext = "[Title.GetPreferredCapital]"
+							spacing = 5
+							coa_title_tiny_crown = {}
+							text_single = {
+								text = "[Title.GetName|U]"
+								default_format = "#bold"
+							}
+						}
+					}
+				}
+			}
+
+			text_single = {
+				visible = "[EqualTo_int32(Title.GetTierFrame, '(int32)4')]"
+				text = TCC_duchy_building_warning
+				layoutpolicy_horizontal = expanding
+				max_width = 630
+			}
+
+			scrollbox = {
+				size = { 640 390 }
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+
+				blockoverride "scrollbox_content" {
+					vbox = {
+						spacing = 6
+						layoutpolicy_horizontal = expanding
+						datamodel = "[GetPlayer.MakeScope.GetList('TCC_candidate_counties')]"
+
+						item = {
+							button_group = {
+								datacontext = "[Scope.Title]"
+								layoutpolicy_horizontal = expanding
+								size = { 0 62 }
+								onclick = "[GetScriptedGui('TCC_select_title_capital').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('candidate_county', Title.MakeScope).End)]"
+
+								background = { using = Background_Area_Dark }
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									spacing = 10
+									margin = { 8 5 }
+
+									widget = {
+										size = { 38 52 }
+										button_radio = {
+											parentanchor = center
+											widgetanchor = center
+											frame = "[BoolTo1And2(GetScriptedGui('TCC_title_capital_is_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('candidate_county', Title.MakeScope).End))]"
+											alwaystransparent = yes
+										}
+									}
+
+									coa_title_tiny_crown = {}
+
+									vbox = {
+										layoutpolicy_horizontal = expanding
+										spacing = 2
+										text_single = {
+											text = "[Title.GetName|U]"
+											default_format = "#bold"
+										}
+										text_single = {
+											text = "[Title.GetHolder.GetUIName]"
+											default_format = "#low"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			text_single = {
+				visible = "[EqualTo_int32(Title.GetTierFrame, '(int32)4')]"
+				text = TCC_cost_duchy
+				align = center|nobaseline
+			}
+			text_single = {
+				visible = "[EqualTo_int32(Title.GetTierFrame, '(int32)5')]"
+				text = TCC_cost_kingdom
+				align = center|nobaseline
+			}
+			text_single = {
+				visible = "[EqualTo_int32(Title.GetTierFrame, '(int32)6')]"
+				text = TCC_cost_empire
+				align = center|nobaseline
+			}
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 12
+
+				button_primary = {
+					layoutpolicy_horizontal = expanding
+					text = TCC_confirm
+					enabled = "[GetScriptedGui('TCC_confirm_title_capital').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					onclick = "[GetScriptedGui('TCC_confirm_title_capital').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					tooltip = "[GetScriptedGui('TCC_confirm_title_capital').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+
+				button_standard = {
+					layoutpolicy_horizontal = expanding
+					text = TCC_cancel
+					onclick = "[GetScriptedGui('TCC_close_title_capital_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+		}
+	}
+}
