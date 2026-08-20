@@ -1,0 +1,85 @@
+# RB_MTS60 synchronization report
+
+- Generated: 2026-08-21 06:31:55 +07:00
+- Doctrine source: `E:\SteamLibrary\steamapps\common\Crusader Kings III\game\common\religion\doctrine_group_types\00_doctrine_group_types.txt`
+- Faith GUI source: `E:\SteamLibrary\steamapps\common\Crusader Kings III\game\gui\window_faith.gui`
+- Faith creation GUI source: `E:\SteamLibrary\steamapps\common\Crusader Kings III\game\gui\window_faith_creation.gui`
+- Maximum tenet positions: **60**
+- Temporary empty tenets: **57**
+- Standard real tenets copied into the group: **73**
+
+## Standard tenets
+
+- `tenet_aniconism`
+- `tenet_alexandrian_catechism`
+- `tenet_armed_pilgrimages`
+- `tenet_carnal_exaltation`
+- `tenet_communal_identity`
+- `tenet_communion`
+- `tenet_consolamentum`
+- `tenet_divine_marriage`
+- `tenet_gnosticism`
+- `tenet_mendicant_preachers`
+- `tenet_monasticism`
+- `tenet_pacifism`
+- `tenet_pentarchy`
+- `tenet_unrelenting_faith`
+- `tenet_vows_of_poverty`
+- `tenet_pastoral_isolation`
+- `tenet_rite`
+- `tenet_adaptive`
+- `tenet_esotericism`
+- `tenet_legalism`
+- `tenet_literalism`
+- `tenet_reincarnation`
+- `tenet_religious_legal_pronouncements`
+- `tenet_struggle_submission`
+- `tenet_false_conversion_sanction`
+- `tenet_tax_nonbelievers`
+- `tenet_asceticism`
+- `tenet_bhakti`
+- `tenet_dharmic_pacifism`
+- `tenet_inner_journey`
+- `tenet_ritual_hospitality`
+- `tenet_adorcism`
+- `tenet_ancestor_worship`
+- `tenet_astrology`
+- `tenet_hedonistic`
+- `tenet_human_sacrifice`
+- `tenet_mystical_birthright`
+- `tenet_ritual_celebrations`
+- `tenet_sacred_childbirth`
+- `tenet_sanctity_of_nature`
+- `tenet_sun_worship`
+- `tenet_warmonger`
+- `tenet_gruesome_festivals`
+- `tenet_cthonic_redoubts`
+- `tenet_household_gods`
+- `tenet_sinitic_syncretism`
+- `tenet_eastern_syncretism`
+- `tenet_unreformed_syncretism`
+- `tenet_christian_syncretism`
+- `tenet_islamic_syncretism`
+- `tenet_jewish_syncretism`
+- `tenet_exaltation_of_pain`
+- `tenet_natural_primitivism`
+- `tenet_pursuit_of_power`
+- `tenet_ritual_cannibalism`
+- `tenet_sacred_shadows`
+- `tenet_polyamory`
+- `tenet_sacrificial_ceremonies`
+- `tenet_megaliths`
+- `tenet_fp3_fedayeen`
+- `tenet_communal_possessions`
+- `tenet_pure_land`
+- `tenet_no_mind`
+- `tenet_mountain_worship`
+- `tenet_extinction_of_dharma`
+- `tenet_cranial_trophies`
+- `tenet_pursuit_of_knowledge`
+- `tenet_benevolent_governance`
+- `tenet_filial_piety`
+- `tenet_harmonious_society`
+- `tenet_sacred_destruction`
+- `tenet_preservation`
+- `tenet_takamin`
