@@ -1,0 +1,78 @@
+﻿# Opens the DICM RBE obstetrics and gynecology clinic for the selected character.
+DICM_RBE_obstetrics_clinic_interaction = {
+	interface_priority = 235
+	category = interaction_category_cheat_menu
+	desc = DICM_RBE_obstetrics_clinic_interaction_desc
+	common_interaction = no
+
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+
+	is_shown = {
+		scope:actor = {
+			is_ai = no
+			any_owned_story = {
+				story_type = DI_misc_variables_story
+				has_variable = DI_cheat_menu
+			}
+		}
+	}
+
+	# This is a local interface action, not a diplomatic request. Opening it in
+	# on_send avoids the standard interaction confirmation/acceptance path.
+	on_send = {
+		scope:actor = {
+			remove_variable = DICM_RBE_obstetrics_real_father
+			remove_variable = DICM_RBE_obstetrics_assumed_father
+			set_variable = {
+				name = DICM_RBE_obstetrics_target
+				value = scope:recipient
+			}
+		}
+
+		if = {
+			limit = {
+				scope:recipient = {
+					is_female = yes
+					is_pregnant = yes
+					exists = pregnancy_real_father
+				}
+			}
+			scope:recipient.pregnancy_real_father = {
+				save_scope_as = DICM_RBE_obstetrics_real_father_scope
+			}
+			scope:actor = {
+				set_variable = {
+					name = DICM_RBE_obstetrics_real_father
+					value = scope:DICM_RBE_obstetrics_real_father_scope
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:recipient = {
+					is_female = yes
+					is_pregnant = yes
+					exists = pregnancy_assumed_father
+				}
+			}
+			scope:recipient.pregnancy_assumed_father = {
+				save_scope_as = DICM_RBE_obstetrics_assumed_father_scope
+			}
+			scope:actor = {
+				set_variable = {
+					name = DICM_RBE_obstetrics_assumed_father
+					value = scope:DICM_RBE_obstetrics_assumed_father_scope
+				}
+			}
+		}
+
+		scope:actor = {
+			set_variable = DICM_RBE_obstetrics_window_open
+			scope:recipient = {
+				debug_log = "DICM_RBE: Obstetrics clinic opened for [THIS.Char.GetLogName]"
+			}
+		}
+	}
+}

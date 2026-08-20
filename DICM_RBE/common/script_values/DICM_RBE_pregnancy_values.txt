@@ -1,0 +1,11 @@
+﻿# Current pregnancy duration in days. Root must be the pregnant character.
+DICM_RBE_pregnancy_elapsed_days_value = {
+	add = pregnancy_days
+}
+
+# Estimated days until the standard 280-day delivery date.
+DICM_RBE_pregnancy_remaining_days_value = {
+	value = 280
+	subtract = pregnancy_days
+	min = 0
+}

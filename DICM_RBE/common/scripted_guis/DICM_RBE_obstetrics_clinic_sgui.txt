@@ -1,0 +1,191 @@
+﻿DICM_RBE_close_obstetrics_window = {
+	scope = character
+	effect = { DICM_RBE_clear_obstetrics_window_state_effect = yes }
+}
+
+DICM_RBE_obstetrics_target_is_male = {
+	scope = character
+	is_valid = {
+		trigger_if = {
+			limit = { has_variable = DICM_RBE_obstetrics_target }
+			var:DICM_RBE_obstetrics_target = { is_male = yes }
+		}
+		trigger_else = { always = no }
+	}
+}
+
+DICM_RBE_obstetrics_target_is_nonpregnant_female = {
+	scope = character
+	is_valid = {
+		trigger_if = {
+			limit = { has_variable = DICM_RBE_obstetrics_target }
+			var:DICM_RBE_obstetrics_target = {
+				is_female = yes
+				is_pregnant = no
+			}
+		}
+		trigger_else = { always = no }
+	}
+}
+
+DICM_RBE_obstetrics_target_is_pregnant = {
+	scope = character
+	is_valid = {
+		trigger_if = {
+			limit = { has_variable = DICM_RBE_obstetrics_target }
+			var:DICM_RBE_obstetrics_target = {
+				is_female = yes
+				is_pregnant = yes
+			}
+		}
+		trigger_else = { always = no }
+	}
+}
+
+DICM_RBE_obstetrics_pregnancy_not_revealed = {
+	scope = character
+	is_valid = {
+		trigger_if = {
+			limit = { has_variable = DICM_RBE_obstetrics_target }
+			var:DICM_RBE_obstetrics_target = {
+				is_pregnant = yes
+				pregnancy_days < 60
+			}
+		}
+		trigger_else = { always = no }
+	}
+}
+
+DICM_RBE_obstetrics_smooth_birth_selected = {
+	scope = character
+	is_valid = {
+		trigger_if = {
+			limit = { has_variable = DICM_RBE_obstetrics_target }
+			var:DICM_RBE_obstetrics_target = { has_character_flag = birth_will_go_smoothly }
+		}
+		trigger_else = { always = no }
+	}
+}
+
+DICM_RBE_obstetrics_sickly_child_selected = {
+	scope = character
+	is_valid = {
+		trigger_if = {
+			limit = { has_variable = DICM_RBE_obstetrics_target }
+			var:DICM_RBE_obstetrics_target = { has_character_flag = birth_child_will_become_sickly }
+		}
+		trigger_else = { always = no }
+	}
+}
+
+DICM_RBE_obstetrics_ill_mother_selected = {
+	scope = character
+	is_valid = {
+		trigger_if = {
+			limit = { has_variable = DICM_RBE_obstetrics_target }
+			var:DICM_RBE_obstetrics_target = { has_character_flag = birth_mother_will_become_ill }
+		}
+		trigger_else = { always = no }
+	}
+}
+
+DICM_RBE_obstetrics_mother_dies_selected = {
+	scope = character
+	is_valid = {
+		trigger_if = {
+			limit = { has_variable = DICM_RBE_obstetrics_target }
+			var:DICM_RBE_obstetrics_target = { has_character_flag = birth_mother_will_die }
+		}
+		trigger_else = { always = no }
+	}
+}
+
+DICM_RBE_obstetrics_deferred_critical_scenario = {
+	scope = character
+	is_valid = {
+		trigger_if = {
+			limit = { has_variable = DICM_RBE_obstetrics_target }
+			var:DICM_RBE_obstetrics_target = { DICM_RBE_has_deferred_critical_birth_scenario_trigger = yes }
+		}
+		trigger_else = { always = no }
+	}
+}
+
+DICM_RBE_obstetrics_scenario_editable = {
+	scope = character
+	is_valid = {
+		trigger_if = {
+			limit = { has_variable = DICM_RBE_obstetrics_target }
+			var:DICM_RBE_obstetrics_target = { DICM_RBE_has_editable_birth_scenario_trigger = yes }
+		}
+		trigger_else = { always = no }
+	}
+}
+
+DICM_RBE_obstetrics_bastard_pregnancy = {
+	scope = character
+	is_valid = {
+		trigger_if = {
+			limit = { has_variable = DICM_RBE_obstetrics_target }
+			var:DICM_RBE_obstetrics_target = {
+				OR = {
+					has_character_flag = bastard_pregnancy
+					has_character_flag = unmarried_bastard_pregnancy
+				}
+			}
+		}
+		trigger_else = { always = no }
+	}
+}
+
+DICM_RBE_set_obstetrics_smooth_birth = {
+	scope = character
+	effect = {
+		if = {
+			limit = {
+				has_variable = DICM_RBE_obstetrics_target
+				var:DICM_RBE_obstetrics_target = { DICM_RBE_has_editable_birth_scenario_trigger = yes }
+			}
+			var:DICM_RBE_obstetrics_target = { DICM_RBE_set_smooth_birth_scenario_effect = yes }
+		}
+	}
+}
+
+DICM_RBE_set_obstetrics_sickly_child = {
+	scope = character
+	effect = {
+		if = {
+			limit = {
+				has_variable = DICM_RBE_obstetrics_target
+				var:DICM_RBE_obstetrics_target = { DICM_RBE_has_editable_birth_scenario_trigger = yes }
+			}
+			var:DICM_RBE_obstetrics_target = { DICM_RBE_set_sickly_child_birth_scenario_effect = yes }
+		}
+	}
+}
+
+DICM_RBE_set_obstetrics_ill_mother = {
+	scope = character
+	effect = {
+		if = {
+			limit = {
+				has_variable = DICM_RBE_obstetrics_target
+				var:DICM_RBE_obstetrics_target = { DICM_RBE_has_editable_birth_scenario_trigger = yes }
+			}
+			var:DICM_RBE_obstetrics_target = { DICM_RBE_set_ill_mother_birth_scenario_effect = yes }
+		}
+	}
+}
+
+DICM_RBE_set_obstetrics_mother_dies = {
+	scope = character
+	effect = {
+		if = {
+			limit = {
+				has_variable = DICM_RBE_obstetrics_target
+				var:DICM_RBE_obstetrics_target = { DICM_RBE_has_editable_birth_scenario_trigger = yes }
+			}
+			var:DICM_RBE_obstetrics_target = { DICM_RBE_set_mother_dies_birth_scenario_effect = yes }
+		}
+	}
+}

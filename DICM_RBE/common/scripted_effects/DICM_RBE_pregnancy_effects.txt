@@ -1,0 +1,82 @@
+﻿# Clears every birth outcome stored as a removable character flag.
+DICM_RBE_clear_editable_birth_scenario_effect = {
+	if = {
+		limit = { has_character_flag = birth_will_go_smoothly }
+		remove_character_flag = birth_will_go_smoothly
+	}
+	if = {
+		limit = { has_character_flag = birth_mother_will_die }
+		remove_character_flag = birth_mother_will_die
+	}
+	if = {
+		limit = { has_character_flag = birth_child_will_become_sickly }
+		remove_character_flag = birth_child_will_become_sickly
+	}
+	if = {
+		limit = { has_character_flag = birth_mother_will_become_ill }
+		remove_character_flag = birth_mother_will_become_ill
+	}
+}
+
+# Prevents the already queued pregnancy.2101, birth.3001 or birth.3021 from
+# executing after the clinic has selected a replacement scenario. The flag is
+# also removed by the pregnancy-end on-actions as protection against leakage
+# into a later pregnancy.
+DICM_RBE_suppress_deferred_critical_birth_effect = {
+	if = {
+		limit = { has_character_flag = DICM_RBE_obstetrics_suppress_deferred_critical_birth }
+		remove_character_flag = DICM_RBE_obstetrics_suppress_deferred_critical_birth
+	}
+	add_character_flag = {
+		flag = DICM_RBE_obstetrics_suppress_deferred_critical_birth
+		days = 270
+	}
+}
+
+DICM_RBE_set_smooth_birth_scenario_effect = {
+	DICM_RBE_clear_editable_birth_scenario_effect = yes
+	DICM_RBE_suppress_deferred_critical_birth_effect = yes
+	add_character_flag = {
+		flag = birth_will_go_smoothly
+		days = 270
+	}
+	debug_log = "DICM_RBE: Obstetrics clinic selected smooth birth for [THIS.Char.GetLogName]"
+}
+
+DICM_RBE_set_sickly_child_birth_scenario_effect = {
+	DICM_RBE_clear_editable_birth_scenario_effect = yes
+	DICM_RBE_suppress_deferred_critical_birth_effect = yes
+	add_character_flag = {
+		flag = birth_child_will_become_sickly
+		days = 270
+	}
+	debug_log = "DICM_RBE: Obstetrics clinic selected sickly child for [THIS.Char.GetLogName]"
+}
+
+DICM_RBE_set_ill_mother_birth_scenario_effect = {
+	DICM_RBE_clear_editable_birth_scenario_effect = yes
+	DICM_RBE_suppress_deferred_critical_birth_effect = yes
+	add_character_flag = {
+		flag = birth_mother_will_become_ill
+		days = 270
+	}
+	debug_log = "DICM_RBE: Obstetrics clinic selected maternal illness for [THIS.Char.GetLogName]"
+}
+
+DICM_RBE_set_mother_dies_birth_scenario_effect = {
+	DICM_RBE_clear_editable_birth_scenario_effect = yes
+	DICM_RBE_suppress_deferred_critical_birth_effect = yes
+	add_character_flag = {
+		flag = birth_mother_will_die
+		days = 270
+	}
+	debug_log = "DICM_RBE: Obstetrics clinic selected maternal death for [THIS.Char.GetLogName]"
+}
+
+# Clears all transient GUI state owned by the clinic.
+DICM_RBE_clear_obstetrics_window_state_effect = {
+	remove_variable = DICM_RBE_obstetrics_window_open
+	remove_variable = DICM_RBE_obstetrics_target
+	remove_variable = DICM_RBE_obstetrics_real_father
+	remove_variable = DICM_RBE_obstetrics_assumed_father
+}

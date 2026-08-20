@@ -130,8 +130,12 @@ DICM_RBE_schedule_administrative_retraining_check_effect = {
 	}
 }
 
-# Applies the complete Caesar Child retraining profile except for base-skill changes after adulthood.
+# Adds twenty to every base skill and applies the remaining Caesar Child retraining profile after adulthood.
 DICM_RBE_ceasar_child_adulthood_automation_effect = {
+	DICM_RBE_adjust_all_base_skills_effect = {
+		DICM_RBE_DECREASE_DELTA = 0
+		DICM_RBE_INCREASE_DELTA = 20
+	}
 	DICM_RBE_prepare_ceasar_child_without_skill_changes_effect = yes
 }
 

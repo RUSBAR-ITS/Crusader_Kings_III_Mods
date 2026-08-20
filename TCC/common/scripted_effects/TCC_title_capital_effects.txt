@@ -1,4 +1,4 @@
-# Rebuilds the short-lived list displayed by the title-capital window.
+﻿# Rebuilds the short-lived list displayed by the title-capital window.
 TCC_prepare_title_capital_window_effect = {
 	clear_variable_list = TCC_candidate_counties
 	remove_variable = TCC_selected_county
@@ -28,7 +28,7 @@ TCC_prepare_title_capital_window_effect = {
 
 	set_variable = {
 		name = TCC_window_open
-		value = flag:TCC_window_open
+		value = 1
 	}
 }
 
@@ -80,4 +80,3 @@ TCC_change_de_jure_capital_effect = {
 
 	TCC_clear_title_capital_window_effect = yes
 }
-

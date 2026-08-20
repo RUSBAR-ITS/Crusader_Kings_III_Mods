@@ -182,19 +182,24 @@ DICM_RBE_remove_chaste_trait_effect = {
 	if = { limit = { has_trait = chaste } remove_trait = chaste }
 }
 
-# Applies the selected Caesar-family personality setting.
+# Applies the selected Caesar-family personality setting to adults only.
 DICM_RBE_apply_ceasar_family_personality_setting_effect = {
 	if = {
 		limit = {
-			DICM_RBE_pious_dynasty_enabled_trigger = yes
+			is_adult = yes
 		}
-		DICM_RBE_add_chaste_trait_effect = yes
-	}
-	else_if = {
-		limit = {
-			DICM_RBE_never_too_many_bastards_enabled_trigger = yes
+		if = {
+			limit = {
+				DICM_RBE_pious_dynasty_enabled_trigger = yes
+			}
+			DICM_RBE_add_chaste_trait_effect = yes
 		}
-		DICM_RBE_add_lustful_trait_effect = yes
+		else_if = {
+			limit = {
+				DICM_RBE_never_too_many_bastards_enabled_trigger = yes
+			}
+			DICM_RBE_add_lustful_trait_effect = yes
+		}
 	}
 }
 

@@ -1,0 +1,35 @@
+﻿# A clinic override is scoped to one pregnancy only. Remove its interception
+# marker after either a normal delivery or a prematurely ended pregnancy.
+on_birth_mother = {
+	on_actions = {
+		DICM_RBE_on_birth_mother_clear_obstetrics_override
+	}
+}
+
+DICM_RBE_on_birth_mother_clear_obstetrics_override = {
+	effect = {
+		scope:mother = {
+			if = {
+				limit = { has_character_flag = DICM_RBE_obstetrics_suppress_deferred_critical_birth }
+				remove_character_flag = DICM_RBE_obstetrics_suppress_deferred_critical_birth
+			}
+		}
+	}
+}
+
+on_pregnancy_ended_mother = {
+	on_actions = {
+		DICM_RBE_on_pregnancy_ended_mother_clear_obstetrics_override
+	}
+}
+
+DICM_RBE_on_pregnancy_ended_mother_clear_obstetrics_override = {
+	effect = {
+		scope:mother = {
+			if = {
+				limit = { has_character_flag = DICM_RBE_obstetrics_suppress_deferred_critical_birth }
+				remove_character_flag = DICM_RBE_obstetrics_suppress_deferred_critical_birth
+			}
+		}
+	}
+}

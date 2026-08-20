@@ -69,11 +69,8 @@ window = {
 						spacing = 6
 						text_single = { text = TCC_current_capital }
 						hbox = {
-							datacontext = "[Title.GetPreferredCapital]"
-							spacing = 5
-							coa_title_tiny_crown = {}
 							text_single = {
-								text = "[Title.GetName|U]"
+								text = "[Title.GetPreferredCapital.GetName|U]"
 								default_format = "#bold"
 							}
 						}

@@ -1,0 +1,302 @@
+﻿window = {
+	name = "DICM_RBE_obstetrics_clinic_window"
+	parentanchor = center
+	layer = windows_layer
+	filter_mouse = all
+	allow_outside = yes
+	alwaystransparent = no
+	datacontext = "[GetPlayer.MakeScope.Var('DICM_RBE_obstetrics_target').Char]"
+
+	using = Window_Background
+	using = Window_Decoration
+	movable = yes
+	visible = "[GetPlayer.MakeScope.Var('DICM_RBE_obstetrics_window_open').IsSet]"
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+		on_finish = "[PdxGuiWidget.StackTop]"
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+	}
+
+	vbox = {
+		set_parent_size_to_minimum = yes
+		using = Window_Margins
+
+		header_pattern = {
+			layoutpolicy_horizontal = expanding
+
+			blockoverride "header_text" {
+				text = DICM_RBE_obstetrics_window_title
+			}
+
+			blockoverride "button_close" {
+				onclick = "[GetScriptedGui('DICM_RBE_close_obstetrics_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+			}
+		}
+
+		vbox = {
+			minimumsize = { 760 0 }
+			margin = { 10 12 }
+			spacing = 10
+			layoutpolicy_horizontal = expanding
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 16
+
+				portrait_head = {}
+
+				vbox = {
+					layoutpolicy_vertical = expanding
+					spacing = 4
+					expand = {}
+
+					text_single = {
+						text = DICM_RBE_obstetrics_patient_heading
+						default_format = "#high"
+					}
+
+					text_single = {
+						text = "[Character.GetUINameNoTooltip]"
+						default_format = "#bold"
+					}
+
+					expand = {}
+				}
+			}
+
+			scrollbox = {
+				size = { 740 500 }
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+
+				blockoverride "scrollbox_content" {
+					vbox = {
+						spacing = 10
+						layoutpolicy_horizontal = expanding
+
+						vbox = {
+							visible = "[GetScriptedGui('DICM_RBE_obstetrics_target_is_male').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							spacing = 8
+							layoutpolicy_horizontal = expanding
+
+							text_single = {
+								text = DICM_RBE_obstetrics_diagnosis_heading
+								default_format = "#high"
+							}
+
+							text_multi = {
+								layoutpolicy_horizontal = expanding
+								max_width = 700
+								autoresize = yes
+								text = DICM_RBE_obstetrics_male_joke
+								default_format = "#low"
+							}
+						}
+
+						vbox = {
+							visible = "[GetScriptedGui('DICM_RBE_obstetrics_target_is_nonpregnant_female').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							spacing = 8
+							layoutpolicy_horizontal = expanding
+
+							text_single = {
+								text = DICM_RBE_obstetrics_diagnosis_heading
+								default_format = "#high"
+							}
+
+							text_multi = {
+								layoutpolicy_horizontal = expanding
+								max_width = 700
+								autoresize = yes
+								text = DICM_RBE_obstetrics_not_pregnant
+								default_format = "#low"
+							}
+						}
+
+						vbox = {
+							visible = "[GetScriptedGui('DICM_RBE_obstetrics_target_is_pregnant').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							spacing = 7
+							layoutpolicy_horizontal = expanding
+
+							text_single = {
+								text = DICM_RBE_obstetrics_pregnancy_confirmed
+								default_format = "#high"
+							}
+
+							hbox = {
+								spacing = 6
+								text_single = { text = DICM_RBE_obstetrics_elapsed_days_label }
+								text_single = {
+									text = "[Character.MakeScope().ScriptValue('DICM_RBE_pregnancy_elapsed_days_value')|0]"
+									default_format = "#high"
+								}
+								text_single = { text = DICM_RBE_obstetrics_of_280_days }
+							}
+
+							hbox = {
+								spacing = 6
+								text_single = { text = DICM_RBE_obstetrics_remaining_days_label }
+								text_single = {
+									text = "[Character.MakeScope().ScriptValue('DICM_RBE_pregnancy_remaining_days_value')|0]"
+									default_format = "#high"
+								}
+								text_single = { text = DICM_RBE_obstetrics_days_suffix }
+							}
+
+							text_single = {
+								visible = "[GetScriptedGui('DICM_RBE_obstetrics_pregnancy_not_revealed').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								text = DICM_RBE_obstetrics_not_revealed
+								default_format = "#low"
+							}
+
+							hbox = {
+								visible = "[GetPlayer.MakeScope.Var('DICM_RBE_obstetrics_real_father').IsSet]"
+								spacing = 6
+								text_single = { text = DICM_RBE_obstetrics_real_father_label }
+								text_single = {
+									text = "[GetPlayer.MakeScope.Var('DICM_RBE_obstetrics_real_father').Char.GetUINameNoTooltip]"
+									default_format = "#high"
+								}
+							}
+
+							hbox = {
+								visible = "[GetPlayer.MakeScope.Var('DICM_RBE_obstetrics_assumed_father').IsSet]"
+								spacing = 6
+								text_single = { text = DICM_RBE_obstetrics_assumed_father_label }
+								text_single = {
+									text = "[GetPlayer.MakeScope.Var('DICM_RBE_obstetrics_assumed_father').Char.GetUINameNoTooltip]"
+									default_format = "#high"
+								}
+							}
+
+							text_single = {
+								visible = "[Not(GetPlayer.MakeScope.Var('DICM_RBE_obstetrics_assumed_father').IsSet)]"
+								text = DICM_RBE_obstetrics_no_assumed_father
+							}
+
+							text_single = {
+								visible = "[GetScriptedGui('DICM_RBE_obstetrics_bastard_pregnancy').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								text = DICM_RBE_obstetrics_bastard_status
+								default_format = "#negative_value"
+							}
+
+							text_single = {
+								visible = "[Not(GetScriptedGui('DICM_RBE_obstetrics_bastard_pregnancy').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+								text = DICM_RBE_obstetrics_legitimate_status
+								default_format = "#positive_value"
+							}
+
+							text_single = { text = DICM_RBE_obstetrics_fetus_count_unavailable }
+							text_single = { text = DICM_RBE_obstetrics_fetus_gender_unavailable }
+
+							text_single = {
+								text = DICM_RBE_obstetrics_scenario_heading
+								default_format = "#high"
+								margin_top = 8
+							}
+
+							text_single = {
+								visible = "[GetScriptedGui('DICM_RBE_obstetrics_pregnancy_not_revealed').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								text = DICM_RBE_obstetrics_scenario_not_selected
+							}
+
+							text_single = {
+								visible = "[GetScriptedGui('DICM_RBE_obstetrics_smooth_birth_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								text = DICM_RBE_obstetrics_scenario_smooth
+								default_format = "#positive_value"
+							}
+
+							text_single = {
+								visible = "[GetScriptedGui('DICM_RBE_obstetrics_sickly_child_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								text = DICM_RBE_obstetrics_scenario_sickly_child
+								default_format = "#warning"
+							}
+
+							text_single = {
+								visible = "[GetScriptedGui('DICM_RBE_obstetrics_ill_mother_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								text = DICM_RBE_obstetrics_scenario_ill_mother
+								default_format = "#warning"
+							}
+
+							text_single = {
+								visible = "[GetScriptedGui('DICM_RBE_obstetrics_mother_dies_selected').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								text = DICM_RBE_obstetrics_scenario_mother_dies
+								default_format = "#negative_value"
+							}
+
+							text_multi = {
+								visible = "[GetScriptedGui('DICM_RBE_obstetrics_deferred_critical_scenario').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								layoutpolicy_horizontal = expanding
+								max_width = 700
+								autoresize = yes
+								text = DICM_RBE_obstetrics_scenario_deferred_critical
+								default_format = "#negative_value"
+							}
+
+							text_multi = {
+								layoutpolicy_horizontal = expanding
+								max_width = 700
+								autoresize = yes
+								text = DICM_RBE_obstetrics_editing_explanation
+								default_format = "#low"
+							}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 8
+
+								button_standard = {
+									layoutpolicy_horizontal = expanding
+									text = DICM_RBE_obstetrics_choose_smooth
+									tooltip = DICM_RBE_obstetrics_choose_smooth_tt
+									enabled = "[GetScriptedGui('DICM_RBE_obstetrics_scenario_editable').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									onclick = "[GetScriptedGui('DICM_RBE_set_obstetrics_smooth_birth').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+
+								button_standard = {
+									layoutpolicy_horizontal = expanding
+									text = DICM_RBE_obstetrics_choose_sickly_child
+									tooltip = DICM_RBE_obstetrics_choose_sickly_child_tt
+									enabled = "[GetScriptedGui('DICM_RBE_obstetrics_scenario_editable').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									onclick = "[GetScriptedGui('DICM_RBE_set_obstetrics_sickly_child').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+							}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 8
+
+								button_standard = {
+									layoutpolicy_horizontal = expanding
+									text = DICM_RBE_obstetrics_choose_ill_mother
+									tooltip = DICM_RBE_obstetrics_choose_ill_mother_tt
+									enabled = "[GetScriptedGui('DICM_RBE_obstetrics_scenario_editable').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									onclick = "[GetScriptedGui('DICM_RBE_set_obstetrics_ill_mother').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+
+								button_standard = {
+									layoutpolicy_horizontal = expanding
+									text = DICM_RBE_obstetrics_choose_mother_dies
+									tooltip = DICM_RBE_obstetrics_choose_mother_dies_tt
+									enabled = "[GetScriptedGui('DICM_RBE_obstetrics_scenario_editable').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									onclick = "[GetScriptedGui('DICM_RBE_set_obstetrics_mother_dies').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+							}
+						}
+					}
+				}
+			}
+
+			button_standard = {
+				layoutpolicy_horizontal = expanding
+				text = DICM_RBE_obstetrics_close
+				onclick = "[GetScriptedGui('DICM_RBE_close_obstetrics_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+			}
+		}
+	}
+}

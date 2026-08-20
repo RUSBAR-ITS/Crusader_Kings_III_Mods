@@ -1,0 +1,22 @@
+﻿# Once the pregnancy-reveal event has selected or scheduled an outcome, the clinic can
+# replace it. Queued critical events are neutralized by the generated vanilla-event patch.
+DICM_RBE_has_editable_birth_scenario_trigger = {
+	is_female = yes
+	is_pregnant = yes
+	pregnancy_days >= 60
+}
+
+# The reveal has happened, but none of the removable outcome flags exists.
+# In the standard game this identifies a miscarriage or one of the fatal delayed events.
+# The exact queued event remains hidden, but the clinic can replace it with an ordinary outcome.
+DICM_RBE_has_deferred_critical_birth_scenario_trigger = {
+	is_female = yes
+	is_pregnant = yes
+	pregnancy_days >= 60
+	NOR = {
+		has_character_flag = birth_will_go_smoothly
+		has_character_flag = birth_mother_will_die
+		has_character_flag = birth_child_will_become_sickly
+		has_character_flag = birth_mother_will_become_ill
+	}
+}
