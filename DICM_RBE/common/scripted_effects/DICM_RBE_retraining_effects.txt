@@ -4,6 +4,7 @@ DICM_RBE_clear_retraining_window_state_effect = {
 	remove_variable = DICM_RBE_retraining_profile
 	remove_variable = DICM_RBE_retraining_court_position
 	remove_variable = DICM_RBE_retraining_target
+	remove_variable = DICM_RBE_retraining_pinned_scope
 }
 
 # Sets every base skill of the selected character to 30 through engine clamping.
@@ -109,104 +110,103 @@ DICM_RBE_prepare_minor_ceasar_child_retraining_effect = {
 	DICM_RBE_assign_ceasar_child_retraining_modifier_effect = yes
 }
 
-# Applies the profile currently selected in the retraining window.
+# Applies the operator's selected profile to the character in the current scope.
+# Keeping the target character as the current scope allows the same implementation
+# to serve both an individual target and every character in the pinned list.
+DICM_RBE_apply_selected_retraining_profile_to_character_effect = {
+	if = {
+		limit = {
+			is_alive = yes
+			NOT = {
+				OR = {
+					scope:DICM_RBE_retraining_operator.var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_profile
+					scope:DICM_RBE_retraining_operator.var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_consort_profile
+					scope:DICM_RBE_retraining_operator.var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_ceasar_child_profile
+					scope:DICM_RBE_retraining_operator.var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_minor_ceasar_child_profile
+				}
+			}
+		}
+		DICM_RBE_adjust_all_base_skills_effect = {
+			DICM_RBE_DECREASE_DELTA = -500
+			DICM_RBE_INCREASE_DELTA = 30
+		}
+	}
+
+	switch = {
+		trigger = scope:DICM_RBE_retraining_operator.var:DICM_RBE_retraining_profile
+		flag:DICM_RBE_retraining_court_position_profile = {
+			scope:DICM_RBE_retraining_operator.var:DICM_RBE_retraining_court_position = { save_scope_as = court_position_type }
+			DICM_RBE_prepare_spawned_court_position_character_effect = yes
+			DICM_RBE_finalize_created_court_position_character_effect = yes
+		}
+		flag:DICM_RBE_retraining_chancellor_profile = { DICM_RBE_prepare_chancellor_service_character_effect = yes }
+		flag:DICM_RBE_retraining_marshal_profile = { DICM_RBE_prepare_marshal_service_character_effect = yes }
+		flag:DICM_RBE_retraining_steward_profile = { DICM_RBE_prepare_steward_service_character_effect = yes }
+		flag:DICM_RBE_retraining_spymaster_profile = { DICM_RBE_prepare_spymaster_service_character_effect = yes }
+		flag:DICM_RBE_retraining_court_chaplain_profile = { DICM_RBE_prepare_court_chaplain_service_character_effect = yes }
+		flag:DICM_RBE_retraining_knight_profile = { DICM_RBE_prepare_knight_service_character_effect = yes }
+		flag:DICM_RBE_retraining_commander_profile = { DICM_RBE_prepare_commander_service_character_effect = yes }
+		flag:DICM_RBE_retraining_official_profile = {
+			DICM_RBE_prepare_official_service_character_effect = {
+				DICM_RBE_CULTURE = scope:DICM_RBE_retraining_operator.culture
+				DICM_RBE_FAITH = scope:DICM_RBE_retraining_operator.faith
+			}
+		}
+		flag:DICM_RBE_retraining_true_sovereign_profile = { DICM_RBE_prepare_true_sovereign_retraining_effect = yes }
+		flag:DICM_RBE_retraining_true_sovereign_consort_profile = { DICM_RBE_prepare_true_sovereign_consort_retraining_effect = yes }
+		flag:DICM_RBE_retraining_ceasar_child_profile = { DICM_RBE_prepare_ceasar_child_retraining_effect = yes }
+		flag:DICM_RBE_retraining_minor_ceasar_child_profile = {
+			if = {
+				limit = { is_adult = no }
+				DICM_RBE_prepare_minor_ceasar_child_retraining_effect = yes
+			}
+		}
+		flag:DICM_RBE_retraining_charioteer_blue_profile = {
+			DICM_RBE_prepare_charioteer_blue_court_position_effect = yes
+			DICM_RBE_finalize_created_court_position_character_effect = yes
+		}
+		flag:DICM_RBE_retraining_charioteer_green_profile = {
+			DICM_RBE_prepare_charioteer_green_court_position_effect = yes
+			DICM_RBE_finalize_created_court_position_character_effect = yes
+		}
+		flag:DICM_RBE_retraining_charioteer_white_profile = {
+			DICM_RBE_prepare_charioteer_white_court_position_effect = yes
+			DICM_RBE_finalize_created_court_position_character_effect = yes
+		}
+		flag:DICM_RBE_retraining_charioteer_red_profile = {
+			DICM_RBE_prepare_charioteer_red_court_position_effect = yes
+			DICM_RBE_finalize_created_court_position_character_effect = yes
+		}
+		fallback = { }
+	}
+
+	debug_log = "DICM_RBE: Retraining profile applied to [THIS.Char.GetLogName]"
+}
+
+# Applies the selected profile either to the interaction target or, when the
+# checkbox is active, to every living character pinned in Divine Intervention.
 DICM_RBE_apply_selected_retraining_profile_effect = {
 	if = {
 		limit = { DICM_RBE_retraining_selection_ready_trigger = yes }
-		save_scope_as = DICM_RBE_retraining_ceasar
+		save_scope_as = DICM_RBE_retraining_operator
+		# Existing court-position preparation effects expect scope:target to be
+		# the employer whose culture, faith, and court are being used.
+		save_scope_as = target
 		if = {
 			limit = {
-				NOT = {
-					OR = {
-						var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_profile
-						var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_true_sovereign_consort_profile
-						var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_ceasar_child_profile
-						var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_minor_ceasar_child_profile
-					}
-				}
+				has_variable = DICM_RBE_retraining_pinned_scope
+				has_variable_list = pinned_characters
 			}
-			DICM_RBE_normalize_retraining_target_skills_effect = yes
-		}
-
-		switch = {
-			trigger = var:DICM_RBE_retraining_profile
-			flag:DICM_RBE_retraining_court_position_profile = {
-				var:DICM_RBE_retraining_court_position = { save_scope_as = court_position_type }
-				var:DICM_RBE_retraining_target = {
-					DICM_RBE_prepare_spawned_court_position_character_effect = yes
-					DICM_RBE_finalize_created_court_position_character_effect = yes
-				}
+			every_in_list = {
+				variable = pinned_characters
+				limit = { is_alive = yes }
+				DICM_RBE_apply_selected_retraining_profile_to_character_effect = yes
 			}
-		flag:DICM_RBE_retraining_chancellor_profile = {
-			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_chancellor_service_character_effect = yes }
 		}
-		flag:DICM_RBE_retraining_marshal_profile = {
-			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_marshal_service_character_effect = yes }
-		}
-		flag:DICM_RBE_retraining_steward_profile = {
-			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_steward_service_character_effect = yes }
-		}
-		flag:DICM_RBE_retraining_spymaster_profile = {
-			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_spymaster_service_character_effect = yes }
-		}
-		flag:DICM_RBE_retraining_court_chaplain_profile = {
-			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_court_chaplain_service_character_effect = yes }
-		}
-		flag:DICM_RBE_retraining_knight_profile = {
-			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_knight_service_character_effect = yes }
-		}
-		flag:DICM_RBE_retraining_commander_profile = {
-			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_commander_service_character_effect = yes }
-		}
-		flag:DICM_RBE_retraining_official_profile = {
+		else = {
 			var:DICM_RBE_retraining_target = {
-				DICM_RBE_prepare_official_service_character_effect = {
-					DICM_RBE_CULTURE = scope:DICM_RBE_retraining_ceasar.culture
-					DICM_RBE_FAITH = scope:DICM_RBE_retraining_ceasar.faith
-				}
+				DICM_RBE_apply_selected_retraining_profile_to_character_effect = yes
 			}
-		}
-		flag:DICM_RBE_retraining_true_sovereign_profile = {
-			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_true_sovereign_retraining_effect = yes }
-		}
-		flag:DICM_RBE_retraining_true_sovereign_consort_profile = {
-			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_true_sovereign_consort_retraining_effect = yes }
-		}
-		flag:DICM_RBE_retraining_ceasar_child_profile = {
-			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_ceasar_child_retraining_effect = yes }
-		}
-		flag:DICM_RBE_retraining_minor_ceasar_child_profile = {
-			var:DICM_RBE_retraining_target = { DICM_RBE_prepare_minor_ceasar_child_retraining_effect = yes }
-		}
-		flag:DICM_RBE_retraining_charioteer_blue_profile = {
-			var:DICM_RBE_retraining_target = {
-				DICM_RBE_prepare_charioteer_blue_court_position_effect = yes
-				DICM_RBE_finalize_created_court_position_character_effect = yes
-			}
-		}
-		flag:DICM_RBE_retraining_charioteer_green_profile = {
-			var:DICM_RBE_retraining_target = {
-				DICM_RBE_prepare_charioteer_green_court_position_effect = yes
-				DICM_RBE_finalize_created_court_position_character_effect = yes
-			}
-		}
-		flag:DICM_RBE_retraining_charioteer_white_profile = {
-			var:DICM_RBE_retraining_target = {
-				DICM_RBE_prepare_charioteer_white_court_position_effect = yes
-				DICM_RBE_finalize_created_court_position_character_effect = yes
-			}
-		}
-		flag:DICM_RBE_retraining_charioteer_red_profile = {
-			var:DICM_RBE_retraining_target = {
-				DICM_RBE_prepare_charioteer_red_court_position_effect = yes
-				DICM_RBE_finalize_created_court_position_character_effect = yes
-			}
-		}
-			fallback = { }
-		}
-
-		var:DICM_RBE_retraining_target = {
-			debug_log = "DICM_RBE: Retraining profile applied to [THIS.Char.GetLogName]"
 		}
 		DICM_RBE_clear_retraining_window_state_effect = yes
 	}

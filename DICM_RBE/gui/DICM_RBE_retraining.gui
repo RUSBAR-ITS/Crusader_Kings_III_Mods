@@ -71,6 +71,21 @@
 				}
 			}
 
+			button_checkbox_label = {
+				layoutpolicy_horizontal = expanding
+				enabled = "[GetScriptedGui('DICM_RBE_retraining_pinned_scope_available').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				onclick = "[GetScriptedGui('DICM_RBE_toggle_retraining_pinned_scope').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				tooltip = DICM_RBE_retraining_pinned_scope_tt
+
+				blockoverride "checkbox" {
+					checked = "[GetScriptedGui('DICM_RBE_retraining_pinned_scope_enabled').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+
+				blockoverride "text" {
+					text = DICM_RBE_retraining_pinned_scope
+				}
+			}
+
 			hbox = {
 				name = "tabs"
 				layoutpolicy_horizontal = expanding

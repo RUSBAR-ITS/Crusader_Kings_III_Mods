@@ -106,6 +106,9 @@ DICM_RBE_schedule_loyalty_curse_departure_check_effect = {
 }
 
 # Schedules one stabilized administrative-retraining check for a non-family character.
+# The Caesar sovereign is deliberately resolved by the delayed event: newly generated
+# barons can receive their first title before the engine has finished attaching them
+# to their final liege during holding creation or realm feudalization.
 DICM_RBE_schedule_administrative_retraining_check_effect = {
 	if = {
 		limit = {
@@ -119,9 +122,6 @@ DICM_RBE_schedule_administrative_retraining_check_effect = {
 		add_character_flag = {
 			flag = DICM_RBE_administrative_retraining_check_pending
 			days = 3
-		}
-		$DICM_RBE_CEASAR$ = {
-			save_scope_as = DICM_RBE_administrative_retraining_ceasar
 		}
 		trigger_event = {
 			id = DICM_RBE_ceasar_automation.0003
@@ -180,6 +180,9 @@ DICM_RBE_administrative_retraining_automation_effect = {
 			DICM_RBE_administrative_retraining_enabled_trigger = yes
 			DICM_RBE_administrative_retraining_immune_trigger = no
 			has_any_landed_title_trigger = yes
+			NOT = {
+				has_character_modifier = DICM_RBE_Ceasar_Official
+			}
 		}
 
 		DICM_RBE_adjust_all_base_skills_effect = {

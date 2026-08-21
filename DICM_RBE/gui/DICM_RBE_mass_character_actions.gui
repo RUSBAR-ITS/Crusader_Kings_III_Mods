@@ -1,0 +1,166 @@
+window = {
+	name = "DICM_RBE_mass_character_actions_window"
+	parentanchor = center
+	layer = windows_layer
+	filter_mouse = all
+	allow_outside = yes
+	alwaystransparent = no
+
+	using = Window_Background
+	using = Window_Decoration
+	movable = yes
+	visible = "[GetPlayer.MakeScope.Var('DICM_RBE_mass_character_actions_window_open').IsSet]"
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+		on_finish = "[PdxGuiWidget.StackTop]"
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+	}
+
+	vbox = {
+		set_parent_size_to_minimum = yes
+		using = Window_Margins
+
+		header_pattern = {
+			layoutpolicy_horizontal = expanding
+
+			blockoverride "header_text" {
+				text = DICM_RBE_mass_character_actions_window_title
+			}
+
+			blockoverride "button_close" {
+				onclick = "[GetScriptedGui('DICM_RBE_close_mass_character_actions_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+			}
+		}
+
+		vbox = {
+			minimumsize = { 760 0 }
+			margin = { 10 12 }
+			spacing = 10
+			layoutpolicy_horizontal = expanding
+
+			text_multi = {
+				layoutpolicy_horizontal = expanding
+				max_width = 740
+				autoresize = yes
+				text = DICM_RBE_mass_character_actions_explanation
+				default_format = "#low"
+			}
+
+			button_standard = {
+				layoutpolicy_horizontal = expanding
+				text = DICM_RBE_rejuvenate_all_pinned_button
+				tooltip = DICM_RBE_rejuvenate_all_pinned_button_tt
+				enabled = "[GetScriptedGui('DICM_RBE_has_pinned_characters').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				onclick = "[GetScriptedGui('DICM_RBE_rejuvenate_all_pinned_characters').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+			}
+
+			text_single = {
+				text = DICM_RBE_revoke_title_queue_heading
+				default_format = "#high"
+			}
+
+			# A one-slot data model keeps one permanent conveyor button on screen.
+			# Removing its current character exposes the next queued character.
+			fixedgridbox = {
+				size = { 740 50 }
+				addcolumn = 740
+				addrow = 48
+				maxverticalslots = 1
+				datamodel_reuse_widgets = yes
+				datamodel = "[GetPlayer.MakeScope.GetList('DICM_RBE_revoke_title_queue')]"
+
+				item = {
+					button_standard = {
+						size = { 740 48 }
+						datacontext = [Scope.GetCharacter]
+						text = DICM_RBE_open_next_revoke_title_button
+						tooltip = "[Character.GetPlayerInteractionTooltip('revoke_title_interaction')]"
+						onclick = "[Character.OpenPlayerInteraction('revoke_title_interaction')]"
+						onclick = "[GetScriptedGui('DICM_RBE_advance_revoke_title_queue').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('queue_target', Character.MakeScope).End)]"
+					}
+				}
+			}
+
+			text_multi = {
+				visible = "[IsDataModelEmpty(GetPlayer.MakeScope.GetList('DICM_RBE_revoke_title_queue'))]"
+				layoutpolicy_horizontal = expanding
+				max_width = 740
+				autoresize = yes
+				text = DICM_RBE_revoke_title_queue_empty
+				default_format = "#low"
+			}
+
+			text_single = {
+				text = DICM_RBE_pinned_characters_heading
+				default_format = "#high"
+			}
+
+			text_multi = {
+				visible = "[IsDataModelEmpty(GetPlayer.MakeScope.GetList('pinned_characters'))]"
+				layoutpolicy_horizontal = expanding
+				max_width = 740
+				autoresize = yes
+				text = DICM_RBE_no_pinned_characters
+				default_format = "#low"
+			}
+
+			scrollbox = {
+				size = { 740 520 }
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				visible = "[Not(IsDataModelEmpty(GetPlayer.MakeScope.GetList('pinned_characters')))]"
+
+				blockoverride "scrollbox_content" {
+					fixedgridbox = {
+						addcolumn = 720
+						addrow = 72
+						datamodel_reuse_widgets = yes
+						datamodel = "[GetPlayer.MakeScope.GetList('pinned_characters')]"
+
+						item = {
+							widget = {
+								size = { 720 64 }
+								layoutpolicy_horizontal = expanding
+								datacontext = [Scope.GetCharacter]
+								visible = "[Character.IsAlive]"
+								using = Background_Guest
+
+								hbox = {
+									margin = { 8 6 }
+									spacing = 12
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = expanding
+
+									portrait_head_small = {}
+
+									vbox = {
+										layoutpolicy_horizontal = expanding
+										layoutpolicy_vertical = expanding
+										expand = {}
+										text_single = {
+											text = "[Character.GetUINameNoTooltip]"
+											default_format = "#bold"
+										}
+										expand = {}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			button_standard = {
+				layoutpolicy_horizontal = expanding
+				text = DICM_RBE_mass_character_actions_close
+				onclick = "[GetScriptedGui('DICM_RBE_close_mass_character_actions_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+			}
+		}
+	}
+}

@@ -1,0 +1,61 @@
+﻿# Rejuvenates the selected character without changing traits or skills.
+DICM_RBE_rejuvenate_character_interaction = {
+	interface_priority = 238
+	category = interaction_category_cheat_menu
+	icon = icon_health
+	desc = DICM_RBE_rejuvenate_character_interaction_desc
+	common_interaction = no
+
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+
+	is_shown = {
+		scope:recipient = { is_alive = yes }
+		scope:actor = {
+			is_ai = no
+			any_owned_story = {
+				story_type = DI_misc_variables_story
+				has_variable = DI_cheat_menu
+			}
+		}
+	}
+
+	on_accept = {
+		scope:recipient = { DICM_RBE_rejuvenate_to_sixteen_effect = yes }
+	}
+}
+
+# Opens the mass-actions window. Its title-revocation conveyor invokes the
+# standard revoke_title_interaction instead of bypassing game rules.
+DICM_RBE_mass_character_actions_interaction = {
+	interface_priority = 237
+	category = interaction_category_cheat_menu
+	icon = revoke_title
+	desc = DICM_RBE_mass_character_actions_interaction_desc
+	common_interaction = yes
+
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+
+	is_shown = {
+		scope:recipient = scope:actor
+		scope:actor = {
+			is_ai = no
+			any_owned_story = {
+				story_type = DI_misc_variables_story
+				has_variable = DI_cheat_menu
+			}
+		}
+	}
+
+	# Using on_send keeps this local utility window out of the normal
+	# diplomatic confirmation path.
+	on_send = {
+		scope:actor = {
+			DICM_RBE_prepare_revoke_title_queue_effect = yes
+			set_variable = DICM_RBE_mass_character_actions_window_open
+		}
+	}
+}

@@ -1,0 +1,39 @@
+﻿DICM_RBE_close_mass_character_actions_window = {
+	scope = character
+	effect = {
+		remove_variable = DICM_RBE_mass_character_actions_window_open
+		clear_variable_list = DICM_RBE_revoke_title_queue
+	}
+}
+
+DICM_RBE_has_pinned_characters = {
+	scope = character
+	is_valid = { has_variable_list = pinned_characters }
+}
+
+DICM_RBE_rejuvenate_all_pinned_characters = {
+	scope = character
+	is_valid = { has_variable_list = pinned_characters }
+	effect = { DICM_RBE_rejuvenate_pinned_characters_effect = yes }
+}
+
+# Removes the character whose standard Revoke Title interaction has just been
+# opened. The next item in the queue then occupies the same single GUI button.
+DICM_RBE_advance_revoke_title_queue = {
+	scope = character
+	effect = {
+		if = {
+			limit = {
+				exists = scope:queue_target
+				is_target_in_variable_list = {
+					name = DICM_RBE_revoke_title_queue
+					target = scope:queue_target
+				}
+			}
+			remove_list_variable = {
+				name = DICM_RBE_revoke_title_queue
+				target = scope:queue_target
+			}
+		}
+	}
+}

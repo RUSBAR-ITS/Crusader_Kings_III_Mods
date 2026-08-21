@@ -114,14 +114,26 @@ DICM_RBE_retraining_nomadic_court_position_trigger = {
 	}
 }
 
-# Returns true when the current retraining selection can be applied to a living target.
+# Returns true when the current retraining selection can be applied to the
+# selected living character or to at least one living pinned character.
 DICM_RBE_retraining_selection_ready_trigger = {
 	trigger_if = {
-		limit = {
-			has_variable = DICM_RBE_retraining_target
-			has_variable = DICM_RBE_retraining_profile
+		limit = { has_variable = DICM_RBE_retraining_profile }
+		OR = {
+			AND = {
+				has_variable = DICM_RBE_retraining_pinned_scope
+				has_variable_list = pinned_characters
+				any_in_list = {
+					variable = pinned_characters
+					is_alive = yes
+				}
+			}
+			AND = {
+				NOT = { has_variable = DICM_RBE_retraining_pinned_scope }
+				has_variable = DICM_RBE_retraining_target
+				var:DICM_RBE_retraining_target = { is_alive = yes }
+			}
 		}
-		var:DICM_RBE_retraining_target = { is_alive = yes }
 		OR = {
 			AND = {
 				var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_court_position_profile
@@ -144,7 +156,20 @@ DICM_RBE_retraining_selection_ready_trigger = {
 			var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_ceasar_child_profile
 			AND = {
 				var:DICM_RBE_retraining_profile = flag:DICM_RBE_retraining_minor_ceasar_child_profile
-				var:DICM_RBE_retraining_target = { is_adult = no }
+				OR = {
+					AND = {
+						has_variable = DICM_RBE_retraining_pinned_scope
+						any_in_list = {
+							variable = pinned_characters
+							is_alive = yes
+							is_adult = no
+						}
+					}
+					AND = {
+						NOT = { has_variable = DICM_RBE_retraining_pinned_scope }
+						var:DICM_RBE_retraining_target = { is_adult = no }
+					}
+				}
 			}
 		}
 	}

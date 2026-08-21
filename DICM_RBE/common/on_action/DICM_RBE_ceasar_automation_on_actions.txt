@@ -13,10 +13,12 @@ on_player_select_destiny_confirmed = {
 	}
 }
 
-# Provides a low-frequency fallback that starts a missing player loop after loading or hot-joining.
+# Provides low-frequency fallbacks after loading, hot-joining, or an engine title
+# transition whose intermediate scopes did not expose the final Caesar realm.
 quarterly_playable_pulse = {
 	on_actions = {
 		DICM_RBE_outstanding_people_player_loop_maintenance
+		DICM_RBE_administrative_retraining_player_realm_maintenance
 	}
 }
 
@@ -55,7 +57,16 @@ on_title_gain = {
 	}
 }
 
-# Extends low-noble baron creation without replacing its existing effects.
+# Extends the engine government-change hook. Realm feudalization changes the
+# governments of existing rulers without granting them new titles, so title-gain
+# automation alone cannot observe that transition.
+on_government_change = {
+	on_actions = {
+		DICM_RBE_on_administrative_retraining_government_change
+	}
+}
+
+# Extends engine-generated baron creation without replacing its existing effects.
 on_baron_found_or_created_for_title = {
 	on_actions = {
 		DICM_RBE_on_administrative_retraining_baron_created
@@ -173,6 +184,32 @@ DICM_RBE_outstanding_people_player_loop_maintenance = {
 	}
 }
 
+# Self-heals missed newly generated landholders without repeatedly retraining
+# rulers that already carry the Caesar Official modifier.
+DICM_RBE_administrative_retraining_player_realm_maintenance = {
+	trigger = {
+		is_ai = no
+		is_alive = yes
+		has_any_landed_title_trigger = yes
+		DICM_RBE_administrative_retraining_enabled_trigger = yes
+		DICM_RBE_is_ceasar_ruler_trigger = yes
+	}
+
+	effect = {
+		every_vassal_or_below = {
+			limit = {
+				is_alive = yes
+				has_any_landed_title_trigger = yes
+				DICM_RBE_administrative_retraining_immune_trigger = no
+				NOT = {
+					has_character_modifier = DICM_RBE_Ceasar_Official
+				}
+			}
+			DICM_RBE_schedule_administrative_retraining_check_effect = yes
+		}
+	}
+}
+
 # Schedules Caesar-child adulthood automation after the vanilla coming-of-age sequence has finished.
 DICM_RBE_on_ceasar_child_came_of_age = {
 	trigger = {
@@ -249,18 +286,15 @@ DICM_RBE_on_loyalty_curse_vassal_change = {
 	trigger = {
 		DICM_RBE_loyalty_curse_enabled_trigger = yes
 		exists = scope:old_liege
-		scope:old_liege = {
-			top_liege = {
-				DICM_RBE_is_ceasar_ruler_trigger = yes
-			}
+		exists = scope:old_liege.top_liege
+		scope:old_liege.top_liege = {
+			DICM_RBE_is_ceasar_ruler_trigger = yes
 		}
 	}
 
 	effect = {
-		scope:old_liege = {
-			top_liege = {
-				save_scope_as = DICM_RBE_loyalty_curse_previous_ceasar
-			}
+		scope:old_liege.top_liege = {
+			save_scope_as = DICM_RBE_loyalty_curse_previous_ceasar
 		}
 
 		DICM_RBE_schedule_loyalty_curse_departure_check_effect = {
@@ -277,14 +311,15 @@ DICM_RBE_on_loyalty_curse_vassal_change = {
 	}
 }
 
-# Schedules retraining when a previously landless character receives their first real landed title in a Caesar realm.
+# Schedules retraining whenever a character receives a real landed title. Do not
+# require this to be their first title: automatic settlement of a newly completed
+# holding may finish assigning several titles before this on-action is evaluated.
+# The delayed event checks the final top liege and ignores rulers already prepared
+# as Caesar Officials.
 DICM_RBE_on_administrative_retraining_title_gain = {
 	trigger = {
 		DICM_RBE_administrative_retraining_enabled_trigger = yes
 		DICM_RBE_administrative_retraining_immune_trigger = no
-		top_liege = {
-			DICM_RBE_is_ceasar_ruler_trigger = yes
-		}
 		scope:title = {
 			NOR = {
 				is_noble_family_title = yes
@@ -292,50 +327,80 @@ DICM_RBE_on_administrative_retraining_title_gain = {
 				has_variable = adventurer_creation_reason
 			}
 		}
-		NOT = {
-			any_held_title = {
-				this != scope:title
-				NOR = {
-					is_noble_family_title = yes
-					is_landless_type_title = yes
-					has_variable = adventurer_creation_reason
+	}
+
+	effect = {
+		DICM_RBE_schedule_administrative_retraining_check_effect = yes
+	}
+}
+
+# Handles settlement transitions (tribal, Wanua, nomadic, or herder into a
+# settled feudal form). Existing vassals retain their titles during this process,
+# therefore each changed vassal is scheduled directly. If the changing character
+# is the Caesar sovereign, a delayed realm sweep also catches already-settled
+# vassals whose own government did not change.
+DICM_RBE_on_administrative_retraining_government_change = {
+	trigger = {
+		DICM_RBE_administrative_retraining_enabled_trigger = yes
+		has_any_landed_title_trigger = yes
+		OR = {
+			government_has_flag = government_is_feudal
+			government_has_flag = government_is_clan
+			government_has_flag = government_is_japan_feudal
+		}
+		OR = {
+			scope:old_government = government_type:tribal_government
+			scope:old_government = government_type:wanua_government
+			scope:old_government = government_type:nomad_government
+			scope:old_government = government_type:herder_government
+		}
+		OR = {
+			DICM_RBE_is_ceasar_ruler_trigger = yes
+			AND = {
+				DICM_RBE_administrative_retraining_immune_trigger = no
+				top_liege = {
+					DICM_RBE_is_ceasar_ruler_trigger = yes
 				}
 			}
 		}
 	}
 
 	effect = {
-		top_liege = {
-			save_scope_as = DICM_RBE_administrative_retraining_current_ceasar
+		if = {
+			limit = {
+				DICM_RBE_is_ceasar_ruler_trigger = yes
+				NOT = {
+					has_character_flag = DICM_RBE_administrative_retraining_realm_sweep_pending
+				}
+			}
+
+			add_character_flag = {
+				flag = DICM_RBE_administrative_retraining_realm_sweep_pending
+				days = 5
+			}
+			trigger_event = {
+				id = DICM_RBE_ceasar_automation.0005
+				days = 2
+			}
+			debug_log = "DICM_RBE: Administrative retraining realm sweep scheduled after government change for [THIS.Char.GetLogName]"
 		}
-		DICM_RBE_schedule_administrative_retraining_check_effect = {
-			DICM_RBE_CEASAR = scope:DICM_RBE_administrative_retraining_current_ceasar
+		else = {
+			DICM_RBE_schedule_administrative_retraining_check_effect = yes
 		}
 	}
 }
 
-# Schedules retraining for a baron found or generated by the low-noble title action.
+# Schedules a delayed check for every baron found or generated by the engine. The
+# immediate scope:liege is intentionally not used as a realm filter: during automatic
+# settlement of a completed holding the final vassal chain may not yet be stabilized.
 DICM_RBE_on_administrative_retraining_baron_created = {
 	trigger = {
 		DICM_RBE_administrative_retraining_enabled_trigger = yes
 		DICM_RBE_administrative_retraining_immune_trigger = no
-		exists = scope:liege
-		scope:liege = {
-			top_liege = {
-				DICM_RBE_is_ceasar_ruler_trigger = yes
-			}
-		}
 	}
 
 	effect = {
-		scope:liege = {
-			top_liege = {
-				save_scope_as = DICM_RBE_administrative_retraining_current_ceasar
-			}
-		}
-		DICM_RBE_schedule_administrative_retraining_check_effect = {
-			DICM_RBE_CEASAR = scope:DICM_RBE_administrative_retraining_current_ceasar
-		}
+		DICM_RBE_schedule_administrative_retraining_check_effect = yes
 	}
 }
 
@@ -358,20 +423,12 @@ DICM_RBE_on_administrative_retraining_vassal_change = {
 	}
 
 	effect = {
-		top_liege = {
-			save_scope_as = DICM_RBE_administrative_retraining_current_ceasar
-		}
-
-		DICM_RBE_schedule_administrative_retraining_check_effect = {
-			DICM_RBE_CEASAR = scope:DICM_RBE_administrative_retraining_current_ceasar
-		}
+		DICM_RBE_schedule_administrative_retraining_check_effect = yes
 		every_vassal_or_below = {
 			limit = {
 				has_any_landed_title_trigger = yes
 			}
-			DICM_RBE_schedule_administrative_retraining_check_effect = {
-				DICM_RBE_CEASAR = scope:DICM_RBE_administrative_retraining_current_ceasar
-			}
+			DICM_RBE_schedule_administrative_retraining_check_effect = yes
 		}
 	}
 }

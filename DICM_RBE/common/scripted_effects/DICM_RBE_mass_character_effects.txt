@@ -1,0 +1,42 @@
+﻿# Sets a living character to the baseline adult age used by DICM RBE.
+# The two-step change deliberately follows the same clamp pattern as skill normalization.
+DICM_RBE_rejuvenate_to_sixteen_effect = {
+	if = {
+		limit = { is_alive = yes }
+		change_age = -500
+		change_age = 16
+	}
+}
+
+# Applies rejuvenation only to characters currently pinned in Divine Intervention.
+DICM_RBE_rejuvenate_pinned_characters_effect = {
+	if = {
+		limit = { has_variable_list = pinned_characters }
+		every_in_list = {
+			variable = pinned_characters
+			limit = { is_alive = yes }
+			DICM_RBE_rejuvenate_to_sixteen_effect = yes
+		}
+	}
+}
+
+# Takes a stable snapshot of the living pinned characters. The list is kept on
+# the player because the mass-actions window uses the player as its root scope.
+DICM_RBE_prepare_revoke_title_queue_effect = {
+	clear_variable_list = DICM_RBE_revoke_title_queue
+	save_temporary_scope_as = DICM_RBE_revoke_title_queue_owner
+	if = {
+		limit = { has_variable_list = pinned_characters }
+		every_in_list = {
+			variable = pinned_characters
+			limit = { is_alive = yes }
+			save_temporary_scope_as = DICM_RBE_revoke_title_queue_candidate
+			scope:DICM_RBE_revoke_title_queue_owner = {
+				add_to_variable_list = {
+					name = DICM_RBE_revoke_title_queue
+					target = scope:DICM_RBE_revoke_title_queue_candidate
+				}
+			}
+		}
+	}
+}

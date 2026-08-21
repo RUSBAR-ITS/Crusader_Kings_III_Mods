@@ -172,19 +172,31 @@ DICM_RBE_retraining_minor_ceasar_child_selected = {
 	}
 }
 
-# Shows the modifier-only Caesar Child profile only for a living minor target.
+# Shows the modifier-only Caesar Child profile for a living minor target or
+# when bulk mode contains at least one living pinned minor.
 DICM_RBE_retraining_minor_ceasar_child_visible = {
 	scope = character
 
 	is_valid = {
-		trigger_if = {
-			limit = { has_variable = DICM_RBE_retraining_target }
-			var:DICM_RBE_retraining_target = {
-				is_alive = yes
-				is_adult = no
+		OR = {
+			AND = {
+				has_variable = DICM_RBE_retraining_pinned_scope
+				has_variable_list = pinned_characters
+				any_in_list = {
+					variable = pinned_characters
+					is_alive = yes
+					is_adult = no
+				}
+			}
+			AND = {
+				NOT = { has_variable = DICM_RBE_retraining_pinned_scope }
+				has_variable = DICM_RBE_retraining_target
+				var:DICM_RBE_retraining_target = {
+					is_alive = yes
+					is_adult = no
+				}
 			}
 		}
-		trigger_else = { always = no }
 	}
 }
 
@@ -450,6 +462,31 @@ DICM_RBE_retraining_charioteer_red_selected = {
 	is_valid = {
 		DICM_RBE_retraining_profile_is_trigger = { PROFILE = DICM_RBE_retraining_charioteer_red_profile }
 	}
+}
+
+# Switches between the selected character and all pinned characters.
+DICM_RBE_toggle_retraining_pinned_scope = {
+	scope = character
+	is_valid = { has_variable_list = pinned_characters }
+	effect = {
+		if = {
+			limit = { has_variable = DICM_RBE_retraining_pinned_scope }
+			remove_variable = DICM_RBE_retraining_pinned_scope
+		}
+		else = { set_variable = DICM_RBE_retraining_pinned_scope }
+	}
+}
+
+# Reports whether bulk retraining of pinned characters is selected.
+DICM_RBE_retraining_pinned_scope_enabled = {
+	scope = character
+	is_valid = { has_variable = DICM_RBE_retraining_pinned_scope }
+}
+
+# Reports whether at least one character is available for bulk retraining.
+DICM_RBE_retraining_pinned_scope_available = {
+	scope = character
+	is_valid = { has_variable_list = pinned_characters }
 }
 
 # Reports whether the current retraining selection can be confirmed.
