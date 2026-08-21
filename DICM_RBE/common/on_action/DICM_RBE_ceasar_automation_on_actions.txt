@@ -57,6 +57,15 @@ on_title_gain = {
 	}
 }
 
+# A newly completed city or temple holding can receive its generated holder only
+# after the ordinary title/baron hooks have already run. Schedule a delayed realm
+# sweep from the stable county-holder chain so that this final holder is observed.
+on_building_completed = {
+	on_actions = {
+		DICM_RBE_on_administrative_retraining_building_completed
+	}
+}
+
 # Extends the engine government-change hook. Realm feudalization changes the
 # governments of existing rulers without granting them new titles, so title-gain
 # automation alone cannot observe that transition.
@@ -369,24 +378,39 @@ DICM_RBE_on_administrative_retraining_government_change = {
 		if = {
 			limit = {
 				DICM_RBE_is_ceasar_ruler_trigger = yes
-				NOT = {
-					has_character_flag = DICM_RBE_administrative_retraining_realm_sweep_pending
-				}
 			}
-
-			add_character_flag = {
-				flag = DICM_RBE_administrative_retraining_realm_sweep_pending
-				days = 5
-			}
-			trigger_event = {
-				id = DICM_RBE_ceasar_automation.0005
-				days = 2
-			}
-			debug_log = "DICM_RBE: Administrative retraining realm sweep scheduled after government change for [THIS.Char.GetLogName]"
+			DICM_RBE_schedule_administrative_retraining_realm_sweep_effect = yes
 		}
 		else = {
 			DICM_RBE_schedule_administrative_retraining_check_effect = yes
 		}
+	}
+}
+
+# root is the province whose construction finished. The county holder is already
+# stable even when the holder of the newly created barony is assigned a little later.
+DICM_RBE_on_administrative_retraining_building_completed = {
+	trigger = {
+		DICM_RBE_administrative_retraining_enabled_trigger = yes
+		root = {
+			exists = county
+			county = {
+				exists = holder
+				holder = {
+					exists = top_liege
+					top_liege = {
+						DICM_RBE_is_ceasar_ruler_trigger = yes
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		root.county.holder.top_liege = {
+			DICM_RBE_schedule_administrative_retraining_realm_sweep_effect = yes
+		}
+		debug_log = "DICM_RBE: Building completion requested an administrative retraining realm sweep"
 	}
 }
 

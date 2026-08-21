@@ -52,7 +52,8 @@ DICM_RBE_enable_administrative_retraining_effect = {
 			name = DICM_RBE_administrative_retraining_enabled
 			value = yes
 		}
-	debug_log = "DICM_RBE: DICM_RBE_administrative_retraining_enabled = yes"
+		DICM_RBE_schedule_administrative_retraining_realm_sweep_effect = yes
+		debug_log = "DICM_RBE: DICM_RBE_administrative_retraining_enabled = yes"
 	}
 }
 
@@ -63,7 +64,7 @@ DICM_RBE_disable_administrative_retraining_effect = {
 			has_global_variable = DICM_RBE_administrative_retraining_enabled
 		}
 		remove_global_variable = DICM_RBE_administrative_retraining_enabled
-	debug_log = "DICM_RBE: DICM_RBE_administrative_retraining_enabled = no"
+		debug_log = "DICM_RBE: DICM_RBE_administrative_retraining_enabled = no"
 	}
 }
 
@@ -127,6 +128,32 @@ DICM_RBE_schedule_administrative_retraining_check_effect = {
 			id = DICM_RBE_ceasar_automation.0003
 			days = 1
 		}
+	}
+}
+
+# Schedules one delayed scan of the Caesar realm. Multiple buildings completed in
+# the same few days collapse into one event, keeping mass construction inexpensive.
+DICM_RBE_schedule_administrative_retraining_realm_sweep_effect = {
+	if = {
+		limit = {
+			is_alive = yes
+			DICM_RBE_administrative_retraining_enabled_trigger = yes
+			DICM_RBE_is_ceasar_ruler_trigger = yes
+			has_any_landed_title_trigger = yes
+			NOT = {
+				has_character_flag = DICM_RBE_administrative_retraining_realm_sweep_pending
+			}
+		}
+
+		add_character_flag = {
+			flag = DICM_RBE_administrative_retraining_realm_sweep_pending
+			days = 5
+		}
+		trigger_event = {
+			id = DICM_RBE_ceasar_automation.0005
+			days = 2
+		}
+		debug_log = "DICM_RBE: Administrative retraining realm sweep scheduled for [THIS.Char.GetLogName]"
 	}
 }
 

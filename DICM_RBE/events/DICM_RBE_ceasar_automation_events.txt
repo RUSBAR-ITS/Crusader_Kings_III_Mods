@@ -89,10 +89,9 @@ DICM_RBE_ceasar_automation.0004 = {
 	}
 }
 
-# Runs after realm settlement has finished changing governments and creating any
+# Runs after realm settlement or holding construction has finished creating any
 # required sub-holding rulers. Vassals already carrying the Official modifier are
-# omitted because their individual government-change event has already processed
-# them or they were prepared earlier.
+# omitted because an earlier individual check has already processed them.
 DICM_RBE_ceasar_automation.0005 = {
 	type = character_event
 	hidden = yes
@@ -106,11 +105,6 @@ DICM_RBE_ceasar_automation.0005 = {
 				DICM_RBE_administrative_retraining_enabled_trigger = yes
 				DICM_RBE_is_ceasar_ruler_trigger = yes
 				has_any_landed_title_trigger = yes
-				OR = {
-					government_has_flag = government_is_feudal
-					government_has_flag = government_is_clan
-					government_has_flag = government_is_japan_feudal
-				}
 			}
 
 			debug_log = "DICM_RBE: Administrative retraining realm sweep started for [THIS.Char.GetLogName]"
