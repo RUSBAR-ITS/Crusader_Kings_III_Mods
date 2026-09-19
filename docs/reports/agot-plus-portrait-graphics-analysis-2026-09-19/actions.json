@@ -1,0 +1,389 @@
+[
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Correct singular/plural gene ID",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = secondary_headgear\r\n\t\t\t\ttemplate = no_headgear\r\n\t\t\t\tvalue = 0\r\n            }",
+    "After": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = secondary_headgears\r\n\t\t\t\ttemplate = no_headgear\r\n\t\t\t\tvalue = 0\r\n            }"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Use the empty template of the additive layer",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = additive_headgear\r\n\t\t\t\ttemplate = no_headgear\r\n\t\t\t\tvalue = 0\r\n            }",
+    "After": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = additive_headgear\r\n\t\t\t\ttemplate = no_additive\r\n\t\t\t\tvalue = 0\r\n            }"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing decal at the original zero strength",
+    "Confidence": "exact_reference",
+    "Count": 2,
+    "Before": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = gene_lovers_pox\r\n\t\t\t\ttemplate = none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}",
+    "After": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = gene_lovers_pox\r\n\t\t\t\ttemplate = lovers_pox\r\n\t\t\t\tvalue = 0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Current AGOT blue-eye trait selects this gem template",
+    "Confidence": "modern_equivalent_color",
+    "Count": 1,
+    "Before": "accessory = { #hidden under the eyepatch, but it's good to know it's there :)\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = eye_accessory_gem\r\n\t\t\t\ttemplate = one_eyed_gem_saphire\r\n\t\t\t\tvalue = 1.0\r\n            }",
+    "After": "accessory = { #hidden under the eyepatch, but it's good to know it's there :)\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = eye_accessory_gem\r\n\t\t\t\ttemplate = one_eyed_gem_light_blue\r\n\t\t\t\tvalue = 1.0\r\n            }"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing explicitly empty cosmetic template",
+    "Confidence": "exact_reference",
+    "Count": 16,
+    "Before": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_eyeliner\r\n\t\t\t\ttemplate = none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}",
+    "After": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_eyeliner\r\n\t\t\t\ttemplate = eyeliner_none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing explicitly empty cosmetic template",
+    "Confidence": "exact_reference",
+    "Count": 19,
+    "Before": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_eyeshadow\r\n\t\t\t\ttemplate = none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}",
+    "After": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_eyeshadow\r\n\t\t\t\ttemplate = eyeshadow_none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing explicitly empty cosmetic template",
+    "Confidence": "exact_reference",
+    "Count": 31,
+    "Before": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_lipcolor\r\n\t\t\t\ttemplate = none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}",
+    "After": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_lipcolor\r\n\t\t\t\ttemplate = lipcolor_none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing explicitly empty cosmetic template",
+    "Confidence": "exact_reference",
+    "Count": 27,
+    "Before": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_blush\r\n\t\t\t\ttemplate = none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}",
+    "After": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_blush\r\n\t\t\t\ttemplate = blush_none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing explicitly empty cosmetic template",
+    "Confidence": "exact_reference",
+    "Count": 30,
+    "Before": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_foundation\r\n\t\t\t\ttemplate = none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}",
+    "After": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_foundation\r\n\t\t\t\ttemplate = foundation_none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing explicitly empty cosmetic template",
+    "Confidence": "exact_reference",
+    "Count": 7,
+    "Before": "morph = { #remove the vanilla AGOT blush\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_blush\r\n\t\t\t\ttemplate = none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}",
+    "After": "morph = { #remove the vanilla AGOT blush\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_blush\r\n\t\t\t\ttemplate = blush_none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing explicitly empty cosmetic template",
+    "Confidence": "exact_reference",
+    "Count": 7,
+    "Before": "morph = { #remove the vanilla AGOT lip colour\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_lipcolor\r\n\t\t\t\ttemplate = none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}",
+    "After": "morph = { #remove the vanilla AGOT lip colour\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_lipcolor\r\n\t\t\t\ttemplate = lipcolor_none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing explicitly empty cosmetic template",
+    "Confidence": "exact_reference",
+    "Count": 7,
+    "Before": "morph = { #remove the vanilla AGOT foundation\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_foundation\r\n\t\t\t\ttemplate = none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}",
+    "After": "morph = { #remove the vanilla AGOT foundation\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_foundation\r\n\t\t\t\ttemplate = foundation_none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing explicitly empty cosmetic template",
+    "Confidence": "exact_reference",
+    "Count": 5,
+    "Before": "morph = { #remove the vanilla AGOT eyeliner\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_eyeliner\r\n\t\t\t\ttemplate = none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}",
+    "After": "morph = { #remove the vanilla AGOT eyeliner\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_eyeliner\r\n\t\t\t\ttemplate = eyeliner_none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing explicitly empty cosmetic template",
+    "Confidence": "exact_reference",
+    "Count": 6,
+    "Before": "morph = { #remove the vanilla AGOT eyeshadow\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_eyeshadow\r\n\t\t\t\ttemplate = none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}",
+    "After": "morph = { #remove the vanilla AGOT eyeshadow\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_eyeshadow\r\n\t\t\t\ttemplate = eyeshadow_none\r\n\t\t\t\tvalue = 0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Current beauty complexion for Joffrey; not a proven exact historical texture match",
+    "Confidence": "approximation",
+    "Count": 1,
+    "Before": "morph = {\r\n\t\t\t\tmode = replace\r\n\t\t\t\tgene = complexion\r\n\t\t\t\ttemplate = complexion_beauty_2\r\n\t\t\t\tvalue = 1.0\r\n\t\t\t}",
+    "After": "morph = {\r\n\t\t\t\tmode = replace\r\n\t\t\t\tgene = complexion\r\n\t\t\t\ttemplate = complexion_beauty_1\r\n\t\t\t\tvalue = 1.0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Current average body-hair template",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "morph = {\r\n\t\t\t\tmode = modify\r\n\t\t\t\tgene = gene_body_hair\r\n\t\t\t\ttemplate = body_hair_average\r\n\t\t\t\tvalue = 0.15\r\n\t\t\t}",
+    "After": "morph = {\r\n\t\t\t\tmode = modify\r\n\t\t\t\tgene = gene_body_hair\r\n\t\t\t\ttemplate = body_hair_avg\r\n\t\t\t\tvalue = 0.15\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing explicitly empty cosmetic template",
+    "Confidence": "exact_reference",
+    "Count": 5,
+    "Before": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_eyeliner\r\n\t\t\t\ttemplate = none\r\n\t\t\t\tvalue = 0.0\r\n\t\t\t}",
+    "After": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_eyeliner\r\n\t\t\t\ttemplate = eyeliner_none\r\n\t\t\t\tvalue = 0.0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing explicitly empty cosmetic template",
+    "Confidence": "exact_reference",
+    "Count": 4,
+    "Before": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_eyeshadow\r\n\t\t\t\ttemplate = none\r\n\t\t\t\tvalue = 0.0\r\n\t\t\t}",
+    "After": "morph = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cosmetics_eyeshadow\r\n\t\t\t\ttemplate = eyeshadow_none\r\n\t\t\t\tvalue = 0.0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Renly cloak accessory-key typo (also one portrait_rules message)",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cloaks\r\n\t\t\t\ttemplate = stormcloak_01\r\n\t\t\t\taccesory = male_cloaks_secular_stormcloak_01\r\n            }",
+    "After": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = cloaks\r\n\t\t\t\ttemplate = stormcloak_01\r\n\t\t\t\taccessory = male_cloaks_secular_stormcloak_01\r\n            }"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Same septon robe accessory in current Core group",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = clothes\r\n\t\t\t\ttemplate = asoiaf_fots_religious_clothes\r\n\t\t\t\taccessory = male_clothes_asoiaf_septon_robes_1\r\n            }",
+    "After": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = clothes\r\n\t\t\t\ttemplate = asoiaf_religious_clothes\r\n\t\t\t\taccessory = male_clothes_asoiaf_septon_robes_1\r\n            }"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_clothes.txt",
+    "Category": "portrait_templates",
+    "Reason": "Correct item suffix; current group contains _01",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = clothes\r\n\t\t\t\ttemplate = religious_catholic_high_clothes\r\n\t\t\t\taccessory = male_clothes_religious_catholic_high_1\r\n            }",
+    "After": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = clothes\r\n\t\t\t\ttemplate = religious_catholic_high_clothes\r\n\t\t\t\taccessory = male_clothes_religious_catholic_high_01\r\n            }"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_clothes_armor.txt",
+    "Category": "portrait_templates",
+    "Reason": "Female Hound legwear already exists in the female group",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = legwear\r\n\t\t\t\ttemplate = asoiaf_all_legwears\r\n\t\t\t\taccessory = male_legwear_asoiaf_hound_legs\r\n\t\t\t\ttype = female\r\n\t\t\t}",
+    "After": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = legwear\r\n\t\t\t\ttemplate = asoiaf_all_legwears\r\n\t\t\t\taccessory = female_legwear_asoiaf_hound_legs\r\n\t\t\t\ttype = female\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_dragon_appearance_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Interpret old small-horn strength as shrink intensity; current inverse curve gives 0.7/1.0 shrink",
+    "Confidence": "approximation_old_curve_unverified",
+    "Count": 1,
+    "Before": "morph = {\r\n\t\t\t\tmode = replace\r\n\t\t\t\tgene = gene_dragon_main_horn_shape\r\n\t\t\t\ttemplate = dragon_horns_small\r\n\t\t\t\tvalue = 0.7\r\n\t\t\t}",
+    "After": "morph = {\r\n\t\t\t\tmode = replace\r\n\t\t\t\tgene = gene_dragon_main_horn_shape\r\n\t\t\t\ttemplate = dragon_horns_drogon\r\n\t\t\t\tvalue = 0.3\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_dragon_appearance_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Interpret old small-horn strength as shrink intensity; current inverse curve gives 0.7/1.0 shrink",
+    "Confidence": "approximation_old_curve_unverified",
+    "Count": 1,
+    "Before": "morph = {\r\n\t\t\t\tmode = replace\r\n\t\t\t\tgene = gene_dragon_main_horn_shape\r\n\t\t\t\ttemplate = dragon_horns_small\r\n\t\t\t\tvalue = 1.0\r\n\t\t\t}",
+    "After": "morph = {\r\n\t\t\t\tmode = replace\r\n\t\t\t\tgene = gene_dragon_main_horn_shape\r\n\t\t\t\ttemplate = dragon_horns_drogon\r\n\t\t\t\tvalue = 0.0\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_hairs_custom_flags.txt",
+    "Category": "portrait_templates",
+    "Reason": "Retain the exact hairstyle accessory in a group containing it",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = hairstyles\r\n\t\t\t\ttemplate = agot_all_hairstyles\r\n\t\t\t\taccessory = male_hair_fp1_09\r\n\t\t\t}",
+    "After": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = hairstyles\r\n\t\t\t\ttemplate = fp1_hairstyles_straight\r\n\t\t\t\taccessory = male_hair_fp1_09\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_headgear_armor.txt",
+    "Category": "portrait_templates",
+    "Reason": "Use width deformation for the already selected width gene",
+    "Confidence": "exact_reference",
+    "Count": 5,
+    "Before": "morph = {\r\n\t\t\t\tmode = replace\r\n\t\t\t\tgene = gene_head_top_width\r\n\t\t\t\ttemplate = head_top_height_neg\r\n\t\t\t\tvalue = 0.3\r\n\t\t\t}",
+    "After": "morph = {\r\n\t\t\t\tmode = replace\r\n\t\t\t\tgene = gene_head_top_width\r\n\t\t\t\ttemplate = head_top_width_neg\r\n\t\t\t\tvalue = 0.3\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_legwear_armour.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing default armour / off-duty boots matching parent modifier purpose",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = legwear\r\n\t\t\t\ttemplate = asoiaf_all_legwears\r\n\t\t\t\taccessory = male_legwear_asoiaf_kingsguard_legs_1\r\n\t\t\t}",
+    "After": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = legwear\r\n\t\t\t\ttemplate = asoiaf_all_legwears\r\n\t\t\t\taccessory = male_legwear_asoiaf_kingsguard_legs_default\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_legwear_armour.txt",
+    "Category": "portrait_templates",
+    "Reason": "Existing default armour / off-duty boots matching parent modifier purpose",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "accessory = {\r\n                mode = add\r\n                gene = legwear\r\n                template = asoiaf_all_legwears\r\n                accessory = male_legwear_asoiaf_kingsguard_legs_2\r\n            }",
+    "After": "accessory = {\r\n                mode = add\r\n                gene = legwear\r\n                template = asoiaf_all_legwears\r\n                accessory = male_legwear_asoiaf_kingsguard_legs_boots\r\n            }"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_legwear_armour.txt",
+    "Category": "portrait_templates",
+    "Reason": "Use the exact accessory selected by current AGOT for the same Rhaegar/Robert armour",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = legwear\r\n\t\t\t\ttemplate = high_valyrian_war_legwear\r\n\t\t\t\tvalue = 1\r\n\t\t\t}",
+    "After": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = legwear\r\n\t\t\t\ttemplate = agot_all_legwear\r\n\t\t\t\taccessory = male_legwear_secular_valyrian_war_04\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_legwear_armour.txt",
+    "Category": "portrait_templates",
+    "Reason": "Use the exact accessory selected by current AGOT for the same Rhaegar/Robert armour",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = legwear\r\n\t\t\t\ttemplate = stormlands_war_04_legwear\r\n\t\t\t\tvalue = 1\r\n\t\t\t}",
+    "After": "accessory = {\r\n\t\t\t\tmode = add\r\n\t\t\t\tgene = legwear\r\n\t\t\t\ttemplate = agot_all_legwear\r\n\t\t\t\taccessory = male_legwear_secular_stormlands_war_04\r\n\t\t\t}"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+    "Category": "portrait_rules",
+    "Reason": "Existing author trigger with the same courtier-armour purpose",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "portrait_wear_lannister_armour_torso_courtiers = yes",
+    "After": "portrait_wear_lannister_armour_courtiers_trigger = yes"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_clothes.txt",
+    "Category": "portrait_rules",
+    "Reason": "Call has_religion inside existing guarded liege scope",
+    "Confidence": "exact_reference",
+    "Count": 2,
+    "Before": "liege.has_religion = religion:the_ways_religion",
+    "After": "liege = { has_religion = religion:the_ways_religion }"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_headgear_crowns.txt",
+    "Category": "portrait_rules",
+    "Reason": "Recognize historical identity OR the already assigned canonical-child identity marker",
+    "Confidence": "exact_reference",
+    "Count": 2,
+    "Before": "is_character_baratheon_3 = yes",
+    "After": "OR = { this = character:Baratheon_3 has_inactive_trait = asoiaf_Baratheon_3_trait }"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_headgear_crowns.txt",
+    "Category": "portrait_rules",
+    "Reason": "Recognize historical identity OR the already assigned canonical-child identity marker",
+    "Confidence": "exact_reference",
+    "Count": 2,
+    "Before": "is_character_baratheon_4 = yes",
+    "After": "OR = { this = character:Baratheon_4 has_inactive_trait = asoiaf_Baratheon_4_trait }"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_headgear_crowns.txt",
+    "Category": "portrait_rules",
+    "Reason": "Recognize historical identity OR the already assigned canonical-child identity marker",
+    "Confidence": "exact_reference",
+    "Count": 2,
+    "Before": "is_character_baratheon_5 = yes",
+    "After": "OR = { this = character:Baratheon_5 has_inactive_trait = asoiaf_Baratheon_5_trait }"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_headgear_crowns.txt",
+    "Category": "portrait_rules",
+    "Reason": "Recognize historical identity OR the already assigned canonical-child identity marker",
+    "Confidence": "exact_reference",
+    "Count": 2,
+    "Before": "is_character_baratheon_6 = yes",
+    "After": "OR = { this = character:Baratheon_6 has_inactive_trait = asoiaf_Baratheon_6_trait }"
+  },
+  {
+    "File": "gfx/portraits/portrait_modifiers/asoiaf_headgear_crowns.txt",
+    "Category": "portrait_rules",
+    "Reason": "Recognize historical identity OR the already assigned canonical-child identity marker",
+    "Confidence": "exact_reference",
+    "Count": 2,
+    "Before": "is_character_baratheon_7 = yes",
+    "After": "OR = { this = character:Baratheon_7 has_inactive_trait = asoiaf_Baratheon_7_trait }"
+  },
+  {
+    "File": "gfx/portraits/accessories/asoiaf_cloaks.txt",
+    "Category": "accessory_entity",
+    "Reason": "Comment unimplemented female accessory; no active selectors/callers in the current set",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "female_cloak_asoiaf_stormlands_stannis_cloak_1 = {\r\n\tentity = { required_tags = \"\"\t\tshared_pose_entity = torso\t\tentity = female_cloak_asoiaf_stannis_cloak_1 }\r\n}",
+    "After": "# AGOT_PLUS_FIX candidate: female_cloak_asoiaf_stormlands_stannis_cloak_1 = {\r\n# AGOT_PLUS_FIX candidate: \tentity = { required_tags = \"\"\t\tshared_pose_entity = torso\t\tentity = female_cloak_asoiaf_stannis_cloak_1 }\r\n# AGOT_PLUS_FIX candidate: }"
+  },
+  {
+    "File": "gfx/portraits/accessories/asoiaf_clothes.txt",
+    "Category": "accessory_entity",
+    "Reason": "Comment unimplemented female accessory; no active selectors/callers in the current set",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "female_clothes_asoiaf_stormlands_stannis_clothes_1 = {\r\n\tset_tags = \"shrink_arms,shrink_chest,shrink_belly\"\r\n\tentity = { required_tags = \"\"\t\tshared_pose_entity = torso\t\tentity = female_clothes_asoiaf_stannis_clothes_1 }\r\n}",
+    "After": "# AGOT_PLUS_FIX candidate: female_clothes_asoiaf_stormlands_stannis_clothes_1 = {\r\n# AGOT_PLUS_FIX candidate: \tset_tags = \"shrink_arms,shrink_chest,shrink_belly\"\r\n# AGOT_PLUS_FIX candidate: \tentity = { required_tags = \"\"\t\tshared_pose_entity = torso\t\tentity = female_clothes_asoiaf_stannis_clothes_1 }\r\n# AGOT_PLUS_FIX candidate: }"
+  },
+  {
+    "File": "gfx/portraits/accessories/asoiaf_jewellery.txt",
+    "Category": "accessory_entity",
+    "Reason": "Comment unimplemented female accessory; no active selectors/callers in the current set",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "female_jewellery_asoiaf_septon_necklace_1 = {\r\n\tentity = { required_tags = \"\"\t\tshared_pose_entity = torso\t\tentity = female_jewellery_asoiaf_septon_necklace_1 }\r\n}",
+    "After": "# AGOT_PLUS_FIX candidate: female_jewellery_asoiaf_septon_necklace_1 = {\r\n# AGOT_PLUS_FIX candidate: \tentity = { required_tags = \"\"\t\tshared_pose_entity = torso\t\tentity = female_jewellery_asoiaf_septon_necklace_1 }\r\n# AGOT_PLUS_FIX candidate: }"
+  },
+  {
+    "File": "gfx/models/portraits/m_legwear/asoiaf/asoiaf_iron_isles/asoiaf_ironborn_legs_coa/asoiaf_ironborn_legs_coa.asset",
+    "Category": "mesh_blendshape",
+    "Reason": "Matching missing-left-leg file already exists beside the model",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "type = \"asoiaf_greyjoy_legs_bs_no_left_leg.mesh\"",
+    "After": "type = \"asoiaf_ironborn_legs_coa_bs_no_left_leg.mesh\""
+  },
+  {
+    "File": "gfx/models/portraits/m_cloaks/asoiaf/asoiaf_westerlands/asoiaf_lannister_cloaks/asoiaf_lannister_cloak_royal/asoiaf_lannister_cloak_royal.asset",
+    "Category": "mesh_duplicates",
+    "Reason": "Remove redundant mesh registration, retaining entity IDs and variant settings",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "pdxmesh = {\r\n\tname = \"male_cloaks_secular_shouldercape_01_mesh\"\r\n\tfile = \"male_cloaks_secular_shouldercape_01.mesh\"\r\n\r\n\tblend_shape = { id = \"male_cloaks_secular_shouldercape_01_bs_fat\"\t\t\ttype = \"male_cloaks_secular_shouldercape_01_bs_fat.mesh\" }\r\n\tblend_shape = { id = \"male_cloaks_secular_shouldercape_01_bs_gaunt\"\t\t\ttype = \"male_cloaks_secular_shouldercape_01_bs_gaunt.mesh\" }\r\n\tblend_shape = { id = \"male_cloaks_secular_shouldercape_01_bs_muscular\"\t\ttype = \"male_cloaks_secular_shouldercape_01_bs_muscular.mesh\" }\t\r\n\tblend_shape = { id = \"male_cloaks_secular_shouldercape_01_bs_old\"\t\t\ttype = \"male_cloaks_secular_shouldercape_01_bs_old.mesh\" }\r\n\tblend_shape = { id = \"male_cloaks_secular_shouldercape_01_bs_dwarf\"\t\t\ttype = \"male_cloaks_secular_shouldercape_01_bs_dwarf.mesh\" }\r\n\tblend_shape = { id = \"male_cloaks_secular_shouldercape_01_bs_infant\"\t\ttype = \"male_cloaks_secular_shouldercape_01_bs_infant.mesh\" }\r\n\tblend_shape = { id = \"male_cloaks_secular_shouldercape_01_bs_offset\"\t\ttype = \"male_cloaks_secular_shouldercape_01_bs_offset.mesh\" }\r\n\tblend_shape = { id = \"male_cloaks_secular_shouldercape_01_bs_offset2\"\t\ttype = \"male_cloaks_secular_shouldercape_01_bs_offset2.mesh\" }\r\n\tblend_shape = { id = \"male_cloaks_secular_shouldercape_01_bs_offset3\"\t\ttype = \"male_cloaks_secular_shouldercape_01_bs_offset3.mesh\" }\r\n\r\n\tmeshsettings = {\r\n\t\tname = \"male_cloaks_secular_shouldercape_01Shape\"\r\n\t\tindex = 0\r\n\t\ttexture_diffuse = \"male_cloaks_secular_shouldercape_01_diffuse.dds\"\r\n\t\ttexture_normal = \"male_cloaks_secular_shouldercape_01_normal.dds\"\r\n\t\ttexture_specular = \"male_cloaks_secular_shouldercape_01_properties.dds\"\r\n\t\tshader = \"portrait_attachment_pattern\"\r\n\t\tshader_file = \"gfx/FX/jomini/portrait.shader\"\r\n\t}\r\n}",
+    "After": "# AGOT_PLUS_FIX candidate: use the identical AGOT pdxmesh; retain the unique AGOT+ entities below."
+  },
+  {
+    "File": "gfx/models/portraits/f_cloaks/asoiaf/asoiaf_westerlands/asoiaf_lannister_cloaks/f_asoiaf_lannister_cloak_royal/f_asoiaf_lannister_cloak_royal.asset",
+    "Category": "mesh_duplicates",
+    "Reason": "Remove redundant mesh registration, retaining entity IDs and variant settings",
+    "Confidence": "exact_reference",
+    "Count": 1,
+    "Before": "pdxmesh = {\r\n\tname = \"female_cloaks_secular_shouldercape_01_mesh\"\r\n\tfile = \"female_cloaks_secular_shouldercape_01.mesh\"\r\n\r\n\tblend_shape = { id = \"female_cloaks_secular_shouldercape_01_bs_fat\"\t\t\ttype = \"female_cloaks_secular_shouldercape_01_bs_fat.mesh\" }\r\n\tblend_shape = { id = \"female_cloaks_secular_shouldercape_01_bs_gaunt\"\t\ttype = \"female_cloaks_secular_shouldercape_01_bs_gaunt.mesh\" }\r\n\tblend_shape = { id = \"female_cloaks_secular_shouldercape_01_bs_muscular\"\t\ttype = \"female_cloaks_secular_shouldercape_01_bs_muscular.mesh\" }\t\r\n\tblend_shape = { id = \"female_cloaks_secular_shouldercape_01_bs_old\"\t\t\ttype = \"female_cloaks_secular_shouldercape_01_bs_old.mesh\" }\r\n\tblend_shape = { id = \"female_cloaks_secular_shouldercape_01_bs_dwarf\"\t\ttype = \"female_cloaks_secular_shouldercape_01_bs_dwarf.mesh\" }\r\n\tblend_shape = { id = \"female_cloaks_secular_shouldercape_01_bs_infant\"\t\ttype = \"female_cloaks_secular_shouldercape_01_bs_infant.mesh\" }\r\n\tblend_shape = { id = \"female_cloaks_secular_shouldercape_01_bs_offset\"\t\ttype = \"female_cloaks_secular_shouldercape_01_bs_offset.mesh\" }\r\n\t#blend_shape = { id = \"female_cloaks_secular_shouldercape_01_bs_offset2\"\t\ttype = \"female_cloaks_secular_shouldercape_01_bs_offset2.mesh\" }\r\n\t#blend_shape = { id = \"female_cloaks_secular_shouldercape_01_bs_offset3\"\t\ttype = \"female_cloaks_secular_shouldercape_01_bs_offset3.mesh\" }\r\n\tblend_shape = { id = \"female_cloaks_secular_shouldercape_01_bs_breast_size_max\"\ttype = \"female_cloaks_secular_shouldercape_01_bs_breast_size_max.mesh\" }\r\n\tblend_shape = { id = \"female_cloaks_secular_shouldercape_01_bs_breast_size_min\"\ttype = \"female_cloaks_secular_shouldercape_01_bs_breast_size_min.mesh\" }\r\n\r\n\tmeshsettings = {\r\n\t\tname = \"female_cloaks_secular_shouldercape_01Shape\"\r\n\t\tindex = 0\r\n\t\ttexture_diffuse = \"male_cloaks_secular_shouldercape_01_diffuse.dds\"\r\n\t\ttexture_normal = \"male_cloaks_secular_shouldercape_01_normal.dds\"\r\n\t\ttexture_specular = \"male_cloaks_secular_shouldercape_01_properties.dds\"\r\n\t\tshader = \"portrait_attachment_pattern\"\r\n\t\tshader_file = \"gfx/FX/jomini/portrait.shader\"\r\n\t}\r\n}",
+    "After": "# AGOT_PLUS_FIX candidate: use the identical AGOT pdxmesh; retain the unique AGOT+ entities below."
+  }
+]

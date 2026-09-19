@@ -1,0 +1,913 @@
+﻿# Called from code once a year for all characters, at a random point that year (individually for each character)
+# Root is the character
+random_yearly_everyone_pulse = {
+	on_actions = {
+		asoiaf_mance_rayder_desertion
+		asoiaf_Targaryen_8_traits_change_maintenance
+		asoiaf_daenerys_maintenance
+		asoiaf_canon_children_cersei_jaime_lover_maintenance
+		asoiaf_canon_children_rhaenyra_harwin_lover_maintenance
+		asoiaf_canon_children_laenor_joffrey_soulmate_maintenance
+		asoiaf_canon_children_aegon_daena_lover_maintenance
+		asoiaf_canon_children_dragon_bonding_maintenance
+		#asoiaf_red_priest_maintenance
+		#asoiaf_canon_children_betrothals
+	}
+}
+
+asoiaf_mance_rayder_desertion = {
+	trigger = {
+		asoiaf_historical_trigger = yes
+		root = {
+			exists = character:Rayder_1
+			character:Rayder_1 = { is_alive = yes }
+			this = character:Rayder_1
+			OR = {
+				has_trait = nightswatch
+				has_trait = nightswatch_historical
+			}
+			NOT = {
+				is_imprisoned = yes
+				is_incapable = yes
+			}
+			is_ai = yes
+			NOT = { has_trait = conqueror } #only triggers for pre-desertion Mance
+			is_lowborn = yes #only triggers for pre-desertion Mance
+		}
+		current_date >= 8289.1.1
+		#title:c_denbarrows.holder = { #either c_denbarrows is held by AI, or it's held by a player but NOT their capital county
+		#	OR = {
+		#		is_ai = yes
+		#		AND = {
+		#			is_ai = no
+		#			NOT = {
+		#				capital_county = { this = title:c_denbarrows }
+		#			}
+		#		}
+		#	}
+		#}
+		title:e_beyond_the_wall = { is_title_created = no } #a King-Beyond-the-Wall can't already exist
+	}
+	effect = {
+		root = {
+			set_house = house:house_Rayder #AGOT+ House made under the regular Rayder dynasty
+			add_trait = conqueror
+			if = {
+				limit = {
+					has_game_rule = extreme_conquerors_bonuses
+					NOT = { has_character_modifier = ai_extreme_conqueror_modifier }
+				}
+				add_character_modifier = { modifier = ai_extreme_conqueror_modifier }
+			}
+			set_character_faith = faith:old_gods_btw_fnf
+			set_culture = culture:forestman
+			if = {
+				limit = { has_trait = nightswatch }
+				remove_trait = nightswatch
+			}
+			if = {
+				limit = { has_trait = nightswatch_historical }
+				remove_trait = nightswatch_historical
+			}
+			if = {
+				limit = { has_trait = lifestyle_nw_builder }
+				remove_trait = lifestyle_nw_builder
+			}
+			if = {
+				limit = { has_trait = lifestyle_nw_ranger }
+				remove_trait = lifestyle_nw_ranger
+			}
+			if = {
+				limit = { has_trait = lifestyle_nw_steward }
+				remove_trait = lifestyle_nw_steward
+			}
+			add_trait = deserter
+			if = { #in case he's been landed within the Nights Watch or became an adventurer without registering as a deserter
+				limit = {
+					OR = {
+						is_landed = yes
+						is_landless_ruler = yes
+					}
+				}
+				agot_depose_effect = yes #special AGOT version to take into account Nights Watch succession nuances
+			}
+			title:k_first_forest ?= {
+				random_de_jure_county = {
+					limit = {
+						holder = { is_ai = yes }
+					}
+					save_scope_as = asoiaf_mance_new_county
+				}
+			}
+			if = { #if the scoped county is wilderness, colonise it...
+				limit = {
+					scope:asoiaf_mance_new_county.holder = { government_has_flag = government_is_uninteractable }
+				}
+				ai_colonization_effect = { WILDERNESS = scope:asoiaf_mance_new_county ROOT_SCOPE = root }
+			}
+			else = { #... or conquer it from its current holder
+				create_title_and_vassal_change = {
+					type = conquest
+					save_scope_as = change
+					add_claim_on_loss = yes
+				}
+				scope:asoiaf_mance_new_county = {
+					change_title_holder = {
+						holder = root
+						change = scope:change
+					}
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+			create_title_and_vassal_change = {
+				type = created
+				save_scope_as = change
+				add_claim_on_loss = yes
+			}
+			title:e_beyond_the_wall = {
+				change_title_holder = {
+					holder = root
+					change = scope:change
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+			change_government = tribal_government
+			add_prestige = 3000 #grant him some starting prestige
+			add_gold = 100 #grant him some starting gold
+			add_legitimacy = 100
+			spawn_army = {
+				name = asoiaf_wildling_army
+				men_at_arms = {
+					type = giant_regiment #100
+					stacks = 20
+				}
+				men_at_arms = {
+					type = light_footmen #3000
+					stacks = 30
+				}
+				men_at_arms = {
+					type = bowmen #3000
+					stacks = 30
+				}
+				men_at_arms = {
+					type = battering_ram #10
+					stacks = 1
+				}
+				levies = 4000
+				location = root.location
+				inheritable = yes
+			}
+			create_character_memory = { type = asoiaf_mance_rayder_desertion_memory }
+			if = {
+				limit = {
+					exists = title:k_the_wall.holder #the Night's Watch hasn't been destroyed
+				}
+				set_relation_rival = { reason = asoiaf_mance_lord_commander_rival_desc target = title:k_the_wall.holder } #rivalry with the Lord Commander of the Night's Watch
+			}
+		}
+		every_living_character = { #every landed/landless ruler in Westeros gets notified of the new King-Beyond-the-Wall
+			limit = {
+				OR = {
+					is_landed = yes
+					is_landless_ruler = yes
+				}
+				this.location = { geographical_region = world_westeros }
+				NOT = { this = character:Rayder_1 } #exclude Mance himself
+			}
+			trigger_event = asoiaf_maintenance_events.0009
+		}
+	}
+}
+
+asoiaf_daenerys_maintenance = { #only works if Daenerys is alive
+	trigger = {
+		asoiaf_canon_children_Targaryen_9_trigger_yearly = yes
+	}
+	effect = {
+		root = {
+			asoiaf_canon_children_Targaryen_9_birth_effect_yearly = yes
+		}
+	}
+}
+
+asoiaf_canon_children_cersei_jaime_lover_maintenance = { #set the pre-generated Cersei/Jaime as lovers once Jaime is 16 years old
+	trigger = {
+		OR = {
+			has_game_rule = agot_story_historical_events_historical_outcomes
+			has_game_rule = agot_story_historical_events_weighted_outcomes
+		}
+		dynasty:dynn_Lannister = {
+			any_dynasty_member = {
+				AND = {
+					has_inactive_trait = asoiaf_Lannister_7_trait #Jaime Lannister (son of Tywin)
+					AND = { #only trigger this in Jaime's early years so it's not happening in later bookmarks
+						age >= 16
+						age <= 18
+					}
+				}
+			}
+		}
+		NOT = { exists = global_var:asoiaf_canon_children_cersei_jaime_lovers } #once they've been made lovers, never trigger this on_action again
+	}
+	effect = {
+		dynasty:dynn_Lannister = {
+			every_dynasty_member = {
+				limit = {
+					has_inactive_trait = asoiaf_Lannister_7_trait #Jaime Lannister (son of Tywin)
+				}
+				save_scope_as = asoiaf_jaime
+			}
+		}
+		dynasty:dynn_Lannister = {
+			every_dynasty_member = {
+				limit = {
+					has_inactive_trait = asoiaf_Lannister_6_trait #Cersei Lannister (daughter of Tywin)
+				}
+				set_relation_lover = { reason = asoiaf_cersei_jaime_lover_desc target = scope:asoiaf_jaime }
+			}
+		}
+		set_global_variable = asoiaf_canon_children_cersei_jaime_lovers #so this on_action never triggers again
+	}
+}
+
+asoiaf_canon_children_rhaenyra_harwin_lover_maintenance = { #set the pre-generated Rhaenyra/Harwin as lovers once they are 16 years old
+	trigger = {
+		OR = {
+			has_game_rule = agot_story_historical_events_historical_outcomes
+			has_game_rule = agot_story_historical_events_weighted_outcomes
+		}
+		dynasty:dynn_Targaryen = {
+			any_dynasty_member = {
+				AND = {
+					has_inactive_trait = asoiaf_Targaryen_63_trait #Rhaenyra Targaryen (daughter of Viserys I)
+					age >= 16
+				}
+			}
+		}
+		dynasty:dynn_Strong = {
+			any_dynasty_member = {
+				AND = {
+					has_inactive_trait = asoiaf_Strong_30_trait #Harwin Strong (son of Lyonel)
+					age >= 16
+				}
+			}
+		}
+		NOT = { exists = global_var:asoiaf_canon_children_rhaenyra_harwin_lovers } #once they've been made lovers, never trigger this on_action again
+	}
+	effect = {
+		dynasty:dynn_Targaryen = {
+			every_dynasty_member = {
+				limit = {
+					has_inactive_trait = asoiaf_Targaryen_63_trait #Rhaenyra Targaryen (daughter of Viserys I)
+				}
+				save_scope_as = asoiaf_rhaenyra
+			}
+		}
+		dynasty:dynn_Strong = {
+			every_dynasty_member = {
+				limit = {
+					has_inactive_trait = asoiaf_Strong_30_trait #Harwin Strong (son of Lyonel)
+				}
+				set_relation_lover = { reason = asoiaf_rhaenyra_harwin_lover_desc target = scope:asoiaf_rhaenyra }
+			}
+		}
+		set_global_variable = asoiaf_canon_children_rhaenyra_harwin_lovers #so this on_action never triggers again
+	}
+}
+
+asoiaf_canon_children_laenor_joffrey_soulmate_maintenance = {
+	trigger = {
+		OR = {
+			has_game_rule = agot_story_historical_events_historical_outcomes
+			has_game_rule = agot_story_historical_events_weighted_outcomes
+		}
+		dynasty:dynn_Velaryon = {
+			any_dynasty_member = {
+				AND = {
+					has_inactive_trait = asoiaf_Velaryon_35_trait #Laenor Velaryon (son of Corlys)
+					age >= 16
+				}
+			}
+		}
+		character:Lonmouth_16 ?= {
+			age >= 16
+		}
+		NOT = { exists = global_var:asoiaf_canon_children_laenor_joffrey_soulmates } #once they've been made lovers, never trigger this on_action again
+	}
+	effect = {
+		dynasty:dynn_Velaryon = {
+			every_dynasty_member = {
+				limit = {
+					has_inactive_trait = asoiaf_Velaryon_35_trait #Laenor Velaryon (son of Corlys)
+				}
+				save_scope_as = asoiaf_laenor
+			}
+		}
+		character:Lonmouth_16 ?= {
+			set_relation_soulmate = { reason = asoiaf_lanor_joffrey_soulmate_desc target = scope:asoiaf_laenor }
+		}
+		set_global_variable = asoiaf_canon_children_laenor_joffrey_soulmates #so this on_action never triggers again
+	}
+}
+
+asoiaf_canon_children_aegon_daena_lover_maintenance = { #set the pre-generated Aegon IV/Daena as lovers once they are 16 years old
+	trigger = {
+		OR = {
+			has_game_rule = agot_story_historical_events_historical_outcomes
+			has_game_rule = agot_story_historical_events_weighted_outcomes
+		}
+		dynasty:dynn_Targaryen = {
+			AND = {
+				any_dynasty_member = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_88_trait #Aegon IV Targaryen
+						AND = {
+							age >= 16
+						}
+					}
+				}
+				any_dynasty_member = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_83_trait #Daena Targaryen (daughter of Aegon III)
+						age >= 16
+					}
+				}
+			}
+		}
+		NOT = { exists = global_var:asoiaf_canon_children_aegon_daena_lovers } #once they've been made lovers, never trigger this on_action again
+	}
+	effect = {
+		dynasty:dynn_Targaryen = {
+			every_dynasty_member = {
+				limit = {
+					has_inactive_trait = asoiaf_Targaryen_88_trait #Aegon IV Targaryen
+				}
+				save_scope_as = asoiaf_aegon_IV
+			}
+		}
+		dynasty:dynn_Targaryen = {
+			every_dynasty_member = {
+				limit = {
+					has_inactive_trait = asoiaf_Targaryen_83_trait #Daena Targaryen (daughter of Aegon III)
+				}
+				set_relation_lover = { reason = asoiaf_aegon_daena_lover_desc target = scope:asoiaf_aegon_IV }
+			}
+		}
+		set_global_variable = asoiaf_canon_children_aegon_daena_lovers #so this on_action never triggers again
+	}
+}
+
+asoiaf_canon_children_dragon_bonding_maintenance = {
+	trigger = {
+		asoiaf_canon_children_enabled_trigger = yes
+		has_game_rule = asoiaf_canon_children_dragon_bonding_rule_on
+		root = {
+			OR = { #when someone is added to the system, include them here
+				has_inactive_trait = asoiaf_Targaryen_30_trait #Aenys I Targaryen
+				has_inactive_trait = asoiaf_Targaryen_31_trait #Maegor I Targaryen
+				has_inactive_trait = asoiaf_Targaryen_33_trait #Aegon Targaryen (son of Aenys)
+				has_inactive_trait = asoiaf_Targaryen_41_trait #Aerea Targaryen (daughter of Aegon)
+				has_inactive_trait = asoiaf_Targaryen_59_trait #Rhaenys Targaryen (daughter of Aemon)
+				has_inactive_trait = asoiaf_Targaryen_60_trait #Viserys I Targaryen
+				has_inactive_trait = asoiaf_Targaryen_61_trait #Daemon Targaryen (son of Baelon)
+				has_inactive_trait = asoiaf_Targaryen_63_trait #Rhaenyra Targaryen (daughter of Viserys I)
+				has_inactive_trait = asoiaf_Velaryon_34_trait #Laena Velaryon (daughter of Corlys)
+				has_inactive_trait = asoiaf_Targaryen_67_trait #Aemond Targaryen (son of Viserys I)
+			}
+		}
+		#current_date < 8200.1.1 #by 200 we can assume all the Canon Children who would've ridden dragons are born, no need to spam the on_action; shouldn't be necessary now that it ONLY triggers for those characters included in the system
+	}
+	effect = {
+		clear_saved_scope = asoiaf_aenys_i
+		if = { # asoiaf_Targaryen_30_trait -> character:dragon_quicksilver; preserve the original branch order.
+			limit = { exists = character:dragon_quicksilver }
+			if = {
+				limit = {
+					character:dragon_quicksilver = {
+						is_alive = yes
+						has_trait = dragon
+						agot_has_relationship_dragon = no
+					}
+				}
+				dynasty:dynn_Targaryen = {
+					every_dynasty_member = {
+						limit = {
+							has_inactive_trait = asoiaf_Targaryen_30_trait
+							is_alive = yes
+							agot_has_relationship_dragon = no
+							NOT = { has_trait = nightswatch }
+						}
+						save_scope_as = asoiaf_aenys_i
+					}
+				}
+				if = {
+					limit = { exists = scope:asoiaf_aenys_i }
+					scope:asoiaf_aenys_i = {
+						agot_bond_dragon_relation_effect = {
+							ACTOR = scope:asoiaf_aenys_i
+							DRAGON = character:dragon_quicksilver
+						}
+						send_interface_toast = {
+							title = bond_dragon_notification
+							left_icon = scope:asoiaf_aenys_i
+							right_icon = character:dragon_quicksilver
+						}
+					}
+				}
+			}
+		}
+		clear_saved_scope = asoiaf_aenys_i
+		clear_saved_scope = asoiaf_maegor_i
+		if = { # asoiaf_Targaryen_31_trait -> character:dragon_balerion; preserve the original branch order.
+			limit = { exists = character:dragon_balerion }
+			if = {
+				limit = {
+					character:dragon_balerion = {
+						is_alive = yes
+						has_trait = dragon
+						agot_has_relationship_dragon = no
+					}
+				}
+				dynasty:dynn_Targaryen = {
+					every_dynasty_member = {
+						limit = {
+							has_inactive_trait = asoiaf_Targaryen_31_trait
+							is_alive = yes
+							agot_has_relationship_dragon = no
+							NOT = { has_trait = nightswatch }
+						}
+						save_scope_as = asoiaf_maegor_i
+					}
+				}
+				if = {
+					limit = { exists = scope:asoiaf_maegor_i }
+					scope:asoiaf_maegor_i = {
+						agot_bond_dragon_relation_effect = {
+							ACTOR = scope:asoiaf_maegor_i
+							DRAGON = character:dragon_balerion
+						}
+						send_interface_toast = {
+							title = bond_dragon_notification
+							left_icon = scope:asoiaf_maegor_i
+							right_icon = character:dragon_balerion
+						}
+					}
+				}
+			}
+		}
+		clear_saved_scope = asoiaf_maegor_i
+		clear_saved_scope = asoiaf_aegon_the_uncrowned
+		if = { # asoiaf_Targaryen_33_trait -> character:dragon_quicksilver; preserve the original branch order.
+			limit = { exists = character:dragon_quicksilver }
+			if = {
+				limit = {
+					character:dragon_quicksilver = {
+						is_alive = yes
+						has_trait = dragon
+						agot_has_relationship_dragon = no
+					}
+				}
+				dynasty:dynn_Targaryen = {
+					every_dynasty_member = {
+						limit = {
+							has_inactive_trait = asoiaf_Targaryen_33_trait
+							is_alive = yes
+							agot_has_relationship_dragon = no
+							NOT = { has_trait = nightswatch }
+						}
+						save_scope_as = asoiaf_aegon_the_uncrowned
+					}
+				}
+				if = {
+					limit = { exists = scope:asoiaf_aegon_the_uncrowned }
+					scope:asoiaf_aegon_the_uncrowned = {
+						agot_bond_dragon_relation_effect = {
+							ACTOR = scope:asoiaf_aegon_the_uncrowned
+							DRAGON = character:dragon_quicksilver
+						}
+						send_interface_toast = {
+							title = bond_dragon_notification
+							left_icon = scope:asoiaf_aegon_the_uncrowned
+							right_icon = character:dragon_quicksilver
+						}
+					}
+				}
+			}
+		}
+		clear_saved_scope = asoiaf_aegon_the_uncrowned
+		clear_saved_scope = asoiaf_aerea
+		if = { # asoiaf_Targaryen_41_trait -> character:dragon_balerion; preserve the original branch order.
+			limit = { exists = character:dragon_balerion }
+			if = {
+				limit = {
+					character:dragon_balerion = {
+						is_alive = yes
+						has_trait = dragon
+						agot_has_relationship_dragon = no
+					}
+				}
+				dynasty:dynn_Targaryen = {
+					every_dynasty_member = {
+						limit = {
+							has_inactive_trait = asoiaf_Targaryen_41_trait
+							is_alive = yes
+							agot_has_relationship_dragon = no
+							NOT = { has_trait = nightswatch }
+						}
+						save_scope_as = asoiaf_aerea
+					}
+				}
+				if = {
+					limit = { exists = scope:asoiaf_aerea }
+					scope:asoiaf_aerea = {
+						agot_bond_dragon_relation_effect = {
+							ACTOR = scope:asoiaf_aerea
+							DRAGON = character:dragon_balerion
+						}
+						send_interface_toast = {
+							title = bond_dragon_notification
+							left_icon = scope:asoiaf_aerea
+							right_icon = character:dragon_balerion
+						}
+					}
+				}
+			}
+		}
+		clear_saved_scope = asoiaf_aerea
+		clear_saved_scope = asoiaf_rhaenys_queen_who_never_was
+		if = { # asoiaf_Targaryen_59_trait -> character:dragon_meleys; preserve the original branch order.
+			limit = { exists = character:dragon_meleys }
+			if = {
+				limit = {
+					character:dragon_meleys = {
+						is_alive = yes
+						has_trait = dragon
+						agot_has_relationship_dragon = no
+					}
+				}
+				dynasty:dynn_Targaryen = {
+					every_dynasty_member = {
+						limit = {
+							has_inactive_trait = asoiaf_Targaryen_59_trait
+							is_alive = yes
+							agot_has_relationship_dragon = no
+							NOT = { has_trait = nightswatch }
+						}
+						save_scope_as = asoiaf_rhaenys_queen_who_never_was
+					}
+				}
+				if = {
+					limit = { exists = scope:asoiaf_rhaenys_queen_who_never_was }
+					scope:asoiaf_rhaenys_queen_who_never_was = {
+						agot_bond_dragon_relation_effect = {
+							ACTOR = scope:asoiaf_rhaenys_queen_who_never_was
+							DRAGON = character:dragon_meleys
+						}
+						send_interface_toast = {
+							title = bond_dragon_notification
+							left_icon = scope:asoiaf_rhaenys_queen_who_never_was
+							right_icon = character:dragon_meleys
+						}
+					}
+				}
+			}
+		}
+		clear_saved_scope = asoiaf_rhaenys_queen_who_never_was
+		clear_saved_scope = asoiaf_viserys_i
+		if = { # asoiaf_Targaryen_60_trait -> character:dragon_balerion; preserve the original branch order.
+			limit = { exists = character:dragon_balerion }
+			if = {
+				limit = {
+					character:dragon_balerion = {
+						is_alive = yes
+						has_trait = dragon
+						agot_has_relationship_dragon = no
+					}
+				}
+				dynasty:dynn_Targaryen = {
+					every_dynasty_member = {
+						limit = {
+							has_inactive_trait = asoiaf_Targaryen_60_trait
+							is_alive = yes
+							agot_has_relationship_dragon = no
+							NOT = { has_trait = nightswatch }
+						}
+						save_scope_as = asoiaf_viserys_i
+					}
+				}
+				if = {
+					limit = { exists = scope:asoiaf_viserys_i }
+					scope:asoiaf_viserys_i = {
+						agot_bond_dragon_relation_effect = {
+							ACTOR = scope:asoiaf_viserys_i
+							DRAGON = character:dragon_balerion
+						}
+						send_interface_toast = {
+							title = bond_dragon_notification
+							left_icon = scope:asoiaf_viserys_i
+							right_icon = character:dragon_balerion
+						}
+					}
+				}
+			}
+		}
+		clear_saved_scope = asoiaf_viserys_i
+		clear_saved_scope = asoiaf_daemon_rogue_prince
+		if = { # asoiaf_Targaryen_61_trait -> character:dragon_caraxes; preserve the original branch order.
+			limit = { exists = character:dragon_caraxes }
+			if = {
+				limit = {
+					character:dragon_caraxes = {
+						is_alive = yes
+						has_trait = dragon
+						agot_has_relationship_dragon = no
+					}
+				}
+				dynasty:dynn_Targaryen = {
+					every_dynasty_member = {
+						limit = {
+							has_inactive_trait = asoiaf_Targaryen_61_trait
+							is_alive = yes
+							agot_has_relationship_dragon = no
+							NOT = { has_trait = nightswatch }
+						}
+						save_scope_as = asoiaf_daemon_rogue_prince
+					}
+				}
+				if = {
+					limit = { exists = scope:asoiaf_daemon_rogue_prince }
+					scope:asoiaf_daemon_rogue_prince = {
+						agot_bond_dragon_relation_effect = {
+							ACTOR = scope:asoiaf_daemon_rogue_prince
+							DRAGON = character:dragon_caraxes
+						}
+						send_interface_toast = {
+							title = bond_dragon_notification
+							left_icon = scope:asoiaf_daemon_rogue_prince
+							right_icon = character:dragon_caraxes
+						}
+					}
+				}
+			}
+		}
+		clear_saved_scope = asoiaf_daemon_rogue_prince
+		clear_saved_scope = asoiaf_rhaenyra_targaryen
+		if = { # asoiaf_Targaryen_63_trait -> character:dragon_syrax; preserve the original branch order.
+			limit = { exists = character:dragon_syrax }
+			if = {
+				limit = {
+					character:dragon_syrax = {
+						is_alive = yes
+						has_trait = dragon
+						agot_has_relationship_dragon = no
+					}
+				}
+				dynasty:dynn_Targaryen = {
+					every_dynasty_member = {
+						limit = {
+							has_inactive_trait = asoiaf_Targaryen_63_trait
+							is_alive = yes
+							agot_has_relationship_dragon = no
+							NOT = { has_trait = nightswatch }
+						}
+						save_scope_as = asoiaf_rhaenyra_targaryen
+					}
+				}
+				if = {
+					limit = { exists = scope:asoiaf_rhaenyra_targaryen }
+					scope:asoiaf_rhaenyra_targaryen = {
+						agot_bond_dragon_relation_effect = {
+							ACTOR = scope:asoiaf_rhaenyra_targaryen
+							DRAGON = character:dragon_syrax
+						}
+						send_interface_toast = {
+							title = bond_dragon_notification
+							left_icon = scope:asoiaf_rhaenyra_targaryen
+							right_icon = character:dragon_syrax
+						}
+					}
+				}
+			}
+		}
+		clear_saved_scope = asoiaf_rhaenyra_targaryen
+		clear_saved_scope = asoiaf_laena_velaryon
+		if = { # asoiaf_Velaryon_34_trait -> character:dragon_vhagar; preserve the original branch order.
+			limit = { exists = character:dragon_vhagar }
+			if = {
+				limit = {
+					character:dragon_vhagar = {
+						is_alive = yes
+						has_trait = dragon
+						agot_has_relationship_dragon = no
+					}
+				}
+				dynasty:dynn_Velaryon = {
+					every_dynasty_member = {
+						limit = {
+							has_inactive_trait = asoiaf_Velaryon_34_trait
+							is_alive = yes
+							agot_has_relationship_dragon = no
+							NOT = { has_trait = nightswatch }
+						}
+						save_scope_as = asoiaf_laena_velaryon
+					}
+				}
+				if = {
+					limit = { exists = scope:asoiaf_laena_velaryon }
+					scope:asoiaf_laena_velaryon = {
+						agot_bond_dragon_relation_effect = {
+							ACTOR = scope:asoiaf_laena_velaryon
+							DRAGON = character:dragon_vhagar
+						}
+						send_interface_toast = {
+							title = bond_dragon_notification
+							left_icon = scope:asoiaf_laena_velaryon
+							right_icon = character:dragon_vhagar
+						}
+					}
+				}
+			}
+		}
+		clear_saved_scope = asoiaf_laena_velaryon
+		clear_saved_scope = asoiaf_aemond_one_eye
+		if = { # asoiaf_Targaryen_67_trait -> character:dragon_vhagar; preserve the original branch order.
+			limit = { exists = character:dragon_vhagar }
+			if = {
+				limit = {
+					character:dragon_vhagar = {
+						is_alive = yes
+						has_trait = dragon
+						agot_has_relationship_dragon = no
+					}
+				}
+				dynasty:dynn_Targaryen = {
+					every_dynasty_member = {
+						limit = {
+							has_inactive_trait = asoiaf_Targaryen_67_trait
+							is_alive = yes
+							agot_has_relationship_dragon = no
+							NOT = { has_trait = nightswatch }
+						}
+						save_scope_as = asoiaf_aemond_one_eye
+					}
+				}
+				if = {
+					limit = { exists = scope:asoiaf_aemond_one_eye }
+					scope:asoiaf_aemond_one_eye = {
+						agot_bond_dragon_relation_effect = {
+							ACTOR = scope:asoiaf_aemond_one_eye
+							DRAGON = character:dragon_vhagar
+						}
+						send_interface_toast = {
+							title = bond_dragon_notification
+							left_icon = scope:asoiaf_aemond_one_eye
+							right_icon = character:dragon_vhagar
+						}
+					}
+				}
+			}
+		}
+		clear_saved_scope = asoiaf_aemond_one_eye
+	}
+}
+
+#asoiaf_red_priest_maintenance = {
+#	trigger = {
+#		AND = { #only affects AI red priests
+#			is_ai = yes
+#			has_trait = devoted #conditions for being a Red Priest
+#			religion = religion:the_rhllor_religion
+#		}
+#	}
+#	effect = {
+#		asoiaf_red_priest_maintenance_effect = yes
+#	}
+#}
+
+#NOT WORKING
+
+asoiaf_canon_children_betrothals = {
+	#trigger = {
+	#}
+	effect = {
+		if = {
+
+		}
+		if = {
+			limit = {
+				OR = {
+					has_game_rule = agot_ema_targ
+					has_game_rule = agot_ema_lps_targs
+					has_game_rule = agot_ema_enabled
+				}
+				exists = dynasty
+				dynasty = dynasty:dynn_Targaryen
+				NOT = { has_trait = bastard }
+				NOT = { has_trait = disinherited }
+				NOT = { is_betrothed = yes }
+				is_ai = yes
+				trigger_if = {
+					limit = { exists = court_owner }
+					court_owner = { is_ai = yes }
+				}
+				any_sibling = {
+					can_marry_character_trigger = { CHARACTER = root }
+					NOT = { has_trait = bastard }
+					NOT = { has_trait = disinherited }
+					age > 1
+					age < 21
+					exists = dynasty
+					dynasty = dynasty:dynn_Targaryen
+					is_ai = yes
+					trigger_if = {
+						limit = { exists = court_owner }
+						court_owner = { is_ai = yes }
+					}
+					NOT = {
+						any_child = {
+							is_alive = yes
+						}
+					}
+				}
+			}
+			every_sibling = {
+				limit = {
+					can_marry_character_trigger = { CHARACTER = root }
+					NOT = { has_trait = bastard }
+					NOT = { has_trait = disinherited }
+					age < 21
+					exists = dynasty
+					dynasty = dynasty:dynn_Targaryen
+					is_ai = yes
+					trigger_if = {
+						limit = { exists = court_owner }
+						court_owner = { is_ai = yes }
+					}
+					NOT = {
+						any_child = {
+							is_alive = yes
+						}
+					}
+				}
+				add_to_list = sibling_marriage_list
+			}
+			ordered_in_list = {
+				list = sibling_marriage_list
+				order_by = age
+				save_scope_as = betrothed
+			}
+			if = {
+				limit = { is_male = yes}
+				root = {
+					create_betrothal = scope:betrothed
+				}
+			}
+			else = {
+				scope:betrothed = {
+					create_betrothal = root
+				}
+			}
+		}
+	}
+}
+
+# Called from code once every five years for all characters.
+# Root is the character
+#five_year_everyone_pulse = {
+#	on_actions = {
+#		asoiaf_Targaryen_8_traits_change_maintenance
+#	}
+#}
+
+asoiaf_Targaryen_8_traits_change_maintenance = {
+	trigger = {
+		exists = global_var:asoiaf_Targaryen_8_pending_traits_change_variable #if it exists, then he was under 16 and on the run on game start
+		root = {
+			has_inactive_trait = asoiaf_Targaryen_8_trait #this is Viserys
+			age >= 18
+			OR = { #he's on the run in exile
+				AND = {
+					is_landless_adventurer = yes
+					NOT = { root.location = { geographical_region = world_westeros_seven_kingdoms } } #has the added benefit of NOT triggering if he's actively invading Westeros and is located there
+				}
+				AND = {
+					is_landed = no
+					is_landless_adventurer = no
+					NOT = { geographical_region = world_westeros_seven_kingdoms }
+					liege ?= {
+						NOT = { capital_county.title_province = { geographical_region = world_westeros_seven_kingdoms } }
+					}
+				}
+				AND = {
+					is_landed = yes
+					NOT = { capital_county.title_province = { geographical_region = world_westeros_seven_kingdoms } }
+				}
+			}
+		}
+	}
+	effect = {
+		root = {
+			trigger_event = { id = asoiaf_maintenance_events.0001 days = 3 }
+		}
+	}
+}

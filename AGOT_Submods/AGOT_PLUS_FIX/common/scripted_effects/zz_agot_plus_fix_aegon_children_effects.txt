@@ -1,0 +1,424 @@
+﻿agot_plus_fix_aegon_child_parentage_effect = {
+	if = {
+		limit = { exists = scope:mother.house }
+		set_house = scope:mother.house
+	}
+	if = {
+		limit = { exists = scope:father }
+		set_father = scope:father
+		if = {
+			limit = { scope:mother = { has_character_flag = asoiaf_patrilineal_parentage } }
+			if = {
+				limit = { exists = scope:father.house }
+				set_house = scope:father.house
+			}
+			set_character_faith = scope:father.faith
+			set_culture = scope:father.culture
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				NOT = { exists = scope:father }
+				scope:mother = { has_character_flag = pregnancy_real_father_of_bastard_is_known_flag }
+			}
+			NOT = { scope:real_father = { is_spouse_of_even_if_dead = scope:mother } }
+		}
+		if = {
+			limit = { faith = { has_doctrine_parameter = bastards_none } }
+			add_trait = wild_oat
+		}
+		else = { add_trait = bastard }
+		if = {
+			limit = { scope:mother = { has_character_flag = pregnancy_real_father_of_bastard_is_known_flag } }
+			set_father = scope:real_father
+			if = {
+				limit = {
+					has_trait = bastard
+					exists = scope:real_father.house
+				}
+				set_house = scope:real_father.house
+			}
+		}
+		agot_add_custom_bastard_nickname_effect = yes
+	}
+}
+
+# Idempotent initialization for new games and existing saves reaching these births.
+agot_plus_fix_initialize_aegon_children_effect = {
+	character:Targaryen_98 ?= {
+		set_global_variable = asoiaf_canon_children_Targaryen_98_born_variable
+		make_trait_inactive = asoiaf_Targaryen_98_trait
+	}
+	character:Targaryen_99 ?= {
+		set_global_variable = asoiaf_canon_children_Targaryen_99_born_variable
+		make_trait_inactive = asoiaf_Targaryen_99_trait
+	}
+	character:Targaryen_100 ?= {
+		set_global_variable = asoiaf_canon_children_Targaryen_100_born_variable
+		make_trait_inactive = asoiaf_Targaryen_100_trait
+	}
+	character:Targaryen_101 ?= {
+		set_global_variable = asoiaf_canon_children_Targaryen_101_born_variable
+		make_trait_inactive = asoiaf_Targaryen_101_trait
+	}
+	character:Targaryen_102 ?= {
+		set_global_variable = asoiaf_canon_children_Targaryen_102_born_variable
+		make_trait_inactive = asoiaf_Targaryen_102_trait
+	}
+	character:Targaryen_103 ?= {
+		set_global_variable = asoiaf_canon_children_Targaryen_103_born_variable
+		make_trait_inactive = asoiaf_Targaryen_103_trait
+	}
+	character:Targaryen_104 ?= {
+		set_global_variable = asoiaf_canon_children_Targaryen_104_born_variable
+		make_trait_inactive = asoiaf_Targaryen_104_trait
+	}
+}
+
+asoiaf_canon_children_Targaryen_98_birth_effect = {
+	if = {
+		limit = { asoiaf_canon_children_Targaryen_98_trigger = yes }
+		clear_saved_scope = child
+		clear_saved_scope = child_2
+		clear_saved_scope = child_3
+		create_character = {
+			age = 0
+			name = "Alysanne"
+			gender = female
+			mother = scope:mother
+			real_father = scope:real_father
+			faith = scope:mother.faith
+			culture = scope:mother.culture
+			location = scope:mother.location
+			random_traits = no
+			save_scope_as = child
+			after_creation = {
+				agot_plus_fix_place_newborn_effect = yes
+				agot_plus_fix_aegon_child_parentage_effect = yes
+				asoiaf_canon_children_join_travel_plan_effect = yes
+				set_global_variable = asoiaf_canon_children_Targaryen_98_born_variable
+				make_trait_inactive = asoiaf_Targaryen_98_trait
+				add_character_modifier = asoiaf_Targaryen_98_modifier
+				copy_inheritable_appearance_from = character:Dummy_Targaryen_98
+				add_character_flag = has_scripted_appearance
+				add_character_flag = canon_status_canon
+				make_trait_inactive = neutral_silver_hair
+				make_trait_inactive = purple_eyes_9
+				if = {
+					limit = { has_game_rule = asoiaf_canon_children_rule_on_traits }
+					add_trait = education_learning_1
+				}
+			}
+		}
+		# End the pregnancy only after a child was actually created.
+		if = {
+			limit = { exists = scope:child }
+			scope:mother = {
+				asoiaf_canon_children_terminate_pregnancy_effect = yes
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				# Native dispatcher handles one notification path, secrets and cleanup.
+				trigger_event = birth.0001
+			}
+		}
+	}
+}
+
+asoiaf_canon_children_Targaryen_99_birth_effect = {
+	if = {
+		limit = { asoiaf_canon_children_Targaryen_99_trigger = yes }
+		clear_saved_scope = child
+		clear_saved_scope = child_2
+		clear_saved_scope = child_3
+		create_character = {
+			age = 0
+			name = "Lily"
+			gender = female
+			mother = scope:mother
+			real_father = scope:real_father
+			faith = scope:mother.faith
+			culture = scope:mother.culture
+			location = scope:mother.location
+			random_traits = no
+			save_scope_as = child
+			after_creation = {
+				agot_plus_fix_place_newborn_effect = yes
+				agot_plus_fix_aegon_child_parentage_effect = yes
+				asoiaf_canon_children_join_travel_plan_effect = yes
+				set_global_variable = asoiaf_canon_children_Targaryen_99_born_variable
+				make_trait_inactive = asoiaf_Targaryen_99_trait
+				add_character_modifier = asoiaf_Targaryen_99_modifier
+				copy_inheritable_appearance_from = character:Dummy_Targaryen_99
+				add_character_flag = has_scripted_appearance
+				add_character_flag = canon_status_canon
+				make_trait_inactive = cool_silver_hair
+				make_trait_inactive = purple_eyes_13
+				if = {
+					limit = { has_game_rule = asoiaf_canon_children_rule_on_traits }
+					add_trait = education_learning_1
+				}
+			}
+		}
+		# End the pregnancy only after a child was actually created.
+		if = {
+			limit = { exists = scope:child }
+			scope:mother = {
+				asoiaf_canon_children_terminate_pregnancy_effect = yes
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				# Native dispatcher handles one notification path, secrets and cleanup.
+				trigger_event = birth.0001
+			}
+		}
+	}
+}
+
+asoiaf_canon_children_Targaryen_100_birth_effect = {
+	if = {
+		limit = { asoiaf_canon_children_Targaryen_100_trigger = yes }
+		clear_saved_scope = child
+		clear_saved_scope = child_2
+		clear_saved_scope = child_3
+		create_character = {
+			age = 0
+			name = "Willow"
+			gender = female
+			mother = scope:mother
+			real_father = scope:real_father
+			faith = scope:mother.faith
+			culture = scope:mother.culture
+			location = scope:mother.location
+			random_traits = no
+			save_scope_as = child
+			after_creation = {
+				agot_plus_fix_place_newborn_effect = yes
+				agot_plus_fix_aegon_child_parentage_effect = yes
+				asoiaf_canon_children_join_travel_plan_effect = yes
+				set_global_variable = asoiaf_canon_children_Targaryen_100_born_variable
+				make_trait_inactive = asoiaf_Targaryen_100_trait
+				add_character_modifier = asoiaf_Targaryen_100_modifier
+				copy_inheritable_appearance_from = character:Dummy_Targaryen_100
+				add_character_flag = has_scripted_appearance
+				add_character_flag = canon_status_canon
+				make_trait_inactive = cool_neutral_silver_hair
+				make_trait_inactive = purple_eyes_13
+				if = {
+					limit = { has_game_rule = asoiaf_canon_children_rule_on_traits }
+					add_trait = education_learning_1
+				}
+			}
+		}
+		# End the pregnancy only after a child was actually created.
+		if = {
+			limit = { exists = scope:child }
+			scope:mother = {
+				asoiaf_canon_children_terminate_pregnancy_effect = yes
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				# Native dispatcher handles one notification path, secrets and cleanup.
+				trigger_event = birth.0001
+			}
+		}
+	}
+}
+
+asoiaf_canon_children_Targaryen_101_birth_effect = {
+	if = {
+		limit = { asoiaf_canon_children_Targaryen_101_trigger = yes }
+		clear_saved_scope = child
+		clear_saved_scope = child_2
+		clear_saved_scope = child_3
+		create_character = {
+			age = 0
+			name = "Rosey"
+			gender = female
+			mother = scope:mother
+			real_father = scope:real_father
+			faith = scope:mother.faith
+			culture = scope:mother.culture
+			location = scope:mother.location
+			random_traits = no
+			save_scope_as = child
+			after_creation = {
+				agot_plus_fix_place_newborn_effect = yes
+				agot_plus_fix_aegon_child_parentage_effect = yes
+				asoiaf_canon_children_join_travel_plan_effect = yes
+				set_global_variable = asoiaf_canon_children_Targaryen_101_born_variable
+				make_trait_inactive = asoiaf_Targaryen_101_trait
+				add_character_modifier = asoiaf_Targaryen_101_modifier
+				copy_inheritable_appearance_from = character:Dummy_Targaryen_101
+				add_character_flag = has_scripted_appearance
+				add_character_flag = canon_status_canon
+				make_trait_inactive = silver_blonde_hair
+				make_trait_inactive = purple_eyes_2
+				if = {
+					limit = { has_game_rule = asoiaf_canon_children_rule_on_traits }
+					add_trait = education_learning_1
+				}
+			}
+		}
+		# End the pregnancy only after a child was actually created.
+		if = {
+			limit = { exists = scope:child }
+			scope:mother = {
+				asoiaf_canon_children_terminate_pregnancy_effect = yes
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				# Native dispatcher handles one notification path, secrets and cleanup.
+				trigger_event = birth.0001
+			}
+
+			if = {
+				limit = {
+					has_game_rule = asoiaf_canon_children_pregnancy_negation_rule_on
+					scope:mother = {
+						OR = {
+							is_married = no
+							is_spouse_of_even_if_dead = scope:real_father
+						}
+					}
+				}
+				scope:mother = { add_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+			}
+		}
+	}
+}
+
+asoiaf_canon_children_Targaryen_102_birth_effect = {
+	if = {
+		limit = { asoiaf_canon_children_Targaryen_102_trigger = yes }
+		clear_saved_scope = child
+		clear_saved_scope = child_2
+		clear_saved_scope = child_3
+		create_character = {
+			age = 0
+			name = "Bellenora"
+			gender = female
+			mother = scope:mother
+			real_father = scope:real_father
+			faith = scope:mother.faith
+			culture = scope:mother.culture
+			location = scope:mother.location
+			random_traits = no
+			save_scope_as = child
+			after_creation = {
+				agot_plus_fix_place_newborn_effect = yes
+				agot_plus_fix_aegon_child_parentage_effect = yes
+				asoiaf_canon_children_join_travel_plan_effect = yes
+				set_global_variable = asoiaf_canon_children_Targaryen_102_born_variable
+				make_trait_inactive = asoiaf_Targaryen_102_trait
+				add_character_modifier = asoiaf_Targaryen_102_modifier
+				copy_inheritable_appearance_from = character:Dummy_Targaryen_102
+				add_character_flag = has_scripted_appearance
+				add_character_flag = canon_status_canon
+				add_trait = beauty_good_3
+			}
+		}
+		# End the pregnancy only after a child was actually created.
+		if = {
+			limit = { exists = scope:child }
+			scope:mother = {
+				asoiaf_canon_children_terminate_pregnancy_effect = yes
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				# Native dispatcher handles one notification path, secrets and cleanup.
+				trigger_event = birth.0001
+			}
+		}
+	}
+}
+
+asoiaf_canon_children_Targaryen_103_birth_effect = {
+	if = {
+		limit = { asoiaf_canon_children_Targaryen_103_trigger = yes }
+		clear_saved_scope = child
+		clear_saved_scope = child_2
+		clear_saved_scope = child_3
+		create_character = {
+			age = 0
+			name = "Narha"
+			gender = female
+			mother = scope:mother
+			real_father = scope:real_father
+			faith = scope:mother.faith
+			culture = scope:mother.culture
+			location = scope:mother.location
+			random_traits = no
+			save_scope_as = child
+			after_creation = {
+				agot_plus_fix_place_newborn_effect = yes
+				agot_plus_fix_aegon_child_parentage_effect = yes
+				asoiaf_canon_children_join_travel_plan_effect = yes
+				set_global_variable = asoiaf_canon_children_Targaryen_103_born_variable
+				make_trait_inactive = asoiaf_Targaryen_103_trait
+				add_character_modifier = asoiaf_Targaryen_103_modifier
+				copy_inheritable_appearance_from = character:Dummy_Targaryen_103
+				add_character_flag = has_scripted_appearance
+				add_character_flag = canon_status_canon
+			}
+		}
+		# End the pregnancy only after a child was actually created.
+		if = {
+			limit = { exists = scope:child }
+			scope:mother = {
+				asoiaf_canon_children_terminate_pregnancy_effect = yes
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				# Native dispatcher handles one notification path, secrets and cleanup.
+				trigger_event = birth.0001
+			}
+		}
+	}
+}
+
+asoiaf_canon_children_Targaryen_104_birth_effect = {
+	if = {
+		limit = { asoiaf_canon_children_Targaryen_104_trigger = yes }
+		clear_saved_scope = child
+		clear_saved_scope = child_2
+		clear_saved_scope = child_3
+		create_character = {
+			age = 0
+			name = "Balerion"
+			gender = male
+			mother = scope:mother
+			real_father = scope:real_father
+			faith = scope:mother.faith
+			culture = scope:mother.culture
+			location = scope:mother.location
+			random_traits = no
+			save_scope_as = child
+			after_creation = {
+				agot_plus_fix_place_newborn_effect = yes
+				agot_plus_fix_aegon_child_parentage_effect = yes
+				asoiaf_canon_children_join_travel_plan_effect = yes
+				set_global_variable = asoiaf_canon_children_Targaryen_104_born_variable
+				make_trait_inactive = asoiaf_Targaryen_104_trait
+				add_character_modifier = asoiaf_Targaryen_104_modifier
+				copy_inheritable_appearance_from = character:Dummy_Targaryen_104
+				add_character_flag = has_scripted_appearance
+				add_character_flag = canon_status_canon
+				add_trait = beauty_good_1
+			}
+		}
+		# End the pregnancy only after a child was actually created.
+		if = {
+			limit = { exists = scope:child }
+			scope:mother = {
+				asoiaf_canon_children_terminate_pregnancy_effect = yes
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				# Native dispatcher handles one notification path, secrets and cleanup.
+				trigger_event = birth.0001
+			}
+
+			if = {
+				limit = {
+					has_game_rule = asoiaf_canon_children_pregnancy_negation_rule_on
+					scope:mother = {
+						OR = {
+							is_married = no
+							is_spouse_of_even_if_dead = scope:real_father
+						}
+					}
+				}
+				scope:mother = { add_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+			}
+		}
+	}
+}
+

@@ -1,0 +1,3660 @@
+﻿#########################
+### VANITY CHARACTERS ###
+#########################
+asoiaf_Svennis = { #Svennis
+	name = Sven
+	dna = asoiaf_Svennis
+	
+	religion = old_gods_wnw
+	culture = northman
+	sexuality = heterosexual
+
+	martial = 9
+	diplomacy = 16
+	intrigue = 7
+	stewardship = 4
+	learning = 13
+	prowess = 17
+
+	trait = brave
+	trait = stubborn
+	trait = honest
+	trait = lifestyle_physician
+	trait = education_learning_1
+
+	disallow_random_traits = yes
+
+	8269.1.1 = {
+		birth = yes
+		add_character_flag = sexuality_ensure_heterosexual
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_white_harbor }
+		}
+		effect = {
+			set_focus = education_learning
+		}
+	}
+	8282.1.1 = { #squire of Wendel Manderly at 13
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:Manderly_8 } #Wendel Manderly (son of Wyman)
+		}
+	}
+	8289.1.1 = { #knight at 20
+		trait = knight
+	}
+}
+
+#############################
+### EASTER EGG CHARACTERS ###
+#############################
+asoiaf_Toth_1 = { #Istvan's father
+	name = Alliser
+	dynasty = dynn_Toth
+	# dna = asoiaf_Toth_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = valeman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8241.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_osgoodswell }
+		}
+	}
+	8265.1.1 = {
+		add_spouse = asoiaf_Toth_rs_1
+	}
+	8282.12.12 = { #Siege of Gulltown takes place and Toth is orphaned; joins the service of the new Lord Gerold
+		death = {
+			death_reason = death_siege
+		}
+	}
+}
+asoiaf_Toth_rs_1 = { #Istvan's mother
+	name = Melody
+	# dna = asoiaf_Toth_rs_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = valeman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8241.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_osgoodswell }
+		}
+	}
+	8282.12.12 = { #Siege of Gulltown takes place and Toth is orphaned; joins the service of the new Lord Gerold
+		death = {
+			death_reason = death_siege
+		}
+	}
+}
+asoiaf_Toth_2 = { #Istvan Toth
+	name = Istvan
+	dynasty = dynn_Toth
+	dna = asoiaf_Toth_2
+	sexuality = homosexual
+	
+	religion = fots_seven
+	culture = valeman_main
+
+	martial = 6
+	diplomacy = 10
+	intrigue = 10
+	stewardship = 5
+	learning = 10
+	prowess = 10
+	trait = intellect_good_2
+
+	trait = deceitful
+	trait = ambitious
+	trait = callous
+	trait = cynical
+	trait = fashionable
+	trait = schemer
+	trait = education_intrigue_4
+	trait = education_martial_prowess_3
+
+	disallow_random_traits = yes
+
+	father = asoiaf_Toth_1
+	mother = asoiaf_Toth_rs_1
+
+	8267.1.1 = {
+		birth = yes
+		add_character_flag = sexuality_ensure_homosexual
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_osgoodswell }
+		}
+		effect = {
+			set_focus = education_intrigue
+		}
+	}
+	8282.12.12 = { #Siege of Gulltown takes place and Toth is orphaned; joins the service of the new Lord Gerold
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_gulltown }
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:Grafton_3 } #Gerold Grafton (son of Randyll)
+			set_relation_grudge = { reason = asoiaf_istvan_robert_grudge_desc target = character:Baratheon_2 } #Robert I Baratheon
+		}
+	}
+	8298.12.21 = { #War of the Five Kings starts and he seeks opportunity in the Young Wolf's service based in Riverrun
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_riverrun }
+		}
+	}
+	8284.1.1 = { #knight at 17
+		trait = knight
+	}
+	8288.1.1 = { #met Erik at 21
+		effect = {
+			set_relation_friend = character:asoiaf_Erik
+			set_relation_lover = { reason = asoiaf_istvan_erik_lover_desc target = character:asoiaf_Erik } #Erik
+		}
+	}
+	#8299.1.1 = { #leads the raid on Henry's village, killing his parents
+	#	trait = murderer
+	#}
+	8299.12.15 = { #Henry kills him during the chaos of the Red Wedding after hunting him down
+		death = {
+			death_reason = death_duel
+			killer = asoiaf_Kobyla_2 #Henry of Skalitz
+		}
+	}
+}
+asoiaf_Erik_father = { #Erik father
+	name = Bernard
+	# dna = asoiaf_Erik_father # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = valeman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8243.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_gulltown }
+		}
+	}
+	8262.1.1 = {
+		add_spouse = asoiaf_Erik_mother
+	}
+	8282.12.12 = { #Siege of Gulltown takes place and Erik is orphaned
+		death = {
+			death_reason = death_siege
+		}
+	}
+}
+asoiaf_Erik_mother = { #Erik mother
+	name = Flora
+	# dna = asoiaf_Erik_mother # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = valeman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8244.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_gulltown }
+		}
+	}
+	8282.12.12 = { #Siege of Gulltown takes place and Erik is orphaned
+		death = {
+			death_reason = death_siege
+		}
+	}
+}
+asoiaf_Erik = { #Erik
+	name = Erik
+	dna = asoiaf_Erik
+	sexuality = homosexual
+	
+	religion = fots_seven
+	culture = valeman_main
+
+	martial = 10
+	diplomacy = 6
+	intrigue = 6
+	stewardship = 5
+	learning = 7
+	prowess = 10
+
+	trait = brave
+	trait = wrathful
+	trait = diligent
+	trait = impatient
+	trait = loyal
+	trait = aggressive_attacker
+	trait = education_martial_3
+	trait = education_martial_prowess_4
+
+	disallow_random_traits = yes
+
+	father = asoiaf_Erik_father
+	mother = asoiaf_Erik_mother
+
+	8271.1.1 = {
+		birth = yes
+		add_character_flag = sexuality_ensure_homosexual
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_gulltown }
+		}
+		effect = {
+			set_focus = education_martial
+		}
+	}
+	8288.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Toth_2 } #Istvan Toth
+		}
+	}
+	8298.12.21 = { #Joins Istvan in Riverrun
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_riverrun }
+		}
+	}
+	8299.12.15 = { #Henry kills Istvan during the chaos of the Red Wedding; Erik vows revenge
+		effect = {
+			set_relation_nemesis = { reason = asoiaf_erik_henry_nemesis_desc target = character:asoiaf_Kobyla_2 } #Henry of Skalitz
+		}
+	}
+}
+asoiaf_Henry_mother = { #Henry's mother
+	name = Hazel #random name
+	# dna = asoiaf_Henry_mother # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	sexuality = heterosexual
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+	trait = beauty_good_2
+
+	trait = compassionate
+	trait = forgiving
+	trait = content
+	trait = diligent
+	trait = education_diplomacy_2
+
+	disallow_random_traits = yes
+
+	8258.1.1 = {
+		birth = yes
+		add_character_flag = sexuality_ensure_heterosexual
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+		effect = {
+			set_focus = education_diplomacy
+		}
+	}
+	#8280.1.1 = { #romance with Radzig Kobyla at 23
+	8281.1.1 = { #Becomes pregnant with Radzig's child and Martin agrees to marry her
+		trait = fornicator
+		add_spouse = asoiaf_Martin
+	}
+	8299.1.1 = { #dies in a raid during the War of the Five Kings
+		death = {
+			death_reason = death_raid
+			killer = asoiaf_Toth_2 #Istvan Toth
+		}
+	}
+}
+asoiaf_Martin = { #Martin the Blacksmith
+	name = Martin
+	# dna = asoiaf_Martin # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	sexuality = heterosexual
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 8
+	diplomacy = 5
+	intrigue = 3
+	stewardship = 10
+	learning = 5
+	prowess = 10
+
+	trait = honest
+	trait = brave
+	trait = just
+	trait = diligent
+	trait = shrewd
+	trait = education_stewardship_3
+
+	disallow_random_traits = yes
+
+	8256.1.1 = {
+		birth = yes
+		add_character_flag = sexuality_ensure_heterosexual
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+		effect = {
+			set_focus = education_stewardship
+		}
+	}
+	8281.1.1 = { #Marries Henry's mother and settles down as a blacksmith
+		effect = {
+			agot_appoint_as_court_position_for_castle_history_effect = {
+				CASTLE = title:c_deadwater
+				POSITION = court_smith_court_position
+			}
+		}
+	}
+	8299.1.1 = { #dies in a raid during the War of the Five Kings
+		death = {
+			death_reason = death_raid
+			killer = asoiaf_Toth_2 #Istvan Toth
+		}
+	}
+}
+asoiaf_Kobyla_1 = { #Radzig Kobyla (father of Henry)
+	name = Radzig
+	dynasty = dynn_Kobyla
+	# dna = asoiaf_Kobyla_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	sexuality = heterosexual
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 9
+	diplomacy = 8
+	intrigue = 5
+	stewardship = 12
+	learning = 10
+	prowess = 10
+
+	trait = just
+	trait = brave
+	trait = calm
+	trait = ambitious
+	trait = shrewd
+	trait = avaricious
+	trait = education_martial_3
+	trait = education_martial_prowess_3
+
+	disallow_random_traits = yes
+
+	8262.1.1 = {
+		birth = yes
+		add_character_flag = sexuality_ensure_heterosexual
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+		effect = {
+			set_focus = education_martial
+		}
+	}
+	8274.1.1 = { #squire of Lord Bermond Bettley at 12
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:Bettley_1 } #Bermond Bettley (son of Osbert)
+		}
+	}
+	8278.1.1 = { #knight at 16
+		effect = {
+			agot_knighted_char_history_effect = { KNIGHT = character:Bettley_1 } #Bermond Bettley (son of Osbert)
+			set_relation_friend = character:asoiaf_Leipa_12 #Hanush of Leipa
+		}
+		trait = knight
+	}
+	8279.1.1 = {
+		effect = {
+			agot_appoint_as_court_position_for_castle_history_effect = {
+				CASTLE = title:c_deadwater
+				POSITION = seneschal_court_position
+			}
+		}
+	}
+	8280.1.1 = { #romance with Henry's mother at 21
+		effect = {
+			set_relation_lover = character:asoiaf_Henry_mother
+			set_relation_friend = character:asoiaf_Martin
+		}
+	}
+	8281.1.1 = { #Henry's mother becomes pregnant and Martin agrees to marry her
+		trait = fornicator
+		effect = { remove_relation_lover = character:asoiaf_Henry_mother }
+	}
+}
+asoiaf_Kobyla_2 = { #Henry of Skalitz
+	name = Henry
+	dynasty = dynn_Kobyla
+	dna = asoiaf_Kobyla_2
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 7
+	diplomacy = 6
+	intrigue = 5
+	stewardship = 7
+	learning = 6
+	prowess = 10
+
+	trait = bastard
+	trait = brave
+	trait = diligent
+	trait = just
+	trait = lifestyle_blademaster
+	trait = loyal
+	trait = education_martial_2
+	trait = education_martial_prowess_4
+
+	disallow_random_traits = yes
+
+	father = asoiaf_Kobyla_1
+	mother = asoiaf_Henry_mother
+
+	8281.1.1 = {
+		birth = yes
+		make_trait_inactive = surname_hill
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+		effect = {
+			set_focus = education_martial
+		}
+		effect = {
+			agot_set_as_ward_history_effect = { GUARDIAN = character:asoiaf_Martin } #Martin
+		}
+	}
+	8299.1.1 = { #squire of Hans Capon + vengence for dead parents
+		trait = vengeful
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Capon_2 } #Hans Capon
+			set_relation_best_friend = { reason = asoiaf_henry_hans_best_friend_desc target = character:asoiaf_Capon_2 } #Hans Capon
+			set_relation_nemesis = { reason = asoiaf_henry_istvan_nemesis_desc target = character:asoiaf_Toth_2 } #Istvan Toth
+			set_relation_grudge = { reason = asoiaf_henry_robb_grudge_desc target = character:Stark_6 } #Robb Stark (son of Eddard)
+			#romance with Hans ONLY if both are bi (randomly set by the game)
+		}
+	}
+}
+
+asoiaf_Ronov_1 = { #Smil Ronov
+	name = Smil
+	dynasty = dynn_Ronov
+	# dna = asoiaf_Ronov_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8097.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8110.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:Bettley_1 } #Bermond Bettley (son of Osbert); a young lord at the time
+		}
+	}
+	8114.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Ronov_rs_1
+	}
+	8148.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Ronov_rs_1 = { #Wife of Smil Ronov
+	name = Theresa
+	# dna = asoiaf_Ronov_rs_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8097.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8148.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Ronov_2 = { #Castolov Ronov (son of Smil)
+	name = Castolov
+	dynasty = dynn_Ronov
+	# dna = asoiaf_Ronov_2 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	trait = education_martial_2
+	trait = lifestyle_hunter
+
+	father = asoiaf_Ronov_1
+	mother = asoiaf_Ronov_rs_1
+
+	8123.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+		effect = {
+			set_focus = education_martial
+		}
+	}
+	8133.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Ronov_1 } #father
+		}
+	}
+	8142.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Ronov_rs_2
+	}
+	8166.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Ronov_rs_2 = { #Wife of Castolov Ronov
+	name = Obetta
+	# dna = asoiaf_Ronov_rs_2 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8123.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8166.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Ronov_3 = { #Henry Ronov (son of Smil)
+	name = Henry
+	dynasty = dynn_Ronov
+	# dna = asoiaf_Ronov_3 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	trait = administrator
+	trait = education_stewardship_3
+
+	father = asoiaf_Ronov_1
+	mother = asoiaf_Ronov_rs_1
+
+	8125.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+		effect = {
+			set_focus = education_stewardship
+		}
+	}
+	8139.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Ronov_1 } #father
+		}
+	}
+	8143.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Ronov_rs_3
+	}
+	8173.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Ronov_rs_3 = { #Wife of Henry Ronov
+	name = Lily
+	# dna = asoiaf_Ronov_rs_3 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8125.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8173.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Ronov_4 = { #Henry Ronov (son of Castolov)
+	name = Henry
+	dynasty = dynn_Ronov
+	# dna = asoiaf_Ronov_4 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Ronov_2
+	mother = asoiaf_Ronov_rs_2
+
+	8146.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8161.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Ronov_2 } #father
+		}
+	}
+	8162.1.1 = {
+		trait = knight
+	}
+	8203.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Ronov_5 = { #Castolov Ronov (son of Castolov)
+	name = Castolov
+	dynasty = dynn_Ronov
+	# dna = asoiaf_Ronov_5 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Ronov_2
+	mother = asoiaf_Ronov_rs_2
+
+	8147.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8162.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Ronov_2 } #father
+		}
+	}
+	8163.1.1 = {
+		trait = knight
+	}
+	8204.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_1 = { #Chval of Leipa (son of Castolov)
+	name = Chval
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	trait = ambitious
+	trait = architect
+
+	father = asoiaf_Ronov_2
+	mother = asoiaf_Ronov_rs_2
+
+	8149.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8164.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Ronov_1 } #gradnfather
+		}
+	}
+	8165.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Leipa_rs_1
+	}
+	8206.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_rs_1 = { #Wife of Chval
+	name = Alerie
+	# dna = asoiaf_Leipa_rs_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8149.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8206.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Ronov_6 = { #Smil of Lichtenburg (son of Henry)
+	name = Smil
+	dynasty_house = house_Lichtenburg
+	# dna = asoiaf_Ronov_6 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Ronov_3
+	mother = asoiaf_Ronov_rs_3
+
+	8145.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8157.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Ronov_3 } #father
+		}
+	}
+	8162.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Ronov_rs_6
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8182.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Ronov_rs_6 = { #Elizabeth (wife of Smil)
+	name = Elizabeth
+	# dna = asoiaf_Ronov_rs_6 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8145.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8162.1.1 = {
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8182.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_2 = { #Cenek of Leipa (son of Chval)
+	name = Cenek
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_2 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Leipa_1
+	mother = asoiaf_Leipa_rs_1
+
+	8172.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8187.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Leipa_1 } #father
+		}
+	}
+	8191.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Leipa_rs_2
+	}
+	8218.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_rs_2 = { #Wife of Cenek
+	name = Austa
+	# dna = asoiaf_Leipa_rs_2 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8172.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8218.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_3 = { #Henry of Leipa (son of Cenek)
+	name = Henry
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_3 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 10
+	diplomacy = 6
+	intrigue = 8
+	stewardship = 7
+	learning = 7
+	prowess = 10
+
+	trait = deceitful
+	trait = diligent
+	trait = ambitious
+	trait = education_martial_4
+	trait = education_martial_prowess_3
+
+	disallow_random_traits = yes
+
+	father = asoiaf_Leipa_2
+	mother = asoiaf_Leipa_rs_2
+
+	8197.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+		effect = {
+			set_focus = education_martial
+		}
+	}
+	8208.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Leipa_2 } #father
+		}
+	}
+	8214.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Leipa_rs_3
+	}
+	8245.1.1 = {
+		trait = widowed
+	}
+	8249.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_rs_3 = { #Elizabeth (wife of Henry)
+	name = Elizabeth
+	# dna = asoiaf_Leipa_rs_3 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	trait = shrewd
+	trait = education_diplomacy_4
+
+	8197.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+		effect = {
+			set_focus = education_diplomacy
+		}
+	}
+	8245.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_4 = { #Henry of Leipa (son of Henry)
+	name = Henry
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_4 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 8
+	diplomacy = 7
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 8
+
+	trait = strong
+	trait = education_martial_3
+	trait = education_martial_prowess_3
+
+	father = asoiaf_Leipa_3
+	mother = asoiaf_Leipa_rs_3
+
+	8222.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+		effect = {
+			set_focus = education_martial
+		}
+	}
+	8234.1.1 = {
+		give_nickname = nick_the_iron_one
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Leipa_3 } #father
+		}
+	}
+	8240.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Leipa_rs_4
+	}
+	8273.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_rs_4 = { #Agnes (wife of Henry)
+	name = Agnes
+	# dna = asoiaf_Leipa_rs_4 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8222.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8273.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_5 = { #Clara of Leipa (daughter of Henry)
+	name = Clara
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_5 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Leipa_3
+	mother = asoiaf_Leipa_rs_3
+
+	8224.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8270.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_6 = { #Margaret of Leipa (daughter of Henry)
+	name = Margaret
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_6 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Leipa_3
+	mother = asoiaf_Leipa_rs_3
+
+	8225.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8262.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_7 = { #John of Leipa (son of Henry)
+	name = John
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_7 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Leipa_3
+	mother = asoiaf_Leipa_rs_3
+
+	8227.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8240.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Leipa_3 } #father
+		}
+	}
+	8245.1.1 = {
+		trait = knight
+	}
+	8282.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_8 = { #Katherine of Leipa (daughter of Henry)
+	name = Katherine
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_8 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Leipa_3
+	mother = asoiaf_Leipa_rs_3
+
+	8229.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8279.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_9 = { #Berthold of Leipa (son of Henry)
+	name = Berthold
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_9 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Leipa_3
+	mother = asoiaf_Leipa_rs_3
+
+	8230.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8243.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:Bettley_22 } #Osbert Bettley (son of Bermond)
+		}
+	}
+	8247.1.1 = {
+		trait = knight
+	}
+	8278.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_10 = { #Cenek of Leipa (son of Henry; grandfather of Hans)
+	name = Cenek
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_10 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Leipa_3
+	mother = asoiaf_Leipa_rs_3
+
+	8232.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8245.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:Bettley_22 } #Osbert Bettley (son of Bermond)
+		}
+	}
+	8249.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Leipa_rs_10
+	}
+	8298.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_rs_10 = { #Judith (grandmother of Hans)
+	name = Judith
+	# dna = asoiaf_Leipa_rs_10 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8232.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8290.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_11 = { #Henry of Leipa (son of Henry the Iron One)
+	name = Henry
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_11 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Leipa_4
+	mother = asoiaf_Leipa_rs_4
+
+	8245.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8256.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Leipa_4 } #father
+		}
+	}
+	8264.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Leipa_rs_11
+	}
+	8284.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_rs_11 = { #Ofca (wife of Henry)
+	name = Ofca
+	# dna = asoiaf_Leipa_rs_11 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8245.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8284.1.1 = {
+		trait = widowed
+	}
+	8286.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Capon_1 = { #Henry Capon (father of Hans)
+	name = Henry
+	dynasty_house = house_Capon
+	# dna = asoiaf_Capon_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	trait = lifestyle_hunter
+
+	father = asoiaf_Leipa_10
+	mother = asoiaf_Leipa_rs_10
+
+	8257.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+		effect = {
+			agot_set_as_ward_history_effect = { GUARDIAN = character:asoiaf_Leipa_10 } #Cenek of Leipa (grandfather of Hans)
+		}
+	}
+	8272.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Leipa_10 } #Cenek of Leipa (grandfather of Hans)
+		}
+	}
+	8276.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Capon_rs_1
+		effect = {
+			agot_appoint_as_court_position_for_castle_history_effect = {
+				CASTLE = title:c_deadwater
+				POSITION = master_of_hunt_court_position
+			}
+		}
+	}
+	8297.2.1 = {
+		death = { death_reason = death_horse_riding_accident }
+	}
+}
+asoiaf_Capon_rs_1 = { #Hedvika (mother of Hans)
+	name = Hedvika
+	# dna = asoiaf_Capon_rs_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8258.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8297.2.1 = {
+		trait = widowed
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_lannisport }
+		}
+	}
+}
+asoiaf_Leipa_12 = { #Hanush of Leipa (uncle of Hans)
+	name = Hanush
+	dynasty_house = house_Leipa
+	dna = asoiaf_Leipa_12
+	sexuality = heterosexual
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 9
+	diplomacy = 8
+	intrigue = 5
+	stewardship = 9
+	learning = 1
+	prowess = 7
+
+	trait = gregarious
+	trait = authoritative
+	trait = greedy
+	trait = stubborn
+	trait = administrator
+	trait = education_stewardship_2
+	trait = education_martial_prowess_2
+
+	disallow_random_traits = yes
+
+	father = asoiaf_Leipa_10
+	mother = asoiaf_Leipa_rs_10
+
+	8259.1.1 = {
+		birth = yes
+		add_character_flag = sexuality_ensure_heterosexual
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+		effect = {
+			set_focus = education_stewardship
+		}
+	}
+	8274.1.1 = {
+		effect = {
+			agot_set_as_ward_history_effect = { GUARDIAN = character:asoiaf_Leipa_10 } #Cenek of Leipa (grandfather of Hans)
+		}
+	}
+	8277.1.1 = {
+		trait = knight
+	}
+}
+asoiaf_Capon_2 = { #Hans Capon
+	name = Hans
+	dynasty_house = house_Capon
+	dna = asoiaf_Capon_2
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 6
+	diplomacy = 3
+	intrigue = 3
+	stewardship = 5
+	learning = 9
+	prowess = 10
+	trait = beauty_good_2
+
+	trait = arrogant
+	trait = compassionate
+	trait = gregarious
+	trait = brave
+	trait = seducer
+	trait = lifestyle_hunter
+	trait = lifestyle_reveler
+	trait = education_martial_3
+	trait = education_martial_prowess_3
+
+	disallow_random_traits = yes
+
+	father = asoiaf_Capon_1
+	mother = asoiaf_Capon_rs_1
+
+	8280.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+		effect = {
+			set_focus = education_martial
+		}
+		effect = {
+			agot_set_as_ward_history_effect = { GUARDIAN = character:asoiaf_Capon_1 } #Henry Capon (father of Hans)
+		}
+	}
+	8292.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Capon_1 } #Henry Capon (father of Hans)
+		}
+	}
+	8296.1.1 = {
+		trait = knight
+	}
+	#friendship with Henry is handled in Henry's character block
+	#lover relationship with Henry is handled by scripted effect, not in character history
+}
+asoiaf_Leipa_13 = { #Agnes of Leipa (daughter of Henry)
+	name = Agnes
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_13 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Leipa_11
+	mother = asoiaf_Leipa_rs_11
+
+	8268.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8306.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_14 = { #Henry of Leipa (son of Henry)
+	name = Henry
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_14 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Leipa_11
+	mother = asoiaf_Leipa_rs_11
+
+	8269.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8281.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Leipa_12 } #Hanush of Leipa
+		}
+	}
+	8286.1.1 = {
+		trait = knight
+	}
+	8317.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_15 = { #Berthold of Leipa (son of Henry)
+	name = Berthold
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_15 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Leipa_11
+	mother = asoiaf_Leipa_rs_11
+
+	8271.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8283.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Leipa_12 } #Hanush of Leipa
+		}
+	}
+	8288.1.1 = {
+		trait = knight
+	}
+	8316.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_16 = { #Helena of Leipa (daughter of Henry)
+	name = Helena
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_16 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Leipa_11
+	mother = asoiaf_Leipa_rs_11
+
+	8273.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8334.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Leipa_17 = { #Cenek of Leipa (son of Henry)
+	name = Cenek
+	dynasty_house = house_Leipa
+	# dna = asoiaf_Leipa_17 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Leipa_11
+	mother = asoiaf_Leipa_rs_11
+
+	8276.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_deadwater }
+		}
+	}
+	8290.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Leipa_14 } #eldest brother
+		}
+	}
+	8293.1.1 = {
+		trait = knight
+	}
+	8334.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+
+#HOUSE OF LICHTENBURG
+asoiaf_Lichtenburg_1 = { #Henry of Lichtenburg (son of Smil)
+	name = Henry
+	dynasty_house = house_Lichtenburg
+	# dna = asoiaf_Lichtenburg_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Ronov_6
+	mother = asoiaf_Ronov_rs_6
+
+	8170.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8182.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Ronov_6 } #father
+		}
+	}
+	8189.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Lichtenburg_rs_1 #Domaslava
+	}
+	8193.1.1 = {
+		add_spouse = asoiaf_Lichtenburg_rs_2 #Matilda
+	}
+	8218.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Lichtenburg_rs_1 = { #Domaslava (wife of Henry of Lichtenburg)
+	name = Domaslava
+	# dna = asoiaf_Lichtenburg_rs_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8170.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8192.1.1 = {
+		death = { death_reason = death_childbirth }
+	}
+}
+asoiaf_Lichtenburg_rs_2 = { #Matilda (wife of Henry of Lichtenburg)
+	name = Matilda
+	# dna = asoiaf_Lichtenburg_rs_2 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8170.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8218.1.1 = {
+		trait = widowed
+	}
+	8223.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Lichtenburg_2 = { #Smil of Lichtenburg (son of Smil)
+	name = Smil
+	dynasty_house = house_Lichtenburg
+	# dna = asoiaf_Lichtenburg_2 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Ronov_6
+	mother = asoiaf_Ronov_rs_6
+
+	8173.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8186.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:Tetting_36 } #Addam Tetting (son of Willem)
+		}
+	}
+	8190.1.1 = {
+		trait = knight
+	}
+	8202.1.1 = {
+		death = { death_reason = death_accident }
+	}
+}
+asoiaf_Lichtenburg_3 = { #Oldrich of Lichtenburg (son of Smil)
+	name = Oldrich
+	dynasty_house = house_Lichtenburg
+	# dna = asoiaf_Lichtenburg_3 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Ronov_6
+	mother = asoiaf_Ronov_rs_6
+
+	8175.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8186.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:Tetting_36 } #Addam Tetting (son of Willem)
+		}
+	}
+	8194.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Lichtenburg_rs_3
+	}
+	8236.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Lichtenburg_rs_3 = { #Wife of Oldrich of Lichtenburg
+	name = Lobella
+	# dna = asoiaf_Lichtenburg_rs_3 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8175.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8236.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Lichtenburg_4 = { #Raymond Bitov (son of Smil)
+	name = Raymond
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Lichtenburg_4 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Ronov_6
+	mother = asoiaf_Ronov_rs_6
+
+	8176.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8189.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:Tetting_36 } #Addam Tetting (son of Willem)
+		}
+	}
+	8194.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Lichtenburg_rs_4
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8226.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Lichtenburg_rs_4 = { #Adele (wife of Raymond of Lichtenburg)
+	name = Adele
+	# dna = asoiaf_Lichtenburg_rs_4 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8176.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8194.1.1 = {
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8226.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Lichtenburg_5 = { #Hynek of Lichtenburg (son of Henry)
+	name = Hynek
+	dynasty_house = house_Krusina
+	# dna = asoiaf_Lichtenburg_5 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Lichtenburg_1
+	mother = asoiaf_Lichtenburg_rs_1
+
+	8192.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8204.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Lichtenburg_1 } #father
+		}
+	}
+	8209.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Lichtenburg_rs_5
+	}
+	8238.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Lichtenburg_rs_5 = { #Wife of Hynek of Lichtenburg (son of Henry)
+	name = Marianne
+	# dna = asoiaf_Lichtenburg_rs_5 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8192.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8238.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Zleb_1 = { #Wenceslaus Zleb (son of Henry)
+	name = Wenceslaus
+	dynasty_house = house_Zleb
+	# dna = asoiaf_Zleb_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Lichtenburg_1
+	mother = asoiaf_Lichtenburg_rs_2
+
+	8194.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8205.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Lichtenburg_1 } #father
+		}
+	}
+	8212.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Zleb_rs_1
+	}
+	8250.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Zleb_rs_1 = { #Agnes (wife of Wencesclaus Zleb)
+	name = Agnes
+	# dna = asoiaf_Zleb_rs_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8194.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8250.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Lichtenburg_6 = { #Smil of Lichtenburg (son of Henry)
+	name = Smil
+	dynasty_house = house_Lichtenburg
+	# dna = asoiaf_Lichtenburg_6 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Lichtenburg_1
+	mother = asoiaf_Lichtenburg_rs_2
+
+	8195.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8207.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Lichtenburg_1 } #father
+		}
+	}
+	8213.1.1 = {
+		trait = knight
+	}
+	8233.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Lichtenburg_7 = { #Cenek of Lichtenburg (son of Henry)
+	name = Cenek
+	dynasty_house = house_Lichtenburg
+	# dna = asoiaf_Lichtenburg_7 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Lichtenburg_1
+	mother = asoiaf_Lichtenburg_rs_2
+
+	8197.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8209.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Lichtenburg_1 } #father
+		}
+	}
+	8216.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Lichtenburg_rs_7
+	}
+	8225.1.1 = {
+		death = { death_reason = death_accident }
+	}
+}
+asoiaf_Lichtenburg_rs_7 = { #Agnes (wife of Cenek of Lichtenburg)
+	name = Agnes
+	# dna = asoiaf_Lichtenburg_rs_7 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8197.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8225.1.1 = {
+		trait = widowed
+	}
+	8252.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Lichtenburg_8 = { #Henry of Lichtenburg (son of Oldrich)
+	name = Henry
+	dynasty_house = house_Lichtenburg
+	# dna = asoiaf_Lichtenburg_8 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Lichtenburg_3
+	mother = asoiaf_Lichtenburg_rs_3
+
+	8197.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_nunns_deep }
+		}
+	}
+	8209.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Lichtenburg_3 } #father
+		}
+	}
+	8216.1.1 = {
+		trait = knight
+	}
+	8223.1.1 = {
+		death = { death_reason = death_accident }
+	}
+}
+
+#House Bitov
+asoiaf_Bitov_1 = { #Henry Bitov (son of Raymond)
+	name = Henry
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Lichtenburg_4
+	mother = asoiaf_Lichtenburg_rs_4
+
+	8198.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8208.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Lichtenburg_4 } #father
+		}
+	}
+	8215.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Bitov_rs_1
+	}
+	8245.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_rs_1 = { #Wife of Henry Bitov
+	name = Melara
+	# dna = asoiaf_Bitov_rs_1 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8198.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8245.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_2 = { #Cenek Bitov (son of Raymond)
+	name = Cenek
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_2 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Lichtenburg_4
+	mother = asoiaf_Lichtenburg_rs_4
+
+	8199.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8209.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Lichtenburg_4 } #father
+		}
+	}
+	8216.1.1 = {
+		trait = knight
+	}
+	8240.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_3 = { #Smil Bitov (son of Raymond)
+	name = Smil
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_3 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Lichtenburg_4
+	mother = asoiaf_Lichtenburg_rs_4
+
+	8201.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8213.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Lichtenburg_4 } #father
+		}
+	}
+	8220.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Bitov_rs_3
+	}
+	8257.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_rs_3 = { #Anna (wife of Smil Bitov)
+	name = Anna
+	# dna = asoiaf_Bitov_rs_3 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8201.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8257.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_4 = { #Margaret Bitov (daughter of Raymond)
+	name = Margaret
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_4 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Lichtenburg_4
+	mother = asoiaf_Lichtenburg_rs_4
+
+	8202.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8216.1.1 = {
+		trait = septon
+	}
+	8261.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_5 = { #Serra Bitov (daughter of Raymond)
+	name = Serra
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_5 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Lichtenburg_4
+	mother = asoiaf_Lichtenburg_rs_4
+
+	8203.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8258.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_6 = { #John Bitov (son of Henry)
+	name = John
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_6 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_1
+	mother = asoiaf_Bitov_rs_1
+
+	8219.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8233.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_1 } #father
+		}
+	}
+	8239.1.1 = {
+		trait = knight
+	}
+	8253.1.1 = {
+		death = { death_reason = death_accident }
+	}
+}
+asoiaf_Bitov_7 = { #Smil (bastard of Cenek)
+	name = Smil
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_7 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	trait = bastard
+
+	father = asoiaf_Bitov_2
+
+	8226.1.1 = {
+		birth = yes
+		make_trait_inactive = surname_hill
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8236.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_2 } #father
+		}
+	}
+	8241.1.1 = {
+		trait = knight
+	}
+	8280.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_8 = { #Henry Bitov (son of Smil)
+	name = Henry
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_8 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_3
+	mother = asoiaf_Bitov_rs_3
+
+	8222.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8235.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_3 } #father
+		}
+	}
+	8240.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Bitov_rs_8
+	}
+	8273.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_rs_8 = { #Anezka (wife of Henry Bitov)
+	name = Anezka
+	# dna = asoiaf_Bitov_rs_8 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8222.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8273.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_9 = { #Hynek Bitov (son of Smil)
+	name = Hynek
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_9 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_3
+	mother = asoiaf_Bitov_rs_3
+
+	8224.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8240.1.1 = {
+		trait = septon
+	}
+	8286.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_10 = { #John Bitov (son of Smil)
+	name = John
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_10 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_3
+	mother = asoiaf_Bitov_rs_3
+
+	8225.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8235.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_3 } #father
+		}
+	}
+	8242.1.1 = {
+		trait = knight
+	}
+	8272.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_11 = { #George Bitov (son of Smil)
+	name = George
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_11 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_3
+	mother = asoiaf_Bitov_rs_3
+
+	8227.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8237.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_3 } #father
+		}
+	}
+	8244.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Bitov_rs_11
+	}
+	8282.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_rs_11 = { #Sybell (wife of George Bitov)
+	name = Sybell
+	# dna = asoiaf_Bitov_rs_11 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8227.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8282.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_12 = { #Albert Bitov (son of Henry)
+	name = Albert
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_12 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_8
+	mother = asoiaf_Bitov_rs_8
+
+	8244.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8257.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_8 } #father
+		}
+	}
+	8263.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Bitov_rs_12
+	}
+	8300.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_rs_12 = { #Jeyne (wife of Albert Bitov)
+	name = Jeyne
+	# dna = asoiaf_Bitov_rs_12 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8244.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8300.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_13 = { #Henry Bitov (son of Henry)
+	name = Henry
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_13 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_8
+	mother = asoiaf_Bitov_rs_8
+
+	8245.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8258.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_8 } #father
+		}
+	}
+	8264.1.1 = {
+		trait = knight
+	}
+	8293.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_14 = { #Smil Bitov (son of Henry)
+	name = Smil
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_14 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_8
+	mother = asoiaf_Bitov_rs_8
+
+	8247.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8260.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_8 } #father
+		}
+	}
+	8266.1.1 = {
+		trait = knight
+	}
+	8279.1.1 = {
+		death = { death_reason = death_accident }
+	}
+}
+asoiaf_Bitov_15 = { #Hanush Bitov (son of George)
+	name = Hanush
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_15 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_11
+	mother = asoiaf_Bitov_rs_11
+
+	8245.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8257.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_11 } #father
+		}
+	}
+	8262.1.1 = {
+		trait = knight
+	}
+	8294.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_16 = { #George Bitov (son of George)
+	name = George
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_16 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_11
+	mother = asoiaf_Bitov_rs_11
+
+	8247.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8258.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_11 } #father
+		}
+	}
+	8264.1.1 = {
+		trait = knight
+	}
+	8266.1.1 = {
+		death = { death_reason = death_accident }
+	}
+}
+asoiaf_Bitov_17 = { #Hynek Bitov (son of George)
+	name = Hynek
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_17 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_11
+	mother = asoiaf_Bitov_rs_11
+
+	8248.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8259.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_11 } #father
+		}
+	}
+	8266.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Bitov_rs_17
+	}
+	8298.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_rs_17 = { #Wife of Hynek Bitov
+	name = Tanda
+	# dna = asoiaf_Bitov_rs_17 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8248.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8298.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_18 = { #Litholt Bitov (son of George)
+	name = Litholt
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_18 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_11
+	mother = asoiaf_Bitov_rs_11
+
+	8249.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8261.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_11 } #father
+		}
+	}
+	8265.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Bitov_rs_18
+	}
+	8301.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_rs_18 = { #Wife of Litholt Bitov
+	name = Magda
+	# dna = asoiaf_Bitov_rs_18 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8249.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8301.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_19 = { #Henry Bitov (son of George)
+	name = Henry
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_19 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_11
+	mother = asoiaf_Bitov_rs_11
+
+	8250.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8261.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_11 } #father
+		}
+	}
+	8269.1.1 = {
+		trait = knight
+	}
+	8296.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_20 = { #Smil Bitov (son of George)
+	name = Smil
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_20 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_11
+	mother = asoiaf_Bitov_rs_11
+
+	8251.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8263.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_11 } #father
+		}
+	}
+	8268.1.1 = {
+		trait = knight
+	}
+	8307.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_21 = { #Margaret Bitov (daughter of Albert)
+	name = Margaret
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_21 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_12
+	mother = asoiaf_Bitov_rs_12
+
+	8266.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8312.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_22 = { #Stephen Bitov (son of Albert)
+	name = Stephen
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_22 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_12
+	mother = asoiaf_Bitov_rs_12
+
+	8267.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8278.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_12 } #father
+		}
+	}
+	8284.1.1 = {
+		trait = knight
+	}
+	8319.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_23 = { #Smil Bitov (son of Albert)
+	name = Smil
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_23 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_12
+	mother = asoiaf_Bitov_rs_12
+
+	8269.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8280.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_12 } #father
+		}
+	}
+	8286.1.1 = {
+		trait = knight
+	}
+	8323.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_24 = { #Jan Bitov (son of Albert)
+	name = Jan
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_24 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_12
+	mother = asoiaf_Bitov_rs_12
+
+	8270.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8282.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_12 } #father
+		}
+	}
+	8289.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Bitov_rs_24
+	}
+	8308.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_rs_24 = { #Wife of Jan Bitov
+	name = Alanna
+	# dna = asoiaf_Bitov_rs_24 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8270.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8308.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_25 = { #Franek Bitov (son of Albert)
+	name = Franek
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_25 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_12
+	mother = asoiaf_Bitov_rs_12
+
+	8272.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8284.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_12 } #father
+		}
+	}
+	8290.1.1 = {
+		trait = knight
+	}
+	8332.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_26 = { #Jirik Bitov (son of Albert)
+	name = Jirik
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_26 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_12
+	mother = asoiaf_Bitov_rs_12
+
+	8273.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8285.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_12 } #father
+		}
+	}
+	8291.1.1 = {
+		trait = knight
+	}
+	8329.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_27 = { #Barbora Bitov (daughter of Hynek)
+	name = Barbora
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_27 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_17
+	mother = asoiaf_Bitov_rs_17
+
+	8270.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8318.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_28 = { #Klara Bitov (daughter of Hynek)
+	name = Klara
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_28 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_17
+	mother = asoiaf_Bitov_rs_17
+
+	8272.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8315.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_29 = { #Smil Bitov (son of Litholt)
+	name = Smil
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_29 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_18
+	mother = asoiaf_Bitov_rs_18
+
+	8268.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8280.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_18 } #father
+		}
+	}
+	8285.1.1 = {
+		trait = knight
+		add_spouse = asoiaf_Bitov_rs_29
+	}
+	8321.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_rs_29 = { #Wife of Smil Bitov
+	name = Mary
+	# dna = asoiaf_Bitov_rs_29 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	female = yes
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	8268.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8321.1.1 = {
+		death = { death_reason = death_natural_causes }
+	}
+}
+asoiaf_Bitov_30 = { #Jan Bitov (son of Litholt)
+	name = Jan
+	dynasty_house = house_Bitov
+	# dna = asoiaf_Bitov_30 # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	
+	religion = fots_seven
+	culture = westerman_main
+
+	martial = 5
+	diplomacy = 5
+	intrigue = 5
+	stewardship = 5
+	learning = 5
+	prowess = 5
+
+	father = asoiaf_Bitov_18
+	mother = asoiaf_Bitov_rs_18
+
+	8270.1.1 = {
+		birth = yes
+		effect = { make_unprunable = yes }
+		effect = {
+			agot_safe_set_location_history_effect = { CASTLE = title:c_rivermont }
+		}
+	}
+	8283.1.1 = {
+		effect = {
+			agot_set_as_ward_and_squire_history_effect = { KNIGHT = character:asoiaf_Bitov_18 } #father
+		}
+	}
+	8288.1.1 = {
+		trait = knight
+	}
+	8299.1.1 = {
+		death = { death_reason = death_accident }
+	}
+}

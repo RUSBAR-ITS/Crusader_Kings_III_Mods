@@ -1,0 +1,417 @@
+﻿asoiaf_headgear_situational = {
+
+	usage = game
+	selection_behavior = weighted_random
+	priority = 6
+
+	asoiaf_headgear_nights_watch_headgear_lord_commander_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+			}
+		}
+		weight = {
+            base = 0
+            modifier = { #Lord Commander gets no headgear
+                add = 550
+				is_male = yes
+                OR = {
+					has_trait = nightswatch
+					has_trait = nightswatch_temp
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+				}
+				OR = {
+					has_title = title:k_the_wall
+					has_title = title:e_the_wall
+				}
+				has_game_rule = asoiaf_new_clothes_north_rule_on
+            }
+			modifier = { #Special characters who also get no headgear
+                add = 550
+				is_male = yes
+                OR = {
+					has_trait = nightswatch
+					has_trait = nightswatch_temp
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+				}
+				OR = {
+					has_inactive_trait = asoiaf_Stark_7_trait #Jon Snow
+					has_inactive_trait = asoiaf_Tarly_2_trait #Samwell Tarly (son of Randyll)
+					AND = {
+						exists = character:Thorne_3 #Alliser Thorne (son of Joffrey)
+						this = character:Thorne_3
+					}
+					AND = {
+						exists = character:Slynt_1 #Janos Slynt
+						this = character:Slynt_1
+					}
+				}
+				has_game_rule = asoiaf_new_clothes_north_rule_on
+            }
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = maester
+					has_trait = maester_historical
+					has_trait = archmaester
+					has_court_position = court_jester_court_position
+				}
+			}
+        }
+	}
+	asoiaf_headgear_nights_watch_headgear_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_nights_watch_headgears
+				range = { 0.0 1.0 } #no headgear is weighted x2 as the leather hood
+			}
+			morph = { #to help reduce head clipping through the hood (side effect being ppl without the hood still get a slight pinched head)
+				mode = modify
+				gene = gene_head_top_width
+				template = head_top_width_neg
+				value = -0.25
+			}
+		}
+		weight = {
+            base = 0
+            modifier = {
+                add = 500
+				is_male = yes
+                OR = {
+					has_trait = nightswatch
+					has_trait = nightswatch_temp
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+				}
+				has_game_rule = asoiaf_new_clothes_north_rule_on
+            }
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = maester
+					has_trait = maester_historical
+					has_trait = archmaester
+					has_court_position = court_jester_court_position
+				}
+			}
+        }
+	}
+
+	asoiaf_headgear_kingsguard_default = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_all_helms
+				accessory = male_headgear_asoiaf_kingsguard_helm_default
+			}
+			accessory = {
+                mode = add
+                gene = secondary_headgears
+                template = no_headgear
+                value = 1
+            }
+			accessory = {
+                mode = add
+                gene = additive_headgear
+                template = no_additive
+                value = 1
+            }
+			morph = {
+				mode = add
+				gene = gene_bs_ear_outward
+				template = ear_outward_neg
+				value = 1
+			}
+			morph = {
+				mode = add
+				gene = gene_bs_ear_bend
+				template = ear_both_bend_pos
+				value = 0
+			}
+			morph = { #to fix the ugly morphing
+				mode = modify
+				gene = gene_chin_forward
+				template = chin_forward_pos
+				value = 0.5
+			}
+			morph = { #to fix the ugly morphing
+				mode = modify
+				gene = gene_jaw_forward
+				template = jaw_forward_pos
+				value = 0.5
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				is_male = yes #until a female version is added
+				OR = {
+					portrait_wear_helmet_trigger = yes
+					has_character_flag = need_military_outfit #for coronations
+				}
+				OR = {
+					portrait_wear_armor_trigger = yes
+					has_character_flag = need_military_outfit #for coronations
+				}
+				OR = {
+					has_trait = kingsguard
+					any_equipped_character_artifact = { has_variable = kingsguard_armor }
+				}
+				has_game_rule = asoiaf_new_clothes_crownlands_rule_on
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_headgear_kingsguard_tunic = {
+		dna_modifiers = {
+            accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+            }
+        }
+        weight = {
+            base = 0
+            modifier = {
+                add = 1500
+                is_male = yes #until a female version is added
+                OR = {
+                    AND = { #either this is a Kingsguard who is currently out-of-commission (due to being captured, incapable, etc.)
+                        has_trait = kingsguard
+                        NOR = {
+                            has_council_position = kingsguard_lord_commander
+                            has_council_position = kingsguard_1
+                            has_council_position = kingsguard_2
+                            has_council_position = kingsguard_3
+                            has_council_position = kingsguard_4
+                            has_council_position = kingsguard_5
+                            has_council_position = kingsguard_6
+                        }
+                    }
+                    AND = { #or it's a Kingsguard attending a feast
+                        has_trait = kingsguard
+                        involved_activity ?= { has_activity_type = activity_feast }
+                    }
+                }
+				has_game_rule = asoiaf_new_clothes_crownlands_rule_on
+            }
+			modifier = { #dead Kingsguard always wear their armour
+				factor = 0
+				has_trait = kingsguard
+                is_alive = no
+			}
+            modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+        }
+    }
+
+	asoiaf_headgear_rhaegar_helm_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = agot_most_headgears
+				accessory = male_headgear_secular_valyrian_war_04
+			}
+			accessory = {
+                mode = add
+                gene = secondary_headgears
+                template = no_headgear
+                value = 1
+            }
+			accessory = {
+                mode = add
+                gene = additive_headgear
+                template = no_additive
+                value = 1
+            }
+			morph = {
+				mode = add
+				gene = gene_bs_ear_outward
+				template = ear_outward_neg
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = this
+				any_equipped_character_artifact = { has_variable = rhaegar_armor }
+				portrait_wear_helmet_trigger = yes
+				portrait_wear_armor_trigger = yes
+				NOR = { has_trait = kingsguard has_trait = nightswatch }
+			}
+			modifier = {
+				add = -1000
+				has_trait = kingsguard
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_headgear_robert_helm_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = agot_most_headgears
+				accessory = male_headgear_secular_stormlands_war_04
+			}
+			accessory = {
+                mode = add
+                gene = secondary_headgears
+                template = no_headgear
+                value = 1
+            }
+			accessory = {
+                mode = add
+                gene = additive_headgear
+                template = no_additive
+                value = 1
+            }
+			morph = {
+				mode = add
+				gene = gene_bs_ear_outward
+				template = ear_outward_neg
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = this
+				any_equipped_character_artifact = { has_variable = robert_armor }
+				portrait_wear_helmet_trigger = yes
+				portrait_wear_armor_trigger = yes
+				NOR = {
+					has_trait = kingsguard
+					has_trait = nightswatch
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+
+	asoiaf_dragonkeepers = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+			}
+			accessory = {
+                mode = add
+                gene = secondary_headgears
+                template = no_headgear
+                value = 0
+            }
+			accessory = {
+                mode = add
+                gene = additive_headgear
+                template = no_additive
+                value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+                add = 250
+                has_court_position = head_dragonkeeper_court_position
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+            }
+		}
+	}
+
+	asoiaf_handmaiden_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+			}
+			accessory = {
+                mode = add
+                gene = secondary_headgears
+                template = no_headgear
+                value = 0
+            }
+			accessory = {
+                mode = add
+                gene = additive_headgear
+                template = no_additive
+                value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				is_female = yes
+                has_court_position = lady_in_waiting_court_position
+				NOR = { #these regions are too cold for a handmaiden to wear clothes like this
+					this.location = { geographical_region = world_westeros_beyond_the_wall }
+					this.location = { geographical_region = world_westeros_the_wall }
+					this.location = { geographical_region = world_westeros_the_north }
+					this.location = { geographical_region = world_westeros_the_iron_islands }
+					#this.location = { geographical_region = world_westeros_the_vale }
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+            modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+}

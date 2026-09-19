@@ -1,0 +1,8 @@
+﻿# The discount replaces the entire promoter cost at every legend quality.
+# Do not apply era multipliers, game-rule multipliers, or flat vanilla fees.
+# Clamp income at zero so a negative income never turns upkeep into a payment.
+DICM_RBE_ceasar_legend_support_cost = {
+	value = monthly_character_income
+	min = 0
+	multiply = 0.01
+}

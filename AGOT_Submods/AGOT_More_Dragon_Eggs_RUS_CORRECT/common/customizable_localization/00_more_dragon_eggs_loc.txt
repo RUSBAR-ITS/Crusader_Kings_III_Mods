@@ -1,0 +1,774 @@
+﻿DragonLocationsName = {
+	type = province
+
+	text = {
+		trigger = { this = province:1591 }
+		localization_key = cannibal_lair_name
+	}
+
+	text = {
+		trigger = { this = province:2321 }
+		localization_key = mountains_of_the_vale_name
+	}
+}
+
+DragonLocationsDesc = {
+	type = province
+
+	text = {
+		trigger = { this = province:1591 }
+		localization_key = cannibal_lair_desc
+	}
+
+	text = {
+		trigger = { this = province:2321 }
+		localization_key = mountains_of_the_vale_desc
+	}
+}
+
+DPGetDragonTypeGuiTooltip = {
+	type = character
+
+	text = {
+		trigger = {
+			NOT = { has_character_flag = owned_dragon }
+		}
+		localization_key = WILD_DRAGON_GUI_TOOLTIP
+	}
+
+	text = {
+		trigger = {
+			has_character_flag = owned_dragon
+			var:current_rider ?= {
+				is_current_dragonrider = yes
+			}
+		}
+		localization_key = DRAGON_RELATION_HAS_RIDER
+	}
+	
+	text = {
+		trigger = {
+			has_character_flag = owned_dragon
+			any_relation = {
+				type = agot_dragon
+				is_alive = yes
+			}
+		}
+		localization_key = DRAGON_RELATION_HAS_BONDED
+	}
+
+	text = {
+		trigger = {
+			has_character_flag = owned_dragon
+		}
+		localization_key = OWNED_DRAGON_GUI_TOOLTIP
+	}
+}
+
+mde_dragon_embryo_name = {
+    type = artifact
+
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:vermithrax
+        }
+        localization_key = vermithrax_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:anogaros
+        }
+        localization_key = anogaros_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:nessarion
+        }
+        localization_key = nessarion_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:archonei
+        }
+        localization_key = archonei_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:balerion
+        }
+        localization_key = balerion_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:meraxes
+        }
+        localization_key = meraxes_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:quicksilver
+        }
+        localization_key = quicksilver_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:vhagar
+        }
+        localization_key = vhagar_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:caraxes
+        }
+        localization_key = caraxes_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:meleys
+        }
+        localization_key = meleys_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:dreamfyre
+        }
+        localization_key = dreamfyre_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:vermithor
+        }
+        localization_key = vermithor_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:silverwing
+        }
+        localization_key = silverwing_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:seasmoke
+        }
+        localization_key = seasmoke_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:sunfyre
+        }
+        localization_key = sunfyre_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:syrax
+        }
+        localization_key = syrax_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:tessarion
+        }
+        localization_key = tessarion_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:vermax
+        }
+        localization_key = vermax_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:arrax
+        }
+        localization_key = arrax_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:tyraxes
+        }
+        localization_key = tyraxes_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:stormcloud
+        }
+        localization_key = stormcloud_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:moondancer
+        }
+        localization_key = moondancer_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:laena_1
+        }
+        localization_key = wyrmling_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:shrykos
+        }
+        localization_key = shrykos_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:morghul
+        }
+        localization_key = morghul_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:morning
+        }
+        localization_key = morning_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:the_last
+        }
+        localization_key = the_last_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:nightfyre
+        }
+        localization_key = nightfyre_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:cannibal
+        }
+        localization_key = cannibal_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:sheepstealer
+        }
+        localization_key = sheepstealer_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:grey_ghost
+        }
+        localization_key = grey_ghost_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:drogon
+        }
+        localization_key = drogon_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:rhaegal
+        }
+        localization_key = rhaegal_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:viserion
+        }
+        localization_key = viserion_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:serporoth
+        }
+        localization_key = serporoth_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:maegor_2
+        }
+        localization_key = maegor_2_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:maegor_3
+        }
+        localization_key = maegor_3_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:maegor_4
+        }
+        localization_key = maegor_4_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:maegor_5
+        }
+        localization_key = maegor_5_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:maegor_6
+        }
+        localization_key = maegor_6_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:maegor_7
+        }
+        localization_key = maegor_7_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:maegor_8
+        }
+        localization_key = maegor_8_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:maegor_9
+        }
+        localization_key = maegor_9_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:maegor_10
+        }
+        localization_key = maegor_10_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:maegor_11
+        }
+        localization_key = maegor_11_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:maegor_12
+        }
+        localization_key = maegor_12_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:aenys_1
+        }
+        localization_key = aenys_1_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:aenys_2
+        }
+        localization_key = aenys_2_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:aerea_1
+        }
+        localization_key = aerea_1_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:aerea_2
+        }
+        localization_key = aerea_2_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:aerea_3
+        }
+        localization_key = aerea_3_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:daenerys_1
+        }
+        localization_key = daenerys_1_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:aemond_1
+        }
+        localization_key = aemond_1_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:aemond_2
+        }
+        localization_key = aemond_2_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:aemond_3
+        }
+        localization_key = aemond_3_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:essovius
+        }
+        localization_key = essovius_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:valryon
+        }
+        localization_key = valryon_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:ghiscar
+        }
+        localization_key = ghiscar_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:terrax
+        }
+        localization_key = terrax_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:vassarion
+        }
+        localization_key = vassarion_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:rovax
+        }
+        localization_key = rovax_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:neltharion
+        }
+        localization_key = neltharion_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:pythax
+        }
+        localization_key = pythax_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:nagga
+        }
+        localization_key = MDE_nagga_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:urrax
+        }
+        localization_key = urrax_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:dragon_ancestor_1
+        }
+        localization_key = dragon_ancestor_1_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:dragon_ancestor_2
+        }
+        localization_key = dragon_ancestor_2_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:dragon_ancestor_3
+        }
+        localization_key = dragon_ancestor_3_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:dragon_ancestor_4
+        }
+        localization_key = dragon_ancestor_4_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:dragon_ancestor_5
+        }
+        localization_key = dragon_ancestor_5_desc
+    }
+    text = {
+        trigger = {
+            has_variable = dragon_embryo
+            var:dragon_embryo = flag:dragon_ancestor_6
+        }
+        localization_key = dragon_ancestor_6_desc
+    }
+}
+
+mde_temp_kingsguard_gender_title_switch = {
+    type = character
+
+    text = {
+        localization_key = queensguard_name
+        trigger = {
+            title:h_the_iron_throne.holder = {
+                is_female = yes
+            }
+        }
+    }
+    text = {
+        localization_key = kingsguard_name
+        trigger = {
+            title:h_the_iron_throne.holder = {
+                is_female = no
+            }
+        }
+    }
+}
+
+mde_dragon_parent_localization = {
+    type = artifact
+
+    text = {
+        localization_key = mde_dragon_parent_line
+        trigger = {
+            has_variable = dragon_parent
+            NOT = { has_variable = dragon_parent_other }
+        }
+    }
+    text = {
+        localization_key = mde_dragon_parents_line
+        trigger = {
+            has_variable = dragon_parent_other
+        }
+    }
+    text = {
+        localization_key = mde_dragon_no_parent_line
+        trigger = {
+            NOT = { has_variable = dragon_parent }
+        }
+    }
+}
+
+mde_dragon_embryo_line = {
+    type = artifact
+
+    text = {
+        localization_key = mde_dragon_contains_embryo
+        trigger = {
+            has_variable = dragon_embryo
+        }
+    }
+    text = {
+        localization_key = mde_dragon_no_embryo_line
+    }
+}
+
+mde_dragonpit_type_custom_loc = {
+    type = province
+
+    text = {
+        localization_key = building_agot_dragonmont_01
+        trigger = {
+            county = {
+				any_county_province = { has_building = agot_dragonmont_01 }
+			}
+        }
+    }
+    text = {
+        localization_key = building_dragonpit_03
+        trigger = {
+            county = {
+				any_county_province = { has_building = dragonpit_03 }
+			}
+        }
+    }
+    text = {
+        localization_key = building_dragonpit_ruins_03
+        trigger = {
+            county = {
+				any_county_province = { has_building = dragonpit_ruins_03 }
+			}
+        }
+    }
+    text = {
+        localization_key = building_type_generic_dragon_pit_01
+    }
+}
+
+MdeDragonPortraitCamera = {
+	type = character
+	log_loc_errors = no
+
+	text = {
+		trigger = { dragon_size >= 273 }
+		localization_key = camera_dragon_portrait_size_273
+	}
+
+	text = {
+		trigger = { dragon_size >= 226 }
+		localization_key = camera_dragon_portrait_size_226
+	}
+
+	text = {
+		trigger = { dragon_size >= 188 }
+		localization_key = camera_dragon_portrait_size_188
+	}
+
+	text = {
+		trigger = { dragon_size >= 157 }
+		localization_key = camera_dragon_portrait_size_157
+	}
+
+	text = {
+		trigger = { dragon_size >= 131 }
+		localization_key = camera_dragon_portrait_size_131
+	}
+
+	text = {
+		trigger = { dragon_size >= 109 }
+		localization_key = camera_dragon_portrait_size_109
+	}
+
+	text = {
+		trigger = { dragon_size >= 90 }
+		localization_key = camera_dragon_portrait_size_90
+	}
+
+	text = {
+		trigger = { dragon_size >= 74 }
+		localization_key = camera_dragon_portrait_size_74
+	}
+
+	text = {
+		trigger = { dragon_size >= 60 }
+		localization_key = camera_dragon_portrait_size_60
+	}
+
+	text = {
+		trigger = { dragon_size >= 48 }
+		localization_key = camera_dragon_portrait_size_48
+	}
+
+	text = {
+		trigger = { dragon_size >= 37 }
+		localization_key = camera_dragon_portrait_size_37
+	}
+
+	text = {
+		trigger = { dragon_size >= 28 }
+		localization_key = camera_dragon_portrait_size_28
+	}
+
+	text = {
+		trigger = { dragon_size >= 22 }
+		localization_key = camera_dragon_portrait_size_22
+	}
+
+	text = {
+		trigger = { dragon_size >= 17 }
+		localization_key = camera_dragon_portrait_size_17
+	}
+
+	text = {
+		trigger = { dragon_size >= 13 }
+		localization_key = camera_dragon_portrait_size_13
+	}
+
+	text = {
+		trigger = { dragon_size >= 10 }
+		localization_key = camera_dragon_portrait_size_10
+	}
+
+	text = {
+		trigger = { dragon_size >= 8 }
+		localization_key = camera_dragon_portrait_size_8
+	}
+
+	text = {
+		trigger = { dragon_size >= 6 }
+		localization_key = camera_dragon_portrait_size_6
+	}
+
+	text = {
+		trigger = { dragon_size >= 4 }
+		localization_key = camera_dragon_portrait_size_4
+	}
+
+	text = {
+		trigger = { dragon_size >= 3 }
+		localization_key = camera_dragon_portrait_size_3
+	}
+
+	text = {
+		trigger = { dragon_size >= 2 }
+		localization_key = camera_dragon_portrait_size_2
+	}
+
+
+	text = {
+		localization_key = camera_dragon_portrait_hatchling_r150_f25
+	}
+}

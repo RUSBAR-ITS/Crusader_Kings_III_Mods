@@ -1,0 +1,940 @@
+﻿asoiaf_baratheon_cadets_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+
+	desc = asoiaf_baratheon_cadets_desc
+	selection_tooltip = asoiaf_baratheon_cadets_tooltip
+
+	cooldown = { years = 0 }
+	
+	sort_order = 100
+	
+	cost = {
+		prestige = { value = 500 }
+	}
+	
+	is_shown = {
+		this.dynasty = dynasty:dynn_Baratheon
+		NAND = { #if all cadets are formed, hide the decision
+			OR = {
+				is_target_in_global_variable_list = {
+					name = asoiaf_baratheon_renly_unavailable
+					target = flag:asoiaf_baratheon_cadet_renly
+				}
+				AND = { #House already founded via base AGOT method
+					exists = character:Baratheon_4 #Renly Baratheon (son of Steffon)
+					character:Baratheon_4 = {
+						house = house:house_BaratheonSE
+					}
+				}
+			}
+			OR = {
+				is_target_in_global_variable_list = {
+					name = asoiaf_baratheon_rhllor_unavailable
+					target = flag:asoiaf_baratheon_cadet_rhllor
+				}
+				AND = { #House already founded via base AGOT method
+					exists = character:Baratheon_3 #Stannis Baratheon (son of Steffon)
+					character:Baratheon_3 = {
+						house = house:house_BaratheonDS
+					}
+				}
+			}
+			OR = {
+				is_target_in_global_variable_list = {
+					name = asoiaf_baratheon_kl_unavailable
+					target = flag:asoiaf_baratheon_cadet_kl
+				}
+				AND = { #House already founded in later bookmarks
+					exists = character:Baratheon_5 #Joffrey I Baratheon
+					character:Baratheon_5 = {
+						house = house:house_BaratheonKL
+					}
+				}
+			}
+		}
+	}
+	
+	is_valid = {
+		age >= 10
+	}
+	
+	#is_valid_showing_failures_only = { #is_valid_showing_failures_only
+	#	
+	#	trigger_if = { #RENLY
+	#		limit = { scope:asoiaf_baratheon_renly_choice = yes }
+	#		custom_tooltip = { #Base requirements aren't met
+	#			text = asoiaf_baratheon_renly_base_validity_tt
+	#			OR = {
+	#				OR = {
+	#					AND = {
+	#						mother.dynasty = dynasty:dynn_Tyrell
+	#						father.dynasty = dynasty:dynn_Baratheon
+	#					}
+	#					AND = {
+	#						mother.dynasty = dynasty:dynn_Baratheon
+	#						father.dynasty = dynasty:dynn_Tyrell
+	#					}
+	#				}
+	#				primary_spouse.dynasty = dynasty:dynn_Tyrell
+	#			}
+	#		}
+	#	}
+	#	trigger_if = { #RHLLOR
+	#		limit = { scope:asoiaf_baratheon_rhllor_choice = yes }
+	#		custom_tooltip = { #Base requirements aren't met
+	#			text = asoiaf_baratheon_rhllor_base_validity_tt
+	#			has_religion = religion:the_rhllor_religion
+	#		}
+	#	}
+	#	trigger_if = { #KING'S LANDING
+	#		limit = { scope:asoiaf_baratheon_kl_choice = yes }
+	#		custom_tooltip = { #Base requirements aren't met
+	#			text = asoiaf_baratheon_kl_base_validity_tt
+	#			OR = {
+	#				AND = {
+	#					mother.dynasty = dynasty:dynn_Lannister
+	#					father.dynasty = dynasty:dynn_Baratheon
+	#				}
+	#				AND = {
+	#					mother.dynasty = dynasty:dynn_Baratheon
+	#					father.dynasty = dynasty:dynn_Lannister
+	#				}
+	#			}
+	#		}
+	#	}
+	#}
+
+    widget = {
+    	gui = "decision_view_widget_petition_liege"
+		controller = decision_option_list_controller
+		# AGOT_PLUS_FIX: retired decision_has_second_step = yes
+		# AGOT_PLUS_FIX: retired decision_custom_widget_container = "custom_widgets_container_step_two"
+		decision_to_second_step_button = "asoiaf_choose_cadet_button" 
+		
+		#LIST OF CHOICES
+		item = { #RENLY	
+			value = asoiaf_baratheon_renly_choice
+			is_shown = {
+				NOR = {
+					is_target_in_global_variable_list = {
+						name = asoiaf_baratheon_renly_unavailable
+						target = flag:asoiaf_baratheon_cadet_renly
+					}
+					AND = { #House already founded via base AGOT method
+						exists = character:Baratheon_4 #Renly Baratheon (son of Steffon)
+						character:Baratheon_4 = {
+							house = house:house_BaratheonSE
+						}
+					}
+				}
+			}
+			is_valid = {
+				custom_tooltip = { #Base requirements aren't met
+					text = asoiaf_baratheon_renly_base_validity_tt
+					OR = {
+						OR = {
+							AND = {
+								mother.dynasty = dynasty:dynn_Tyrell
+								father.dynasty = dynasty:dynn_Baratheon
+							}
+							AND = {
+								mother.dynasty = dynasty:dynn_Baratheon
+								father.dynasty = dynasty:dynn_Tyrell
+							}
+						}
+						primary_spouse.dynasty = dynasty:dynn_Tyrell
+					}
+				}
+			}
+			localization = asoiaf_baratheon_renly_choice
+			icon = "gfx/interface/icons/traits/asoiaf_baratheon_renly.dds"
+			ai_chance = { value = 0 } # Currently unused
+		}
+		item = { #R'HLLOR
+			value = asoiaf_baratheon_rhllor_choice
+			is_shown = {
+				NOR = {
+					is_target_in_global_variable_list = {
+						name = asoiaf_baratheon_rhllor_unavailable
+						target = flag:asoiaf_baratheon_cadet_rhllor
+					}
+					AND = { #House already founded via base AGOT method
+						exists = character:Baratheon_3 #Stannis Baratheon (son of Steffon)
+						character:Baratheon_3 = {
+							house = house:house_BaratheonDS
+						}
+					}
+				}
+			}
+			is_valid = {
+				custom_tooltip = { #Base requirements aren't met
+					text = asoiaf_baratheon_rhllor_base_validity_tt
+					has_religion = religion:the_rhllor_religion
+				}
+			}
+			localization = asoiaf_baratheon_rhllor_choice
+			icon = "gfx/interface/icons/traits/asoiaf_baratheon_rhllor.dds"
+			ai_chance = { value = 0 } # Currently unused
+		}
+		item = { #KING'S LANDING
+			value = asoiaf_baratheon_kl_choice
+			is_shown = {
+				NOR = {
+					is_target_in_global_variable_list = {
+						name = asoiaf_baratheon_kl_unavailable
+						target = flag:asoiaf_baratheon_cadet_kl
+					}
+					AND = { #House already founded in later bookmarks
+						exists = character:Baratheon_5 #Joffrey I Baratheon
+						character:Baratheon_5 = {
+							house = house:house_BaratheonKL
+						}
+					}
+				}
+			}
+			is_valid = {
+				custom_tooltip = { #Base requirements aren't met
+					text = asoiaf_baratheon_kl_base_validity_tt
+					OR = {
+						AND = {
+							mother.dynasty = dynasty:dynn_Lannister
+							father.dynasty = dynasty:dynn_Baratheon
+						}
+						AND = {
+							mother.dynasty = dynasty:dynn_Baratheon
+							father.dynasty = dynasty:dynn_Lannister
+						}
+					}
+				}
+			}
+			localization = asoiaf_baratheon_kl_choice
+			icon = "gfx/interface/icons/traits/asoiaf_baratheon_kl.dds"
+			ai_chance = {
+				value = -100
+				if = { #bookmark scenario where Joffrey/Tommen/Myrcella inherit the Iron Throne
+					limit = {
+						OR = {
+							root = character:Baratheon_5 #Joffrey
+							root = character:Baratheon_6 #Myrcella
+							root = character:Baratheon_7 #Tommen
+						}
+						#root = iron throne title holder
+					}
+					add = 1000
+				}
+			}
+		}
+	}
+	
+	ai_goal = yes #If set, the AI will consider the decision a "goal" and consider it alongside major costs like title creation and holding construction. It will ignore ai_check_interval. Should only be used for things with such major costs that budgeting for it is important, as it is less performant than using a high ai_check_interval
+	#ai_check_frequency = 42 #How many months to go between each check of this decision. Has to be set, except if ai_goal = yes is set. An interval of 0 means the AI will never check this decision
+	ai_potential = { #trigger whether the AI should look at it or not
+		OR = {
+			AND = { #RENLY'S BRNACH AI CONDITIONS
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = asoiaf_baratheon_renly_unavailable
+						target = flag:asoiaf_baratheon_cadet_renly
+					}
+				}
+				OR = {
+					OR = {
+						AND = {
+							mother.dynasty = dynasty:dynn_Tyrell
+							father.dynasty = dynasty:dynn_Baratheon
+						}
+						AND = {
+							mother.dynasty = dynasty:dynn_Baratheon
+							father.dynasty = dynasty:dynn_Tyrell
+						}
+					}
+					primary_spouse.dynasty = dynasty:dynn_Tyrell
+				}
+			}
+			AND = { #RHLLOR AI CONDITIONS
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = asoiaf_baratheon_rhllor_unavailable
+						target = flag:asoiaf_baratheon_cadet_rhllor
+					}
+				}
+				has_religion = religion:the_rhllor_religion
+			}
+			AND = { #OF KING'S LANDING AI CONDITIONS
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = asoiaf_baratheon_kl_unavailable
+						target = flag:asoiaf_baratheon_cadet_kl
+					}
+				}
+				OR = {
+					AND = {
+						mother.dynasty = dynasty:dynn_Lannister
+						father.dynasty = dynasty:dynn_Baratheon
+					}
+					AND = {
+						mother.dynasty = dynasty:dynn_Baratheon
+						father.dynasty = dynasty:dynn_Lannister
+					}
+				}
+			}
+		}
+	}
+	ai_will_do = { #Returns the % chance of executing executing the decision. 0 will never execute it, 100 will alwasy execute it
+		base = 0
+	}
+	
+	#EFFECTS OF CHOICES
+	effect = {
+		custom_tooltip = asoiaf_changing_baratheon_house_tooltip
+		hidden_effect = {
+			if = { #RENLY
+				limit = { scope:asoiaf_baratheon_renly_choice = yes }
+				root.house = { save_scope_as = asoiaf_founders_old_house }
+				set_house = house:house_BaratheonSE
+				trigger_event = { id = agot_coa_events.1 }
+				dynasty = {
+					every_dynasty_member = {
+						limit = {
+							any_ancestor = { this = root }
+							house = scope:asoiaf_founders_old_house
+						}
+						set_house = house:house_BaratheonSE
+						trigger_event = { id = agot_coa_events.1 }
+					}
+				}
+				asoiaf_house_founding_bastard_effect = yes
+				
+				add_to_global_variable_list = { #Can only happen once
+					name = asoiaf_baratheon_renly_unavailable
+					target = flag:asoiaf_baratheon_cadet_renly
+				}
+				
+				save_scope_as = new_head
+				house = { save_scope_as = new_house }
+				send_interface_toast = {
+					type = msg_created_new_house
+					title = created_cadet_branch_toast_new_house_desc
+					left_icon = scope:new_head
+					desc = created_cadet_branch_toast_new_house_other_tt
+				}
+			}
+			if = { #R'HLLOR
+				limit = { scope:asoiaf_baratheon_rhllor_choice = yes }
+				root.house = { save_scope_as = asoiaf_founders_old_house }
+				set_house = house:house_BaratheonDS
+				trigger_event = { id = agot_coa_events.1 }
+				dynasty = {
+					every_dynasty_member = {
+						limit = {
+							any_ancestor = { this = root }
+							house = scope:asoiaf_founders_old_house
+						}
+						set_house = house:house_BaratheonDS
+						trigger_event = { id = agot_coa_events.1 }
+					}
+				}
+				asoiaf_house_founding_bastard_effect = yes
+
+				add_to_global_variable_list = { #Can only happen once
+					name = asoiaf_baratheon_rhllor_unavailable
+					target = flag:asoiaf_baratheon_cadet_rhllor
+				}
+				
+				save_scope_as = new_head
+				house = { save_scope_as = new_house }
+				send_interface_toast = {
+					type = msg_created_new_house
+					title = created_cadet_branch_toast_new_house_desc
+					left_icon = scope:new_head
+					desc = created_cadet_branch_toast_new_house_other_tt
+				}
+			}
+			if = { #KING'S LANDING SOLO
+				limit = {
+					AND = {
+						scope:asoiaf_baratheon_kl_choice = yes
+						NOT = { root.mother = character:Lannister_6 } #Cersei Lannister
+					}
+				}
+				root.house = { save_scope_as = asoiaf_founders_old_house }
+				set_house = house:house_BaratheonKL
+				trigger_event = { id = agot_coa_events.1 }
+				dynasty = {
+					every_dynasty_member = {
+						limit = {
+							any_ancestor = { this = root }
+							house = scope:asoiaf_founders_old_house
+						}
+						set_house = house:house_BaratheonKL
+						trigger_event = { id = agot_coa_events.1 }
+					}
+				}
+				asoiaf_house_founding_bastard_effect = yes
+
+				add_to_global_variable_list = { #Can only happen once
+					name = asoiaf_baratheon_kl_unavailable
+					target = flag:asoiaf_baratheon_cadet_kl
+				}
+				
+				save_scope_as = new_head
+				house = { save_scope_as = new_house }
+				send_interface_toast = {
+					type = msg_created_new_house
+					title = created_cadet_branch_toast_new_house_desc
+					left_icon = scope:new_head
+					desc = created_cadet_branch_toast_new_house_other_tt
+				}
+			}
+			if = { #KING'S LANDING + SIBLINGS (CERSEI AS MOTHER)
+				limit = {
+					AND = {
+						scope:asoiaf_baratheon_kl_choice = yes
+						root.mother = character:Lannister_6 #Cersei Lannister
+					}
+				}
+				root.mother = { save_scope_as = asoiaf_lynchpin_character } #save Cersei as lynchpin
+				root.house = { save_scope_as = asoiaf_founders_old_house }
+				set_house = house:house_BaratheonKL
+				trigger_event = { id = agot_coa_events.1 }
+				if = { #Alliance with Tywin (if he's alive)
+					limit = {
+						exists = character:Lannister_1
+					}
+					create_alliance = {
+						target = character:Lannister_1
+						allied_through_owner = ROOT
+						allied_through_target = character:Lannister_1
+					}
+					character:Lannister_1 = {
+						add_opinion = {
+							target = ROOT
+							modifier = perk_negotiated_alliance_opinion
+						}
+					}
+				}
+				dynasty = {
+					every_dynasty_member = {
+						limit = {
+							any_ancestor = {
+								this = scope:asoiaf_lynchpin_character #Cersei
+							}
+							house = scope:asoiaf_founders_old_house
+						}
+						set_house = house:house_BaratheonKL
+						trigger_event = { id = agot_coa_events.1 }
+					}
+				}
+				add_to_global_variable_list = { #Can only happen once
+					name = asoiaf_baratheon_kl_unavailable
+					target = flag:asoiaf_baratheon_cadet_kl
+				}
+				
+				save_scope_as = new_head
+				house = { save_scope_as = new_house }
+				send_interface_toast = {
+					type = msg_created_new_house
+					title = created_cadet_branch_toast_new_house_desc
+					left_icon = scope:new_head
+					desc = created_cadet_branch_toast_new_house_other_tt
+				}
+			}
+		}
+	}
+}
+
+asoiaf_greyjoy_cadets_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+
+	desc = asoiaf_greyjoy_cadets_desc
+	selection_tooltip = asoiaf_greyjoy_cadets_tooltip
+
+	cooldown = { years = 0 }
+	
+	sort_order = 100
+	
+	cost = {
+		prestige = { value = 500 }
+	}
+	
+	is_shown = {
+		this.dynasty = dynasty:dynn_Greyjoy
+		NOT = { #if all cadets are formed, hide the decision
+			is_target_in_global_variable_list = {
+				name = asoiaf_greyjoy_euron_unavailable
+				target = flag:asoiaf_greyjoy_cadet_euron
+			}
+		}
+	}
+	
+	is_valid = {
+		age >= 10
+	}
+
+    widget = {
+    	gui = "decision_view_widget_petition_liege"
+		controller = decision_option_list_controller
+		# AGOT_PLUS_FIX: retired decision_has_second_step = yes
+		# AGOT_PLUS_FIX: retired decision_custom_widget_container = "custom_widgets_container_step_two"
+		decision_to_second_step_button = "asoiaf_choose_cadet_button" 
+		
+		#LIST OF CHOICES
+		item = { #EURON
+			value = asoiaf_greyjoy_euron_choice
+			is_shown = {
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = asoiaf_greyjoy_euron_unavailable
+						target = flag:asoiaf_greyjoy_cadet_euron
+					}
+				}
+			}
+			is_valid = {
+				custom_tooltip = { #Base requirements aren't met
+					text = asoiaf_greyjoy_euron_base_validity_tt
+					prestige_level >= 2
+				}
+			}
+			localization = asoiaf_greyjoy_euron_choice
+			icon = "gfx/interface/icons/traits/asoiaf_greyjoy_euron.dds"
+			ai_chance = { value = 0 } # Currently unused
+		}
+	}
+	
+	ai_will_do = {
+		base = 0
+	}
+	
+	#EFFECTS OF CHOICES
+	effect = {
+		custom_tooltip = asoiaf_changing_greyjoy_house_tooltip
+		hidden_effect = {
+			if = { #EURON
+				limit = { scope:asoiaf_greyjoy_euron_choice = yes }
+				root.house = { save_scope_as = asoiaf_founders_old_house }
+				set_house = house:house_Greyjoy_Euron
+				dynasty = {
+					every_dynasty_member = {
+						limit = {
+							any_ancestor = {
+								this = root
+							}
+							house = scope:asoiaf_founders_old_house
+						}
+						set_house = house:house_Greyjoy_Euron
+						trigger_event = { id = agot_coa_events.1 }
+					}
+				}
+				trigger_event = { id = agot_coa_events.1 }
+				asoiaf_house_founding_bastard_effect = yes
+				#Can only happen once
+				add_to_global_variable_list = {
+					name = asoiaf_greyjoy_euron_unavailable
+					target = flag:asoiaf_greyjoy_cadet_euron
+				}
+				
+				save_scope_as = new_head
+				house = { save_scope_as = new_house }
+				send_interface_toast = {
+					type = msg_created_new_house
+					title = created_cadet_branch_toast_new_house_desc
+					left_icon = scope:new_head
+					desc = created_cadet_branch_toast_new_house_other_tt
+				}
+			}
+		}
+	}
+}
+
+asoiaf_baelish_cadets_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+
+	desc = asoiaf_baelish_cadets_desc
+	selection_tooltip = asoiaf_baelish_cadets_tooltip
+
+	cooldown = { years = 0 }
+	
+	sort_order = 100
+	
+	cost = {
+		prestige = { value = 500 }
+	}
+	
+	is_shown = {
+		this.dynasty = dynasty:dynn_Baelish
+		NOT = { #if all cadets are formed, hide the decision
+			is_target_in_global_variable_list = {
+				name = asoiaf_baelish_hh_unavailable
+				target = flag:asoiaf_baelish_cadet_hh
+			}
+		}
+	}
+	
+	is_valid = {
+		age >= 10
+	}
+
+    widget = {
+    	gui = "decision_view_widget_petition_liege"
+		controller = decision_option_list_controller
+		# AGOT_PLUS_FIX: retired decision_has_second_step = yes
+		# AGOT_PLUS_FIX: retired decision_custom_widget_container = "custom_widgets_container_step_two"
+		decision_to_second_step_button = "asoiaf_choose_cadet_button" 
+		
+		#LIST OF CHOICES
+		item = { #OF HARRENHAL
+			value = asoiaf_baelish_hh_choice
+			is_shown = {
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = asoiaf_baelish_hh_unavailable
+						target = flag:asoiaf_baelish_cadet_hh
+					}
+				}
+			}
+			is_valid = {
+				custom_tooltip = { #Base requirements aren't met
+					text = asoiaf_baelish_hh_base_validity_tt
+					AND = {
+						has_trait = ambitious
+						has_trait = schemer
+					}
+				}
+			}
+			localization = asoiaf_baelish_hh_choice
+			icon = "gfx/interface/icons/traits/asoiaf_baelish_hh.dds"
+			ai_chance = { value = 0 } # Currently unused
+		}
+	}
+	
+	ai_will_do = {
+		base = 0
+	}
+	
+	#EFFECTS OF CHOICES
+	effect = {
+		custom_tooltip = asoiaf_changing_baelish_house_tooltip
+		hidden_effect = {
+			if = { #OF HARRENHAL
+				limit = { scope:asoiaf_baelish_hh_choice = yes }
+				root.house = { save_scope_as = asoiaf_founders_old_house }
+				set_house = house:house_BaelishHH
+				dynasty = {
+					every_dynasty_member = {
+						limit = {
+							any_ancestor = {
+								this = root
+							}
+							house = scope:asoiaf_founders_old_house
+						}
+						set_house = house:house_BaelishHH
+						trigger_event = { id = agot_coa_events.1 }
+					}
+				}
+				trigger_event = { id = agot_coa_events.1 }
+				asoiaf_house_founding_bastard_effect = yes
+				#Can only happen once
+				add_to_global_variable_list = {
+					name = asoiaf_baelish_hh_unavailable
+					target = flag:asoiaf_baelish_cadet_hh
+				}
+				
+				save_scope_as = new_head
+				house = { save_scope_as = new_house }
+				send_interface_toast = {
+					type = msg_created_new_house
+					title = created_cadet_branch_toast_new_house_desc
+					left_icon = scope:new_head
+					desc = created_cadet_branch_toast_new_house_other_tt
+				}
+			}
+		}
+	}
+}
+
+asoiaf_harlaw_cadets_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+
+	desc = asoiaf_harlaw_cadets_desc
+	selection_tooltip = asoiaf_harlaw_cadets_tooltip
+
+	cooldown = { years = 0 }
+	
+	sort_order = 100
+	
+	cost = {
+		prestige = { value = 500 }
+	}
+	
+	is_shown = {
+		this.dynasty = dynasty:dynn_Harlaw
+		NAND = { #if all cadets are formed, hide the decision
+			is_target_in_global_variable_list = {
+				name = asoiaf_harlaw_tg_unavailable
+				target = flag:asoiaf_harlaw_cadet_tg
+			}
+			is_target_in_global_variable_list = {
+				name = asoiaf_harlaw_hhall_unavailable
+				target = flag:asoiaf_harlaw_cadet_hhall
+			}
+			is_target_in_global_variable_list = {
+				name = asoiaf_harlaw_hh_unavailable
+				target = flag:asoiaf_harlaw_cadet_hh
+			}
+		}
+	}
+	
+	is_valid = {
+		age >= 10
+	}
+
+    widget = {
+    	gui = "decision_view_widget_petition_liege"
+		controller = decision_option_list_controller
+		# AGOT_PLUS_FIX: retired decision_has_second_step = yes
+		# AGOT_PLUS_FIX: retired decision_custom_widget_container = "custom_widgets_container_step_two"
+		decision_to_second_step_button = "asoiaf_choose_cadet_button" 
+		
+		#LIST OF CHOICES
+		item = { #OF THE TOWER OF GLIMMERING
+			value = asoiaf_harlaw_tg_choice
+			is_shown = {
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = asoiaf_harlaw_tg_unavailable
+						target = flag:asoiaf_harlaw_cadet_tg
+					}
+				}
+			}
+			is_valid = {
+				custom_tooltip = { #Base requirements aren't met
+					text = asoiaf_harlaw_tg_base_validity_tt
+					prestige_level >= 2
+				}
+			}
+			localization = asoiaf_harlaw_tg_choice
+			icon = "gfx/interface/icons/traits/asoiaf_harlaw_tg.dds"
+			ai_chance = { value = 0 } # Currently unused
+		}
+		item = { #OF HARRIDAN HILL
+			value = asoiaf_harlaw_hh_choice
+			is_shown = {
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = asoiaf_harlaw_hh_unavailable
+						target = flag:asoiaf_harlaw_cadet_hh
+					}
+				}
+			}
+			is_valid = {
+				custom_tooltip = { #Base requirements aren't met
+					text = asoiaf_harlaw_hh_base_validity_tt
+					prestige_level >= 2
+				}
+			}
+			localization = asoiaf_harlaw_hh_choice
+			icon = "gfx/interface/icons/traits/asoiaf_harlaw_hh.dds"
+			ai_chance = { value = 0 } # Currently unused
+		}
+		item = { #OF HARLAW HALL
+			value = asoiaf_harlaw_hhall_choice
+			is_shown = {
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = asoiaf_harlaw_hhall_unavailable
+						target = flag:asoiaf_harlaw_cadet_hhall
+					}
+				}
+			}
+			is_valid = {
+				custom_tooltip = { #Base requirements aren't met
+					text = asoiaf_harlaw_hhall_base_validity_tt
+					prestige_level >= 2
+				}
+			}
+			localization = asoiaf_harlaw_hhall_choice
+			icon = "gfx/interface/icons/traits/asoiaf_harlaw_hhall.dds"
+			ai_chance = { value = 0 } # Currently unused
+		}
+		item = { #OF GREY GARDEN
+			value = asoiaf_harlaw_gg_choice
+			is_shown = {
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = asoiaf_harlaw_gg_unavailable
+						target = flag:asoiaf_harlaw_cadet_gg
+					}
+				}
+			}
+			is_valid = {
+				custom_tooltip = { #Base requirements aren't met
+					text = asoiaf_harlaw_gg_base_validity_tt
+					OR = {
+						AND = {
+							mother.dynasty = dynasty:dynn_Serrett
+							father.dynasty = dynasty:dynn_Harlaw
+						}
+						AND = {
+							mother.dynasty = dynasty:dynn_Harlaw
+							father.dynasty = dynasty:dynn_Serrett
+						}
+					}
+				}
+			}
+			localization = asoiaf_harlaw_gg_choice
+			icon = "gfx/interface/icons/traits/asoiaf_harlaw_gg.dds"
+			ai_chance = { value = 0 } # Currently unused
+		}
+	}
+	
+	ai_will_do = {
+		base = 0
+	}
+	
+	#EFFECTS OF CHOICES
+	effect = {
+		custom_tooltip = asoiaf_changing_harlaw_house_tooltip
+		hidden_effect = {
+			if = { #OF THE TOWER OF GLIMMERING
+				limit = { scope:asoiaf_harlaw_tg_choice = yes }
+				root.house = { save_scope_as = asoiaf_founders_old_house }
+				set_house = house:house_HarlawTG
+				dynasty = {
+					every_dynasty_member = {
+						limit = {
+							any_ancestor = {
+								this = root
+							}
+							house = scope:asoiaf_founders_old_house
+						}
+						set_house = house:house_HarlawTG
+						trigger_event = { id = agot_coa_events.1 }
+					}
+				}
+				trigger_event = { id = agot_coa_events.1 }
+				asoiaf_house_founding_bastard_effect = yes
+				#Can only happen once
+				add_to_global_variable_list = {
+					name = asoiaf_harlaw_tg_unavailable
+					target = flag:asoiaf_harlaw_cadet_tg
+				}
+				
+				save_scope_as = new_head
+				house = { save_scope_as = new_house }
+				send_interface_toast = {
+					type = msg_created_new_house
+					title = created_cadet_branch_toast_new_house_desc
+					left_icon = scope:new_head
+					desc = created_cadet_branch_toast_new_house_other_tt
+				}
+			}
+			if = { #OF HARRIDAN HILL
+				limit = { scope:asoiaf_harlaw_hh_choice = yes }
+				root.house = { save_scope_as = asoiaf_founders_old_house }
+				set_house = house:house_HarlawHH
+				dynasty = {
+					every_dynasty_member = {
+						limit = {
+							any_ancestor = {
+								this = root
+							}
+							house = scope:asoiaf_founders_old_house
+						}
+						set_house = house:house_HarlawHH
+						trigger_event = { id = agot_coa_events.1 }
+					}
+				}
+				trigger_event = { id = agot_coa_events.1 }
+				asoiaf_house_founding_bastard_effect = yes
+				#Can only happen once
+				add_to_global_variable_list = {
+					name = asoiaf_harlaw_hh_unavailable
+					target = flag:asoiaf_harlaw_cadet_hh
+				}
+				
+				save_scope_as = new_head
+				house = { save_scope_as = new_house }
+				send_interface_toast = {
+					type = msg_created_new_house
+					title = created_cadet_branch_toast_new_house_desc
+					left_icon = scope:new_head
+					desc = created_cadet_branch_toast_new_house_other_tt
+				}
+			}
+			if = { #OF HARLAW HALL
+				limit = { scope:asoiaf_harlaw_hhall_choice = yes }
+				root.house = { save_scope_as = asoiaf_founders_old_house }
+				set_house = house:house_HarlawHHall
+				dynasty = {
+					every_dynasty_member = {
+						limit = {
+							any_ancestor = {
+								this = root
+							}
+							house = scope:asoiaf_founders_old_house
+						}
+						set_house = house:house_HarlawHHall
+						trigger_event = { id = agot_coa_events.1 }
+					}
+				}
+				trigger_event = { id = agot_coa_events.1 }
+				asoiaf_house_founding_bastard_effect = yes
+				#Can only happen once
+				add_to_global_variable_list = {
+					name = asoiaf_harlaw_hhall_unavailable
+					target = flag:asoiaf_harlaw_cadet_hhall
+				}
+				
+				save_scope_as = new_head
+				house = { save_scope_as = new_house }
+				send_interface_toast = {
+					type = msg_created_new_house
+					title = created_cadet_branch_toast_new_house_desc
+					left_icon = scope:new_head
+					desc = created_cadet_branch_toast_new_house_other_tt
+				}
+			}
+			if = { #OF GREY GARDEN
+				limit = { scope:asoiaf_harlaw_gg_choice = yes }
+				root.house = { save_scope_as = asoiaf_founders_old_house }
+				set_house = house:house_HarlawGG
+				dynasty = {
+					every_dynasty_member = {
+						limit = {
+							any_ancestor = {
+								this = root
+							}
+							house = scope:asoiaf_founders_old_house
+						}
+						set_house = house:house_HarlawGG
+						trigger_event = { id = agot_coa_events.1 }
+					}
+				}
+				trigger_event = { id = agot_coa_events.1 }
+				asoiaf_house_founding_bastard_effect = yes
+				#Can only happen once
+				add_to_global_variable_list = {
+					name = asoiaf_harlaw_gg_unavailable
+					target = flag:asoiaf_harlaw_cadet_gg
+				}
+				
+				save_scope_as = new_head
+				house = { save_scope_as = new_house }
+				send_interface_toast = {
+					type = msg_created_new_house
+					title = created_cadet_branch_toast_new_house_desc
+					left_icon = scope:new_head
+					desc = created_cadet_branch_toast_new_house_other_tt
+				}
+			}
+		}
+	}
+}

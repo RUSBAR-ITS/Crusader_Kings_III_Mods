@@ -1,0 +1,43 @@
+{
+    "Revision":  5,
+    "Status":  "PASS",
+    "GameExecutionChecked":  false,
+    "Verification":  "Actual script control flow interpreted; native AGOT calls stubbed at the validated helper boundary. Not a CK3 runtime test.",
+    "BirthSites":  24,
+    "YearlySites":  10,
+    "RemovedSchemeLaunches":  34,
+    "BirthScenarios":  2160,
+    "YearlyScenarios":  700,
+    "AdditionalScenarios":  34,
+    "RepeatedCallsChecked":  true,
+    "HistoricalDiagnosticTargets":  102,
+    "FreshLogChecked":  false,
+    "NativeDependencies":  [
+                               {
+                                   "File":  "common/scripted_effects/00_agot_dragon_effects.txt",
+                                   "Provider":  "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\3388366564",
+                                   "SHA256":  "B68441F6C158AEDD0CFE9F8858B8913F5C85675E89CB91EDB7B897429FB226A4",
+                                   "Helpers":  [
+                                                   "agot_bond_dragon_relation_effect",
+                                                   "agot_set_as_owned_dragon"
+                                               ]
+                               },
+                               {
+                                   "File":  "common/scripted_triggers/00_agot_dragon_triggers.txt",
+                                   "Provider":  "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\3388366564",
+                                   "SHA256":  "C79B33E907E5F1232E4A4C18C465D20AFEF682890675C96400D4B6551EAA736D",
+                                   "Helpers":  [
+                                                   "agot_has_relationship_dragon"
+                                               ]
+                               },
+                               {
+                                   "File":  "common/scripted_triggers/asoiaf_canon_children_triggers.txt",
+                                   "Provider":  "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\2950245430",
+                                   "SHA256":  "B5E83DB3C1DFD66DD07446F3571CE569D184ACA343A4B3668003FB7052701A1D",
+                                   "Helpers":  [
+                                                   "asoiaf_canon_children_enabled_trigger"
+                                               ]
+                               }
+                           ],
+    "ManifestSHA256":  "40BAE13797EBB04B324E5835DFB9132E3616AF45C24EB09728998AC31AC7B036"
+}

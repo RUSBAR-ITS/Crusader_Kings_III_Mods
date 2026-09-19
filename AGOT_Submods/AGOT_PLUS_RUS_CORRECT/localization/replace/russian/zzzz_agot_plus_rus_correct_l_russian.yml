@@ -1,0 +1,43 @@
+﻿l_russian:
+ # Barbershop: retain the source icons and formatting.
+ PORTRAIT_MODIFIER_custom_headgear_male_headgear_asoiaf_executioner_cowl:0 "@asoiaf_icon! Капюшон палача"
+ PORTRAIT_MODIFIER_custom_headgear_female_headgear_asoiaf_executioner_cowl:0 "@asoiaf_icon! Капюшон палача"
+ PORTRAIT_MODIFIER_custom_clothes_female_clothes_asoiaf_north_dress_1_rhaena:0 "@asoiaf_icon! Платье Рейны"
+ PORTRAIT_MODIFIER_custom_clothes_male_clothes_asoiaf_lannister_armour_royal:0 "@asoiaf_icon! Доспехи Ланнистеров #weak – королевские#!"
+ PORTRAIT_MODIFIER_custom_clothes_female_clothes_asoiaf_lannister_armour_royal:0 "@asoiaf_icon! Доспехи Ланнистеров #weak – королевские#!"
+ PORTRAIT_MODIFIER_custom_clothes_male_clothes_asoiaf_lannister_armour_dynast:0 "@asoiaf_icon! Доспехи Ланнистеров #weak – богато украшенные#!"
+ PORTRAIT_MODIFIER_custom_clothes_female_clothes_asoiaf_lannister_armour_dynast:0 "@asoiaf_icon! Доспехи Ланнистеров #weak – богато украшенные#!"
+ PORTRAIT_MODIFIER_custom_clothes_male_clothes_asoiaf_lannister_armour_high:0 "@asoiaf_icon! Доспехи Ланнистеров #weak – знатные#!"
+ PORTRAIT_MODIFIER_custom_clothes_female_clothes_asoiaf_lannister_armour_high:0 "@asoiaf_icon! Доспехи Ланнистеров #weak – знатные#!"
+ PORTRAIT_MODIFIER_custom_clothes_male_clothes_asoiaf_lannister_armour_light:0 "@asoiaf_icon! Доспехи Ланнистеров #weak – лёгкие#!"
+ PORTRAIT_MODIFIER_custom_clothes_female_clothes_asoiaf_lannister_armour_light:0 "@asoiaf_icon! Доспехи Ланнистеров #weak – лёгкие#!"
+ PORTRAIT_MODIFIER_custom_clothes_male_clothes_asoiaf_reach_tunic_1_tyrion:0 "@asoiaf_icon! Туника Тириона"
+ PORTRAIT_MODIFIER_custom_clothes_male_clothes_asoiaf_reach_tunic_1_tyrion_ceremonial:0 "@asoiaf_icon! Парадная туника Тириона"
+ PORTRAIT_MODIFIER_custom_clothes_male_clothes_asoiaf_executioner_jerkin:0 "@asoiaf_icon! Колет палача и меч"
+ PORTRAIT_MODIFIER_custom_clothes_female_clothes_asoiaf_executioner_jerkin:0 "@asoiaf_icon! Колет палача и меч"
+ PORTRAIT_MODIFIER_custom_cloaks_male_cloaks_asoiaf_lannister_cloak_royal:0 "@asoiaf_icon! Плащ Ланнистеров #weak – королевский#!"
+ PORTRAIT_MODIFIER_custom_cloaks_female_cloaks_asoiaf_lannister_cloak_royal:0 "@asoiaf_icon! Плащ Ланнистеров #weak – королевский#!"
+ PORTRAIT_MODIFIER_custom_cloaks_male_cloak_secular_asoiaf_lannister_war_plate_2_cloak:0 "@asoiaf_icon! Плащ Ланнистеров #weak – знатный#!"
+ PORTRAIT_MODIFIER_custom_cloaks_female_cloak_secular_asoiaf_lannister_war_plate_2_cloak:0 "@asoiaf_icon! Плащ Ланнистеров #weak – знатный#!"
+ PORTRAIT_MODIFIER_custom_legwear_male_legwear_asoiaf_lannister_legs_dynast:0 "@asoiaf_icon! Поножи Ланнистеров #weak – богато украшенные#!"
+ PORTRAIT_MODIFIER_custom_legwear_female_legwear_asoiaf_lannister_legs_dynast:0 "@asoiaf_icon! Поножи Ланнистеров #weak – богато украшенные#!"
+ PORTRAIT_MODIFIER_custom_legwear_male_legwear_asoiaf_lannister_legs_light:0 "@asoiaf_icon! Поножи Ланнистеров #weak – лёгкие#!"
+ PORTRAIT_MODIFIER_custom_legwear_female_legwear_asoiaf_lannister_legs_light:0 "@asoiaf_icon! Поножи Ланнистеров #weak – лёгкие#!"
+ PORTRAIT_MODIFIER_custom_legwear_male_legwear_asoiaf_beaked_shoes:0 "@asoiaf_icon! Дорнийские остроносые туфли"
+ PORTRAIT_MODIFIER_custom_legwear_female_legwear_asoiaf_dorne_sandals:0 "@asoiaf_icon! Дорнийские сандалии"
+ PORTRAIT_MODIFIER_custom_legwear_male_legwear_asoiaf_executioner_legs:0 "@asoiaf_icon! Сапоги палача"
+ PORTRAIT_MODIFIER_custom_legwear_female_legwear_asoiaf_executioner_legs:0 "@asoiaf_icon! Сапоги палача"
+
+ # Keep the source's ironic quotation marks; use vanilla Russian killer naming.
+ death_aegonvi_murder_known:0 "[Select_CString(CHARACTER.IsFemale, 'была «убита»', 'был «убит»')]"
+ death_aegonvi_murder_known_killer:0 "[Select_CString(CHARACTER.IsFemale, 'была «убита»', 'был «убит»')] [Select_CString(TARGET_CHARACTER.IsLocalPlayer, '', 'персонажем ')][TARGET_CHARACTER.GetNamePossessiveOrMy][Select_CString(TARGET_CHARACTER.IsLocalPlayer, 'им персонажем', '')]"
+
+ # Fix duplicated method suffixes without rewriting the surrounding translation.
+ asoiaf_cersei_jaime_lover_desc:0 "[TARGET_CHARACTER.GetShortUINameNotMe|U] и [CHARACTER.GetShortUINameNotMe] полюбили друг друга, сблизившись в юности и пускаясь в смелые эксперименты."
+ asoiaf_cersei_jaime_lover_desc_corresponding:0 "[CHARACTER.GetShortUINameNotMe|U] и [TARGET_CHARACTER.GetShortUINameNotMe] полюбили друг друга, сблизившись в юности и пускаясь в смелые эксперименты."
+
+ # Close the formatting tag inherited from the English source.
+ lp_feudal_government_desc:0 "$game_concept_feudal_desc$\n\n#F Феодализм — это жёсткая социальная структура и форма правления, основанная на королях, лордах и крестьянах. Знать властвует над простонародьем на своей земле через систему вассальной верности и клятв. В этой системе каждый человек обязан нести военную службу своему лорду в обмен на защиту, надел земли и людей, которые будут на ней работать.\n\nЗападный феодализм особенно характерен для Вестероса и уникален тем, что вассалов называют «лордами» независимо от их места в иерархии; самых могущественных из них порой именуют «лордами-парамонтами» или даже жалуют княжескими титулами, как в Дорне.#!"
+
+ # The singular concept already aliases this description in AGOT+ rus.
+ game_concept_asoiaf_canon_children_concept_desc:0 "Система #bold «Каноничные дети»#! позволяет каноническим персонажам рождаться во время игры.\n\nКаноничные дети будут рождаться, если доминирующий партнёр заключит брак с нужным Домом. Например, если Эддард Старк женится на #italic любой#! Талли, у него будут рождаться каноничные дети.\n\nСистема использует обычные циклы беременности/родов CK3, поэтому дети #italic не обязательно#! родятся в тот же год, что и в лоре.\n\nУзнать, как продолжить линию персонажа, можно в описании модификатора «Каноничные дети», который получают участники системы.\n\n@warning_icon! #X Не будет работать, если включена система канонических детей из ванильного AGOT.#!"

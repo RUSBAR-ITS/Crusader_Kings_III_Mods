@@ -1,0 +1,2147 @@
+﻿window = {
+	name = "menu_viewer_window"
+	visible = "[And( And( Not( IsGameViewOpen('barbershop') ), IsDefaultGUIMode ), GetVariableSystem.Exists( 'menu_viewer_toggle' ) )]"
+	parentanchor = center
+	widgetanchor = center
+	size = { 1420 585 }
+	layer = middle
+	alpha = 1
+
+	using = Window_Background
+    using = Window_Decoration_Spike
+
+	state = {
+        name = _show
+        using = Animation_FadeIn_Standard
+        using = Sound_WindowShow_Standard
+		on_start = "[PdxGuiWidget.StackTop]"
+    }
+
+
+    state = {
+        name = _hide
+        using = Animation_FadeOut_Quick
+        using = Sound_WindowHide_Standard
+    }
+
+	margin_widget = {
+		name = "foreground_shader_vfx_container"
+		position = { 40 20 }
+		size = { 100% 100% }
+		margin = { 40 20 }
+	}
+	margin_widget = {
+		name = "faux_event_background"
+		size = { 100% 100% }
+		margin = { 40 20 }
+
+		state = {
+			name = _show
+			using = Animation_FadeIn_Standard
+			duration = 0.7
+		}
+
+		state = {
+			name = background_shake_loop
+			next = background_shake_loop_1
+			duration = 0.0
+			alpha = 1.0
+		}
+
+		state = {
+			name = background_shake_loop_1
+			next = background_shake_loop_2
+			position = { -6 0 }
+			duration = 0.2
+		}
+
+		state = {
+			name = background_shake_loop_2
+			next = background_shake_loop_3
+			position = { 5 0 }
+			duration = 0.12
+		}
+
+		state = {
+			name = background_shake_loop_3
+			next = background_shake_loop_1
+			position = { 7 1 }
+			duration = 0.12
+		}
+
+		blockoverride "event_picture_properties"
+		{}
+		widget = {
+			name = "event_picture"
+			size = { 100% 100% }
+
+			background = {
+				texture = "gfx/interface/illustrations/event_scenes/agot_dragonpit.dds"
+				fittype = centercrop
+
+				block "event_mask" {
+					modify_texture = {
+						name = mask
+						texture = "gfx/interface/window_event/mask_event_image_large.dds"
+						blend_mode = alphamultiply
+
+						block "event_mask_properties"
+						{
+							loop = no
+						}
+					}
+				}
+
+				block "event_picture_properties"
+				{
+				}
+			}
+		}
+	}
+	
+	
+	
+	vbox = {
+		name = "not_event_window"
+		using = Animation_Tab_Switch
+		layoutpolicy_vertical = expanding
+		spacer = { size = { 0 50 } }
+		expand = {}
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			spacing = 2
+
+			state = {
+				name = _show
+				trigger_when = "[Not( Or(Or(GetVariableSystem.HasValue('menu_viewer_mode', 'viewer_mode_gamerule'), GetVariableSystem.HasValue('menu_viewer_mode', 'viewer_mode_buttons')), And(GetVariableSystem.HasValue('menu_viewer_mode', 'viewer_mode_dragon_portrait'), GetScriptedGui('mde_player_has_living_dragon').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))) )]"
+				on_start = "[GetVariableSystem.Set('menu_viewer_mode', 'viewer_mode_gamerule')]"
+			}
+
+			expand = {}
+			button_round = {
+				size = { 38 38 }
+				name = "dragon_portrait_toggle"
+				visible = "[GetScriptedGui('mde_player_has_living_dragon').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				onclick = "[GetVariableSystem.Set('menu_viewer_mode', 'viewer_mode_dragon_portrait')]"
+				down = "[GetVariableSystem.HasValue('menu_viewer_mode', 'viewer_mode_dragon_portrait')]"
+				tooltip = "dragon_portrait_toggle"
+				button_icon_highlight = {
+					texture = "gfx/interface/icons/flat_icons/capture_wild_dragon.dds"
+					parentanchor = center
+					alwaystransparent = yes
+					size = { 34 34 }
+				}
+			}
+			button_round = {
+				size = { 38 38 }
+				name = "gamerules_toggle"
+				onclick = "[GetVariableSystem.Set('menu_viewer_mode', 'viewer_mode_gamerule')]"
+				down = "[GetVariableSystem.HasValue('menu_viewer_mode', 'viewer_mode_gamerule')]"
+				tooltip = "game_rule_toggle"
+				button_icon_highlight = {
+					texture = "gfx/interface/icons/flat_icons/rules.dds"
+					parentanchor = center
+					alwaystransparent = yes
+					size = { 28 28 }
+				}
+			}
+			button_round = {
+				size = { 38 38 }
+				name = "buttons_toggle"
+				onclick = "[GetVariableSystem.Set('menu_viewer_mode', 'viewer_mode_buttons')]"
+				down = "[GetVariableSystem.HasValue('menu_viewer_mode', 'viewer_mode_buttons')]"
+				tooltip = "buttons_toggle"
+				button_icon_highlight = {
+					texture = "gfx/interface/icons/flat_icons/menu.dds"
+					parentanchor = center
+					alwaystransparent = yes
+					size = { 20 20 }
+				}
+			}
+			expand = {}
+		}
+		widget = {
+			allow_outside = yes
+			name = "widget_ingame_gamerule_manager"
+			visible = "[GetVariableSystem.HasValue('menu_viewer_mode', 'viewer_mode_gamerule')]"
+			using = tooltip_ws
+			enabled = "[HostOnlyAccessIfMultiplayer]"
+			tooltip_visible = "[Not( HostOnlyAccessIfMultiplayer )]"
+			tooltipwidget = {
+				container = {
+					using = GeneralTooltipSetup
+					alwaystransparent = no
+
+					widget = {
+						using = DefaultTooltipBackground
+						size = { 100% 100% }
+						alwaystransparent = no
+					}
+
+					textbox = {
+						using = DefaultTooltipText
+						margin = { 20 0 }
+						margin_top = 12
+						margin_bottom = 18
+						text = "menu_menu_host_only"
+					}
+				}
+			}
+			size = { 1320 430 }
+			vbox = {
+				allow_outside = yes
+				margin = { 0 -0 }
+
+				scrollbox = {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					minimumsize = { 460 37 }
+					blockoverride "scrollbox_content" {
+						vbox = {
+							flowcontainer = {
+								spacing = 6
+								wrap_count = 5
+								ignoreinvisible = yes
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'hatch_multiple_eggs_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "hatch_multiple_eggs_desc"
+												text = "menu_rule_can_hatch_multiple_dragons"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "hatch_multiple_eggs_value"
+												raw_text = "[GetPlayer.Custom('mde_hatch_multiple_eggs_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'hatch_success_chance_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "hatch_success_chance_desc"
+												text = "menu_rule_dragon_hatching_success_chance"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "hatch_success_chance_value"
+												raw_text = "[GetPlayer.Custom('mde_hatch_success_chance_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'extant_hatching_ceremonies_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "extant_hatching_ceremonies_desc"
+												text = "menu_rule_extant_hatching_ceremonies"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "extant_hatching_ceremonies_value"
+												raw_text = "[GetPlayer.Custom('mde_extant_hatching_ceremonies_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'egg_notifications_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "egg_notifications_desc"
+												text = "menu_rule_mde_egg_notifications"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "egg_notifications_value"
+												raw_text = "[GetPlayer.Custom('mde_egg_notifications_loc')]"
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'player_map_egg_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "map_spawn_player_desc"
+												text = "menu_rule_dragon_egg_spawn_likelihood_player"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "map_spawn_player_value"
+												raw_text = "[GetPlayer.Custom('mde_egg_spawn_loc_percent_player')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'ai_map_egg_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "map_spawn_ai_desc"
+												text = "menu_rule_dragon_egg_spawn_likelihood_ai"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "map_spawn_ai_value"
+												raw_text = "[GetPlayer.Custom('mde_egg_spawn_loc_percent_ai')]"
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'dragonstone_map_egg_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "dragonstone_map_spawn_desc"
+												text = "menu_rule_spawn_dragonstone_eggs"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "dragonstone_map_spawn_value"
+												raw_text = "[GetPlayer.Custom('mde_dragonstone_map_egg_spawn_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									visible = "[GreaterThanOrEqualTo_CFixedPoint( GetPlayer.MakeScope.ScriptValue('mde_game_start_era'), '(CFixedPoint)5' )]"
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'cannibal_map_egg_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										enabled = "[GetScriptedGui( 'cannibal_map_egg_val_cycle' ).IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "cannibal_map_spawn_desc"
+												text = "menu_rule_spawn_cannibal_egg"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "cannibal_map_spawn_value"
+												raw_text = "[GetPlayer.Custom('mde_cannibal_map_egg_spawn_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									visible = "[GreaterThanOrEqualTo_CFixedPoint( GetPlayer.MakeScope.ScriptValue('mde_game_start_era'), '(CFixedPoint)5' )]"
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'sheepstealer_map_egg_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										enabled = "[GetScriptedGui( 'sheepstealer_map_egg_val_cycle' ).IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "sheepstealer_map_spawn_desc"
+												text = "menu_rule_spawn_sheepstealer_egg"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "sheepstealer_map_spawn_value"
+												raw_text = "[GetPlayer.Custom('mde_sheepstealer_map_egg_spawn_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									visible = "[GreaterThanOrEqualTo_CFixedPoint( GetPlayer.MakeScope.ScriptValue('mde_game_start_era'), '(CFixedPoint)4' )]"
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'vhagar_map_egg_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										enabled = "[GetScriptedGui( 'vhagar_map_egg_val_cycle' ).IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "vhagar_map_spawn_desc"
+												text = "menu_rule_spawn_vhagar_egg"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "vhagar_map_spawn_value"
+												raw_text = "[GetPlayer.Custom('mde_vhagar_map_egg_spawn_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									visible = "[GreaterThanOrEqualTo_CFixedPoint( GetPlayer.MakeScope.ScriptValue('mde_game_start_era'), '(CFixedPoint)4' )]"
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'moondancer_map_egg_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										enabled = "[GetScriptedGui( 'moondancer_map_egg_val_cycle' ).IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "moondancer_map_spawn_desc"
+												text = "menu_rule_spawn_moondancer_egg"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "moondancer_map_spawn_value"
+												raw_text = "[GetPlayer.Custom('mde_moondancer_map_egg_spawn_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'nagga_map_egg_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										enabled = "[GetScriptedGui( 'nagga_map_egg_val_cycle' ).IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "nagga_map_spawn_desc"
+												text = "menu_rule_spawn_nagga_egg"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "nagga_map_spawn_value"
+												raw_text = "[GetPlayer.Custom('mde_nagga_map_egg_spawn_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									visible = "[GreaterThanOrEqualTo_CFixedPoint( GetPlayer.MakeScope.ScriptValue('mde_game_start_era'), '(CFixedPoint)3' )]"
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'meraxes_map_egg_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										enabled = "[GetScriptedGui( 'meraxes_map_egg_val_cycle' ).IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "meraxes_map_spawn_desc"
+												text = "menu_rule_spawn_meraxes_egg"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "meraxes_map_spawn_value"
+												raw_text = "[GetPlayer.Custom('mde_meraxes_map_egg_spawn_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									visible = "[GreaterThanOrEqualTo_CFixedPoint( GetPlayer.MakeScope.ScriptValue('mde_game_start_era'), '(CFixedPoint)1' )]"
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'pythax_map_egg_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										enabled = "[GetScriptedGui( 'pythax_map_egg_val_cycle' ).IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "pythax_map_spawn_desc"
+												text = "menu_rule_spawn_pythax_egg"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "pythax_map_spawn_value"
+												raw_text = "[GetPlayer.Custom('mde_pythax_map_egg_spawn_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									visible = "[GreaterThanOrEqualTo_CFixedPoint( GetPlayer.MakeScope.ScriptValue('mde_game_start_era'), '(CFixedPoint)2' )]"
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'vassarion_map_egg_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										enabled = "[GetScriptedGui( 'vassarion_map_egg_val_cycle' ).IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "vassarion_map_spawn_desc"
+												text = "menu_rule_spawn_vassarion_egg"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "vassarion_map_spawn_value"
+												raw_text = "[GetPlayer.Custom('mde_vassarion_map_egg_spawn_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'cradle_hatch_likelihood_player_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "cradle_hatch_likelihood_player_desc"
+												text = "menu_rule_cradle_hatch_likelihood_player"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "cradle_hatch_likelihood_player_value"
+												raw_text = "[GetPlayer.Custom('mde_cradle_hatch_likelihood_player_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'cradle_hatch_likelihood_ai_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "cradle_hatch_likelihood_ai_desc"
+												text = "menu_rule_cradle_hatch_likelihood_ai"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "cradle_hatch_likelihood_ai_value"
+												raw_text = "[GetPlayer.Custom('mde_cradle_hatch_likelihood_ai_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'pit_hatch_likelihood_player_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "pit_hatch_likelihood_player_desc"
+												text = "menu_rule_pit_hatch_likelihood_player"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "pit_hatch_likelihood_player_value"
+												raw_text = "[GetPlayer.Custom('mde_pit_hatch_likelihood_player_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'pit_hatch_likelihood_ai_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "pit_hatch_likelihood_ai_desc"
+												text = "menu_rule_pit_hatch_likelihood_ai"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "pit_hatch_likelihood_ai_value"
+												raw_text = "[GetPlayer.Custom('mde_pit_hatch_likelihood_ai_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'canon_egg_hatch_likelihood_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										enabled = "[GetScriptedGui( 'canon_egg_hatch_likelihood_val_cycle' ).IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "canon_egg_hatch_likelihood_desc"
+												text = "menu_rule_canon_dragon_egg_hatch_likelihood"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "canon_egg_hatch_likelihood_value"
+												raw_text = "[GetPlayer.Custom('mde_canon_egg_hatch_likelihood_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'dragon_egg_clutch_size_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "dragon_egg_clutch_size_desc"
+												text = "menu_rule_dragon_egg_clutch_size"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "dragon_egg_clutch_size_value"
+												raw_text = "[GetPlayer.Custom('mde_dragon_egg_clutch_size_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'dragon_egg_clutch_frequency_player_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "dragon_egg_clutch_frequency_player_desc"
+												text = "menu_rule_dragon_egg_clutch_frequency"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "dragon_egg_clutch_frequency_player_value"
+												raw_text = "[GetPlayer.Custom('mde_dragon_egg_clutch_frequency_player_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'dragon_egg_clutch_frequency_ai_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "dragon_egg_clutch_frequency_ai_desc"
+												text = "menu_rule_dragon_egg_clutch_frequency_ai"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "dragon_egg_clutch_frequency_ai_value"
+												raw_text = "[GetPlayer.Custom('mde_dragon_egg_clutch_frequency_ai_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'dragon_gene_frequency_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "dragon_gene_frequency_desc"
+												text = "menu_rule_dragon_gene_frequency"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "dragon_gene_frequency_value"
+												raw_text = "[GetPlayer.Custom('mde_dragon_gene_frequency_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'dragon_gene_naughty_or_nice_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "dragon_gene_naughty_or_nice_desc"
+												text = "menu_rule_dragon_gene_frequency_naughty_or_nice"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "dragon_gene_naughty_or_nice_value"
+												raw_text = "[GetPlayer.Custom('mde_dragon_gene_naughty_or_nice_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'cannibal_instinct_odds_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "cannibal_instinct_odds_desc"
+												text = "menu_rule_cannibal_instinct_odds"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "cannibal_instinct_odds_value"
+												raw_text = "[GetPlayer.Custom('mde_cannibal_instinct_odds_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'ride_dragon_decision_cooldown_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "ride_dragon_decision_cooldown_desc"
+												text = "menu_rule_ride_dragon_decision_cooldown"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "ride_dragon_decision_cooldown_value"
+												raw_text = "[GetPlayer.Custom('mde_ride_dragon_decision_cooldown_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'capture_dragon_time_limit_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "capture_dragon_time_limit_desc"
+												text = "menu_rule_capture_dragon_time_limit"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "capture_dragon_time_limit_value"
+												raw_text = "[GetPlayer.Custom('mde_capture_dragon_time_limit_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'stepstone_invasion_frequency_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "stepstone_invasion_frequency_desc"
+												text = "menu_rule_stepstone_invasion_frequency"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "stepstone_invasion_frequency_value"
+												raw_text = "[GetPlayer.Custom('mde_stepstone_invasion_frequency_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'can_children_be_landless_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "can_children_be_landless_desc"
+												text = "menu_rule_can_children_be_landless"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "can_children_be_landless_value"
+												raw_text = "[GetPlayer.Custom('mde_can_children_be_landless_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+								container = {
+									button_standard = {
+										size = { 245 68 }
+										using = tooltip_ws
+										layoutpolicy_vertical = expanding
+										onclick = "[GetScriptedGui( 'can_landless_steal_val_cycle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+										background = {
+											using = Background_Area_Light
+											spriteborder = { 10 0 }
+											
+										}
+										vbox = {
+											size = { 100% 100% }
+											margin = { 10 4 }
+											expand = {}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "can_landless_steal_desc"
+												text = "menu_rule_can_landless_steal"
+											}
+											text_single = {
+												fontsize = 14
+												layoutpolicy_horizontal = expanding
+												max_width = 225
+												fontsize_min = 10
+												elide = right
+												align = center|nobaseline
+												name = "can_landless_steal_value"
+												raw_text = "[GetPlayer.Custom('mde_can_landless_steal_loc')]"
+												#using = Font_Size_Big
+											}
+											expand = {}
+										}
+									}
+								}
+							}
+							
+						}
+						spacer = { size = { 0 20 } }
+					}
+				}
+			}
+		}
+		widget = {
+			allow_outside = yes
+			name = "widget_button_manager"
+			visible = "[GetVariableSystem.HasValue('menu_viewer_mode', 'viewer_mode_buttons')]"
+			size = { 800 430 }
+			vbox = {
+				allow_outside = yes
+				margin = { 0 -0 }
+
+				scrollbox = {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					minimumsize = { 460 37 }
+					blockoverride "scrollbox_content" {
+						vbox = {
+							flowcontainer = {
+								spacing = 6
+								wrap_count = 3
+								ignoreinvisible = yes
+								button_standard = {
+									size = { 245 68 }
+									using = tooltip_ws
+									layoutpolicy_vertical = expanding
+
+									enabled = "[GetScriptedGui( 'mde_show_dragonpit_button_enabled' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+
+									down = "[GetScriptedGui( 'mde_show_dragonpit_button_menu_toggle' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									onclick = "[GetScriptedGui( 'mde_show_dragonpit_button_menu_toggle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+
+									background = {
+										using = Background_Area_Light
+										spriteborder = { 10 0 }
+										
+									}
+
+									flowcontainer = {
+										parentanchor = center|vcenter
+										icon = {
+											texture = "gfx/interface/icons/building_types/icon_building_dragonpit.dds"
+											size = { 30 30 }
+											modify_texture = {
+												name = "white_icon"
+												alpha = 1
+											}
+										}
+										text_single = {
+											fontsize = 16
+											name = "dragonpit_button"
+											text = "dragonpit_button_manager_text"
+											#using = Font_Size_Big
+											align = center
+										}
+										
+									}
+							
+
+
+				
+									tooltip_offset = { 0 0 }
+									tooltip_verticalbehavior = slide
+									tooltip_horizontalbehavior = mirror
+									tooltip = "NO_DRAGONPITS_TOOLTIP"
+									tooltip_visible = "[Not(GetScriptedGui( 'mde_show_dragonpit_button_enabled' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) )]"
+									
+									expand = {}
+								}
+								button_standard = {
+									size = { 245 68 }
+									using = tooltip_ws
+									layoutpolicy_vertical = expanding
+
+									enabled = "[GetScriptedGui( 'mde_show_dragon_button_enabled' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+
+									down = "[GetScriptedGui( 'mde_show_dragon_button_menu_toggle' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									onclick = "[GetScriptedGui( 'mde_show_dragon_button_menu_toggle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+
+									background = {
+										using = Background_Area_Light
+										spriteborder = { 10 0 }
+										
+									}
+
+									flowcontainer = {
+										parentanchor = center|vcenter
+										icon = {
+											texture = "gfx/interface/icons/traits/dragon_owned.dds"
+											size = { 30 30 }
+										}
+										text_single = {
+											fontsize = 16
+											name = "dragon_button"
+											text = "dragon_button_manager_text"
+											#using = Font_Size_Big
+											align = center
+										}
+										
+									}
+							
+
+
+				
+									tooltip_offset = { 0 0 }
+									tooltip_verticalbehavior = slide
+									tooltip_horizontalbehavior = mirror
+									tooltip = "NO_DRAGONS_TOOLTIP"
+									tooltip_visible = "[Not(GetScriptedGui( 'mde_show_dragon_button_enabled' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) )]"
+									
+									expand = {}
+								}
+								button_standard = {
+									size = { 245 68 }
+									using = tooltip_ws
+									layoutpolicy_vertical = expanding
+
+									enabled = "[GetScriptedGui( 'mde_show_egg_button_enabled' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+
+									down = "[GetScriptedGui( 'mde_show_egg_button_menu_toggle' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									onclick = "[GetScriptedGui( 'mde_show_egg_button_menu_toggle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+
+									background = {
+										using = Background_Area_Light
+										spriteborder = { 10 0 }
+										
+									}
+
+									flowcontainer = {
+										parentanchor = center|vcenter
+										spacer = {
+											size = { 10 0 }
+										}
+										margin_widget = {
+											margin = { -33 -9 }
+											icon = {
+												texture = "gfx/interface/icons/artifact/dragon_egg_red.dds"
+												size = { 40 40 }
+												alpha = 1
+											}
+										}
+										
+										text_single = {
+											fontsize = 16
+											name = "egg_button"
+											text = "egg_button_manager_text"
+											#using = Font_Size_Big
+											align = center|nobaseline
+										}
+										
+									}
+									tooltip_offset = { 0 0 }
+									tooltip_verticalbehavior = slide
+									tooltip_horizontalbehavior = mirror
+									tooltip = "NO_EGG_TOOLTIP"
+									tooltip_visible = "[Not(GetScriptedGui( 'mde_show_egg_button_enabled' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) )]"
+									
+									expand = {}
+								}
+								button_standard = {
+									size = { 245 68 }
+									using = tooltip_ws
+									layoutpolicy_vertical = expanding
+
+									enabled = "[GetScriptedGui( 'mde_show_kingsguard_button_enabled' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+
+									down = "[GetScriptedGui( 'mde_show_kingsguard_button_menu_toggle' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									onclick = "[GetScriptedGui( 'mde_show_kingsguard_button_menu_toggle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+
+									background = {
+										using = Background_Area_Light
+										spriteborder = { 10 0 }
+										
+									}
+
+									flowcontainer = {
+										parentanchor = center|vcenter
+										icon = {
+											texture = "gfx/interface/icons/government_types/kingsguard_government.dds"
+											size = { 30 30 }
+										}
+										text_single = {
+											fontsize = 16
+											name = "kingsguard_button"
+											text = "kingsguard_button_manager_text"
+											#using = Font_Size_Big
+											align = center
+										}
+										
+									}
+
+									tooltip_offset = { 0 0 }
+									tooltip_verticalbehavior = slide
+									tooltip_horizontalbehavior = mirror
+									tooltip = "NO_KINGSGUARD_TOOLTIP"
+									tooltip_visible = "[Not(GetScriptedGui( 'mde_show_kingsguard_button_enabled' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) )]"
+									
+									expand = {}
+								}
+								button_standard = {
+									size = { 245 68 }
+									using = tooltip_ws
+									layoutpolicy_vertical = expanding
+
+									enabled = "[GetScriptedGui( 'mde_show_valyrian_steel_button_enabled' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+
+									down = "[GetScriptedGui( 'mde_show_valyrian_steel_button_menu_toggle' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									onclick = "[GetScriptedGui( 'mde_show_valyrian_steel_button_menu_toggle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+
+									background = {
+										using = Background_Area_Light
+										spriteborder = { 10 0 }
+										
+									}
+
+									flowcontainer = {
+										parentanchor = center|vcenter
+										icon = {
+											texture = "gfx/interface/icons/artifact/vs_longclaw_snow.dds"
+											size = { 30 30 }
+										}
+										text_single = {
+											fontsize = 16
+											name = "valyrian_steel_button"
+											text = "valyrian_steel_button_manager_text"
+											#using = Font_Size_Big
+											align = center
+										}
+										
+									}
+									
+									tooltip_offset = { 0 0 }
+									tooltip_verticalbehavior = slide
+									tooltip_horizontalbehavior = mirror
+									tooltip = "NO_VALYRIAN_STEEL_TOOLTIP"
+									tooltip_visible = "[Not(GetScriptedGui( 'mde_show_valyrian_steel_button_enabled' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) )]"
+									
+									expand = {}
+								}
+								button_standard = {
+									size = { 245 68 }
+									using = tooltip_ws
+									layoutpolicy_vertical = expanding
+
+
+									down = "[GetScriptedGui( 'mde_show_menu_button_menu_toggle' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									onclick = "[GetScriptedGui( 'mde_show_menu_button_menu_toggle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+
+									background = {
+										using = Background_Area_Light
+										spriteborder = { 10 0 }
+										
+									}
+
+									flowcontainer = {
+										parentanchor = center|vcenter
+										spacing = 6
+										icon = {
+											texture = "gfx/interface/icons/flat_icons/menu.dds"
+											size = { 30 30 }
+											using = Master_Button_Modify_Texture
+										}
+										text_single = {
+											fontsize = 16
+											name = "menu_button"
+											text = "menu_button_manager_text"
+											#using = Font_Size_Big
+											align = center
+										}
+										
+									}
+									
+									
+									expand = {}
+								}
+								button_standard = {
+									size = { 245 68 }
+									using = tooltip_ws
+									layoutpolicy_vertical = expanding
+
+
+									down = "[GetScriptedGui( 'mde_show_dragonblood_button_menu_toggle' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									onclick = "[GetScriptedGui( 'mde_show_dragonblood_button_menu_toggle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+
+									background = {
+										using = Background_Area_Light
+										spriteborder = { 10 0 }
+										
+									}
+
+									flowcontainer = {
+										parentanchor = center|vcenter
+										icon = {
+											texture = "gfx/interface/icons/traits/dragon_blooded.dds"
+											size = { 30 30 }
+										}
+										text_single = {
+											fontsize = 16
+											name = "dragonblood_button"
+											text = "dragonblood_button_manager_text"
+											#using = Font_Size_Big
+											align = center
+										}
+										
+									}
+									
+									
+									expand = {}
+								}
+								button_standard = {
+									size = { 245 68 }
+									using = tooltip_ws
+									layoutpolicy_vertical = expanding
+
+
+									down = "[GetScriptedGui( 'mde_show_artifact_market_button_menu_toggle' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									onclick = "[GetScriptedGui( 'mde_show_artifact_market_button_menu_toggle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+
+									background = {
+										using = Background_Area_Light
+										spriteborder = { 10 0 }
+										
+									}
+
+									flowcontainer = {
+										parentanchor = center|vcenter
+										icon = {
+											texture = "gfx/interface/icons/artifact/artifact_brooch.dds"
+											framesize = { 240 240 }
+											frame = 3
+											size = { 30 30 }
+										}
+										text_single = {
+											fontsize = 16
+											name = "artifact_market_button"
+											text = "artifact_market_button_manager_text"
+											#using = Font_Size_Big
+											align = center
+										}
+										
+									}
+									
+									
+									expand = {}
+								}
+								
+							}
+						}
+
+						
+					}
+				}
+				
+			}
+		}
+		widget = {
+			allow_outside = yes
+			name = "widget_dragon_portrait_manager"
+			visible = "[And(GetVariableSystem.HasValue('menu_viewer_mode', 'viewer_mode_dragon_portrait'), GetScriptedGui('mde_player_has_living_dragon').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+			size = { 800 430 }
+			vbox = {
+				allow_outside = yes
+				margin = { 0 -0 }
+
+				scrollbox = {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					minimumsize = { 460 37 }
+					blockoverride "scrollbox_content" {
+						vbox = {
+							flowcontainer = {
+								spacing = 6
+								ignoreinvisible = yes
+
+								mde_icon_banner_button = {
+									name = "portrait_toggle_button"
+									onclick = "[GetScriptedGui( 'mde_dragon_portrait_toggle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									tooltip = "mde_dragon_portrait_toggle_tt"
+									blockoverride "button_icon" {
+										texture = "gfx/interface/icons/symbols/icon_check.dds"
+										visible = "[GetScriptedGui( 'mde_dragon_portrait_toggle' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									}
+									icon = {
+										parentanchor = center
+										alwaystransparent = yes
+										size = { 60% 60% }
+										texture = "gfx/interface/icons/symbols/icon_cross.dds"
+										visible = "[Not( GetScriptedGui( 'mde_dragon_portrait_toggle' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) )]"
+									}
+								}
+								mde_icon_banner_button = {
+									name = "idle_toggle_button"
+									onclick = "[GetScriptedGui( 'mde_dragon_animation_idle' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									enabled = "[GetScriptedGui( 'mde_dragon_animation_idle' ).IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									down = "[GetScriptedGui( 'mde_dragon_animation_idle' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									blockoverride "down_visible" {
+										visible = "[GetScriptedGui( 'mde_dragon_animation_idle' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									}
+									tooltip = "mde_dragon_animation_idle_tt"
+								 	blockoverride "button_icon" {
+								 		texture = "gfx/interface/icons/traits/dragon.dds"
+									}
+								}
+								mde_icon_banner_button = {
+									name = "roar_toggle_button"
+									onclick = "[GetScriptedGui( 'mde_dragon_animation_roar' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									enabled = "[GetScriptedGui( 'mde_dragon_animation_roar' ).IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									down = "[GetScriptedGui( 'mde_dragon_animation_roar' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									blockoverride "down_visible" {
+										visible = "[GetScriptedGui( 'mde_dragon_animation_roar' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									}
+									tooltip = "mde_dragon_animation_roar_tt"
+								 	blockoverride "button_icon" {
+								 		texture = "gfx/interface/icons/icon_draconic_dread.dds"
+									}
+								}
+								mde_icon_banner_button = {
+									name = "fire_toggle_button"
+									onclick = "[GetScriptedGui( 'mde_dragon_animation_roar_fire' ).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									enabled = "[GetScriptedGui( 'mde_dragon_animation_roar_fire' ).IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									down = "[GetScriptedGui( 'mde_dragon_animation_roar_fire' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									blockoverride "down_visible" {
+										visible = "[GetScriptedGui( 'mde_dragon_animation_roar_fire' ).IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+									}
+									tooltip = "mde_dragon_animation_roar_fire_tt"
+								 	blockoverride "button_icon" {
+								 		texture = "gfx/interface/icons/icon_dragon_combat_effectiveness.dds"
+									}
+								}
+							}
+						}
+
+						
+					}
+				}
+				
+			}
+		}
+		button_event_standard = {
+			block "button_size" {
+				size = { 1220 36 }
+			}
+			highlight_icon = {
+				size = { 1210 100% }
+				gfxtype = togglepushbuttongfx
+				effectname = "NoHighlight"
+				texture = "gfx/interface/buttons/button_mouseover_event.dds"
+				spriteType = Corneredstretched
+				spriteborder = { 20 20 }
+				framesize  = { 238 63 }
+				parentanchor = center
+
+				upframe = 1
+				uphoverframe = 2
+				uppressedframe = 1
+				downframe = 1
+				downhoverframe = 1
+				downpressedframe = 1
+				disableframe = 1
+
+				alpha = 0.5
+
+				block "button_standard_mouseover" {}
+			}
+			modify_texture = {
+				name = "mask"
+				texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick.dds"
+				spriteType = Corneredtiled
+				spriteborder_left = 40
+				spriteborder_right = 40
+				blend_mode = alphamultiply
+			}
+			text_single = {
+				alwaystransparent = yes
+				parentanchor = center
+				text = "MDE_gui_exit"
+				default_format = "#high"
+				align = center|nobaseline
+				fontsize_min = 12
+			}
+			
+			onclick = "[GetVariableSystem.Toggle( 'menu_viewer_toggle' )]"
+			
+		}
+		expand = {}
+	}
+	widget = {
+		size = { 2390 76 }
+
+		widget = {
+			size = { 100% 57 }
+			position = { 0 20 }
+
+			icon = {
+				name = "theme_header"
+				position = { 24 0 }
+				size = { 1072 57 }
+				texture = "gfx/interface/window_event/event_header_red.dds"
+
+				modify_texture = {
+					name = overlay
+					texture = "gfx/interface/component_effects/effect_header_blue_shine.dds"
+					blend_mode = colordodge
+					translate_uv = { 0.6 0 }
+				}
+
+				state = {
+					name = right
+					next = left
+
+					duration = 8
+					bezier = { 0.8 0.18 0.96 .05 }
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { -0.6 0 }
+					}
+				}
+
+				state = {
+					name = left
+					next = right
+
+					duration = 0.0
+					delay = 5
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { 0.6 0 }
+					}
+				}
+
+				state = {
+					trigger_on_create = yes
+					name = start
+					next = right
+
+					duration = 0.0
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { 0.6 0 }
+					}
+				}
+			}
+
+			text_single = {
+				name = "title"
+				position = { 128 1 }
+				fontsize = 29
+				fontsize_min = 16
+				text = "menu_viewer.t"
+				default_format = "#high;glow_color:{0.1,0.1,0.1,1.0}"
+				using = Font_Type_Flavor
+				max_width = 950
+
+				alpha = 0
+
+				state = {
+					name = start
+					trigger_on_create = yes
+					delay = 0.2
+					using = Animation_Curve_Default
+					alpha = 1
+					duration = 0.5
+				}
+			}
+
+			icon = {
+				name = "theme_icon"
+				position = { 28 -19 }
+				size = { 80 80 }
+				texture = "gfx/interface/icons/event_types/type_dragon.dds"
+
+				modify_texture = {
+					name = overlay
+					texture = "gfx/interface/component_effects/effect_blue_shine.dds"
+					blend_mode = colordodge
+					translate_uv = { 0.6 0 }
+				}
+
+				state = {
+					name = right
+					next = left
+
+					duration = 2
+					bezier = { .8 .18 .96 .05 }
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { -0.6 0 }
+					}
+				}
+
+				state = {
+					name = left
+					next = right
+
+					duration = 0.0
+					delay = 5
+
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { 0.6 0 }
+					}
+				}
+
+				state = {
+					trigger_on_create = yes
+					name = start
+					next = right
+
+					duration = 0.0
+
+					modify_texture = {
+						name = overlay
+						translate_uv = {0.6 0}
+					}
+				}
+				
+			}
+			
+		}
+	}
+}
+
+types MDE_Menu
+{
+	# For a pressed look, set down on the instance and override "down_visible" with the same condition.
+	type mde_icon_banner_button = button_normal {
+		size = { 90 90 }
+
+		button = {
+			size = { 88% 88% }
+			parentanchor = center
+			alwaystransparent = yes
+
+			block "background_texture"
+			{
+				texture = "gfx/interface/window_situations/hud_situation_widget.dds"
+			}
+		}
+
+		icon = {
+			name = "down_gold"
+			size = { 88% 88% }
+			parentanchor = center
+			alwaystransparent = yes
+			texture = "gfx/interface/colors/white.dds"
+
+			block "down_gold_color"
+			{
+				color = { 0.84 0.65 0.34 0.45 }
+			}
+
+			block "down_visible"
+			{
+				visible = no
+			}
+
+			modify_texture = {
+				name = "banner_shape"
+				texture = "gfx/interface/window_situations/hud_situation_widget.dds"
+				blend_mode = alphamultiply
+			}
+		}
+
+		icon = {
+			parentanchor = center
+			alwaystransparent = yes
+
+			block "icon_size"
+			{
+				size = { 60% 60% }
+			}
+
+			block "button_icon"
+			{
+				texture = "gfx/interface/icons/flat_icons/rules.dds"
+			}
+		}
+	}
+}

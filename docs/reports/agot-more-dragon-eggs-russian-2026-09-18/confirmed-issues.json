@@ -1,0 +1,107 @@
+[
+  {
+    "id": "MDE-01",
+    "category": "coverage",
+    "severity": "high",
+    "finding": "331 current English keys are absent from the external translation. Builtin Russian declares 73 of these; AGOT defines nagga_desc for an unrelated context; 257 have no Russian definition in the inspected catalogs.",
+    "evidence": ["missing-with-fallbacks.csv", "missing-russian-confirmed.csv"],
+    "correction": "Supply missing Russian definitions after classifying visible text, proper names and technical values. Do not replace the unrelated AGOT nagga_desc globally."
+  },
+  {
+    "id": "MDE-02",
+    "category": "syntax",
+    "severity": "high",
+    "finding": "Missing closing quotes in two English game-rule entries and nine builtin Russian entries. The external translation does not contain this quote defect.",
+    "evidence": ["structure-review.csv"],
+    "correction": "Repair the malformed physical localization files at their original relative paths; a later key override alone does not remove the source parse error."
+  },
+  {
+    "id": "MDE-03",
+    "category": "syntax",
+    "severity": "medium",
+    "key": "mde_demand_egg_events.0006.a.tt",
+    "file": "localization/replace/russian/mde_demand_egg_events_l_russian.yml",
+    "line": 48,
+    "finding": "Builtin Russian repeats the entire quoted value twice on one key. The external translation already has a single correct value.",
+    "correction": "Repair the malformed builtin physical line, preserving the external Russian text."
+  },
+  {
+    "id": "MDE-04",
+    "category": "formatting",
+    "severity": "medium",
+    "finding": "Unclosed formatting: 10 English entries, 3 builtin Russian entries, 1 external Russian entry. The external defect is INVITE_TO_KINGSGUARD_TT. Counts refer to physical definitions and are not additive counts of distinct concepts.",
+    "evidence": ["structure-review.csv"],
+    "correction": "Close the formatting with #! without altering icons, scopes or localization references. Retain valid external fixes already present."
+  },
+  {
+    "id": "MDE-05",
+    "category": "hardcoded_gui",
+    "severity": "medium",
+    "finding": "11 GUI literals in 9 files: 10 occurrences of Exit. and one Move Outside. They bypass YAML localization.",
+    "evidence": ["hardcoded-text-review.csv"],
+    "correction": "Bind these visible labels to localized keys while preserving GUI actions and layout."
+  },
+  {
+    "id": "MDE-06",
+    "category": "gender",
+    "severity": "medium",
+    "finding": "Eight external Russian keys contain nine hardcoded masculine fragments for characters whose sex is not restricted by the relevant events or interactions.",
+    "evidence": ["gender-review.csv"],
+    "scopes": {
+      "mde_egg_access_gained_interface_tt": "recipient",
+      "mde_decisions_events.1000.desc": "ROOT.Char",
+      "mde_decisions_events.3000.desc.self": "ROOT.Char",
+      "mde_decisions_events.3000.desc.other": "secret_exposer",
+      "mde_dragon_eggs_events.0006.desc": "ROOT.Char",
+      "mde_dragon_eggs_events.0007.desc_missing": "ROOT.Char",
+      "mde_dragon_eggs_events.0009.desc": "ROOT.Char",
+      "mde_dragon_eggs_events.0013.desc": "ROOT.Char"
+    },
+    "correction": "Use gender-neutral wording or a gender expression on the correct character scope."
+  },
+  {
+    "id": "MDE-07",
+    "category": "namespace_collision",
+    "severity": "medium",
+    "key": "nagga_desc",
+    "finding": "MDE defines the dragon name Nagga, whereas AGOT uses this same key for the travel description of Nagga's Hill. The Russian fallback is therefore semantically unsuitable. English MDE replacement also conflicts with the travel text.",
+    "evidence": [
+      "MDE:localization/replace/english/agot/agot_artifacts/mde_artifacts_l_english.yml:221",
+      "MDE:common/customizable_localization/00_more_dragon_eggs_loc.txt:517",
+      "AGOT:localization/english/agot/gui/agot_travel_planner_window_l_english.yml:113",
+      "AGOT_RU:localization/russian/agot/gui/agot_travel_planner_window_l_russian.yml:113"
+    ],
+    "correction": "Give the MDE dragon-name branch a unique key and retain or restore AGOT's travel description. Do not merely add a Russian nagga_desc name override.",
+    "runtime_checked": false
+  },
+  {
+    "id": "MDE-08",
+    "category": "missing_runtime_keys",
+    "severity": "medium",
+    "finding": "Two additional script-referenced keys are absent from MDE, its external translation, AGOT, AGOT Russian and vanilla localization; no trigger-localization mapping was found. These keys are outside the 1043-key English catalog.",
+    "references": [
+      {"key":"NEEDS_ABSOLUTE_CROWN_AUTHORITY", "file":"common/laws/02_mde_realm_laws.txt", "line":255},
+      {"key":"stop_cradling_egg", "file":"common/character_interactions/00_agot_dragon_interactions.txt", "line":77},
+      {"key":"stop_cradling_egg", "file":"common/character_interactions/00_agot_dragon_interactions.txt", "line":200}
+    ],
+    "correction": "Supply appropriate English and Russian definitions. Inspect the empty custom_description block around the crown-authority label when validating its displayed tooltip; the actual crown_authority_3 check is present outside it. Preserve mechanics."
+  },
+  {
+    "id": "MDE-09",
+    "category": "duplicate",
+    "severity": "low",
+    "key": "dragon_pen.tt.unlocked_by_requirements",
+    "finding": "Two English files define the same tooltip with dragonpen versus dragoncoop. Six other duplicate rows have identical values; the external Russian catalog has no duplicates.",
+    "evidence": ["duplicates-review.csv"],
+    "correction": "Use consistent building terminology for the conflicting English tooltip; identical duplicates are housekeeping, not missing translation."
+  },
+  {
+    "id": "MDE-10",
+    "category": "editorial",
+    "severity": "low",
+    "finding": "Two confirmed English prose errors: It's origins are unknown. uses the contraction instead of the possessive; the Aurion narrative contains who could his power with a missing verb. The external Russian translation already supplies sensible wording in the Aurion narrative.",
+    "keys": ["mde_dragon_no_parent_line", "mde_dragon_eggs_events.0016.desc"],
+    "evidence": ["catalog-entries.csv", "paired-texts.csv"],
+    "correction": "Correct the English grammar when repairing inherited source text; translate the currently uncovered parentage line normally."
+  }
+]

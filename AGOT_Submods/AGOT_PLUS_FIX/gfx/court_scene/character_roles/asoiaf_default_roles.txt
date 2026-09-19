@@ -1,0 +1,332 @@
+﻿asoiaf_kingsguard = {
+	effect = {
+		scope:ruler = {
+			if = {
+				limit = {
+					any_councillor = {
+						OR = {
+							is_kingsguard_councillor_trigger = yes
+							has_council_position = kingsguard_lord_commander
+						}
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+						NOT = { has_trait = maimed }
+					}
+				}
+				every_councillor = {
+					limit = {
+						OR = {
+							is_kingsguard_councillor_trigger = yes
+							has_council_position = kingsguard_lord_commander 
+						}
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+						NOT = { has_trait = maimed }	
+					}
+					add_to_list = characters
+				}
+			}
+			else_if = { #default to Gold Cloaks ONLY if no Kingsguard are available
+				limit = {
+					any_vassal = {
+						has_court_position = goldcloaks_court_position
+						is_target_in_global_variable_list = {
+							name = agot_goldcloaks_founded
+							target = flag:goldcloaks_founded
+						}
+						any_courtier = {
+							location ?= liege.capital_province #Goldguard Heights
+							is_available_healthy_ai_adult = yes
+							is_clergy = no
+							OR = {
+								AND = {
+									is_male = yes
+									culture = {
+										OR = {
+											has_cultural_parameter = martial_custom_male_only_combatant
+											has_cultural_parameter = martial_custom_equal_combatant
+										}
+									}
+								}
+								AND = {
+									is_female = yes
+									culture = {
+										OR = {
+											has_cultural_parameter = martial_custom_female_only_combatant
+											has_cultural_parameter = martial_custom_equal_combatant
+										}
+									}
+								}
+							}
+							NOT = { has_court_position = court_jester_court_position }
+							NOR = {
+								should_be_naked_trigger = yes
+								has_trait = septon
+								has_trait = most_devout_member
+								has_trait = silent_sister
+								has_trait = red_priest
+								has_trait = devoted
+								has_trait = drowned_man
+								has_trait = maester
+								has_trait = maester_historical
+								has_trait = archmaester
+								has_trait = kingsguard
+								has_trait = nightswatch
+								has_trait = nightswatch_historical
+								has_trait = lifestyle_nw_builder
+								has_trait = lifestyle_nw_ranger
+								has_trait = lifestyle_nw_steward
+							}
+							NOT = { has_short_disease_trigger = yes }
+							NOT = { has_trait = maimed }
+						}
+					}
+				}
+				every_vassal = {
+					limit = {
+						has_court_position = goldcloaks_court_position
+						is_target_in_global_variable_list = {
+							name = agot_goldcloaks_founded
+							target = flag:goldcloaks_founded
+						}
+					}
+					every_courtier = {
+						limit = {
+							location ?= liege.capital_province #Goldguard Heights
+							is_available_healthy_ai_adult = yes
+							is_clergy = no
+							OR = {
+								AND = {
+									is_male = yes
+									culture = {
+										OR = {
+											has_cultural_parameter = martial_custom_male_only_combatant
+											has_cultural_parameter = martial_custom_equal_combatant
+										}
+									}
+								}
+								AND = {
+									is_female = yes
+									culture = {
+										OR = {
+											has_cultural_parameter = martial_custom_female_only_combatant
+											has_cultural_parameter = martial_custom_equal_combatant
+										}
+									}
+								}
+							}
+							NOT = { has_court_position = court_jester_court_position }
+							NOR = {
+								should_be_naked_trigger = yes
+								has_trait = septon
+								has_trait = most_devout_member
+								has_trait = silent_sister
+								has_trait = red_priest
+								has_trait = devoted
+								has_trait = drowned_man
+								has_trait = maester
+								has_trait = maester_historical
+								has_trait = archmaester
+								has_trait = kingsguard
+								has_trait = nightswatch
+								has_trait = nightswatch_historical
+								has_trait = lifestyle_nw_builder
+								has_trait = lifestyle_nw_ranger
+								has_trait = lifestyle_nw_steward
+							}
+							NOT = { has_short_disease_trigger = yes }
+							NOT = { has_trait = maimed }
+						}
+						add_to_list = characters
+					}
+				}
+			}
+		}
+	}
+	scripted_animation = {
+		triggered_animation = {
+			trigger = {
+				always = yes
+			}
+			animation = { marshal }
+		}
+	}
+}
+
+asoiaf_gold_cloak = {
+	effect = {
+		scope:ruler = {
+			if = {
+				limit = {
+					any_vassal = {
+						has_court_position = goldcloaks_court_position
+						is_target_in_global_variable_list = {
+							name = agot_goldcloaks_founded
+							target = flag:goldcloaks_founded
+						}
+						any_courtier = {
+							location ?= liege.capital_province #Goldguard Heights
+							is_available_healthy_ai_adult = yes
+							is_clergy = no
+							OR = {
+								AND = {
+									is_male = yes
+									culture = {
+										OR = {
+											has_cultural_parameter = martial_custom_male_only_combatant
+											has_cultural_parameter = martial_custom_equal_combatant
+										}
+									}
+								}
+								AND = {
+									is_female = yes
+									culture = {
+										OR = {
+											has_cultural_parameter = martial_custom_female_only_combatant
+											has_cultural_parameter = martial_custom_equal_combatant
+										}
+									}
+								}
+							}
+							NOT = { has_court_position = court_jester_court_position }
+							NOR = {
+								should_be_naked_trigger = yes
+								has_trait = septon
+								has_trait = most_devout_member
+								has_trait = silent_sister
+								has_trait = red_priest
+								has_trait = devoted
+								has_trait = drowned_man
+								has_trait = maester
+								has_trait = maester_historical
+								has_trait = archmaester
+								has_trait = kingsguard
+								has_trait = nightswatch
+								has_trait = nightswatch_historical
+								has_trait = lifestyle_nw_builder
+								has_trait = lifestyle_nw_ranger
+								has_trait = lifestyle_nw_steward
+							}
+							NOT = { has_short_disease_trigger = yes }
+							NOT = { has_trait = maimed }
+						}
+					}
+				}
+				every_vassal = {
+					limit = {
+						has_court_position = goldcloaks_court_position
+						is_target_in_global_variable_list = {
+							name = agot_goldcloaks_founded
+							target = flag:goldcloaks_founded
+						}
+					}
+					every_courtier = {
+						limit = {
+							location ?= liege.capital_province #Goldguard Heights
+							is_available_healthy_ai_adult = yes
+							is_clergy = no
+							OR = {
+								AND = {
+									is_male = yes
+									culture = {
+										OR = {
+											has_cultural_parameter = martial_custom_male_only_combatant
+											has_cultural_parameter = martial_custom_equal_combatant
+										}
+									}
+								}
+								AND = {
+									is_female = yes
+									culture = {
+										OR = {
+											has_cultural_parameter = martial_custom_female_only_combatant
+											has_cultural_parameter = martial_custom_equal_combatant
+										}
+									}
+								}
+							}
+							NOT = { has_court_position = court_jester_court_position }
+							NOR = {
+								should_be_naked_trigger = yes
+								has_trait = septon
+								has_trait = most_devout_member
+								has_trait = silent_sister
+								has_trait = red_priest
+								has_trait = devoted
+								has_trait = drowned_man
+								has_trait = maester
+								has_trait = maester_historical
+								has_trait = archmaester
+								has_trait = kingsguard
+								has_trait = nightswatch
+								has_trait = nightswatch_historical
+								has_trait = lifestyle_nw_builder
+								has_trait = lifestyle_nw_ranger
+								has_trait = lifestyle_nw_steward
+							}
+							NOT = { has_short_disease_trigger = yes }
+							NOT = { has_trait = maimed }
+						}
+						add_to_list = characters
+					}
+				}
+			}
+		}
+	}
+	scripted_animation = {
+		triggered_animation = {
+			trigger = {
+				always = yes
+			}
+			animation = { throne_room_two_handed_passive_1 }
+		}
+	}
+}
+
+asoiaf_gold_cloak_commander = {
+	effect = {
+		scope:ruler = {
+			if = {
+				limit = {
+					any_vassal = {
+						has_court_position = goldcloaks_court_position
+						is_target_in_global_variable_list = {
+							name = agot_goldcloaks_founded
+							target = flag:goldcloaks_founded
+						}
+						location ?= capital_province #Goldguard Heights
+						is_available_healthy_ai_adult = yes
+						is_clergy = no
+						NOT = { has_court_position = court_jester_court_position }
+						NOT = { has_short_disease_trigger = yes }
+						NOT = { has_trait = maimed }
+					}
+				}
+				every_vassal = {
+					limit = {
+						has_court_position = goldcloaks_court_position
+						is_target_in_global_variable_list = {
+							name = agot_goldcloaks_founded
+							target = flag:goldcloaks_founded
+						}
+						location ?= capital_province #Goldguard Heights
+						is_available_healthy_ai_adult = yes
+						is_clergy = no
+						NOT = { has_court_position = court_jester_court_position }
+						NOT = { has_short_disease_trigger = yes }
+						NOT = { has_trait = maimed }
+					}
+					add_to_list = characters
+				}
+			}
+		}
+	}
+	scripted_animation = {
+		triggered_animation = {
+			trigger = {
+				always = yes
+			}
+			animation = { personality_rational personality_honorable }
+		}
+	}
+}

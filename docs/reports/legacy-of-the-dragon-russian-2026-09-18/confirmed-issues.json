@@ -1,0 +1,101 @@
+[
+  {
+    "Id": "LOTD-001",
+    "Origin": "Original script",
+    "Category": "memory-description",
+    "File": "common/character_memory_types/lotd_memories.txt",
+    "Line": 42,
+    "Key": "read_prophecy_to_heir",
+    "Problem": "Во втором лице передача пророчества наследнику описывается как простое чтение.",
+    "Before": "desc = read_prophecy_desc_second_perspective",
+    "Recommended": "desc = read_prophecy_to_heir_desc_second_perspective",
+    "Evidence": "Правильный русский ключ уже есть: localization/russian/lotd_memories_l_russian.yml:8. Создание воспоминания: events/decisions_events/read_prophecy.txt:652–658."
+  },
+  {
+    "Id": "LOTD-002",
+    "Origin": "Original script",
+    "Category": "memory-description",
+    "File": "common/character_memory_types/lotd_memories.txt",
+    "Line": 48,
+    "Key": "read_prophecy_to_heir",
+    "Problem": "В третьем лице передача пророчества наследнику описывается как простое чтение.",
+    "Before": "desc = read_prophecy_desc_third_perspective",
+    "Recommended": "desc = read_prophecy_desc_to_heir_third_perspective",
+    "Evidence": "Правильный русский ключ уже есть: localization/russian/lotd_memories_l_russian.yml:9. Не переопределять общий текст чтения: он нужен отдельному воспоминанию read_prophecy."
+  },
+  {
+    "Id": "LOTD-003",
+    "Origin": "Original script",
+    "Category": "opposite-event-description",
+    "File": "events/decisions_events/rehilt_blackfyre_events.txt",
+    "Line": 19,
+    "Key": "rehilt_blackfyre.0001",
+    "Problem": "Описание смены рукояти Чёрного Пламени выбрано для противоположного результата; выбор позы в портрете построен на том же обратном соответствии.",
+    "Evidence": "scope:blackfyre_artifact_rehilt устанавливается в ветке создания золотой рукояти (82–90), но на строке 19 выбирает rehilt_blackfyre.0002_desc о восстановлении чёрной стали и рубинов. При восстановлении visuals=blackfyre (75) выбирается описание золотой рукояти .0001_desc. Строки 36/42 аналогично выбирают противоположные варианты позы.",
+    "Recommended": "Согласовать выбор описания и позы с фактической веткой переделки. Сами переводы двух описаний соответствуют EN; менять их местами в русификаторе без исправления скрипта не следует.",
+    "RuntimeLimit": "Проверено по скрипту и определениям visuals; результат на экране не воспроизводился."
+  },
+  {
+    "Id": "LOTD-004",
+    "Origin": "Original script / current AGOT compatibility",
+    "Category": "missing-runtime-localization",
+    "File": "events/agot_events/agot_house_customizer_events.txt",
+    "Line": 1510,
+    "Key": "agot_house_customizer.0020.d",
+    "Problem": "Отсутствует подпись варианта игры за ребёнка Эйриса в копии редактора дома из Legacy.",
+    "Evidence": "Нет определения в EN/RU Legacy, установленного AGOT и других установленных Workshop-модов/локальных патчей. Текущий AGOT RU использует agot_house_customizer.0020.da (agot_house_customizer_l_russian.yml:106). Условие появления: старт 8284.6.2 и совместимый возраст/выбранный дом.",
+    "Recommended": "Исправить ссылку на существующий .da или добавить локализационный алиас старого ключа на .da. Это не пропуск среди 260 объявленных EN-ключей, а обращение скрипта к необъявленному старому ключу."
+  },
+  {
+    "Id": "LOTD-005",
+    "Origin": "Original script / current AGOT compatibility",
+    "Category": "missing-runtime-localization",
+    "File": "events/agot_events/agot_house_customizer_events.txt",
+    "Line": 1560,
+    "Key": "agot_house_customizer.0020.e",
+    "Problem": "Отсутствует подпись варианта игры за ребёнка Рейгара в копии редактора дома из Legacy.",
+    "Evidence": "Нет определения в EN/RU Legacy, установленного AGOT и других установленных Workshop-модов/локальных патчей. Текущий AGOT RU использует agot_house_customizer.0020.ea (agot_house_customizer_l_russian.yml:108). Условие появления: старт 8284.6.2 и совместимый возраст/выбранный дом.",
+    "Recommended": "Исправить ссылку на существующий .ea или добавить локализационный алиас старого ключа на .ea."
+  },
+  {
+    "Id": "LOTD-006",
+    "Origin": "English source and Russian translation",
+    "Category": "outdated-rule-description",
+    "File": "localization/russian/lotd_decisions_l_russian.yml",
+    "Line": 35,
+    "Key": "setting_rediscover_mechanic_enabled_desc",
+    "Problem": "Подсказка утверждает поддержку только закладок после Войны Девятигрошовых королей, но решение содержит конкретный список из шести стартовых дат, включая более ранние.",
+    "EnglishFile": "localization/english/lotd_decisions_l_english.yml",
+    "EnglishLine": 35,
+    "Evidence": "common/decisions/10_rediscover_decision.txt:21–34 допускает 8233.2.8, 8239.1.11, 8258.12.21, 8277.1.1, 8282.9.15, 8284.6.2; явно допускает dynasty:dynn_Targaryen или house:house_Blackfyre. Формулировка об одном Эйрисе также не описывает все эти старты.",
+    "Recommended": "Описать фактическую доступность решения по проверенному списку дат и ограничениям персонажа; не обещать работу на всех более поздних стартах. Начальная выдача/удаление реликвий имеет собственные ветки и не равнозначна доступности решения."
+  },
+  {
+    "Id": "LOTD-007",
+    "Origin": "English source and Russian translation",
+    "Category": "historical-description",
+    "File": "localization/russian/rediscover_l_russian.yml",
+    "Line": 30,
+    "Key": "rediscover_events_1006_desc",
+    "Problem": "Король Эйнис назван погибшим от рук Мейгора.",
+    "EnglishFile": "localization/english/event_localization/rediscover_l_english.yml",
+    "EnglishLine": 30,
+    "Evidence": "В AGOT character:Targaryen_30 — Aenys I; history/characters/00_agot_char_dragonstone_ancestors.txt:1168 указывает death_heart_attack. Статья 7kingdoms сообщает о кончине Эйниса, после которой Висенья отправилась за находившимся за морем Мейгором. Текст мода не соответствует ни этой истории, ни установленным историческим данным AGOT.",
+    "Reference": "https://7kingdoms.ru/wiki/Эйнис_I_Таргариен",
+    "Recommended": "Убрать приписывание убийства Мейгору; достаточно «носил … до своей смерти». Не подменять его недоказанным утверждением об убийстве Висеньей."
+  },
+  {
+    "Id": "LOTD-008",
+    "Origin": "Russian translation",
+    "Category": "character-gender",
+    "File": "localization/russian/read_prophecy_l_russian.yml",
+    "Line": 25,
+    "Key": "read_prophecy_0021_b_desc",
+    "Problem": "«Первым в тумане появляется [ancestor_1.GetTitledFirstName]» использует мужской род для случайного предка, которым может оказаться женщина.",
+    "EnglishFile": "localization/english/event_localization/read_prophecy_l_english.yml",
+    "EnglishLine": 25,
+    "Evidence": "events/decisions_events/read_prophecy.txt:406,433,505 добавляет Рейниру, Дейнис и Висенью в ancestor_list; строки 511–514 выбирают ancestor_1 без ограничения пола. Исторические определения AGOT Targaryen_63/15/28 имеют female=yes.",
+    "Recommended": "Выбирать «Первой/Первым» по ancestor_1.IsFemale либо использовать нейтральное «В тумане появляется знакомое лицо — …». Формы в конце этого же описания уже учитывают пол ROOT и исправления по этому поводу не требуют."
+  }
+]
+

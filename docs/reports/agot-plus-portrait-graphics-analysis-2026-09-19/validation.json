@@ -1,0 +1,48 @@
+{
+  "Status": "CANDIDATES_VERIFIED_NOT_INSTALLED",
+  "BaselineRevision": 10,
+  "Runtime69FilesUnchanged": true,
+  "CandidateTextFiles": 14,
+  "CandidateBinaryFiles": 1,
+  "ExactTextOccurrences": 206,
+  "Recipes": 43,
+  "OccurrencesByCategory": {
+    "accessory_entity": 3,
+    "mesh_blendshape": 1,
+    "portrait_rules": 13,
+    "mesh_duplicates": 2,
+    "portrait_templates": 187
+  },
+  "ApproximateActions": [
+    {
+      "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+      "Reason": "Current AGOT blue-eye trait selects this gem template",
+      "Confidence": "modern_equivalent_color",
+      "Count": 1
+    },
+    {
+      "File": "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+      "Reason": "Current beauty complexion for Joffrey; not a proven exact historical texture match",
+      "Confidence": "approximation",
+      "Count": 1
+    },
+    {
+      "File": "gfx/portraits/portrait_modifiers/asoiaf_dragon_appearance_flags.txt",
+      "Reason": "Interpret old small-horn strength as shrink intensity; current inverse curve gives 0.7/1.0 shrink",
+      "Confidence": "approximation_old_curve_unverified",
+      "Count": 1
+    },
+    {
+      "File": "gfx/portraits/portrait_modifiers/asoiaf_dragon_appearance_flags.txt",
+      "Reason": "Interpret old small-horn strength as shrink intensity; current inverse curve gives 0.7/1.0 shrink",
+      "Confidence": "approximation_old_curve_unverified",
+      "Count": 1
+    }
+  ],
+  "IdenticalResourcePairs": 24,
+  "BinaryBytesRemoved": 8,
+  "SourcePins": 101,
+  "GameExecutionChecked": false,
+  "VisualEquivalenceClaimed": false,
+  "FourTextureWarningsRequireFreshLog": true
+}

@@ -1,0 +1,89 @@
+﻿{
+    "MainWorkshopId":  "2962713441",
+    "MainVersion":  "1.4.1",
+    "TranslationWorkshopId":  "3736917258",
+    "TranslationVersion":  "1.4.1-ru",
+    "ConfirmedIssues":  [
+                            "VS-001",
+                            "VS-002",
+                            "VS-003",
+                            "VS-004",
+                            "VS-005",
+                            "VS-006",
+                            "VS-007"
+                        ],
+    "RussianChanges":  [
+                           {
+                               "Issue":  "VS-001",
+                               "File":  "localization/russian/valyrian_memories_l_russian.yml",
+                               "Key":  "funded_my_expedition_valyria_desc_third_perspective",
+                               "Before":  "экспедиция [adventurer.GetFullNamePossessiveRegnal] к руинам Старой Валирии была снаряжена на средства [funder.GetFullNameNicknamedRegnal]",
+                               "After":  "экспедиция [owner.GetFullNamePossessiveRegnal] к руинам Старой Валирии была снаряжена на средства [funder.GetFullNameNicknamedRegnal]"
+                           },
+                           {
+                               "Issue":  "VS-003",
+                               "File":  "localization/russian/valyrian_decisions_l_russian.yml",
+                               "Key":  "fund_expedition_0001_desc",
+                               "Before":  "Слух о том, что я готов снарядить экспедицию в Старую Валирию, быстро разошёлся по моей державе. Даже страх перед Дымным морем не отпугнул всех, кто жаждет славы и древних артефактов: несколько храбрецов откликнулись на мой призыв.\\n\\n[optionOne.GetFirstName], [optionTwo.GetFirstName] и [optionThree.GetFirstName] стоят передо мной; каждый просит доверить экспедицию именно ему.",
+                               "After":  "Слух о том, что я [Select_CString(ROOT.Char.IsFemale, \u0027готова\u0027, \u0027готов\u0027)] снарядить экспедицию в Старую Валирию, быстро разошёлся по моей державе. Даже страх перед Дымным морем не отпугнул всех, кто жаждет славы и древних артефактов: несколько храбрецов откликнулись на мой призыв.\\n\\n[optionOne.GetFirstName], [optionTwo.GetFirstName] и [optionThree.GetFirstName] стоят передо мной; каждый просит доверить экспедицию именно ему."
+                           },
+                           {
+                               "Issue":  "VS-004",
+                               "File":  "localization/russian/valyrian_decisions_l_russian.yml",
+                               "Key":  "fund_expedition_00021_desc",
+                               "Before":  "[choice.GetFirstName] собирает команду и готовится немедленно отплыть. Я велел искать любые артефакты, но за дополнительное золото [choice.GetFirstName], вероятно, сможет сосредоточить усилия на конкретном типе находки...",
+                               "After":  "[choice.GetFirstName] собирает команду и готовится немедленно отплыть. Я [Select_CString(ROOT.Char.IsFemale, \u0027велела\u0027, \u0027велел\u0027)] искать любые артефакты, но за дополнительное золото [choice.GetFirstName], вероятно, сможет сосредоточить усилия на конкретном типе находки..."
+                           },
+                           {
+                               "Issue":  "VS-005",
+                               "File":  "localization/russian/valyrian_decisions_l_russian.yml",
+                               "Key":  "fund_expedition_0014_desc",
+                               "Before":  "Позже меня приводят к сундуку, который [choice.GetFirstName] [Select_CString(choice.IsFemale, \u0027оставила\u0027, \u0027оставил\u0027 )] для меня. Внутри — [newly_created_artifact.GetName]! Кубок сделан искусно, но ему недостаёт величия, которого я ждал: это всего лишь сосуд для питья, а не легендарное оружие и не могущественный артефакт. Слоистая поверхность валирийской стали впечатляет, но после всех опасностей руин Валирии награда кажется слишком скромной...\\n\\nИ всё же умелый кузнец, пожалуй, смог бы перековать этот кубок в нечто большее.",
+                               "After":  "Позже меня приводят к сундуку, который [choice.GetFirstName] [Select_CString(choice.IsFemale, \u0027оставила\u0027, \u0027оставил\u0027 )] для меня. Внутри — [newly_created_artifact.GetName]! Кубок сделан искусно, но ему недостаёт величия, которого я [Select_CString(ROOT.Char.IsFemale, \u0027ждала\u0027, \u0027ждал\u0027)]: это всего лишь сосуд для питья, а не легендарное оружие и не могущественный артефакт. Слоистая поверхность валирийской стали впечатляет, но после всех опасностей руин Валирии награда кажется слишком скромной...\\n\\nИ всё же умелый кузнец, пожалуй, смог бы перековать этот кубок в нечто большее."
+                           },
+                           {
+                               "Issue":  "VS-006",
+                               "File":  "localization/russian/valyrian_decisions_l_russian.yml",
+                               "Key":  "fund_expedition_0014_alt_desc",
+                               "Before":  "[choice.GetFirstName] открывает сундук и достаёт артефакт. [choice.GetSheHe|U] вручает мне [newly_created_artifact.GetName]! Кубок сделан искусно, но ему недостаёт величия, которого я ждал: это всего лишь сосуд для питья, а не легендарное оружие и не могущественный артефакт. Слоистая поверхность валирийской стали впечатляет, но после всех опасностей руин Валирии награда кажется слишком скромной.\\n\\nИ всё же умелый кузнец, пожалуй, смог бы перековать этот кубок в нечто большее.",
+                               "After":  "[choice.GetFirstName] открывает сундук и достаёт артефакт. [choice.GetSheHe|U] вручает мне [newly_created_artifact.GetName]! Кубок сделан искусно, но ему недостаёт величия, которого я [Select_CString(ROOT.Char.IsFemale, \u0027ждала\u0027, \u0027ждал\u0027)]: это всего лишь сосуд для питья, а не легендарное оружие и не могущественный артефакт. Слоистая поверхность валирийской стали впечатляет, но после всех опасностей руин Валирии награда кажется слишком скромной.\\n\\nИ всё же умелый кузнец, пожалуй, смог бы перековать этот кубок в нечто большее."
+                           },
+                           {
+                               "Issue":  "VS-007",
+                               "File":  "localization/russian/valyrian_decisions_l_russian.yml",
+                               "Key":  "bond_with_dragon_scheme_success_chance_add",
+                               "Before":  "Шанс установить связь с драконом или приручить его с помощью драконьего рога",
+                               "After":  "Шанс установить связь с драконом или приручить его"
+                           }
+                       ],
+    "MemoryScript":  {
+                         "File":  "common/character_memory_types/valyrian_memories.txt",
+                         "Before":  "desc = hurt_someone_close_to_me_desc_third_perspective",
+                         "After":  "desc = hurt_exploring_valyria_desc_third_perspective"
+                     },
+    "EnglishSyntax":  {
+                          "File":  "localization/english/valyrian_decisions_l_english.yml",
+                          "Key":  "fund_expedition_0012_desc",
+                          "Before":  "fund_expedition_0012_desc:0 \"One of the crew members approaches me afterward and brings me to a box that [choice.GetFirstName] had set aside for me. I open the box to discover a [newly_created_artifact.GetName]! As you take the whip, you feel a surge of connection to the ancient dragonlords, a sense of awe at holding such a potent piece of history.",
+                          "After":  "fund_expedition_0012_desc:0 \"One of the crew members approaches me afterward and brings me to a box that [choice.GetFirstName] had set aside for me. I open the box to discover a [newly_created_artifact.GetName]! As you take the whip, you feel a surge of connection to the ancient dragonlords, a sense of awe at holding such a potent piece of history.\""
+                      },
+    "Outputs":  [
+                    {
+                        "File":  "localization/replace/russian/zzzz_valyrian_steel_rus_correct_l_russian.yml",
+                        "SHA256":  "8AAB04D92AC084AD5874B13537A1A08D9F071086BA0D61741014CA1BB81C0CD1"
+                    },
+                    {
+                        "File":  "common/character_memory_types/valyrian_memories.txt",
+                        "SHA256":  "B49BEE8D19922DBFA895125A59E20B56173CDDAB6EF5C59609E03DBDCDF8E266"
+                    },
+                    {
+                        "File":  "localization/english/valyrian_decisions_l_english.yml",
+                        "SHA256":  "0D32DA02DA4EAEC48E48B0CECA8C7F9917780779CDAAAA6BA82B8A72CB002DAA"
+                    },
+                    {
+                        "File":  "descriptor.mod",
+                        "SHA256":  "D8C637839371EA3C5B64BB83AA7D363D04AF48033DBCA23D70B7B578C49020EE"
+                    }
+                ],
+    "ExternalDescriptorSHA256":  "FC32D6F1236955BE3AF2A11C576BA728EBB410E9F11ABBDA9F7B71948D4F76A5"
+}

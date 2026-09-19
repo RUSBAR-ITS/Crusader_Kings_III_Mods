@@ -1,0 +1,84 @@
+﻿# Megette only, including the native AGOT identity flag for dynamic identities.
+agot_plus_fix_megette_trigger = {
+	OR = {
+		AND = {
+			exists = character:Lowborn_Kings_Landing_3
+			this = character:Lowborn_Kings_Landing_3
+		}
+		has_character_flag = is_Lowborn_Kings_Landing_3
+	}
+}
+
+agot_plus_fix_aegon_targaryen_mother_trigger = {
+	OR = {
+		has_inactive_trait = asoiaf_Targaryen_83_trait
+		AND = {
+			exists = house
+			exists = character:Targaryen_13.house
+			house = character:Targaryen_13.house
+		}
+	}
+}
+
+asoiaf_canon_children_Targaryen_102_trigger = { # Bellenora
+	asoiaf_canon_children_enabled_trigger = yes
+	exists = scope:real_father
+	exists = scope:mother
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait }
+	scope:mother = {
+		is_alive = yes
+		has_trait = pregnant
+		culture = culture:braavosi
+		agot_plus_fix_megette_trigger = no
+		agot_plus_fix_aegon_targaryen_mother_trigger = no
+	}
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_102_born_variable }
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_103_born_variable }
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_104_born_variable }
+}
+
+asoiaf_canon_children_Targaryen_103_trigger = { # Narha
+	asoiaf_canon_children_enabled_trigger = yes
+	exists = scope:real_father
+	exists = scope:mother
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait }
+	scope:mother = {
+		is_alive = yes
+		has_trait = pregnant
+		culture = culture:braavosi
+		agot_plus_fix_megette_trigger = no
+		agot_plus_fix_aegon_targaryen_mother_trigger = no
+	}
+	exists = global_var:asoiaf_canon_children_Targaryen_102_born_variable
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_103_born_variable }
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_104_born_variable }
+}
+
+asoiaf_canon_children_Targaryen_104_trigger = { # Balerion
+	asoiaf_canon_children_enabled_trigger = yes
+	exists = scope:real_father
+	exists = scope:mother
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait }
+	scope:mother = {
+		is_alive = yes
+		has_trait = pregnant
+		culture = culture:braavosi
+		agot_plus_fix_megette_trigger = no
+		agot_plus_fix_aegon_targaryen_mother_trigger = no
+	}
+	exists = global_var:asoiaf_canon_children_Targaryen_102_born_variable
+	exists = global_var:asoiaf_canon_children_Targaryen_103_born_variable
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_104_born_variable }
+}
+
+# Legacy semantics: success means neither story flag is present.
+agot_plus_fix_heir_event_available_trigger = {
+	custom_description = {
+		text = "yearly_1010_abducted"
+		NOT = { has_character_flag = yearly_1010_abducted }
+	}
+	custom_description = {
+		text = "yearly_1010_abductor"
+		NOT = { has_character_flag = yearly_1010_abductor }
+	}
+}

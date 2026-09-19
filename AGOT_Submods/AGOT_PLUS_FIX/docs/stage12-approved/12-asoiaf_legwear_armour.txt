@@ -1,0 +1,134 @@
+﻿asoiaf_legwear = {
+	# interface_position = 1
+	usage = game
+	selection_behavior = max
+	priority = 4
+
+	asoiaf_legwear_kingsguard_default = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = legwear
+				template = asoiaf_all_legwears
+				accessory = male_legwear_asoiaf_kingsguard_legs_default
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				is_male = yes #until a female version is added
+				OR = {
+					has_trait = kingsguard
+					any_equipped_character_artifact = { has_variable = kingsguard_armor }
+				}
+				has_game_rule = asoiaf_new_clothes_crownlands_rule_on
+			}
+			modifier = {
+				factor = 0
+				is_aotk_loaded_trigger = yes
+				has_game_rule = show_armor_enabled #if the player is using AOTK and has its armour enabled, disable AGOT+'s version
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_legwear_kingsguard_tunic = {
+		dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = legwear
+                template = asoiaf_all_legwears
+                accessory = male_legwear_asoiaf_kingsguard_legs_boots
+            }
+        }
+        weight = {
+            base = 0
+            modifier = {
+                add = 1500
+                is_male = yes #until a female version is added
+                OR = {
+                    AND = { #either this is a Kingsguard who is currently out-of-commission (due to being captured, incapable, etc.)
+                        has_trait = kingsguard
+                        NOR = {
+                            has_council_position = kingsguard_lord_commander
+                            has_council_position = kingsguard_1
+                            has_council_position = kingsguard_2
+                            has_council_position = kingsguard_3
+                            has_council_position = kingsguard_4
+                            has_council_position = kingsguard_5
+                            has_council_position = kingsguard_6
+                        }
+                    }
+                    AND = { #or it's a Kingsguard attending a feast/funeral
+                        has_trait = kingsguard
+                        involved_activity ?= {
+							OR = {
+								has_activity_type = activity_feast
+								has_activity_type = activity_funeral
+							}
+						}
+                    }
+                }
+				has_game_rule = asoiaf_new_clothes_crownlands_rule_on
+            }
+			modifier = { #dead Kingsguard always wear their armour
+				factor = 0
+				has_trait = kingsguard
+                is_alive = no
+			}
+            modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+        }
+    }
+	
+	asoiaf_legwear_rhaegar_armour = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = legwear
+				template = agot_all_legwear
+				accessory = male_legwear_secular_valyrian_war_04
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 300
+				any_equipped_character_artifact = { has_variable = rhaegar_armor }
+				portrait_wear_armor_trigger = yes
+			}
+			modifier = {
+				factor = 0
+				has_trait = kingsguard
+			}
+		}
+	}
+
+	asoiaf_legwear_robert_armour = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = legwear
+				template = agot_all_legwear
+				accessory = male_legwear_secular_stormlands_war_04
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 300
+				any_equipped_character_artifact = { has_variable = robert_armor }
+				portrait_wear_armor_trigger = yes
+			}
+			modifier = {
+				factor = 0
+				has_trait = kingsguard
+			}
+		}
+	}
+}

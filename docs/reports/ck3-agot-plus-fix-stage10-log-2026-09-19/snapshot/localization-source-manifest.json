@@ -1,0 +1,123 @@
+﻿{
+    "AGOTPlusVersion":  "1.0.0",
+    "TranslationVersion":  "1.1",
+    "CK3Version":  "1.19.0.6",
+    "MainWorkshopId":  "2950245430",
+    "TranslationWorkshopId":  "3465601037",
+    "Overlay":  "localization/replace/russian/zzzz_agot_plus_rus_correct_l_russian.yml",
+    "OverlayKeys":  33,
+    "OverlaySHA256":  "CFF063C027410578155016489AE5878846CD9684C037C8838608BF1DAA99E805",
+    "RuntimeNames":  {
+                         "File":  "localization/replace/russian/zzzz_agot_plus_runtime_names_l_russian.yml",
+                         "Keys":  386,
+                         "Counts":  {
+                                        "Character":  291,
+                                        "Crown":  94,
+                                        "Name":  1
+                                    },
+                         "SHA256":  "4DF24ACA9DF7200A8B4EAAA990ACF1B8E0F0437F0111D8E97CBB435CC11DCDBC",
+                         "Definitions":  "docs/runtime-localization-additions.json",
+                         "DefinitionsSHA256":  "AAF4689AD1A51EF711992340A34828BFA3C2DD18F4A9084AB1C95FC1C5F6FC4E",
+                         "SourceFiles":  28
+                     },
+    "EnglishRepairs":  5,
+    "RussianReplacementRepairs":  3,
+    "Files":  [
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/replace/asoiaf_death_reasons_l_russian.yml",
+                      "SourceSHA256":  "D22C779D3B2EC9B79BE24DFE3934C91631FA08BCEB61BA902AB6E62EC52B2FF4",
+                      "PatchedSHA256":  "587AA50707D35A896989F323E2D0B85FD4CEA8F0E9DD0167F5D0BC4175D6A473",
+                      "Changes":  [
+                                      {
+                                          "Line":  2,
+                                          "Key":  "death_aegonvi_murder_known",
+                                          "Before":  " death_aegonvi_murder_known:0 \"was «murdered»\"",
+                                          "After":  " death_aegonvi_murder_known:0 \"[Select_CString(CHARACTER.IsFemale, \u0027была «убита»\u0027, \u0027был «убит»\u0027)]\""
+                                      },
+                                      {
+                                          "Line":  3,
+                                          "Key":  "death_aegonvi_murder_known_killer",
+                                          "Before":  " death_aegonvi_murder_known_killer:0 \"was «murdered» by [TARGET_CHARACTER.GetUIName]\"",
+                                          "After":  " death_aegonvi_murder_known_killer:0 \"[Select_CString(CHARACTER.IsFemale, \u0027была «убита»\u0027, \u0027был «убит»\u0027)] [Select_CString(TARGET_CHARACTER.IsLocalPlayer, \u0027\u0027, \u0027персонажем \u0027)][TARGET_CHARACTER.GetNamePossessiveOrMy][Select_CString(TARGET_CHARACTER.IsLocalPlayer, \u0027им персонажем\u0027, \u0027\u0027)]\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/replace/asoiaf_government_l_russian.yml",
+                      "SourceSHA256":  "1B2AF3C749CC31197D571209E795BB5EE3C45BA16EAC04D308BB9ABB52739524",
+                      "PatchedSHA256":  "27DA9B8B96826DA0A50CD29A9CE403E808151E3FBACA8C4B70449056D22634D3",
+                      "Changes":  [
+                                      {
+                                          "Line":  4,
+                                          "Key":  "lp_feudal_government_desc",
+                                          "Before":  " lp_feudal_government_desc:1 \"$game_concept_feudal_desc$\\n\\n#F Феодализм — это жёсткая социальная структура и форма правления, основанная на королях, лордах и крестьянах. Знать властвует над простонародьем на своей земле через систему вассальной верности и клятв. В этой системе каждый человек обязан нести военную службу своему лорду в обмен на защиту, надел земли и людей, которые будут на ней работать.\\n\\nЗападный феодализм особенно характерен для Вестероса и уникален тем, что вассалов называют «лордами» независимо от их места в иерархии; самых могущественных из них порой именуют «лордами-парамонтами» или даже жалуют княжескими титулами, как в Дорне.\"",
+                                          "After":  " lp_feudal_government_desc:1 \"$game_concept_feudal_desc$\\n\\n#F Феодализм — это жёсткая социальная структура и форма правления, основанная на королях, лордах и крестьянах. Знать властвует над простонародьем на своей земле через систему вассальной верности и клятв. В этой системе каждый человек обязан нести военную службу своему лорду в обмен на защиту, надел земли и людей, которые будут на ней работать.\\n\\nЗападный феодализм особенно характерен для Вестероса и уникален тем, что вассалов называют «лордами» независимо от их места в иерархии; самых могущественных из них порой именуют «лордами-парамонтами» или даже жалуют княжескими титулами, как в Дорне.#!\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "AGOT+",
+                      "File":  "localization/replace/asoiaf_government_l_english.yml",
+                      "SourceSHA256":  "C4C000A1D461D3CB8D66A9ED6BBFB096E52FE7F613C05C5897ADD95423EB836D",
+                      "PatchedSHA256":  "91DCC07B36982D66DE4693DF14A4FE0DD25112B65EF8639B51BCA3B40557A56F",
+                      "Changes":  [
+                                      {
+                                          "Line":  4,
+                                          "Key":  "lp_feudal_government_desc",
+                                          "Before":  " lp_feudal_government_desc:1 \"$game_concept_feudal_desc$\\n\\n#F Feudalism is a rigid social structure and form of government consisting of kings, lords, and peasants. Nobles rule over the smallfolk within their territory through a system of fealty and sworn oaths. In this system, each man owes military service to his lord in return for protection, a grant of land, and the peasants to work it.\\n\\nWestern feudalism in particular is native to Westeros, unique in the fact that vassals are called \"lords\" regardless of their place on the hierarchy, the most powerful of which are sometimes called \"Lords Paramount\", or even afforded princely titles like in Dorne.\"",
+                                          "After":  " lp_feudal_government_desc:1 \"$game_concept_feudal_desc$\\n\\n#F Feudalism is a rigid social structure and form of government consisting of kings, lords, and peasants. Nobles rule over the smallfolk within their territory through a system of fealty and sworn oaths. In this system, each man owes military service to his lord in return for protection, a grant of land, and the peasants to work it.\\n\\nWestern feudalism in particular is native to Westeros, unique in the fact that vassals are called \"lords\" regardless of their place on the hierarchy, the most powerful of which are sometimes called \"Lords Paramount\", or even afforded princely titles like in Dorne.#!\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "AGOT+",
+                      "File":  "localization/replace/asoiaf_terrains_l_english.yml",
+                      "SourceSHA256":  "DA4BC76B24F7036EBBD72800C9F15BB54D6A36C570F573BDFFCF3C097108370A",
+                      "PatchedSHA256":  "913CC0AF2E7DA26626608E102235F8C1CBBD44914554C5505A7A1711A633A3DC",
+                      "Changes":  [
+                                      {
+                                          "Line":  8,
+                                          "Key":  "the_bog_min_combat_roll",
+                                          "Before":  " the_bog_min_combat_roll:1 \"",
+                                          "After":  " the_bog_min_combat_roll:1 \"[command_modifier_i|E]Minimum [combat_roll|E] in the Bog\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "AGOT+",
+                      "File":  "localization/english/asoiaf_game_rules_l_english.yml",
+                      "SourceSHA256":  "DC6A5BCC2289A0AE82E9C85079DE3E01BD3CE9890B092CE95FDD73066087558E",
+                      "PatchedSHA256":  "C51CC9D5E5F142EEBBDB3E7B545E06C2EB5918D2FBEA1BE34309FE539CE53ED3",
+                      "Changes":  [
+                                      {
+                                          "Line":  144,
+                                          "Key":  "setting_asoiaf_targaryen_invasion_claimants_dragon_bonded",
+                                          "Before":  " setting_asoiaf_targaryen_invasion_claimants_dragon_bonded:0 \"#high Dragonriding Targaryens\"",
+                                          "After":  " setting_asoiaf_targaryen_invasion_claimants_dragon_bonded:0 \"#high Dragonriding Targaryens#!\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "AGOT+",
+                      "File":  "localization/english/modifiers/asoiaf_modifiers_l_english.yml",
+                      "SourceSHA256":  "1645AC3A1582CFB1AD5833F58E2F27F9C7434D91C6BF74A344FA7F880D67EA75",
+                      "PatchedSHA256":  "127D2B2F42880862A87B063956D57EF31B871ACF5F26446F196BEC97703DA61E",
+                      "Changes":  [
+                                      {
+                                          "Line":  158,
+                                          "Key":  "asoiaf_Targaryen_61_1_modifier",
+                                          "Before":  " asoiaf_Targaryen_61_1_modifier:0 \"[asoiaf_canon_children_concept|E]: #bold Aerion Targaryen\"",
+                                          "After":  " asoiaf_Targaryen_61_1_modifier:0 \"[asoiaf_canon_children_concept|E]: #bold Aerion Targaryen#!\""
+                                      },
+                                      {
+                                          "Line":  656,
+                                          "Key":  "asoiaf_Tully_5_modifier",
+                                          "Before":  " asoiaf_Tully_5_modifier:0 \"[asoiaf_canon_children_concept|E]: #Lady Stoneheart#!\"",
+                                          "After":  " asoiaf_Tully_5_modifier:0 \"[asoiaf_canon_children_concept|E]: #bold Lady Stoneheart#!\""
+                                      }
+                                  ]
+                  }
+              ]
+}

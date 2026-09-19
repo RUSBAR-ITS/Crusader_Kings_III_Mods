@@ -1,0 +1,718 @@
+﻿asoiaf_headgear_crowns = {
+
+	usage = game
+	selection_behavior = weighted_random
+	priority = 5
+
+	asoiaf_aerys_II_crown_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = male_headgear_secular_asoiaf_crown_aerys_II
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 300
+				is_male = yes
+				agot_has_artifact_equipped = { ARTIFACT_VARIABLE = asoiaf_aerys_II_crown_artefact }
+			}
+			modifier = {
+				add = 300
+				is_male = yes
+				NOT = {
+					any_equipped_character_artifact = { artifact_slot_type = helmet }
+				}
+				AND = {
+					agot_default_wear_crown_trigger = yes
+					exists = character:Targaryen_1 #Aerys II Targaryen
+					this = character:Targaryen_1 # Aerys II
+				}
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on #replace with valyrian clothes rule once you've got actual outfits to trigger alongside it
+			}
+			modifier = { #for when Aerys is dead in later bookmarks
+				add = 240
+				is_male = yes
+				this = character:Targaryen_1 # Aerys II
+				character:Targaryen_1 = {
+					is_alive = no
+					agot_default_wear_crown_trigger = yes
+				}
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on #replace with valyrian clothes rule once you've got actual outfits to trigger alongside it
+			}
+			modifier = { #for when Stannis is dead or temporarily loses his crown (don't want the vanilla AGOT one showing up randomly)
+				add = 300
+				is_male = yes
+				AND = {
+					OR = {
+						NOT = {
+							any_equipped_character_artifact = { artifact_slot_type = helmet }
+						}
+						is_alive = no
+					}
+					OR = {
+						primary_title.tier = tier_empire
+						AND = {
+							primary_title.tier = tier_empire
+							agot_is_independent_ruler = yes
+						}
+						primary_spouse ?= {
+							primary_title.tier = tier_empire
+						}
+						primary_spouse ?= {
+							primary_title.tier = tier_empire
+							agot_is_independent_ruler = yes
+						}
+					}
+					AND = {
+						this = character:Baratheon_3 #Stannis Baratheon (son of Steffon)
+						religion = religion:the_rhllor_religion
+						agot_default_wear_crown_trigger = yes
+					}
+				}
+			}
+			modifier = { #copied from vanilla AGOT's 01_headgear_base.txt file
+				add = 275
+				is_male = yes
+				agot_default_wear_crown_trigger = yes
+				OR = { this = character:Baratheon_3 has_inactive_trait = asoiaf_Baratheon_3_trait }
+				has_religion = religion:the_rhllor_religion
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_aerys_II_crown_female = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = female_headgear_secular_asoiaf_crown_aerys_II
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 300
+				is_female = yes
+				agot_has_artifact_equipped = { ARTIFACT_VARIABLE = asoiaf_aerys_II_crown_artefact }
+			}
+			modifier = {
+				add = 300
+				is_female = yes
+				NOT = {
+					any_equipped_character_artifact = { artifact_slot_type = helmet }
+				}
+				AND = {
+					agot_default_wear_crown_trigger = yes
+					exists = character:Targaryen_1 #Aerys II Targaryen
+					this = character:Targaryen_1 # Aerys II
+				}
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on #replace with valyrian clothes rule once you've got actual outfits to trigger alongside it
+			}
+			modifier = { #for when Aerys is dead in later bookmarks
+				add = 240
+				is_female = yes
+				this = character:Targaryen_1 # Aerys II
+				character:Targaryen_1 = {
+					is_alive = no
+					agot_default_wear_crown_trigger = yes
+				}
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on #replace with valyrian clothes rule once you've got actual outfits to trigger alongside it
+			}
+			modifier = { #for when Stannis is dead or temporarily loses his crown (don't want the vanilla AGOT one showing up randomly)
+				add = 300
+				is_female = yes
+				AND = {
+					OR = {
+						NOT = {
+							any_equipped_character_artifact = { artifact_slot_type = helmet }
+						}
+						is_alive = no
+					}
+					OR = {
+						primary_title.tier = tier_empire
+						AND = {
+							primary_title.tier = tier_empire
+							agot_is_independent_ruler = yes
+						}
+						primary_spouse ?= {
+							primary_title.tier = tier_empire
+						}
+						primary_spouse ?= {
+							primary_title.tier = tier_empire
+							agot_is_independent_ruler = yes
+						}
+					}
+					AND = {
+						this = character:Baratheon_3 #Stannis Baratheon (son of Steffon)
+						religion = religion:the_rhllor_religion
+						agot_default_wear_crown_trigger = yes
+					}
+				}
+			}
+			modifier = { #copied from vanilla AGOT's 01_headgear_base.txt file
+				add = 275
+				is_female = yes
+				agot_default_wear_crown_trigger = yes
+				OR = { this = character:Baratheon_3 has_inactive_trait = asoiaf_Baratheon_3_trait }
+				has_religion = religion:the_rhllor_religion
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_robert_I_crown_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = male_headgear_secular_asoiaf_crown_robert_I
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 300
+				is_male = yes
+				agot_has_artifact_equipped = { ARTIFACT_VARIABLE = robertI_crown_artifact }
+				has_game_rule = asoiaf_new_clothes_stormlands_rule_on
+			}
+			modifier = { #for when Robert is dead in later bookmarks
+				add = 280
+				is_male = yes
+				exists = character:Baratheon_2 #Robert I Baratheon
+				this = character:Baratheon_2
+				character:Baratheon_2 = {
+					is_alive = no
+					agot_default_wear_crown_trigger = yes
+				}
+				has_game_rule = asoiaf_new_clothes_stormlands_rule_on
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_robert_I_crown_female = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = female_headgear_secular_asoiaf_crown_robert_I
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 300
+				is_female = yes
+				agot_has_artifact_equipped = { ARTIFACT_VARIABLE = robertI_crown_artifact }
+				has_game_rule = asoiaf_new_clothes_stormlands_rule_on
+			}
+			modifier = { #for when Robert is dead in later bookmarks
+				add = 280
+				is_female = yes
+				exists = character:Baratheon_2 #Robert I Baratheon
+				this = character:Baratheon_2
+				character:Baratheon_2 = {
+					is_alive = no
+					agot_default_wear_crown_trigger = yes
+				}
+				has_game_rule = asoiaf_new_clothes_stormlands_rule_on
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_renly_crown_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = male_headgear_secular_asoiaf_crown_renly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 300
+				is_male = yes
+				agot_has_artifact_equipped = { ARTIFACT_VARIABLE = renly_crown_artifact }
+				has_game_rule = asoiaf_new_clothes_stormlands_rule_on
+			}
+			modifier = { #copied from the vanilla AGOT 01_headgear_base.txt file
+				add = 275
+				is_male = yes
+				agot_default_wear_crown_trigger = yes
+				OR = { this = character:Baratheon_4 has_inactive_trait = asoiaf_Baratheon_4_trait } # Renly Baratheon
+				OR = {
+					AND = {
+						exists = character:Tyrell_13
+						has_relation_lover = character:Tyrell_13
+					}
+					AND = {
+						exists = primary_spouse
+						primary_spouse.dynasty ?= dynasty:dynn_Tyrell
+					}
+				}
+				has_game_rule = asoiaf_new_clothes_stormlands_rule_on
+			}
+			modifier = { #for when Renly is dead in later bookmarks
+				add = 280
+				is_male = yes
+				exists = character:Baratheon_4 #Renly Baratheon (son of Steffon)
+				this = character:Baratheon_4
+				character:Baratheon_4 = {
+					is_alive = no
+					#agot_default_wear_crown_trigger = yes #doesn't trigger for dead Renly since he only held the kingdom-tier version of the Stormlands
+					OR = {
+						AND = { #Brienne as the "killer"
+							exists = killer
+							killer = character:Tarth_6
+						}
+						AND = { #Stannis for if the real killer is revealed later
+							exists = killer
+							killer = character:Baratheon_3
+						}
+						AND = { #Melisandre for if the AGOT devs make her the assigned killer instead of Stannis
+							exists = killer
+							killer = character:Melisandre_1
+						}
+					}
+				}
+				has_game_rule = asoiaf_new_clothes_stormlands_rule_on
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_renly_crown_female = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = female_headgear_secular_asoiaf_crown_renly
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 300
+				is_female = yes
+				agot_has_artifact_equipped = { ARTIFACT_VARIABLE = renly_crown_artifact }
+				has_game_rule = asoiaf_new_clothes_stormlands_rule_on
+			}
+			modifier = { #copied from the vanilla AGOT 01_headgear_base.txt file
+				add = 275
+				is_female = yes
+				agot_default_wear_crown_trigger = yes
+				OR = { this = character:Baratheon_4 has_inactive_trait = asoiaf_Baratheon_4_trait } # Renly Baratheon
+				OR = {
+					AND = {
+						exists = character:Tyrell_13
+						has_relation_lover = character:Tyrell_13
+					}
+					AND = {
+						exists = primary_spouse
+						primary_spouse.dynasty ?= dynasty:dynn_Tyrell
+					}
+				}
+				has_game_rule = asoiaf_new_clothes_stormlands_rule_on
+			}
+			modifier = { #for when Renly is dead in later bookmarks
+				add = 280
+				is_female = yes
+				exists = character:Baratheon_4 #Renly Baratheon (son of Steffon)
+				this = character:Baratheon_4
+				character:Baratheon_4 = {
+					is_alive = no
+					#agot_default_wear_crown_trigger = yes #doesn't trigger for dead Renly since he only held the kingdom-tier version of the Stormlands
+					OR = {
+						AND = { #Brienne as the "killer"
+							exists = killer
+							killer = character:Tarth_6
+						}
+						AND = { #Stannis for if the real killer is revealed later
+							exists = killer
+							killer = character:Baratheon_3
+						}
+						AND = { #Melisandre for if the AGOT devs make her the assigned killer instead of Stannis
+							exists = killer
+							killer = character:Melisandre_1
+						}
+					}
+				}
+				has_game_rule = asoiaf_new_clothes_stormlands_rule_on
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_crown_of_winter_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = male_headgear_asoiaf_crown_of_winter
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 300
+				is_male = yes
+				agot_has_artifact_equipped = { ARTIFACT_VARIABLE = crown_of_winter_artifact }
+				has_game_rule = asoiaf_new_clothes_north_rule_on
+			}
+			modifier = { #copied from vanilla AGOT
+				add = 260
+				is_male = yes
+				NOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = crown_of_winter_artifact } }
+				agot_default_wear_crown_trigger = yes
+				house ?= dynasty:dynn_Stark.dynasty_founder.house
+				has_game_rule = asoiaf_new_clothes_north_rule_on
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_crown_of_winter_female = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = female_headgear_asoiaf_crown_of_winter
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 300
+				is_female = yes
+				agot_has_artifact_equipped = { ARTIFACT_VARIABLE = crown_of_winter_artifact }
+				has_game_rule = asoiaf_new_clothes_north_rule_on
+			}
+			modifier = { #copied from vanilla AGOT
+				add = 260
+				is_female = yes
+				NOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = crown_of_winter_artifact } }
+				agot_default_wear_crown_trigger = yes
+				house ?= dynasty:dynn_Stark.dynasty_founder.house
+				has_game_rule = asoiaf_new_clothes_north_rule_on
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_sansa_crown_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = male_headgear_asoiaf_sansa_crown
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 265
+				is_male = yes
+				NOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = crown_of_winter_artifact } }
+				agot_default_wear_crown_trigger = yes
+				house ?= dynasty:dynn_Stark.dynasty_founder.house
+				OR = {
+					has_inactive_trait = asoiaf_Stark_8_trait #this is Sansa
+					has_trait = fashionable #fashionable characters wear the sleeker, more elegant crown
+				}
+				has_game_rule = asoiaf_new_clothes_north_rule_on
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_sansa_crown_female = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = female_headgear_asoiaf_sansa_crown
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 265
+				is_female = yes
+				NOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = crown_of_winter_artifact } }
+				agot_default_wear_crown_trigger = yes
+				house ?= dynasty:dynn_Stark.dynasty_founder.house
+				OR = {
+					has_inactive_trait = asoiaf_Stark_8_trait #this is Sansa
+					has_trait = fashionable #fashionable characters wear the sleeker, more elegant crown
+				}
+				has_game_rule = asoiaf_new_clothes_north_rule_on
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_crown_baratheon_tyrell_male = { #only appears for SPOUSES of monarchs
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = male_headgear_secular_asoiaf_crown_baratheon_tyrell
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = -1000
+				any_equipped_character_artifact = {
+					artifact_slot_type = helmet
+				}
+			}
+			modifier = {
+				add = 250
+				is_male = yes
+				OR = {
+					AND = { #Tyrell married to Baratheon/Durrandon monarch
+						dynasty ?= dynasty:dynn_Tyrell
+						OR = {
+							primary_spouse.dynasty ?= dynasty:dynn_Baratheon
+							primary_spouse.dynasty ?= dynasty:dynn_Durrandon
+						}
+						OR = {
+							primary_spouse ?= {
+								agot_default_wear_crown_trigger = yes
+							}
+							primary_spouse ?= {
+								agot_default_wear_crown_trigger = yes
+								agot_is_independent_ruler = yes
+							}
+						}
+					}
+					AND = { #Baratheon married to Tyrell monarch
+						OR = {
+							dynasty ?= dynasty:dynn_Baratheon
+							dynasty ?= dynasty:dynn_Durrandon
+						}
+						primary_spouse.dynasty ?= dynasty:dynn_Tyrell
+						OR = {
+							primary_spouse ?= {
+								agot_default_wear_crown_trigger = yes
+							}
+							primary_spouse ?= {
+								agot_default_wear_crown_trigger = yes
+								agot_is_independent_ruler = yes
+							}
+						}
+					}
+				}
+				has_game_rule = asoiaf_new_dnas_reach_rule_on #replace with reach clothes rule once you've got actual outfits to trigger alongside it
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_crown_baratheon_tyrell_female = { #only appears for SPOUSES of monarchs
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = female_headgear_secular_asoiaf_crown_baratheon_tyrell
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = -1000
+				any_equipped_character_artifact = {
+					artifact_slot_type = helmet
+				}
+			}
+			modifier = {
+				add = 250
+				is_female = yes
+				OR = {
+					AND = { #Tyrell married to Baratheon/Durrandon monarch
+						dynasty ?= dynasty:dynn_Tyrell
+						OR = {
+							primary_spouse.dynasty ?= dynasty:dynn_Baratheon
+							primary_spouse.dynasty ?= dynasty:dynn_Durrandon
+						}
+						OR = {
+							primary_spouse ?= {
+								agot_default_wear_crown_trigger = yes
+							}
+							primary_spouse ?= {
+								agot_default_wear_crown_trigger = yes
+								agot_is_independent_ruler = yes
+							}
+						}
+					}
+					AND = { #Baratheon married to Tyrell monarch
+						OR = {
+							dynasty ?= dynasty:dynn_Baratheon
+							dynasty ?= dynasty:dynn_Durrandon
+						}
+						primary_spouse.dynasty ?= dynasty:dynn_Tyrell
+						OR = {
+							primary_spouse ?= {
+								agot_default_wear_crown_trigger = yes
+							}
+							primary_spouse ?= {
+								agot_default_wear_crown_trigger = yes
+								agot_is_independent_ruler = yes
+							}
+						}
+					}
+				}
+				has_game_rule = asoiaf_new_dnas_reach_rule_on #replace with reach clothes rule once you've got actual outfits to trigger alongside it
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_joffrey_I_crown_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = male_headgear_secular_asoiaf_crown_joffrey_I
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 300
+				is_male = yes
+				agot_has_artifact_equipped = { ARTIFACT_VARIABLE = joffreyI_crown_artifact }
+				has_game_rule = asoiaf_new_clothes_crownlands_rule_on
+			}
+			modifier = {
+				add = 280
+				is_male = yes
+				NOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = joffreyI_crown_artifact } }
+				agot_default_wear_crown_trigger = yes
+				dynasty ?= dynasty:dynn_Baratheon
+				OR = {
+					OR = { this = character:Baratheon_5 has_inactive_trait = asoiaf_Baratheon_5_trait }
+					OR = { this = character:Baratheon_6 has_inactive_trait = asoiaf_Baratheon_6_trait }
+					OR = { this = character:Baratheon_7 has_inactive_trait = asoiaf_Baratheon_7_trait }
+					AND = {
+						has_inactive_trait = gold_hair
+						has_inactive_trait = emerald_eyes
+					}
+				}
+				has_game_rule = asoiaf_new_clothes_crownlands_rule_on
+			}
+			modifier = {
+				add = -1000
+				NOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = joffreyI_crown_artifact } }
+				any_equipped_character_artifact = {
+					artifact_slot_type = helmet
+				}
+				has_game_rule = asoiaf_new_clothes_crownlands_rule_on
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_joffrey_I_crown_female = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = female_headgear_secular_asoiaf_crown_joffrey_I
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 300
+				is_female = yes
+				agot_has_artifact_equipped = { ARTIFACT_VARIABLE = joffreyI_crown_artifact }
+				has_game_rule = asoiaf_new_clothes_crownlands_rule_on
+			}
+			modifier = {
+				add = 280
+				is_female = yes
+				NOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = joffreyI_crown_artifact } }
+				agot_default_wear_crown_trigger = yes
+				dynasty ?= dynasty:dynn_Baratheon
+				OR = {
+					OR = { this = character:Baratheon_5 has_inactive_trait = asoiaf_Baratheon_5_trait }
+					OR = { this = character:Baratheon_6 has_inactive_trait = asoiaf_Baratheon_6_trait }
+					OR = { this = character:Baratheon_7 has_inactive_trait = asoiaf_Baratheon_7_trait }
+					AND = {
+						has_inactive_trait = gold_hair
+						has_inactive_trait = emerald_eyes
+					}
+				}
+				has_game_rule = asoiaf_new_clothes_crownlands_rule_on
+			}
+			modifier = {
+				add = -1000
+				NOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = joffreyI_crown_artifact } }
+				any_equipped_character_artifact = {
+					artifact_slot_type = helmet
+				}
+				has_game_rule = asoiaf_new_clothes_crownlands_rule_on
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+}

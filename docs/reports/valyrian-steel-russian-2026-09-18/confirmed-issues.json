@@ -1,0 +1,79 @@
+[
+  {
+    "Id": "VS-001",
+    "Category": "Missing localization scope",
+    "Origin": "English original and built-in Russian; retained by translation",
+    "Key": "funded_my_expedition_valyria_desc_third_perspective",
+    "File": "localization/russian/valyrian_memories_l_russian.yml",
+    "Line": 30,
+    "Problem": "Используется adventurer.GetFullNamePossessiveRegnal, но у воспоминания есть только участник funder; исследователь является владельцем воспоминания owner.",
+    "Evidence": "Valyrian Steel: common/character_memory_types/valyrian_memories.txt:114-135; events/decisions_events/fund_expedition.txt:466-471.",
+    "SuggestedFix": "Использовать owner вместо adventurer и согласовать падежи имён в русском предложении."
+  },
+  {
+    "Id": "VS-002",
+    "Category": "Wrong localization reference in script",
+    "Origin": "Original mod script",
+    "Key": "hurt_exploring_valyria",
+    "File": "common/character_memory_types/valyrian_memories.txt",
+    "Line": 18,
+    "Problem": "Третье лицо ранения в Валирии ссылается на hurt_someone_close_to_me_desc_third_perspective вместо собственного hurt_exploring_valyria_desc_third_perspective. Чужая строка описывает ранение близкого человека и требует отсутствующего close_relation.",
+    "Evidence": "У этого типа participants = { } на строке 22. Он создаётся событием fund_expedition.0005: events/decisions_events/fund_expedition.txt:593,599,605. Собственный перевод существует в valyrian_memories_l_russian.yml:9.",
+    "SuggestedFix": "Исправить ссылку в определении данного воспоминания. Не переопределять глобальный текст ванильного воспоминания hurt_someone_close_to_me."
+  },
+  {
+    "Id": "VS-003",
+    "Category": "Russian gender agreement",
+    "Origin": "Separate Russian translation",
+    "Key": "fund_expedition_0001_desc",
+    "File": "localization/russian/valyrian_decisions_l_russian.yml",
+    "Line": 28,
+    "Problem": "Правительница говорит о себе «я готов»; выбора формы по полу нет.",
+    "Evidence": "Решение fund_expedition_decision не ограничено мужским полом; English: Word of my interest in funding...",
+    "SuggestedFix": "Нейтральное «о моём намерении снарядить экспедицию» либо Select_CString(ROOT.Char.IsFemale,...)."
+  },
+  {
+    "Id": "VS-004",
+    "Category": "Russian gender agreement",
+    "Origin": "Separate Russian translation",
+    "Key": "fund_expedition_00021_desc",
+    "File": "localization/russian/valyrian_decisions_l_russian.yml",
+    "Line": 144,
+    "Problem": "Правительница говорит «Я велел»; выбора формы по полу нет.",
+    "Evidence": "English: While my instructions are to find any artifacts...",
+    "SuggestedFix": "Нейтральное «Моё поручение — искать любые артефакты» либо выбор «велела/велел»."
+  },
+  {
+    "Id": "VS-005",
+    "Category": "Russian gender agreement",
+    "Origin": "Separate Russian translation",
+    "Key": "fund_expedition_0014_desc",
+    "File": "localization/russian/valyrian_decisions_l_russian.yml",
+    "Line": 113,
+    "Problem": "Правительница говорит «которого я ждал»; выбора формы по полу нет.",
+    "Evidence": "English: the awe-inspiring presence one might have hoped for...",
+    "SuggestedFix": "Нейтральное «на которое можно было рассчитывать» либо выбор «ждала/ждал»."
+  },
+  {
+    "Id": "VS-006",
+    "Category": "Russian gender agreement",
+    "Origin": "Separate Russian translation",
+    "Key": "fund_expedition_0014_alt_desc",
+    "File": "localization/russian/valyrian_decisions_l_russian.yml",
+    "Line": 115,
+    "Problem": "Во втором варианте события повторяется «которого я ждал» независимо от пола правителя.",
+    "Evidence": "English: the awe-inspiring presence one might have hoped for...",
+    "SuggestedFix": "Согласовать исправление с fund_expedition_0014_desc."
+  },
+  {
+    "Id": "VS-007",
+    "Category": "Misleading shared modifier label",
+    "Origin": "English original and built-in Russian; retained by translation",
+    "Key": "bond_with_dragon_scheme_success_chance_add",
+    "File": "localization/russian/valyrian_decisions_l_russian.yml",
+    "Line": 127,
+    "Problem": "Подпись говорит о шансе связи или приручения «с помощью драконьего рога», но тот же текст используется у бонусов плетей и книг.",
+    "Evidence": "Valyrian Steel: common/modifiers/00_custom_artifact_modifiers.txt:109-164 (artifact_dragon_whip_add_* и artifact_valyrian_book_add_*); common/scripted_effects/00_random_artifact_modifier_effects.txt:1165-1191.",
+    "SuggestedFix": "Сделать общую подпись без привязки к рогу: «Шанс установить связь с драконом или приручить его»."
+  }
+]

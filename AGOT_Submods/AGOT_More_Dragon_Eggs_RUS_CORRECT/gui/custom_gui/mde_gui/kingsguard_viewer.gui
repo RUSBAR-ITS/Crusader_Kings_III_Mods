@@ -1,0 +1,978 @@
+﻿window = {
+	name = "kingsguard_viewer_window"
+	visible = "[And( And( Not( IsGameViewOpen('barbershop') ), IsDefaultGUIMode ), GetVariableSystem.Exists( 'kingsguard_viewer_toggle' ) )]"
+	parentanchor = center
+	widgetanchor = center
+	size = { 1320 785 }
+	layer = middle
+	alpha = 1
+
+	using = Window_Background
+    using = Window_Decoration_Spike
+
+	state = {
+        name = _show
+        using = Animation_FadeIn_Standard
+        using = Sound_WindowShow_Standard
+		on_start = "[PdxGuiWidget.StackTop]"
+    }
+
+
+    state = {
+        name = _hide
+        using = Animation_FadeOut_Quick
+        using = Sound_WindowHide_Standard
+    }
+
+	margin_widget = {
+		name = "foreground_shader_vfx_container"
+		position = { 40 20 }
+		size = { 100% 100% }
+		margin = { 40 20 }
+	}
+	margin_widget = {
+		name = "faux_event_background"
+		size = { 100% 100% }
+		margin = { 40 20 }
+
+		state = {
+			name = _show
+			using = Animation_FadeIn_Standard
+			duration = 0.7
+		}
+
+		state = {
+			name = background_shake_loop
+			next = background_shake_loop_1
+			duration = 0.0
+			alpha = 1.0
+		}
+
+		state = {
+			name = background_shake_loop_1
+			next = background_shake_loop_2
+			position = { -6 0 }
+			duration = 0.2
+		}
+
+		state = {
+			name = background_shake_loop_2
+			next = background_shake_loop_3
+			position = { 5 0 }
+			duration = 0.12
+		}
+
+		state = {
+			name = background_shake_loop_3
+			next = background_shake_loop_1
+			position = { 7 1 }
+			duration = 0.12
+		}
+
+		blockoverride "event_picture_properties"
+		{}
+		widget = {
+			name = "event_picture"
+			size = { 100% 100% }
+
+			background = {
+				texture = "gfx/interface/illustrations/event_scenes/ironthrone/throneroom_ironthrone.dds"
+				fittype = centercrop
+
+				block "event_mask" {
+					modify_texture = {
+						name = mask
+						texture = "gfx/interface/window_event/mask_event_image_large.dds"
+						blend_mode = alphamultiply
+
+						block "event_mask_properties"
+						{
+							loop = no
+						}
+					}
+				}
+
+				block "event_picture_properties"
+				{
+				}
+			}
+		}
+	}
+	
+	
+	vbox = {
+		name = "not_event_window"
+		using = Animation_Tab_Switch
+		layoutpolicy_vertical = expanding
+		spacer = { size = { 0 12 } }
+		widget = {
+			name = "kingsguard_viewer_window_widget"
+			size = { 1220 690 }
+			vbox = {				
+				vbox = {
+					allow_outside = yes
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+		
+					vbox = {
+						ignoreinvisible = yes
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						scrollbox = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							#max_width = 320
+				
+
+							blockoverride "scrollbox_content"
+							{
+					
+								button_standard = {
+									name = "background_button"
+									size = { 402 68 } # Size of the button frame borders; needs to fit within the widget size
+									using = tooltip_ws
+									#layoutpolicy_vertical = expanding
+									datacontext = "[GetTitleByKey('d_kingsguard').GetHolder]"
+									visible = "[GetTitleByKey('d_kingsguard').GetHolder.IsValid]"
+
+									tooltipwidget = {
+										cooltip_type = {
+											blockoverride "interaction_info" {
+												text = "CHARACTER_TOOLTIP_INSTRUCTION"
+											}
+										}
+									}
+									tooltip_offset = { 0 0 }
+									tooltip_verticalbehavior = slide
+									tooltip_horizontalbehavior = mirror
+									portrait_head_small = {
+										scale = 0.75
+										parentanchor = right
+										datacontext = "[GetTitleByKey('d_kingsguard').GetHolder.MakeScope.Var('current_dragon').GetCharacter]"
+										tooltipwidget = {
+											cooltip_type = {
+												blockoverride "interaction_info"
+												{
+													text = "CHARACTER_TOOLTIP_INSTRUCTION"
+												}
+											}
+										}
+										visible = "[GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(GetTitleByKey('d_kingsguard').GetHolder.MakeScope).End)]"
+									}
+									mde_view_kingsguard_portrait_head_small = {
+										scale = 0.75
+										tooltip_visible = no
+									}
+									vbox = {
+										expand = {}
+										ignoreinvisible = yes
+										spacing = -3
+										margin_left = 70
+										layoutpolicy_horizontal = expanding
+										layoutpolicy_vertical = expanding
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											text_single = {
+												visible = "[GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+												name = "character_name_with_dragon"
+												text = "[Character.GetUINameNotMeNoTooltip]"
+												fontsize = 18
+												fontsize_min = 10
+												max_width = 215
+											}
+											text_single = {
+												visible = "[Not(GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End))]"
+												name = "character_name"
+												text = "[Character.GetUINameNotMeNoTooltip]"
+												fontsize = 18
+												max_width = 275
+											}
+											expand = {}
+										}
+										hbox = {
+											visible = yes
+											layoutpolicy_horizontal = expanding
+											text_multi = {
+												layoutpolicy_horizontal = expanding
+												name = "lord_commander"
+												text = "mde_is_lord_commander"
+												fontsize = 13
+												autoresize = yes
+												max_width = 225
+											}
+											expand = {}
+										}
+										hbox = {
+											margin_left = -2
+											layoutpolicy_horizontal = expanding
+								
+											dynamicgridbox = {
+												visible = "[Not(GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End))]"
+												flipdirection = yes
+												ignoreinvisible = yes
+												name = "traits_tiny"
+												datamodel = "[GetGlobalList('kingsguard_relevant_traits')]"
+									
+									
+												item = {
+													icon_trait = {
+														datacontext = "[Scope.Trait]"
+														visible = "[GetScriptedGui('mde_is_kingsguard_relevant_trait').IsValid(GuiScope.SetRoot(Character.MakeScope).AddScope( 'relevant_trait', Trait.MakeScope ).End)]"		
+														blockoverride "icon_size" {
+															size = { 20 20 }
+														}
+														blockoverride "glow_radius" {
+															glow_radius = 3
+														}
+													}
+												}
+											}
+											dynamicgridbox = {
+												visible = "[GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+												flipdirection = yes
+												ignoreinvisible = yes
+												name = "traits_tiny_with_dragon"
+												datamodel = "[GetGlobalList('kingsguard_relevant_traits')]"
+									
+									
+												item = {
+													icon_trait = {
+														datacontext = "[Scope.Trait]"
+														visible = "[GetScriptedGui('mde_is_kingsguard_relevant_trait').IsValid(GuiScope.SetRoot(Character.MakeScope).AddScope( 'relevant_trait', Trait.MakeScope ).End)]"		
+														blockoverride "icon_size" {
+															size = { 20 20 }
+														}
+														blockoverride "glow_radius" {
+															glow_radius = 3
+														}
+													}
+												}
+											}
+											hbox = {
+												tooltip = "[Character.GetProwessBreakdown]"
+												using = tooltip_ne
+												spacing = -3
+												icon = {
+													name = "prowess_icon"
+													size = { 20 20 }
+													texture = "gfx/interface/icons/icon_prowess.dds"
+												}
+												text_single = {
+													name = "prowess_value"
+													text = "[Character.GetProwess|0]"
+													align = nobaseline
+													default_format = "#high"
+												}
+											}
+											expand = {}
+										}
+										expand = {}
+									}
+						
+						
+									button_artifact = {
+										visible = "[GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(GetTitleByKey('d_kingsguard').GetHolder.MakeScope).End)]"
+										scale = 0.75
+										datacontext = "[Character.GetInventory.GetSlot('weapon').GetArtifact]"
+										parentanchor = right
+										position = { -60 0 }	
+									}
+									button_artifact = {
+										visible = "[Not(GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(GetTitleByKey('d_kingsguard').GetHolder.MakeScope).End))]"
+										scale = 0.75
+										datacontext = "[Character.GetInventory.GetSlot('weapon').GetArtifact]"
+										parentanchor = right	
+									}
+
+								}
+					
+								fixedgridbox = {
+									name = "current_grid"
+									addcolumn = 402
+									addrow = 68
+									datamodel_reuse_widgets = yes
+									datamodel_wrap = 2
+									flipdirection = yes
+									datamodel = "[GetGlobalList('mde_current_kingsguard')]"
+
+									item = {
+										button_standard = {
+											name = "background_button"
+											size = { 402 68 }
+											using = tooltip_ws
+											datacontext = "[Scope.GetCharacter]"
+											tooltipwidget = {
+												cooltip_type = {
+													blockoverride "interaction_info" {
+														text = "CHARACTER_TOOLTIP_INSTRUCTION"
+													}
+												}
+											}
+											tooltip_offset = { 0 0 }
+											tooltip_verticalbehavior = slide
+											tooltip_horizontalbehavior = mirror
+											mde_view_kingsguard_portrait_head_small = {
+												scale = 0.75
+												tooltip_visible = no
+											}
+											vbox = {
+												expand = {}
+												ignoreinvisible = yes
+												spacing = -3
+												margin_left = 70
+												#margin_top = 2
+												layoutpolicy_horizontal = expanding
+												layoutpolicy_vertical = expanding
+												hbox = {
+													layoutpolicy_horizontal = expanding
+													ignoreinvisible = yes
+													text_single = {
+														visible = "[GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+														name = "character_name_with_dragon"
+														text = "[Character.GetUINameNotMeNoTooltip]"
+														fontsize = 18
+														fontsize_min = 10
+														max_width = 215
+													}
+													text_single = {
+														visible = "[Not(GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End))]"
+														name = "character_name"
+														text = "[Character.GetUINameNotMeNoTooltip]"
+														fontsize = 18
+														max_width = 275
+													}
+													expand = {}
+												}
+												hbox = {
+													visible = yes
+													layoutpolicy_horizontal = expanding
+													text_multi = {
+														layoutpolicy_horizontal = expanding
+														name = "is_kingsguard"
+														text = "mde_is_kingsguard"
+														fontsize = 14
+														autoresize = yes
+														max_width = 140
+													}
+													expand = {}
+												}
+												hbox = {
+													margin_left = -2
+													layoutpolicy_horizontal = expanding
+													ignoreinvisible = yes
+													dynamicgridbox = {
+														visible = "[Not(GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End))]"
+														flipdirection = yes
+														ignoreinvisible = yes
+														max_width = 275
+														name = "traits_tiny"
+														datamodel = "[GetGlobalList('kingsguard_relevant_traits')]"
+														item = {
+															icon_trait = {
+																datacontext = "[Scope.Trait]"
+																visible = "[GetScriptedGui('mde_is_kingsguard_relevant_trait').IsValid(GuiScope.SetRoot(Character.MakeScope).AddScope( 'relevant_trait', Trait.MakeScope ).End)]"		
+																blockoverride "icon_size" {
+																	size = { 20 20 }
+																}
+																blockoverride "glow_radius" {
+																	glow_radius = 3
+																}
+															}
+														}
+													}
+													dynamicgridbox = {
+														visible = "[GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+														flipdirection = yes
+														ignoreinvisible = yes
+														max_width = 215
+														name = "traits_tiny_with_dragon"
+														datamodel = "[GetGlobalList('kingsguard_relevant_traits')]"
+														item = {
+															icon_trait = {
+																datacontext = "[Scope.Trait]"
+																visible = "[GetScriptedGui('mde_is_kingsguard_relevant_trait').IsValid(GuiScope.SetRoot(Character.MakeScope).AddScope( 'relevant_trait', Trait.MakeScope ).End)]"		
+																blockoverride "icon_size" {
+																	size = { 20 20 }
+																}
+																blockoverride "glow_radius" {
+																	glow_radius = 3
+																}
+															}
+														}
+													}
+													hbox = {
+														tooltip = "[Character.GetProwessBreakdown]"
+														using = tooltip_ne
+														spacing = -3
+														icon = {
+															name = "prowess_icon"
+															size = { 20 20 }
+															texture = "gfx/interface/icons/icon_prowess.dds"
+														}
+														text_single = {
+															name = "prowess_value"
+															text = "[Character.GetProwess|0]"
+															align = nobaseline
+															default_format = "#high"
+														}	
+													}
+													expand = {}
+												}
+												expand = {}
+											}
+											portrait_head_small = {
+												scale = 0.75
+												parentanchor = right
+												datacontext = "[Scope.Var('current_dragon').Char]"
+												tooltipwidget = {
+													cooltip_type = {
+														blockoverride "interaction_info"
+														{
+															text = "CHARACTER_TOOLTIP_INSTRUCTION"
+														}
+													}
+												}
+												visible = "[GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Scope.Char.MakeScope).End)]"
+											}
+											button_artifact = {
+												visible = "[GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+												scale = 0.75
+												datacontext = "[Character.GetInventory.GetSlot('weapon').GetArtifact]"
+												parentanchor = right
+												position = { -60 0 }	
+											}
+											button_artifact = {
+												visible = "[Not(GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End))]"
+												scale = 0.75
+												datacontext = "[Character.GetInventory.GetSlot('weapon').GetArtifact]"
+												parentanchor = right	
+											}
+								
+										}
+									}
+								}
+							}
+						}
+						scrollbox = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							visible = "[GetScriptedGui('mde_is_lord_of_seven_kingdoms').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+							blockoverride "scrollbox_content"
+							{
+								fixedgridbox = {
+									name = "potential_grid"
+									addcolumn = 402
+									addrow = 68
+									datamodel_reuse_widgets = yes
+									datamodel_wrap = 3
+									flipdirection = yes
+									datamodel = "[GetGlobalList('mde_potential_kingsguard')]"
+
+									item = {
+										button_standard = {
+											name = "background_button"
+											size = { 402 68 }
+											using = tooltip_ws
+											datacontext = "[Scope.GetCharacter]"
+											tooltipwidget = {
+												cooltip_type = {
+													blockoverride "interaction_info" {
+														text = "CHARACTER_TOOLTIP_INSTRUCTION"
+													}
+												}
+											}
+											tooltip_offset = { 0 0 }
+											tooltip_verticalbehavior = slide
+											tooltip_horizontalbehavior = mirror
+											mde_view_kingsguard_portrait_head_small = {
+												scale = 0.75
+												tooltip_visible = no
+											}
+											vbox = {
+												expand = {}
+												ignoreinvisible = yes
+												spacing = -3
+												margin_left = 70
+												#margin_top = 2
+												layoutpolicy_horizontal = expanding
+												layoutpolicy_vertical = expanding
+												hbox = {
+													layoutpolicy_horizontal = expanding
+													ignoreinvisible = yes
+													text_single = {
+														visible = "[GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+														name = "character_name_with_dragon"
+														text = "[Character.GetUINameNotMeNoTooltip]"
+														fontsize = 18
+														fontsize_min = 10
+														max_width = 215
+													}
+													text_single = {
+														visible = "[Not(GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End))]"
+														name = "character_name"
+														text = "[Character.GetUINameNotMeNoTooltip]"
+														fontsize = 18
+														max_width = 275
+													}
+													expand = {}
+												}
+												hbox = {
+													visible = yes
+													layoutpolicy_horizontal = expanding
+													text_multi = {
+														layoutpolicy_horizontal = expanding
+														name = "training_text"
+														text = "training_for_kingsguard"
+														fontsize = 12
+														fontsize_min = 10
+														autoresize = yes
+														max_width = 200
+														visible = "[GetScriptedGui('mde_is_training_for_kingsguard').IsValid(GuiScope.SetRoot(Character.MakeScope).End)]"
+													}
+													spacer = {
+														visible = "[Not(GetScriptedGui('mde_is_training_for_kingsguard').IsValid(GuiScope.SetRoot(Character.MakeScope).End))]"
+														size = { 0 6 }
+													}
+													expand = {}
+												}
+												hbox = {
+													margin_left = -2
+													layoutpolicy_horizontal = expanding
+													ignoreinvisible = yes
+													dynamicgridbox = {
+														visible = "[Not(GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End))]"
+														flipdirection = yes
+														ignoreinvisible = yes
+														maximumsize = { 200 30 }
+														name = "traits_tiny"
+														datamodel = "[GetGlobalList('kingsguard_relevant_traits')]"
+														item = {
+															icon_trait = {
+																datacontext = "[Scope.Trait]"
+																visible = "[GetScriptedGui('mde_is_kingsguard_relevant_trait').IsValid(GuiScope.SetRoot(Character.MakeScope).AddScope( 'relevant_trait', Trait.MakeScope ).End)]"		
+																blockoverride "icon_size" {
+																	size = { 20 20 }
+																}
+																blockoverride "glow_radius" {
+																	glow_radius = 3
+																}
+															}
+														}
+													}
+													dynamicgridbox = {
+														visible = "[GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+														flipdirection = yes
+														ignoreinvisible = yes
+														maximumsize = { 200 30 }
+														name = "traits_tiny_with_dragon"
+														datamodel = "[GetGlobalList('kingsguard_relevant_traits')]"
+														item = {
+															icon_trait = {
+																datacontext = "[Scope.Trait]"
+																visible = "[GetScriptedGui('mde_is_kingsguard_relevant_trait').IsValid(GuiScope.SetRoot(Character.MakeScope).AddScope( 'relevant_trait', Trait.MakeScope ).End)]"		
+																blockoverride "icon_size" {
+																	size = { 20 20 }
+																}
+																blockoverride "glow_radius" {
+																	glow_radius = 3
+																}
+															}
+														}
+													}
+													hbox = {
+														tooltip = "[Character.GetProwessBreakdown]"
+														using = tooltip_ne
+														spacing = -3
+														icon = {
+															name = "prowess_icon"
+															size = { 20 20 }
+															texture = "gfx/interface/icons/icon_prowess.dds"
+														}
+														text_single = {
+															name = "prowess_value"
+															text = "[Character.GetProwess|0]"
+															align = nobaseline
+															default_format = "#high"
+														}	
+													}
+													expand = {}
+												}
+												expand = {}
+											}
+											button_normal = {
+												name = "INVITE_TO_KINGSGUARD_BUTTON"
+												datacontext = "[GetScriptedGui('mde_can_send_invite_for_kingsguard_sgui')]"
+												visible = "[And(ScriptedGui.IsShown( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'owner', GetPlayer.MakeScope ).End), And(Not(GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Scope.Char.MakeScope).End)), Character.GetInventory.GetSlot('weapon').IsEmpty))]"
+												enabled = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'owner', GetPlayer.MakeScope ).End)]"
+												tooltip = "INVITE_TO_KINGSGUARD_TT"
+												using = tooltip_ne
+									
+												size = { 30 30 }
+												parentanchor = right|vcenter
+												position = { -10 0 }
+
+												icon_round_button_base = {}
+
+												button_icon = {
+													onclick = "[Character.OpenPlayerInteraction( 'invite_to_kingsguard_interaction' )]"
+													size = { 30 30 }
+													parentanchor = center
+
+													texture = "gfx/interface/icons/flat_icons/kingsguard_flat_black.dds"
+										
+													modify_texture = {
+														texture = "gfx/interface/icons/focuses/hud_icon_mask.dds"
+														blend_mode = alphamultiply
+													}
+
+													effectname = "NoHighlight"
+												}
+									
+												expand = {}
+											}
+											button_normal = {
+												name = "INVITE_TO_KINGSGUARD_BUTTON_2"
+												datacontext = "[GetScriptedGui('mde_can_send_invite_for_kingsguard_sgui')]"
+												visible = "[And(ScriptedGui.IsShown( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'owner', GetPlayer.MakeScope ).End), Or(And(Not(GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Scope.Char.MakeScope).End)), Not(Character.GetInventory.GetSlot('weapon').IsEmpty)), And(GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Scope.Char.MakeScope).End), Character.GetInventory.GetSlot('weapon').IsEmpty)))]"
+												enabled = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'owner', GetPlayer.MakeScope ).End)]"
+												tooltip = "INVITE_TO_KINGSGUARD_TT"
+												using = tooltip_ne
+									
+												size = { 30 30 }
+												parentanchor = right|vcenter
+												position = { -70 0 }
+
+												icon_round_button_base = {}
+
+												button_icon = {
+													onclick = "[Character.OpenPlayerInteraction( 'invite_to_kingsguard_interaction' )]"
+													size = { 30 30 }
+													parentanchor = center
+
+													texture = "gfx/interface/icons/flat_icons/kingsguard_flat_black.dds"
+										
+													modify_texture = {
+														texture = "gfx/interface/icons/focuses/hud_icon_mask.dds"
+														blend_mode = alphamultiply
+													}
+
+													effectname = "NoHighlight"
+												}
+									
+												expand = {}
+											}
+											button_normal = {
+												name = "INVITE_TO_KINGSGUARD_BUTTON_3"
+												datacontext = "[GetScriptedGui('mde_can_send_invite_for_kingsguard_sgui')]"
+												visible = "[And(ScriptedGui.IsShown( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'owner', GetPlayer.MakeScope ).End), And(GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Scope.Char.MakeScope).End), Not(Character.GetInventory.GetSlot('weapon').IsEmpty)))]"
+												enabled = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'owner', GetPlayer.MakeScope ).End)]"
+												tooltip = "INVITE_TO_KINGSGUARD_TT"
+												using = tooltip_ne
+									
+												size = { 30 30 }
+												parentanchor = right|vcenter
+												position = { -127 0 }
+
+												icon_round_button_base = {}
+
+												button_icon = {
+													onclick = "[Character.OpenPlayerInteraction( 'invite_to_kingsguard_interaction' )]"
+													size = { 30 30 }
+													parentanchor = center
+
+													texture = "gfx/interface/icons/flat_icons/kingsguard_flat_black.dds"
+										
+													modify_texture = {
+														texture = "gfx/interface/icons/focuses/hud_icon_mask.dds"
+														blend_mode = alphamultiply
+													}
+
+													effectname = "NoHighlight"
+												}
+									
+												expand = {}
+											}
+								
+											portrait_head_small = {
+												scale = 0.75
+												parentanchor = right
+												datacontext = "[Scope.Var('current_dragon').Char]"
+												tooltipwidget = {
+													cooltip_type = {
+														blockoverride "interaction_info"
+														{
+															text = "CHARACTER_TOOLTIP_INSTRUCTION"
+														}
+													}
+												}
+												visible = "[GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Scope.Char.MakeScope).End)]"
+											}
+											button_artifact = {
+												visible = "[And(Not(Character.GetInventory.GetSlot('weapon').IsEmpty), GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End))]"
+												scale = 0.75
+												datacontext = "[Character.GetInventory.GetSlot('weapon').GetArtifact]"
+												parentanchor = right
+												position = { -60 0 }	
+											}
+											button_artifact = {
+												visible = "[And(Not(Character.GetInventory.GetSlot('weapon').IsEmpty), Not(GetScriptedGui('mde_rider_has_dragon').IsShown(GuiScope.SetRoot(Character.MakeScope).End)))]"
+												scale = 0.75
+												datacontext = "[Character.GetInventory.GetSlot('weapon').GetArtifact]"
+												parentanchor = right	
+											}
+								
+										}
+									}
+								}
+				
+							}
+						}
+						expand = {}
+					}
+				}
+				button_event_standard = {
+					block "button_size" {
+						size = { 1220 36 }
+					}
+					highlight_icon = {
+						size = { 1210 100% }
+						gfxtype = togglepushbuttongfx
+						effectname = "NoHighlight"
+						texture = "gfx/interface/buttons/button_mouseover_event.dds"
+						spriteType = Corneredstretched
+						spriteborder = { 20 20 }
+						framesize  = { 238 63 }
+						parentanchor = center
+
+						upframe = 1
+						uphoverframe = 2
+						uppressedframe = 1
+						downframe = 1
+						downhoverframe = 1
+						downpressedframe = 1
+						disableframe = 1
+
+						alpha = 0.5
+
+						block "button_standard_mouseover" {}
+					}
+					modify_texture = {
+						name = "mask"
+						texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick.dds"
+						spriteType = Corneredtiled
+						spriteborder_left = 40
+						spriteborder_right = 40
+						blend_mode = alphamultiply
+					}
+					text_single = {
+						alwaystransparent = yes
+						parentanchor = center
+						text = "MDE_gui_exit"
+						default_format = "#high"
+						align = center|nobaseline
+						fontsize_min = 12
+					}
+					
+					onclick = "[GetVariableSystem.Toggle( 'kingsguard_viewer_toggle' )]"
+					
+				}
+			}
+			
+		}
+	}
+	widget = {
+		size = { 2390 76 }
+
+		widget = {
+			size = { 100% 57 }
+			position = { 0 20 }
+
+			icon = {
+				name = "theme_header"
+				position = { 24 0 }
+				size = { 1072 57 }
+				texture = "gfx/interface/window_event/event_header_grey.dds"
+
+				modify_texture = {
+					name = overlay
+					texture = "gfx/interface/component_effects/effect_header_blue_shine.dds"
+					blend_mode = colordodge
+					translate_uv = { 0.6 0 }
+				}
+
+				state = {
+					name = right
+					next = left
+
+					duration = 8
+					bezier = { 0.8 0.18 0.96 .05 }
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { -0.6 0 }
+					}
+				}
+
+				state = {
+					name = left
+					next = right
+
+					duration = 0.0
+					delay = 5
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { 0.6 0 }
+					}
+				}
+
+				state = {
+					trigger_on_create = yes
+					name = start
+					next = right
+
+					duration = 0.0
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { 0.6 0 }
+					}
+				}
+			}
+
+			text_single = {
+				name = "title"
+				position = { 128 1 }
+				fontsize = 29
+				fontsize_min = 16
+				text = "mde_menu_events.0002.t"
+				default_format = "#high;glow_color:{0.1,0.1,0.1,1.0}"
+				using = Font_Type_Flavor
+				max_width = 950
+
+				alpha = 0
+
+				state = {
+					name = start
+					trigger_on_create = yes
+					delay = 0.2
+					using = Animation_Curve_Default
+					alpha = 1
+					duration = 0.5
+				}
+			}
+
+			icon = {
+				name = "theme_icon"
+				position = { 23 -24 }
+				size = { 90 90 }
+				texture = "gfx/interface/icons/event_types/_frame_learning.dds"
+
+				button = {
+					name = "white_book_button"
+					position = { 5 5 }
+					size = { 80 80 }
+					texture = "gfx/interface/icons/artifact/white_book.dds"
+					tooltip = "mde_kingsguard_white_book_tt"
+					onclick = "[GetScriptedGui('mde_open_white_book').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+
+					modify_texture = {
+						name = overlay
+						texture = "gfx/interface/component_effects/effect_blue_shine.dds"
+						blend_mode = colordodge
+						translate_uv = { 0.6 0 }
+					}
+
+					state = {
+						name = right
+						next = left
+
+						duration = 2
+						bezier = { .8 .18 .96 .05 }
+
+						modify_texture = {
+							name = overlay
+							translate_uv = { -0.6 0 }
+						}
+					}
+
+					state = {
+						name = left
+						next = right
+
+						duration = 0.0
+						delay = 5
+
+
+						modify_texture = {
+							name = overlay
+							translate_uv = { 0.6 0 }
+						}
+					}
+
+					state = {
+						trigger_on_create = yes
+						name = start
+						next = right
+
+						duration = 0.0
+
+						modify_texture = {
+							name = overlay
+							translate_uv = {0.6 0}
+						}
+					}
+				}
+
+				modify_texture = {
+					name = overlay
+					texture = "gfx/interface/component_effects/effect_blue_shine.dds"
+					blend_mode = colordodge
+					translate_uv = { 0.6 0 }
+				}
+
+				state = {
+					name = right
+					next = left
+
+					duration = 2
+					bezier = { .8 .18 .96 .05 }
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { -0.6 0 }
+					}
+				}
+
+				state = {
+					name = left
+					next = right
+
+					duration = 0.0
+					delay = 5
+
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { 0.6 0 }
+					}
+				}
+
+				state = {
+					trigger_on_create = yes
+					name = start
+					next = right
+
+					duration = 0.0
+
+					modify_texture = {
+						name = overlay
+						translate_uv = {0.6 0}
+					}
+				}
+			}
+			
+		}
+	}
+}

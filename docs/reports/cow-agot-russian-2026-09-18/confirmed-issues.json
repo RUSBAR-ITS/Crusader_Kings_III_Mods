@@ -1,0 +1,98 @@
+[
+  {
+    "Id": "COW-01",
+    "Category": "file-language-mismatch",
+    "Origin": "Translation",
+    "Keys": ["reconstruct_small_ruin_tooltip", "reconstruct_med_ruin_tooltip", "reconstruct_large_ruin_tooltip", "reconstruct_special_ruin_tooltip"],
+    "Evidence": ["RU:localization/replace/russian/zz_agot_ruins_l_english.yml:1"],
+    "Problem": "Суффикс _l_english.yml при заголовке l_russian и русских текстах.",
+    "Recommendation": "Предоставить четыре строки в правильно названном русском файле. Не считать их непереведёнными.",
+    "RuntimeVerified": false
+  },
+  {
+    "Id": "COW-02",
+    "Category": "syntax",
+    "Origin": "OriginalEnglish",
+    "Keys": ["setting_yes_use_rebuilt_crag_desc"],
+    "Evidence": ["EN:localization/replace/english/zz_agot_unique_buildings_l_english.yml:5"],
+    "Problem": "Отсутствует закрывающая кавычка. Русская строка исправна.",
+    "Recommendation": "Исправить синтаксис исходной английской строки в отдельном патче, не обещая конкретного результата простого позднего override без проверки загрузки."
+  },
+  {
+    "Id": "COW-03",
+    "Category": "missing-runtime-localization",
+    "Origin": "OriginalAndTranslation",
+    "Keys": ["cow_custom_mapmode.t"],
+    "Evidence": ["Main:gfx/map/map_modes/cow_custom_map_modes.txt:17", "Main:gui/custom_windows/my_cow_map_mode_window.gui:10"],
+    "Problem": "Активная ссылка на текст режима карты не имеет определения в COW EN/RU и русских каталогах AGOT/CK3.",
+    "Recommendation": "Определить EN/RU текст для баронств с castle_05/city_05 или более высоким уровнем; не принимать комментарий Placeholder за отключение ссылки."
+  },
+  {
+    "Id": "COW-04",
+    "Category": "wrong-building-localization-binding",
+    "Origin": "OriginalAndTranslation",
+    "Keys": ["building_karhold_0l", "building_karhold_01_desc", "building_type_karhold_01_special", "building_type_karhold_01_special_desc"],
+    "ExpectedKeys": ["building_agot_karhold_01", "building_agot_karhold_01_desc", "building_type_agot_karhold_01", "building_type_agot_karhold_01_desc"],
+    "Evidence": ["EN/RU:zz_agot_unique_buildings:45-48", "Main:common/buildings/yy_agotcities_special_buildings_westeros.txt:2583", "AGOT_RU:localization/russian/agot/agot_buildings_l_russian.yml:1248-1251"],
+    "Problem": "Развёрнутые тексты COW не совпадают с идентификатором реального здания agot_karhold_01. В 0l используется буква l.",
+    "Recommendation": "Предоставить правильные четыре ключа; учесть существующий перевод AGOT. Это не отсутствие любого имени в игре."
+  },
+  {
+    "Id": "COW-05",
+    "Category": "tooltip-condition-mismatch",
+    "Origin": "OriginalAndTranslation",
+    "Keys": ["REBUILD_CASTAMERE_SECOND", "REBUILD_OLDSTONES_SECOND"],
+    "Evidence": ["EN/RU:zz_agot_unique_buildings:186,190", "Main:common/buildings/yy_agotcities_special_buildings_westeros.txt:2079-2080,2904-2905", "Main:common/buildings/zz_cowagot_ruin_buildings.txt:282-283,394-395"],
+    "Problem": "Текст требует четвёртую стадию обычных руин, но условие требует третью или выше. Четвёртая стадия сама ждёт восстановления особого здания.",
+    "Recommendation": "В обеих языковых версиях описать достижение третьей стадии. Не менять триггеры на четвёртую стадию."
+  },
+  {
+    "Id": "COW-06",
+    "Category": "incomplete-custom-tooltip",
+    "Origin": "OriginalAndTranslation",
+    "Keys": ["CASTLE_HOARE_REQUIREMENT"],
+    "Evidence": ["EN/RU:zz_agot_unique_buildings:180", "Main:common/buildings/yy_agotcities_special_buildings_westeros.txt:40-47", "AGOT:common/scripted_triggers/00_building_requirement_triggers.txt:5-13"],
+    "Problem": "Общий custom_tooltip не объясняет скрытое условие building_requirement_tribal = no, хотя перечисляет остальные требования.",
+    "Recommendation": "Указать ограничение по формам правления с флагами government_is_tribal, government_is_nomadic, government_is_wanua либо вывести его отдельно."
+  },
+  {
+    "Id": "COW-07",
+    "Category": "terminology",
+    "Origin": "Translation",
+    "Keys": ["building_type_palestone_sword_01", "building_palestone_sword_01", "building_palestone_sword_01_desc"],
+    "Evidence": ["RU:localization/replace/russian/zz_agot_unique_buildings_l_russian.yml:67-69"],
+    "Sources": ["https://7kingdoms.ru/wiki/Звездопад"],
+    "Problem": "Бледнокаменный Меч вместо принятого Белокаменный Меч.",
+    "Recommendation": "Исправить название и его склонение в трёх русских строках."
+  },
+  {
+    "Id": "COW-08",
+    "Category": "inherited-lore-discrepancy",
+    "Origin": "OriginalAndTranslation",
+    "Keys": ["building_type_deepwood_motte_01_desc", "building_deepwood_motte_01_desc"],
+    "Evidence": ["EN/RU:zz_agot_unique_buildings:25,27"],
+    "Sources": ["https://7kingdoms.ru/wiki/Темнолесье"],
+    "Problem": "Каменный донжон вместо деревянной крепости с большим чертогом.",
+    "Recommendation": "Согласовать EN/RU описание с источником, отдельно от любых изменений 3D-модели."
+  },
+  {
+    "Id": "COW-09",
+    "Category": "inherited-lore-discrepancy",
+    "Origin": "OriginalAndTranslation",
+    "Keys": ["building_bearisland_01_desc", "building_type_bearisland_01_desc"],
+    "Evidence": ["EN/RU:zz_agot_unique_buildings:36,38"],
+    "Sources": ["https://7kingdoms.ru/wiki/Медвежий_остров"],
+    "Problem": "Возвращение острова Северу силой оружия приписано Мормонтам, а не Родрику Старку, передавшему им остров.",
+    "Recommendation": "Исправить EN/RU историю получения острова. Не представлять легенду о борцовском поединке как бесспорный факт."
+  },
+  {
+    "Id": "COW-10",
+    "Category": "inherited-lore-discrepancy",
+    "Origin": "OriginalAndTranslation",
+    "Keys": ["building_oldstones_old_final_desc"],
+    "Evidence": ["EN/RU:zz_agot_unique_buildings:53"],
+    "Sources": ["https://7kingdoms.ru/wiki/Тристифер_V_Мадд", "https://7kingdoms.ru/wiki/Старые_Камни"],
+    "Problem": "Тристифер IV назван последним королём Маддов, хотя ему наследовал Тристифер V.",
+    "Recommendation": "Убрать ошибочную характеристику последнего короля, сохранив Тристифера IV как владельца гробницы."
+  }
+]

@@ -1,0 +1,120 @@
+﻿namespace = asoiaf_young_griff_landing_events
+
+asoiaf_young_griff_landing_events.1 = {
+	type = character_event
+	hidden = yes
+	
+	immediate = {
+		root = {
+			if = {
+				limit = { father = character:Mopatis_1 } #if his father is listed as Illyrio (he's been made a Blackfyre when he's actually Young Griff)
+				#SET PARENTS/DYNASTY (AGAIN)
+				set_father = character:Targaryen_3
+				set_mother = character:Martell_7
+				set_house = character:Targaryen_3.house
+				every_held_title = {
+					set_coa = dynasty:dynn_Targaryen
+				}
+				#SET ILLYRIO'S WIFE'S DYNASTY
+				character:Blackfyre_16 ?= { #set Illyrio's wife's mother's House to non-Blackfyre and correct parents
+					set_house = house:asoiaf_house_Malazos
+					set_father = character:asoiaf_Blackfyre_16_father #these are only set if Young Griff invades and the game tries to make him a Blackfyre
+					set_mother = character:asoiaf_Blackfyre_16_mother
+				}
+				character:Mopatis_hh_1 ?= { set_house = house:asoiaf_house_Malazos } #set Illyrio's wife's House to non-Blackfyre
+			}
+		}
+	}
+}
+
+asoiaf_young_griff_landing_events.2 = { #remove marriage trait for Daenerys and Viserys dummies
+	type = character_event
+	hidden = yes
+	
+	immediate = {
+		root = {
+			set_court_language = language_agot_westeros
+			if = { #players can marry and forge alliances during the war
+				limit = {
+					is_ai = no
+				}
+				remove_trait = refusing_marriage
+			}
+		}
+	}
+}
+
+asoiaf_young_griff_landing_events.3 = { #sets real parents for Aegon after winning the throne
+	type = character_event
+	hidden = yes
+	
+	immediate = {
+		root = {
+			if = { #He's Rhaegar's son
+				limit = {
+					root.father = character:Targaryen_3 #Rhaegar
+				}
+				hidden_effect = {
+					set_real_father = character:Targaryen_3 #Rhaegar
+					set_real_mother = character:Martell_7 #Elia
+					dynasty:dynn_Targaryen = { #just in case it hasn't been done before yet
+						set_variable = agot_allow_adelphogamous_incest
+						set_variable = { name = blood_legacy_4_beauty_good_1 value = yes }
+					}
+				}
+			}
+			if = { #He's a Blackfyre
+				limit = {
+					root.father = character:Mopatis_1 #Illyrio Mopatis
+				}
+				trigger_event = { id = agot_coa_events.1 } #Seven Kingdoms to Blackfyre CoA
+				hidden_effect = {
+					dynasty:dynn_Targaryen = { #just in case it hasn't been done before yet
+						set_variable = agot_allow_adelphogamous_incest
+						set_variable = { name = blood_legacy_4_beauty_good_1 value = yes }
+					}
+					create_character = {
+						gender = female
+						age = 50
+						culture = culture:high_valyrian
+						faith = faith:fots_seven
+						location = scope:faegon.location
+						
+						dynasty = generate
+						
+						save_scope_as = asoiaf_aegon_fake_mother
+						
+						after_creation = {
+							death =  { death_reason = death_disappearance }
+						}
+					}
+					create_character = {
+						gender = male
+						age = 50
+						culture = culture:crownlander
+						faith = faith:fots_seven
+						location = scope:faegon.location
+						
+						dynasty = none
+						
+						save_scope_as = asoiaf_pisswater_prince_real_father
+						
+						after_creation = {
+							death =  { death_reason = death_disappearance }
+						}
+					}
+					set_mother = scope:asoiaf_aegon_fake_mother
+					set_real_father = character:Targaryen_3 #Rhaegar
+					set_real_mother = character:Martell_7 #Elia
+					character:Targaryen_11 = { #revert Pisswater Prince to being "Targaryen"
+						set_mother = character:Martell_7
+						set_father = character:Targaryen_3
+						set_real_father = scope:asoiaf_pisswater_prince_real_father
+						set_real_mother = scope:asoiaf_aegon_fake_mother
+						set_house =  character:Targaryen_3.house
+					}
+				}
+			}
+		}
+	}
+}

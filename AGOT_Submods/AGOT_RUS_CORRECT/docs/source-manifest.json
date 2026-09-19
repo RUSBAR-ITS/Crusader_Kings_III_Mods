@@ -1,0 +1,395 @@
+﻿{
+    "AGOTVersion":  "0.5.2.1",
+    "CK3Version":  "1.19.0.6",
+    "TranslationWorkshopId":  "2962803371",
+    "Overlay":  "localization/replace/russian/zzzz_agot_rus_correct_l_russian.yml",
+    "OverlayKeys":  157,
+    "ClosingQuoteRepairs":  9,
+    "RuntimeSyntaxRepairs":  7,
+    "Files":  [
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/replace/russian/agot/00_agot_titles_l_russian.yml",
+                      "SourceSHA256":  "9BBF885E5057A25669C34A4BC3AE1F94B0363742569741E95BFA8147640B9669",
+                      "PatchedSHA256":  "61C057536B67CBECA40AA9C0C7C3B4C27397755F5930CFA0B9958ED3735F3781",
+                      "Changes":  [
+                                      {
+                                          "Line":  10157,
+                                          "Key":  "b_jagjebaj",
+                                          "Kind":  "ClosingQuote",
+                                          "Before":  " b_jagjebaj:0 \"Джагджебай",
+                                          "After":  " b_jagjebaj:0 \"Джагджебай\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/replace/russian/buildings_l_russian.yml",
+                      "SourceSHA256":  "6641279000137142B31F165A08869A4785B6FD834E5F3AD1D9F54EB5434D6716",
+                      "PatchedSHA256":  "86E2CB341F71E6698CC61CB2259FF545A1463D688B847E9C340F8AD6ED03F22A",
+                      "Changes":  [
+                                      {
+                                          "Line":  2,
+                                          "Key":  "BUILDING_DEBUG_KEY",
+                                          "Kind":  "Translation",
+                                          "Before":  " BUILDING_DEBUG_KEY: \"#D DEBUG KEY:#! [BUILDING.GetKey]\"",
+                                          "After":  " BUILDING_DEBUG_KEY: \"#D КЛЮЧ ДЛЯ ОТЛАДКИ:#! [BUILDING.GetKey]\""
+                                      },
+                                      {
+                                          "Line":  3,
+                                          "Key":  "BUILDING_DEBUG_FULL",
+                                          "Kind":  "Translation",
+                                          "Before":  " BUILDING_DEBUG_FULL: \"#D DEBUG KEY AND DESC:#!\\n[Building.GetKey]\\n[Building.GetDescKey]\"",
+                                          "After":  " BUILDING_DEBUG_FULL: \"#D КЛЮЧ И ОПИСАНИЕ ДЛЯ ОТЛАДКИ:#!\\n[Building.GetKey]\\n[Building.GetDescKey]\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/replace/russian/core_l_russian.yml",
+                      "SourceSHA256":  "AA80274FC6FF39BE793A8C18B4B58AC965CAF9DC6E5884F79C57EE2D36D5F626",
+                      "PatchedSHA256":  "52E02D74C8FD5856EC48686E508DB94A8C3CBC7FC1A14F21539ECA255C1A2B26",
+                      "Changes":  [
+                                      {
+                                          "Line":  86,
+                                          "Key":  "CHARACTER_AI_VALUES_DEBUG_TOOLTIP",
+                                          "Kind":  "Translation",
+                                          "Before":  " CHARACTER_AI_VALUES_DEBUG_TOOLTIP: \"#D DEBUG#! AI Values:\\nHonor: [Character.GetAIHonor|V]\\nGreed: [Character.GetAIGreed|V]\\nRationality: [Character.GetAIRationality|V]\\nEnergy: [Character.GetAIEnergy|V]\\nBoldness: [Character.GetAIBoldness|V]\\nDread Modified Boldness: [Character.GetAIBoldnessAsAffectedByPlayerDread|V]\\nZeal: [Character.GetAIZeal|V]\\nVengefulness: [Character.GetAIVengefulness|V]\\nCompassion: [Character.GetAICompassion|V]\\nSociability:[Character.GetAISociability|V]\\n\\n[Character.Custom( \u0027AIEconomicPersonality\u0027 )]\\n[Character.GetAiBudgetDescription]\\n[Character.GetVariablesDescription]\\n#I Click to toggle AI watch#!\" #не переведена ванила",
+                                          "After":  " CHARACTER_AI_VALUES_DEBUG_TOOLTIP: \"#D ОТЛАДКА#! Параметры ИИ:\\nЧесть: [Character.GetAIHonor|V]\\nЖадность: [Character.GetAIGreed|V]\\nРассудительность: [Character.GetAIRationality|V]\\nЭнергичность: [Character.GetAIEnergy|V]\\nСмелость: [Character.GetAIBoldness|V]\\nСмелость с учётом ужаса: [Character.GetAIBoldnessAsAffectedByPlayerDread|V]\\nРвение: [Character.GetAIZeal|V]\\nМстительность: [Character.GetAIVengefulness|V]\\nСострадание: [Character.GetAICompassion|V]\\nОбщительность:[Character.GetAISociability|V]\\n\\n[Character.Custom( \u0027AIEconomicPersonality\u0027 )]\\n[Character.GetAiBudgetDescription]\\n[Character.GetVariablesDescription]\\n#I Нажмите, чтобы включить или выключить наблюдение за ИИ#!\" #не переведена ванила"
+                                      },
+                                      {
+                                          "Line":  609,
+                                          "Key":  "TODO",
+                                          "Kind":  "Translation",
+                                          "Before":  " TODO: \"TODO: $WHAT$\"",
+                                          "After":  " TODO: \"ДОРАБОТАТЬ: $WHAT$\""
+                                      },
+                                      {
+                                          "Line":  763,
+                                          "Key":  "DEBUG_COLON",
+                                          "Kind":  "Translation",
+                                          "Before":  " DEBUG_COLON: \"#D DEBUG:#!\"",
+                                          "After":  " DEBUG_COLON: \"#D ОТЛАДКА:#!\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/replace/russian/dlc/fp3/dlc_fp3_game_concepts_l_russian.yml",
+                      "SourceSHA256":  "DDE0A78E1333EA7C8C100B194BAE8E712FA7FE9039CB225705EDB10E1FA07936",
+                      "PatchedSHA256":  "63C2F9F0D174119904FB873EC72F878E85942E813FF489ABEC4A916B37B12489",
+                      "Changes":  [
+                                      {
+                                          "Line":  7,
+                                          "Key":  "game_concept_persian_struggle_desc",
+                                          "Kind":  "Translation",
+                                          "Before":  " game_concept_persian_struggle_desc: \"Why does this cause a database error.\"",
+                                          "After":  " game_concept_persian_struggle_desc: \"Почему это вызывает ошибку базы данных?\""
+                                      },
+                                      {
+                                          "Line":  44,
+                                          "Key":  "game_concept_fp3_install_loyalist_cb_desc",
+                                          "Kind":  "Translation",
+                                          "Before":  " game_concept_fp3_install_loyalist_cb_desc: \"Why does this cause a database error.\"",
+                                          "After":  " game_concept_fp3_install_loyalist_cb_desc: \"Почему это вызывает ошибку базы данных?\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/replace/russian/dlc/fp3/dlc_fp3_modifiers_l_russian.yml",
+                      "SourceSHA256":  "9E2AA3EA850FE9FB09EA9CE7D8CC6450130E49831B9163A0C75FC21C78ADFD31",
+                      "PatchedSHA256":  "A285F7BC5C81E32620F355FA08758067145DB254FBCC8E9FDC67F574F398FEC8",
+                      "Changes":  [
+                                      {
+                                          "Line":  350,
+                                          "Key":  "has_fp3_struggle_caliph_super_suspicious_modifier",
+                                          "Kind":  "Translation",
+                                          "Before":  " has_fp3_struggle_caliph_super_suspicious_modifier: \"[target.GetShortUIName] is $fp3_struggle_caliph_super_suspicious_modifier$: $VALUE|+0=-+$\"",
+                                          "After":  " has_fp3_struggle_caliph_super_suspicious_modifier: \"[target.GetShortUIName] — $fp3_struggle_caliph_super_suspicious_modifier$: $VALUE|+0=-+$\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/replace/russian/dlc/tgp/dlc_tgp_china_game_concepts_l_russian.yml",
+                      "SourceSHA256":  "FE159C85E5A7DB55E3A4D1ED5E39EFAB3D0792C59D759DC7FD8B97EAEFFFC342",
+                      "PatchedSHA256":  "6E2314BC42442DE508095507ADC7C88DDBC8F068829D068AE5559EB6664F46E3",
+                      "Changes":  [
+                                      {
+                                          "Line":  56,
+                                          "Key":  "game_concept_exam_score_desc",
+                                          "Kind":  "RuntimeSyntax",
+                                          "Before":  " game_concept_exam_score_desc: \"$game_concept_exam_score$ определяет, насколько вероятно, что соискатель успешно сдаст [imperial_examination|E].\\n\\nБалл основывается на [Concept(\u0027skills\u0027, \u0027навыках\u0027)|E] [Concept(\u0027learning\u0027, \u0027учености\u0027), [Concept(\u0027stewardship\u0027, \u0027управления)|E] и [Concept(\u0027martial\u0027, \u0027военного дела\u0027)|E] соискателя — в зависимости от направленности экзамена.\\n\\nЛишь десять лучших соискателей в [GetActivityType(\u0027activity_imperial_examination\u0027).GetName] [activity|E] могут попытаться пройти @palace_exam_icon! #V дворцовый экзамен#!.\"",
+                                          "After":  " game_concept_exam_score_desc: \"$game_concept_exam_score$ определяет, насколько вероятно, что соискатель успешно сдаст [imperial_examination|E].\\n\\nБалл основывается на [Concept(\u0027skills\u0027, \u0027навыках\u0027)|E] [Concept(\u0027learning\u0027, \u0027учёности\u0027)|E], [Concept(\u0027stewardship\u0027, \u0027управления\u0027)|E] и [Concept(\u0027martial\u0027, \u0027военного дела\u0027)|E] соискателя — в зависимости от направленности экзамена.\\n\\nЛишь десять лучших соискателей в [GetActivityType(\u0027activity_imperial_examination\u0027).GetName] [activity|E] могут попытаться пройти @palace_exam_icon! #V дворцовый экзамен#!.\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/replace/russian/dlc/tgp/dlc_tgp_situation_parameters_l_russian.yml",
+                      "SourceSHA256":  "7C72860FA1F0DE43B25FF0623B724DFAE9B36E449AF23DBF979853DC574A5D2F",
+                      "PatchedSHA256":  "1576FB19839BA6B0DDFCA5663DEDA84A78D446A9FDB0EAE82F070873C0B1CAAC",
+                      "Changes":  [
+                                      {
+                                          "Line":  30,
+                                          "Key":  "situation_dynastic_cycle_phase_stability_desc",
+                                          "Kind":  "Translation",
+                                          "Before":  " situation_dynastic_cycle_phase_stability_desc: \"#D This Phase should not be shown#!\"",
+                                          "After":  " situation_dynastic_cycle_phase_stability_desc: \"#D Эта фаза не должна отображаться#!\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/replace/russian/gui/common_l_russian.yml",
+                      "SourceSHA256":  "5256E100CFC344EB7E7381A29FB26598FF06A8B8AEC4E39B6CB3A2A06CEF3832",
+                      "PatchedSHA256":  "9130D9CE5B7D7FC4D0338F118FAF5729B36E0F74FC427601BC7690450C156970",
+                      "Changes":  [
+                                      {
+                                          "Line":  134,
+                                          "Key":  "DEBUG_TITLE_ID",
+                                          "Kind":  "Translation",
+                                          "Before":  " DEBUG_TITLE_ID: \"Title ID: #high $ID$#!\"",
+                                          "After":  " DEBUG_TITLE_ID: \"Идентификатор титула: #high $ID$#!\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/replace/russian/gui/government_administration_window_l_russian.yml",
+                      "SourceSHA256":  "B9C4411B5911FE7D605B0F77B5303CC3F0FE863F46C0B61A6A7E2D5FB442C520",
+                      "PatchedSHA256":  "6933A528141462FF3D3F00A3B154F0D776208D228C1ABD445D23947BCAC4D1D7",
+                      "Changes":  [
+                                      {
+                                          "Line":  6,
+                                          "Key":  "admin_vassal_tab_appointment",
+                                          "Kind":  "RuntimeSyntax",
+                                          "Before":  " admin_vassal_tab_appointment: \"Назначение [GetPlayer.Custom(\u0027GetGovernorConceptPossessivetNoTooltip\u0027|l)]\"",
+                                          "After":  " admin_vassal_tab_appointment: \"Назначение [GetPlayer.Custom(\u0027GetGovernorConceptPossessiveNoTooltip\u0027)|l]\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/replace/russian/rus_team_fixes/OLD agot_character_names_l_russian.yml",
+                      "SourceSHA256":  "3A5932EF9A069301991329A6FAAA7A292AF68559CCDBC4A829CCA7287A29EE93",
+                      "PatchedSHA256":  "7580DC33173AA3641F5B3BA8879E0E448D9F9D79B8964B308138AE0AD582E2E7",
+                      "Changes":  [
+                                      {
+                                          "Line":  104,
+                                          "Key":  "Aleron",
+                                          "Kind":  "Translation",
+                                          "Before":  " Aleron: \"Aleron\"",
+                                          "After":  " Aleron: \"Алерон\""
+                                      },
+                                      {
+                                          "Line":  761,
+                                          "Key":  "Eriana",
+                                          "Kind":  "Translation",
+                                          "Before":  " Eriana: \"Eriana\"",
+                                          "After":  " Eriana: \"Эриана\""
+                                      },
+                                      {
+                                          "Line":  790,
+                                          "Key":  "Euston",
+                                          "Kind":  "Translation",
+                                          "Before":  " Euston: \"Euston\"",
+                                          "After":  " Euston: \"Эустон\""
+                                      },
+                                      {
+                                          "Line":  817,
+                                          "Key":  "Fahz",
+                                          "Kind":  "Translation",
+                                          "Before":  " Fahz: \"Fahz\"",
+                                          "After":  " Fahz: \"Фаз\""
+                                      },
+                                      {
+                                          "Line":  1160,
+                                          "Key":  "Hild",
+                                          "Kind":  "Translation",
+                                          "Before":  " Hild: \"Hild\"",
+                                          "After":  " Hild: \"Хильд\""
+                                      },
+                                      {
+                                          "Line":  2775,
+                                          "Key":  "Nylla",
+                                          "Kind":  "Translation",
+                                          "Before":  " Nylla: \"Nylla\"",
+                                          "After":  " Nylla: \"Нилла\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/russian/agot/00_agot_lmf_l_russian.yml",
+                      "SourceSHA256":  "5E0EAF75A1353F63619A6E38B25F3E3C92BAE6449A0248143171CD1C1F0F5B0B",
+                      "PatchedSHA256":  "6A9D9F7D53EF23F8B4733E5BA9B7C9C85BD48186736FB41554071B74D3D2932C",
+                      "Changes":  [
+                                      {
+                                          "Line":  119,
+                                          "Key":  "lmf_address_cousin",
+                                          "Kind":  "RuntimeSyntax",
+                                          "Before":  " lmf_address_cousin:0\"[Select_CString(second.IsFemale, \u0027Кузина\u0027, \u0027Кузен\u0027)] [second.GetFirstNameNoTooltip]\"",
+                                          "After":  " lmf_address_cousin:0 \"[Select_CString(second.IsFemale, \u0027Кузина\u0027, \u0027Кузен\u0027)] [second.GetFirstNameNoTooltip]\""
+                                      },
+                                      {
+                                          "Line":  3541,
+                                          "Key":  "lmf_lover.1100.desc.start",
+                                          "Kind":  "RuntimeSyntax",
+                                          "Before":  " lmf_lover.1100.desc.start: \"Пока пот остывал после утех, я [Select_CString(ROOT.Char.IsFemale, \u0027поняла\u0027, \u0027понял\u0027 )] - [lover.GetFirstNameNoTooltip] чего-то хочет. В [lover.GetHerHis] глазах был тот самый взгляд желания.\\n\\n\\«Я [Select_CString(lover.IsFemale, \u0027видела\u0027, \u0027видел\u0027 )] \"",
+                                          "After":  " lmf_lover.1100.desc.start: \"Пока пот остывал после утех, я [Select_CString(ROOT.Char.IsFemale, \u0027поняла\u0027, \u0027понял\u0027 )] - [lover.GetFirstNameNoTooltip] чего-то хочет. В [lover.GetHerHis] глазах был тот самый взгляд желания.\\n\\n«Я [Select_CString(lover.IsFemale, \u0027видела\u0027, \u0027видел\u0027 )] \""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/russian/agot/event_localization/agot_silly_mode_events_l_russian.yml",
+                      "SourceSHA256":  "FB556EAB32DEB2C33D4A4921A8D19A691517035A2D38C5FDC18405AE9337FE1C",
+                      "PatchedSHA256":  "179CC2E12202136CA3AB3EFB6080D13967A9CA49F44B6CF48906834E3706DFA1",
+                      "Changes":  [
+                                      {
+                                          "Line":  14,
+                                          "Key":  "agot_silly_mode.0200.desc",
+                                          "Kind":  "RuntimeSyntax",
+                                          "Before":  " agot_silly_mode.0200.desc:0 \"Входит повар, его шаги неуверенные, глаза широко раскрыты от страха. «Вы посылали за мной, [Select_CString(ROOT.Char.IsFemale, \u0027миледи\u0027, \u0027милорд\u0027 )]?»\\n\\n\\«Да, я бы [Select_CString(ROOT.Char.IsFemale, \u0027хотела\u0027, \u0027хотел\u0027 )] омлет. Совершенно особенный», - отвечаю я, поворачиваясь в сторону, чтобы поднять выбранную мной жертву.\\n\\nОн хмурит брови в замешательстве, но оно быстро сменяется шоком, когда я вкладываю драконье яйцо в его дрожащие руки. «Я... Я не уверен, что я... Если вы этого хотите», - бормочет он, заикаясь и глядя на яйцо так, словно оно может взорваться в любой момент.\\n\\nЯ киваю ему, и моя улыбка становится шире. «Я что-то [Select_CString(ROOT.Char.IsFemale, \u0027проголодалась\u0027, \u0027проголодался\u0027 )]. Не тяни».\"",
+                                          "After":  " agot_silly_mode.0200.desc:0 \"Входит повар, его шаги неуверенные, глаза широко раскрыты от страха. «Вы посылали за мной, [Select_CString(ROOT.Char.IsFemale, \u0027миледи\u0027, \u0027милорд\u0027 )]?»\\n\\n«Да, я бы [Select_CString(ROOT.Char.IsFemale, \u0027хотела\u0027, \u0027хотел\u0027 )] омлет. Совершенно особенный», - отвечаю я, поворачиваясь в сторону, чтобы поднять выбранную мной жертву.\\n\\nОн хмурит брови в замешательстве, но оно быстро сменяется шоком, когда я вкладываю драконье яйцо в его дрожащие руки. «Я... Я не уверен, что я... Если вы этого хотите», - бормочет он, заикаясь и глядя на яйцо так, словно оно может взорваться в любой момент.\\n\\nЯ киваю ему, и моя улыбка становится шире. «Я что-то [Select_CString(ROOT.Char.IsFemale, \u0027проголодалась\u0027, \u0027проголодался\u0027 )]. Не тяни».\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/russian/agot/event_localization/decision_events/agot_events_decisions_l_russian.yml",
+                      "SourceSHA256":  "6EC7F48583A649AEAC713B4B66F476C001BD93E0F6546C14A3D61F91225BDD35",
+                      "PatchedSHA256":  "BD1A8F21FC97E49E6820990261C3F820F3D14AFCB7BDD44419FDF814B33230F8",
+                      "Changes":  [
+                                      {
+                                          "Line":  56,
+                                          "Key":  "agot_decisions_events.0102.intro.sacrifice_child",
+                                          "Kind":  "ClosingQuote",
+                                          "Before":  " agot_decisions_events.0102.intro.sacrifice_child:0 \"«Я [Select_CString(ritualist.IsFemale, \u0027дала\u0027, \u0027дал\u0027 )] [sacrifice.GetHerHim] маковое молоко, [sacrifice.GetSheHe] ничего не почувствует», - говорит [ritualist.GetFirstNameNoTooltip], когда [sacrifice.GetFirstName], мой ребенок, подходит в сопровождении стражников. Оглядывая [sacrifice.GetHerHis] лицо, я начинаю сомневаться, стоит ли оно того. Стоит, #bold должно#! стоить.",
+                                          "After":  " agot_decisions_events.0102.intro.sacrifice_child:0 \"«Я [Select_CString(ritualist.IsFemale, \u0027дала\u0027, \u0027дал\u0027 )] [sacrifice.GetHerHim] маковое молоко, [sacrifice.GetSheHe] ничего не почувствует», - говорит [ritualist.GetFirstNameNoTooltip], когда [sacrifice.GetFirstName], мой ребенок, подходит в сопровождении стражников. Оглядывая [sacrifice.GetHerHis] лицо, я начинаю сомневаться, стоит ли оно того. Стоит, #bold должно#! стоить.\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/russian/agot/event_localization/travel_events/agot_travel_events_dragon_l_russian.yml",
+                      "SourceSHA256":  "F5E96982B2E9BA2F49814D580620016E5FD9A52FF38FBB2C7EA5A4A1F50D463B",
+                      "PatchedSHA256":  "33A476AB71488DB5734FD2279E11CA857DBF64B970AEE711286E621BECC5CD92",
+                      "Changes":  [
+                                      {
+                                          "Line":  207,
+                                          "Key":  "agot_travel_events_dragon.9000.desc",
+                                          "Kind":  "RuntimeSyntax",
+                                          "Before":  " agot_travel_events_dragon.9000.desc: \"[awkward_entourage_member.GetName] нервно подходит ко мне, когда я седлаю дракона [dragon.GetFirstName] для нашего путешествия. \\«К сожалению, поскольку вы решили отправиться в путь верхом на драконе [dragon.GetFirstNameNoTooltip], те из нас, кто не является драконьими наездниками, не смогут присоединиться к вам в пути. Мы будем с нетерпением ждать вашего возвращения ко двору, [Select_CString(ROOT.Char.IsFemale, \u0027миледи\u0027, \u0027милорд\u0027 )].\\»\"",
+                                          "After":  " agot_travel_events_dragon.9000.desc: \"[awkward_entourage_member.GetName] нервно подходит ко мне, когда я седлаю дракона [dragon.GetFirstName] для нашего путешествия. «К сожалению, поскольку вы решили отправиться в путь верхом на драконе [dragon.GetFirstNameNoTooltip], те из нас, кто не является драконьими наездниками, не смогут присоединиться к вам в пути. Мы будем с нетерпением ждать вашего возвращения ко двору, [Select_CString(ROOT.Char.IsFemale, \u0027миледи\u0027, \u0027милорд\u0027 )].»\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/russian/agot/religion/agot_religion_the_graces_l_russian.yml",
+                      "SourceSHA256":  "52CF24381C6DDDE5798F0E6209A333C183AC918144F591DB37D6401A485D3417",
+                      "PatchedSHA256":  "84FEAC3725861C4B6ECED38D7BD5EF2256671B2EF65E7360D3567DB3E83A0953",
+                      "Changes":  [
+                                      {
+                                          "Line":  14,
+                                          "Key":  "sc_harpy_adherent_plural",
+                                          "Kind":  "RuntimeSyntax",
+                                          "Before":  " sc_harpy_adherent_plural:0\"Благодатные\"",
+                                          "After":  " sc_harpy_adherent_plural:0 \"Благодатные\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "Translation",
+                      "File":  "localization/russian/agot/triggers/agot_triggers_l_russian.yml",
+                      "SourceSHA256":  "E255C165749550DEB0E9CE0A39748C82E378E86E2AB011E9AE78363336FF31CC",
+                      "PatchedSHA256":  "F4AB2D162F446B089A84CB99FE01FA8ADAE66855DB2FCFC703AB3A6DFFFA4640",
+                      "Changes":  [
+                                      {
+                                          "Line":  26,
+                                          "Key":  "IS_CURRENT_DRAGONRIDER_TRIGGER_THIRD",
+                                          "Kind":  "ClosingQuote",
+                                          "Before":  " IS_CURRENT_DRAGONRIDER_TRIGGER_THIRD:0 \"[CHARACTER.GetShortUIName|U] - [GetTrait(\u0027dragonrider\u0027).GetName(GetNullCharacter)|l] с доступом к живому [Concept(\u0027dragon\u0027, \u0027дракону\u0027)|E]",
+                                          "After":  " IS_CURRENT_DRAGONRIDER_TRIGGER_THIRD:0 \"[CHARACTER.GetShortUIName|U] - [GetTrait(\u0027dragonrider\u0027).GetName(GetNullCharacter)|l] с доступом к живому [Concept(\u0027dragon\u0027, \u0027дракону\u0027)|E]\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "AGOT",
+                      "File":  "localization/english/agot/event_localization/agot_septon_l_english.yml",
+                      "SourceSHA256":  "C88248046518F84037E27654485CDF73A332DC7D69C5FA63F0FC8D40DF76DDA0",
+                      "PatchedSHA256":  "EF9ED2F0D1F40129A7A268DE7C8AEA417EBC24F614ACBF172D5866C7AF4E39BA",
+                      "Changes":  [
+                                      {
+                                          "Line":  2,
+                                          "Key":  "agot_septon_events.0001.t",
+                                          "Kind":  "ClosingQuote",
+                                          "Before":  " agot_septon_events.0001.t:0 \"Potential Septon",
+                                          "After":  " agot_septon_events.0001.t:0 \"Potential Septon\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "AGOT",
+                      "File":  "localization/english/agot/gui/agot_dragon_customizer_l_english.yml",
+                      "SourceSHA256":  "386609BD0A3533BB2E5AEB75B4D610CCDBEF3137924398B5DDFECF8A1694C065",
+                      "PatchedSHA256":  "7953ED42A6B215A415C5FD4464F79A2DED12EA5CD955738A86DC11BE195124EF",
+                      "Changes":  [
+                                      {
+                                          "Line":  36,
+                                          "Key":  "dragon_fire_smoke_value_de_gui_tt",
+                                          "Kind":  "ClosingQuote",
+                                          "Before":  " dragon_fire_smoke_value_de_gui_tt:0 \"On #bold Automatic#!, this slider is #emp ignored#!, resulting in denser smoke for darker dragons.\\n\\nOn #bold Custom#!, the percentage reflects #emp how much#! smoke rises from the flame — none at 0% and full at 100%.",
+                                          "After":  " dragon_fire_smoke_value_de_gui_tt:0 \"On #bold Automatic#!, this slider is #emp ignored#!, resulting in denser smoke for darker dragons.\\n\\nOn #bold Custom#!, the percentage reflects #emp how much#! smoke rises from the flame — none at 0% and full at 100%.\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "AGOT",
+                      "File":  "localization/replace/english/agot/00_agot_titles_l_english.yml",
+                      "SourceSHA256":  "3F231EF527809F20916336EBB2E94C759BE1441F2BDFDEF0ED6169EBDFDFF43C",
+                      "PatchedSHA256":  "8A47CEA784D5787E4DFD49DF44137698B0589A60396C1449E8F09FFEC41FE23C",
+                      "Changes":  [
+                                      {
+                                          "Line":  10157,
+                                          "Key":  "b_jagjebaj",
+                                          "Kind":  "ClosingQuote",
+                                          "Before":  " b_jagjebaj:0 \"Jagjebaj",
+                                          "After":  " b_jagjebaj:0 \"Jagjebaj\""
+                                      }
+                                  ]
+                  },
+                  {
+                      "Catalog":  "AGOT",
+                      "File":  "localization/replace/english/gui/common_l_english.yml",
+                      "SourceSHA256":  "4A0E802DE1B490E40B0D9EF6B548ABEAA1A271B35E12E134FB13AED1D11F2B01",
+                      "PatchedSHA256":  "F7B4DDAF9D1BDE324AF0EA89D9B946D9434DDE83AB2E004466C09E14AB3CB046",
+                      "Changes":  [
+                                      {
+                                          "Line":  105,
+                                          "Key":  "cooltip_spouse_listing",
+                                          "Kind":  "ClosingQuote",
+                                          "Before":  " cooltip_spouse_listing: \"[spouse|E]: [AGOTGetName(ROOT.Char.GetPrimarySpouseOrBetrothed)]",
+                                          "After":  " cooltip_spouse_listing: \"[spouse|E]: [AGOTGetName(ROOT.Char.GetPrimarySpouseOrBetrothed)]\""
+                                      },
+                                      {
+                                          "Line":  108,
+                                          "Key":  "cooltip_betrothed_listing",
+                                          "Kind":  "ClosingQuote",
+                                          "Before":  " cooltip_betrothed_listing: \"[betrothed|E]: [AGOTGetName(ROOT.Char.GetPrimarySpouseOrBetrothed)]",
+                                          "After":  " cooltip_betrothed_listing: \"[betrothed|E]: [AGOTGetName(ROOT.Char.GetPrimarySpouseOrBetrothed)]\""
+                                      },
+                                      {
+                                          "Line":  111,
+                                          "Key":  "cooltip_concubine_listing",
+                                          "Kind":  "ClosingQuote",
+                                          "Before":  " cooltip_concubine_listing: \"[concubine|E] of: [AGOTGetName(ROOT.Char.GetConcubinist)]",
+                                          "After":  " cooltip_concubine_listing: \"[concubine|E] of: [AGOTGetName(ROOT.Char.GetConcubinist)]\""
+                                      }
+                                  ]
+                  }
+              ]
+}

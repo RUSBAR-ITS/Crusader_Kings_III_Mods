@@ -1,0 +1,4845 @@
+# common/character_interactions/asoiaf_character_interactions.txt
+# Effective provider: AGOT+ | Исправления совместимости
+# SHA256: 5FC7CE2E9697E4DAB40B9B5E129D8394685429ADE876A42D6C1C4495E9DDB631
+1: asoiaf_force_spouse_heir_designation_interaction = {
+2: 	icon = heir
+3: 	category = interaction_category_prison
+4: 	desc = asoiaf_force_spouse_heir_designation_interaction_desc
+5: 	use_diplomatic_range = no
+6: 	
+7: 	is_highlighted = {
+8: 		NOR = {
+9: 			scope:actor = { has_trait = compassionate }
+10: 			scope:actor = { has_trait = generous }
+11: 			scope:actor = { has_trait = just }
+12: 			scope:actor = { has_trait = content }
+13: 		}
+14: 	}
+15: 	
+16: 	cooldown_against_recipient = { years = 1 }
+17: 
+18: 	is_shown = {
+19: 		scope:actor = {
+20: 			is_spouse_of = scope:recipient
+21: 			NOT = { is_heir_of = scope:recipient }
+22: 			#OR = { #not even ambitious characters would disrupt the feudal order like this; you need to be a sadistic torturer to do it
+23: 			#	has_trait = sadistic
+24: 			#	has_trait = torturer
+25: 			#}
+26: 		}
+27: 		scope:recipient = {
+28: 			is_human = yes
+29: 			is_landed = yes
+30: 			highest_held_title_tier > tier_barony #barony not playable
+31: 			is_imprisoned_by = scope:actor
+32: 			NOR = { #causes crashes
+33: 				is_parent_of = scope:actor
+34: 				is_grandparent_of = scope:actor
+35: 			}
+36: 		}
+37: 	}
+38: 	
+39: 	auto_accept = yes
+40: 
+41: 	is_valid_showing_failures_only = {
+42: 		custom_tooltip = {
+43: 			text = asoiaf_spouse_has_been_tortured
+44: 			trigger_if = {
+45: 				scope:recipient = {
+46: 					has_character_modifier = recently_tortured
+47: 				}
+48: 			}
+49: 		}
+50: 		custom_tooltip = {
+51: 			text = asoiaf_spouse_is_in_dungeon
+52: 			trigger_if = {
+53: 				scope:recipient = {
+54: 					is_in_prison_type = dungeon #only a dungeon is brutal enough to break their will
+55: 				}
+56: 			}
+57: 		}
+58: 		scope:actor = {
+59: 			NOR = { #can't do this to your friends or soulmates (but yes to lovers, as you might've seduced them for selfish reasons...)
+60: 				has_relation_friend = scope:recipient
+61: 				has_relation_best_friend = scope:recipient
+62: 				has_relation_soulmate = scope:recipient
+63: 			}
+64: 		}
+65: 		#custom_tooltip = {
+66: 		#	text = asoiaf_is_sadistic_or_torturer
+67: 		#	trigger_if = {
+68: 		#		scope:actor = { #not even ambitious characters would disrupt the feudal order like this; you need to be a sadistic torturer to do it
+69: 		#			OR = {
+70: 		#				has_trait = sadistic
+71: 		#				has_trait = torturer
+72: 		#			}
+73: 		#		}
+74: 		#	}
+75: 		#}
+76: 		scope:actor = { prestige >= 1000 }
+77: 	}
+78: 
+79: 	on_accept = {
+80: 		scope:recipient = {
+81: 			set_designated_heir_unsafe = scope:actor
+82: 			add_stress = monumental_stress_gain
+83: 		}
+84: 		scope:actor = {
+85: 			add_prestige = { subtract = 1000 }
+86: 			reverse_add_opinion = { #spouse hates you for doing this
+87: 				target = scope:recipient
+88: 				modifier = hate_opinion
+89: 				opinion = -100
+90: 			}
+91: 			change_strife_opinion = massive_strife_gain #miniscule; minor; medium; major; massive; monumental
+92: 			add_tyranny = massive_tyranny_value
+93: 			if = {
+94: 				limit = {
+95: 					OR = {
+96: 						has_trait = compassionate
+97: 						has_trait = generous
+98: 						has_trait = just
+99: 						has_trait = content
+100: 					}
+101: 				}
+102: 				add_stress = massive_stress_gain
+103: 			}
+104: 		}
+105: 	}
+106: }
+107: 
+108: asoiaf_designate_heir_interaction = {
+109: 	icon = heir
+110: 
+111: 	category = interaction_category_diplomacy
+112: 
+113: 	desc = asoiaf_designate_heir_interaction_desc
+114: 
+115: 	is_shown = {
+116: 		scope:recipient = {
+117: 			is_human = yes
+118: 			OR = {
+119: 				is_close_or_extended_family_of = scope:actor
+120: 				house ?= scope:actor.house
+121: 			}
+122: 			NAND = {
+123: 				has_trait = disinherited
+124: 				dynasty ?= scope:actor.dynasty #recipient has been disinherited in the actor's dynasty (game automatically rejects them as heir, so better to just hide them)
+125: 			}
+126: 			NOR = { #causes crashes
+127: 				is_parent_of = scope:actor
+128: 				is_grandparent_of = scope:actor
+129: 			}
+130: 		}
+131: 		NOT = { #AGOT+: ONLY show when the vanilla interaction does NOT show (less than full crown authority)
+132: 			scope:actor = {
+133: 				can_designate_heir_trigger = yes
+134: 			}
+135: 		}
+136: 		NOT = {
+137: 			scope:recipient = scope:actor
+138: 		}
+139: 		NOR = {
+140: 			scope:recipient = scope:actor.designated_heir
+141: 			scope:recipient = { has_trait = nightswatch }
+142: 			scope:recipient = { has_trait = septon }
+143: 			scope:recipient = { has_trait = silent_sister }
+144: 			scope:recipient = { has_trait = maester }
+145: 			scope:recipient = { has_trait = devoted }
+146: 		}
+147: 	}
+148: 
+149: 	is_valid_showing_failures_only = {
+150: 		scope:recipient = {
+151: 			is_busy_in_events_localised = yes
+152: 			NOR = {
+153: 				has_trait = disinherited
+154: 				has_trait = order_member
+155: 				has_trait = bastard
+156: 				has_trait = kingsguard
+157: 			}
+158: 		}
+159: 		scope:actor = { prestige >= 1500 } #keep cost same as base interaction
+160: 	}
+161: 
+162: 	on_auto_accept = {
+163: 		scope:recipient = {
+164: 			trigger_event = char_interaction.0120
+165: 		}
+166: 	}
+167: 
+168: 	on_accept = {
+169: 		scope:actor = {
+170: 			send_interface_toast = {
+171: 				title = designate_heir_interaction_notification
+172: 
+173: 				left_icon = scope:actor					
+174: 				right_icon = scope:recipient
+175: 
+176: 				set_designated_heir_unsafe = scope:recipient
+177: 				add_prestige = { subtract = 1500 } #keep cost same as base interaction
+178: 				add_tyranny = massive_tyranny_value
+179: 			}
+180: 		}
+181: 		scope:actor = {
+182: 			reverse_add_opinion = {
+183: 				target = scope:recipient
+184: 				modifier = grateful_opinion
+185: 				opinion = 50
+186: 			}
+187: 		}
+188: 	}
+189: 	auto_accept = yes
+190: }
+191: 
+192: asoiaf_dismiss_kingsguard_interaction = {
+193: 	icon = icon_kingsguard
+194: 	category = interaction_category_diplomacy
+195: 	desc = asoiaf_dismiss_kingsguard_interaction_desc
+196: 	use_diplomatic_range = no
+197: 	
+198: 	#cooldown = { years = 1 }
+199: 
+200: 	is_shown = {
+201: 		OR = {
+202: 			scope:actor = { #you are the king himself
+203: 				primary_title = {
+204: 					has_variable = kingsguard
+205: 				}
+206: 			}
+207: 			AND = { #you are the king's regent
+208: 				scope:actor = {
+209: 					exists = liege
+210: 					is_diarch_of_target = liege
+211: 				}
+212: 				scope:actor.liege = {
+213: 					primary_title = {
+214: 						has_variable = kingsguard
+215: 					}
+216: 				}
+217: 			}
+218: 		}
+219: 		scope:recipient = {
+220: 			is_human = yes
+221: 			has_trait = kingsguard
+222: 			OR = {
+223: 				top_liege = scope:actor #for if actor is king
+224: 				top_liege = scope:actor.liege #for if actor is regent
+225: 			}
+226: 		}
+227: 	}
+228: 	
+229: 	auto_accept = yes
+230: 
+231: 	is_valid_showing_failures_only = {
+232: 		scope:actor = {
+233: 			NOT = { has_trait = incapable }
+234: 		}
+235: 		custom_tooltip = {
+236: 			text = asoiaf_is_in_entrenched_regency
+237: 			trigger_if = {
+238: 				NOT = {
+239: 					scope:actor = { #specifically the king, not the king's regent
+240: 						primary_title = {
+241: 							has_variable = kingsguard
+242: 						}
+243: 						has_diarchy_active_parameter = diarchy_type_is_entrenched_regency
+244: 					}
+245: 				}
+246: 			}
+247: 		}
+248: 	}
+249: 
+250: 	on_accept = {
+251: 		if = { #if actor is the king himself, save scope for later
+252: 			limit = {
+253: 				scope:actor = {
+254: 					primary_title = {
+255: 						has_variable = kingsguard
+256: 					}
+257: 				}
+258: 			}
+259: 			scope:actor = { save_scope_as = asoiaf_dismissing_monarch }
+260: 		}
+261: 		if = { #if actor's title doesn't have kingsguard variable (ie, so he's not the king), save his top liege as the dismissing monarch
+262: 			limit = {
+263: 				scope:actor = {
+264: 					primary_title = {
+265: 						NOT = { has_variable = kingsguard }
+266: 					}
+267: 				}
+268: 			}
+269: 			scope:actor.top_liege = { save_scope_as = asoiaf_dismissing_monarch }
+270: 		}
+271: 		scope:asoiaf_dismissing_monarch = {
+272: 			send_interface_toast = {
+273: 				title = asoiaf_kingsguard_dismissal_notification
+274: 				left_icon = scope:asoiaf_dismissing_monarch					
+275: 				right_icon = scope:recipient
+276: 				
+277: 				add_prestige = { subtract = 1500 }
+278: 				add_tyranny = massive_tyranny_value
+279: 			}
+280: 		}
+281: 		if = { #King's regent dismissal effects
+282: 			limit = {
+283: 				AND = {
+284: 					scope:actor = {
+285: 						exists = liege
+286: 						is_diarch_of_target = liege
+287: 					}
+288: 					scope:actor.liege = {
+289: 						primary_title = {
+290: 							has_variable = kingsguard
+291: 						}
+292: 					}
+293: 				}
+294: 			}
+295: 			scope:actor = {
+296: 				reverse_add_opinion = { #kingsguard hates you for illegally dismissing them, especially since you're not even the king!
+297: 					target = scope:recipient
+298: 					modifier = hate_opinion
+299: 					opinion = -60
+300: 				}
+301: 				add_prestige = { subtract = 1500 }
+302: 				change_strife_opinion = monumental_strife_gain #miniscule; minor; medium; major; massive; monumental
+303: 			}
+304: 		}
+305: 		scope:recipient = { #general effects on recipient kingsguard
+306: 			agot_remove_kingsguard_effect = { KINGSGUARD = scope:recipient }
+307: 			create_character_memory = {
+308: 				type = asoiaf_kingsguard_dismissal_memory
+309: 				participants = {
+310: 					king = scope:asoiaf_dismissing_monarch
+311: 				}
+312: 			}
+313: 			add_prestige_level = -2 #lowers level of fame by 2
+314: 			set_relation_grudge = { reason = asoiaf_dismissed_from_kingsguard_desc target = scope:asoiaf_dismissing_monarch }
+315: 			scope:actor.house ?= {
+316: 					change_house_relation_effect = {
+317: 						HOUSE = scope:recipient.house
+318: 						VALUE = -1
+319: 						REASON = asoiaf_dismissed_from_kingsguard
+320: 						CHAR = scope:recipient.house.house_head
+321: 						TARGET_CHAR = scope:actor
+322: 						TITLE = scope:dummy_gender
+323: 					}
+324: 				}
+325: 		}
+326: 		every_player = {
+327: 			limit = {
+328: 				NOT = { this = scope:actor } #no double notifications for the dismisser
+329: 				#location = {
+330: 				#	geographical_region = world_westeros_seven_kingdoms
+331: 				#}
+332: 				is_vassal_or_below_of = scope:asoiaf_dismissing_monarch #only those in the King's realm
+333: 			}
+334: 			send_interface_toast = {
+335: 				type = msg_created_new_house #just so it appears
+336: 				title = asoiaf_kingsguard_dismissal_notification
+337: 				left_icon = scope:asoiaf_dismissing_monarch
+338: 				right_icon = scope:recipient
+339: 				desc = asoiaf_kingsguard_dismissal_notification_desc
+340: 			}
+341: 		}
+342: 	}
+343: }
+
+# common/decisions/asoiaf_house_branch_decisions.txt
+# Effective provider: AGOT+
+# SHA256: 0248521BF02C1435280CC9F4D2648B76E480752CD27BE295CF97F185D0D8F928
+1: asoiaf_baratheon_cadets_decision = {
+2: 	picture = {
+3: 		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+4: 	}
+5: 
+6: 	desc = asoiaf_baratheon_cadets_desc
+7: 	selection_tooltip = asoiaf_baratheon_cadets_tooltip
+8: 
+9: 	cooldown = { years = 0 }
+10: 	
+11: 	sort_order = 100
+12: 	
+13: 	cost = {
+14: 		prestige = { value = 500 }
+15: 	}
+16: 	
+17: 	is_shown = {
+18: 		this.dynasty = dynasty:dynn_Baratheon
+19: 		NAND = { #if all cadets are formed, hide the decision
+20: 			OR = {
+21: 				is_target_in_global_variable_list = {
+22: 					name = asoiaf_baratheon_renly_unavailable
+23: 					target = flag:asoiaf_baratheon_cadet_renly
+24: 				}
+25: 				AND = { #House already founded via base AGOT method
+26: 					exists = character:Baratheon_4 #Renly Baratheon (son of Steffon)
+27: 					character:Baratheon_4 = {
+28: 						house = house:house_BaratheonSE
+29: 					}
+30: 				}
+31: 			}
+32: 			OR = {
+33: 				is_target_in_global_variable_list = {
+34: 					name = asoiaf_baratheon_rhllor_unavailable
+35: 					target = flag:asoiaf_baratheon_cadet_rhllor
+36: 				}
+37: 				AND = { #House already founded via base AGOT method
+38: 					exists = character:Baratheon_3 #Stannis Baratheon (son of Steffon)
+39: 					character:Baratheon_3 = {
+40: 						house = house:house_BaratheonDS
+41: 					}
+42: 				}
+43: 			}
+44: 			OR = {
+45: 				is_target_in_global_variable_list = {
+46: 					name = asoiaf_baratheon_kl_unavailable
+47: 					target = flag:asoiaf_baratheon_cadet_kl
+48: 				}
+49: 				AND = { #House already founded in later bookmarks
+50: 					exists = character:Baratheon_5 #Joffrey I Baratheon
+51: 					character:Baratheon_5 = {
+52: 						house = house:house_BaratheonKL
+53: 					}
+54: 				}
+55: 			}
+56: 		}
+57: 	}
+58: 	
+59: 	is_valid = {
+60: 		age >= 10
+61: 	}
+62: 	
+63: 	#is_valid_showing_failures_only = { #is_valid_showing_failures_only
+64: 	#	
+65: 	#	trigger_if = { #RENLY
+66: 	#		limit = { scope:asoiaf_baratheon_renly_choice = yes }
+67: 	#		custom_tooltip = { #Base requirements aren't met
+68: 	#			text = asoiaf_baratheon_renly_base_validity_tt
+69: 	#			OR = {
+70: 	#				OR = {
+71: 	#					AND = {
+72: 	#						mother.dynasty = dynasty:dynn_Tyrell
+73: 	#						father.dynasty = dynasty:dynn_Baratheon
+74: 	#					}
+75: 	#					AND = {
+76: 	#						mother.dynasty = dynasty:dynn_Baratheon
+77: 	#						father.dynasty = dynasty:dynn_Tyrell
+78: 	#					}
+79: 	#				}
+80: 	#				primary_spouse.dynasty = dynasty:dynn_Tyrell
+81: 	#			}
+82: 	#		}
+83: 	#	}
+84: 	#	trigger_if = { #RHLLOR
+85: 	#		limit = { scope:asoiaf_baratheon_rhllor_choice = yes }
+86: 	#		custom_tooltip = { #Base requirements aren't met
+87: 	#			text = asoiaf_baratheon_rhllor_base_validity_tt
+88: 	#			has_religion = religion:the_rhllor_religion
+89: 	#		}
+90: 	#	}
+91: 	#	trigger_if = { #KING'S LANDING
+92: 	#		limit = { scope:asoiaf_baratheon_kl_choice = yes }
+93: 	#		custom_tooltip = { #Base requirements aren't met
+94: 	#			text = asoiaf_baratheon_kl_base_validity_tt
+95: 	#			OR = {
+96: 	#				AND = {
+97: 	#					mother.dynasty = dynasty:dynn_Lannister
+98: 	#					father.dynasty = dynasty:dynn_Baratheon
+99: 	#				}
+100: 	#				AND = {
+101: 	#					mother.dynasty = dynasty:dynn_Baratheon
+102: 	#					father.dynasty = dynasty:dynn_Lannister
+103: 	#				}
+104: 	#			}
+105: 	#		}
+106: 	#	}
+107: 	#}
+108: 
+109:     widget = {
+110:     	gui = "decision_view_widget_petition_liege"
+111: 		controller = decision_option_list_controller
+112: 		decision_has_second_step = yes
+113: 		decision_custom_widget_container = "custom_widgets_container_step_two"
+114: 		decision_to_second_step_button = "asoiaf_choose_cadet_button" 
+115: 		
+116: 		#LIST OF CHOICES
+117: 		item = { #RENLY	
+118: 			value = asoiaf_baratheon_renly_choice
+119: 			is_shown = {
+120: 				NOR = {
+121: 					is_target_in_global_variable_list = {
+122: 						name = asoiaf_baratheon_renly_unavailable
+123: 						target = flag:asoiaf_baratheon_cadet_renly
+124: 					}
+125: 					AND = { #House already founded via base AGOT method
+126: 						exists = character:Baratheon_4 #Renly Baratheon (son of Steffon)
+127: 						character:Baratheon_4 = {
+128: 							house = house:house_BaratheonSE
+129: 						}
+130: 					}
+131: 				}
+132: 			}
+133: 			is_valid = {
+134: 				custom_tooltip = { #Base requirements aren't met
+135: 					text = asoiaf_baratheon_renly_base_validity_tt
+136: 					OR = {
+137: 						OR = {
+138: 							AND = {
+139: 								mother.dynasty = dynasty:dynn_Tyrell
+140: 								father.dynasty = dynasty:dynn_Baratheon
+141: 							}
+142: 							AND = {
+143: 								mother.dynasty = dynasty:dynn_Baratheon
+144: 								father.dynasty = dynasty:dynn_Tyrell
+145: 							}
+146: 						}
+147: 						primary_spouse.dynasty = dynasty:dynn_Tyrell
+148: 					}
+149: 				}
+150: 			}
+151: 			localization = asoiaf_baratheon_renly_choice
+152: 			icon = "gfx/interface/icons/traits/asoiaf_baratheon_renly.dds"
+153: 			ai_chance = { value = 0 } # Currently unused
+154: 		}
+155: 		item = { #R'HLLOR
+156: 			value = asoiaf_baratheon_rhllor_choice
+157: 			is_shown = {
+158: 				NOR = {
+159: 					is_target_in_global_variable_list = {
+160: 						name = asoiaf_baratheon_rhllor_unavailable
+161: 						target = flag:asoiaf_baratheon_cadet_rhllor
+162: 					}
+163: 					AND = { #House already founded via base AGOT method
+164: 						exists = character:Baratheon_3 #Stannis Baratheon (son of Steffon)
+165: 						character:Baratheon_3 = {
+166: 							house = house:house_BaratheonDS
+167: 						}
+168: 					}
+169: 				}
+170: 			}
+171: 			is_valid = {
+172: 				custom_tooltip = { #Base requirements aren't met
+173: 					text = asoiaf_baratheon_rhllor_base_validity_tt
+174: 					has_religion = religion:the_rhllor_religion
+175: 				}
+176: 			}
+177: 			localization = asoiaf_baratheon_rhllor_choice
+178: 			icon = "gfx/interface/icons/traits/asoiaf_baratheon_rhllor.dds"
+179: 			ai_chance = { value = 0 } # Currently unused
+180: 		}
+181: 		item = { #KING'S LANDING
+182: 			value = asoiaf_baratheon_kl_choice
+183: 			is_shown = {
+184: 				NOR = {
+185: 					is_target_in_global_variable_list = {
+186: 						name = asoiaf_baratheon_kl_unavailable
+187: 						target = flag:asoiaf_baratheon_cadet_kl
+188: 					}
+189: 					AND = { #House already founded in later bookmarks
+190: 						exists = character:Baratheon_5 #Joffrey I Baratheon
+191: 						character:Baratheon_5 = {
+192: 							house = house:house_BaratheonKL
+193: 						}
+194: 					}
+195: 				}
+196: 			}
+197: 			is_valid = {
+198: 				custom_tooltip = { #Base requirements aren't met
+199: 					text = asoiaf_baratheon_kl_base_validity_tt
+200: 					OR = {
+201: 						AND = {
+202: 							mother.dynasty = dynasty:dynn_Lannister
+203: 							father.dynasty = dynasty:dynn_Baratheon
+204: 						}
+205: 						AND = {
+206: 							mother.dynasty = dynasty:dynn_Baratheon
+207: 							father.dynasty = dynasty:dynn_Lannister
+208: 						}
+209: 					}
+210: 				}
+211: 			}
+212: 			localization = asoiaf_baratheon_kl_choice
+213: 			icon = "gfx/interface/icons/traits/asoiaf_baratheon_kl.dds"
+214: 			ai_chance = {
+215: 				value = -100
+216: 				if = { #bookmark scenario where Joffrey/Tommen/Myrcella inherit the Iron Throne
+217: 					limit = {
+218: 						OR = {
+219: 							root = character:Baratheon_5 #Joffrey
+220: 							root = character:Baratheon_6 #Myrcella
+221: 							root = character:Baratheon_7 #Tommen
+222: 						}
+223: 						#root = iron throne title holder
+224: 					}
+225: 					add = 1000
+226: 				}
+227: 			}
+228: 		}
+229: 	}
+230: 	
+231: 	ai_goal = yes #If set, the AI will consider the decision a "goal" and consider it alongside major costs like title creation and holding construction. It will ignore ai_check_interval. Should only be used for things with such major costs that budgeting for it is important, as it is less performant than using a high ai_check_interval
+232: 	#ai_check_frequency = 42 #How many months to go between each check of this decision. Has to be set, except if ai_goal = yes is set. An interval of 0 means the AI will never check this decision
+233: 	ai_potential = { #trigger whether the AI should look at it or not
+234: 		OR = {
+235: 			AND = { #RENLY'S BRNACH AI CONDITIONS
+236: 				NOT = {
+237: 					is_target_in_global_variable_list = {
+238: 						name = asoiaf_baratheon_renly_unavailable
+239: 						target = flag:asoiaf_baratheon_cadet_renly
+240: 					}
+241: 				}
+242: 				OR = {
+243: 					OR = {
+244: 						AND = {
+245: 							mother.dynasty = dynasty:dynn_Tyrell
+246: 							father.dynasty = dynasty:dynn_Baratheon
+247: 						}
+248: 						AND = {
+249: 							mother.dynasty = dynasty:dynn_Baratheon
+250: 							father.dynasty = dynasty:dynn_Tyrell
+251: 						}
+252: 					}
+253: 					primary_spouse.dynasty = dynasty:dynn_Tyrell
+254: 				}
+255: 			}
+256: 			AND = { #RHLLOR AI CONDITIONS
+257: 				NOT = {
+258: 					is_target_in_global_variable_list = {
+259: 						name = asoiaf_baratheon_rhllor_unavailable
+260: 						target = flag:asoiaf_baratheon_cadet_rhllor
+261: 					}
+262: 				}
+263: 				has_religion = religion:the_rhllor_religion
+264: 			}
+265: 			AND = { #OF KING'S LANDING AI CONDITIONS
+266: 				NOT = {
+267: 					is_target_in_global_variable_list = {
+268: 						name = asoiaf_baratheon_kl_unavailable
+269: 						target = flag:asoiaf_baratheon_cadet_kl
+270: 					}
+271: 				}
+272: 				OR = {
+273: 					AND = {
+274: 						mother.dynasty = dynasty:dynn_Lannister
+275: 						father.dynasty = dynasty:dynn_Baratheon
+276: 					}
+277: 					AND = {
+278: 						mother.dynasty = dynasty:dynn_Baratheon
+279: 						father.dynasty = dynasty:dynn_Lannister
+280: 					}
+281: 				}
+282: 			}
+283: 		}
+284: 	}
+285: 	ai_will_do = { #Returns the % chance of executing executing the decision. 0 will never execute it, 100 will alwasy execute it
+286: 		base = 0
+287: 	}
+288: 	
+289: 	#EFFECTS OF CHOICES
+290: 	effect = {
+291: 		custom_tooltip = asoiaf_changing_baratheon_house_tooltip
+292: 		hidden_effect = {
+293: 			if = { #RENLY
+294: 				limit = { scope:asoiaf_baratheon_renly_choice = yes }
+295: 				root.house = { save_scope_as = asoiaf_founders_old_house }
+296: 				set_house = house:house_BaratheonSE
+297: 				trigger_event = { id = agot_coa_events.1 }
+298: 				dynasty = {
+299: 					every_dynasty_member = {
+300: 						limit = {
+301: 							any_ancestor = { this = root }
+302: 							house = scope:asoiaf_founders_old_house
+303: 						}
+304: 						set_house = house:house_BaratheonSE
+305: 						trigger_event = { id = agot_coa_events.1 }
+306: 					}
+307: 				}
+308: 				asoiaf_house_founding_bastard_effect = yes
+309: 				
+310: 				add_to_global_variable_list = { #Can only happen once
+311: 					name = asoiaf_baratheon_renly_unavailable
+312: 					target = flag:asoiaf_baratheon_cadet_renly
+313: 				}
+314: 				
+315: 				save_scope_as = new_head
+316: 				house = { save_scope_as = new_house }
+317: 				send_interface_toast = {
+318: 					type = msg_created_new_house
+319: 					title = created_cadet_branch_toast_new_house_desc
+320: 					left_icon = scope:new_head
+321: 					desc = created_cadet_branch_toast_new_house_other_tt
+322: 				}
+323: 			}
+324: 			if = { #R'HLLOR
+325: 				limit = { scope:asoiaf_baratheon_rhllor_choice = yes }
+326: 				root.house = { save_scope_as = asoiaf_founders_old_house }
+327: 				set_house = house:house_BaratheonDS
+328: 				trigger_event = { id = agot_coa_events.1 }
+329: 				dynasty = {
+330: 					every_dynasty_member = {
+331: 						limit = {
+332: 							any_ancestor = { this = root }
+333: 							house = scope:asoiaf_founders_old_house
+334: 						}
+335: 						set_house = house:house_BaratheonDS
+336: 						trigger_event = { id = agot_coa_events.1 }
+337: 					}
+338: 				}
+339: 				asoiaf_house_founding_bastard_effect = yes
+340: 
+341: 				add_to_global_variable_list = { #Can only happen once
+342: 					name = asoiaf_baratheon_rhllor_unavailable
+343: 					target = flag:asoiaf_baratheon_cadet_rhllor
+344: 				}
+345: 				
+346: 				save_scope_as = new_head
+347: 				house = { save_scope_as = new_house }
+348: 				send_interface_toast = {
+349: 					type = msg_created_new_house
+350: 					title = created_cadet_branch_toast_new_house_desc
+351: 					left_icon = scope:new_head
+352: 					desc = created_cadet_branch_toast_new_house_other_tt
+353: 				}
+354: 			}
+355: 			if = { #KING'S LANDING SOLO
+356: 				limit = {
+357: 					AND = {
+358: 						scope:asoiaf_baratheon_kl_choice = yes
+359: 						NOT = { root.mother = character:Lannister_6 } #Cersei Lannister
+360: 					}
+361: 				}
+362: 				root.house = { save_scope_as = asoiaf_founders_old_house }
+363: 				set_house = house:house_BaratheonKL
+364: 				trigger_event = { id = agot_coa_events.1 }
+365: 				dynasty = {
+366: 					every_dynasty_member = {
+367: 						limit = {
+368: 							any_ancestor = { this = root }
+369: 							house = scope:asoiaf_founders_old_house
+370: 						}
+371: 						set_house = house:house_BaratheonKL
+372: 						trigger_event = { id = agot_coa_events.1 }
+373: 					}
+374: 				}
+375: 				asoiaf_house_founding_bastard_effect = yes
+376: 
+377: 				add_to_global_variable_list = { #Can only happen once
+378: 					name = asoiaf_baratheon_kl_unavailable
+379: 					target = flag:asoiaf_baratheon_cadet_kl
+380: 				}
+381: 				
+382: 				save_scope_as = new_head
+383: 				house = { save_scope_as = new_house }
+384: 				send_interface_toast = {
+385: 					type = msg_created_new_house
+386: 					title = created_cadet_branch_toast_new_house_desc
+387: 					left_icon = scope:new_head
+388: 					desc = created_cadet_branch_toast_new_house_other_tt
+389: 				}
+390: 			}
+391: 			if = { #KING'S LANDING + SIBLINGS (CERSEI AS MOTHER)
+392: 				limit = {
+393: 					AND = {
+394: 						scope:asoiaf_baratheon_kl_choice = yes
+395: 						root.mother = character:Lannister_6 #Cersei Lannister
+396: 					}
+397: 				}
+398: 				root.mother = { save_scope_as = asoiaf_lynchpin_character } #save Cersei as lynchpin
+399: 				root.house = { save_scope_as = asoiaf_founders_old_house }
+400: 				set_house = house:house_BaratheonKL
+401: 				trigger_event = { id = agot_coa_events.1 }
+402: 				if = { #Alliance with Tywin (if he's alive)
+403: 					limit = {
+404: 						exists = character:Lannister_1
+405: 					}
+406: 					create_alliance = {
+407: 						target = character:Lannister_1
+408: 						allied_through_owner = ROOT
+409: 						allied_through_target = character:Lannister_1
+410: 					}
+411: 					character:Lannister_1 = {
+412: 						add_opinion = {
+413: 							target = ROOT
+414: 							modifier = perk_negotiated_alliance_opinion
+415: 						}
+416: 					}
+417: 				}
+418: 				dynasty = {
+419: 					every_dynasty_member = {
+420: 						limit = {
+421: 							any_ancestor = {
+422: 								this = scope:asoiaf_lynchpin_character #Cersei
+423: 							}
+424: 							house = scope:asoiaf_founders_old_house
+425: 						}
+426: 						set_house = house:house_BaratheonKL
+427: 						trigger_event = { id = agot_coa_events.1 }
+428: 					}
+429: 				}
+430: 				add_to_global_variable_list = { #Can only happen once
+431: 					name = asoiaf_baratheon_kl_unavailable
+432: 					target = flag:asoiaf_baratheon_cadet_kl
+433: 				}
+434: 				
+435: 				save_scope_as = new_head
+436: 				house = { save_scope_as = new_house }
+437: 				send_interface_toast = {
+438: 					type = msg_created_new_house
+439: 					title = created_cadet_branch_toast_new_house_desc
+440: 					left_icon = scope:new_head
+441: 					desc = created_cadet_branch_toast_new_house_other_tt
+442: 				}
+443: 			}
+444: 		}
+445: 	}
+446: }
+447: 
+448: asoiaf_greyjoy_cadets_decision = {
+449: 	picture = {
+450: 		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+451: 	}
+452: 
+453: 	desc = asoiaf_greyjoy_cadets_desc
+454: 	selection_tooltip = asoiaf_greyjoy_cadets_tooltip
+455: 
+456: 	cooldown = { years = 0 }
+457: 	
+458: 	sort_order = 100
+459: 	
+460: 	cost = {
+461: 		prestige = { value = 500 }
+462: 	}
+463: 	
+464: 	is_shown = {
+465: 		this.dynasty = dynasty:dynn_Greyjoy
+466: 		NOT = { #if all cadets are formed, hide the decision
+467: 			is_target_in_global_variable_list = {
+468: 				name = asoiaf_greyjoy_euron_unavailable
+469: 				target = flag:asoiaf_greyjoy_cadet_euron
+470: 			}
+471: 		}
+472: 	}
+473: 	
+474: 	is_valid = {
+475: 		age >= 10
+476: 	}
+477: 
+478:     widget = {
+479:     	gui = "decision_view_widget_petition_liege"
+480: 		controller = decision_option_list_controller
+481: 		decision_has_second_step = yes
+482: 		decision_custom_widget_container = "custom_widgets_container_step_two"
+483: 		decision_to_second_step_button = "asoiaf_choose_cadet_button" 
+484: 		
+485: 		#LIST OF CHOICES
+486: 		item = { #EURON
+487: 			value = asoiaf_greyjoy_euron_choice
+488: 			is_shown = {
+489: 				NOT = {
+490: 					is_target_in_global_variable_list = {
+491: 						name = asoiaf_greyjoy_euron_unavailable
+492: 						target = flag:asoiaf_greyjoy_cadet_euron
+493: 					}
+494: 				}
+495: 			}
+496: 			is_valid = {
+497: 				custom_tooltip = { #Base requirements aren't met
+498: 					text = asoiaf_greyjoy_euron_base_validity_tt
+499: 					prestige_level >= 2
+500: 				}
+501: 			}
+502: 			localization = asoiaf_greyjoy_euron_choice
+503: 			icon = "gfx/interface/icons/traits/asoiaf_greyjoy_euron.dds"
+504: 			ai_chance = { value = 0 } # Currently unused
+505: 		}
+506: 	}
+507: 	
+508: 	ai_will_do = {
+509: 		base = 0
+510: 	}
+511: 	
+512: 	#EFFECTS OF CHOICES
+513: 	effect = {
+514: 		custom_tooltip = asoiaf_changing_greyjoy_house_tooltip
+515: 		hidden_effect = {
+516: 			if = { #EURON
+517: 				limit = { scope:asoiaf_greyjoy_euron_choice = yes }
+518: 				root.house = { save_scope_as = asoiaf_founders_old_house }
+519: 				set_house = house:house_Greyjoy_Euron
+520: 				dynasty = {
+521: 					every_dynasty_member = {
+522: 						limit = {
+523: 							any_ancestor = {
+524: 								this = root
+525: 							}
+526: 							house = scope:asoiaf_founders_old_house
+527: 						}
+528: 						set_house = house:house_Greyjoy_Euron
+529: 						trigger_event = { id = agot_coa_events.1 }
+530: 					}
+531: 				}
+532: 				trigger_event = { id = agot_coa_events.1 }
+533: 				asoiaf_house_founding_bastard_effect = yes
+534: 				#Can only happen once
+535: 				add_to_global_variable_list = {
+536: 					name = asoiaf_greyjoy_euron_unavailable
+537: 					target = flag:asoiaf_greyjoy_cadet_euron
+538: 				}
+539: 				
+540: 				save_scope_as = new_head
+541: 				house = { save_scope_as = new_house }
+542: 				send_interface_toast = {
+543: 					type = msg_created_new_house
+544: 					title = created_cadet_branch_toast_new_house_desc
+545: 					left_icon = scope:new_head
+546: 					desc = created_cadet_branch_toast_new_house_other_tt
+547: 				}
+548: 			}
+549: 		}
+550: 	}
+551: }
+552: 
+553: asoiaf_baelish_cadets_decision = {
+554: 	picture = {
+555: 		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+556: 	}
+557: 
+558: 	desc = asoiaf_baelish_cadets_desc
+559: 	selection_tooltip = asoiaf_baelish_cadets_tooltip
+560: 
+561: 	cooldown = { years = 0 }
+562: 	
+563: 	sort_order = 100
+564: 	
+565: 	cost = {
+566: 		prestige = { value = 500 }
+567: 	}
+568: 	
+569: 	is_shown = {
+570: 		this.dynasty = dynasty:dynn_Baelish
+571: 		NOT = { #if all cadets are formed, hide the decision
+572: 			is_target_in_global_variable_list = {
+573: 				name = asoiaf_baelish_hh_unavailable
+574: 				target = flag:asoiaf_baelish_cadet_hh
+575: 			}
+576: 		}
+577: 	}
+578: 	
+579: 	is_valid = {
+580: 		age >= 10
+581: 	}
+582: 
+583:     widget = {
+584:     	gui = "decision_view_widget_petition_liege"
+585: 		controller = decision_option_list_controller
+586: 		decision_has_second_step = yes
+587: 		decision_custom_widget_container = "custom_widgets_container_step_two"
+588: 		decision_to_second_step_button = "asoiaf_choose_cadet_button" 
+589: 		
+590: 		#LIST OF CHOICES
+591: 		item = { #OF HARRENHAL
+592: 			value = asoiaf_baelish_hh_choice
+593: 			is_shown = {
+594: 				NOT = {
+595: 					is_target_in_global_variable_list = {
+596: 						name = asoiaf_baelish_hh_unavailable
+597: 						target = flag:asoiaf_baelish_cadet_hh
+598: 					}
+599: 				}
+600: 			}
+601: 			is_valid = {
+602: 				custom_tooltip = { #Base requirements aren't met
+603: 					text = asoiaf_baelish_hh_base_validity_tt
+604: 					AND = {
+605: 						has_trait = ambitious
+606: 						has_trait = schemer
+607: 					}
+608: 				}
+609: 			}
+610: 			localization = asoiaf_baelish_hh_choice
+611: 			icon = "gfx/interface/icons/traits/asoiaf_baelish_hh.dds"
+612: 			ai_chance = { value = 0 } # Currently unused
+613: 		}
+614: 	}
+615: 	
+616: 	ai_will_do = {
+617: 		base = 0
+618: 	}
+619: 	
+620: 	#EFFECTS OF CHOICES
+621: 	effect = {
+622: 		custom_tooltip = asoiaf_changing_baelish_house_tooltip
+623: 		hidden_effect = {
+624: 			if = { #OF HARRENHAL
+625: 				limit = { scope:asoiaf_baelish_hh_choice = yes }
+626: 				root.house = { save_scope_as = asoiaf_founders_old_house }
+627: 				set_house = house:house_BaelishHH
+628: 				dynasty = {
+629: 					every_dynasty_member = {
+630: 						limit = {
+631: 							any_ancestor = {
+632: 								this = root
+633: 							}
+634: 							house = scope:asoiaf_founders_old_house
+635: 						}
+636: 						set_house = house:house_BaelishHH
+637: 						trigger_event = { id = agot_coa_events.1 }
+638: 					}
+639: 				}
+640: 				trigger_event = { id = agot_coa_events.1 }
+641: 				asoiaf_house_founding_bastard_effect = yes
+642: 				#Can only happen once
+643: 				add_to_global_variable_list = {
+644: 					name = asoiaf_baelish_hh_unavailable
+645: 					target = flag:asoiaf_baelish_cadet_hh
+646: 				}
+647: 				
+648: 				save_scope_as = new_head
+649: 				house = { save_scope_as = new_house }
+650: 				send_interface_toast = {
+651: 					type = msg_created_new_house
+652: 					title = created_cadet_branch_toast_new_house_desc
+653: 					left_icon = scope:new_head
+654: 					desc = created_cadet_branch_toast_new_house_other_tt
+655: 				}
+656: 			}
+657: 		}
+658: 	}
+659: }
+660: 
+661: asoiaf_harlaw_cadets_decision = {
+662: 	picture = {
+663: 		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+664: 	}
+665: 
+666: 	desc = asoiaf_harlaw_cadets_desc
+667: 	selection_tooltip = asoiaf_harlaw_cadets_tooltip
+668: 
+669: 	cooldown = { years = 0 }
+670: 	
+671: 	sort_order = 100
+672: 	
+673: 	cost = {
+674: 		prestige = { value = 500 }
+675: 	}
+676: 	
+677: 	is_shown = {
+678: 		this.dynasty = dynasty:dynn_Harlaw
+679: 		NAND = { #if all cadets are formed, hide the decision
+680: 			is_target_in_global_variable_list = {
+681: 				name = asoiaf_harlaw_tg_unavailable
+682: 				target = flag:asoiaf_harlaw_cadet_tg
+683: 			}
+684: 			is_target_in_global_variable_list = {
+685: 				name = asoiaf_harlaw_hhall_unavailable
+686: 				target = flag:asoiaf_harlaw_cadet_hhall
+687: 			}
+688: 			is_target_in_global_variable_list = {
+689: 				name = asoiaf_harlaw_hh_unavailable
+690: 				target = flag:asoiaf_harlaw_cadet_hh
+691: 			}
+692: 		}
+693: 	}
+694: 	
+695: 	is_valid = {
+696: 		age >= 10
+697: 	}
+698: 
+699:     widget = {
+700:     	gui = "decision_view_widget_petition_liege"
+701: 		controller = decision_option_list_controller
+702: 		decision_has_second_step = yes
+703: 		decision_custom_widget_container = "custom_widgets_container_step_two"
+704: 		decision_to_second_step_button = "asoiaf_choose_cadet_button" 
+705: 		
+706: 		#LIST OF CHOICES
+707: 		item = { #OF THE TOWER OF GLIMMERING
+708: 			value = asoiaf_harlaw_tg_choice
+709: 			is_shown = {
+710: 				NOT = {
+711: 					is_target_in_global_variable_list = {
+712: 						name = asoiaf_harlaw_tg_unavailable
+713: 						target = flag:asoiaf_harlaw_cadet_tg
+714: 					}
+715: 				}
+716: 			}
+717: 			is_valid = {
+718: 				custom_tooltip = { #Base requirements aren't met
+719: 					text = asoiaf_harlaw_tg_base_validity_tt
+720: 					prestige_level >= 2
+721: 				}
+722: 			}
+723: 			localization = asoiaf_harlaw_tg_choice
+724: 			icon = "gfx/interface/icons/traits/asoiaf_harlaw_tg.dds"
+725: 			ai_chance = { value = 0 } # Currently unused
+726: 		}
+727: 		item = { #OF HARRIDAN HILL
+728: 			value = asoiaf_harlaw_hh_choice
+729: 			is_shown = {
+730: 				NOT = {
+731: 					is_target_in_global_variable_list = {
+732: 						name = asoiaf_harlaw_hh_unavailable
+733: 						target = flag:asoiaf_harlaw_cadet_hh
+734: 					}
+735: 				}
+736: 			}
+737: 			is_valid = {
+738: 				custom_tooltip = { #Base requirements aren't met
+739: 					text = asoiaf_harlaw_hh_base_validity_tt
+740: 					prestige_level >= 2
+741: 				}
+742: 			}
+743: 			localization = asoiaf_harlaw_hh_choice
+744: 			icon = "gfx/interface/icons/traits/asoiaf_harlaw_hh.dds"
+745: 			ai_chance = { value = 0 } # Currently unused
+746: 		}
+747: 		item = { #OF HARLAW HALL
+748: 			value = asoiaf_harlaw_hhall_choice
+749: 			is_shown = {
+750: 				NOT = {
+751: 					is_target_in_global_variable_list = {
+752: 						name = asoiaf_harlaw_hhall_unavailable
+753: 						target = flag:asoiaf_harlaw_cadet_hhall
+754: 					}
+755: 				}
+756: 			}
+757: 			is_valid = {
+758: 				custom_tooltip = { #Base requirements aren't met
+759: 					text = asoiaf_harlaw_hhall_base_validity_tt
+760: 					prestige_level >= 2
+761: 				}
+762: 			}
+763: 			localization = asoiaf_harlaw_hhall_choice
+764: 			icon = "gfx/interface/icons/traits/asoiaf_harlaw_hhall.dds"
+765: 			ai_chance = { value = 0 } # Currently unused
+766: 		}
+767: 		item = { #OF GREY GARDEN
+768: 			value = asoiaf_harlaw_gg_choice
+769: 			is_shown = {
+770: 				NOT = {
+771: 					is_target_in_global_variable_list = {
+772: 						name = asoiaf_harlaw_gg_unavailable
+773: 						target = flag:asoiaf_harlaw_cadet_gg
+774: 					}
+775: 				}
+776: 			}
+777: 			is_valid = {
+778: 				custom_tooltip = { #Base requirements aren't met
+779: 					text = asoiaf_harlaw_gg_base_validity_tt
+780: 					OR = {
+781: 						AND = {
+782: 							mother.dynasty = dynasty:dynn_Serrett
+783: 							father.dynasty = dynasty:dynn_Harlaw
+784: 						}
+785: 						AND = {
+786: 							mother.dynasty = dynasty:dynn_Harlaw
+787: 							father.dynasty = dynasty:dynn_Serrett
+788: 						}
+789: 					}
+790: 				}
+791: 			}
+792: 			localization = asoiaf_harlaw_gg_choice
+793: 			icon = "gfx/interface/icons/traits/asoiaf_harlaw_gg.dds"
+794: 			ai_chance = { value = 0 } # Currently unused
+795: 		}
+796: 	}
+797: 	
+798: 	ai_will_do = {
+799: 		base = 0
+800: 	}
+801: 	
+802: 	#EFFECTS OF CHOICES
+803: 	effect = {
+804: 		custom_tooltip = asoiaf_changing_harlaw_house_tooltip
+805: 		hidden_effect = {
+806: 			if = { #OF THE TOWER OF GLIMMERING
+807: 				limit = { scope:asoiaf_harlaw_tg_choice = yes }
+808: 				root.house = { save_scope_as = asoiaf_founders_old_house }
+809: 				set_house = house:house_HarlawTG
+810: 				dynasty = {
+811: 					every_dynasty_member = {
+812: 						limit = {
+813: 							any_ancestor = {
+814: 								this = root
+815: 							}
+816: 							house = scope:asoiaf_founders_old_house
+817: 						}
+818: 						set_house = house:house_HarlawTG
+819: 						trigger_event = { id = agot_coa_events.1 }
+820: 					}
+821: 				}
+822: 				trigger_event = { id = agot_coa_events.1 }
+823: 				asoiaf_house_founding_bastard_effect = yes
+824: 				#Can only happen once
+825: 				add_to_global_variable_list = {
+826: 					name = asoiaf_harlaw_tg_unavailable
+827: 					target = flag:asoiaf_harlaw_cadet_tg
+828: 				}
+829: 				
+830: 				save_scope_as = new_head
+831: 				house = { save_scope_as = new_house }
+832: 				send_interface_toast = {
+833: 					type = msg_created_new_house
+834: 					title = created_cadet_branch_toast_new_house_desc
+835: 					left_icon = scope:new_head
+836: 					desc = created_cadet_branch_toast_new_house_other_tt
+837: 				}
+838: 			}
+839: 			if = { #OF HARRIDAN HILL
+840: 				limit = { scope:asoiaf_harlaw_hh_choice = yes }
+841: 				root.house = { save_scope_as = asoiaf_founders_old_house }
+842: 				set_house = house:house_HarlawHH
+843: 				dynasty = {
+844: 					every_dynasty_member = {
+845: 						limit = {
+846: 							any_ancestor = {
+847: 								this = root
+848: 							}
+849: 							house = scope:asoiaf_founders_old_house
+850: 						}
+851: 						set_house = house:house_HarlawHH
+852: 						trigger_event = { id = agot_coa_events.1 }
+853: 					}
+854: 				}
+855: 				trigger_event = { id = agot_coa_events.1 }
+856: 				asoiaf_house_founding_bastard_effect = yes
+857: 				#Can only happen once
+858: 				add_to_global_variable_list = {
+859: 					name = asoiaf_harlaw_hh_unavailable
+860: 					target = flag:asoiaf_harlaw_cadet_hh
+861: 				}
+862: 				
+863: 				save_scope_as = new_head
+864: 				house = { save_scope_as = new_house }
+865: 				send_interface_toast = {
+866: 					type = msg_created_new_house
+867: 					title = created_cadet_branch_toast_new_house_desc
+868: 					left_icon = scope:new_head
+869: 					desc = created_cadet_branch_toast_new_house_other_tt
+870: 				}
+871: 			}
+872: 			if = { #OF HARLAW HALL
+873: 				limit = { scope:asoiaf_harlaw_hhall_choice = yes }
+874: 				root.house = { save_scope_as = asoiaf_founders_old_house }
+875: 				set_house = house:house_HarlawHHall
+876: 				dynasty = {
+877: 					every_dynasty_member = {
+878: 						limit = {
+879: 							any_ancestor = {
+880: 								this = root
+881: 							}
+882: 							house = scope:asoiaf_founders_old_house
+883: 						}
+884: 						set_house = house:house_HarlawHHall
+885: 						trigger_event = { id = agot_coa_events.1 }
+886: 					}
+887: 				}
+888: 				trigger_event = { id = agot_coa_events.1 }
+889: 				asoiaf_house_founding_bastard_effect = yes
+890: 				#Can only happen once
+891: 				add_to_global_variable_list = {
+892: 					name = asoiaf_harlaw_hhall_unavailable
+893: 					target = flag:asoiaf_harlaw_cadet_hhall
+894: 				}
+895: 				
+896: 				save_scope_as = new_head
+897: 				house = { save_scope_as = new_house }
+898: 				send_interface_toast = {
+899: 					type = msg_created_new_house
+900: 					title = created_cadet_branch_toast_new_house_desc
+901: 					left_icon = scope:new_head
+902: 					desc = created_cadet_branch_toast_new_house_other_tt
+903: 				}
+904: 			}
+905: 			if = { #OF GREY GARDEN
+906: 				limit = { scope:asoiaf_harlaw_gg_choice = yes }
+907: 				root.house = { save_scope_as = asoiaf_founders_old_house }
+908: 				set_house = house:house_HarlawGG
+909: 				dynasty = {
+910: 					every_dynasty_member = {
+911: 						limit = {
+912: 							any_ancestor = {
+913: 								this = root
+914: 							}
+915: 							house = scope:asoiaf_founders_old_house
+916: 						}
+917: 						set_house = house:house_HarlawGG
+918: 						trigger_event = { id = agot_coa_events.1 }
+919: 					}
+920: 				}
+921: 				trigger_event = { id = agot_coa_events.1 }
+922: 				asoiaf_house_founding_bastard_effect = yes
+923: 				#Can only happen once
+924: 				add_to_global_variable_list = {
+925: 					name = asoiaf_harlaw_gg_unavailable
+926: 					target = flag:asoiaf_harlaw_cadet_gg
+927: 				}
+928: 				
+929: 				save_scope_as = new_head
+930: 				house = { save_scope_as = new_house }
+931: 				send_interface_toast = {
+932: 					type = msg_created_new_house
+933: 					title = created_cadet_branch_toast_new_house_desc
+934: 					left_icon = scope:new_head
+935: 					desc = created_cadet_branch_toast_new_house_other_tt
+936: 				}
+937: 			}
+938: 		}
+939: 	}
+940: }
+
+# common/on_action/agot_on_actions/test_title_on_actions.txt
+# Effective provider: AGOT+ | Исправления совместимости
+# SHA256: E47CAB9826CA8F5702674996F704B77F01843C2D8A7C6673178E4BB1E8940C0F
+1: # A title is transferred to a new character
+2: # root = the new holder
+3: # scope:title = the title that changes hands
+4: # scope:previous_holder = previous holder. Might be dead
+5: on_title_gain = {
+6: 	on_actions = {
+7: 		asoiaf_on_title_inheritance_rhaenyra_kills_siblings
+8: 		asoiaf_iron_throne_lord_paramount_contract_fix
+9: 		asoiaf_on_title_inheritance_harrold_hardyng_becomes_arryn
+10: 		asoiaf_young_griff_victory
+11: 		asoiaf_on_title_inheritance_robert_I_gluttonous_trait
+12: 		asoiaf_on_title_inheritance_robert_siblings_claims
+13: 		agot_on_title_inheritance_lannister_baratheon_coa
+14: 		asoiaf_on_title_inheritance_lannister_baratheon_coa
+15: 		asoiaf_on_title_inheritance_frey_rosby_cadet
+16: 		asoiaf_on_title_inheritance_aegon_I_crown_creation
+17: 		asoiaf_on_title_inheritance_aenys_I_crown_creation
+18: 		asoiaf_on_title_inheritance_jaehaerys_I_crown_creation
+19: 		asoiaf_on_title_inheritance_aegon_III_crown_creation
+20: 		asoiaf_on_title_inheritance_baelor_I_crown_creation
+21: 		asoiaf_on_title_inheritance_aegon_IV_crown_creation
+22: 		asoiaf_on_title_inheritance_maekar_I_crown_creation
+23: 		asoiaf_on_title_inheritance_aerys_II_crown_creation
+24: 		asoiaf_on_title_inheritance_robert_I_crown_creation
+25: 		asoiaf_on_title_inheritance_joffrey_I_crown_creation
+26: 		#asoiaf_on_title_inheritance_robert_usurper_nickname
+27: 		#asoiaf_harlaw_cadet_branch_harridan_hills #TEMPORARILY DISABLED SINCE ITS NOT CLEAR IF THESE ARE ACTUAL CADET BRANCHES IN THE LORE
+28: 		#asoiaf_harlaw_cadet_branch_grey_garden
+29: 		#asoiaf_harlaw_cadet_branch_tower_of_glimmering
+30: 		#asoiaf_harlaw_cadet_branch_harlaw_hall
+31: 	}
+32: }
+33: 
+34: asoiaf_on_title_inheritance_rhaenyra_kills_siblings = {
+35: 	trigger = {
+36: 		scope:title = { this = title:h_the_iron_throne }
+37: 		scope:previous_holder = { has_inactive_trait = asoiaf_Targaryen_60_trait } #prior ruler is Viserys; won't trigger after taking back the throne from Aegon II
+38: 		root = { has_inactive_trait = asoiaf_Targaryen_63_trait } #inheritor is Rhaenyra
+39: 		root = {
+40: 			father = {
+41: 				any_child = { #if a brother exists who could be used to challenge Rhaenyra, trigger this event for her
+42: 					AND = {
+43: 						is_male = yes
+44: 						is_alive = yes
+45: 						NOR = {
+46: 							has_trait = maester
+47: 							has_trait = archmaester
+48: 							has_trait = kingsguard
+49: 							has_trait = most_devout_member
+50: 							has_trait = septon
+51: 							has_trait = devoted
+52: 							has_trait = red_priest
+53: 							has_trait = drowned_man
+54: 							has_trait = nightswatch
+55: 							has_trait = bastard
+56: 						}
+57: 						NOR = { #if Rhaenyra is married to one of her brothers, she's legitimate enough to not need to consider this course
+58: 							is_spouse_of = root #he's currently her husband
+59: 							AND = {
+60: 								is_spouse_of_even_if_dead = root #he died, but he's got (legitimate) living children with her who can inherit
+61: 								any_child = {
+62: 									AND = {
+63: 										mother = root
+64: 										is_alive = yes
+65: 										NOR = {
+66: 											has_trait = maester
+67: 											has_trait = archmaester
+68: 											has_trait = kingsguard
+69: 											has_trait = most_devout_member
+70: 											has_trait = septon
+71: 											has_trait = devoted
+72: 											has_trait = red_priest
+73: 											has_trait = drowned_man
+74: 											has_trait = nightswatch
+75: 											has_trait = bastard
+76: 											has_trait = disinherited
+77: 										}
+78: 									}
+79: 								}
+80: 							}
+81: 						}
+82: 					}
+83: 				}
+84: 			}
+85: 		}
+86: 	}
+87: 	effect = { #2-part event, one to decide to imprison all brothers (and their children), and one to decide to kill them all
+88: 		root = {
+89: 			trigger_event = { id = asoiaf_maintenance_events.0006 days = 2 } #a couple days after becoming Queen
+90: 		}
+91: 	}
+92: }
+93: 
+94: asoiaf_iron_throne_lord_paramount_contract_fix = {
+95: 	trigger = {
+96: 		has_game_rule = asoiaf_lord_paramount_contract_fix_on
+97: 		scope:title = { #only canon LP titles vassalised to the Iron Throne
+98: 			OR = {
+99: 				this = title:e_the_north
+100: 				this = title:e_the_riverlands
+101: 				this = title:e_the_vale
+102: 				this = title:e_the_iron_islands
+103: 				this = title:e_the_westerlands
+104: 				this = title:e_the_crownlands
+105: 				this = title:k_dragonstone
+106: 				this = title:e_the_reach
+107: 				this = title:e_the_stormlands
+108: 				this = title:e_dorne
+109: 			}
+110: 		}
+111: 		liege ?= { has_title = title:h_the_iron_throne } #liege exists and is the Iron Throne
+112: 		root = { has_government = lp_feudal_government } #person inheriting is Western Feudal
+113: 	}
+114: 	effect = {
+115: 		if = {
+116: 			limit = {
+117: 				scope:title = title:e_the_north
+118: 			}
+119: 			root = { trigger_event = { id = asoiaf_contract_events.1 days = 1 } }
+120: 		}
+121: 		if = {
+122: 			limit = {
+123: 				scope:title = title:e_the_riverlands
+124: 			}
+125: 			root = { trigger_event = { id = asoiaf_contract_events.2 days = 1 } }
+126: 		}
+127: 		if = {
+128: 			limit = {
+129: 				scope:title = title:e_the_vale
+130: 			}
+131: 			root = { trigger_event = { id = asoiaf_contract_events.3 days = 1 } }
+132: 		}
+133: 		if = {
+134: 			limit = {
+135: 				scope:title = title:e_the_iron_islands
+136: 			}
+137: 			root = { trigger_event = { id = asoiaf_contract_events.4 days = 1 } }
+138: 		}
+139: 		if = {
+140: 			limit = {
+141: 				scope:title = title:e_the_westerlands
+142: 			}
+143: 			root = { trigger_event = { id = asoiaf_contract_events.5 days = 1 } }
+144: 		}
+145: 		if = {
+146: 			limit = {
+147: 				scope:title = title:e_the_crownlands
+148: 			}
+149: 			root = { trigger_event = { id = asoiaf_contract_events.6 days = 1 } }
+150: 		}
+151: 		if = {
+152: 			limit = {
+153: 				scope:title = title:k_dragonstone
+154: 			}
+155: 			root = { trigger_event = { id = asoiaf_contract_events.7 days = 1 } }
+156: 		}
+157: 		if = {
+158: 			limit = {
+159: 				scope:title = title:e_the_reach
+160: 			}
+161: 			root = { trigger_event = { id = asoiaf_contract_events.8 days = 1 } }
+162: 		}
+163: 		if = {
+164: 			limit = {
+165: 				scope:title = title:e_the_stormlands
+166: 			}
+167: 			root = { trigger_event = { id = asoiaf_contract_events.9 days = 1 } }
+168: 		}
+169: 		if = {
+170: 			limit = {
+171: 				scope:title = title:e_dorne
+172: 			}
+173: 			root = { trigger_event = { id = asoiaf_contract_events.10 days = 1 } }
+174: 		}
+175: 	}
+176: }
+177: 
+178: agot_on_title_inheritance_lannister_baratheon_coa = {
+179: 	trigger = { #trigger must be identical to vanilla AGOT's
+180: 		scope:title = {
+181: 			this = title:h_the_iron_throne
+182: 		}
+183: 		root = {
+184: 			dynasty = dynasty:dynn_Baratheon
+185: 			father = character:Baratheon_2
+186: 			mother = character:Lannister_6
+187: 			real_father = character:Lannister_7
+188: 		}
+189: 	}
+190: 	effect = {
+191: 		add_gold = 1 #just to have SOMETHING here to overwrite the old effect
+192: 	}
+193: }
+194: 
+195: asoiaf_on_title_inheritance_lannister_baratheon_coa = {
+196: 	trigger = {
+197: 		asoiaf_historical_trigger = yes
+198: 		scope:title = {
+199: 			OR = {
+200: 				this = title:h_the_iron_throne
+201: 				this = title:e_the_westerlands
+202: 				this = title:e_the_crownlands
+203: 			}
+204: 		}
+205: 		root = {
+206: 			dynasty = dynasty:dynn_Baratheon
+207: 			father = { has_inactive_trait = asoiaf_Baratheon_2_trait } #Robert
+208: 			mother = { has_inactive_trait = asoiaf_Lannister_6_trait } #Cersei
+209: 			NOT = { real_father = { has_inactive_trait = asoiaf_Baratheon_2_trait } } #real father doesn't need to be Jaime to raise suspicion, it just can't be Robert
+210: 		}
+211: 		NOR = {
+212: 			is_target_in_global_variable_list = {
+213: 				name = asoiaf_baratheon_kl_unavailable
+214: 				target = flag:asoiaf_baratheon_cadet_kl
+215: 			}
+216: 			house ?= house:house_BaratheonKL
+217: 		}
+218: 	}
+219: 	effect = {
+220: 		if = {
+221: 			limit = { has_game_rule = asoiaf_new_clothes_westerlands_rule_on }
+222: 			trigger_event = { id = asoiaf_maintenance_events.0014 days = 30 }
+223: 		}
+224: 		set_house = house:house_BaratheonKL
+225: 		set_culture = culture:crownlander
+226: 		add_trait = disputed_heritage
+227: 		if = {
+228: 			limit = {
+229: 				age < 16
+230: 				root.mother = { is_courtier_of = root } #if she's not at court, she can't become a regent immediately after the succession
+231: 			}
+232: 			designate_diarch = root.mother #Cersei
+233: 			start_diarchy = regency
+234: 			set_diarch = root.mother #Cersei
+235: 		}
+236: 		every_child = { #the inheritor's children
+237: 			if = {
+238: 				limit = {
+239: 					dynasty = dynasty:dynn_Baratheon
+240: 				}
+241: 				set_culture = culture:crownlander
+242: 				set_house = house:house_BaratheonKL
+243: 				trigger_event = { id = agot_coa_events.1 }
+244: 				every_child = { #the inheritor's grand-children
+245: 					if = {
+246: 						limit = {
+247: 							dynasty = dynasty:dynn_Baratheon
+248: 						}
+249: 						set_culture = culture:crownlander
+250: 						set_house = house:house_BaratheonKL
+251: 						trigger_event = { id = agot_coa_events.1 }
+252: 					}
+253: 				}
+254: 			}
+255: 		}
+256: 		every_close_family_member = {
+257: 			if = {
+258: 				limit = {
+259: 					dynasty = dynasty:dynn_Baratheon
+260: 					father = { has_inactive_trait = asoiaf_Baratheon_2_trait } #Robert
+261: 					mother = { has_inactive_trait = asoiaf_Lannister_6_trait } #Cersei
+262: 					NOT = {
+263: 						has_trait = bastard
+264: 					}
+265: 				}
+266: 				set_culture = culture:crownlander
+267: 				set_house = house:house_BaratheonKL
+268: 				add_trait = disputed_heritage
+269: 				trigger_event = { id = agot_coa_events.1 }
+270: 				every_child = { #close family's children
+271: 					if = {
+272: 						limit = {
+273: 							dynasty = dynasty:dynn_Baratheon
+274: 						}
+275: 						set_culture = culture:crownlander
+276: 						set_house = house:house_BaratheonKL
+277: 						trigger_event = { id = agot_coa_events.1 }
+278: 						every_child = { #close family's grand-children
+279: 							if = {
+280: 								limit = {
+281: 									dynasty = dynasty:dynn_Baratheon
+282: 								}
+283: 								set_culture = culture:crownlander
+284: 								set_house = house:house_BaratheonKL
+285: 								trigger_event = { id = agot_coa_events.1 }
+286: 							}
+287: 						}
+288: 					}
+289: 				}
+290: 			}
+291: 		}
+292: 		add_to_global_variable_list = {
+293: 			name = asoiaf_baratheon_kl_unavailable
+294: 			target = flag:asoiaf_baratheon_cadet_kl
+295: 		}
+296: 		trigger_event = { id = agot_coa_events.1 }
+297: 		dynasty:dynn_Lannister = {
+298: 			every_dynasty_member = {
+299: 				limit = {
+300: 					has_inactive_trait = asoiaf_Lannister_1_trait #Tywin
+301: 					is_alive = yes
+302: 				}
+303: 				save_scope_as = asoiaf_Lannister_1
+304: 			}
+305: 		}
+306: 		if = { #Alliance with Tywin (if he's alive)
+307: 			limit = {
+308: 				exists = scope:asoiaf_Lannister_1
+309: 			}
+310: 			create_alliance = {
+311: 				target = scope:asoiaf_Lannister_1
+312: 				allied_through_owner = ROOT #whoever inherits the Throne that meets the conditions above
+313: 				allied_through_target = scope:asoiaf_Lannister_1
+314: 			}
+315: 			scope:asoiaf_Lannister_1 = {
+316: 				add_opinion = {
+317: 					target = ROOT
+318: 					modifier = perk_negotiated_alliance_opinion
+319: 				}
+320: 			}
+321: 		}
+322: 	}
+323: }
+324: 
+325: asoiaf_on_title_inheritance_frey_rosby_cadet = {
+326: 	trigger = {
+327: 		NOT = { exists = global_var:asoiaf_frey_rosby_cadet_branch_founded_variable }
+328: 		#scope:previous_holder = {
+329: 		#	dynasty = dynasty:dynn_Rosby
+330: 		#}
+331: 		scope:title = {
+332: 			OR = {
+333: 				this = title:d_rosby
+334: 				this = title:c_rosby
+335: 			}
+336: 		}
+337: 		root = { #inheritor
+338: 			dynasty = dynasty:dynn_Frey
+339: 			OR = {
+340: 				this = character:Frey_78 #either the children of Bethany Rosby...
+341: 				this = character:Frey_79
+342: 				this = character:Frey_80
+343: 				this = character:Frey_81
+344: 				this = character:Frey_82
+345: 				AND = {
+346: 					father ?= character:Frey_78
+347: 					house ?= character:Frey_78.house #...or the child of any of Bethany's Frey children
+348: 				}
+349: 				AND = {
+350: 					father ?= character:Frey_79
+351: 					house ?= character:Frey_79.house
+352: 				}
+353: 				AND = {
+354: 					father ?= character:Frey_80
+355: 					house ?= character:Frey_80.house
+356: 				}
+357: 				AND = {
+358: 					father ?= character:Frey_81
+359: 					house ?= character:Frey_81.house
+360: 				}
+361: 				AND = {
+362: 					mother ?= character:Frey_82
+363: 					house ?= character:Frey_82.house
+364: 				}
+365: 			}
+366: 		}
+367: 	}
+368: 	effect = {
+369: 		set_global_variable = asoiaf_frey_rosby_cadet_branch_founded_variable #so it can't happen twice
+370: 		root = {
+371: 			house = { save_scope_as = asoiaf_founders_old_house }
+372: 			set_house = house:house_Frey_Rosby
+373: 			trigger_event = { id = agot_coa_events.1 }
+374: 			add_prestige = medium_prestige_gain
+375: 			dynasty = {
+376: 				every_dynasty_member = {
+377: 					limit = {
+378: 						any_ancestor = { #any Frey descendants of Bethany Rosby, not just of the House founder
+379: 							even_if_dead = yes
+380: 							this = character:Rosby_3
+381: 						}
+382: 						house = scope:asoiaf_founders_old_house
+383: 					}
+384: 					set_house = house:house_Frey_Rosby
+385: 					trigger_event = { id = agot_coa_events.1 }
+386: 				}
+387: 			}
+388: 		}
+389: 		character:Frey_79 ?= { #Benfrey's new House sigil is identical to his personal CoA, so prune it
+390: 			if = {
+391: 				limit = { has_character_flag = has_personal_coa }
+392: 				agot_prune_personal_coa = yes
+393: 			}
+394: 		}
+395: 	}
+396: }
+397: 
+398: asoiaf_on_title_inheritance_harrold_hardyng_becomes_arryn = {
+399: 	trigger = {
+400: 		asoiaf_historical_trigger = yes #player is on a historical game mode
+401: 		scope:title = {
+402: 			OR = {
+403: 				this = title:e_the_vale
+404: 				this = title:e_the_vale #in case Robin becomes independent
+405: 			}
+406: 		}
+407: 		root = character:Hardyng_5 #inheritor is Harrold Hardyng (the Young Falcon)
+408: 		scope:previous_holder = {
+409: 			OR = {
+410: 				dynasty = dynasty:dynn_Arryn #inherited from a dead Arryn
+411: 				has_title = title:h_the_iron_throne #appointed by the Iron Throne
+412: 			}
+413: 		}
+414: 	}
+415: 	effect = {
+416: 		character:Hardyng_5 = { #Harrold Hardyng (the Young Falcon)
+417: 			house ?= {
+418: 				character:Hardyng_5 = { set_house = character:Arryn_15.house }
+419: 				every_house_member = {
+420: 					limit = {
+421: 						any_ancestor = {
+422: 							this = character:Hardyng_5
+423: 						}
+424: 					}
+425: 					set_house = character:Arryn_15.house
+426: 				}
+427: 			}
+428: 		}
+429: 		character:Hardyng_5.mother = { #Harry's Waynwood mother, who was the daughter of an Arryn
+430: 			set_house = character:Arryn_15.house
+431: 		}
+432: 	}
+433: }
+434: 
+435: asoiaf_young_griff_victory = { #agot_faegon_invasion.0001
+436: 	trigger = {
+437: 		scope:title = {
+438: 			this = title:h_the_iron_throne
+439: 		}
+440: 		root = { has_inactive_trait = asoiaf_Targaryen_11_trait } #this is Aegon
+441: 		NOT = { exists = global_var:asoiaf_young_griff_victory_variable }
+442: 	}
+443: 	effect = {
+444: 		hidden_effect = {
+445: 			set_global_variable = asoiaf_young_griff_victory_variable #so this can't trigger twice
+446: 			root = {
+447: 				trigger_event = { id = asoiaf_young_griff_landing_events.3 days = 5 } #enough time for the player/AI to have gone through the event chain to declare his parentage; LOOKS LIKE ITS NOT NECESSARY ANYMORE
+448: 			}
+449: 			asoiaf_destroy_crownlands_title_effect = yes #taking the Iron Throne creates the Crownlands, so destroy it automatically
+450: 		}
+451: 	}
+452: }
+453: 
+454: asoiaf_on_title_inheritance_aegon_I_crown_creation = {
+455: 	trigger = {
+456: 		AND = {
+457: 			this = { has_inactive_trait = asoiaf_Targaryen_27_trait } #inheritor is Aegon I, but NOT the historical version (that's handled by vanilla AGOT effects)
+458: 			NOT = { this = character:Targaryen_27 }
+459: 			OR = {
+460: 				primary_title.tier = tier_hegemony
+461: 				AND = {
+462: 					primary_title.tier = tier_empire
+463: 					agot_is_independent_ruler = yes
+464: 				}
+465: 			}
+466: 			asoiaf_aegon_I_targaryen_crown_trigger = yes
+467: 			NOT = { has_government = nights_watch_government }
+468: 			NOT = { has_government = silent_sisterhood_government }
+469: 			NOT = { has_government = theocracy_government }
+470: 		}
+471: 	}
+472: 	effect = {
+473: 		this = { save_scope_as = asoiaf_Targaryen_27 }
+474: 		scope:asoiaf_Targaryen_27 ?= {
+475: 			agot_create_artifact_aegon_i_crown_effect = { OWNER = this }
+476: 			trigger_event = { id = asoiaf_equip_crown_events.1 days = 1 } #equip Aegon I's crown with delay because of overlapping effects
+477: 		}
+478: 	}
+479: }
+480: 
+481: asoiaf_on_title_inheritance_aenys_I_crown_creation = {
+482: 	trigger = {
+483: 		AND = {
+484: 			this = { has_inactive_trait = asoiaf_Targaryen_30_trait } #inheritor is Aenys I, but NOT the historical version (that's handled by vanilla AGOT effects)
+485: 			NOT = { this = character:Targaryen_30 }
+486: 			OR = {
+487: 				primary_title.tier = tier_hegemony
+488: 				AND = {
+489: 					primary_title.tier = tier_empire
+490: 					agot_is_independent_ruler = yes
+491: 				}
+492: 			}
+493: 			asoiaf_aenys_I_targaryen_crown_trigger = yes
+494: 			NOT = { has_government = nights_watch_government }
+495: 			NOT = { has_government = silent_sisterhood_government }
+496: 			NOT = { has_government = theocracy_government }
+497: 		}
+498: 	}
+499: 	effect = {
+500: 		this = { save_scope_as = asoiaf_Targaryen_30 }
+501: 		scope:asoiaf_Targaryen_30 ?= {
+502: 			agot_create_artifact_aenys_crown_effect = { OWNER = this }
+503: 			trigger_event = { id = asoiaf_equip_crown_events.2 days = 1 } #equip Aenys I's crown with delay because of overlapping effects
+504: 		}
+505: 	}
+506: }
+507: 
+508: asoiaf_on_title_inheritance_jaehaerys_I_crown_creation = {
+509: 	trigger = {
+510: 		AND = {
+511: 			this = { has_inactive_trait = asoiaf_Targaryen_35_trait } #inheritor is Jaehaerys I, but NOT the historical version (that's handled by vanilla AGOT effects)
+512: 			NOT = { this = character:Targaryen_35 }
+513: 			OR = {
+514: 				primary_title.tier = tier_hegemony
+515: 				AND = {
+516: 					primary_title.tier = tier_empire
+517: 					agot_is_independent_ruler = yes
+518: 				}
+519: 			}
+520: 			asoiaf_jaehaerys_I_targaryen_crown_trigger = yes
+521: 			NOT = { has_government = nights_watch_government }
+522: 			NOT = { has_government = silent_sisterhood_government }
+523: 			NOT = { has_government = theocracy_government }
+524: 		}
+525: 	}
+526: 	effect = {
+527: 		this = { save_scope_as = asoiaf_Targaryen_35 }
+528: 		scope:asoiaf_Targaryen_35 ?= {
+529: 			agot_create_artifact_jaehaerys_crown_effect = { OWNER = this }
+530: 			trigger_event = { id = asoiaf_equip_crown_events.3 days = 1 } #equip Jaehaerys I's crown with delay because of overlapping effects
+531: 		}
+532: 	}
+533: }
+534: 
+535: asoiaf_on_title_inheritance_aegon_III_crown_creation = {
+536: 	trigger = {
+537: 		AND = {
+538: 			this = { has_inactive_trait = asoiaf_Targaryen_78_trait } #inheritor is Aegon III, but NOT the historical version (that's handled by vanilla AGOT effects)
+539: 			NOT = { this = character:Targaryen_78 }
+540: 			OR = {
+541: 				primary_title.tier = tier_hegemony
+542: 				AND = {
+543: 					primary_title.tier = tier_empire
+544: 					agot_is_independent_ruler = yes
+545: 				}
+546: 			}
+547: 			asoiaf_aegon_III_targaryen_crown_trigger = yes
+548: 			NOT = { has_government = nights_watch_government }
+549: 			NOT = { has_government = silent_sisterhood_government }
+550: 			NOT = { has_government = theocracy_government }
+551: 		}
+552: 	}
+553: 	effect = {
+554: 		this = { save_scope_as = asoiaf_Targaryen_78 }
+555: 		scope:asoiaf_Targaryen_78 ?= {
+556: 			agot_create_artifact_aegon_iii_crown_effect = { OWNER = this }
+557: 			trigger_event = { id = asoiaf_equip_crown_events.4 days = 1 } #equip Aegon III's crown with delay because of overlapping effects
+558: 		}
+559: 	}
+560: }
+561: 
+562: asoiaf_on_title_inheritance_baelor_I_crown_creation = {
+563: 	trigger = {
+564: 		AND = {
+565: 			this = { has_inactive_trait = asoiaf_Targaryen_82_trait } #inheritor is Baelor I, but NOT the historical version (that's handled by vanilla AGOT effects)
+566: 			NOT = { this = character:Targaryen_82 }
+567: 			OR = {
+568: 				primary_title.tier = tier_hegemony
+569: 				AND = {
+570: 					primary_title.tier = tier_empire
+571: 					agot_is_independent_ruler = yes
+572: 				}
+573: 			}
+574: 			asoiaf_baelor_I_targaryen_crown_trigger = yes
+575: 			NOT = { has_government = nights_watch_government }
+576: 			NOT = { has_government = silent_sisterhood_government }
+577: 			NOT = { has_government = theocracy_government }
+578: 		}
+579: 	}
+580: 	effect = {
+581: 		this = { save_scope_as = asoiaf_Targaryen_82 }
+582: 		scope:asoiaf_Targaryen_82 ?= {
+583: 			agot_create_artifact_baelors_crown_effect = { OWNER = this }
+584: 			trigger_event = { id = asoiaf_equip_crown_events.5 days = 1 } #equip Baelor I's crown with delay because of overlapping effects
+585: 		}
+586: 	}
+587: }
+588: 
+589: asoiaf_on_title_inheritance_aegon_IV_crown_creation = {
+590: 	trigger = {
+591: 		AND = {
+592: 			this = { has_inactive_trait = asoiaf_Targaryen_88_trait } #inheritor is Aegon IV, but NOT the historical version (that's handled by vanilla AGOT effects)
+593: 			NOT = { this = character:Targaryen_88 }
+594: 			OR = {
+595: 				primary_title.tier = tier_hegemony
+596: 				AND = {
+597: 					primary_title.tier = tier_empire
+598: 					agot_is_independent_ruler = yes
+599: 				}
+600: 			}
+601: 			asoiaf_aegon_IV_targaryen_crown_trigger = yes
+602: 			NOT = { has_government = nights_watch_government }
+603: 			NOT = { has_government = silent_sisterhood_government }
+604: 			NOT = { has_government = theocracy_government }
+605: 		}
+606: 	}
+607: 	effect = {
+608: 		this = { save_scope_as = asoiaf_Targaryen_88 }
+609: 		scope:asoiaf_Targaryen_88 ?= {
+610: 			agot_create_artifact_aegon_iv_crown_effect = { OWNER = this }
+611: 			trigger_event = { id = asoiaf_equip_crown_events.6 days = 1 } #equip Aegon IV's crown with delay because of overlapping effects
+612: 		}
+613: 	}
+614: }
+615: 
+616: asoiaf_on_title_inheritance_maekar_I_crown_creation = {
+617: 	trigger = {
+618: 		AND = {
+619: 			this = { has_inactive_trait = asoiaf_Targaryen_110_trait } #inheritor is Maekar I, but NOT the historical version (that's handled by vanilla AGOT effects)
+620: 			NOT = { this = character:Targaryen_110 }
+621: 			OR = {
+622: 				primary_title.tier = tier_hegemony
+623: 				AND = {
+624: 					primary_title.tier = tier_empire
+625: 					agot_is_independent_ruler = yes
+626: 				}
+627: 			}
+628: 			asoiaf_maekar_I_targaryen_crown_trigger = yes
+629: 			NOT = { has_government = nights_watch_government }
+630: 			NOT = { has_government = silent_sisterhood_government }
+631: 			NOT = { has_government = theocracy_government }
+632: 		}
+633: 	}
+634: 	effect = {
+635: 		this = { save_scope_as = asoiaf_Targaryen_110 }
+636: 		scope:asoiaf_Targaryen_110 ?= {
+637: 			agot_create_artifact_maekars_crown_effect = { OWNER = this }
+638: 			trigger_event = { id = asoiaf_equip_crown_events.7 days = 1 } #equip Maekar I's crown with delay because of overlapping effects
+639: 		}
+640: 	}
+641: }
+642: 
+643: asoiaf_on_title_inheritance_aerys_II_crown_creation = {
+644: 	trigger = {
+645: 		AND = {
+646: 			this = {
+647: 				has_inactive_trait = asoiaf_Targaryen_1_trait #inheritor is Aerys II, but NOT the historical version (that's handled by vanilla AGOT effects)
+648: 			}
+649: 			OR = {
+650: 				primary_title.tier = tier_hegemony
+651: 				AND = {
+652: 					primary_title.tier = tier_empire
+653: 					agot_is_independent_ruler = yes
+654: 				}
+655: 			}
+656: 			this = { has_inactive_trait = asoiaf_Targaryen_1_trait } #Aerys II Targaryen
+657: 			asoiaf_aerys_II_targaryen_crown_trigger = yes
+658: 			NOT = { has_government = nights_watch_government }
+659: 			NOT = { has_government = silent_sisterhood_government }
+660: 			NOT = { has_government = theocracy_government }
+661: 		}
+662: 	}
+663: 	effect = {
+664: 		this = { save_scope_as = asoiaf_Targaryen_1 }
+665: 		scope:asoiaf_Targaryen_1 ?= {
+666: 			create_artifact_asoiaf_aerys_II_crown_effect = { OWNER = this }
+667: 			trigger_event = { id = asoiaf_equip_crown_events.8 days = 1 } #equip Aerys II's crown with delay because of overlapping effects
+668: 		}
+669: 	}
+670: }
+671: 
+672: asoiaf_on_title_inheritance_robert_I_crown_creation = {
+673: 	trigger = {
+674: 		AND = {
+675: 			has_game_rule = asoiaf_new_clothes_stormlands_rule_on
+676: 			OR = {
+677: 				primary_title.tier = tier_hegemony
+678: 				AND = {
+679: 					primary_title.tier = tier_empire
+680: 					agot_is_independent_ruler = yes
+681: 				}
+682: 			}
+683: 			this = { has_inactive_trait = asoiaf_Baratheon_2_trait } #Robert I Baratheon
+684: 			asoiaf_robert_I_baratheon_crown_trigger = yes
+685: 			NOT = { has_government = nights_watch_government }
+686: 			NOT = { has_government = silent_sisterhood_government }
+687: 			NOT = { has_government = theocracy_government }
+688: 		}
+689: 	}
+690: 	effect = {
+691: 		this = { save_scope_as = asoiaf_Baratheon_2 }
+692: 		scope:asoiaf_Baratheon_2 ?= {
+693: 			agot_create_artifact_robertI_crown_effect = { OWNER = this CREATOR = this }
+694: 			trigger_event = { id = asoiaf_equip_crown_events.9 days = 1 } #equip Robert I's crown with delay because of overlapping effects
+695: 		}
+696: 	}
+697: }
+698: 
+699: asoiaf_on_title_inheritance_joffrey_I_crown_creation = {
+700: 	trigger = {
+701: 		AND = {
+702: 			this = { has_inactive_trait = asoiaf_Baratheon_5_trait } #inheritor is Joffrey I, but NOT the historical version (that's handled by vanilla AGOT effects)
+703: 			NOT = { this = character:Baratheon_5 }
+704: 			OR = {
+705: 				primary_title.tier = tier_hegemony
+706: 				AND = {
+707: 					primary_title.tier = tier_empire
+708: 					agot_is_independent_ruler = yes
+709: 				}
+710: 			}
+711: 			asoiaf_joffrey_I_baratheon_crown_trigger = yes
+712: 			NOT = { has_government = nights_watch_government }
+713: 			NOT = { has_government = silent_sisterhood_government }
+714: 			NOT = { has_government = theocracy_government }
+715: 		}
+716: 	}
+717: 	effect = {
+718: 		this = { save_scope_as = asoiaf_Baratheon_5 }
+719: 		scope:asoiaf_Baratheon_5 ?= {
+720: 			agot_create_artifact_joffreyI_crown_effect = { OWNER = this CREATOR = this }
+721: 			trigger_event = { id = asoiaf_equip_crown_events.10 days = 1 } #equip Joffrey I's crown with delay because of overlapping effects
+722: 		}
+723: 	}
+724: }
+725: 
+726: asoiaf_on_title_inheritance_renly_crown_creation = {
+727: 	trigger = {
+728: 		AND = {
+729: 			this = { has_inactive_trait = asoiaf_Baratheon_4_trait } #inheritor is Renly, but NOT the historical version (that's handled by vanilla AGOT effects)
+730: 			NOT = { this = character:Baratheon_4 }
+731: 			has_game_rule = asoiaf_new_clothes_stormlands_rule_on
+732: 			OR = {
+733: 				primary_title.tier = tier_hegemony
+734: 				AND = {
+735: 					primary_title.tier = tier_empire
+736: 					agot_is_independent_ruler = yes
+737: 				}
+738: 			}
+739: 			asoiaf_renly_baratheon_crown_trigger = yes
+740: 			NOT = { has_government = nights_watch_government }
+741: 			NOT = { has_government = silent_sisterhood_government }
+742: 			NOT = { has_government = theocracy_government }
+743: 		}
+744: 	}
+745: 	effect = {
+746: 		this = { save_scope_as = asoiaf_Baratheon_4 }
+747: 		scope:asoiaf_Baratheon_4 ?= {
+748: 			agot_create_artifact_renly_crown_effect = { OWNER = this CREATOR = this }
+749: 			trigger_event = { id = asoiaf_equip_crown_events.11 days = 1 } #equip Renly's crown with delay because of overlapping effects
+750: 		}
+751: 	}
+752: }
+753: 
+754: asoiaf_on_title_inheritance_robert_I_gluttonous_trait = {
+755: 	trigger = {
+756: 		AND = {
+757: 			has_game_rule = asoiaf_got_traits_rule_on
+758: 			dynasty:dynn_Baratheon = {
+759: 				any_dynasty_member = {
+760: 					has_inactive_trait = asoiaf_Baratheon_2_trait
+761: 					has_trait = brave
+762: 					NOT = { has_trait = gluttonous }
+763: 				}
+764: 			}
+765: 			OR = {
+766: 				primary_title.tier = tier_hegemony
+767: 				AND = {
+768: 					primary_title.tier = tier_empire
+769: 					agot_is_independent_ruler = yes
+770: 				}
+771: 			}
+772: 			this = { has_inactive_trait = asoiaf_Baratheon_2_trait } #Robert I Baratheon
+773: 		}
+774: 	}
+775: 	effect = {
+776: 		hidden_effect = {
+777: 			this = { save_scope_as = asoiaf_Baratheon_2 }
+778: 			scope:asoiaf_Baratheon_2 ?= {
+779: 				remove_trait = brave
+780: 				add_trait = gluttonous
+781: 				add_trait = drunkard
+782: 			}
+783: 		}
+784: 	}
+785: }
+786: 
+787: asoiaf_on_title_inheritance_robert_siblings_claims = {
+788: 	trigger = {
+789: 		AND = {
+790: 			scope:title = {
+791: 				this = title:h_the_iron_throne
+792: 			}
+793: 			this = { has_inactive_trait = asoiaf_Baratheon_2_trait } #Robert I Baratheon
+794: 		}
+795: 	}
+796: 	effect = {
+797: 		hidden_effect = {
+798: 			this = {
+799: 				every_sibling = {
+800: 					limit = {
+801: 						is_male = yes
+802: 					}
+803: 					add_pressed_claim = title:h_the_iron_throne
+804: 				}
+805: 			}
+806: 		}
+807: 	}
+808: }
+809: 
+810: asoiaf_on_title_inheritance_robert_usurper_nickname = {
+811: 	trigger = {
+812: 		AND = {
+813: 			scope:title = { this = title:h_the_iron_throne }
+814: 			root = { #conqueror is either Aegon, Viserys, or Daenerys
+815: 				OR = {
+816: 					var:faegon_main_character = flag:faegon
+817: 					var:faegon_main_character = flag:viserys
+818: 					var:faegon_main_character = flag:dany
+819: 				}
+820: 			}
+821: 			OR = { #either Robert is alive and was the prior holder, or is dead and held the title at the time
+822: 				scope:previous_holder ?= { has_inactive_trait = asoiaf_Baratheon_2_trait } #is Robert I
+823: 				character:Baratheon_2 ?= {
+824: 					is_alive = no
+825: 					has_title = title:h_the_iron_throne
+826: 				}
+827: 			}
+828: 		}
+829: 	}
+830: 	effect = {
+831: 		character:Baratheon_2 ?= {
+832: 			give_nickname = nick_the_usurper
+833: 		}
+834: 	}
+835: }
+836: 
+837: asoiaf_harlaw_cadet_branch_harridan_hills = {
+838: 	trigger = {
+839: 		this = character:Harlaw_14 #Boremund the Blue
+840: 		has_character_flag = has_personal_coa
+841: 		NOT = {
+842: 			is_target_in_global_variable_list = { #House Harlaw of Harridan Hills hasn't been founded yet
+843: 				name = asoiaf_harlaw_hh_unavailable
+844: 				target = flag:asoiaf_harlaw_cadet_hh
+845: 			}
+846: 		}
+847: 	}
+848: 	effect = {
+849: 		house = { save_scope_as = asoiaf_founders_old_house }
+850: 		set_house = house:house_HarlawHH #Harlaw of Harridan Hills
+851: 		trigger_event = { id = agot_coa_events.1 }
+852: 		dynasty = {
+853: 			every_dynasty_member = {
+854: 				limit = {
+855: 					any_ancestor = {
+856: 						this = character:Harlaw_14
+857: 					}
+858: 					house = house:asoiaf_founders_old_house
+859: 				}
+860: 				set_house = house:house_HarlawHH
+861: 				trigger_event = { id = agot_coa_events.1 }
+862: 			}
+863: 		}
+864: 		add_to_global_variable_list = {
+865: 			name = asoiaf_harlaw_hh_unavailable
+866: 			target = flag:asoiaf_harlaw_cadet_hh
+867: 		}
+868: 	}
+869: }
+870: 
+871: asoiaf_harlaw_cadet_branch_grey_garden = {
+872: 	trigger = {
+873: 		this = character:Harlaw_12 #Harras the Knight
+874: 		has_character_flag = has_personal_coa
+875: 		NOT = {
+876: 			is_target_in_global_variable_list = { #House Harlaw of Grey Garden hasn't been founded yet
+877: 				name = asoiaf_harlaw_gg_unavailable
+878: 				target = flag:asoiaf_harlaw_cadet_gg
+879: 			}
+880: 		}
+881: 	}
+882: 	effect = {
+883: 		house = { save_scope_as = asoiaf_founders_old_house }
+884: 		set_house = house:house_HarlawGG #Harlaw of Grey Garden
+885: 		trigger_event = { id = agot_coa_events.1 }
+886: 		dynasty = {
+887: 			every_dynasty_member = {
+888: 				limit = {
+889: 					any_ancestor = {
+890: 						this = character:Harlaw_12
+891: 					}
+892: 					house = house:asoiaf_founders_old_house
+893: 				}
+894: 				set_house = house:house_HarlawGG
+895: 				trigger_event = { id = agot_coa_events.1 }
+896: 			}
+897: 		}
+898: 		add_to_global_variable_list = {
+899: 			name = asoiaf_harlaw_gg_unavailable
+900: 			target = flag:asoiaf_harlaw_cadet_gg
+901: 		}
+902: 	}
+903: }
+904: 
+905: asoiaf_harlaw_cadet_branch_tower_of_glimmering = {
+906: 	trigger = {
+907: 		this = character:Harlaw_13 #Hotho Humpback
+908: 		has_character_flag = has_personal_coa
+909: 		NOT = {
+910: 			is_target_in_global_variable_list = { #House Harlaw of the Tower of Glimmering hasn't been founded yet
+911: 				name = asoiaf_harlaw_tg_unavailable
+912: 				target = flag:asoiaf_harlaw_cadet_tg
+913: 			}
+914: 		}
+915: 	}
+916: 	effect = {
+917: 		house = { save_scope_as = asoiaf_founders_old_house }
+918: 		set_house = house:house_HarlawTG #Harlaw of the Tower of Glimmering
+919: 		trigger_event = { id = agot_coa_events.1 }
+920: 		dynasty = {
+921: 			every_dynasty_member = {
+922: 				limit = {
+923: 					any_ancestor = {
+924: 						this = character:Harlaw_13
+925: 					}
+926: 					house = house:asoiaf_founders_old_house
+927: 				}
+928: 				set_house = house:house_HarlawTG
+929: 				trigger_event = { id = agot_coa_events.1 }
+930: 			}
+931: 		}
+932: 		add_to_global_variable_list = {
+933: 			name = asoiaf_harlaw_tg_unavailable
+934: 			target = flag:asoiaf_harlaw_cadet_tg
+935: 		}
+936: 	}
+937: }
+938: 
+939: asoiaf_harlaw_cadet_branch_harlaw_hall = {
+940: 	trigger = {
+941: 		this = character:Harlaw_2 #Sigfryd Silverhair
+942: 		has_character_flag = has_personal_coa
+943: 		NOT = {
+944: 			is_target_in_global_variable_list = { #House Harlaw of Harlaw Hall hasn't been founded yet
+945: 				name = asoiaf_harlaw_hhall_unavailable
+946: 				target = flag:asoiaf_harlaw_cadet_hhall
+947: 			}
+948: 		}
+949: 	}
+950: 	effect = {
+951: 		house = { save_scope_as = asoiaf_founders_old_house }
+952: 		set_house = house:house_HarlawHHall
+953: 		trigger_event = { id = agot_coa_events.1 }
+954: 		dynasty = {
+955: 			every_dynasty_member = {
+956: 				limit = {
+957: 					any_ancestor = {
+958: 						this = character:Harlaw_2
+959: 					}
+960: 					house = house:asoiaf_founders_old_house
+961: 				}
+962: 				set_house = house:house_HarlawHHall
+963: 				trigger_event = { id = agot_coa_events.1 }
+964: 			}
+965: 		}
+966: 		add_to_global_variable_list = {
+967: 			name = asoiaf_harlaw_hhall_unavailable
+968: 			target = flag:asoiaf_harlaw_cadet_hhall
+969: 		}
+970: 	}
+971: }
+972: 
+973: on_title_lost = {
+974: 	on_actions = {
+975: 		asoiaf_young_griff_war_loser
+976: 		asoiaf_daemon_loses_stepstone_claims
+977: 	}
+978: }
+979: 
+980: asoiaf_young_griff_war_loser = {
+981: 	trigger = {
+982: 		scope:title = {
+983: 			this = title:h_the_iron_throne
+984: 		}
+985: 		scope:new_holder = {
+986: 			OR = {
+987: 				has_inactive_trait = asoiaf_Targaryen_8_trait #Viserys Targaryen (son of Aerys II)
+988: 				has_inactive_trait = asoiaf_Targaryen_9_trait #Daenerys Targaryen (daughter of Aerys II)
+989: 				has_inactive_trait = asoiaf_Targaryen_11_trait #Aegon Targaryen (son of Rhaegar)
+990: 			}
+991: 		}
+992: 		#NOT = { exists = global_var:asoiaf_young_griff_war_loser_variable } #commented out since it doesn't matter if it triggers multiple times, it's a good effect to have regardless
+993: 	}
+994: 	effect = {
+995: 		hidden_effect = {
+996: 			#set_global_variable = asoiaf_young_griff_war_loser_variable #so this can't trigger twice
+997: 			root = {
+998: 				add_pressed_claim = title:h_the_iron_throne
+999: 				add_pressed_claim = title:e_the_crownlands
+1000: 				add_pressed_claim = title:k_the_blackwater
+1001: 				add_pressed_claim = title:d_kings_landing
+1002: 				add_pressed_claim = title:c_kings_landing
+1003: 				add_pressed_claim = title:k_dragonstone
+1004: 				add_pressed_claim = title:d_dragonstone
+1005: 				add_pressed_claim = title:c_dragonstone
+1006: 			}
+1007: 		}
+1008: 	}
+1009: }
+1010: 
+1011: asoiaf_daemon_loses_stepstone_claims = { #clean up Daemon's claims after losing the Stepstones so he doesn't get elected a Pirate Captain afterwards
+1012: 	trigger = {
+1013: 		scope:title = {
+1014: 			OR = { #so it will trigger if he loses any stage of his war
+1015: 				this = title:k_the_stepstones
+1016: 				this = title:d_first_stepstones
+1017: 				this = title:c_dwarfstone
+1018: 			}
+1019: 		}
+1020: 		root = character:Targaryen_61 #Daemon Targaryen (son of Baelon) - historical
+1021: 	}
+1022: 	effect = {
+1023: 		hidden_effect = {
+1024: 			root = { #remove claims from every title in the Stepstones
+1025: 				remove_claim = title:k_the_stepstones
+1026: 				remove_claim = title:d_first_stepstones
+1027: 				remove_claim = title:d_skull_tides
+1028: 				remove_claim = title:d_the_maidens
+1029: 				remove_claim = title:d_saans_stones
+1030: 				remove_claim = title:c_bloodstone
+1031: 				remove_claim = title:c_dwarfstone
+1032: 				remove_claim = title:c_grey_gallows
+1033: 				remove_claim = title:c_lower_sunstone
+1034: 				remove_claim = title:c_turtleback
+1035: 				remove_claim = title:c_upper_sunstone
+1036: 				remove_claim = title:c_wreckstone
+1037: 				remove_claim = title:c_liarsmyrk
+1038: 				remove_claim = title:c_pyrwell
+1039: 				remove_claim = title:c_skullhammer
+1040: 				remove_claim = title:c_the_skulls
+1041: 				remove_claim = title:c_torturers_deep
+1042: 				remove_claim = title:c_denmaiden
+1043: 				remove_claim = title:c_last_refuge
+1044: 				remove_claim = title:c_raidmaiden
+1045: 				remove_claim = title:c_tigers_island
+1046: 				remove_claim = title:c_dark_den
+1047: 				remove_claim = title:c_duskrane
+1048: 				remove_claim = title:c_shame_isle
+1049: 				remove_claim = title:c_crimson_point
+1050: 			}
+1051: 		}
+1052: 	}
+1053: }
+
+# common/on_action/asoiaf_army_on_actions.txt
+# Effective provider: AGOT+
+# SHA256: F9F0F018872923F06680E696EF4411211F0721CD8F531792EAB47521B22D6797
+1: on_siege_completion = {
+2: 	on_actions = {
+3: 		asoiaf_assisted_ruler_capture_player_only
+4: 		asoiaf_assisted_ruler_capture_universal
+5: 	}
+6: }
+7: 
+8: asoiaf_assisted_ruler_capture_player_only = {
+9: 	trigger = {
+10: 		has_game_rule = asoiaf_assisted_ruler_capture_player_only
+11: 		root = { is_ai = no }
+12: 	}
+13: 	effect = {
+14: 		scope:barony.holder ?= { save_scope_as = holder }
+15: 		if = { #capture the RULER being sieged
+16: 			limit = {
+17: 				scope:holder ?= {
+18: 					location = scope:barony.title_province
+19: 					NOR = {
+20: 						exists = commanding_army
+21: 						exists = knight_army
+22: 						is_imprisoned = yes
+23: 					}
+24: 					#NOT = { has_character_modifier = isolating_modifier }
+25: 				}
+26: 			}
+27: 			prisoner_of_war_capture_effect = {
+28: 				TARGET = scope:holder
+29: 				IMPRISONER = root
+30: 			}
+31: 		}
+32: 		scope:barony.holder ?= { #capture the CLOSE FAMILY of the ruler being sieged
+33: 			every_close_family_member = {
+34: 				if = {
+35: 					limit = {
+36: 						location = scope:barony.title_province
+37: 						NOR = {
+38: 							exists = commanding_army
+39: 							exists = knight_army
+40: 							is_imprisoned = yes
+41: 						}
+42: 						#NOT = { has_character_modifier = isolating_modifier }
+43: 					}
+44: 					save_scope_as = captured_family
+45: 					prisoner_of_war_capture_effect = {
+46: 						TARGET = scope:captured_family
+47: 						IMPRISONER = root
+48: 					}
+49: 				}
+50: 			}
+51: 			every_spouse = {
+52: 				if = {
+53: 					limit = {
+54: 						location = scope:barony.title_province
+55: 						NOR = {
+56: 							exists = commanding_army
+57: 							exists = knight_army
+58: 							is_imprisoned = yes
+59: 						}
+60: 						#NOT = { has_character_modifier = isolating_modifier }
+61: 					}
+62: 					save_scope_as = captured_spouses
+63: 					prisoner_of_war_capture_effect = {
+64: 						TARGET = scope:captured_spouses
+65: 						IMPRISONER = root
+66: 					}
+67: 				}
+68: 			}
+69: 		}
+70: 		scope:war = {
+71: 			casus_belli = {
+72: 				if = {
+73: 					limit = { exists = claimant }
+74: 					claimant = { save_scope_as = asoiaf_war_claimant }
+75: 				}
+76: 			}
+77: 			if = { #capture the WAR CLAIMANT in a claimant war
+78: 				limit = {
+79: 					scope:asoiaf_war_claimant ?= {
+80: 						location = scope:barony.title_province
+81: 						is_courtier = yes #if the claimant is outside of the castle being sieged, they can't be taken
+82: 						NOR = {
+83: 							exists = commanding_army
+84: 							exists = knight_army
+85: 							is_imprisoned = yes
+86: 						}
+87: 						#NOT = { has_character_modifier = isolating_modifier }
+88: 					}
+89: 					defender = { character = root }
+90: 				}
+91: 				prisoner_of_war_capture_effect = {
+92: 					TARGET = scope:asoiaf_war_claimant
+93: 					IMPRISONER = root
+94: 				}
+95: 			}
+96: 		}
+97: 		scope:barony.holder ?= { #liberate prisoners relevant to the besieger
+98: 			every_prisoner = {
+99: 				limit = {
+100: 					location = scope:barony.title_province
+101: 					OR = {
+102: 						#close family of root who is not at war with them
+103: 						AND = {
+104: 							is_close_family_of = root
+105: 							NOT = { is_at_war_with = root } #not at war against root
+106: 						}
+107: 						AND = {
+108: 							is_uncle_or_aunt_of = root
+109: 							NOT = { is_at_war_with = root } #not at war against root
+110: 						}
+111: 						#House members of root who is not at war with them
+112: 						AND = {
+113: 							house ?= root.house
+114: 							NOT = { is_at_war_with = root } #not at war against root
+115: 						}
+116: 						#friends, best friends, lovers, and soulmates of root
+117: 						AND = {
+118: 							OR = {
+119: 								has_relation_friend = root
+120: 								has_relation_best_friend = root
+121: 								has_relation_lover = root
+122: 								has_relation_soulmate = root
+123: 							}
+124: 							NOT = { is_at_war_with = root } #not at war against root
+125: 						}
+126: 						#root's courtiers
+127: 						is_courtier_of = root
+128: 						#root's war allies who are not at war with them in another war
+129: 						AND = {
+130: 							is_allied_in_war = root
+131: 							NOT = { is_at_war_with = root } #not at war against root (just because they're allies in THIS war doesn't mean they're enemies in another war)
+132: 						}
+133: 						#courtiers of root's war allies
+134: 						AND = {
+135: 							is_courtier = yes
+136: 							liege ?= { is_allied_in_war = root }
+137: 						}
+138: 					}
+139: 				}
+140: 				release_from_prison = yes
+141: 			}
+142: 		}
+143: 	}
+144: }
+145: 
+146: asoiaf_assisted_ruler_capture_universal = {
+147: 	trigger = {
+148: 		has_game_rule = asoiaf_assisted_ruler_capture_universal
+149: 	}
+150: 	effect = {
+151: 		scope:barony.holder ?= { save_scope_as = holder }
+152: 		if = { #capture the RULER being sieged
+153: 			limit = {
+154: 				scope:holder ?= {
+155: 					location = scope:barony.title_province
+156: 					NOR = {
+157: 						exists = commanding_army
+158: 						exists = knight_army
+159: 						is_imprisoned = yes
+160: 					}
+161: 					#NOT = { has_character_modifier = isolating_modifier }
+162: 				}
+163: 			}
+164: 			prisoner_of_war_capture_effect = {
+165: 				TARGET = scope:holder
+166: 				IMPRISONER = root
+167: 			}
+168: 		}
+169: 		scope:barony.holder ?= { #capture the CLOSE FAMILY of the ruler being sieged
+170: 			every_close_family_member = {
+171: 				if = {
+172: 					limit = {
+173: 						location = scope:barony.title_province
+174: 						NOR = {
+175: 							exists = commanding_army
+176: 							exists = knight_army
+177: 							is_imprisoned = yes
+178: 						}
+179: 						#NOT = { has_character_modifier = isolating_modifier }
+180: 					}
+181: 					save_scope_as = captured_family
+182: 					prisoner_of_war_capture_effect = {
+183: 						TARGET = scope:captured_family
+184: 						IMPRISONER = root
+185: 					}
+186: 				}
+187: 			}
+188: 			every_spouse = {
+189: 				if = {
+190: 					limit = {
+191: 						location = scope:barony.title_province
+192: 						NOR = {
+193: 							exists = commanding_army
+194: 							exists = knight_army
+195: 							is_imprisoned = yes
+196: 						}
+197: 						#NOT = { has_character_modifier = isolating_modifier }
+198: 					}
+199: 					save_scope_as = captured_spouses
+200: 					prisoner_of_war_capture_effect = {
+201: 						TARGET = scope:captured_spouses
+202: 						IMPRISONER = root
+203: 					}
+204: 				}
+205: 			}
+206: 		}
+207: 		scope:war = {
+208: 			casus_belli = {
+209: 				if = {
+210: 					limit = { exists = claimant }
+211: 					claimant = { save_scope_as = asoiaf_war_claimant }
+212: 				}
+213: 			}
+214: 			if = { #capture the WAR CLAIMANT in a claimant war
+215: 				limit = {
+216: 					scope:asoiaf_war_claimant ?= {
+217: 						location = scope:barony.title_province
+218: 						is_courtier = yes #if the claimant is outside of the castle being sieged, they can't be taken
+219: 						NOR = {
+220: 							exists = commanding_army
+221: 							exists = knight_army
+222: 							is_imprisoned = yes
+223: 						}
+224: 						#NOT = { has_character_modifier = isolating_modifier }
+225: 					}
+226: 					defender = { character = root }
+227: 				}
+228: 				prisoner_of_war_capture_effect = {
+229: 					TARGET = scope:asoiaf_war_claimant
+230: 					IMPRISONER = root
+231: 				}
+232: 			}
+233: 		}
+234: 		scope:barony.holder ?= { #liberate prisoners relevant to the besieger
+235: 			every_prisoner = {
+236: 				limit = {
+237: 					location = scope:barony.title_province
+238: 					OR = {
+239: 						#close family of root who is not at war with them
+240: 						AND = {
+241: 							is_close_family_of = root
+242: 							NOT = { is_at_war_with = root } #not at war against root
+243: 						}
+244: 						AND = {
+245: 							is_uncle_or_aunt_of = root
+246: 							NOT = { is_at_war_with = root } #not at war against root
+247: 						}
+248: 						#House members of root who is not at war with them
+249: 						AND = {
+250: 							house ?= root.house
+251: 							NOT = { is_at_war_with = root } #not at war against root
+252: 						}
+253: 						#friends, best friends, lovers, and soulmates of root
+254: 						AND = {
+255: 							OR = {
+256: 								has_relation_friend = root
+257: 								has_relation_best_friend = root
+258: 								has_relation_lover = root
+259: 								has_relation_soulmate = root
+260: 							}
+261: 							NOT = { is_at_war_with = root } #not at war against root
+262: 						}
+263: 						#root's courtiers
+264: 						is_courtier_of = root
+265: 						#root's war allies who are not at war with them in another war
+266: 						AND = {
+267: 							is_allied_in_war = root
+268: 							NOT = { is_at_war_with = root } #not at war against root (just because they're allies in THIS war doesn't mean they're enemies in another war)
+269: 						}
+270: 						#courtiers of root's war allies
+271: 						AND = {
+272: 							is_courtier = yes
+273: 							liege ?= { is_allied_in_war = root }
+274: 						}
+275: 					}
+276: 				}
+277: 				release_from_prison = yes
+278: 			}
+279: 		}
+280: 	}
+281: }
+
+# common/on_action/asoiaf_pregnancy_childbirth_on_actions.txt
+# Effective provider: AGOT+
+# SHA256: B6D3920F559C7B6183C3DB9B8BE3B9BE80F99209FA71CEB2CA2562D8471796E9
+1: # called for the mother when a pregnancy reaches the "revealed" status
+2: # scope:mother is the pregnant mother
+3: # scope:father is the assumed father
+4: # scope:real_father is the biological father
+5: on_pregnancy_mother = {
+6: 	on_actions = {
+7: 		asoiaf_canon_children_pregnancy_detection
+8: 	}
+9: }
+10: 
+11: asoiaf_canon_children_pregnancy_detection = {
+12: 	effect = {
+13: 		if = {
+14: 			limit = { asoiaf_canon_children_pregnancy_negation_termination_trigger = yes } #if a woman for some reason gets pregnant with the pregnancy negation modifier, termiante it
+15: 			asoiaf_canon_children_terminate_pregnancy_effect = yes
+16: 		}
+17: 		if = {
+18: 			limit = { asoiaf_canon_children_alicent_pregnancy_termination_trigger = yes }
+19: 			asoiaf_canon_children_terminate_pregnancy_effect = yes
+20: 		}
+21: 		if = {
+22: 			limit = { asoiaf_canon_children_rhaenyra_pregnancy_termination_trigger = yes }
+23: 			asoiaf_canon_children_terminate_pregnancy_effect = yes
+24: 		}
+25: 		if = { #Cersei terminates pregnancies with Robert after Alaric is born
+26: 			limit = { asoiaf_canon_children_cersei_robert_block_trigger = yes }
+27: 			asoiaf_canon_children_terminate_pregnancy_effect = yes
+28: 		}
+29: 		if = {
+30: 			limit = { asoiaf_canon_children_cersei_pregnancy_termination_trigger = yes }
+31: 			asoiaf_canon_children_terminate_pregnancy_effect = yes
+32: 		}
+33: 		if = {
+34: 			limit = { asoiaf_canon_children_margaery_pregnancy_termination_trigger = yes }
+35: 			asoiaf_canon_children_terminate_pregnancy_effect = yes
+36: 		}
+37: 		if = {
+38: 			limit = { asoiaf_canon_children_lysa_pregnancy_termination_trigger = yes }
+39: 			asoiaf_canon_children_terminate_pregnancy_effect = yes
+40: 		}
+41: 
+42: 		if = { #children of Rickon Stark (son of Benjen) by his Glover wife
+43: 			limit = {
+44: 				OR = {
+45: 					asoiaf_canon_children_Stark_86_trigger = yes
+46: 					asoiaf_canon_children_Stark_87_trigger = yes
+47: 				}
+48: 			}
+49: 			scope:mother = {
+50: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+51: 				asoiaf_assign_marriage_type_flags_effect = yes
+52: 			}
+53: 			trigger_event = { id = asoiaf_canon_children_stark_events.8401 days = 200 }
+54: 		}
+55: 		if = { #children of Rickon Stark (son of Benjen) by a First Man heritage woman out of wedlock
+56: 			limit = { asoiaf_canon_children_Stark_88_trigger = yes }
+57: 			trigger_event = { id = asoiaf_canon_children_stark_events.8402 days = 200 }
+58: 		}
+59: 		if = { #children of Cregan Stark (son of Rickon) by his Norrey wife
+60: 			limit = { asoiaf_canon_children_Stark_94_trigger = yes }
+61: 			trigger_event = { id = asoiaf_canon_children_stark_events.8601 days = 200 }
+62: 		}
+63: 		if = { #children of Cregan Stark (son of Rickon) by his Blackwood wife
+64: 			limit = {
+65: 				OR = {
+66: 					asoiaf_canon_children_Stark_95_trigger = yes
+67: 					asoiaf_canon_children_Stark_96_trigger = yes
+68: 					asoiaf_canon_children_Stark_97_trigger = yes
+69: 					asoiaf_canon_children_Stark_98_trigger = yes
+70: 				}
+71: 			}
+72: 			scope:mother = {
+73: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+74: 				asoiaf_assign_marriage_type_flags_effect = yes
+75: 			}
+76: 			trigger_event = { id = asoiaf_canon_children_stark_events.8602 days = 200 }
+77: 		}
+78: 		if = { #children of Cregan Stark (son of Rickon) by his Stark wife
+79: 			limit = {
+80: 				OR = {
+81: 					asoiaf_canon_children_Stark_99_trigger = yes
+82: 					asoiaf_canon_children_Stark_100_trigger = yes
+83: 					asoiaf_canon_children_Stark_101_trigger = yes
+84: 					asoiaf_canon_children_Stark_102_trigger = yes
+85: 					asoiaf_canon_children_Stark_103_trigger = yes
+86: 				}
+87: 			}
+88: 			scope:mother = {
+89: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+90: 				asoiaf_assign_marriage_type_flags_effect = yes
+91: 			}
+92: 			trigger_event = { id = asoiaf_canon_children_stark_events.8603 days = 200 }
+93: 		}
+94: 		if = { #children of Rickard Stark (son of Edwyle) by his Stark wife
+95: 			limit = {
+96: 				OR = {
+97: 					asoiaf_canon_children_Stark_2_trigger = yes
+98: 					asoiaf_canon_children_Stark_3_trigger = yes
+99: 					asoiaf_canon_children_Stark_5_trigger = yes
+100: 					asoiaf_canon_children_Stark_4_trigger = yes
+101: 				}
+102: 			}
+103: 			scope:mother = {
+104: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+105: 				asoiaf_assign_marriage_type_flags_effect = yes
+106: 			}
+107: 			trigger_event = { id = asoiaf_canon_children_stark_events.101 days = 200 }
+108: 		}
+109: 		if = { #children of Eddard Stark (son of Rickard) by his Tully wife
+110: 			limit = {
+111: 				OR = {
+112: 					asoiaf_canon_children_Stark_6_trigger = yes
+113: 					asoiaf_canon_children_Stark_7_trigger = yes
+114: 					asoiaf_canon_children_Stark_8_trigger = yes
+115: 					asoiaf_canon_children_Stark_9_trigger = yes
+116: 					asoiaf_canon_children_Stark_10_trigger = yes
+117: 					asoiaf_canon_children_Stark_11_trigger = yes
+118: 				}
+119: 			}
+120: 			scope:mother = {
+121: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+122: 				asoiaf_assign_marriage_type_flags_effect = yes
+123: 			}
+124: 			trigger_event = { id = asoiaf_canon_children_stark_events.301 days = 200 }
+125: 		}
+126: 		if = { #children of Howland Reed (son of Edwyle) by his Crannogman wife
+127: 			limit = {
+128: 				OR = {
+129: 					asoiaf_canon_children_Reed_2_trigger = yes
+130: 					asoiaf_canon_children_Reed_3_trigger = yes
+131: 				}
+132: 			}
+133: 			scope:mother = {
+134: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+135: 				asoiaf_assign_marriage_type_flags_effect = yes
+136: 			}
+137: 			trigger_event = { id = asoiaf_canon_children_reed_events.0011 days = 200 }
+138: 		}
+139: 		if = { #children of Ormund Baratheon (son of Lyonel) by his Targaryen wife
+140: 			limit = {
+141: 				asoiaf_canon_children_Baratheon_1_trigger = yes
+142: 			}
+143: 			scope:mother = {
+144: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+145: 				asoiaf_assign_marriage_type_flags_effect = yes
+146: 			}
+147: 			trigger_event = { id = asoiaf_canon_children_baratheon_events.0751 days = 200 }
+148: 		}
+149: 		if = { #children of Steffon Baratheon (son of Ormund) by his Estermont wife
+150: 			limit = {
+151: 				OR = {
+152: 					asoiaf_canon_children_Baratheon_2_trigger = yes
+153: 					asoiaf_canon_children_Baratheon_3_trigger = yes
+154: 					asoiaf_canon_children_Baratheon_4_trigger = yes
+155: 				}
+156: 			}
+157: 			scope:mother = {
+158: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+159: 				asoiaf_assign_marriage_type_flags_effect = yes
+160: 			}
+161: 			trigger_event = { id = asoiaf_canon_children_baratheon_events.0011 days = 200 }
+162: 		}
+163: 		if = { #children of Robert I Baratheon by his Lannister wife
+164: 			limit = { asoiaf_canon_children_Baratheon_2_1_trigger = yes }
+165: 			scope:mother = {
+166: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+167: 				asoiaf_assign_marriage_type_flags_effect = yes
+168: 			}
+169: 			trigger_event = { id = asoiaf_canon_children_baratheon_events.0021 days = 200 }
+170: 		}
+171: 		if = { #children of Cersei Lannister (daughter of Tywin) by her Lannister (close family) lover
+172: 			limit = {
+173: 				OR = {
+174: 					asoiaf_canon_children_Baratheon_5_trigger = yes
+175: 					asoiaf_canon_children_Baratheon_6_trigger = yes
+176: 					asoiaf_canon_children_Baratheon_7_trigger = yes
+177: 				}
+178: 			}
+179: 			scope:mother = {
+180: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+181: 				asoiaf_assign_marriage_type_flags_effect = yes
+182: 			}
+183: 			trigger_event = { id = asoiaf_canon_children_baratheon_events.0022 days = 200 }
+184: 		}
+185: 		if = { #children of Stannis Baratheon (son of Steffon) by his Florent wife
+186: 			limit = {
+187: 				OR = {
+188: 					asoiaf_canon_children_Baratheon_3_1_trigger = yes
+189: 					asoiaf_canon_children_Baratheon_3_2_trigger = yes
+190: 					asoiaf_canon_children_Baratheon_3_3_trigger = yes
+191: 					asoiaf_canon_children_Baratheon_13_trigger = yes
+192: 				}
+193: 			}
+194: 			scope:mother = {
+195: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+196: 				asoiaf_assign_marriage_type_flags_effect = yes
+197: 			}
+198: 			trigger_event = { id = asoiaf_canon_children_baratheon_events.0031 days = 200 }
+199: 		}
+200: 		if = { #children of Tytos Lannister (son of Gerold) by his Marbrand wife
+201: 			limit = {
+202: 				OR = {
+203: 					asoiaf_canon_children_Lannister_1_trigger = yes
+204: 					asoiaf_canon_children_Lannister_2_trigger = yes
+205: 					asoiaf_canon_children_Lannister_3_trigger = yes
+206: 					asoiaf_canon_children_Lannister_4_trigger = yes
+207: 					asoiaf_canon_children_Lannister_5_trigger = yes
+208: 				}
+209: 			}
+210: 			scope:mother = {
+211: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+212: 				asoiaf_assign_marriage_type_flags_effect = yes
+213: 			}
+214: 			trigger_event = { id = asoiaf_canon_children_lannister_events.1291 days = 200 }
+215: 		}
+216: 		if = { #children of Tywin Lannister (son of Tytos) by his Lannister wife
+217: 			limit = {
+218: 				OR = {
+219: 					asoiaf_canon_children_Lannister_6_trigger = yes #only Cersei's trigger for the sake of simplicity
+220: 					asoiaf_canon_children_Lannister_8_trigger = yes
+221: 				}
+222: 			}
+223: 			scope:mother = {
+224: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+225: 				asoiaf_assign_marriage_type_flags_effect = yes
+226: 			}
+227: 			trigger_event = { id = asoiaf_canon_children_lannister_events.101 days = 200 }
+228: 		}
+229: 		if = { #children of Kevan Lannister (son of Tytos) by his Swyft wife
+230: 			limit = {
+231: 				OR = {
+232: 					asoiaf_canon_children_Lannister_9_trigger = yes
+233: 					asoiaf_canon_children_Lannister_10_trigger = yes #only Willem's trigger for the sake of simplicity
+234: 					asoiaf_canon_children_Lannister_12_trigger = yes
+235: 				}
+236: 			}
+237: 			scope:mother = {
+238: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+239: 				asoiaf_assign_marriage_type_flags_effect = yes
+240: 			}
+241: 			trigger_event = { id = asoiaf_canon_children_lannister_events.201 days = 200 }
+242: 		}
+243: 		if = { #children of Jon Arryn (son of Jasper) by his Royce wife
+244: 			limit = { asoiaf_canon_children_Arryn_7_trigger = yes }
+245: 			trigger_event = { id = asoiaf_canon_children_arryn_events.301 days = 200 }
+246: 		}
+247: 		if = { #children of Jon Arryn (son of Jasper) by his Tully wife
+248: 			limit = {
+249: 				OR = {
+250: 					asoiaf_canon_children_Arryn_3_1_trigger = yes
+251: 					asoiaf_canon_children_Arryn_3_2_trigger = yes
+252: 					asoiaf_canon_children_Arryn_8_trigger = yes
+253: 				}
+254: 			}
+255: 			scope:mother = {
+256: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+257: 				asoiaf_assign_marriage_type_flags_effect = yes
+258: 			}
+259: 			trigger_event = { id = asoiaf_canon_children_arryn_events.302 days = 200 }
+260: 		}
+261: 		if = { #children of Luthor Tyrell (son of Garlan) by his Redwyne wife
+262: 			limit = {
+263: 				OR = {
+264: 					asoiaf_canon_children_Tyrell_8_trigger = yes
+265: 					asoiaf_canon_children_Tyrell_9_trigger = yes
+266: 					asoiaf_canon_children_Tyrell_10_trigger = yes
+267: 				}
+268: 			}
+269: 			scope:mother = {
+270: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+271: 				asoiaf_assign_marriage_type_flags_effect = yes
+272: 			}
+273: 			trigger_event = { id = asoiaf_canon_children_tyrell_events.0041 days = 200 }
+274: 		}
+275: 		if = { #children of Mace Tyrell (son of Luthor) by his Hightower wife
+276: 			limit = {
+277: 				OR = {
+278: 					asoiaf_canon_children_Tyrell_11_trigger = yes
+279: 					asoiaf_canon_children_Tyrell_12_trigger = yes
+280: 					asoiaf_canon_children_Tyrell_13_trigger = yes
+281: 					asoiaf_canon_children_Tyrell_14_trigger = yes
+282: 				}
+283: 			}
+284: 			scope:mother = {
+285: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+286: 				asoiaf_assign_marriage_type_flags_effect = yes
+287: 			}
+288: 			trigger_event = { id = asoiaf_canon_children_tyrell_events.0081 days = 200 }
+289: 		}
+290: 		if = { #children of Randyll Tarly (son of Talbert) by his Florent wife
+291: 			limit = {
+292: 				OR = {
+293: 					asoiaf_canon_children_Tarly_2_trigger = yes
+294: 					asoiaf_canon_children_Tarly_3_trigger = yes
+295: 					asoiaf_canon_children_Tarly_4_trigger = yes
+296: 					asoiaf_canon_children_Tarly_5_trigger = yes
+297: 					asoiaf_canon_children_Tarly_6_trigger = yes
+298: 				}
+299: 			}
+300: 			scope:mother = {
+301: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+302: 				asoiaf_assign_marriage_type_flags_effect = yes
+303: 			}
+304: 			trigger_event = { id = asoiaf_canon_children_tarly_events.0011 days = 200 }
+305: 		}
+306: 		if = { #children of Otto Hightower (brother of Hobert) by his Florent wife
+307: 			limit = {
+308: 				OR = {
+309: 					asoiaf_canon_children_Hightower_96_trigger = yes
+310: 					asoiaf_canon_children_Hightower_97_trigger = yes
+311: 					asoiaf_canon_children_Hightower_98_trigger = yes
+312: 					asoiaf_canon_children_Hightower_99_trigger = yes
+313: 				}
+314: 			}
+315: 			scope:mother = {
+316: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+317: 				asoiaf_assign_marriage_type_flags_effect = yes
+318: 			}
+319: 			trigger_event = { id = asoiaf_canon_children_hightower_events.9001 days = 200 }
+320: 		}
+321: 		if = { #children of Aegon I Targaryen by his Targaryen wives
+322: 			limit = {
+323: 				OR = {
+324: 					asoiaf_canon_children_Targaryen_30_trigger = yes
+325: 					asoiaf_canon_children_Targaryen_31_trigger = yes
+326: 				}
+327: 			}
+328: 			scope:mother = {
+329: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+330: 				asoiaf_assign_marriage_type_flags_effect = yes
+331: 			}
+332: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0271 days = 200 }
+333: 		}
+334: 		if = { #children of Aenys I Targaryen by his Velaryon wife
+335: 			limit = {
+336: 				OR = {
+337: 					asoiaf_canon_children_Targaryen_32_trigger = yes
+338: 					asoiaf_canon_children_Targaryen_33_trigger = yes
+339: 					asoiaf_canon_children_Targaryen_34_trigger = yes
+340: 					asoiaf_canon_children_Targaryen_35_trigger = yes
+341: 					asoiaf_canon_children_Targaryen_36_trigger = yes
+342: 					asoiaf_canon_children_Targaryen_37_trigger = yes
+343: 				}
+344: 			}
+345: 			scope:mother = {
+346: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+347: 				asoiaf_assign_marriage_type_flags_effect = yes
+348: 			}
+349: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0301 days = 200 }
+350: 		}
+351: 		if = { #children of Maegor I Targaryen by his Harroway wife
+352: 			limit = { asoiaf_canon_children_Targaryen_38_trigger = yes }
+353: 			scope:mother = {
+354: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+355: 				asoiaf_assign_marriage_type_flags_effect = yes
+356: 			}
+357: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0311 days = 200 }
+358: 		}
+359: 		if = { #children of Maegor I Targaryen by his Westerling wife
+360: 			limit = { asoiaf_canon_children_Targaryen_40_trigger = yes }
+361: 			scope:mother = {
+362: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+363: 				asoiaf_assign_marriage_type_flags_effect = yes
+364: 			}
+365: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0312 days = 200 }
+366: 		}
+367: 		if = { #children of Maegor I Targaryen by his Costayne wife
+368: 			limit = { asoiaf_canon_children_Targaryen_39_trigger = yes }
+369: 			scope:mother = {
+370: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+371: 				asoiaf_assign_marriage_type_flags_effect = yes
+372: 			}
+373: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0313 days = 200 }
+374: 		}
+375: 		if = { #children of Aegon Targaryen (son of Aenys I) by his Targaryen wife
+376: 			limit = { asoiaf_canon_children_Targaryen_41_trigger = yes } #Only Aerea's trigger for the sake of simplicity
+377: 			scope:mother = {
+378: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+379: 				asoiaf_assign_marriage_type_flags_effect = yes
+380: 			}
+381: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0331 days = 200 }
+382: 		}
+383: 		if = { #children of Jaehaerys I Targaryen by his Targaryen wife
+384: 			limit = {
+385: 				OR = {
+386: 					asoiaf_canon_children_Targaryen_43_trigger = yes
+387: 					asoiaf_canon_children_Targaryen_44_trigger = yes
+388: 					asoiaf_canon_children_Targaryen_45_trigger = yes
+389: 					asoiaf_canon_children_Targaryen_46_trigger = yes
+390: 					asoiaf_canon_children_Targaryen_47_trigger = yes
+391: 					asoiaf_canon_children_Targaryen_48_trigger = yes
+392: 					asoiaf_canon_children_Targaryen_49_trigger = yes
+393: 					asoiaf_canon_children_Targaryen_50_trigger = yes
+394: 					asoiaf_canon_children_Targaryen_51_trigger = yes
+395: 					asoiaf_canon_children_Targaryen_52_trigger = yes
+396: 					asoiaf_canon_children_Targaryen_53_trigger = yes
+397: 					asoiaf_canon_children_Targaryen_54_trigger = yes
+398: 					asoiaf_canon_children_Targaryen_55_trigger = yes
+399: 				}
+400: 			}
+401: 			scope:mother = {
+402: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+403: 				asoiaf_assign_marriage_type_flags_effect = yes
+404: 			}
+405: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0351 days = 200 }
+406: 		}
+407: 		if = { #children of Gael Targaryen (daughter of Jaehaerys I) by her lowborn lover
+408: 			limit = { asoiaf_canon_children_Targaryen_55_1_trigger = yes }
+409: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0551 days = 200 }
+410: 		}
+411: 		if = { #children of Saera Targaryen (daughter of Jaehaerys I) by a Lyseni
+412: 			limit = {
+413: 				OR = {
+414: 					asoiaf_canon_children_Targaryen_56_trigger = yes
+415: 					asoiaf_canon_children_Targaryen_57_trigger = yes
+416: 				}
+417: 			}
+418: 			scope:mother = {
+419: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+420: 				asoiaf_assign_marriage_type_flags_effect = yes
+421: 			}
+422: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0511 days = 200 }
+423: 		}
+424: 		if = { #children of Saera Targaryen (daughter of Jaehaerys I) by a Volantene
+425: 			limit = { asoiaf_canon_children_Targaryen_58_trigger = yes }
+426: 			scope:mother = {
+427: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+428: 				asoiaf_assign_marriage_type_flags_effect = yes
+429: 			}
+430: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0512 days = 200 }
+431: 		}
+432: 		if = { #children of Saera Targaryen (daughter of Jaehaerys I) by an Andal
+433: 			limit = { asoiaf_canon_children_Hammer_1_trigger = yes }
+434: 			scope:mother = {
+435: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+436: 				asoiaf_assign_marriage_type_flags_effect = yes
+437: 			}
+438: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0513 days = 200 }
+439: 		}
+440: 		if = { #children of Hugh Hammer by his Sand Dornish wife
+441: 			limit = { asoiaf_canon_children_Hammer_2_trigger = yes }
+442: 			scope:mother = {
+443: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+444: 				asoiaf_assign_marriage_type_flags_effect = yes
+445: 			}
+446: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0514 days = 200 }
+447: 		}
+448: 		if = { #children of Aemon Targaryen (son of Jaehaerys I) by his Baratheon wife
+449: 			limit = { asoiaf_canon_children_Targaryen_59_trigger = yes }
+450: 			scope:mother = {
+451: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+452: 				asoiaf_assign_marriage_type_flags_effect = yes
+453: 			}
+454: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0451 days = 200 }
+455: 		}
+456: 		if = { #children of Baelon Targaryen (son of Jaehaerys I) by his Targaryen wife
+457: 			limit = {
+458: 				OR = {
+459: 					asoiaf_canon_children_Targaryen_60_trigger = yes
+460: 					asoiaf_canon_children_Targaryen_61_trigger = yes
+461: 					asoiaf_canon_children_Targaryen_62_trigger = yes
+462: 				}
+463: 			}
+464: 			scope:mother = {
+465: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+466: 				asoiaf_assign_marriage_type_flags_effect = yes
+467: 			}
+468: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0461 days = 200 }
+469: 		}
+470: 		if = { #children of Viserys I Targaryen by his Arryn wife
+471: 			limit = {
+472: 				OR = {
+473: 					asoiaf_canon_children_Targaryen_131_trigger = yes
+474: 					asoiaf_canon_children_Targaryen_63_trigger = yes
+475: 					asoiaf_canon_children_Targaryen_64_trigger = yes
+476: 				}
+477: 			}
+478: 			scope:mother = {
+479: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+480: 				asoiaf_assign_marriage_type_flags_effect = yes
+481: 			}
+482: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0601 days = 200 }
+483: 		}
+484: 		if = { #children of Viserys I Targaryen by his Hightower wife
+485: 			limit = {
+486: 				OR = {
+487: 					asoiaf_canon_children_Targaryen_65_trigger = yes
+488: 					asoiaf_canon_children_Targaryen_66_trigger = yes
+489: 					asoiaf_canon_children_Targaryen_67_trigger = yes
+490: 					asoiaf_canon_children_Targaryen_68_trigger = yes
+491: 				}
+492: 			}
+493: 			scope:mother = {
+494: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+495: 				asoiaf_assign_marriage_type_flags_effect = yes
+496: 			}
+497: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0602 days = 200 }
+498: 		}
+499: 		if = { #children of Daemon Targaryen (son of Baelon) by his Velaryon wife
+500: 			limit = {
+501: 				OR = {
+502: 					asoiaf_canon_children_Targaryen_69_trigger = yes
+503: 					asoiaf_canon_children_Targaryen_70_trigger = yes
+504: 					asoiaf_canon_children_Targaryen_61_1_trigger = yes
+505: 				}
+506: 			}
+507: 			scope:mother = {
+508: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+509: 				asoiaf_assign_marriage_type_flags_effect = yes
+510: 			}
+511: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0611 days = 200 }
+512: 		}
+513: 		if = { #children of Aegon II Targaryen by his Targaryen wife
+514: 			limit = {
+515: 				OR = {
+516: 					asoiaf_canon_children_Targaryen_71_trigger = yes #only  Jaehaera's trigger for the sake of simplicity
+517: 					asoiaf_canon_children_Targaryen_73_trigger = yes
+518: 				}
+519: 				OR = {
+520: 					scope:mother = { NOT = { has_inactive_trait = asoiaf_Targaryen_63_trait } } #either the mother isn't Rhaenyra at all
+521: 					AND = {
+522: 						scope:mother = { has_inactive_trait = asoiaf_Targaryen_63_trait } #OR the mother IS Rhaenyra, but we have to wait until Visenya is born before Aegon II's kids get to be
+523: 						exists = global_var:asoiaf_canon_children_Targaryen_80_born_variable
+524: 					}
+525: 				}
+526: 			}
+527: 			scope:mother = {
+528: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+529: 				asoiaf_assign_marriage_type_flags_effect = yes
+530: 			}
+531: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0651 days = 200 }
+532: 		}
+533: 		if = { #children of Rhaenyra Targaryen (daughter of Viserys I) by her Strong lover
+534: 			limit = {
+535: 				OR = {
+536: 					asoiaf_canon_children_Targaryen_75_trigger = yes
+537: 					asoiaf_canon_children_Targaryen_76_trigger = yes
+538: 					asoiaf_canon_children_Targaryen_77_trigger = yes
+539: 				}
+540: 			}
+541: 			scope:mother = {
+542: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+543: 				asoiaf_assign_marriage_type_flags_effect = yes
+544: 			}
+545: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0631 days = 200 }
+546: 		}
+547: 		if = { #children of Rhaenyra Targaryen (daughter of Viserys I) by her Targaryen husband
+548: 			limit = {
+549: 				OR = {
+550: 					asoiaf_canon_children_Targaryen_78_trigger = yes
+551: 					asoiaf_canon_children_Targaryen_79_trigger = yes
+552: 					asoiaf_canon_children_Targaryen_80_trigger = yes
+553: 				}
+554: 			}
+555: 			scope:mother = {
+556: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+557: 				asoiaf_assign_marriage_type_flags_effect = yes
+558: 			}
+559: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0632 days = 200 }
+560: 		}
+561: 		if = { #children of Aegon III Targaryen by his Velaryon wife
+562: 			limit = {
+563: 				OR = {
+564: 					asoiaf_canon_children_Targaryen_81_trigger = yes
+565: 					asoiaf_canon_children_Targaryen_82_trigger = yes
+566: 					asoiaf_canon_children_Targaryen_83_trigger = yes
+567: 					asoiaf_canon_children_Targaryen_84_trigger = yes
+568: 					asoiaf_canon_children_Targaryen_85_trigger = yes
+569: 				}
+570: 			}
+571: 			scope:mother = {
+572: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+573: 				asoiaf_assign_marriage_type_flags_effect = yes
+574: 			}
+575: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0781 days = 200 }
+576: 		}
+577: 		if = { #children of Viserys II Targaryen by his Rogare wife
+578: 			limit = {
+579: 				OR = {
+580: 					asoiaf_canon_children_Targaryen_88_trigger = yes
+581: 					asoiaf_canon_children_Targaryen_89_trigger = yes
+582: 					asoiaf_canon_children_Targaryen_90_trigger = yes
+583: 				}
+584: 			}
+585: 			scope:mother = {
+586: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+587: 				asoiaf_assign_marriage_type_flags_effect = yes
+588: 			}
+589: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0791 days = 200 }
+590: 		}
+591: 		if = { #children of Aegon IV Targaryen by his Targaryen wife
+592: 			limit = {
+593: 				OR = {
+594: 					asoiaf_canon_children_Targaryen_91_trigger = yes
+595: 					asoiaf_canon_children_Targaryen_134_trigger = yes
+596: 					asoiaf_canon_children_Targaryen_132_trigger = yes #only using Viserys' trigger for the sake of simplicity
+597: 					asoiaf_canon_children_Targaryen_92_trigger = yes #only using Daenerys' trigger for the sake of simplicity
+598: 					asoiaf_canon_children_Targaryen_135_trigger = yes
+599: 				}
+600: 			}
+601: 			scope:mother = {
+602: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+603: 				asoiaf_assign_marriage_type_flags_effect = yes
+604: 			}
+605: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0881 days = 200 }
+606: 		}
+607: 		if = { #children of Aegon IV Targaryen by his lowborn lover
+608: 			limit = {
+609: 				OR = {
+610: 					asoiaf_canon_children_Targaryen_98_trigger = yes
+611: 					asoiaf_canon_children_Targaryen_99_trigger = yes
+612: 					asoiaf_canon_children_Targaryen_100_trigger = yes
+613: 					asoiaf_canon_children_Targaryen_101_trigger = yes
+614: 				}
+615: 			}
+616: 			scope:mother = {
+617: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+618: 				asoiaf_assign_marriage_type_flags_effect = yes
+619: 			}
+620: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0882 days = 200 }
+621: 		}
+622: 		if = { #children of Aegon IV Targaryen by his Summer Islander lover
+623: 			limit = {
+624: 				OR = {
+625: 					asoiaf_canon_children_Targaryen_102_trigger = yes
+626: 					asoiaf_canon_children_Targaryen_103_trigger = yes
+627: 					asoiaf_canon_children_Targaryen_104_trigger = yes
+628: 				}
+629: 			}
+630: 			scope:mother = {
+631: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+632: 				asoiaf_assign_marriage_type_flags_effect = yes
+633: 			}
+634: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0883 days = 200 }
+635: 		}
+636: 		if = { #children of Aegon IV Targaryen by his Targaryen lover
+637: 			limit = { asoiaf_canon_children_Targaryen_94_trigger = yes }
+638: 			scope:mother = {
+639: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+640: 				asoiaf_assign_marriage_type_flags_effect = yes
+641: 			}
+642: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0884 days = 200 }
+643: 		}
+644: 		if = { #children of Daeron II Targaryen by his Martell wife
+645: 			limit = {
+646: 				OR = {
+647: 					asoiaf_canon_children_Targaryen_107_trigger = yes
+648: 					asoiaf_canon_children_Targaryen_108_trigger = yes
+649: 					asoiaf_canon_children_Targaryen_109_trigger = yes
+650: 					asoiaf_canon_children_Targaryen_110_trigger = yes
+651: 				}
+652: 			}
+653: 			scope:mother = {
+654: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+655: 				asoiaf_assign_marriage_type_flags_effect = yes
+656: 			}
+657: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0911 days = 200 }
+658: 		}
+659: 		if = { #children of Baelor Targaryen (son of Daeron II) by his Dondarrion wife
+660: 			limit = {
+661: 				OR = {
+662: 					asoiaf_canon_children_Targaryen_111_trigger = yes
+663: 					asoiaf_canon_children_Targaryen_112_trigger = yes
+664: 				}
+665: 			}
+666: 			scope:mother = {
+667: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+668: 				asoiaf_assign_marriage_type_flags_effect = yes
+669: 			}
+670: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.1071 days = 200 }
+671: 		}
+672: 		if = { #children of Valarr Targaryen (son of Baelor) by his Tyroshi wife
+673: 			limit = {
+674: 				OR = {
+675: 					asoiaf_canon_children_Targaryen_113_trigger = yes
+676: 					asoiaf_canon_children_Targaryen_114_trigger = yes
+677: 				}
+678: 			}
+679: 			scope:mother = {
+680: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+681: 				asoiaf_assign_marriage_type_flags_effect = yes
+682: 			}
+683: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.1111 days = 200 }
+684: 		}
+685: 		if = { #children of Rhaegel Targaryen (son of Daeron II) by his Arryn wife
+686: 			limit = {
+687: 				OR = {
+688: 					asoiaf_canon_children_Targaryen_115_trigger = yes #only Aelor's trigger for the sake of simplicity
+689: 					asoiaf_canon_children_Targaryen_117_trigger = yes
+690: 				}
+691: 			}
+692: 			scope:mother = {
+693: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+694: 				asoiaf_assign_marriage_type_flags_effect = yes
+695: 			}
+696: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.1091 days = 200 }
+697: 		}
+698: 		if = { #children of Maekar I Targaryen by his Dayne wife
+699: 			limit = {
+700: 				OR = {
+701: 					asoiaf_canon_children_Targaryen_118_trigger = yes
+702: 					asoiaf_canon_children_Targaryen_119_trigger = yes
+703: 					asoiaf_canon_children_Targaryen_120_trigger = yes
+704: 					asoiaf_canon_children_Targaryen_121_trigger = yes
+705: 					asoiaf_canon_children_Targaryen_122_trigger = yes
+706: 					asoiaf_canon_children_Targaryen_123_trigger = yes
+707: 				}
+708: 			}
+709: 			scope:mother = {
+710: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+711: 				asoiaf_assign_marriage_type_flags_effect = yes
+712: 			}
+713: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.1101 days = 200 }
+714: 		}
+715: 		if = { #children of Daeron Targaryen (son of Maekar I) by his Tyroshi wife
+716: 			limit = {
+717: 				asoiaf_canon_children_Targaryen_124_trigger = yes
+718: 			}
+719: 			scope:mother = {
+720: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+721: 				asoiaf_assign_marriage_type_flags_effect = yes
+722: 			}
+723: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.1181 days = 200 }
+724: 		}
+725: 		if = { #children of Aerion Targaryen (son of Maekar I) by his Targaryen wife
+726: 			limit = {
+727: 				asoiaf_canon_children_Targaryen_125_trigger = yes
+728: 			}
+729: 			scope:mother = {
+730: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+731: 				asoiaf_assign_marriage_type_flags_effect = yes
+732: 			}
+733: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.1191 days = 200 }
+734: 		}
+735: 		if = { #children of Aerys V Targaryen by his Blackwood wife
+736: 			limit = {
+737: 				OR = {
+738: 					asoiaf_canon_children_Targaryen_126_trigger = yes
+739: 					asoiaf_canon_children_Targaryen_127_trigger = yes
+740: 					asoiaf_canon_children_Targaryen_128_trigger = yes
+741: 					asoiaf_canon_children_Targaryen_129_trigger = yes
+742: 					asoiaf_canon_children_Targaryen_130_trigger = yes
+743: 				}
+744: 			}
+745: 			scope:mother = {
+746: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+747: 				asoiaf_assign_marriage_type_flags_effect = yes
+748: 			}
+749: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.1221 days = 200 }
+750: 		}
+751: 		if = { #children of Jaehaerys II Targaryen by his Targaryen wife
+752: 			limit = {
+753: 				OR = {
+754: 					asoiaf_canon_children_Targaryen_1_trigger = yes
+755: 					asoiaf_canon_children_Targaryen_2_trigger = yes
+756: 				}
+757: 			}
+758: 			scope:mother = {
+759: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+760: 				asoiaf_assign_marriage_type_flags_effect = yes
+761: 			}
+762: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.1271 days = 200 }
+763: 		}
+764: 		if = { #children of Aerys II Targaryen by his Targaryen wife
+765: 			limit = {
+766: 				OR = {
+767: 					asoiaf_canon_children_Targaryen_3_trigger = yes
+768: 					asoiaf_canon_children_Targaryen_4_trigger = yes
+769: 					asoiaf_canon_children_Targaryen_5_trigger = yes
+770: 					asoiaf_canon_children_Targaryen_6_trigger = yes
+771: 					asoiaf_canon_children_Targaryen_7_trigger = yes
+772: 					asoiaf_canon_children_Targaryen_8_trigger = yes
+773: 					asoiaf_canon_children_Targaryen_9_trigger = yes
+774: 				}
+775: 			}
+776: 			scope:mother = {
+777: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+778: 				asoiaf_assign_marriage_type_flags_effect = yes
+779: 			}
+780: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0011 days = 200 }
+781: 		}
+782: 		if = { #children of Rhaegar Targaryen (son of Aerys II) by his Martell wife
+783: 			limit = {
+784: 				OR = {
+785: 					asoiaf_canon_children_Targaryen_10_trigger = yes
+786: 					asoiaf_canon_children_Targaryen_11_trigger = yes
+787: 				}
+788: 			}
+789: 			scope:mother = {
+790: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+791: 				asoiaf_assign_marriage_type_flags_effect = yes
+792: 			}
+793: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0031 days = 200 }
+794: 		}
+795: 		if = { #children of Rhaegar Targaryen (son of Aerys II) by his Stark lover
+796: 			limit = { asoiaf_canon_children_Stark_7_trigger = yes }
+797: 			scope:mother = {
+798: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+799: 				asoiaf_assign_marriage_type_flags_effect = yes
+800: 			}
+801: 			trigger_event = { id = asoiaf_canon_children_targaryen_events.0032 days = 200 }
+802: 		}
+803: 		if = { #children of Corlys Velaryon (the Sea Snake) by his Targaryen wife
+804: 			limit = {
+805: 				OR = {
+806: 					asoiaf_canon_children_Velaryon_34_trigger = yes
+807: 					asoiaf_canon_children_Velaryon_35_trigger = yes
+808: 				}
+809: 			}
+810: 			scope:mother = {
+811: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+812: 				asoiaf_assign_marriage_type_flags_effect = yes
+813: 			}
+814: 			trigger_event = { id = asoiaf_canon_children_velaryon_events.3101 days = 200 }
+815: 		}
+816: 		if = { #children of Corlys Velaryon (the Sea Snake) by his lowborn lover
+817: 			limit = {
+818: 				OR = {
+819: 					asoiaf_canon_children_Velaryon_43_trigger = yes
+820: 					asoiaf_canon_children_Velaryon_44_trigger = yes
+821: 				}
+822: 			}
+823: 			scope:mother = {
+824: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+825: 				asoiaf_assign_marriage_type_flags_effect = yes
+826: 			}
+827: 			trigger_event = { id = asoiaf_canon_children_velaryon_events.3102 days = 200 }
+828: 		}
+829: 		if = { #children of Doran Martell (son of Loreza) by his Norvoshi wife
+830: 			limit = {
+831: 				OR = {
+832: 					asoiaf_canon_children_Martell_9_trigger = yes
+833: 					asoiaf_canon_children_Martell_10_trigger = yes
+834: 					asoiaf_canon_children_Martell_11_trigger = yes
+835: 				}
+836: 			}
+837: 			scope:mother = {
+838: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+839: 				asoiaf_assign_marriage_type_flags_effect = yes
+840: 			}
+841: 			trigger_event = { id = asoiaf_canon_children_martell_events.401 days = 200 }
+842: 		}
+843: 		if = { #children of Beric Dayne (son of Davos) by his Dornish wife
+844: 			limit = {
+845: 				OR = {
+846: 					asoiaf_canon_children_Dayne_3_trigger = yes
+847: 					asoiaf_canon_children_Dayne_5_trigger = yes
+848: 					asoiaf_canon_children_Dayne_4_trigger = yes
+849: 					asoiaf_canon_children_Dayne_6_trigger = yes
+850: 				}
+851: 			}
+852: 			scope:mother = {
+853: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+854: 				asoiaf_assign_marriage_type_flags_effect = yes
+855: 			}
+856: 			trigger_event = { id = asoiaf_canon_children_dayne_events.101 days = 200 }
+857: 		}
+858: 		if = { #children of Ulrick Dayne (son of Beric) by his Dornish wife
+859: 			limit = {
+860: 				asoiaf_canon_children_Dayne_7_trigger = yes
+861: 			}
+862: 			scope:mother = {
+863: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+864: 				asoiaf_assign_marriage_type_flags_effect = yes
+865: 			}
+866: 			trigger_event = { id = asoiaf_canon_children_dayne_events.301 days = 200 }
+867: 		}
+868: 		if = { #children of Hoster Tully (son of Luthor) by his Whent wife
+869: 			limit = {
+870: 				OR = {
+871: 					asoiaf_canon_children_Tully_2_trigger = yes
+872: 					asoiaf_canon_children_Tully_3_trigger = yes
+873: 					asoiaf_canon_children_Tully_4_trigger = yes
+874: 					asoiaf_canon_children_Tully_6_trigger = yes
+875: 					asoiaf_canon_children_Tully_7_trigger = yes
+876: 					asoiaf_canon_children_Tully_8_trigger = yes
+877: 				}
+878: 			}
+879: 			scope:mother = {
+880: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+881: 				asoiaf_assign_marriage_type_flags_effect = yes
+882: 			}
+883: 			trigger_event = { id = asoiaf_canon_children_tully_events.101 days = 200 }
+884: 		}
+885: 		if = { #children of Lyonel Strong (son of Osmund) by his lowborn lover
+886: 			limit = { asoiaf_canon_children_Strong_34_trigger = yes }
+887: 			scope:mother = {
+888: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+889: 				asoiaf_assign_marriage_type_flags_effect = yes
+890: 			}
+891: 			trigger_event = { id = asoiaf_canon_children_strong_events.2901 days = 200 }
+892: 		}
+893: 		if = { #children of Lyonel Strong (son of Osmund) by his Riverlander wife
+894: 			limit = {
+895: 				OR = {
+896: 					asoiaf_canon_children_Strong_30_trigger = yes
+897: 					asoiaf_canon_children_Strong_31_trigger = yes
+898: 					asoiaf_canon_children_Strong_32_trigger = yes
+899: 					asoiaf_canon_children_Strong_33_trigger = yes
+900: 				}
+901: 			}
+902: 			scope:mother = {
+903: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+904: 				asoiaf_assign_marriage_type_flags_effect = yes
+905: 			}
+906: 			trigger_event = { id = asoiaf_canon_children_strong_events.2902 days = 200 }
+907: 		}
+908: 		if = { #children of Balon Greyjoy (son of Quellon) by his Harlaw wife
+909: 			limit = {
+910: 				OR = {
+911: 					asoiaf_canon_children_Greyjoy_11_trigger = yes
+912: 					asoiaf_canon_children_Greyjoy_12_trigger = yes
+913: 					asoiaf_canon_children_Greyjoy_13_trigger = yes
+914: 					asoiaf_canon_children_Greyjoy_14_trigger = yes
+915: 				}
+916: 			}
+917: 			scope:mother = {
+918: 				asoiaf_clear_bad_pregnancy_flags_effect = yes
+919: 				asoiaf_assign_marriage_type_flags_effect = yes
+920: 			}
+921: 			trigger_event = { id = asoiaf_canon_children_greyjoy_events.0051 days = 200 }
+922: 		}
+923: 	}
+924: }
+925: 
+926: on_birth_mother = {
+927: 	on_actions = {
+928: 		asoiaf_canon_children_maegor_children_deformation
+929: 		asoiaf_rhaenyra_personality_change
+930: 	}
+931: }
+932: 
+933: asoiaf_canon_children_maegor_children_deformation = {
+934: 	effect = {
+935: 		if = {
+936: 			limit = { asoiaf_canon_children_maegor_children_trigger = yes }
+937: 			asoiaf_canon_children_maegor_children_birth_effect = yes
+938: 		}
+939: 	}
+940: }
+941: asoiaf_rhaenyra_personality_change = {
+942: 	effect = {
+943: 		if = {
+944: 			limit = { asoiaf_canon_children_Targaryen_63_personality_change_trigger = yes }
+945: 			asoiaf_canon_children_Targaryen_63_personality_change_effect = yes
+946: 		}
+947: 	}
+948: }
+949: 
+950: # called for the newborn child
+951: # scope:child is the new born character
+952: # scope:mother is the pregnant mother
+953: # scope:father is the family father (not the biological)
+954: # scope:real_father is the biological father
+955: # scope:is_bastard, true if a known bastard
+956: on_birth_child = {
+957: 	on_actions = {
+958: 		asoiaf_robert_targaryen_grudge
+959: 		asoiaf_ramsay_sibling_grudge
+960: 	}
+961: }
+962: 
+963: asoiaf_robert_targaryen_grudge = {
+964: 	trigger = {
+965: 		character:Baratheon_2 ?= { #Robert I Baratheon (HISTORICAL version)
+966: 			is_alive = yes
+967: 			any_killed_character = { #this is AFTER Robert's killed Rhaegar and vowed vengence on all Targaryens
+968: 				this = character:Targaryen_3 #Rhaegar Targaryen (son of Aerys II)
+969: 			}
+970: 		}
+971: 		scope:child.house = dynasty:dynn_Targaryen.dynasty_founder.house #newborn is a proper Targaryen
+972: 		asoiaf_historical_trigger = yes #only on historical game modes, so there's a bit of variety in other games
+973: 	}
+974: 	effect = {
+975: 		character:Baratheon_2 ?= { set_relation_grudge = { reason = asoiaf_robert_targaryen_grudge_desc target = scope:child } }
+976: 	}
+977: }
+978: 
+979: asoiaf_ramsay_sibling_grudge = {
+980: 	trigger = {
+981: 		character:Bolton_5 ?= {
+982: 			is_alive = yes #Ramsay is alive
+983: 			dynasty ?= dynasty:dynn_Bolton #Ramsay is acknowledged
+984: 		}
+985: 		scope:father = character:Bolton_1 #father of the born child is Roose Bolton
+986: 		character:Bolton_1 ?= { is_landed = yes } #if House Bolton was attainted then Ramsay has no reason to fear for his inheritance
+987: 		AND = {
+988: 			asoiaf_historical_trigger = yes #only on historical game modes, so there's a bit of variety in other games
+989: 			character:Bolton_5 ?= { #Ramsay has the personality to hold these kinds of grudges (which will inevitably lead to assassination attempts)
+990: 				has_trait = sadistic
+991: 				has_trait = ambitious
+992: 			}
+993: 		}
+994: 		scope:child = { is_alive = yes } #not stillborn
+995: 	}
+996: 	effect = {
+997: 		character:Bolton_5 ?= { set_relation_grudge = { reason = asoiaf_ramsay_sibling_grudge_desc target = scope:child } }
+998: 	}
+999: }
+
+# events/asoiaf_canon_children_events/asoiaf_canon_children_targaryen_events.txt
+# Effective provider: AGOT+
+# SHA256: 0732DD3EAF17C77AC2482EC0F6D305941DF4DEDCB32718F5FDCF2F37FAEBBF0E
+1: namespace = asoiaf_canon_children_targaryen_events
+2: 
+3: asoiaf_canon_children_targaryen_events.6000 = {
+4: 	type = character_event
+5: 	hidden = yes
+6: 	
+7: 	immediate = {
+8: 		scope:child = {
+9: 			if = {
+10: 				limit = { asoiaf_historical_trigger = yes }
+11: 				add_trait = ill
+12: 				death = { death_reason = death_ill }
+13: 			}
+14: 		}
+15: 	}
+16: }
+17: 
+18: asoiaf_canon_children_targaryen_events.0271 = { #children of Aegon I Targaryen by his Targaryen wives
+19: 	type = character_event
+20: 	hidden = yes
+21: 	
+22: 	immediate = {
+23: 		if = {
+24: 			limit = {
+25: 				asoiaf_canon_children_Targaryen_31_trigger = yes
+26: 				scope:mother = { has_trait = pregnant }
+27: 			}
+28: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+29: 			asoiaf_canon_children_Targaryen_31_birth_effect = yes
+30: 		}
+31: 		if = {
+32: 			limit = {
+33: 				asoiaf_canon_children_Targaryen_30_trigger = yes
+34: 				scope:mother = { has_trait = pregnant }
+35: 			}
+36: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+37: 			asoiaf_canon_children_Targaryen_30_birth_effect = yes
+38: 		}
+39: 	}
+40: }
+41: 
+42: asoiaf_canon_children_targaryen_events.0301 = { #children of Aenys I Targaryen by his Velaryon wife
+43: 	type = character_event
+44: 	hidden = yes
+45: 	
+46: 	immediate = {
+47: 		if = {
+48: 			limit = {
+49: 				asoiaf_canon_children_Targaryen_37_trigger = yes
+50: 				scope:mother = { has_trait = pregnant }
+51: 			}
+52: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+53: 			asoiaf_canon_children_Targaryen_37_birth_effect = yes
+54: 		}
+55: 		if = {
+56: 			limit = {
+57: 				asoiaf_canon_children_Targaryen_36_trigger = yes
+58: 				scope:mother = { has_trait = pregnant }
+59: 			}
+60: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+61: 			asoiaf_canon_children_Targaryen_36_birth_effect = yes
+62: 		}
+63: 		if = {
+64: 			limit = {
+65: 				asoiaf_canon_children_Targaryen_35_trigger = yes
+66: 				scope:mother = { has_trait = pregnant }
+67: 			}
+68: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+69: 			asoiaf_canon_children_Targaryen_35_birth_effect = yes
+70: 		}
+71: 		if = {
+72: 			limit = {
+73: 				asoiaf_canon_children_Targaryen_34_trigger = yes
+74: 				scope:mother = { has_trait = pregnant }
+75: 			}
+76: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+77: 			asoiaf_canon_children_Targaryen_34_birth_effect = yes
+78: 		}
+79: 		if = {
+80: 			limit = {
+81: 				asoiaf_canon_children_Targaryen_33_trigger = yes
+82: 				scope:mother = { has_trait = pregnant }
+83: 			}
+84: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+85: 			asoiaf_canon_children_Targaryen_33_birth_effect = yes
+86: 		}
+87: 		if = {
+88: 			limit = {
+89: 				asoiaf_canon_children_Targaryen_32_trigger = yes
+90: 				scope:mother = { has_trait = pregnant }
+91: 			}
+92: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+93: 			asoiaf_canon_children_Targaryen_32_birth_effect = yes
+94: 		}
+95: 	}
+96: }
+97: 
+98: asoiaf_canon_children_targaryen_events.0311 = { #children of Maegor I Targaryen by his Harroway wife
+99: 	type = character_event
+100: 	hidden = yes
+101: 	
+102: 	immediate = {
+103: 		if = {
+104: 			limit = {
+105: 				asoiaf_canon_children_Targaryen_38_trigger = yes
+106: 				scope:mother = { has_trait = pregnant }
+107: 			}
+108: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+109: 			asoiaf_canon_children_Targaryen_38_birth_effect = yes
+110: 		}
+111: 	}
+112: }
+113: 
+114: asoiaf_canon_children_targaryen_events.0312 = { #children of Maegor I Targaryen by his Westerling wife
+115: 	type = character_event
+116: 	hidden = yes
+117: 	
+118: 	immediate = {
+119: 		if = {
+120: 			limit = {
+121: 				asoiaf_canon_children_Targaryen_40_trigger = yes
+122: 				scope:mother = { has_trait = pregnant }
+123: 			}
+124: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+125: 			asoiaf_canon_children_Targaryen_40_birth_effect = yes
+126: 		}
+127: 	}
+128: }
+129: 
+130: asoiaf_canon_children_targaryen_events.0313 = { #children of Maegor I Targaryen by his Costayne wife
+131: 	type = character_event
+132: 	hidden = yes
+133: 	
+134: 	immediate = {
+135: 		if = {
+136: 			limit = {
+137: 				asoiaf_canon_children_Targaryen_39_trigger = yes
+138: 				scope:mother = { has_trait = pregnant }
+139: 			}
+140: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+141: 			asoiaf_canon_children_Targaryen_39_birth_effect = yes
+142: 		}
+143: 	}
+144: }
+145: 
+146: asoiaf_canon_children_targaryen_events.0331 = { #children of Aegon Targaryen (son of Aenys I) by his Targaryen wife
+147: 	type = character_event
+148: 	hidden = yes
+149: 	
+150: 	immediate = {
+151: 		if = {
+152: 			limit = {
+153: 				asoiaf_canon_children_Targaryen_41_trigger = yes
+154: 				scope:mother = { has_trait = pregnant }
+155: 			}
+156: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+157: 			asoiaf_canon_children_Targaryen_41_and_42_birth_effect = yes
+158: 		}
+159: 	}
+160: }
+161: 
+162: asoiaf_canon_children_targaryen_events.0351 = { #children of Jaehaerys I Targaryen by his Targaryen wife
+163: 	type = character_event
+164: 	hidden = yes
+165: 	
+166: 	immediate = {
+167: 		if = {
+168: 			limit = {
+169: 				asoiaf_canon_children_Targaryen_55_trigger = yes
+170: 				scope:mother = { has_trait = pregnant }
+171: 			}
+172: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+173: 			asoiaf_canon_children_Targaryen_55_birth_effect = yes
+174: 		}
+175: 		if = {
+176: 			limit = {
+177: 				asoiaf_canon_children_Targaryen_54_trigger = yes
+178: 				scope:mother = { has_trait = pregnant }
+179: 			}
+180: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+181: 			asoiaf_canon_children_Targaryen_54_birth_effect = yes
+182: 		}
+183: 		if = {
+184: 			limit = {
+185: 				asoiaf_canon_children_Targaryen_53_trigger = yes
+186: 				scope:mother = { has_trait = pregnant }
+187: 			}
+188: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+189: 			asoiaf_canon_children_Targaryen_53_birth_effect = yes
+190: 		}
+191: 		if = {
+192: 			limit = {
+193: 				asoiaf_canon_children_Targaryen_52_trigger = yes
+194: 				scope:mother = { has_trait = pregnant }
+195: 			}
+196: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+197: 			asoiaf_canon_children_Targaryen_52_birth_effect = yes
+198: 		}
+199: 		if = {
+200: 			limit = {
+201: 				asoiaf_canon_children_Targaryen_51_trigger = yes
+202: 				scope:mother = { has_trait = pregnant }
+203: 			}
+204: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+205: 			asoiaf_canon_children_Targaryen_51_birth_effect = yes
+206: 		}
+207: 		if = {
+208: 			limit = {
+209: 				asoiaf_canon_children_Targaryen_50_trigger = yes
+210: 				scope:mother = { has_trait = pregnant }
+211: 			}
+212: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+213: 			asoiaf_canon_children_Targaryen_50_birth_effect = yes
+214: 		}
+215: 		if = {
+216: 			limit = {
+217: 				asoiaf_canon_children_Targaryen_49_trigger = yes
+218: 				scope:mother = { has_trait = pregnant }
+219: 			}
+220: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+221: 			asoiaf_canon_children_Targaryen_49_birth_effect = yes
+222: 		}
+223: 		if = {
+224: 			limit = {
+225: 				asoiaf_canon_children_Targaryen_48_trigger = yes
+226: 				scope:mother = { has_trait = pregnant }
+227: 			}
+228: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+229: 			asoiaf_canon_children_Targaryen_48_birth_effect = yes
+230: 		}
+231: 		if = {
+232: 			limit = {
+233: 				asoiaf_canon_children_Targaryen_47_trigger = yes
+234: 				scope:mother = { has_trait = pregnant }
+235: 			}
+236: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+237: 			asoiaf_canon_children_Targaryen_47_birth_effect = yes
+238: 		}
+239: 		if = {
+240: 			limit = {
+241: 				asoiaf_canon_children_Targaryen_46_trigger = yes
+242: 				scope:mother = { has_trait = pregnant }
+243: 			}
+244: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+245: 			asoiaf_canon_children_Targaryen_46_birth_effect = yes
+246: 		}
+247: 		if = {
+248: 			limit = {
+249: 				asoiaf_canon_children_Targaryen_45_trigger = yes
+250: 				scope:mother = { has_trait = pregnant }
+251: 			}
+252: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+253: 			asoiaf_canon_children_Targaryen_45_birth_effect = yes
+254: 		}
+255: 		if = {
+256: 			limit = {
+257: 				asoiaf_canon_children_Targaryen_44_trigger = yes
+258: 				scope:mother = { has_trait = pregnant }
+259: 			}
+260: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+261: 			asoiaf_canon_children_Targaryen_44_birth_effect = yes
+262: 		}
+263: 		if = {
+264: 			limit = {
+265: 				asoiaf_canon_children_Targaryen_43_trigger = yes
+266: 				scope:mother = { has_trait = pregnant }
+267: 			}
+268: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+269: 			asoiaf_canon_children_Targaryen_43_birth_effect = yes
+270: 		}
+271: 	}
+272: }
+273: 
+274: asoiaf_canon_children_targaryen_events.0551 = { #children of Gael Targaryen (daughter of Jaehaerys I) by her lowborn lover
+275: 	type = character_event
+276: 	hidden = yes
+277: 	
+278: 	immediate = {
+279: 		if = {
+280: 			limit = {
+281: 				asoiaf_canon_children_Targaryen_55_1_trigger = yes
+282: 				scope:mother = { has_trait = pregnant }
+283: 			}
+284: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+285: 			asoiaf_canon_children_Targaryen_55_1_birth_effect = yes
+286: 		}
+287: 	}
+288: }
+289: 
+290: asoiaf_canon_children_targaryen_events.0511 = { #children of Saera Targaryen (daughter of Jaehaerys I) by a Lyseni
+291: 	type = character_event
+292: 	hidden = yes
+293: 	
+294: 	immediate = {
+295: 		if = {
+296: 			limit = {
+297: 				asoiaf_canon_children_Targaryen_57_trigger = yes
+298: 				scope:mother = { has_trait = pregnant }
+299: 			}
+300: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+301: 			asoiaf_canon_children_Targaryen_57_birth_effect = yes
+302: 		}
+303: 		if = {
+304: 			limit = {
+305: 				asoiaf_canon_children_Targaryen_56_trigger = yes
+306: 				scope:mother = { has_trait = pregnant }
+307: 			}
+308: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+309: 			asoiaf_canon_children_Targaryen_56_birth_effect = yes
+310: 		}
+311: 	}
+312: }
+313: 
+314: asoiaf_canon_children_targaryen_events.0512 = { #children of Saera Targaryen (daughter of Jaehaerys I) by a Volantene
+315: 	type = character_event
+316: 	hidden = yes
+317: 	
+318: 	immediate = {
+319: 		if = {
+320: 			limit = {
+321: 				asoiaf_canon_children_Targaryen_58_trigger = yes
+322: 				scope:mother = { has_trait = pregnant }
+323: 			}
+324: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+325: 			asoiaf_canon_children_Targaryen_58_birth_effect = yes
+326: 		}
+327: 	}
+328: }
+329: 
+330: asoiaf_canon_children_targaryen_events.0513 = { #children of Saera Targaryen (daughter of Jaehaerys I) by an Andal
+331: 	type = character_event
+332: 	hidden = yes
+333: 	
+334: 	immediate = {
+335: 		if = {
+336: 			limit = {
+337: 				asoiaf_canon_children_Hammer_1_trigger = yes
+338: 				scope:mother = { has_trait = pregnant }
+339: 			}
+340: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+341: 			asoiaf_canon_children_Hammer_1_birth_effect = yes
+342: 		}
+343: 	}
+344: }
+345: 
+346: asoiaf_canon_children_targaryen_events.0514 = { #children of Hugh Hammer by his Sand Dornish wife
+347: 	type = character_event
+348: 	hidden = yes
+349: 	
+350: 	immediate = {
+351: 		if = {
+352: 			limit = {
+353: 				asoiaf_canon_children_Hammer_2_trigger = yes
+354: 				scope:mother = { has_trait = pregnant }
+355: 			}
+356: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+357: 			asoiaf_canon_children_Hammer_2_birth_effect = yes
+358: 		}
+359: 	}
+360: }
+361: 
+362: asoiaf_canon_children_targaryen_events.0451 = { #children of Aemon Targaryen (son of Jaehaerys I) by his Baratheon wife
+363: 	type = character_event
+364: 	hidden = yes
+365: 	
+366: 	immediate = {
+367: 		if = {
+368: 			limit = {
+369: 				asoiaf_canon_children_Targaryen_59_trigger = yes
+370: 				scope:mother = { has_trait = pregnant }
+371: 			}
+372: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+373: 			asoiaf_canon_children_Targaryen_59_birth_effect = yes
+374: 		}
+375: 	}
+376: }
+377: 
+378: asoiaf_canon_children_targaryen_events.0461 = { #children of Baelon Targaryen (son of Jaehaerys I) by his Targaryen wife
+379: 	type = character_event
+380: 	hidden = yes
+381: 	
+382: 	immediate = {
+383: 		if = {
+384: 			limit = {
+385: 				asoiaf_canon_children_Targaryen_62_trigger = yes
+386: 				scope:mother = { has_trait = pregnant }
+387: 			}
+388: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+389: 			asoiaf_canon_children_Targaryen_62_birth_effect = yes
+390: 		}
+391: 		if = {
+392: 			limit = {
+393: 				asoiaf_canon_children_Targaryen_61_trigger = yes
+394: 				scope:mother = { has_trait = pregnant }
+395: 			}
+396: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+397: 			asoiaf_canon_children_Targaryen_61_birth_effect = yes
+398: 		}
+399: 		if = {
+400: 			limit = {
+401: 				asoiaf_canon_children_Targaryen_60_trigger = yes
+402: 				scope:mother = { has_trait = pregnant }
+403: 			}
+404: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+405: 			asoiaf_canon_children_Targaryen_60_birth_effect = yes
+406: 		}
+407: 	}
+408: }
+409: 
+410: asoiaf_canon_children_targaryen_events.0601 = { #children of Viserys I Targaryen by his Arryn wife
+411: 	type = character_event
+412: 	hidden = yes
+413: 	
+414: 	immediate = {
+415: 		if = {
+416: 			limit = {
+417: 				asoiaf_canon_children_Targaryen_64_trigger = yes
+418: 				scope:mother = { has_trait = pregnant }
+419: 			}
+420: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+421: 			asoiaf_canon_children_Targaryen_64_birth_effect = yes
+422: 		}
+423: 		if = {
+424: 			limit = {
+425: 				asoiaf_canon_children_Targaryen_63_trigger = yes
+426: 				scope:mother = { has_trait = pregnant }
+427: 			}
+428: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+429: 			asoiaf_canon_children_Targaryen_63_birth_effect = yes
+430: 		}
+431: 		if = {
+432: 			limit = {
+433: 				asoiaf_canon_children_Targaryen_131_trigger = yes
+434: 				scope:mother = { has_trait = pregnant }
+435: 			}
+436: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+437: 			asoiaf_canon_children_Targaryen_131_birth_effect = yes
+438: 		}
+439: 	}
+440: }
+441: 
+442: asoiaf_canon_children_targaryen_events.0602 = { #children of Viserys I Targaryen by his Hightower wife
+443: 	type = character_event
+444: 	hidden = yes
+445: 	
+446: 	immediate = {
+447: 		if = {
+448: 			limit = {
+449: 				asoiaf_canon_children_Targaryen_68_trigger = yes
+450: 				scope:mother = { has_trait = pregnant }
+451: 			}
+452: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+453: 			asoiaf_canon_children_Targaryen_68_birth_effect = yes
+454: 		}
+455: 		if = {
+456: 			limit = {
+457: 				asoiaf_canon_children_Targaryen_67_trigger = yes
+458: 				scope:mother = { has_trait = pregnant }
+459: 			}
+460: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+461: 			asoiaf_canon_children_Targaryen_67_birth_effect = yes
+462: 		}
+463: 		if = {
+464: 			limit = {
+465: 				asoiaf_canon_children_Targaryen_66_trigger = yes
+466: 				scope:mother = { has_trait = pregnant }
+467: 			}
+468: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+469: 			asoiaf_canon_children_Targaryen_66_birth_effect = yes
+470: 		}
+471: 		if = {
+472: 			limit = {
+473: 				asoiaf_canon_children_Targaryen_65_trigger = yes
+474: 				scope:mother = { has_trait = pregnant }
+475: 			}
+476: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+477: 			asoiaf_canon_children_Targaryen_65_birth_effect = yes
+478: 		}
+479: 	}
+480: }
+481: 
+482: asoiaf_canon_children_targaryen_events.0611 = { #children of Daemon Targaryen (son of Baelon) by his Velaryon wife
+483: 	type = character_event
+484: 	hidden = yes
+485: 	
+486: 	immediate = {
+487: 		if = {
+488: 			limit = {
+489: 				asoiaf_canon_children_Targaryen_61_1_trigger = yes
+490: 				scope:mother = { has_trait = pregnant }
+491: 			}
+492: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+493: 			asoiaf_canon_children_Targaryen_61_1_birth_effect = yes
+494: 		}
+495: 		if = {
+496: 			limit = {
+497: 				asoiaf_canon_children_Targaryen_70_trigger = yes
+498: 				scope:mother = { has_trait = pregnant }
+499: 			}
+500: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+501: 			asoiaf_canon_children_Targaryen_70_birth_effect = yes
+502: 		}
+503: 		if = {
+504: 			limit = {
+505: 				asoiaf_canon_children_Targaryen_69_trigger = yes
+506: 				scope:mother = { has_trait = pregnant }
+507: 			}
+508: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+509: 			asoiaf_canon_children_Targaryen_69_birth_effect = yes
+510: 		}
+511: 	}
+512: }
+513: 
+514: asoiaf_canon_children_targaryen_events.0651 = { #children of Aegon II Targaryen by his Targaryen wife
+515: 	type = character_event
+516: 	hidden = yes
+517: 	
+518: 	immediate = {
+519: 		if = {
+520: 			limit = {
+521: 				asoiaf_canon_children_Targaryen_73_trigger = yes
+522: 				scope:mother = { has_trait = pregnant }
+523: 			}
+524: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+525: 			asoiaf_canon_children_Targaryen_73_birth_effect = yes
+526: 		}
+527: 		if = {
+528: 			limit = {
+529: 				asoiaf_canon_children_Targaryen_71_trigger = yes
+530: 				scope:mother = { has_trait = pregnant }
+531: 			}
+532: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+533: 			asoiaf_canon_children_Targaryen_71_and_72_birth_effect = yes
+534: 		}
+535: 	}
+536: }
+537: 
+538: asoiaf_canon_children_targaryen_events.0631 = { #children of Rhaenyra Targaryen (daughter of Viserys I) by a Strong lover
+539: 	type = character_event
+540: 	hidden = yes
+541: 	
+542: 	immediate = {
+543: 		if = {
+544: 			limit = {
+545: 				asoiaf_canon_children_Targaryen_77_trigger = yes
+546: 				scope:mother = { has_trait = pregnant }
+547: 			}
+548: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+549: 			asoiaf_canon_children_Targaryen_77_birth_effect = yes
+550: 		}
+551: 		if = {
+552: 			limit = {
+553: 				asoiaf_canon_children_Targaryen_76_trigger = yes
+554: 				scope:mother = { has_trait = pregnant }
+555: 			}
+556: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+557: 			asoiaf_canon_children_Targaryen_76_birth_effect = yes
+558: 		}
+559: 		if = {
+560: 			limit = {
+561: 				asoiaf_canon_children_Targaryen_75_trigger = yes
+562: 				scope:mother = { has_trait = pregnant }
+563: 			}
+564: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+565: 			asoiaf_canon_children_Targaryen_75_birth_effect = yes
+566: 		}
+567: 	}
+568: }
+569: 
+570: asoiaf_canon_children_targaryen_events.0632 = { #children of Rhaenyra Targaryen (daughter of Viserys I) by her Targaryen husband
+571: 	type = character_event
+572: 	hidden = yes
+573: 	
+574: 	immediate = {
+575: 		if = {
+576: 			limit = {
+577: 				asoiaf_canon_children_Targaryen_80_trigger = yes
+578: 				scope:mother = { has_trait = pregnant }
+579: 			}
+580: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+581: 			asoiaf_canon_children_Targaryen_80_birth_effect = yes
+582: 		}
+583: 		if = {
+584: 			limit = {
+585: 				asoiaf_canon_children_Targaryen_79_trigger = yes
+586: 				scope:mother = { has_trait = pregnant }
+587: 			}
+588: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+589: 			asoiaf_canon_children_Targaryen_79_birth_effect = yes
+590: 		}
+591: 		if = {
+592: 			limit = {
+593: 				asoiaf_canon_children_Targaryen_78_trigger = yes
+594: 				scope:mother = { has_trait = pregnant }
+595: 			}
+596: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+597: 			asoiaf_canon_children_Targaryen_78_birth_effect = yes
+598: 		}
+599: 	}
+600: }
+601: 
+602: asoiaf_canon_children_targaryen_events.0781 = { #children of Aegon III Targaryen by his Velaryon wife
+603: 	type = character_event
+604: 	hidden = yes
+605: 	
+606: 	immediate = {
+607: 		if = {
+608: 			limit = {
+609: 				asoiaf_canon_children_Targaryen_85_trigger = yes
+610: 				scope:mother = { has_trait = pregnant }
+611: 			}
+612: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+613: 			asoiaf_canon_children_Targaryen_85_birth_effect = yes
+614: 		}
+615: 		if = {
+616: 			limit = {
+617: 				asoiaf_canon_children_Targaryen_84_trigger = yes
+618: 				scope:mother = { has_trait = pregnant }
+619: 			}
+620: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+621: 			asoiaf_canon_children_Targaryen_84_birth_effect = yes
+622: 		}
+623: 		if = {
+624: 			limit = {
+625: 				asoiaf_canon_children_Targaryen_83_trigger = yes
+626: 				scope:mother = { has_trait = pregnant }
+627: 			}
+628: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+629: 			asoiaf_canon_children_Targaryen_83_birth_effect = yes
+630: 		}
+631: 		if = {
+632: 			limit = {
+633: 				asoiaf_canon_children_Targaryen_82_trigger = yes
+634: 				scope:mother = { has_trait = pregnant }
+635: 			}
+636: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+637: 			asoiaf_canon_children_Targaryen_82_birth_effect = yes
+638: 		}
+639: 		if = {
+640: 			limit = {
+641: 				asoiaf_canon_children_Targaryen_81_trigger = yes
+642: 				scope:mother = { has_trait = pregnant }
+643: 			}
+644: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+645: 			asoiaf_canon_children_Targaryen_81_birth_effect = yes
+646: 		}
+647: 	}
+648: }
+649: 
+650: asoiaf_canon_children_targaryen_events.0791 = { #children of Viserys II Targaryen by his Rogare wife
+651: 	type = character_event
+652: 	hidden = yes
+653: 	
+654: 	immediate = {
+655: 		if = {
+656: 			limit = {
+657: 				asoiaf_canon_children_Targaryen_90_trigger = yes
+658: 				scope:mother = { has_trait = pregnant }
+659: 			}
+660: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+661: 			asoiaf_canon_children_Targaryen_90_birth_effect = yes
+662: 		}
+663: 		if = {
+664: 			limit = {
+665: 				asoiaf_canon_children_Targaryen_89_trigger = yes
+666: 				scope:mother = { has_trait = pregnant }
+667: 			}
+668: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+669: 			asoiaf_canon_children_Targaryen_89_birth_effect = yes
+670: 		}
+671: 		if = {
+672: 			limit = {
+673: 				asoiaf_canon_children_Targaryen_88_trigger = yes
+674: 				scope:mother = { has_trait = pregnant }
+675: 			}
+676: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+677: 			asoiaf_canon_children_Targaryen_88_birth_effect = yes
+678: 		}
+679: 	}
+680: }
+681: 
+682: asoiaf_canon_children_targaryen_events.0881 = { #children of Aegon IV Targaryen by his Targaryen wife
+683: 	type = character_event
+684: 	hidden = yes
+685: 	
+686: 	immediate = {
+687: 		if = {
+688: 			limit = {
+689: 				asoiaf_canon_children_Targaryen_135_trigger = yes
+690: 				scope:mother = { has_trait = pregnant }
+691: 			}
+692: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+693: 			asoiaf_canon_children_Targaryen_135_birth_effect = yes
+694: 		}
+695: 		if = {
+696: 			limit = {
+697: 				asoiaf_canon_children_Targaryen_92_trigger = yes
+698: 				scope:mother = { has_trait = pregnant }
+699: 			}
+700: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+701: 			asoiaf_canon_children_Targaryen_92_and_93_birth_effect = yes
+702: 		}
+703: 		if = {
+704: 			limit = {
+705: 				asoiaf_canon_children_Targaryen_132_trigger = yes
+706: 				scope:mother = { has_trait = pregnant }
+707: 			}
+708: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+709: 			asoiaf_canon_children_Targaryen_132_and_133_birth_effect = yes
+710: 		}
+711: 		if = {
+712: 			limit = {
+713: 				asoiaf_canon_children_Targaryen_134_trigger = yes
+714: 				scope:mother = { has_trait = pregnant }
+715: 			}
+716: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+717: 			asoiaf_canon_children_Targaryen_134_birth_effect = yes
+718: 		}
+719: 		if = {
+720: 			limit = {
+721: 				asoiaf_canon_children_Targaryen_91_trigger = yes
+722: 				scope:mother = { has_trait = pregnant }
+723: 			}
+724: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+725: 			asoiaf_canon_children_Targaryen_91_birth_effect = yes
+726: 		}
+727: 	}
+728: }
+729: 
+730: asoiaf_canon_children_targaryen_events.0882 = { #children of Aegon IV Targaryen by his lowborn lover
+731: 	type = character_event
+732: 	hidden = yes
+733: 	
+734: 	immediate = {
+735: 		if = {
+736: 			limit = {
+737: 				asoiaf_canon_children_Targaryen_101_trigger = yes
+738: 				scope:mother = { has_trait = pregnant }
+739: 			}
+740: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+741: 			asoiaf_canon_children_Targaryen_101_birth_effect = yes
+742: 		}
+743: 		if = {
+744: 			limit = {
+745: 				asoiaf_canon_children_Targaryen_100_trigger = yes
+746: 				scope:mother = { has_trait = pregnant }
+747: 			}
+748: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+749: 			asoiaf_canon_children_Targaryen_100_birth_effect = yes
+750: 		}
+751: 		if = {
+752: 			limit = {
+753: 				asoiaf_canon_children_Targaryen_99_trigger = yes
+754: 				scope:mother = { has_trait = pregnant }
+755: 			}
+756: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+757: 			asoiaf_canon_children_Targaryen_99_birth_effect = yes
+758: 		}
+759: 		if = {
+760: 			limit = {
+761: 				asoiaf_canon_children_Targaryen_98_trigger = yes
+762: 				scope:mother = { has_trait = pregnant }
+763: 			}
+764: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+765: 			asoiaf_canon_children_Targaryen_98_birth_effect = yes
+766: 		}
+767: 	}
+768: }
+769: 
+770: asoiaf_canon_children_targaryen_events.0883 = { #children of Aegon IV Targaryen by his Summer Islander lover
+771: 	type = character_event
+772: 	hidden = yes
+773: 	
+774: 	immediate = {
+775: 		if = {
+776: 			limit = {
+777: 				asoiaf_canon_children_Targaryen_104_trigger = yes
+778: 				scope:mother = { has_trait = pregnant }
+779: 			}
+780: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+781: 			asoiaf_canon_children_Targaryen_104_birth_effect = yes
+782: 		}
+783: 		if = {
+784: 			limit = {
+785: 				asoiaf_canon_children_Targaryen_103_trigger = yes
+786: 				scope:mother = { has_trait = pregnant }
+787: 			}
+788: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+789: 			asoiaf_canon_children_Targaryen_103_birth_effect = yes
+790: 		}
+791: 		if = {
+792: 			limit = {
+793: 				asoiaf_canon_children_Targaryen_102_trigger = yes
+794: 				scope:mother = { has_trait = pregnant }
+795: 			}
+796: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+797: 			asoiaf_canon_children_Targaryen_102_birth_effect = yes
+798: 		}
+799: 	}
+800: }
+801: 
+802: asoiaf_canon_children_targaryen_events.0884 = { #children of Aegon IV Targaryen by his Targaryen lover
+803: 	type = character_event
+804: 	hidden = yes
+805: 	
+806: 	immediate = {
+807: 		if = {
+808: 			limit = {
+809: 				asoiaf_canon_children_Targaryen_94_trigger = yes
+810: 				scope:mother = { has_trait = pregnant }
+811: 			}
+812: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+813: 			asoiaf_canon_children_Targaryen_94_birth_effect = yes
+814: 		}
+815: 	}
+816: }
+817: 
+818: asoiaf_canon_children_targaryen_events.0911 = { #children of Daeron II Targaryen by his Martell wife
+819: 	type = character_event
+820: 	hidden = yes
+821: 	
+822: 	immediate = {
+823: 		if = {
+824: 			limit = {
+825: 				asoiaf_canon_children_Targaryen_110_trigger = yes
+826: 				scope:mother = { has_trait = pregnant }
+827: 			}
+828: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+829: 			asoiaf_canon_children_Targaryen_110_birth_effect = yes
+830: 		}
+831: 		if = {
+832: 			limit = {
+833: 				asoiaf_canon_children_Targaryen_109_trigger = yes
+834: 				scope:mother = { has_trait = pregnant }
+835: 			}
+836: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+837: 			asoiaf_canon_children_Targaryen_109_birth_effect = yes
+838: 		}
+839: 		if = {
+840: 			limit = {
+841: 				asoiaf_canon_children_Targaryen_108_trigger = yes
+842: 				scope:mother = { has_trait = pregnant }
+843: 			}
+844: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+845: 			asoiaf_canon_children_Targaryen_108_birth_effect = yes
+846: 		}
+847: 		if = {
+848: 			limit = {
+849: 				asoiaf_canon_children_Targaryen_107_trigger = yes
+850: 				scope:mother = { has_trait = pregnant }
+851: 			}
+852: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+853: 			asoiaf_canon_children_Targaryen_107_birth_effect = yes
+854: 		}
+855: 	}
+856: }
+857: 
+858: asoiaf_canon_children_targaryen_events.1071 = { #children of Baelor Targaryen (son of Daeron II) by his Dondarrion wife
+859: 	type = character_event
+860: 	hidden = yes
+861: 	
+862: 	immediate = {
+863: 		if = {
+864: 			limit = {
+865: 				asoiaf_canon_children_Targaryen_112_trigger = yes
+866: 				scope:mother = { has_trait = pregnant }
+867: 			}
+868: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+869: 			asoiaf_canon_children_Targaryen_112_birth_effect = yes
+870: 		}
+871: 		if = {
+872: 			limit = {
+873: 				asoiaf_canon_children_Targaryen_111_trigger = yes
+874: 				scope:mother = { has_trait = pregnant }
+875: 			}
+876: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+877: 			asoiaf_canon_children_Targaryen_111_birth_effect = yes
+878: 		}
+879: 	}
+880: }
+881: 
+882: asoiaf_canon_children_targaryen_events.1111 = { #children of Valarr Targaryen (son of Baelor) by his Tyroshi wife
+883: 	type = character_event
+884: 	hidden = yes
+885: 	
+886: 	immediate = {
+887: 		if = {
+888: 			limit = {
+889: 				asoiaf_canon_children_Targaryen_114_trigger = yes
+890: 				scope:mother = { has_trait = pregnant }
+891: 			}
+892: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+893: 			asoiaf_canon_children_Targaryen_114_birth_effect = yes
+894: 		}
+895: 		if = {
+896: 			limit = {
+897: 				asoiaf_canon_children_Targaryen_113_trigger = yes
+898: 				scope:mother = { has_trait = pregnant }
+899: 			}
+900: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+901: 			asoiaf_canon_children_Targaryen_113_birth_effect = yes
+902: 		}
+903: 	}
+904: }
+905: 
+906: asoiaf_canon_children_targaryen_events.1091 = { #children of Rhaegel Targaryen (son of Daeron II) by his Arryn wife
+907: 	type = character_event
+908: 	hidden = yes
+909: 	
+910: 	immediate = {
+911: 		if = {
+912: 			limit = {
+913: 				asoiaf_canon_children_Targaryen_117_trigger = yes
+914: 				scope:mother = { has_trait = pregnant }
+915: 			}
+916: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+917: 			asoiaf_canon_children_Targaryen_117_birth_effect = yes
+918: 		}
+919: 		if = {
+920: 			limit = {
+921: 				asoiaf_canon_children_Targaryen_115_trigger = yes
+922: 				scope:mother = { has_trait = pregnant }
+923: 			}
+924: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+925: 			asoiaf_canon_children_Targaryen_115_and_116_birth_effect = yes
+926: 		}
+927: 	}
+928: }
+929: 
+930: asoiaf_canon_children_targaryen_events.1101 = { #children of Maekar I Targaryen by his Dayne wife
+931: 	type = character_event
+932: 	hidden = yes
+933: 	
+934: 	immediate = {
+935: 		if = {
+936: 			limit = {
+937: 				asoiaf_canon_children_Targaryen_123_trigger = yes
+938: 				scope:mother = { has_trait = pregnant }
+939: 			}
+940: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+941: 			asoiaf_canon_children_Targaryen_123_birth_effect = yes
+942: 		}
+943: 		if = {
+944: 			limit = {
+945: 				asoiaf_canon_children_Targaryen_122_trigger = yes
+946: 				scope:mother = { has_trait = pregnant }
+947: 			}
+948: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+949: 			asoiaf_canon_children_Targaryen_122_birth_effect = yes
+950: 		}
+951: 		if = {
+952: 			limit = {
+953: 				asoiaf_canon_children_Targaryen_121_trigger = yes
+954: 				scope:mother = { has_trait = pregnant }
+955: 			}
+956: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+957: 			asoiaf_canon_children_Targaryen_121_birth_effect = yes
+958: 		}
+959: 		if = {
+960: 			limit = {
+961: 				asoiaf_canon_children_Targaryen_120_trigger = yes
+962: 				scope:mother = { has_trait = pregnant }
+963: 			}
+964: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+965: 			asoiaf_canon_children_Targaryen_120_birth_effect = yes
+966: 		}
+967: 		if = {
+968: 			limit = {
+969: 				asoiaf_canon_children_Targaryen_119_trigger = yes
+970: 				scope:mother = { has_trait = pregnant }
+971: 			}
+972: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+973: 			asoiaf_canon_children_Targaryen_119_birth_effect = yes
+974: 		}
+975: 		if = {
+976: 			limit = {
+977: 				asoiaf_canon_children_Targaryen_118_trigger = yes
+978: 				scope:mother = { has_trait = pregnant }
+979: 			}
+980: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+981: 			asoiaf_canon_children_Targaryen_118_birth_effect = yes
+982: 		}
+983: 	}
+984: }
+985: 
+986: asoiaf_canon_children_targaryen_events.1181 = { #children of Daeron Targaryen (son of Maekar I) by his Tyroshi wife
+987: 	type = character_event
+988: 	hidden = yes
+989: 	
+990: 	immediate = {
+991: 		if = {
+992: 			limit = {
+993: 				asoiaf_canon_children_Targaryen_124_trigger = yes
+994: 				scope:mother = { has_trait = pregnant }
+995: 			}
+996: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+997: 			asoiaf_canon_children_Targaryen_124_birth_effect = yes
+998: 		}
+999: 	}
+1000: }
+1001: 
+1002: asoiaf_canon_children_targaryen_events.1191 = { #children of Aerion Targaryen (son of Maekar I) by his Targaryen wife
+1003: 	type = character_event
+1004: 	hidden = yes
+1005: 	
+1006: 	immediate = {
+1007: 		if = {
+1008: 			limit = {
+1009: 				asoiaf_canon_children_Targaryen_125_trigger = yes
+1010: 				scope:mother = { has_trait = pregnant }
+1011: 			}
+1012: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1013: 			asoiaf_canon_children_Targaryen_125_birth_effect = yes
+1014: 		}
+1015: 	}
+1016: }
+1017: 
+1018: asoiaf_canon_children_targaryen_events.1221 = { #children of Aegon V Targaryen by his Blackwood wife
+1019: 	type = character_event
+1020: 	hidden = yes
+1021: 	
+1022: 	immediate = {
+1023: 		if = {
+1024: 			limit = {
+1025: 				asoiaf_canon_children_Targaryen_130_trigger = yes
+1026: 				scope:mother = { has_trait = pregnant }
+1027: 			}
+1028: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1029: 			asoiaf_canon_children_Targaryen_130_birth_effect = yes
+1030: 		}
+1031: 		if = {
+1032: 			limit = {
+1033: 				asoiaf_canon_children_Targaryen_129_trigger = yes
+1034: 				scope:mother = { has_trait = pregnant }
+1035: 			}
+1036: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1037: 			asoiaf_canon_children_Targaryen_129_birth_effect = yes
+1038: 		}
+1039: 		if = {
+1040: 			limit = {
+1041: 				asoiaf_canon_children_Targaryen_128_trigger = yes
+1042: 				scope:mother = { has_trait = pregnant }
+1043: 			}
+1044: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1045: 			asoiaf_canon_children_Targaryen_128_birth_effect = yes
+1046: 		}
+1047: 		if = {
+1048: 			limit = {
+1049: 				asoiaf_canon_children_Targaryen_127_trigger = yes
+1050: 				scope:mother = { has_trait = pregnant }
+1051: 			}
+1052: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1053: 			asoiaf_canon_children_Targaryen_127_birth_effect = yes
+1054: 		}
+1055: 		if = {
+1056: 			limit = {
+1057: 				asoiaf_canon_children_Targaryen_126_trigger = yes
+1058: 				scope:mother = { has_trait = pregnant }
+1059: 			}
+1060: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1061: 			asoiaf_canon_children_Targaryen_126_birth_effect = yes
+1062: 		}
+1063: 	}
+1064: }
+1065: 
+1066: asoiaf_canon_children_targaryen_events.1271 = { #children of Jaehaerys II Targaryen by his Targaryen wife
+1067: 	type = character_event
+1068: 	hidden = yes
+1069: 	
+1070: 	immediate = {
+1071: 		if = {
+1072: 			limit = {
+1073: 				asoiaf_canon_children_Targaryen_2_trigger = yes
+1074: 				scope:mother = { has_trait = pregnant }
+1075: 			}
+1076: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1077: 			asoiaf_canon_children_Targaryen_2_birth_effect = yes
+1078: 		}
+1079: 		if = {
+1080: 			limit = {
+1081: 				asoiaf_canon_children_Targaryen_1_trigger = yes
+1082: 				scope:mother = { has_trait = pregnant }
+1083: 			}
+1084: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1085: 			asoiaf_canon_children_Targaryen_1_birth_effect = yes
+1086: 		}
+1087: 	}
+1088: }
+1089: 
+1090: asoiaf_canon_children_targaryen_events.0011 = { #children of Aerys II Targaryen by his Targaryen wife
+1091: 	type = character_event
+1092: 	hidden = yes
+1093: 	
+1094: 	immediate = {
+1095: 		if = {
+1096: 			limit = {
+1097: 				asoiaf_canon_children_Targaryen_9_trigger = yes
+1098: 				scope:mother = { has_trait = pregnant }
+1099: 			}
+1100: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1101: 			asoiaf_canon_children_Targaryen_9_birth_effect = yes
+1102: 		}
+1103: 		if = {
+1104: 			limit = {
+1105: 				asoiaf_canon_children_Targaryen_8_trigger = yes
+1106: 				scope:mother = { has_trait = pregnant }
+1107: 			}
+1108: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1109: 			asoiaf_canon_children_Targaryen_8_birth_effect = yes
+1110: 		}
+1111: 		if = {
+1112: 			limit = {
+1113: 				asoiaf_canon_children_Targaryen_7_trigger = yes
+1114: 				scope:mother = { has_trait = pregnant }
+1115: 			}
+1116: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1117: 			asoiaf_canon_children_Targaryen_7_birth_effect = yes
+1118: 		}
+1119: 		if = {
+1120: 			limit = {
+1121: 				asoiaf_canon_children_Targaryen_6_trigger = yes
+1122: 				scope:mother = { has_trait = pregnant }
+1123: 			}
+1124: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1125: 			asoiaf_canon_children_Targaryen_6_birth_effect = yes
+1126: 		}
+1127: 		if = {
+1128: 			limit = {
+1129: 				asoiaf_canon_children_Targaryen_5_trigger = yes
+1130: 				scope:mother = { has_trait = pregnant }
+1131: 			}
+1132: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1133: 			asoiaf_canon_children_Targaryen_5_birth_effect = yes
+1134: 		}
+1135: 		if = {
+1136: 			limit = {
+1137: 				asoiaf_canon_children_Targaryen_4_trigger = yes
+1138: 				scope:mother = { has_trait = pregnant }
+1139: 			}
+1140: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1141: 			asoiaf_canon_children_Targaryen_4_birth_effect = yes
+1142: 		}
+1143: 		if = {
+1144: 			limit = {
+1145: 				asoiaf_canon_children_Targaryen_3_trigger = yes
+1146: 				scope:mother = { has_trait = pregnant }
+1147: 			}
+1148: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1149: 			asoiaf_canon_children_Targaryen_3_birth_effect = yes
+1150: 		}
+1151: 	}
+1152: }
+1153: 
+1154: asoiaf_canon_children_targaryen_events.0031 = { #children of Rhaegar Targaryen (son of Aerys II) by his Martell wife
+1155: 	type = character_event
+1156: 	hidden = yes
+1157: 	
+1158: 	immediate = {
+1159: 		if = {
+1160: 			limit = {
+1161: 				asoiaf_canon_children_Targaryen_11_trigger = yes
+1162: 				scope:mother = { has_trait = pregnant }
+1163: 			}
+1164: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1165: 			asoiaf_canon_children_Targaryen_11_birth_effect = yes
+1166: 		}
+1167: 		if = {
+1168: 			limit = {
+1169: 				asoiaf_canon_children_Targaryen_10_trigger = yes
+1170: 				scope:mother = { has_trait = pregnant }
+1171: 			}
+1172: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1173: 			asoiaf_canon_children_Targaryen_10_birth_effect = yes
+1174: 		}
+1175: 	}
+1176: }
+1177: 
+1178: asoiaf_canon_children_targaryen_events.0032 = { #children of Rhaegar Targaryen (son of Aerys II) by his Stark lover
+1179: 	type = character_event
+1180: 	hidden = yes
+1181: 	
+1182: 	immediate = {
+1183: 		if = {
+1184: 			limit = {
+1185: 				asoiaf_canon_children_Stark_7_trigger = yes
+1186: 				scope:mother = { has_trait = pregnant }
+1187: 			}
+1188: 			scope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }
+1189: 			asoiaf_canon_children_Stark_7_birth_effect = yes
+1190: 		}
+1191: 	}
+1192: }
+
+# events/asoiaf_mega_war_events.txt
+# Effective provider: AGOT+
+# SHA256: 36C278A64244EF582FC68CC91914654C94585F1098CFD1B1CE4315B41CE2F15A
+1: namespace = asoiaf_mega_war_events
+2: 
+3: asoiaf_mega_war_events.0001 = {
+4: 	type = character_event
+5: 	hidden = yes
+6: 	
+7: 	immediate = {
+8: 		asoiaf_mega_war_effect = yes
+9: 	}
+10: }

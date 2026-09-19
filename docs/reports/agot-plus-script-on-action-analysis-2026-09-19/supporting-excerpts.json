@@ -1,0 +1,426 @@
+[
+  {
+    "Reason": "Native supported decision widget",
+    "File": "common/decisions/30_activity_decisions.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 448,
+    "LineEnd": 465,
+    "Text": "448: \twidget = {\n449: \t\tgui = \"decision_view_widget_petition_liege\"\n450: \t\tcontroller = decision_option_list_controller\n451: \t\tdecision_to_second_step_button = \"CHOOSE_PETITION_DECISION_NEXT_STEP_BUTTON\"\n452: \n453: \t\t### TGP\n454: \t\titem = { # House Fief\n455: \t\t\tvalue = petition_liege_house_fief\n456: \t\t\tis_shown = {\n457: \t\t\t\thas_tgp_dlc_trigger = yes\n458: \t\t\t\thas_government = japan_administrative_government\n459: \t\t\t}\n460: \t\t\tis_valid = {\n461: \t\t\t\tcustom_tooltip = {\n462: \t\t\t\t\ttext = petition_liege_house_fief_tt\n463: \t\t\t\t\thas_tgp_dlc_trigger = yes\n464: \t\t\t\t\thas_government = japan_administrative_government\n465: \t\t\t\t\ttop_liege = { has_government = japan_administrative_government }"
+  },
+  {
+    "Reason": "Shipped widget documentation",
+    "File": "common/decisions/_decisions.info",
+    "Mod": "CK3",
+    "LineStart": 145,
+    "LineEnd": 191,
+    "Text": "145: \t# Specify up to one custom widget to embed in the decision. See section about Custom Widgets below.\n146: \twidget = {\n147: \t\t# Name of the widget to use. Must be at the path <decision_view_widgets>/<widget_name>.gui\n148: \t\tgui = \"<widget_name>\"\n149: \t\t# Some widgets require a custom controller (see below). Default: default\n150: \t\tcontroller = \"<controller_type>\"\n151: \n152: \t\tshow_from_start = yes # Shows the option list from the very beginning of the decision window flow\n153: \n154: \t\t# One or more options (add an item = {} entry for each option)\n155: \t\t# Available if you have `controller = decision_option_list_controller`\n156: \t\titem = {\n157: \t\t\tvalue = entry_name\t\t\t# is used in effect section\n158: \t\t\tis_shown = trigger \t\t\t# is entry shown\n159: \t\t\tis_valid = trigger \t\t\t# is entry selectable\n160: \t\t\tcurrent_description = desc \t# tooltip info\n161: \t\t\tlocalization = loc_key \t\t# what should be shown in the list\n162: \t\t\tis_default = bool\t \t\t# is the default entry to pick\n163: \t\t\ticon = \"icon/file/path.dds\"\t# path to the icon\n164: \t\t\tflat = no\t\t\t\t\t# is icon flat black and needs a special widtet, or is it full color\n165: \n166: \t\t\t# Which item should the AI use (+ which is the default for the player)\n167: \t\t\t# NOTE! The highest scoring item is selected - there is no randomization.\n168: \t\t\t# This is also used to select the default option for players. To get a proper \"decision available\"\n169: \t\t\t# notification for each item, make sure that the item has the highest score if it is available!\n170: \t\t\tai_chance = score\n171: \t\t}\n172: \t}\n173: \twidget = \"<controller_type>\"\t# alternative short syntax, gui will be \"decision_view_widget_<controller_type>\"\n174: }\n175: \n176: === Custom Widgets ===\n177: \n178: A custom widget can be embedded into a decision.\n179: GUI files must be placed at the decision_view_widgets path (see paths.settings). The name of the file must match the widget name.\n180: \n181: Usually these widgets require a custom controller. This should be documented in the widget's GUI file.\n182: The data context type available in the GUI depends on the controller type.\n183: \n184: Available controllers:\n185: \n186: Controller Type\t\t\t\t\t\t| Data Context Name\t\t\t\t  \t\t| Notes\n187: ------------------------------------+---------------------------------------+-----------------------------------------------------------\n188: default\t\t\t\t\t\t\t\t| EventWindowWidget\t\t\t\t  \t\t| Default controller, no special behavior\n189: create_holy_order \t\t\t\t\t| DecisionViewWidgetCreateHolyOrder  \t| Show GUI to customize the new holy order.\n190: decision_option_list_controller \t| DecisionViewWidgetOptionList \t\t\t| Shows a GUI to pick an option that sets a flag for the effect, see the `item = { ... }` description above\n191: "
+  },
+  {
+    "Reason": "Effective GUI and option-list controller",
+    "File": "gui/decision_view_widgets/decision_view_widget_petition_liege.gui",
+    "Mod": "CK3",
+    "LineStart": 1,
+    "LineEnd": 75,
+    "Text": "1: # Required controller: decision_option_list_controller\n2: \n3: vbox = {\n4: \tname = \"decision_view_widget_petition_liege\"\n5: \tlayoutpolicy_horizontal = expanding\n6: \tlayoutpolicy_vertical = expanding\n7: \tignoreinvisible = yes\n8: \n9: \tmargin_top = 10\n10: \tspacing = 10\n11: \n12: \ttext_label_center = {\n13: \t\ttext = \"PETITION_LIEGE_DECISION_SELECT_PETITION_TITLE\"\n14: \t}\n15: \n16: \thbox = {\n17: \t\tlayoutpolicy_horizontal = expanding\n18: \t\tlayoutpolicy_vertical = expanding\n19: \n20: \t\tscrollbox = {\n21: \t\t\tlayoutpolicy_horizontal = expanding\n22: \t\t\tlayoutpolicy_vertical = expanding\n23: \n24: \t\t\tblockoverride \"scrollbox_content\" {\n25: \t\t\t\tvbox = {\n26: \t\t\t\t\tdatamodel = \"[DecisionViewWidgetOptionList.GetEntries]\"\n27: \t\t\t\t\tspacing = 6\n28: \n29: \t\t\t\t\titem = {\n30: \t\t\t\t\t\tPetitionLiegeItem = {}\n31: \t\t\t\t\t}\n32: \t\t\t\t}\n33: \t\t\t}\n34: \n35: \t\t\tblockoverride \"scrollbox_background_fade\" {}\n36: \t\t}\n37: \t}\n38: }\n39: \n40: types PetitionLiegeTypes\n41: {\n42: \ttype PetitionLiegeItem = button_standard {\n43: \t\tsize = { 450 60 }\n44: \t\tmargin = { 10 10 }\n45: \n46: \t\tonclick = \"[DecisionViewWidgetOptionList.OnSelect(Entry.Self)]\"\n47: \t\tenabled = \"[Entry.IsEnabled]\"\n48: \t\ttooltip = \"[Entry.GetTooltip]\"\n49: \t\tdown = \"[Entry.IsSelected]\"\n50: \n51: \t\thbox = {\n52: \t\t\tlayoutpolicy_horizontal = expanding\n53: \t\t\tlayoutpolicy_vertical = expanding\n54: \t\t\tspacing = 10\n55: \t\t\tmargin_left = 10\n56: \n57: \t\t\ticon = {\n58: \t\t\t\tname = \"petition_icon\"\n59: \t\t\t\tsize = { 45 45 }\n60: \t\t\t\ttexture = \"[Entry.GetIcon]\"\n61: \t\t\t}\n62: \n63: \t\t\tvbox = {\n64: \t\t\t\tname = \"petition_info\"\n65: \n66: \t\t\t\tlayoutpolicy_vertical = expanding\n67: \t\t\t\t#margin_left = 5\n68: \t\t\t\tmargin_bottom = 5\n69: \n70: \t\t\t\ttext_single = {\n71: \t\t\t\t\tname = \"petition_type\"\n72: \t\t\t\t\ttext = \"[Entry.GetName]\"\n73: \t\t\t\t\tmax_width = 250\n74: \t\t\t\t\talign = left\n75: \t\t\t\t}"
+  },
+  {
+    "Reason": "Native heir interaction validity conditions",
+    "File": "common/character_interactions/00_heir.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 124,
+    "LineEnd": 184,
+    "Text": "124: \tis_valid_showing_failures_only = {\n125: \t\ttrigger_if = {\n126: \t\t\tlimit = { exists = scope:recipient }\n127: \t\t\tscope:recipient = {\n128: \t\t\t\tis_eunuch_trigger = no\n129: \t\t\t\tNOR = {\n130: \t\t\t\t\thas_trait = disinherited\n131: \t\t\t\t\thas_trait = devoted\n132: \t\t\t\t\thas_trait = order_member\n133: \t\t\t\t\thas_trait = bastard\n134: \t\t\t\t}\n135: \t\t\t\thouse ?= scope:actor.house\n136: \t\t\t}\n137: \t\t}\n138: \t\tscope:actor = {\n139: \t\t\tcan_designate_heir_trigger = yes\n140: \t\t\ttrigger_if = {\n141: \t\t\t\tlimit = {\n142: \t\t\t\t\tgovernment_allows = administrative\n143: \t\t\t\t\tany_held_title = {\n144: \t\t\t\t\t\tis_noble_family_title = yes\n145: \t\t\t\t\t}\n146: \t\t\t\t}\n147: \t\t\t\tprestige >= designate_heir_admin_prestige_cost\n148: \t\t\t\tinfluence >= designate_heir_admin_influence_cost\n149: \t\t\t\t\n150: \t\t\t\tcustom_tooltip = {\n151: \t\t\t\t\ttext = valid_co_emperor_candidate_liege_trigger\n152: \t\t\t\t\tscope:recipient.top_liege = scope:actor.top_liege\n153: \t\t\t\t}\n154: \t\t\t}\n155: \t\t\ttrigger_else_if = {\n156: \t\t\t\tlimit = {\n157: \t\t\t\t\tNOR = { \n158: \t\t\t\t\t\tgovernment_has_flag = government_is_mandala\n159: \t\t\t\t\t\tgovernment_has_flag = government_is_landless_adventurer\n160: \t\t\t\t\t}\n161: \t\t\t\t}\n162: \t\t\t\tprestige >= designate_heir_cost\n163: \t\t\t}\n164: \t\t\ttrigger_else = {}\n165: \t\t\ttrigger_if = {\n166: \t\t\t\tlimit = {\n167: \t\t\t\t\tgovernment_has_flag = government_is_landless_adventurer\n168: \t\t\t\t\texists = scope:recipient\n169: \t\t\t\t}\n170: \t\t\t\tscope:recipient = {\n171: \t\t\t\t\tis_adult = yes\n172: \t\t\t\t}\n173: \t\t\t}\n174: \t\t\ttrigger_if = {\n175: \t\t\t\tlimit = {\n176: \t\t\t\t\tgovernment_has_flag = government_is_mandala\n177: \t\t\t\t}\n178: \t\t\t\tpiety >= designate_heir_cost\n179: \t\t\t}\n180: \t\t\tcustom_tooltip = {\n181: \t\t\t\ttext = designate_heir_interaction.tt.currently_coruling\n182: \t\t\t\tNOT = { has_diarchy_active_parameter = diarchy_is_co_rulership }\n183: \t\t\t}\n184: \t\t}"
+  },
+  {
+    "Reason": "Broader availability checks are not mechanical aliases",
+    "File": "common/scripted_triggers/00_available_for_events_triggers.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 42,
+    "LineEnd": 112,
+    "Text": "42: }\n43: \n44: basic_is_available_ai = {\n45: \tis_available_quick = {\n46: \t\tai = yes\n47: \t\talive = yes\n48: \t\timprisoned = no\n49: \t\tincapable = no\n50: \t}\n51: \thas_contagious_deadly_disease_trigger = no\n52: \n53: \t#AGOT Added\n54: \tis_human = yes\n55: \tagot_is_available_for_anything = yes\n56: \tNOT = { has_trait = mute } #mutes should get less events really but we might change it later\n57: }\n58: \n59: is_available_allow_travelling = {\n60: \tis_available_quick = {\n61: \t\talive = yes\n62: \t\timprisoned = no\n63: \t\tincapable = no\n64: \t\tin_army = no\n65: \t}\n66: \thas_contagious_deadly_disease_trigger = no\n67: \tcustom_description = {\n68: \t\ttext = ALREADY_IN_ACTIVITY\n69: \t\tNOR = {\n70: \t\t\texists = involved_activity\n71: \t\t\thas_variable = {\n72: \t\t\t\tname = homage_liege_scope\n73: \t\t\t\tname = meditation_character_flag\n74: \t\t\t\tname = local_shrine_rite\n75: \t\t\t\tname = petition_liege_character_flag\n76: \t\t\t\tname = holding_court_character_flag\n77: \t\t\t}\n78: \t\t\tis_being_visited_on_tour_strict = yes\n79: \n80: \t\t\t#AGOT Added\n81: \t\t\thas_character_flag = agot_in_bm_psuedo_activity\n82: \t\t}\n83: \t}\n84: \tcustom_description = {\n85: \t\ttext = ALREADY_PLANNING_ACTIVITY\n86: \t\tNOT = { has_character_flag = planning_an_activity }\n87: \t}\n88: \t# Variable set within the adventure inspiration events\n89: \tNOT = { has_variable = gone_adventuring }\n90: \t# Variable set on Mandala succession\n91: \tcustom_tooltip = {\n92: \t\ttext = busy_in_mandala_succession\n93: \t\tNOT = { has_variable = busy_in_mandala_succession }\n94: \t}\n95: \n96: \t#AGOT Added my maesters keep leaving me ;-;\n97: \tNOR = {\n98: \t\thas_trait = archmaester\n99: \t\tAND = {\n100: \t\t\thas_trait = maester\n101: \t\t\thas_trait_xp = {\n102: \t\t\t\ttrait = maester\n103: \t\t\t\tvalue < 100\n104: \t\t\t}\n105: \t\t}\n106: \t\thas_character_flag = maester_researcher\n107: \t}\n108: \tis_human = yes # Non-humans shouldn't do anything not specifically handled in their own case\n109: }\n110: \n111: # If you update one of the available triggers, update all of them. It's a lot better for performance to not have scripted triggers within scripted triggers when they're checked as often as these ones are.\n112: is_available = {"
+  },
+  {
+    "Reason": "Documented siege-completion scopes",
+    "File": "common/on_action/army_on_actions.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 413,
+    "LineEnd": 424,
+    "Text": "413: \n414: # called when a siege completes. Does *not* fire on reoccupation by province order\n415: # root is the occupant\n416: # scope:barony is the barony title that got occupied\n417: # scope:county is the county title for the barony\n418: # scope:previous_controller is the previous controller of the county\n419: # scope:war is the war causing the previous controller and the occupant to be hostile\n420: # occupied_baronies is a list of all baronies that the siege caused the occupier to control (I.E., can include baronies with no fort level)\n421: on_siege_completion = {\n422: \tevents = {\n423: \t\tsiege.0101 # Notify holders/lieges that the county was lost to siege\n424: \t\tsiege.0001 # Capture/kill prisoners"
+  },
+  {
+    "Reason": "Native primary_defender syntax in war scope",
+    "File": "events/agot_interaction_events/agot_btw_interaction_events.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 369,
+    "LineEnd": 380,
+    "Text": "369: \t\tevery_character_war = {\n370: \t\t\tlimit = {\n371: \t\t\t\troot = {\n372: \t\t\t\t\tis_at_war_as_defender = yes\n373: \t\t\t\t}\n374: \t\t\t\tprimary_defender = root\n375: \t\t\t\tprimary_attacker = {\n376: \t\t\t\t\tNOT = {\n377: \t\t\t\t\t\tany_character_struggle = {\n378: \t\t\t\t\t\t\tinvolvement = involved\n379: \t\t\t\t\t\t}\n380: \t\t\t\t\t}"
+  },
+  {
+    "Reason": "Native registration of the disputed title handler",
+    "File": "common/on_action/title_on_actions.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 2814,
+    "LineEnd": 2823,
+    "Text": "2814: \t\tagot_on_title_gain_citadel\n2815: \t\tagot_on_title_gain_goldcloaks\n2816: \t\tagot_on_title_gain_high_septon\n2817: \t\tagot_on_title_gain_iron_throne_appoint_high_septon\n2818: \t\tagot_on_title_gain_high_valyrian\n2819: \t\tagot_on_title_gain_wildfire\n2820: \t\tagot_on_title_inheritance_lannister_baratheon_coa\n2821: \t\tagot_on_title_gain_ruins\n2822: \t\tagot_on_title_gain_unique_crown\n2823: \t\tagot_on_title_gain_tyroshi_landing"
+  },
+  {
+    "Reason": "PLUS additionally registers the same handler",
+    "File": "common/on_action/agot_on_actions/test_title_on_actions.txt",
+    "Mod": "AGOT+ | Исправления совместимости",
+    "LineStart": 1,
+    "LineEnd": 20,
+    "Text": "1: # A title is transferred to a new character\n2: # root = the new holder\n3: # scope:title = the title that changes hands\n4: # scope:previous_holder = previous holder. Might be dead\n5: on_title_gain = {\n6: \ton_actions = {\n7: \t\tasoiaf_on_title_inheritance_rhaenyra_kills_siblings\n8: \t\tasoiaf_iron_throne_lord_paramount_contract_fix\n9: \t\tasoiaf_on_title_inheritance_harrold_hardyng_becomes_arryn\n10: \t\tasoiaf_young_griff_victory\n11: \t\tasoiaf_on_title_inheritance_robert_I_gluttonous_trait\n12: \t\tasoiaf_on_title_inheritance_robert_siblings_claims\n13: \t\tagot_on_title_inheritance_lannister_baratheon_coa\n14: \t\tasoiaf_on_title_inheritance_lannister_baratheon_coa\n15: \t\tasoiaf_on_title_inheritance_frey_rosby_cadet\n16: \t\tasoiaf_on_title_inheritance_aegon_I_crown_creation\n17: \t\tasoiaf_on_title_inheritance_aenys_I_crown_creation\n18: \t\tasoiaf_on_title_inheritance_jaehaerys_I_crown_creation\n19: \t\tasoiaf_on_title_inheritance_aegon_III_crown_creation\n20: \t\tasoiaf_on_title_inheritance_baelor_I_crown_creation"
+  },
+  {
+    "Reason": "Separate PLUS cadet-branch handler and obsolete regency call",
+    "File": "common/on_action/agot_on_actions/test_title_on_actions.txt",
+    "Mod": "AGOT+ | Исправления совместимости",
+    "LineStart": 195,
+    "LineEnd": 235,
+    "Text": "195: asoiaf_on_title_inheritance_lannister_baratheon_coa = {\n196: \ttrigger = {\n197: \t\tasoiaf_historical_trigger = yes\n198: \t\tscope:title = {\n199: \t\t\tOR = {\n200: \t\t\t\tthis = title:h_the_iron_throne\n201: \t\t\t\tthis = title:e_the_westerlands\n202: \t\t\t\tthis = title:e_the_crownlands\n203: \t\t\t}\n204: \t\t}\n205: \t\troot = {\n206: \t\t\tdynasty = dynasty:dynn_Baratheon\n207: \t\t\tfather = { has_inactive_trait = asoiaf_Baratheon_2_trait } #Robert\n208: \t\t\tmother = { has_inactive_trait = asoiaf_Lannister_6_trait } #Cersei\n209: \t\t\tNOT = { real_father = { has_inactive_trait = asoiaf_Baratheon_2_trait } } #real father doesn't need to be Jaime to raise suspicion, it just can't be Robert\n210: \t\t}\n211: \t\tNOR = {\n212: \t\t\tis_target_in_global_variable_list = {\n213: \t\t\t\tname = asoiaf_baratheon_kl_unavailable\n214: \t\t\t\ttarget = flag:asoiaf_baratheon_cadet_kl\n215: \t\t\t}\n216: \t\t\thouse ?= house:house_BaratheonKL\n217: \t\t}\n218: \t}\n219: \teffect = {\n220: \t\tif = {\n221: \t\t\tlimit = { has_game_rule = asoiaf_new_clothes_westerlands_rule_on }\n222: \t\t\ttrigger_event = { id = asoiaf_maintenance_events.0014 days = 30 }\n223: \t\t}\n224: \t\tset_house = house:house_BaratheonKL\n225: \t\tset_culture = culture:crownlander\n226: \t\tadd_trait = disputed_heritage\n227: \t\tif = {\n228: \t\t\tlimit = {\n229: \t\t\t\tage < 16\n230: \t\t\t\troot.mother = { is_courtier_of = root } #if she's not at court, she can't become a regent immediately after the succession\n231: \t\t\t}\n232: \t\t\tdesignate_diarch = root.mother #Cersei\n233: \t\t\tstart_diarchy = regency\n234: \t\t\tset_diarch = root.mother #Cersei\n235: \t\t}"
+  },
+  {
+    "Reason": "Current diarchy eligibility and personal regency conditions",
+    "File": "common/scripted_triggers/00_diarchy_scripted_triggers.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 210,
+    "LineEnd": 240,
+    "Text": "210: basic_eligible_for_diarchy_trigger = {\n211: \thighest_held_title_tier >= tier_county\n212: \tis_landed_or_landless_administrative = yes\n213: \thas_active_diarchy = no\n214: \tNOT = { government_has_flag = government_is_landless_adventurer } # Laamps don't use diarchs\n215: \n216: \t#AGOT Added\n217: \tNOT = { government_has_flag = government_is_uninteractable }\n218: }\n219: \n220: regency_for_personal_reasons_trigger = {\n221: \tcustom_tooltip = {\n222: \t\ttext = regency_for_personal_reasons_trigger.tt.cannot_govern_by_themselves\n223: \t\tOR = {\n224: \t\t\tAND = {\n225: \t\t\t\tis_adult = no\n226: \t\t\t\t#AGOT Modified\n227: \t\t\t\t#NOT = {\n228: \t\t\t\t#\tliege = { has_diarchy_parameter = diarchy_type_is_junior_emperorship }\n229: \t\t\t\t#}\n230: \t\t\t\ttrigger_if = {\n231: \t\t\t\t\tlimit = { exists = liege}\n232: \t\t\t\t\tNOT = {\n233: \t\t\t\t\t\tliege = { has_diarchy_parameter = diarchy_type_is_junior_emperorship }\n234: \t\t\t\t\t}\n235: \t\t\t\t}\n236: \t\t\t}\n237: \t\t\tis_incapable = yes\n238: \t\t\thas_character_modifier = isolating_modifier\n239: \t\t}\n240: \t}"
+  },
+  {
+    "Reason": "The named regency type still exists",
+    "File": "common/diarchies/diarchy_types/00_regencies.txt",
+    "Mod": "CK3",
+    "LineStart": 84,
+    "LineEnd": 92,
+    "Text": "84: # Entrenched Regencies\n85: ## Regencies that have matured or had time to become severe, making them more of a pain to remove.\n86: ## Referenced in code - this is the diarchy type used for long-term diarchies, it must always exist and be available to any ruler\n87: regency = {\n88: \t# Handled via content - this is only for power sharing arrangements we want to start automatically.\n89: \tstart = { always = yes }\n90: \n91: \t# Handled via content - this is only for power sharing arrangements we want to end automatically.\n92: \tend = { always = no }"
+  },
+  {
+    "Reason": "Author commented the title destruction function",
+    "File": "common/scripted_effects/asoiaf_setup_effects.txt",
+    "Mod": "AGOT+ | Исправления совместимости",
+    "LineStart": 1,
+    "LineEnd": 8,
+    "Text": "1: #Setup\n2: #asoiaf_destroy_crownlands_title_effect = {\n3: #\tdestroy_title = title:e_the_crownlands\n4: #}\n5: \n6: #asoiaf_test_coa_effect = {\n7: #\tadd_character_flag = dynn_Baratheon_flag\n8: #\tprimary_title = { generate_coa = agot_faction_coa }"
+  },
+  {
+    "Reason": "Author commented the startup title destruction call",
+    "File": "common/on_action/asoiaf_setup.txt",
+    "Mod": "AGOT+ | Исправления совместимости",
+    "LineStart": 90,
+    "LineEnd": 102,
+    "Text": "90: \teffect = {\n91: \t\tif = {\n92: \t\t\tlimit = {\n93: \t\t\t\tNOT = { current_date = 8282.9.15 } #NO TITLE DELETE during RR, or RR events break for some reason\n94: \t\t\t}\n95: \t\t\t#title:e_the_crownlands.holder = {\n96: \t\t\t#\tasoiaf_destroy_crownlands_title_effect = yes\n97: \t\t\t#}\n98: \t\t}\n99: \t\tif = { #cleanup for Summerhall after the Tragedy\n100: \t\t\tlimit = {\n101: \t\t\t\t#NOT = { current_date = 8282.9.15 } #NO TITLE CHANGE during RR or RR events break for some reason\n102: \t\t\t\ttitle:h_the_iron_throne.holder ?= { has_title = title:c_summerfield } #if the King holds Summerhall"
+  },
+  {
+    "Reason": "Residual Young Griff call remains active",
+    "File": "common/on_action/agot_on_actions/test_title_on_actions.txt",
+    "Mod": "AGOT+ | Исправления совместимости",
+    "LineStart": 435,
+    "LineEnd": 452,
+    "Text": "435: asoiaf_young_griff_victory = { #agot_faegon_invasion.0001\n436: \ttrigger = {\n437: \t\tscope:title = {\n438: \t\t\tthis = title:h_the_iron_throne\n439: \t\t}\n440: \t\troot = { has_inactive_trait = asoiaf_Targaryen_11_trait } #this is Aegon\n441: \t\tNOT = { exists = global_var:asoiaf_young_griff_victory_variable }\n442: \t}\n443: \teffect = {\n444: \t\thidden_effect = {\n445: \t\t\tset_global_variable = asoiaf_young_griff_victory_variable #so this can't trigger twice\n446: \t\t\troot = {\n447: \t\t\t\ttrigger_event = { id = asoiaf_young_griff_landing_events.3 days = 5 } #enough time for the player/AI to have gone through the event chain to declare his parentage; LOOKS LIKE ITS NOT NECESSARY ANYMORE\n448: \t\t\t}\n449: \t\t\tasoiaf_destroy_crownlands_title_effect = yes #taking the Iron Throne creates the Crownlands, so destroy it automatically\n450: \t\t}\n451: \t}\n452: }"
+  },
+  {
+    "Reason": "Leftover MegaWar Cleanup rule descriptions, not an implementation",
+    "File": "localization/english/asoiaf_game_rules_l_english.yml",
+    "Mod": "AGOT+ | Исправления русификатора",
+    "LineStart": 133,
+    "LineEnd": 138,
+    "Text": "133:  rule_asoiaf_mega_war_cleanup_rule:0 \"@asoiaf_icon! Mega War Cleanup\"\n134:  setting_asoiaf_mega_war_cleanup_off:0 \"Default\"\n135:  setting_asoiaf_mega_war_cleanup_on:0 \"#high On#!\"\n136: \n137:  setting_asoiaf_mega_war_cleanup_off_desc:0 \"Rulers join/abstain from Mega Wars based on vanilla AGOT logic.\"\n138:  setting_asoiaf_mega_war_cleanup_on_desc:0 \"Rulers join/abstain from Mega Wars (mostly) based on their pre-war liege's position.\""
+  },
+  {
+    "Reason": "Duplicated Lily/Willow ID and Rosey ID shifted by one",
+    "File": "common/scripted_triggers/asoiaf_canon_children_triggers.txt",
+    "Mod": "AGOT+",
+    "LineStart": 1731,
+    "LineEnd": 1774,
+    "Text": "1731: asoiaf_canon_children_Targaryen_98_trigger = { #Alysanne (bastard of Aegon IV)\n1732: \tasoiaf_canon_children_enabled_trigger = yes\n1733: \tAND = {\n1734: \t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_98_born_variable } #Alysanne hasn't been born\n1735: \t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_99_born_variable } #Lily hasn't been born\n1736: \t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_100_born_variable } #Willow hasn't been born\n1737: \t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_101_born_variable } #Rosey hasn't been born\n1738: \t}\n1739: \tscope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen\n1740: \tscope:mother ?= { is_lowborn = yes }\n1741: }\n1742: asoiaf_canon_children_Targaryen_99_trigger = { #Lily (bastard of Aegon IV)\n1743: \tasoiaf_canon_children_enabled_trigger = yes\n1744: \tAND = {\n1745: \t\texists = global_var:asoiaf_canon_children_Targaryen_98_born_variable #Alysanne has been born\n1746: \t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_99_born_variable } #Lily hasn't been born\n1747: \t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_100_born_variable } #Willow hasn't been born\n1748: \t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_101_born_variable } #Rosey hasn't been born\n1749: \t}\n1750: \tscope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen\n1751: \tscope:mother ?= { is_lowborn = yes }\n1752: }\n1753: asoiaf_canon_children_Targaryen_99_trigger = { #Willow (bastard of Aegon IV)\n1754: \tasoiaf_canon_children_enabled_trigger = yes\n1755: \tAND = {\n1756: \t\texists = global_var:asoiaf_canon_children_Targaryen_98_born_variable #Alysanne has been born\n1757: \t\texists = global_var:asoiaf_canon_children_Targaryen_99_born_variable #Lily has been born\n1758: \t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_100_born_variable } #Willow hasn't been born\n1759: \t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_101_born_variable } #Rosey hasn't been born\n1760: \t}\n1761: \tscope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen\n1762: \tscope:mother ?= { is_lowborn = yes }\n1763: }\n1764: asoiaf_canon_children_Targaryen_100_trigger = { #Rosey (bastard of Aegon IV)\n1765: \tasoiaf_canon_children_enabled_trigger = yes\n1766: \tAND = {\n1767: \t\texists = global_var:asoiaf_canon_children_Targaryen_98_born_variable #Alysanne has been born\n1768: \t\texists = global_var:asoiaf_canon_children_Targaryen_99_born_variable #Lily has been born\n1769: \t\texists = global_var:asoiaf_canon_children_Targaryen_100_born_variable #Willow has been born\n1770: \t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_101_born_variable } #Rosey hasn't been born\n1771: \t}\n1772: \tscope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen\n1773: \tscope:mother ?= { is_lowborn = yes }\n1774: }"
+  },
+  {
+    "Reason": "Both incomplete birth chains are scheduled by pregnancy hook",
+    "File": "common/on_action/asoiaf_pregnancy_childbirth_on_actions.txt",
+    "Mod": "AGOT+",
+    "LineStart": 607,
+    "LineEnd": 635,
+    "Text": "607: \t\tif = { #children of Aegon IV Targaryen by his lowborn lover\n608: \t\t\tlimit = {\n609: \t\t\t\tOR = {\n610: \t\t\t\t\tasoiaf_canon_children_Targaryen_98_trigger = yes\n611: \t\t\t\t\tasoiaf_canon_children_Targaryen_99_trigger = yes\n612: \t\t\t\t\tasoiaf_canon_children_Targaryen_100_trigger = yes\n613: \t\t\t\t\tasoiaf_canon_children_Targaryen_101_trigger = yes\n614: \t\t\t\t}\n615: \t\t\t}\n616: \t\t\tscope:mother = {\n617: \t\t\t\tasoiaf_clear_bad_pregnancy_flags_effect = yes\n618: \t\t\t\tasoiaf_assign_marriage_type_flags_effect = yes\n619: \t\t\t}\n620: \t\t\ttrigger_event = { id = asoiaf_canon_children_targaryen_events.0882 days = 200 }\n621: \t\t}\n622: \t\tif = { #children of Aegon IV Targaryen by his Summer Islander lover\n623: \t\t\tlimit = {\n624: \t\t\t\tOR = {\n625: \t\t\t\t\tasoiaf_canon_children_Targaryen_102_trigger = yes\n626: \t\t\t\t\tasoiaf_canon_children_Targaryen_103_trigger = yes\n627: \t\t\t\t\tasoiaf_canon_children_Targaryen_104_trigger = yes\n628: \t\t\t\t}\n629: \t\t\t}\n630: \t\t\tscope:mother = {\n631: \t\t\t\tasoiaf_clear_bad_pregnancy_flags_effect = yes\n632: \t\t\t\tasoiaf_assign_marriage_type_flags_effect = yes\n633: \t\t\t}\n634: \t\t\ttrigger_event = { id = asoiaf_canon_children_targaryen_events.0883 days = 200 }\n635: \t\t}"
+  },
+  {
+    "Reason": "Existing historical Rosey mother pregnancy-negation logic; separate from disabled chains",
+    "File": "common/scripted_effects/asoiaf_canon_children_effects.txt",
+    "Mod": "AGOT+ | Исправления совместимости",
+    "LineStart": 13978,
+    "LineEnd": 13985,
+    "Text": "13978: \tif = {\n13979: \t\tlimit = {\n13980: \t\t\tcharacter:Targaryen_101 = { exists = yes }\n13981: \t\t\tcharacter:Targaryen_101.mother ?= { is_alive = yes }\n13982: \t\t\t#character:Targaryen_101.mother ?= { is_spouse_of = character:Targaryen_101.father }\n13983: \t\t}\n13984: \t\tcharacter:Targaryen_101.mother = { add_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }\n13985: \t}"
+  },
+  {
+    "Reason": "Native handler definition",
+    "File": "common/on_action/agot_on_actions/agot_title_on_actions.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 1683,
+    "LineEnd": 1708,
+    "Text": "1683: agot_on_title_inheritance_lannister_baratheon_coa = {\n1684: \ttrigger = {\n1685: \t\tscope:title = {\n1686: \t\t\tthis = title:h_the_iron_throne\n1687: \t\t}\n1688: \t\troot = {\n1689: \t\t\tdynasty = dynasty:dynn_Baratheon\n1690: \t\t\tfather = character:Baratheon_2\n1691: \t\t\tmother = character:Lannister_6\n1692: \t\t\treal_father = character:Lannister_7\n1693: \t\t}\n1694: \t}\n1695: \teffect = {\n1696: \t\tagot_create_personal_coa_for_historical_ai = { ACTOR = root COA_KEY = house_BaratheonKL }\n1697: \t\tif = {\n1698: \t\t\tlimit = {\n1699: \t\t\t\tNOT = { house = dynasty:dynn_Baratheon.dynasty_founder.house }\n1700: \t\t\t}\n1701: \n1702: \t\t\thouse = { set_coa = var:my_personal_coa.house }\n1703: \t\t\tevery_held_title = {\n1704: \t\t\t\tset_coa = root.house\n1705: \t\t\t}\n1706: \t\t}\n1707: \t}\n1708: }"
+  },
+  {
+    "Reason": "Author duplicate definition with placeholder gold effect",
+    "File": "common/on_action/agot_on_actions/test_title_on_actions.txt",
+    "Mod": "AGOT+ | Исправления совместимости",
+    "LineStart": 178,
+    "LineEnd": 193,
+    "Text": "178: agot_on_title_inheritance_lannister_baratheon_coa = {\n179: \ttrigger = { #trigger must be identical to vanilla AGOT's\n180: \t\tscope:title = {\n181: \t\t\tthis = title:h_the_iron_throne\n182: \t\t}\n183: \t\troot = {\n184: \t\t\tdynasty = dynasty:dynn_Baratheon\n185: \t\t\tfather = character:Baratheon_2\n186: \t\t\tmother = character:Lannister_6\n187: \t\t\treal_father = character:Lannister_7\n188: \t\t}\n189: \t}\n190: \teffect = {\n191: \t\tadd_gold = 1 #just to have SOMETHING here to overwrite the old effect\n192: \t}\n193: }"
+  },
+  {
+    "Reason": "Native child-regency setup uses try_start_diarchy",
+    "File": "events/diarchy_events/diarchy_events.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 113,
+    "LineEnd": 132,
+    "Text": "113: diarchy.0011 = {\n114: \thidden = yes\n115: \n116: \ttrigger = {\n117: \t\tregency_for_personal_reasons_trigger = yes\n118: \t\tbasic_eligible_for_diarchy_trigger = yes\n119: \t}\n120: \n121: \timmediate = {\n122: \t\tif = {\n123: \t\t\tlimit = {\n124: \t\t\t\tgovernment_has_flag = government_is_nomadic\n125: \t\t\t}\n126: \t\t\ttry_start_diarchy = nomad_regency\n127: \t\t}\n128: \t\telse = {\n129: \t\t\ttry_start_diarchy = regency\n130: \t\t}\n131: \t}\n132: }"
+  },
+  {
+    "Reason": "Pregnancy terminated before calling missing child creation functions",
+    "File": "events/asoiaf_canon_children_events/asoiaf_canon_children_targaryen_events.txt",
+    "Mod": "AGOT+",
+    "LineStart": 730,
+    "LineEnd": 768,
+    "Text": "730: asoiaf_canon_children_targaryen_events.0882 = { #children of Aegon IV Targaryen by his lowborn lover\n731: \ttype = character_event\n732: \thidden = yes\n733: \t\n734: \timmediate = {\n735: \t\tif = {\n736: \t\t\tlimit = {\n737: \t\t\t\tasoiaf_canon_children_Targaryen_101_trigger = yes\n738: \t\t\t\tscope:mother = { has_trait = pregnant }\n739: \t\t\t}\n740: \t\t\tscope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }\n741: \t\t\tasoiaf_canon_children_Targaryen_101_birth_effect = yes\n742: \t\t}\n743: \t\tif = {\n744: \t\t\tlimit = {\n745: \t\t\t\tasoiaf_canon_children_Targaryen_100_trigger = yes\n746: \t\t\t\tscope:mother = { has_trait = pregnant }\n747: \t\t\t}\n748: \t\t\tscope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }\n749: \t\t\tasoiaf_canon_children_Targaryen_100_birth_effect = yes\n750: \t\t}\n751: \t\tif = {\n752: \t\t\tlimit = {\n753: \t\t\t\tasoiaf_canon_children_Targaryen_99_trigger = yes\n754: \t\t\t\tscope:mother = { has_trait = pregnant }\n755: \t\t\t}\n756: \t\t\tscope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }\n757: \t\t\tasoiaf_canon_children_Targaryen_99_birth_effect = yes\n758: \t\t}\n759: \t\tif = {\n760: \t\t\tlimit = {\n761: \t\t\t\tasoiaf_canon_children_Targaryen_98_trigger = yes\n762: \t\t\t\tscope:mother = { has_trait = pregnant }\n763: \t\t\t}\n764: \t\t\tscope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }\n765: \t\t\tasoiaf_canon_children_Targaryen_98_birth_effect = yes\n766: \t\t}\n767: \t}\n768: }"
+  },
+  {
+    "Reason": "Second incomplete chain has the same pregnancy loss risk",
+    "File": "events/asoiaf_canon_children_events/asoiaf_canon_children_targaryen_events.txt",
+    "Mod": "AGOT+",
+    "LineStart": 770,
+    "LineEnd": 800,
+    "Text": "770: asoiaf_canon_children_targaryen_events.0883 = { #children of Aegon IV Targaryen by his Summer Islander lover\n771: \ttype = character_event\n772: \thidden = yes\n773: \t\n774: \timmediate = {\n775: \t\tif = {\n776: \t\t\tlimit = {\n777: \t\t\t\tasoiaf_canon_children_Targaryen_104_trigger = yes\n778: \t\t\t\tscope:mother = { has_trait = pregnant }\n779: \t\t\t}\n780: \t\t\tscope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }\n781: \t\t\tasoiaf_canon_children_Targaryen_104_birth_effect = yes\n782: \t\t}\n783: \t\tif = {\n784: \t\t\tlimit = {\n785: \t\t\t\tasoiaf_canon_children_Targaryen_103_trigger = yes\n786: \t\t\t\tscope:mother = { has_trait = pregnant }\n787: \t\t\t}\n788: \t\t\tscope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }\n789: \t\t\tasoiaf_canon_children_Targaryen_103_birth_effect = yes\n790: \t\t}\n791: \t\tif = {\n792: \t\t\tlimit = {\n793: \t\t\t\tasoiaf_canon_children_Targaryen_102_trigger = yes\n794: \t\t\t\tscope:mother = { has_trait = pregnant }\n795: \t\t\t}\n796: \t\t\tscope:mother = { asoiaf_canon_children_terminate_pregnancy_effect = yes }\n797: \t\t\tasoiaf_canon_children_Targaryen_102_birth_effect = yes\n798: \t\t}\n799: \t}\n800: }"
+  },
+  {
+    "Reason": "Termination ends the current pregnancy",
+    "File": "common/scripted_effects/asoiaf_canon_children_effects.txt",
+    "Mod": "AGOT+ | Исправления совместимости",
+    "LineStart": 20,
+    "LineEnd": 23,
+    "Text": "20: asoiaf_canon_children_terminate_pregnancy_effect = {\n21: \tend_pregnancy = yes\n22: \ttrigger_event = { id = asoiaf_canon_children_pregnancy_events.1 days = 1 }\n23: }"
+  },
+  {
+    "Reason": "Existing historical identity does not implement PLUS dynamic birth",
+    "File": "history/characters/00_agot_char_dragonstone_ancestors.txt",
+    "Mod": "AGOT Bookmarked",
+    "LineStart": 6158,
+    "LineEnd": 6194,
+    "Text": "6158: Targaryen_98 = {\n6159: \tname = Alysanne # Canon\n6160: \tdynasty = dynn_Targaryen\n6161: \tfemale = yes\n6162: \tdna = Targaryen_98\n6163: \n6164: \treligion = fots_seven\n6165: \tculture = westerosi_valyrian\n6166: \n6167: \tfather = Targaryen_88\n6168: \tmother = Lowborn_Kings_Landing_3 # Merry Megette\n6169: \n6170: \ttrait = legitimized_bastard # Caution: succession error\n6171: \n6172: \ttrait = education_learning_1\n6173: \n6174: \t# canon_children_bastard_parent_status married_father_married_mother\n6175: \t# canon_children_bastard_reveal canon_bastard_known_father_public\n6176: \n6177: \t8155.10.1 = {\n6178: \t\tbirth = yes\n6179: \t\tmake_trait_inactive = neutral_silver_hair\n6180: \t\tmake_trait_inactive = purple_eyes_9\n6181: \t\tadd_character_flag = canon_status_canon\n6182: \t\tmake_trait_inactive = scripted_appearance\n6183: \t\tadd_character_flag = unlegitimize_on_load\n6184: \t\teffect = { make_trait_inactive = surname_waters }\n6185: \t}\n6186: \t8159.11.14 = { # Sent to Faith by Viserys II\n6187: \t\ttrait = septon # Septa\n6188: \t\teffect = {\n6189: \t\t\tagot_safe_set_location_history_effect = { CASTLE = title:k_the_most_devout }\n6190: \t\t}\n6191: \t}\n6192: \t8184.1.1 = { remove_character_flag = unlegitimize_on_load }\n6193: \t8200.1.1 = { death = yes }\n6194: }"
+  },
+  {
+    "Reason": "Native dummy is a template, not a PLUS birth function",
+    "File": "history/characters/agot_canon_children_dummy_characters.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 21221,
+    "LineEnd": 21232,
+    "Text": "21221: Dummy_Targaryen_98 = {\n21222: \tname = Alysanne\n21223: \tdna = Targaryen_98\n21224: \tfemale = yes\n21225: \treligion = fots_seven\n21226: \tculture = northman\n21227: \n21228: \ttrait = canon_bastard_known_father_public\n21229: \n21230: \t118.1.1 = { birth = yes }\n21231: \t118.1.2 = { death = yes }\n21232: }"
+  },
+  {
+    "Reason": "PLUS identity trait exists despite absent birth implementation",
+    "File": "common/traits/asoiaf_canon_children_traits.txt",
+    "Mod": "AGOT+",
+    "LineStart": 653,
+    "LineEnd": 659,
+    "Text": "653: asoiaf_Targaryen_98_trait = {\n654: \tphysical = no\n655: \tshown_in_ruler_designer = no\n656: \tshown_in_encyclopedia = no\n657: \tdesc = asoiaf_canon_children_trait_desc\n658: \ticon = pure_blooded.dds\n659: }"
+  },
+  {
+    "Reason": "DNA preset definition exists",
+    "File": "common/dna_data/agot_dna_dragonstone_ancestors.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 42249,
+    "LineEnd": 42252,
+    "Text": "42249: Targaryen_98 = {\n42250: \tportrait_info = {\n42251: \t\tgenes = {\n42252: \t\t\thair_color = { 15 61 15 61 }"
+  },
+  {
+    "Reason": "Existing historical identity does not implement PLUS dynamic birth",
+    "File": "history/characters/00_agot_char_dragonstone_ancestors.txt",
+    "Mod": "AGOT Bookmarked",
+    "LineStart": 6195,
+    "LineEnd": 6231,
+    "Text": "6195: Targaryen_99 = {\n6196: \tname = Lily # Canon\n6197: \tdynasty = dynn_Targaryen\n6198: \tfemale = yes\n6199: \tdna = Targaryen_99\n6200: \n6201: \treligion = fots_seven\n6202: \tculture = westerosi_valyrian\n6203: \n6204: \tfather = Targaryen_88\n6205: \tmother = Lowborn_Kings_Landing_3 # Merry Megette\n6206: \n6207: \ttrait = legitimized_bastard # Caution: succession error\n6208: \n6209: \ttrait = education_learning_1\n6210: \n6211: \t# canon_children_bastard_parent_status married_father_married_mother\n6212: \t# canon_children_bastard_reveal canon_bastard_known_father_public\n6213: \n6214: \t8156.9.1 = {\n6215: \t\tbirth = yes\n6216: \t\tmake_trait_inactive = cool_silver_hair\n6217: \t\tmake_trait_inactive = purple_eyes_13\n6218: \t\tadd_character_flag = canon_status_canon\n6219: \t\tmake_trait_inactive = scripted_appearance\n6220: \t\tadd_character_flag = unlegitimize_on_load\n6221: \t\teffect = { make_trait_inactive = surname_waters }\n6222: \t}\n6223: \t8159.11.14 = { # Sent to Faith by Viserys II\n6224: \t\ttrait = septon # Septa\n6225: \t\teffect = {\n6226: \t\t\tagot_safe_set_location_history_effect = { CASTLE = title:k_the_most_devout }\n6227: \t\t}\n6228: \t}\n6229: \t8184.1.1 = { remove_character_flag = unlegitimize_on_load }\n6230: \t8211.1.1 = { death = yes }\n6231: }"
+  },
+  {
+    "Reason": "Native dummy is a template, not a PLUS birth function",
+    "File": "history/characters/agot_canon_children_dummy_characters.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 21234,
+    "LineEnd": 21245,
+    "Text": "21234: Dummy_Targaryen_99 = {\n21235: \tname = Lily\n21236: \tdna = Targaryen_99\n21237: \tfemale = yes\n21238: \treligion = fots_seven\n21239: \tculture = northman\n21240: \n21241: \ttrait = canon_bastard_known_father_public\n21242: \n21243: \t118.1.1 = { birth = yes }\n21244: \t118.1.2 = { death = yes }\n21245: }"
+  },
+  {
+    "Reason": "PLUS identity trait exists despite absent birth implementation",
+    "File": "common/traits/asoiaf_canon_children_traits.txt",
+    "Mod": "AGOT+",
+    "LineStart": 660,
+    "LineEnd": 666,
+    "Text": "660: asoiaf_Targaryen_99_trait = {\n661: \tphysical = no\n662: \tshown_in_ruler_designer = no\n663: \tshown_in_encyclopedia = no\n664: \tdesc = asoiaf_canon_children_trait_desc\n665: \ticon = pure_blooded.dds\n666: }"
+  },
+  {
+    "Reason": "DNA preset definition exists",
+    "File": "common/dna_data/agot_dna_dragonstone_ancestors.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 42444,
+    "LineEnd": 42447,
+    "Text": "42444: Targaryen_99 = {\n42445: \tportrait_info = {\n42446: \t\tgenes = {\n42447: \t\t\thair_color = { 15 31 15 31 }"
+  },
+  {
+    "Reason": "Existing historical identity does not implement PLUS dynamic birth",
+    "File": "history/characters/00_agot_char_dragonstone_ancestors.txt",
+    "Mod": "AGOT Bookmarked",
+    "LineStart": 6232,
+    "LineEnd": 6268,
+    "Text": "6232: Targaryen_100 = {\n6233: \tname = Willow # Canon\n6234: \tdynasty = dynn_Targaryen\n6235: \tfemale = yes\n6236: \tdna = Targaryen_100\n6237: \n6238: \treligion = fots_seven\n6239: \tculture = westerosi_valyrian\n6240: \n6241: \tfather = Targaryen_88\n6242: \tmother = Lowborn_Kings_Landing_3 # Merry Megette\n6243: \n6244: \ttrait = legitimized_bastard # Caution: succession error\n6245: \n6246: \ttrait = education_learning_1\n6247: \n6248: \t# canon_children_bastard_parent_status married_father_married_mother\n6249: \t# canon_children_bastard_reveal canon_bastard_known_father_public\n6250: \n6251: \t8157.8.1 = {\n6252: \t\tbirth = yes\n6253: \t\tmake_trait_inactive = cool_neutral_silver_hair\n6254: \t\tmake_trait_inactive = purple_eyes_13\n6255: \t\tadd_character_flag = canon_status_canon\n6256: \t\tmake_trait_inactive = scripted_appearance\n6257: \t\tadd_character_flag = unlegitimize_on_load\n6258: \t\teffect = { make_trait_inactive = surname_waters }\n6259: \t}\n6260: \t8159.11.14 = { # Sent to Faith by Viserys II\n6261: \t\ttrait = septon # Septa\n6262: \t\teffect = {\n6263: \t\t\tagot_safe_set_location_history_effect = { CASTLE = title:k_the_most_devout }\n6264: \t\t}\n6265: \t}\n6266: \t8184.1.1 = { remove_character_flag = unlegitimize_on_load }\n6267: \t8189.1.1 = { death = yes }\n6268: }"
+  },
+  {
+    "Reason": "Native dummy is a template, not a PLUS birth function",
+    "File": "history/characters/agot_canon_children_dummy_characters.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 21247,
+    "LineEnd": 21258,
+    "Text": "21247: Dummy_Targaryen_100 = {\n21248: \tname = Willow\n21249: \tdna = Targaryen_100\n21250: \tfemale = yes\n21251: \treligion = fots_seven\n21252: \tculture = northman\n21253: \n21254: \ttrait = canon_bastard_known_father_public\n21255: \n21256: \t118.1.1 = { birth = yes }\n21257: \t118.1.2 = { death = yes }\n21258: }"
+  },
+  {
+    "Reason": "PLUS identity trait exists despite absent birth implementation",
+    "File": "common/traits/asoiaf_canon_children_traits.txt",
+    "Mod": "AGOT+",
+    "LineStart": 667,
+    "LineEnd": 673,
+    "Text": "667: asoiaf_Targaryen_100_trait = {\n668: \tphysical = no\n669: \tshown_in_ruler_designer = no\n670: \tshown_in_encyclopedia = no\n671: \tdesc = asoiaf_canon_children_trait_desc\n672: \ticon = pure_blooded.dds\n673: }"
+  },
+  {
+    "Reason": "DNA preset definition exists",
+    "File": "common/dna_data/agot_dna_dragonstone_ancestors.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 19566,
+    "LineEnd": 19569,
+    "Text": "19566: Targaryen_100 = {\n19567: \tportrait_info = {\n19568: \t\tgenes = {\n19569: \t\t\thair_color = { 15 19 15 19 }"
+  },
+  {
+    "Reason": "Existing historical identity does not implement PLUS dynamic birth",
+    "File": "history/characters/00_agot_char_dragonstone_ancestors.txt",
+    "Mod": "AGOT Bookmarked",
+    "LineStart": 6269,
+    "LineEnd": 6305,
+    "Text": "6269: Targaryen_101 = {\n6270: \tname = Rosey # Canon\n6271: \tdynasty = dynn_Targaryen\n6272: \tfemale = yes\n6273: \tdna = Targaryen_101\n6274: \n6275: \treligion = fots_seven\n6276: \tculture = westerosi_valyrian\n6277: \n6278: \tfather = Targaryen_88\n6279: \tmother = Lowborn_Kings_Landing_3 # Merry Megette\n6280: \n6281: \ttrait = legitimized_bastard # Caution: succession error\n6282: \n6283: \ttrait = education_learning_1\n6284: \n6285: \t# canon_children_bastard_parent_status married_father_married_mother\n6286: \t# canon_children_bastard_reveal canon_bastard_known_father_public\n6287: \n6288: \t8158.7.1 = {\n6289: \t\tbirth = yes\n6290: \t\tmake_trait_inactive = silver_blonde_hair\n6291: \t\tmake_trait_inactive = purple_eyes_2\n6292: \t\tadd_character_flag = canon_status_canon\n6293: \t\tmake_trait_inactive = scripted_appearance\n6294: \t\tadd_character_flag = unlegitimize_on_load\n6295: \t\teffect = { make_trait_inactive = surname_waters }\n6296: \t}\n6297: \t8159.11.14 = { # Sent to Faith by Viserys II\n6298: \t\ttrait = septon # Septa\n6299: \t\teffect = {\n6300: \t\t\tagot_safe_set_location_history_effect = { CASTLE = title:k_the_most_devout }\n6301: \t\t}\n6302: \t}\n6303: \t8184.1.1 = { remove_character_flag = unlegitimize_on_load }\n6304: \t8208.1.1 = { death = yes }\n6305: }"
+  },
+  {
+    "Reason": "Native dummy is a template, not a PLUS birth function",
+    "File": "history/characters/agot_canon_children_dummy_characters.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 21260,
+    "LineEnd": 21271,
+    "Text": "21260: Dummy_Targaryen_101 = {\n21261: \tname = Rosey\n21262: \tdna = Targaryen_101\n21263: \tfemale = yes\n21264: \treligion = fots_seven\n21265: \tculture = northman\n21266: \n21267: \ttrait = canon_bastard_known_father_public\n21268: \n21269: \t118.1.1 = { birth = yes }\n21270: \t118.1.2 = { death = yes }\n21271: }"
+  },
+  {
+    "Reason": "PLUS identity trait exists despite absent birth implementation",
+    "File": "common/traits/asoiaf_canon_children_traits.txt",
+    "Mod": "AGOT+",
+    "LineStart": 674,
+    "LineEnd": 680,
+    "Text": "674: asoiaf_Targaryen_101_trait = {\n675: \tphysical = no\n676: \tshown_in_ruler_designer = no\n677: \tshown_in_encyclopedia = no\n678: \tdesc = asoiaf_canon_children_trait_desc\n679: \ticon = pure_blooded.dds\n680: }"
+  },
+  {
+    "Reason": "DNA preset definition exists",
+    "File": "common/dna_data/agot_dna_dragonstone_ancestors.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 19761,
+    "LineEnd": 19764,
+    "Text": "19761: Targaryen_101 = {\n19762: \tportrait_info = {\n19763: \t\tgenes = {\n19764: \t\t\thair_color = { 203 242 203 242 }"
+  },
+  {
+    "Reason": "Existing historical identity does not implement PLUS dynamic birth",
+    "File": "history/characters/00_agot_char_braavos_ancestors.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 1572,
+    "LineEnd": 1612,
+    "Text": "1572: Targaryen_102 = {\n1573: \tname = Bellenora # Canon\n1574: \tdynasty = dynn_Otherys\n1575: \tfemale = yes\n1576: \tdna = Targaryen_102\n1577: \n1578: \treligion = fc_pan_braavos\n1579: \tculture = braavosi\n1580: \n1581: \tmother = Otherys_56_A # Bellegere Otherys\n1582: \n1583: \ttrait = wild_oat\n1584: \n1585: \ttrait = beauty_good_3\n1586: \n1587: \t# canon_children_bastard_parent_status married_father_unmarried_mother\n1588: \t# canon_children_bastard_reveal canon_bastard_known_father_public\n1589: \n1590: \t8163.1.1 = {\n1591: \t\tbirth = yes\n1592: \t\tmake_trait_inactive = scripted_appearance\n1593: \t\tadd_character_flag = canon_status_canon\n1594: \t\teffect = {\n1595: \t\t\tset_real_father = character:Targaryen_88 # Aegon IV Targaryen\n1596: \t\t\tagot_safe_set_location_history_effect = { CASTLE = title:k_braavos }\n1597: \t\t}\n1598: \t}\n1599: \t8185.1.1 = {\n1600: \t\t#trait = courtesan # AGOT TODO trait\n1601: \t\ttrait = refusing_marriage\n1602: \t\tgive_nickname = nick_agot_historical_black_pearl\n1603: \t}\n1604: \t8215.1.1 = {\n1605: \t\teffect = {\n1606: \t\t\tremove_nickname = yes\n1607: \t\t\t# remove_trait = courtesan # AGOT TODO trait\n1608: \t\t\tremove_trait = refusing_marriage\n1609: \t\t}\n1610: \t}\n1611: \t8223.1.1 = { death = yes }\n1612: }"
+  },
+  {
+    "Reason": "Native dummy is a template, not a PLUS birth function",
+    "File": "history/characters/agot_canon_children_dummy_characters.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 21273,
+    "LineEnd": 21284,
+    "Text": "21273: Dummy_Targaryen_102 = {\n21274: \tname = Bellenora\n21275: \tdna = Targaryen_102\n21276: \tfemale = yes\n21277: \treligion = fots_seven\n21278: \tculture = northman\n21279: \n21280: \ttrait = canon_bastard_known_father_public\n21281: \n21282: \t118.1.1 = { birth = yes }\n21283: \t118.1.2 = { death = yes }\n21284: }"
+  },
+  {
+    "Reason": "PLUS identity trait exists despite absent birth implementation",
+    "File": "common/traits/asoiaf_canon_children_traits.txt",
+    "Mod": "AGOT+",
+    "LineStart": 681,
+    "LineEnd": 687,
+    "Text": "681: asoiaf_Targaryen_102_trait = {\n682: \tphysical = no\n683: \tshown_in_ruler_designer = no\n684: \tshown_in_encyclopedia = no\n685: \tdesc = asoiaf_canon_children_trait_desc\n686: \ticon = pure_blooded.dds\n687: }"
+  },
+  {
+    "Reason": "DNA preset definition exists",
+    "File": "common/dna_data/agot_dna_braavos_ancestors.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 6055,
+    "LineEnd": 6058,
+    "Text": "6055: Targaryen_102 = {\n6056: \tportrait_info = {\n6057: \t\tgenes = {\n6058: \t\t\thair_color = { 81 252 81 252 }"
+  },
+  {
+    "Reason": "Existing historical identity does not implement PLUS dynamic birth",
+    "File": "history/characters/00_agot_char_braavos_ancestors.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 1613,
+    "LineEnd": 1639,
+    "Text": "1613: Targaryen_103 = {\n1614: \tname = Narha # Canon\n1615: \tdynasty = dynn_Otherys\n1616: \tfemale = yes\n1617: \tdna = Targaryen_103\n1618: \n1619: \treligion = fc_pan_braavos\n1620: \tculture = braavosi\n1621: \n1622: \tmother = Otherys_56_A # Bellegere Otherys\n1623: \n1624: \ttrait = wild_oat\n1625: \n1626: \t# canon_children_bastard_parent_status married_father_unmarried_mother\n1627: \t# canon_children_bastard_reveal canon_bastard_known_father_public\n1628: \n1629: \t8165.1.1 = {\n1630: \t\tbirth = yes\n1631: \t\tadd_character_flag = canon_status_canon\n1632: \t\tmake_trait_inactive = scripted_appearance\n1633: \t\teffect = {\n1634: \t\t\tset_real_father = character:Targaryen_88 # Aegon IV Targaryen\n1635: \t\t\tagot_safe_set_location_history_effect = { CASTLE = title:k_braavos }\n1636: \t\t}\n1637: \t}\n1638: \t8215.1.1 = { death = yes }\n1639: }"
+  },
+  {
+    "Reason": "Native dummy is a template, not a PLUS birth function",
+    "File": "history/characters/agot_canon_children_dummy_characters.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 21286,
+    "LineEnd": 21297,
+    "Text": "21286: Dummy_Targaryen_103 = {\n21287: \tname = Narha\n21288: \tdna = Targaryen_103\n21289: \tfemale = yes\n21290: \treligion = fots_seven\n21291: \tculture = northman\n21292: \n21293: \ttrait = canon_bastard_known_father_public\n21294: \n21295: \t118.1.1 = { birth = yes }\n21296: \t118.1.2 = { death = yes }\n21297: }"
+  },
+  {
+    "Reason": "PLUS identity trait exists despite absent birth implementation",
+    "File": "common/traits/asoiaf_canon_children_traits.txt",
+    "Mod": "AGOT+",
+    "LineStart": 688,
+    "LineEnd": 694,
+    "Text": "688: asoiaf_Targaryen_103_trait = {\n689: \tphysical = no\n690: \tshown_in_ruler_designer = no\n691: \tshown_in_encyclopedia = no\n692: \tdesc = asoiaf_canon_children_trait_desc\n693: \ticon = pure_blooded.dds\n694: }"
+  },
+  {
+    "Reason": "DNA preset definition exists",
+    "File": "common/dna_data/agot_dna_braavos_ancestors.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 6250,
+    "LineEnd": 6253,
+    "Text": "6250: Targaryen_103 = {\n6251: \tportrait_info = {\n6252: \t\tgenes = {\n6253: \t\t\thair_color = { 7 28 7 28 }"
+  },
+  {
+    "Reason": "Existing historical identity does not implement PLUS dynamic birth",
+    "File": "history/characters/00_agot_char_braavos_ancestors.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 1640,
+    "LineEnd": 1667,
+    "Text": "1640: Targaryen_104 = {\n1641: \tname = Balerion # Canon\n1642: \tdynasty = dynn_Otherys\n1643: \tdna = Targaryen_104\n1644: \n1645: \treligion = fc_pan_braavos\n1646: \tculture = braavosi\n1647: \n1648: \tmother = Otherys_56_A # Bellegere Otherys\n1649: \n1650: \ttrait = wild_oat\n1651: \n1652: \ttrait = beauty_good_1\n1653: \n1654: \t# canon_children_bastard_parent_status married_father_unmarried_mother\n1655: \t# canon_children_bastard_reveal canon_bastard_known_father_public\n1656: \n1657: \t8168.1.1 = {\n1658: \t\tbirth = yes\n1659: \t\tadd_character_flag = canon_status_canon\n1660: \t\tmake_trait_inactive = scripted_appearance\n1661: \t\teffect = {\n1662: \t\t\tset_real_father = character:Targaryen_88 # Aegon IV Targaryen\n1663: \t\t\tagot_safe_set_location_history_effect = { CASTLE = title:k_braavos }\n1664: \t\t}\n1665: \t}\n1666: \t8223.1.1 = { death = yes }\n1667: }"
+  },
+  {
+    "Reason": "Native dummy is a template, not a PLUS birth function",
+    "File": "history/characters/agot_canon_children_dummy_characters.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 21299,
+    "LineEnd": 21309,
+    "Text": "21299: Dummy_Targaryen_104 = {\n21300: \tname = Balerion\n21301: \tdna = Targaryen_104\n21302: \treligion = fots_seven\n21303: \tculture = northman\n21304: \n21305: \ttrait = canon_bastard_known_father_public\n21306: \n21307: \t118.1.1 = { birth = yes }\n21308: \t118.1.2 = { death = yes }\n21309: }"
+  },
+  {
+    "Reason": "PLUS identity trait exists despite absent birth implementation",
+    "File": "common/traits/asoiaf_canon_children_traits.txt",
+    "Mod": "AGOT+",
+    "LineStart": 695,
+    "LineEnd": 701,
+    "Text": "695: asoiaf_Targaryen_104_trait = {\n696: \tphysical = no\n697: \tshown_in_ruler_designer = no\n698: \tshown_in_encyclopedia = no\n699: \tdesc = asoiaf_canon_children_trait_desc\n700: \ticon = pure_blooded.dds\n701: }"
+  },
+  {
+    "Reason": "DNA preset definition exists",
+    "File": "common/dna_data/agot_dna_braavos_ancestors.txt",
+    "Mod": "A Game of Thrones",
+    "LineStart": 6445,
+    "LineEnd": 6448,
+    "Text": "6445: Targaryen_104 = {\n6446: \tportrait_info = {\n6447: \t\tgenes = {\n6448: \t\t\thair_color = { 50 11 50 11 }"
+  }
+]

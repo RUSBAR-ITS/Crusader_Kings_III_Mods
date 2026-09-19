@@ -1,0 +1,514 @@
+﻿asoiaf_clothes_situational = { # All clothes triggers are found in 00_clothing_triggers.txt
+
+	usage = game
+	selection_behavior = weighted_random
+	priority = 5
+
+    asoiaf_clothing_nights_watch_leather_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_all_armours
+				accessory = male_clothes_asoiaf_nights_watch_leather
+			}
+			accessory = {
+				mode = add
+				gene = legwear
+				template = asoiaf_all_legwears
+				accessory = male_legwear_asoiaf_nights_watch_legs
+			}
+		}
+		weight = {
+            base = 0
+            modifier = {
+                add = 500
+				is_male = yes
+                OR = {
+					has_trait = nightswatch
+					has_trait = nightswatch_temp
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+				}
+				has_game_rule = asoiaf_new_clothes_north_rule_on
+            }
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = maester
+					has_trait = maester_historical
+					has_trait = archmaester
+					has_court_position = court_jester_court_position
+				}
+			}
+        }
+	}
+
+	asoiaf_clothing_kingsguard_default = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_all_armours
+				accessory = male_clothes_asoiaf_kingsguard_armour_default
+			}
+			accessory = {
+				mode = add
+				gene = legwear
+				template = asoiaf_all_legwears
+				accessory = male_legwear_asoiaf_kingsguard_legs_default
+			}
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = asoiaf_unique_cloaks
+				accessory = male_cloak_asoiaf_kingsguard_cloak_default
+			}
+            morph = {
+                mode = modify_multiply
+                gene = gene_bs_bust
+                value = 0.8 # Setting this lower to reduce the exaggerated effect of large bust size when wearing clothes
+                template = bust_clothes
+            }
+            morph = { #so that the neck doesn't clip through the collar
+                mode = replace
+                gene = gene_neck_width
+                value = 0.4
+                template = neck_width_neg
+            }
+        }
+        weight = {
+            base = 0
+            modifier = {
+                add = 1000
+                is_male = yes
+				OR = {
+					has_trait = kingsguard
+					any_equipped_character_artifact = { has_variable = kingsguard_armor }
+				}
+				has_game_rule = asoiaf_new_clothes_crownlands_rule_on
+            }
+            modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+        }
+    }
+    asoiaf_clothing_kingsguard_tunic = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_unique_clothes
+				accessory = male_clothes_asoiaf_kingsguard_tunic
+			}
+			accessory = {
+                mode = add
+                gene = legwear
+                template = asoiaf_all_legwears
+                accessory = male_legwear_asoiaf_kingsguard_legs_boots
+            }
+            accessory = { #keep this here until an AGOT+ kingsguard cloak is added, it seems to work anyways
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+            morph = { #so that the neck doesn't clip through the collar
+                mode = replace
+                gene = gene_neck_width
+                value = 0.25
+                template = neck_width_neg
+            }
+        }
+        weight = {
+            base = 0
+            modifier = {
+                add = 1500
+                is_male = yes #until a female version is added
+                OR = {
+                    AND = { #either this is a Kingsguard who is currently out-of-commission (due to being captured, incapable, etc.)
+                        has_trait = kingsguard
+                        NOR = {
+                            has_council_position = kingsguard_lord_commander
+                            has_council_position = kingsguard_1
+                            has_council_position = kingsguard_2
+                            has_council_position = kingsguard_3
+                            has_council_position = kingsguard_4
+                            has_council_position = kingsguard_5
+                            has_council_position = kingsguard_6
+                        }
+                    }
+                    AND = { #or it's a Kingsguard attending a feast/funeral
+                        has_trait = kingsguard
+                        involved_activity ?= {
+							OR = {
+								has_activity_type = activity_feast
+								has_activity_type = activity_funeral
+							}
+						}
+                    }
+                }
+				has_game_rule = asoiaf_new_clothes_crownlands_rule_on
+            }
+            modifier = { #dead Kingsguard always wear their armour
+				factor = 0
+				has_trait = kingsguard
+                is_alive = no
+			}
+            modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+        }
+    }
+    asoiaf_clothing_rhaegar_armour = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = clothes
+                template = agot_all_armors
+				accessory = male_clothes_valyrian_war_04
+            }
+			accessory = {
+				mode = add
+				gene = legwear
+				template = agot_all_legwear
+				accessory = male_legwear_secular_valyrian_war_04
+			}
+            morph = {
+                mode = modify_multiply
+                gene = gene_bs_bust
+                value = 0.8 # Setting this lower to reduce the exaggerated effect of large bust size when wearing clothes
+                template = bust_clothes
+            }
+        }
+        weight = {
+            base = 0
+			modifier = {
+				add = 300
+				any_equipped_character_artifact = { has_variable = rhaegar_armor }
+				portrait_wear_armor_trigger = yes
+			}
+			modifier = {
+				add = -1000
+				has_trait = kingsguard
+			}
+        }
+    }
+    asoiaf_clothing_robert_armour = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = clothes
+                template = agot_all_armors
+				accessory = male_clothes_stormlands_war_04
+            }
+			accessory = {
+				mode = add
+				gene = legwear
+				template = agot_all_legwear
+				accessory = male_legwear_secular_stormlands_war_04
+			}
+            morph = {
+                mode = modify_multiply
+                gene = gene_bs_bust
+                value = 0.8 # Setting this lower to reduce the exaggerated effect of large bust size when wearing clothes
+                template = bust_clothes
+            }
+        }
+        weight = {
+            base = 0
+			modifier = {
+				add = 300
+				any_equipped_character_artifact = { has_variable = robert_armor }
+				portrait_wear_armor_trigger = yes
+			}
+			modifier = {
+				add = -1000
+				has_trait = kingsguard
+			}
+        }
+    }
+    asoiaf_dragonkeepers = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = religious_jewish_high_clothes
+				value = 1.0
+			}
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+                add = 250
+                has_court_position = head_dragonkeeper_court_position
+                has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+            }
+		}
+	}
+    asoiaf_lion_necklace_gold = {
+		dna_modifiers = {
+			accessory = {
+                mode = add
+                gene = special_accessories_jewelry
+                template = asoiaf_unique_jewellery
+                accessory = female_jewellery_asoiaf_lion_necklace_gold
+				type = female
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				is_female = yes
+                primary_spouse ?= {
+                    dynasty ?= dynasty:dynn_Lannister
+                    is_dynast = yes
+                }
+                this = {
+                    opinion = {
+                        target = primary_spouse
+                        value >= 75 #she needs to have a highly favourable opinion of her spouse to wear the necklace
+                    }
+                }
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				is_female = yes
+                primary_spouse ?= {
+                    house ?= house:house_BaratheonKL
+                    is_house_head = yes
+                }
+                this = {
+                    opinion = {
+                        target = primary_spouse
+                        value >= 75 #she needs to have a highly favourable opinion of her spouse to wear the necklace
+                    }
+                }
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+            modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+    asoiaf_lion_necklace_silver = {
+		dna_modifiers = {
+			accessory = {
+                mode = add
+                gene = special_accessories_jewelry
+                template = asoiaf_unique_jewellery
+                accessory = female_jewellery_asoiaf_lion_necklace_silver
+				type = female
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				is_female = yes
+                primary_spouse ?= {
+                    dynasty ?= dynasty:dynn_Reyne
+                    is_dynast = yes
+                }
+                this = {
+                    opinion = {
+                        target = primary_spouse
+                        value >= 75 #she needs to have a highly favourable opinion of her spouse to wear the necklace
+                    }
+                }
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+            modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_handmaiden_dress_1 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_unique_clothes
+				accessory = female_clothes_asoiaf_handmaiden_dress_1
+				type = female
+			}
+			accessory = {
+				mode = add
+				gene = legwear
+				template = free_city_sandals
+				accessory = female_legwear_sandals
+				type = female
+            }
+			accessory = { #seems to work fine here for now
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				is_female = yes
+                has_court_position = lady_in_waiting_court_position
+				exists = liege
+				NOR = { #these regions are too cold for a handmaiden to wear clothes like this
+					this.liege.capital_county.title_province ?= { geographical_region = world_westeros_beyond_the_wall }
+					this.liege.capital_county.title_province = { geographical_region = world_westeros_the_wall }
+					this.liege.capital_county.title_province = { geographical_region = world_westeros_the_north }
+					this.liege.capital_county.title_province = { geographical_region = world_westeros_the_iron_islands }
+					#this.liege.capital_county.title_province = { geographical_region = world_westeros_the_vale }
+					this.liege.capital_county.title_province = { geographical_region = world_westeros_the_reach } #Reach uses handmaiden_dress_2
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+            modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_handmaiden_dress_2 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_unique_clothes
+				accessory = female_clothes_asoiaf_handmaiden_dress_2
+				type = female
+			}
+			accessory = {
+				mode = add
+				gene = legwear
+				template = free_city_sandals
+				accessory = female_legwear_sandals
+				type = female
+            }
+			accessory = { #seems to work fine here for now
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				is_female = yes
+                has_court_position = lady_in_waiting_court_position
+				exists = liege
+				this.liege.capital_county.title_province = { geographical_region = world_westeros_the_reach } #Reach uses handmaiden_dress_2
+			}
+			modifier = {
+				add = 2500 #to overwrite base handmaiden dress
+				is_female = yes
+                has_court_position = lady_in_waiting_court_position
+				this.liege.primary_spouse ?= { culture = culture:reachman } #Lords with Reachman spouses get Reach-themed handmaidens
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { has_game_rule = asoiaf_new_clothes_reach_rule_on }
+			}
+            modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+}

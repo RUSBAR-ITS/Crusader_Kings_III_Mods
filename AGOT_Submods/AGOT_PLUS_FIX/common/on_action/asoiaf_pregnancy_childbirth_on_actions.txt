@@ -1,0 +1,1003 @@
+﻿# called for the mother when a pregnancy reaches the "revealed" status
+# scope:mother is the pregnant mother
+# scope:father is the assumed father
+# scope:real_father is the biological father
+on_pregnancy_mother = {
+	on_actions = {
+		asoiaf_canon_children_pregnancy_detection
+	}
+}
+
+asoiaf_canon_children_pregnancy_detection = {
+	effect = {
+		if = {
+			limit = { scope:real_father ?= { has_inactive_trait = asoiaf_Targaryen_88_trait } exists = scope:real_father }
+			agot_plus_fix_initialize_aegon_children_effect = yes
+		}
+		if = {
+			limit = { asoiaf_canon_children_pregnancy_negation_termination_trigger = yes } #if a woman for some reason gets pregnant with the pregnancy negation modifier, termiante it
+			asoiaf_canon_children_terminate_pregnancy_effect = yes
+		}
+		if = {
+			limit = { asoiaf_canon_children_alicent_pregnancy_termination_trigger = yes }
+			asoiaf_canon_children_terminate_pregnancy_effect = yes
+		}
+		if = {
+			limit = { asoiaf_canon_children_rhaenyra_pregnancy_termination_trigger = yes }
+			asoiaf_canon_children_terminate_pregnancy_effect = yes
+		}
+		if = { #Cersei terminates pregnancies with Robert after Alaric is born
+			limit = { asoiaf_canon_children_cersei_robert_block_trigger = yes }
+			asoiaf_canon_children_terminate_pregnancy_effect = yes
+		}
+		if = {
+			limit = { asoiaf_canon_children_cersei_pregnancy_termination_trigger = yes }
+			asoiaf_canon_children_terminate_pregnancy_effect = yes
+		}
+		if = {
+			limit = { asoiaf_canon_children_margaery_pregnancy_termination_trigger = yes }
+			asoiaf_canon_children_terminate_pregnancy_effect = yes
+		}
+		if = {
+			limit = { asoiaf_canon_children_lysa_pregnancy_termination_trigger = yes }
+			asoiaf_canon_children_terminate_pregnancy_effect = yes
+		}
+
+		if = { #children of Rickon Stark (son of Benjen) by his Glover wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Stark_86_trigger = yes
+					asoiaf_canon_children_Stark_87_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_stark_events.8401 days = 200 }
+		}
+		if = { #children of Rickon Stark (son of Benjen) by a First Man heritage woman out of wedlock
+			limit = { asoiaf_canon_children_Stark_88_trigger = yes }
+			trigger_event = { id = asoiaf_canon_children_stark_events.8402 days = 200 }
+		}
+		if = { #children of Cregan Stark (son of Rickon) by his Norrey wife
+			limit = { asoiaf_canon_children_Stark_94_trigger = yes }
+			trigger_event = { id = asoiaf_canon_children_stark_events.8601 days = 200 }
+		}
+		if = { #children of Cregan Stark (son of Rickon) by his Blackwood wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Stark_95_trigger = yes
+					asoiaf_canon_children_Stark_96_trigger = yes
+					asoiaf_canon_children_Stark_97_trigger = yes
+					asoiaf_canon_children_Stark_98_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_stark_events.8602 days = 200 }
+		}
+		if = { #children of Cregan Stark (son of Rickon) by his Stark wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Stark_99_trigger = yes
+					asoiaf_canon_children_Stark_100_trigger = yes
+					asoiaf_canon_children_Stark_101_trigger = yes
+					asoiaf_canon_children_Stark_102_trigger = yes
+					asoiaf_canon_children_Stark_103_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_stark_events.8603 days = 200 }
+		}
+		if = { #children of Rickard Stark (son of Edwyle) by his Stark wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Stark_2_trigger = yes
+					asoiaf_canon_children_Stark_3_trigger = yes
+					asoiaf_canon_children_Stark_5_trigger = yes
+					asoiaf_canon_children_Stark_4_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_stark_events.101 days = 200 }
+		}
+		if = { #children of Eddard Stark (son of Rickard) by his Tully wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Stark_6_trigger = yes
+					asoiaf_canon_children_Stark_7_trigger = yes
+					asoiaf_canon_children_Stark_8_trigger = yes
+					asoiaf_canon_children_Stark_9_trigger = yes
+					asoiaf_canon_children_Stark_10_trigger = yes
+					asoiaf_canon_children_Stark_11_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_stark_events.301 days = 200 }
+		}
+		if = { #children of Howland Reed (son of Edwyle) by his Crannogman wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Reed_2_trigger = yes
+					asoiaf_canon_children_Reed_3_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_reed_events.0011 days = 200 }
+		}
+		if = { #children of Ormund Baratheon (son of Lyonel) by his Targaryen wife
+			limit = {
+				asoiaf_canon_children_Baratheon_1_trigger = yes
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_baratheon_events.0751 days = 200 }
+		}
+		if = { #children of Steffon Baratheon (son of Ormund) by his Estermont wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Baratheon_2_trigger = yes
+					asoiaf_canon_children_Baratheon_3_trigger = yes
+					asoiaf_canon_children_Baratheon_4_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_baratheon_events.0011 days = 200 }
+		}
+		if = { #children of Robert I Baratheon by his Lannister wife
+			limit = { asoiaf_canon_children_Baratheon_2_1_trigger = yes }
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_baratheon_events.0021 days = 200 }
+		}
+		if = { #children of Cersei Lannister (daughter of Tywin) by her Lannister (close family) lover
+			limit = {
+				OR = {
+					asoiaf_canon_children_Baratheon_5_trigger = yes
+					asoiaf_canon_children_Baratheon_6_trigger = yes
+					asoiaf_canon_children_Baratheon_7_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_baratheon_events.0022 days = 200 }
+		}
+		if = { #children of Stannis Baratheon (son of Steffon) by his Florent wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Baratheon_3_1_trigger = yes
+					asoiaf_canon_children_Baratheon_3_2_trigger = yes
+					asoiaf_canon_children_Baratheon_3_3_trigger = yes
+					asoiaf_canon_children_Baratheon_13_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_baratheon_events.0031 days = 200 }
+		}
+		if = { #children of Tytos Lannister (son of Gerold) by his Marbrand wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Lannister_1_trigger = yes
+					asoiaf_canon_children_Lannister_2_trigger = yes
+					asoiaf_canon_children_Lannister_3_trigger = yes
+					asoiaf_canon_children_Lannister_4_trigger = yes
+					asoiaf_canon_children_Lannister_5_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_lannister_events.1291 days = 200 }
+		}
+		if = { #children of Tywin Lannister (son of Tytos) by his Lannister wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Lannister_6_trigger = yes #only Cersei's trigger for the sake of simplicity
+					asoiaf_canon_children_Lannister_8_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_lannister_events.101 days = 200 }
+		}
+		if = { #children of Kevan Lannister (son of Tytos) by his Swyft wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Lannister_9_trigger = yes
+					asoiaf_canon_children_Lannister_10_trigger = yes #only Willem's trigger for the sake of simplicity
+					asoiaf_canon_children_Lannister_12_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_lannister_events.201 days = 200 }
+		}
+		if = { #children of Jon Arryn (son of Jasper) by his Royce wife
+			limit = { asoiaf_canon_children_Arryn_7_trigger = yes }
+			trigger_event = { id = asoiaf_canon_children_arryn_events.301 days = 200 }
+		}
+		if = { #children of Jon Arryn (son of Jasper) by his Tully wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Arryn_3_1_trigger = yes
+					asoiaf_canon_children_Arryn_3_2_trigger = yes
+					asoiaf_canon_children_Arryn_8_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_arryn_events.302 days = 200 }
+		}
+		if = { #children of Luthor Tyrell (son of Garlan) by his Redwyne wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Tyrell_8_trigger = yes
+					asoiaf_canon_children_Tyrell_9_trigger = yes
+					asoiaf_canon_children_Tyrell_10_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_tyrell_events.0041 days = 200 }
+		}
+		if = { #children of Mace Tyrell (son of Luthor) by his Hightower wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Tyrell_11_trigger = yes
+					asoiaf_canon_children_Tyrell_12_trigger = yes
+					asoiaf_canon_children_Tyrell_13_trigger = yes
+					asoiaf_canon_children_Tyrell_14_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_tyrell_events.0081 days = 200 }
+		}
+		if = { #children of Randyll Tarly (son of Talbert) by his Florent wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Tarly_2_trigger = yes
+					asoiaf_canon_children_Tarly_3_trigger = yes
+					asoiaf_canon_children_Tarly_4_trigger = yes
+					asoiaf_canon_children_Tarly_5_trigger = yes
+					asoiaf_canon_children_Tarly_6_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_tarly_events.0011 days = 200 }
+		}
+		if = { #children of Otto Hightower (brother of Hobert) by his Florent wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Hightower_96_trigger = yes
+					asoiaf_canon_children_Hightower_97_trigger = yes
+					asoiaf_canon_children_Hightower_98_trigger = yes
+					asoiaf_canon_children_Hightower_99_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_hightower_events.9001 days = 200 }
+		}
+		if = { #children of Aegon I Targaryen by his Targaryen wives
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_30_trigger = yes
+					asoiaf_canon_children_Targaryen_31_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0271 days = 200 }
+		}
+		if = { #children of Aenys I Targaryen by his Velaryon wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_32_trigger = yes
+					asoiaf_canon_children_Targaryen_33_trigger = yes
+					asoiaf_canon_children_Targaryen_34_trigger = yes
+					asoiaf_canon_children_Targaryen_35_trigger = yes
+					asoiaf_canon_children_Targaryen_36_trigger = yes
+					asoiaf_canon_children_Targaryen_37_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0301 days = 200 }
+		}
+		if = { #children of Maegor I Targaryen by his Harroway wife
+			limit = { asoiaf_canon_children_Targaryen_38_trigger = yes }
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0311 days = 200 }
+		}
+		if = { #children of Maegor I Targaryen by his Westerling wife
+			limit = { asoiaf_canon_children_Targaryen_40_trigger = yes }
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0312 days = 200 }
+		}
+		if = { #children of Maegor I Targaryen by his Costayne wife
+			limit = { asoiaf_canon_children_Targaryen_39_trigger = yes }
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0313 days = 200 }
+		}
+		if = { #children of Aegon Targaryen (son of Aenys I) by his Targaryen wife
+			limit = { asoiaf_canon_children_Targaryen_41_trigger = yes } #Only Aerea's trigger for the sake of simplicity
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0331 days = 200 }
+		}
+		if = { #children of Jaehaerys I Targaryen by his Targaryen wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_43_trigger = yes
+					asoiaf_canon_children_Targaryen_44_trigger = yes
+					asoiaf_canon_children_Targaryen_45_trigger = yes
+					asoiaf_canon_children_Targaryen_46_trigger = yes
+					asoiaf_canon_children_Targaryen_47_trigger = yes
+					asoiaf_canon_children_Targaryen_48_trigger = yes
+					asoiaf_canon_children_Targaryen_49_trigger = yes
+					asoiaf_canon_children_Targaryen_50_trigger = yes
+					asoiaf_canon_children_Targaryen_51_trigger = yes
+					asoiaf_canon_children_Targaryen_52_trigger = yes
+					asoiaf_canon_children_Targaryen_53_trigger = yes
+					asoiaf_canon_children_Targaryen_54_trigger = yes
+					asoiaf_canon_children_Targaryen_55_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0351 days = 200 }
+		}
+		if = { #children of Gael Targaryen (daughter of Jaehaerys I) by her lowborn lover
+			limit = { asoiaf_canon_children_Targaryen_55_1_trigger = yes }
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0551 days = 200 }
+		}
+		if = { #children of Saera Targaryen (daughter of Jaehaerys I) by a Lyseni
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_56_trigger = yes
+					asoiaf_canon_children_Targaryen_57_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0511 days = 200 }
+		}
+		if = { #children of Saera Targaryen (daughter of Jaehaerys I) by a Volantene
+			limit = { asoiaf_canon_children_Targaryen_58_trigger = yes }
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0512 days = 200 }
+		}
+		if = { #children of Saera Targaryen (daughter of Jaehaerys I) by an Andal
+			limit = { asoiaf_canon_children_Hammer_1_trigger = yes }
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0513 days = 200 }
+		}
+		if = { #children of Hugh Hammer by his Sand Dornish wife
+			limit = { asoiaf_canon_children_Hammer_2_trigger = yes }
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0514 days = 200 }
+		}
+		if = { #children of Aemon Targaryen (son of Jaehaerys I) by his Baratheon wife
+			limit = { asoiaf_canon_children_Targaryen_59_trigger = yes }
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0451 days = 200 }
+		}
+		if = { #children of Baelon Targaryen (son of Jaehaerys I) by his Targaryen wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_60_trigger = yes
+					asoiaf_canon_children_Targaryen_61_trigger = yes
+					asoiaf_canon_children_Targaryen_62_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0461 days = 200 }
+		}
+		if = { #children of Viserys I Targaryen by his Arryn wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_131_trigger = yes
+					asoiaf_canon_children_Targaryen_63_trigger = yes
+					asoiaf_canon_children_Targaryen_64_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0601 days = 200 }
+		}
+		if = { #children of Viserys I Targaryen by his Hightower wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_65_trigger = yes
+					asoiaf_canon_children_Targaryen_66_trigger = yes
+					asoiaf_canon_children_Targaryen_67_trigger = yes
+					asoiaf_canon_children_Targaryen_68_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0602 days = 200 }
+		}
+		if = { #children of Daemon Targaryen (son of Baelon) by his Velaryon wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_69_trigger = yes
+					asoiaf_canon_children_Targaryen_70_trigger = yes
+					asoiaf_canon_children_Targaryen_61_1_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0611 days = 200 }
+		}
+		if = { #children of Aegon II Targaryen by his Targaryen wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_71_trigger = yes #only  Jaehaera's trigger for the sake of simplicity
+					asoiaf_canon_children_Targaryen_73_trigger = yes
+				}
+				OR = {
+					scope:mother = { NOT = { has_inactive_trait = asoiaf_Targaryen_63_trait } } #either the mother isn't Rhaenyra at all
+					AND = {
+						scope:mother = { has_inactive_trait = asoiaf_Targaryen_63_trait } #OR the mother IS Rhaenyra, but we have to wait until Visenya is born before Aegon II's kids get to be
+						exists = global_var:asoiaf_canon_children_Targaryen_80_born_variable
+					}
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0651 days = 200 }
+		}
+		if = { #children of Rhaenyra Targaryen (daughter of Viserys I) by her Strong lover
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_75_trigger = yes
+					asoiaf_canon_children_Targaryen_76_trigger = yes
+					asoiaf_canon_children_Targaryen_77_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0631 days = 200 }
+		}
+		if = { #children of Rhaenyra Targaryen (daughter of Viserys I) by her Targaryen husband
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_78_trigger = yes
+					asoiaf_canon_children_Targaryen_79_trigger = yes
+					asoiaf_canon_children_Targaryen_80_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0632 days = 200 }
+		}
+		if = { #children of Aegon III Targaryen by his Velaryon wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_81_trigger = yes
+					asoiaf_canon_children_Targaryen_82_trigger = yes
+					asoiaf_canon_children_Targaryen_83_trigger = yes
+					asoiaf_canon_children_Targaryen_84_trigger = yes
+					asoiaf_canon_children_Targaryen_85_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0781 days = 200 }
+		}
+		if = { #children of Viserys II Targaryen by his Rogare wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_88_trigger = yes
+					asoiaf_canon_children_Targaryen_89_trigger = yes
+					asoiaf_canon_children_Targaryen_90_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0791 days = 200 }
+		}
+		if = { #children of Aegon IV Targaryen by his Targaryen wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_91_trigger = yes
+					asoiaf_canon_children_Targaryen_134_trigger = yes
+					asoiaf_canon_children_Targaryen_132_trigger = yes #only using Viserys' trigger for the sake of simplicity
+					asoiaf_canon_children_Targaryen_92_trigger = yes #only using Daenerys' trigger for the sake of simplicity
+					asoiaf_canon_children_Targaryen_135_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0881 days = 200 }
+		}
+		if = { #children of Aegon IV Targaryen by Megette
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_98_trigger = yes
+					asoiaf_canon_children_Targaryen_99_trigger = yes
+					asoiaf_canon_children_Targaryen_100_trigger = yes
+					asoiaf_canon_children_Targaryen_101_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0882 days = 200 }
+		}
+		if = { #children of Aegon IV Targaryen by a Braavosi mother
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_102_trigger = yes
+					asoiaf_canon_children_Targaryen_103_trigger = yes
+					asoiaf_canon_children_Targaryen_104_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0883 days = 200 }
+		}
+		if = { #children of Aegon IV Targaryen by his Targaryen lover
+			limit = { asoiaf_canon_children_Targaryen_94_trigger = yes }
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0884 days = 200 }
+		}
+		if = { #children of Daeron II Targaryen by his Martell wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_107_trigger = yes
+					asoiaf_canon_children_Targaryen_108_trigger = yes
+					asoiaf_canon_children_Targaryen_109_trigger = yes
+					asoiaf_canon_children_Targaryen_110_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0911 days = 200 }
+		}
+		if = { #children of Baelor Targaryen (son of Daeron II) by his Dondarrion wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_111_trigger = yes
+					asoiaf_canon_children_Targaryen_112_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.1071 days = 200 }
+		}
+		if = { #children of Valarr Targaryen (son of Baelor) by his Tyroshi wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_113_trigger = yes
+					asoiaf_canon_children_Targaryen_114_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.1111 days = 200 }
+		}
+		if = { #children of Rhaegel Targaryen (son of Daeron II) by his Arryn wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_115_trigger = yes #only Aelor's trigger for the sake of simplicity
+					asoiaf_canon_children_Targaryen_117_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.1091 days = 200 }
+		}
+		if = { #children of Maekar I Targaryen by his Dayne wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_118_trigger = yes
+					asoiaf_canon_children_Targaryen_119_trigger = yes
+					asoiaf_canon_children_Targaryen_120_trigger = yes
+					asoiaf_canon_children_Targaryen_121_trigger = yes
+					asoiaf_canon_children_Targaryen_122_trigger = yes
+					asoiaf_canon_children_Targaryen_123_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.1101 days = 200 }
+		}
+		if = { #children of Daeron Targaryen (son of Maekar I) by his Tyroshi wife
+			limit = {
+				asoiaf_canon_children_Targaryen_124_trigger = yes
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.1181 days = 200 }
+		}
+		if = { #children of Aerion Targaryen (son of Maekar I) by his Targaryen wife
+			limit = {
+				asoiaf_canon_children_Targaryen_125_trigger = yes
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.1191 days = 200 }
+		}
+		if = { #children of Aerys V Targaryen by his Blackwood wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_126_trigger = yes
+					asoiaf_canon_children_Targaryen_127_trigger = yes
+					asoiaf_canon_children_Targaryen_128_trigger = yes
+					asoiaf_canon_children_Targaryen_129_trigger = yes
+					asoiaf_canon_children_Targaryen_130_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.1221 days = 200 }
+		}
+		if = { #children of Jaehaerys II Targaryen by his Targaryen wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_1_trigger = yes
+					asoiaf_canon_children_Targaryen_2_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.1271 days = 200 }
+		}
+		if = { #children of Aerys II Targaryen by his Targaryen wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_3_trigger = yes
+					asoiaf_canon_children_Targaryen_4_trigger = yes
+					asoiaf_canon_children_Targaryen_5_trigger = yes
+					asoiaf_canon_children_Targaryen_6_trigger = yes
+					asoiaf_canon_children_Targaryen_7_trigger = yes
+					asoiaf_canon_children_Targaryen_8_trigger = yes
+					asoiaf_canon_children_Targaryen_9_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0011 days = 200 }
+		}
+		if = { #children of Rhaegar Targaryen (son of Aerys II) by his Martell wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Targaryen_10_trigger = yes
+					asoiaf_canon_children_Targaryen_11_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0031 days = 200 }
+		}
+		if = { #children of Rhaegar Targaryen (son of Aerys II) by his Stark lover
+			limit = { asoiaf_canon_children_Stark_7_trigger = yes }
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_targaryen_events.0032 days = 200 }
+		}
+		if = { #children of Corlys Velaryon (the Sea Snake) by his Targaryen wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Velaryon_34_trigger = yes
+					asoiaf_canon_children_Velaryon_35_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_velaryon_events.3101 days = 200 }
+		}
+		if = { #children of Corlys Velaryon (the Sea Snake) by his lowborn lover
+			limit = {
+				OR = {
+					asoiaf_canon_children_Velaryon_43_trigger = yes
+					asoiaf_canon_children_Velaryon_44_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_velaryon_events.3102 days = 200 }
+		}
+		if = { #children of Doran Martell (son of Loreza) by his Norvoshi wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Martell_9_trigger = yes
+					asoiaf_canon_children_Martell_10_trigger = yes
+					asoiaf_canon_children_Martell_11_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_martell_events.401 days = 200 }
+		}
+		if = { #children of Beric Dayne (son of Davos) by his Dornish wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Dayne_3_trigger = yes
+					asoiaf_canon_children_Dayne_5_trigger = yes
+					asoiaf_canon_children_Dayne_4_trigger = yes
+					asoiaf_canon_children_Dayne_6_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_dayne_events.101 days = 200 }
+		}
+		if = { #children of Ulrick Dayne (son of Beric) by his Dornish wife
+			limit = {
+				asoiaf_canon_children_Dayne_7_trigger = yes
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_dayne_events.301 days = 200 }
+		}
+		if = { #children of Hoster Tully (son of Luthor) by his Whent wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Tully_2_trigger = yes
+					asoiaf_canon_children_Tully_3_trigger = yes
+					asoiaf_canon_children_Tully_4_trigger = yes
+					asoiaf_canon_children_Tully_6_trigger = yes
+					asoiaf_canon_children_Tully_7_trigger = yes
+					asoiaf_canon_children_Tully_8_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_tully_events.101 days = 200 }
+		}
+		if = { #children of Lyonel Strong (son of Osmund) by his lowborn lover
+			limit = { asoiaf_canon_children_Strong_34_trigger = yes }
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_strong_events.2901 days = 200 }
+		}
+		if = { #children of Lyonel Strong (son of Osmund) by his Riverlander wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Strong_30_trigger = yes
+					asoiaf_canon_children_Strong_31_trigger = yes
+					asoiaf_canon_children_Strong_32_trigger = yes
+					asoiaf_canon_children_Strong_33_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_strong_events.2902 days = 200 }
+		}
+		if = { #children of Balon Greyjoy (son of Quellon) by his Harlaw wife
+			limit = {
+				OR = {
+					asoiaf_canon_children_Greyjoy_11_trigger = yes
+					asoiaf_canon_children_Greyjoy_12_trigger = yes
+					asoiaf_canon_children_Greyjoy_13_trigger = yes
+					asoiaf_canon_children_Greyjoy_14_trigger = yes
+				}
+			}
+			scope:mother = {
+				asoiaf_clear_bad_pregnancy_flags_effect = yes
+				asoiaf_assign_marriage_type_flags_effect = yes
+			}
+			trigger_event = { id = asoiaf_canon_children_greyjoy_events.0051 days = 200 }
+		}
+	}
+}
+
+on_birth_mother = {
+	on_actions = {
+		asoiaf_canon_children_maegor_children_deformation
+		asoiaf_rhaenyra_personality_change
+	}
+}
+
+asoiaf_canon_children_maegor_children_deformation = {
+	effect = {
+		if = {
+			limit = { asoiaf_canon_children_maegor_children_trigger = yes }
+			asoiaf_canon_children_maegor_children_birth_effect = yes
+		}
+	}
+}
+asoiaf_rhaenyra_personality_change = {
+	effect = {
+		if = {
+			limit = { asoiaf_canon_children_Targaryen_63_personality_change_trigger = yes }
+			asoiaf_canon_children_Targaryen_63_personality_change_effect = yes
+		}
+	}
+}
+
+# called for the newborn child
+# scope:child is the new born character
+# scope:mother is the pregnant mother
+# scope:father is the family father (not the biological)
+# scope:real_father is the biological father
+# scope:is_bastard, true if a known bastard
+on_birth_child = {
+	on_actions = {
+		asoiaf_robert_targaryen_grudge
+		asoiaf_ramsay_sibling_grudge
+	}
+}
+
+asoiaf_robert_targaryen_grudge = {
+	trigger = {
+		character:Baratheon_2 ?= { #Robert I Baratheon (HISTORICAL version)
+			is_alive = yes
+			any_killed_character = { #this is AFTER Robert's killed Rhaegar and vowed vengence on all Targaryens
+				this = character:Targaryen_3 #Rhaegar Targaryen (son of Aerys II)
+			}
+		}
+		scope:child.house = dynasty:dynn_Targaryen.dynasty_founder.house #newborn is a proper Targaryen
+		asoiaf_historical_trigger = yes #only on historical game modes, so there's a bit of variety in other games
+	}
+	effect = {
+		character:Baratheon_2 ?= { set_relation_grudge = { reason = asoiaf_robert_targaryen_grudge_desc target = scope:child } }
+	}
+}
+
+asoiaf_ramsay_sibling_grudge = {
+	trigger = {
+		character:Bolton_5 ?= {
+			is_alive = yes #Ramsay is alive
+			dynasty ?= dynasty:dynn_Bolton #Ramsay is acknowledged
+		}
+		scope:father = character:Bolton_1 #father of the born child is Roose Bolton
+		character:Bolton_1 ?= { is_landed = yes } #if House Bolton was attainted then Ramsay has no reason to fear for his inheritance
+		AND = {
+			asoiaf_historical_trigger = yes #only on historical game modes, so there's a bit of variety in other games
+			character:Bolton_5 ?= { #Ramsay has the personality to hold these kinds of grudges (which will inevitably lead to assassination attempts)
+				has_trait = sadistic
+				has_trait = ambitious
+			}
+		}
+		scope:child = { is_alive = yes } #not stillborn
+	}
+	effect = {
+		character:Bolton_5 ?= { set_relation_grudge = { reason = asoiaf_ramsay_sibling_grudge_desc target = scope:child } }
+	}
+}

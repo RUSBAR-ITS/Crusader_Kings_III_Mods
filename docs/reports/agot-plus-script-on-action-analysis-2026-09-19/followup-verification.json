@@ -1,0 +1,304 @@
+{
+  "RuntimeChangesApplied": false,
+  "RuntimeFilesUnchanged": 32,
+  "ManifestSHA256": "D71550783F89651B4E50189F723E5DDA5A9ABE168A0CA5242B30F9CEF597001D",
+  "ExistingLogUnchanged": true,
+  "GameExecutionChecked": false,
+  "DecisionSimulation": {
+    "InMemoryOnly": true,
+    "RemovedProperties": 8,
+    "Decisions": [
+      {
+        "Decision": "asoiaf_baratheon_cadets_decision",
+        "Choices": [
+          "asoiaf_baratheon_renly_choice",
+          "asoiaf_baratheon_rhllor_choice",
+          "asoiaf_baratheon_kl_choice"
+        ],
+        "EffectsIdentical": true,
+        "AllChangesLimitedToTwoObsoleteProperties": true
+      },
+      {
+        "Decision": "asoiaf_greyjoy_cadets_decision",
+        "Choices": [
+          "asoiaf_greyjoy_euron_choice"
+        ],
+        "EffectsIdentical": true,
+        "AllChangesLimitedToTwoObsoleteProperties": true
+      },
+      {
+        "Decision": "asoiaf_baelish_cadets_decision",
+        "Choices": [
+          "asoiaf_baelish_hh_choice"
+        ],
+        "EffectsIdentical": true,
+        "AllChangesLimitedToTwoObsoleteProperties": true
+      },
+      {
+        "Decision": "asoiaf_harlaw_cadets_decision",
+        "Choices": [
+          "asoiaf_harlaw_tg_choice",
+          "asoiaf_harlaw_hh_choice",
+          "asoiaf_harlaw_hhall_choice",
+          "asoiaf_harlaw_gg_choice"
+        ],
+        "EffectsIdentical": true,
+        "AllChangesLimitedToTwoObsoleteProperties": true
+      }
+    ]
+  },
+  "LocalEvidence": [
+    {
+      "File": "common/decisions/asoiaf_house_branch_decisions.txt",
+      "Provider": "AGOT+",
+      "Path": "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\2950245430\\common\\decisions\\asoiaf_house_branch_decisions.txt",
+      "SHA256": "0248521BF02C1435280CC9F4D2648B76E480752CD27BE295CF97F185D0D8F928",
+      "Reason": "Four decisions, nine selectable values"
+    },
+    {
+      "File": "gui/decision_view_widgets/decision_view_widget_petition_liege.gui",
+      "Provider": "CK3",
+      "Path": "E:\\SteamLibrary\\steamapps\\common\\Crusader Kings III\\game\\gui\\decision_view_widgets\\decision_view_widget_petition_liege.gui",
+      "SHA256": "A700A4F4515135E54BEDF0566B45B362304BF6EAA647E606C54FD0BB22B5A901",
+      "LineStart": 24,
+      "LineEnd": 55,
+      "Reason": "Entries and selection handler",
+      "Text": "\t\t\tblockoverride \"scrollbox_content\" {\n\t\t\t\tvbox = {\n\t\t\t\t\tdatamodel = \"[DecisionViewWidgetOptionList.GetEntries]\"\n\t\t\t\t\tspacing = 6\n\n\t\t\t\t\titem = {\n\t\t\t\t\t\tPetitionLiegeItem = {}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tblockoverride \"scrollbox_background_fade\" {}\n\t\t}\n\t}\n}\n\ntypes PetitionLiegeTypes\n{\n\ttype PetitionLiegeItem = button_standard {\n\t\tsize = { 450 60 }\n\t\tmargin = { 10 10 }\n\n\t\tonclick = \"[DecisionViewWidgetOptionList.OnSelect(Entry.Self)]\"\n\t\tenabled = \"[Entry.IsEnabled]\"\n\t\ttooltip = \"[Entry.GetTooltip]\"\n\t\tdown = \"[Entry.IsSelected]\"\n\n\t\thbox = {\n\t\t\tlayoutpolicy_horizontal = expanding\n\t\t\tlayoutpolicy_vertical = expanding\n\t\t\tspacing = 10\n\t\t\tmargin_left = 10"
+    },
+    {
+      "File": "gui/window_decisions_detail.gui",
+      "Provider": "A Game of Thrones",
+      "Path": "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\2962333032\\gui\\window_decisions_detail.gui",
+      "SHA256": "B9FB17456684775C18FB6AD0E30FD07DB070FE4F0EAB7795BCF8EA532525BD31",
+      "LineStart": 180,
+      "LineEnd": 190,
+      "Reason": "Current custom widget container",
+      "Text": "\ttype decision_custom_widget_content = vbox {\n\t\tlayoutpolicy_horizontal = expanding\n\t\tlayoutpolicy_vertical = expanding\n\n\t\tvisible = \"[Not(DecisionDetailView.IsDefaultWidgetShown)]\"\n\t\t\t\n\t\tdynamicgridbox = {\n\t\t\tname = \"custom_widgets_container\"\n\t\t\tlayoutpolicy_horizontal = expanding\n\t\t\tlayoutpolicy_vertical = expanding\n\t\t}"
+    },
+    {
+      "File": "gui/window_decisions_detail.gui",
+      "Provider": "A Game of Thrones",
+      "Path": "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\2962333032\\gui\\window_decisions_detail.gui",
+      "SHA256": "B9FB17456684775C18FB6AD0E30FD07DB070FE4F0EAB7795BCF8EA532525BD31",
+      "LineStart": 216,
+      "LineEnd": 218,
+      "Reason": "Confirm handler",
+      "Text": "\t\tenabled = \"[DecisionDetailView.CanConfirm]\"\n        tooltip = \"[DecisionDetailView.GetConfirmTooltip]\"\n        onclick = \"[DecisionDetailView.Confirm]\""
+    },
+    {
+      "File": "gui/window_decisions_detail.gui",
+      "Provider": "A Game of Thrones",
+      "Path": "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\2962333032\\gui\\window_decisions_detail.gui",
+      "SHA256": "B9FB17456684775C18FB6AD0E30FD07DB070FE4F0EAB7795BCF8EA532525BD31",
+      "LineStart": 250,
+      "LineEnd": 294,
+      "Reason": "Second step and back navigation",
+      "Text": "\t\t\t\tvisible = \"[Not(GetVariableSystem.HasValue( 'show_decision_next_step', 'true' ))]\"\n\t\t\t\tsize = { 380 50 }\n\n\t\t\t\t# next step button\n\t\t\t\tbutton_primary = {\n\t\t\t\t\tsize = { 100% 100% }\t\n\t\t\t\n\t\t\t\t\tvisible = \"[DecisionDetailView.HasNextStep]\"\n\t\t\t\t\t\n\t\t\t\t\ttooltip = \"[DecisionDetailView.GetConfirmTooltip]\"\n\t\t\t\t\tonclick = \"[GetVariableSystem.Set('show_decision_next_step', 'true')]\"\n\t\t\t\t\tonclick = \"[DecisionDetailView.ToggleCustomWidgetState]\"\n\t\t\t\n\t\t\t\t\ttext = \"[DecisionDetailView.GetNextStepButtonLabel]\"\n\t\t\t\t\tclicksound = \"event:/SFX/UI/Generic/sfx_ui_generic_advance\"\n\t\t\t\t}\n\n\t\t\t\tdecision_confirm_button = {\n\t\t\t\t\tvisible = \"[Not( DecisionDetailView.HasNextStep )]\"\n\t\t\t\t\tsize = { 100% 100% }\n\t\t\t\t}\n\n\t\t\t\t#AGOT Disabled\n\t\t\t\t# widget = {\n\t\t\t\t# \tname = \"cram_study_start_tutorial_highlight\" #lesson_china_decisions uses this\n\t\t\t\t# \tsize = { 100% 100% }\n\t\t\t\t# \tvisible = \"[ObjectsEqual( GetDecision('tgp_china_study_confucian_classics_decision'),  Decision.Self)]\"\n\t\t\t\t# }\n\t\t\t}\n\n\t\t\thbox = {\n\t\t\t\tvisible = \"[GetVariableSystem.HasValue( 'show_decision_next_step', 'true' )]\"\n\n\t\t\t\tspacing = 10\n\n\t\t\t\tbutton_standard_back = {\n\t\t\t\t\tname = \"back\"\n\t\t\t\t\tsize = { 180 50 }\n\t\t\t\t\tvisible = \"[DecisionDetailView.HasNextStep]\"\n\t\t\t\t\tonclick = \"[GetVariableSystem.Clear('show_decision_next_step')]\"\n\t\t\t\t\tonclick = \"[DecisionDetailView.ToggleCustomWidgetState]\"\n\t\t\t\t\ttext = \"BACK_LABEL\"\n\t\t\t\t\tclicksound = \"event:/SFX/UI/Generic/sfx_ui_generic_close\"\n\t\t\t\t}\n"
+    },
+    {
+      "File": "common/decisions/30_activity_decisions.txt",
+      "Provider": "A Game of Thrones",
+      "Path": "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\2962333032\\common\\decisions\\30_activity_decisions.txt",
+      "SHA256": "E778719FF0658853E2CC3C7A2430F1025720E4C01B9DFD3FCE655B02EF7BDD0B",
+      "LineStart": 448,
+      "LineEnd": 465,
+      "Reason": "Current native widget declaration",
+      "Text": "\twidget = {\n\t\tgui = \"decision_view_widget_petition_liege\"\n\t\tcontroller = decision_option_list_controller\n\t\tdecision_to_second_step_button = \"CHOOSE_PETITION_DECISION_NEXT_STEP_BUTTON\"\n\n\t\t### TGP\n\t\titem = { # House Fief\n\t\t\tvalue = petition_liege_house_fief\n\t\t\tis_shown = {\n\t\t\t\thas_tgp_dlc_trigger = yes\n\t\t\t\thas_government = japan_administrative_government\n\t\t\t}\n\t\t\tis_valid = {\n\t\t\t\tcustom_tooltip = {\n\t\t\t\t\ttext = petition_liege_house_fief_tt\n\t\t\t\t\thas_tgp_dlc_trigger = yes\n\t\t\t\t\thas_government = japan_administrative_government\n\t\t\t\t\ttop_liege = { has_government = japan_administrative_government }"
+    },
+    {
+      "File": "common/character_interactions/asoiaf_character_interactions.txt",
+      "Provider": "AGOT+ | Исправления совместимости",
+      "Path": "D:\\RUSBAR\\YandexDisk\\PC RUSBAR-PC\\Yandex Drive\\Work\\Rusbar IT Services\\Repositories\\Crusader_Kings_III_Mods\\AGOT_Submods\\AGOT_PLUS_FIX\\common\\character_interactions\\asoiaf_character_interactions.txt",
+      "SHA256": "5FC7CE2E9697E4DAB40B9B5E129D8394685429ADE876A42D6C1C4495E9DDB631",
+      "LineStart": 108,
+      "LineEnd": 194,
+      "Reason": "Heir interaction remains unchanged",
+      "Text": "asoiaf_designate_heir_interaction = {\n\ticon = heir\n\n\tcategory = interaction_category_diplomacy\n\n\tdesc = asoiaf_designate_heir_interaction_desc\n\n\tis_shown = {\n\t\tscope:recipient = {\n\t\t\tis_human = yes\n\t\t\tOR = {\n\t\t\t\tis_close_or_extended_family_of = scope:actor\n\t\t\t\thouse ?= scope:actor.house\n\t\t\t}\n\t\t\tNAND = {\n\t\t\t\thas_trait = disinherited\n\t\t\t\tdynasty ?= scope:actor.dynasty #recipient has been disinherited in the actor's dynasty (game automatically rejects them as heir, so better to just hide them)\n\t\t\t}\n\t\t\tNOR = { #causes crashes\n\t\t\t\tis_parent_of = scope:actor\n\t\t\t\tis_grandparent_of = scope:actor\n\t\t\t}\n\t\t}\n\t\tNOT = { #AGOT+: ONLY show when the vanilla interaction does NOT show (less than full crown authority)\n\t\t\tscope:actor = {\n\t\t\t\tcan_designate_heir_trigger = yes\n\t\t\t}\n\t\t}\n\t\tNOT = {\n\t\t\tscope:recipient = scope:actor\n\t\t}\n\t\tNOR = {\n\t\t\tscope:recipient = scope:actor.designated_heir\n\t\t\tscope:recipient = { has_trait = nightswatch }\n\t\t\tscope:recipient = { has_trait = septon }\n\t\t\tscope:recipient = { has_trait = silent_sister }\n\t\t\tscope:recipient = { has_trait = maester }\n\t\t\tscope:recipient = { has_trait = devoted }\n\t\t}\n\t}\n\n\tis_valid_showing_failures_only = {\n\t\tscope:recipient = {\n\t\t\tis_busy_in_events_localised = yes\n\t\t\tNOR = {\n\t\t\t\thas_trait = disinherited\n\t\t\t\thas_trait = order_member\n\t\t\t\thas_trait = bastard\n\t\t\t\thas_trait = kingsguard\n\t\t\t}\n\t\t}\n\t\tscope:actor = { prestige >= 1500 } #keep cost same as base interaction\n\t}\n\n\ton_auto_accept = {\n\t\tscope:recipient = {\n\t\t\ttrigger_event = char_interaction.0120\n\t\t}\n\t}\n\n\ton_accept = {\n\t\tscope:actor = {\n\t\t\tsend_interface_toast = {\n\t\t\t\ttitle = designate_heir_interaction_notification\n\n\t\t\t\tleft_icon = scope:actor\t\t\t\t\t\n\t\t\t\tright_icon = scope:recipient\n\n\t\t\t\tset_designated_heir_unsafe = scope:recipient\n\t\t\t\tadd_prestige = { subtract = 1500 } #keep cost same as base interaction\n\t\t\t\tadd_tyranny = massive_tyranny_value\n\t\t\t}\n\t\t}\n\t\tscope:actor = {\n\t\t\treverse_add_opinion = {\n\t\t\t\ttarget = scope:recipient\n\t\t\t\tmodifier = grateful_opinion\n\t\t\t\topinion = 50\n\t\t\t}\n\t\t}\n\t}\n\tauto_accept = yes\n}\n\nasoiaf_dismiss_kingsguard_interaction = {\n\ticon = icon_kingsguard\n\tcategory = interaction_category_diplomacy"
+    },
+    {
+      "File": "common/trigger_localization/01_character_interaction_triggers.txt",
+      "Provider": "CK3",
+      "Path": "E:\\SteamLibrary\\steamapps\\common\\Crusader Kings III\\game\\common\\trigger_localization\\01_character_interaction_triggers.txt",
+      "SHA256": "044EB73EA0F2AFC1CDE25DEFC38A4FEA5354947A3373BC567F23E4F35896D2E0",
+      "LineStart": 415,
+      "LineEnd": 423,
+      "Reason": "Legacy explanation keys still exist",
+      "Text": "yearly_1010_abducted = {\n\tthird = DIPLOMATICALLY_AVAILABLE\n\tthird_not = YEARLY_1010_ABDUCTED\n}\n\nyearly_1010_abductor = {\n\tthird = DIPLOMATICALLY_AVAILABLE\n\tthird_not = YEARLY_1010_ABDUCTOR\n}"
+    },
+    {
+      "File": "events/yearly_events/yearly_events_2.txt",
+      "Provider": "A Game of Thrones",
+      "Path": "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\2962333032\\events\\yearly_events\\yearly_events_2.txt",
+      "SHA256": "A95FA248CAEDAFB4F18037DD4264E1782C6D5BD6B0012428E81311B731B05689",
+      "LineStart": 1244,
+      "LineEnd": 1252,
+      "Reason": "Abductor flag still set",
+      "Text": "\n\t\t#Save abductor liege\n\t\tscope:abductor = {\n\t\t\tadd_character_flag = {\n\t\t\t\tflag = yearly_1010_abductor\n\t\t\t\tdays = 30\n\t\t\t}\n\t\t\tif = {\n\t\t\t\tlimit = { is_landed = yes }"
+    },
+    {
+      "File": "events/yearly_events/yearly_events_2.txt",
+      "Provider": "A Game of Thrones",
+      "Path": "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\2962333032\\events\\yearly_events\\yearly_events_2.txt",
+      "SHA256": "A95FA248CAEDAFB4F18037DD4264E1782C6D5BD6B0012428E81311B731B05689",
+      "LineStart": 1281,
+      "LineEnd": 1289,
+      "Reason": "Abducted flag still set",
+      "Text": "\t\t\t\t}\n\t\t\t}\n\t\t\tsave_scope_as = abductee\n\t\t\tadd_character_flag = {\n\t\t\t\tflag = yearly_1010_abducted\n\t\t\t\tdays = 30\n\t\t\t}\n\t\t}\n"
+    },
+    {
+      "File": "events/agot_events/agot_scenario_defiance_of_duskendale_events.txt",
+      "Provider": "A Game of Thrones",
+      "Path": "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\2962333032\\events\\agot_events\\agot_scenario_defiance_of_duskendale_events.txt",
+      "SHA256": "D7E6E51FAA7FD1A61ABCAD6BD5B7DB630FC1BACE8AC14BD8B8FCD6C8E6DC7D33",
+      "LineStart": 2128,
+      "LineEnd": 2136,
+      "Reason": "Story-specific reuse of abductor flag",
+      "Text": "\t\t\t\t}\n\t\t\t}\n\t\t\tcharacter:Selmy_3 ?= {\n\t\t\t\tadd_character_flag = yearly_1010_abductor\n\t\t\t\tadd_character_flag = agot_is_at_unknown_place\n\t\t\t\tadd_character_flag = use_stealth_clothes\n\t\t\t}\n\t\t}\n"
+    },
+    {
+      "File": "localization/english/modifiers/asoiaf_modifiers_l_english.yml",
+      "Provider": "AGOT+ | Исправления русификатора",
+      "Path": "D:\\RUSBAR\\YandexDisk\\PC RUSBAR-PC\\Yandex Drive\\Work\\Rusbar IT Services\\Repositories\\Crusader_Kings_III_Mods\\AGOT_Submods\\AGOT_PLUS_RUS_CORRECT\\localization\\english\\modifiers\\asoiaf_modifiers_l_english.yml",
+      "SHA256": "127D2B2F42880862A87B063956D57EF31B871ACF5F26446F196BEC97703DA61E",
+      "LineStart": 203,
+      "LineEnd": 204,
+      "Reason": "Explicit intended mother categories and unfinished implementation warning",
+      "Text": " asoiaf_Targaryen_88_modifier:0 \"[asoiaf_canon_children_concept|E]: #bold Aegon Targaryen#!\"\n asoiaf_Targaryen_88_modifier_desc:0 \"#bold Aegon Targaryen#!, known as #italic the Unworthy#!, was a handsome and witty man who allowed lust and gluttony to rule him. In his youth he was robust and vigorous, enjoying hunting, hawking, and dancing, yet his greed gave way to becoming a corrupt, neglectful, and spiteful king. He ended his reign so morbidly obese that gout rotted his flesh and left him bed-ridden.\\n\\n#help Aegon must have children with a wife of #bold House Targaryen#!, a #bold lowborn#! woman, a woman of #bold Summer Islander culture#!, a woman of #bold House Targaryen (out of wedlock)#!, a woman of the #bold Bracken dynasty#!, a woman of the #bold Blackwood dynasty#!, and/or a woman of #bold Lyseni culture#! to continue his line.#!\\n\\n@warning_icon! #X Aegon's [asoiaf_canon_children_concept|E] currently only include his legitimate children and Daemon Blackfyre.#!\""
+    },
+    {
+      "File": "common/scripted_triggers/asoiaf_canon_children_triggers.txt",
+      "Provider": "AGOT+",
+      "Path": "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\2950245430\\common\\scripted_triggers\\asoiaf_canon_children_triggers.txt",
+      "SHA256": "B5E83DB3C1DFD66DD07446F3571CE569D184ACA343A4B3668003FB7052701A1D",
+      "LineStart": 1731,
+      "LineEnd": 1788,
+      "Reason": "Birth sequencing and a historical mother exception precedent",
+      "Text": "asoiaf_canon_children_Targaryen_98_trigger = { #Alysanne (bastard of Aegon IV)\n\tasoiaf_canon_children_enabled_trigger = yes\n\tAND = {\n\t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_98_born_variable } #Alysanne hasn't been born\n\t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_99_born_variable } #Lily hasn't been born\n\t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_100_born_variable } #Willow hasn't been born\n\t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_101_born_variable } #Rosey hasn't been born\n\t}\n\tscope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen\n\tscope:mother ?= { is_lowborn = yes }\n}\nasoiaf_canon_children_Targaryen_99_trigger = { #Lily (bastard of Aegon IV)\n\tasoiaf_canon_children_enabled_trigger = yes\n\tAND = {\n\t\texists = global_var:asoiaf_canon_children_Targaryen_98_born_variable #Alysanne has been born\n\t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_99_born_variable } #Lily hasn't been born\n\t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_100_born_variable } #Willow hasn't been born\n\t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_101_born_variable } #Rosey hasn't been born\n\t}\n\tscope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen\n\tscope:mother ?= { is_lowborn = yes }\n}\nasoiaf_canon_children_Targaryen_99_trigger = { #Willow (bastard of Aegon IV)\n\tasoiaf_canon_children_enabled_trigger = yes\n\tAND = {\n\t\texists = global_var:asoiaf_canon_children_Targaryen_98_born_variable #Alysanne has been born\n\t\texists = global_var:asoiaf_canon_children_Targaryen_99_born_variable #Lily has been born\n\t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_100_born_variable } #Willow hasn't been born\n\t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_101_born_variable } #Rosey hasn't been born\n\t}\n\tscope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen\n\tscope:mother ?= { is_lowborn = yes }\n}\nasoiaf_canon_children_Targaryen_100_trigger = { #Rosey (bastard of Aegon IV)\n\tasoiaf_canon_children_enabled_trigger = yes\n\tAND = {\n\t\texists = global_var:asoiaf_canon_children_Targaryen_98_born_variable #Alysanne has been born\n\t\texists = global_var:asoiaf_canon_children_Targaryen_99_born_variable #Lily has been born\n\t\texists = global_var:asoiaf_canon_children_Targaryen_100_born_variable #Willow has been born\n\t\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_101_born_variable } #Rosey hasn't been born\n\t}\n\tscope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen\n\tscope:mother ?= { is_lowborn = yes }\n}\nasoiaf_canon_children_Targaryen_94_trigger = { #Daemon I Blackfyre\n\tasoiaf_canon_children_enabled_trigger = yes\n\tNOT = { exists = global_var:asoiaf_canon_children_Targaryen_94_born_variable } #Daemon hasn't been born\n\tscope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen\n\tOR = {\n\t\tAND = {\n\t\t\tNOT = { scope:real_father = { is_spouse_of_even_if_dead = scope:mother } } #EITHER the mother is a generic Targaryen woman whom Aegon is NOT married to\n\t\t\tscope:mother.house ?= character:Targaryen_13.house\n\t\t}\n\t\tscope:mother = { has_inactive_trait = asoiaf_Targaryen_83_trait } #OR the mother is specifically Daena Targaryen, whether married to her or not\n\t}\n}\nasoiaf_canon_children_Targaryen_107_trigger = { #Baelor Targaryen (son of Daeron II)\n\tasoiaf_canon_children_enabled_trigger = yes"
+    },
+    {
+      "File": "common/scripted_effects/asoiaf_canon_children_effects.txt",
+      "Provider": "AGOT+ | Исправления совместимости",
+      "Path": "D:\\RUSBAR\\YandexDisk\\PC RUSBAR-PC\\Yandex Drive\\Work\\Rusbar IT Services\\Repositories\\Crusader_Kings_III_Mods\\AGOT_Submods\\AGOT_PLUS_FIX\\common\\scripted_effects\\asoiaf_canon_children_effects.txt",
+      "SHA256": "9D6BC2674E4E65C1978042180CC91DA8F04E2D8D0DB15A839152225CA173D24E",
+      "LineStart": 20,
+      "LineEnd": 93,
+      "Reason": "Existing pregnancy and parentage helpers",
+      "Text": "asoiaf_canon_children_terminate_pregnancy_effect = {\n\tend_pregnancy = yes\n\ttrigger_event = { id = asoiaf_canon_children_pregnancy_events.1 days = 1 }\n}\n\nasoiaf_clear_bad_pregnancy_flags_effect = {\n\tremove_character_flag = birth_mother_will_die\n\tremove_character_flag = birth_mother_will_become_ill\n\tremove_character_flag = birth_child_will_become_sickly\n\tadd_character_flag = {\n\t\tflag = birth_will_go_smoothly #ensure the pregnancy goes smoothly\n\t\tdays = 270\n\t}\n}\n\nasoiaf_assign_marriage_type_flags_effect = {\n\tif = {\n\t\tlimit = {\n\t\t\tAND = { #the mother/father are married patrilineally\n\t\t\t\tscope:father = { is_spouse_of_even_if_dead = scope:mother }\n\t\t\t\tscope:mother = { patrilinear_marriage = yes }\n\t\t\t}\n\t\t}\n\t\tscope:mother = {\n\t\t\tadd_character_flag = {\n\t\t\t\tflag = asoiaf_patrilineal_parentage\n\t\t\t\tdays = 270\n\t\t\t}\n\t\t}\n\t}\n\tif = {\n\t\tlimit = {\n\t\t\tAND = { #the mother/father are married matrilineally\n\t\t\t\tscope:father = { is_spouse_of_even_if_dead = scope:mother }\n\t\t\t\tscope:mother = { matrilinear_marriage = yes }\n\t\t\t}\n\t\t}\n\t\tscope:mother = {\n\t\t\tadd_character_flag = {\n\t\t\t\tflag = asoiaf_matrilineal_parentage\n\t\t\t\tdays = 270\n\t\t\t}\n\t\t}\n\t}\n}\n\nasoiaf_canon_children_parentage_assignment_effect = { #effect to assign proper House/culture/faith depending on marriage type of parents\n\tif = {\n\t\tlimit = {\n\t\t\tscope:mother = { has_character_flag = asoiaf_patrilineal_parentage }\n\t\t}\n\t\tset_house = scope:father.house #this can even be a false father in the case of bastards!\n\t\tset_character_faith = scope:father.faith\n\t\tset_culture = scope:father.culture\n\t}\n\tif = {\n\t\tlimit = {\n\t\t\tscope:mother = { has_character_flag = asoiaf_matrilineal_parentage }\n\t\t}\n\t\tset_house = scope:mother.house\n\t\tset_character_faith = scope:mother.faith\n\t\tset_culture = scope:mother.culture\n\t}\n\tif = {\n\t\tlimit = {\n\t\t\tNOT = { exists = scope:father } #bastard born out of wedlock\n\t\t}\n\t\tset_house = scope:mother.house\n\t\tset_character_faith = scope:mother.faith\n\t\tset_culture = scope:mother.culture\n\t\tadd_trait = bastard\n\t\tagot_add_custom_bastard_nickname_effect = yes\n\t}\n}"
+    },
+    {
+      "File": "history/characters/00_agot_char_braavos_ancestors.txt",
+      "Provider": "A Game of Thrones",
+      "Path": "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\2962333032\\history\\characters\\00_agot_char_braavos_ancestors.txt",
+      "SHA256": "A48519C5E0E9A14A800C18BA67C56387FA880D6780A7078D755DDCA84F7384DF",
+      "LineStart": 1331,
+      "LineEnd": 1342,
+      "Reason": "Historical Bellegere is Braavosi",
+      "Text": "Otherys_56_A = {\n\tname = Bellegere # Canon, Mistress of Aegon IV Targaryen\n\tdynasty = dynn_Otherys\n\tdna = Otherys_56_A\n\tfemale = yes\n\n\treligion = fc_pan_braavos\n\tculture = braavosi\n\tsexuality = heterosexual\n\n\tfather = Otherys_47\n\tmother = Otherys_rs_47"
+    },
+    {
+      "File": "common/culture/cultures/00_agot_cul_summer_islander.txt",
+      "Provider": "A Game of Thrones",
+      "Path": "E:\\SteamLibrary\\steamapps\\workshop\\content\\1158310\\2962333032\\common\\culture\\cultures\\00_agot_cul_summer_islander.txt",
+      "SHA256": "049C3E49EA21DE1946B8E3C213352E3307A967F9042963C70AD8F8377A71E184",
+      "LineStart": 1,
+      "LineEnd": 7,
+      "Reason": "Modern Summer Islander culture definitions; parsed values recorded separately",
+      "Text": "jhalai = {\n\tcolor = { 0.58 0.77 0.49 }\n\n\tethos = ethos_stoic\n\theritage = heritage_summer\n\tlanguage = language_agot_summer\n\tmartial_custom = martial_custom_equal"
+    }
+  ],
+  "ModernCultureDefinitions": [
+    {
+      "Culture": "jhalai",
+      "Heritage": "heritage_summer",
+      "Language": "language_agot_summer"
+    },
+    {
+      "Culture": "moluuni",
+      "Heritage": "heritage_summer",
+      "Language": "language_agot_summer"
+    },
+    {
+      "Culture": "omborui",
+      "Heritage": "heritage_summer",
+      "Language": "language_agot_summer"
+    },
+    {
+      "Culture": "walanoi",
+      "Heritage": "heritage_summer",
+      "Language": "language_agot_summer"
+    },
+    {
+      "Culture": "naathi",
+      "Heritage": "heritage_summer",
+      "Language": "language_agot_naath"
+    }
+  ],
+  "LegacyCheck": {
+    "URL": "https://gitlab.com/anbennar/anbennar-ck3-dev/-/raw/a7050ee82a6be4d921722f999121823b49cc93e4/common/scripted_triggers/00_available_for_events_triggers.txt",
+    "SHA256": "E6834434192CC89A61344101995080D07B2CD609F5567FEF11C3227C0A2EABC0",
+    "Function": "is_busy_in_events_localised",
+    "AbsentFlagsRequired": [
+      "yearly_1010_abducted",
+      "yearly_1010_abductor"
+    ],
+    "ExplanationKeys": [
+      "yearly_1010_abducted",
+      "yearly_1010_abductor"
+    ],
+    "ProvenanceLimit": "Historical Anbennar source snapshot; not proven to be the exact AGOT+ dependency version"
+  },
+  "SevenKingdomsSources": [
+    {
+      "CachePath": "C:\\Users\\RUSBAR\\AppData\\Local\\Temp\\ck3-agot-rus-correct-7kingdoms\\92C46637721D817453311425C70986470F870C88BBB203AC26FA826B9A739904.json",
+      "SHA256": "2D12A667BB61033F7C0BFC0764B79DDC109D66E689151B88A6E316ED4A6A8A1E",
+      "Metadata": {
+        "Query": "Веселая Мег",
+        "URL": "https://7kingdoms.ru/wiki/%D0%92%D0%B5%D1%81%D0%B5%D0%BB%D0%B0%D1%8F_%D0%9C%D0%B5%D0%B3",
+        "Heading": "Мегетт",
+        "FetchedAt": "2026-09-19T05:47:24.8158421+07:00"
+      }
+    },
+    {
+      "CachePath": "C:\\Users\\RUSBAR\\AppData\\Local\\Temp\\ck3-agot-rus-correct-7kingdoms\\55185F1447F7C5197A98628E359CE0A31634B3A8CDF75DC647D974115393F968.json",
+      "SHA256": "822CBE77E4601A7296F15C795807B1E7675DAC412A0C8F9853CFB37FD9B72238",
+      "Metadata": {
+        "Query": "Беллегера Отерис",
+        "URL": "https://7kingdoms.ru/wiki/%D0%91%D0%B5%D0%BB%D0%BB%D0%B5%D0%B3%D0%B5%D1%80%D0%B0_%D0%9E%D1%82%D0%B5%D1%80%D0%B8%D1%81",
+        "Heading": "Беллегера Отерис",
+        "FetchedAt": "2026-09-19T05:45:47.1557737+07:00"
+      }
+    },
+    {
+      "CachePath": "C:\\Users\\RUSBAR\\AppData\\Local\\Temp\\ck3-agot-rus-correct-7kingdoms\\A79A5B0854DEA05C13B8F9F890E25FE8AF9460BB4051E635C9FEFBA7C7E423C2.json",
+      "SHA256": "9F82D8B0975021761B21FEE1DF256164FBE4BD526341A8C4F4EE10A1FB9A2248",
+      "Metadata": {
+        "Query": "Белленора Отерис",
+        "URL": "https://7kingdoms.ru/wiki/%D0%91%D0%B5%D0%BB%D0%BB%D0%B5%D0%BD%D0%BE%D1%80%D0%B0_%D0%9E%D1%82%D0%B5%D1%80%D0%B8%D1%81",
+        "Heading": "Белленора Отерис",
+        "FetchedAt": "2026-09-19T05:47:25.3067769+07:00"
+      }
+    },
+    {
+      "CachePath": "C:\\Users\\RUSBAR\\AppData\\Local\\Temp\\ck3-agot-rus-correct-7kingdoms\\DEC9199894C75B6279533700B453A0FA4250665E337D95A28C6EC7B4E69B69AB.json",
+      "SHA256": "EF429D34091510157271245F13A5994CAA278AC01F2E714CC0BA9E25C30A2A54",
+      "Metadata": {
+        "Query": "Нарха Отерис",
+        "URL": "https://7kingdoms.ru/wiki/%D0%9D%D0%B0%D1%80%D1%85%D0%B0_%D0%9E%D1%82%D0%B5%D1%80%D0%B8%D1%81",
+        "Heading": "Нарха Отерис",
+        "FetchedAt": "2026-09-19T05:47:25.7389178+07:00"
+      }
+    },
+    {
+      "CachePath": "C:\\Users\\RUSBAR\\AppData\\Local\\Temp\\ck3-agot-rus-correct-7kingdoms\\1E54714A99E45D2FB65DB957E5303C3FB4EDBBD68D85F4B93C61F63F7C7AB05B.json",
+      "SHA256": "A1DFDD8B1602E856A780A2F0BE70E55A2A9D8593ACB78191B5CFA0D39DE710AB",
+      "Metadata": {
+        "Query": "Балерион Отерис",
+        "URL": "https://7kingdoms.ru/wiki/%D0%91%D0%B0%D0%BB%D0%B5%D1%80%D0%B8%D0%BE%D0%BD_%D0%9E%D1%82%D0%B5%D1%80%D0%B8%D1%81",
+        "Heading": "Балерион Отерис",
+        "FetchedAt": "2026-09-19T05:47:26.1633935+07:00"
+      }
+    }
+  ],
+  "RecommendationGroups": 8,
+  "CoveredLogMessages": 25
+}

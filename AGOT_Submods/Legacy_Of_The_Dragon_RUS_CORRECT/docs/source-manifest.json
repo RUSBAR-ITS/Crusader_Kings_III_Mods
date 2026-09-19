@@ -1,0 +1,274 @@
+﻿{
+    "MainWorkshopId":  "3101422928",
+    "MainVersion":  "1.3.1",
+    "TranslationWorkshopId":  "3713762177",
+    "TranslationVersion":  "1.0.0",
+    "RussianEntries":  17,
+    "EnglishEntries":  8,
+    "AddedKeysPerLanguage":  2,
+    "EffectiveKeysPerLanguage":  262,
+    "Changes":  [
+                    {
+                        "Issue":  "LOTD-004",
+                        "Catalog":  "RU",
+                        "File":  "",
+                        "Key":  "agot_house_customizer.0020.d",
+                        "Before":  null,
+                        "After":  "$agot_house_customizer.0020.da$"
+                    },
+                    {
+                        "Issue":  "LOTD-005",
+                        "Catalog":  "RU",
+                        "File":  "",
+                        "Key":  "agot_house_customizer.0020.e",
+                        "Before":  null,
+                        "After":  "$agot_house_customizer.0020.ea$"
+                    },
+                    {
+                        "Issue":  "LOTD-004",
+                        "Catalog":  "EN",
+                        "File":  "",
+                        "Key":  "agot_house_customizer.0020.d",
+                        "Before":  null,
+                        "After":  "$agot_house_customizer.0020.da$"
+                    },
+                    {
+                        "Issue":  "LOTD-005",
+                        "Catalog":  "EN",
+                        "File":  "",
+                        "Key":  "agot_house_customizer.0020.e",
+                        "Before":  null,
+                        "After":  "$agot_house_customizer.0020.ea$"
+                    },
+                    {
+                        "Issue":  "LOTD-006",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/lotd_decisions_l_russian.yml",
+                        "Key":  "setting_rediscover_mechanic_enabled_desc",
+                        "Before":  "Эйрис больше не будет появляться сразу со всеми артефактами Таргариенов. Вместо этого любой правитель из Дома Таргариенов получит решение для их возвращения. Ваш хранитель древностей сможет отыскать несколько реликвий Таргариенов. Поддерживаются только закладки после Войны Девятигрошовых королей.",
+                        "After":  "Открывает решение о поиске утраченных реликвий Таргариенов. Поиск доступен совершеннолетнему правителю с земельными владениями из династии Таргариенов или дома Блэкфайр, если при дворе есть хранитель древностей и ещё остались ненайденные реликвии.\\n\\nПоддерживаются кампании, начатые в следующие даты от Завоевания Эйгона: 8 февраля 233 года, 11 января 239 года, 21 декабря 258 года, 1 января 277 года, 15 сентября 282 года и 2 июня 284 года. Начальный набор доступных реликвий зависит от выбранной даты."
+                    },
+                    {
+                        "Issue":  "LOTD-006",
+                        "Catalog":  "EN",
+                        "File":  "localization/english/lotd_decisions_l_english.yml",
+                        "Key":  "setting_rediscover_mechanic_enabled_desc",
+                        "Before":  "Aerys will no longer spawn with all Targaryen Artifacts, instead a decision to recover them will be given to any Targaryen ruler. Your Antiquarian can recover a number of Targaryen artifacts. This is only supported for bookmarks after Nine Penny Kings.",
+                        "After":  "Enables a decision to recover lost Targaryen relics. The search is available to an adult landed ruler of the Targaryen dynasty or House Blackfyre who employs an Antiquarian, while undiscovered relics remain.\\n\\nSupported campaign start dates: 8 February 233 AC, 11 January 239 AC, 21 December 258 AC, 1 January 277 AC, 15 September 282 AC and 2 June 284 AC. The initial set of available relics depends on the start date."
+                    },
+                    {
+                        "Issue":  "LOTD-007",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/rediscover_l_russian.yml",
+                        "Key":  "rediscover_events_1006_desc",
+                        "Before":  "[antiquarian.GetFirstName] прибывает к моему двору и вручает королевский дар.\\n\\n«Корона [aenys.GetTitledFirstName]... Она была утрачена вскоре после смерти [jaehaerys.GetTitledFirstName], но теперь, вопреки всем ожиданиям, найдена...»\\n\\nЭту корону носил второй король Вестероса из Дома [main.GetDynasty.GetBaseName] — [aenys.GetTitledFirstName], пока не погиб от рук [maegor.GetTitledFirstName].\\n\\nТеперь она вернулась к законным владельцам.",
+                        "After":  "[antiquarian.GetFirstName] прибывает к моему двору и вручает королевский дар.\\n\\n«[aenys.GetTitledFirstName] когда-то носил эту корону... Вскоре после того, как умер [jaehaerys.GetTitledFirstName], след реликвии затерялся, но теперь, вопреки всем ожиданиям, она найдена...»\\n\\nЭту корону носил второй король Вестероса из Дома [main.GetDynasty.GetBaseName] — [aenys.GetTitledFirstName], до своей смерти.\\n\\nТеперь она вернулась к законным владельцам."
+                    },
+                    {
+                        "Issue":  "LOTD-007",
+                        "Catalog":  "EN",
+                        "File":  "localization/english/event_localization/rediscover_l_english.yml",
+                        "Key":  "rediscover_events_1006_desc",
+                        "Before":  "[antiquarian.GetFirstName] arrives to my courtroom and presents a royal gift to me.\\n\\n\"The crown of [aenys.GetTitledFirstName]...It was lost sometime after the death of [jaehaerys.GetTitledFirstName], but alas now it is found...\"\\n\\nThis crown was was worn by the second [main.GetDynasty.GetBaseName] King in Westeros, [aenys.GetTitledFirstName] before his death at the hands of [maegor.GetTitledFirstName].\\n\\nIt has now returned to its rightful owners.",
+                        "After":  "[antiquarian.GetFirstName] arrives to my courtroom and presents a royal gift to me.\\n\\n\"The crown of [aenys.GetTitledFirstName]...It was lost sometime after the death of [jaehaerys.GetTitledFirstName], but alas now it is found...\"\\n\\nThis crown was was worn by the second [main.GetDynasty.GetBaseName] King in Westeros, [aenys.GetTitledFirstName] until his death.\\n\\nIt has now returned to its rightful owners."
+                    },
+                    {
+                        "Issue":  "LOTD-008",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/read_prophecy_l_russian.yml",
+                        "Key":  "read_prophecy_0021_b_desc",
+                        "Before":  "Когда я вглядываюсь в клинок, мой взгляд приковывает один-единственный глиф...\\n\\n#COLOR:{1.0,1.0,1.0};FONT:ValyrianGlyphsFont;SIZE:21 :C:#!\\n\\nВалирийский знак #COLOR:{0.5,0.0,0.0} крови#!. Туман и расплывчатые тени смыкаются вокруг меня. Вскоре рядом проступают смутно знакомые лица. Первым в тумане появляется [ancestor_1.GetTitledFirstName]. Затем я узнаю [ancestor_2.GetTitledFirstName], [ancestor_3.GetTitledFirstName] и [ancestor_4.GetTitledFirstName] — все они стоят вокруг и улыбаются.\\n\\nВскоре меня окружают все мои предки, а с ними и родичи, которых я пока не узнаю.\\n\\nИх улыбки меркнут, как и мир вокруг. Предки бросаются друг на друга в жутком порыве вражды... а затем их ярость обращается на меня. Они смыкаются вокруг, холодные руки стискивают горло — и видение меркнет.\\n\\nЯ вновь прихожу в себя в своих покоях: [Select_CString(ROOT.Char.IsFemale, \u0027живая\u0027, \u0027живой\u0027)], но потрясён[Select_CString(ROOT.Char.IsFemale, \u0027ная\u0027, \u0027ный\u0027)].",
+                        "After":  "Когда я вглядываюсь в клинок, мой взгляд приковывает один-единственный глиф...\\n\\n#COLOR:{1.0,1.0,1.0};FONT:ValyrianGlyphsFont;SIZE:21 :C:#!\\n\\nВалирийский знак #COLOR:{0.5,0.0,0.0} крови#!. Туман и расплывчатые тени смыкаются вокруг меня. Вскоре рядом проступают смутно знакомые лица. [Select_CString(ancestor_1.IsFemale, \u0027Первой\u0027, \u0027Первым\u0027)] в тумане появляется [ancestor_1.GetTitledFirstName]. Затем я узнаю [ancestor_2.GetTitledFirstName], [ancestor_3.GetTitledFirstName] и [ancestor_4.GetTitledFirstName] — все они стоят вокруг и улыбаются.\\n\\nВскоре меня окружают все мои предки, а с ними и родичи, которых я пока не узнаю.\\n\\nИх улыбки меркнут, как и мир вокруг. Предки бросаются друг на друга в жутком порыве вражды... а затем их ярость обращается на меня. Они смыкаются вокруг, холодные руки стискивают горло — и видение меркнет.\\n\\nЯ вновь прихожу в себя в своих покоях: [Select_CString(ROOT.Char.IsFemale, \u0027живая\u0027, \u0027живой\u0027)], но потрясён[Select_CString(ROOT.Char.IsFemale, \u0027ная\u0027, \u0027ный\u0027)]."
+                    },
+                    {
+                        "Issue":  "EDITORIAL-CASES",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/lotd_artifacts_l_russian.yml",
+                        "Key":  "artifact_orys_hammer_description",
+                        "Before":  "Ярость — боевой молот, который [aegonTarg.GetTitledFirstName] даровал [orys.GetFirstName], когда узаконил его как основателя Дома [orys.GetDynasty.GetBaseName].\\n\\nМолот воплощает силу и славу Дома [orys.GetDynasty.GetBaseName] и придаёт новому роду законность.",
+                        "After":  "Ярость — боевой молот, который получил в дар [orys.GetFirstName], когда [aegonTarg.GetTitledFirstName] узаконил его и признал основателем нового дома — [orys.GetDynasty.GetBaseName].\\n\\nДом [orys.GetDynasty.GetBaseName] видит в этом молоте символ своей силы, славы и законности."
+                    },
+                    {
+                        "Issue":  "EDITORIAL-CASES",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/read_prophecy_l_russian.yml",
+                        "Key":  "read_prophecy.0001.b",
+                        "Before":  "Настало время открыть это пророчество моему наследнику, [heir.GetFirstName].",
+                        "After":  "Пусть [heir.GetFirstName] узнает пророчество."
+                    },
+                    {
+                        "Issue":  "EDITORIAL-CASES",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/read_prophecy_l_russian.yml",
+                        "Key":  "read_prophecy.0003.a",
+                        "Before":  "Пророчество передано [heir.GetFirstName]...",
+                        "After":  "[heir.GetFirstName] теперь знает пророчество..."
+                    },
+                    {
+                        "Issue":  "EDITORIAL-CASES",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/read_prophecy_l_russian.yml",
+                        "Key":  "read_prophecy_0001_desc",
+                        "Before":  "Давно я не [Select_CString(ROOT.Char.IsFemale, \u0027вглядывалась\u0027, \u0027вглядывался\u0027)] в кинжал, некогда принадлежавший [aegonTarg.GetTitledFirstName]. В его клинке сокрыты слова пророчества.\\n\\nБыть может, настало время вновь прочесть их?",
+                        "After":  "Давно я не [Select_CString(ROOT.Char.IsFemale, \u0027вглядывалась\u0027, \u0027вглядывался\u0027)] в кинжал, которым некогда владел [aegonTarg.GetTitledFirstName]. В его клинке сокрыты слова пророчества.\\n\\nБыть может, настало время вновь прочесть их?"
+                    },
+                    {
+                        "Issue":  "EDITORIAL-CASES",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/rediscover_l_russian.yml",
+                        "Key":  "rediscover_events_0001_desc",
+                        "Before":  "Многие реликвии моих предков до сих пор считаются утраченными; некоторые восходят ещё ко временам до прибытия [aegonTarg.GetTitledFirstName] в Вестерос...\\n\\nБыть может, если не пожалеть золота и выбрать верного человека, эти сокровища удастся вернуть Дому [main.GetDynasty.GetBaseName]...",
+                        "After":  "Многие реликвии моих предков до сих пор считаются утраченными; некоторые появились ещё до того, как [aegonTarg.GetTitledFirstName] прибыл в Вестерос...\\n\\nБыть может, если не пожалеть золота и выбрать верного человека, эти сокровища снова получит дом [main.GetDynasty.GetBaseName]..."
+                    },
+                    {
+                        "Issue":  "EDITORIAL-CASES",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/rediscover_l_russian.yml",
+                        "Key":  "rediscover_events_1005_desc",
+                        "Before":  "[antiquarian.GetFirstName] прибывает к моему двору и преподносит великий дар.\\n\\n«Корона Завоевателя... Да возродится в вас сила [aegonTarg.GetTitledFirstName]...»\\n\\n[aegonTarg.GetTitledFirstName] был коронован этим обручем своей сестрой-женой [visenya.GetFirstName] после прибытия в Вестерос.\\n\\nОна переходила от одного короля Дома [aegonTarg.GetDynasty.GetBaseName] к другому, пока не была утрачена в Дорне вместе с [daeron.GetTitledFirstName].\\n\\nТеперь она вернулась в Дом [main.GetDynasty.GetBaseName], хотя рубины вырваны из гнёзд...\\n\\nБыть может, я [Select_CString(ROOT.Char.IsFemale, \u0027могла\u0027, \u0027мог\u0027)] бы заплатить мастеру, чтобы вернуть короне былое великолепие?",
+                        "After":  "[antiquarian.GetFirstName] прибывает к моему двору и преподносит великий дар.\\n\\n«Корона Завоевателя... Да обретёте вы ту же силу, которой обладал [aegonTarg.GetTitledFirstName]...»\\n\\nПосле прибытия в Вестерос [aegonTarg.GetTitledFirstName] был коронован этим обручем. Коронацию провела [visenya.GetFirstName], его сестра и жена.\\n\\nДом [aegonTarg.GetDynasty.GetBaseName] передавал корону от одного короля к другому. В Дорне [daeron.GetTitledFirstName] утратил эту реликвию.\\n\\nТеперь дом [main.GetDynasty.GetBaseName] вновь владеет ею, хотя рубины вырваны из гнёзд...\\n\\nБыть может, я [Select_CString(ROOT.Char.IsFemale, \u0027могла\u0027, \u0027мог\u0027)] бы заплатить мастеру, чтобы вернуть короне былое великолепие?"
+                    },
+                    {
+                        "Issue":  "EDITORIAL-AXE",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/lotd_decisions_l_russian.yml",
+                        "Key":  "setting_extra_visuals_desc",
+                        "Before":  "Морская Пена и Клешня Краба получат новые качественные 3D-модели.",
+                        "After":  "Морская Пена и топор Селтигаров получат новые качественные 3D-модели. В этом облике топор, известный как Клешня Краба, носит название «Бедствие»."
+                    },
+                    {
+                        "Issue":  "EDITORIAL-AXE",
+                        "Catalog":  "EN",
+                        "File":  "localization/english/lotd_decisions_l_english.yml",
+                        "Key":  "setting_extra_visuals_desc",
+                        "Before":  "Seafoam and Pincer will have new high quality 3D models with alternate visuals.",
+                        "After":  "Seafoam and the Celtigar axe will receive new high-quality 3D models. In this form, the axe known as Pincer is named Calamity."
+                    },
+                    {
+                        "Issue":  "EDITORIAL-MASK",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/lotd_artifacts_l_russian.yml",
+                        "Key":  "artifact_viserys_mask_requirements",
+                        "Before":  "Эту маску могут носить только правители с телесными недугами.",
+                        "After":  "Для личного ношения маски нужны увечье, шрамы, рана или болезнь. Выставить её на пьедестале можно независимо от состояния здоровья."
+                    },
+                    {
+                        "Issue":  "EDITORIAL-MASK",
+                        "Catalog":  "EN",
+                        "File":  "localization/english/artifacts/lotd_artifacts_l_english.yml",
+                        "Key":  "artifact_viserys_mask_requirements",
+                        "Before":  "Only rulers with a physical affliction may wear this mask.",
+                        "After":  "Wearing this mask requires disfigurement, scars, a wound or an illness. Displaying it on a pedestal has no health requirement."
+                    },
+                    {
+                        "Issue":  "EDITORIAL-SABRE",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/lotd_artifacts_l_russian.yml",
+                        "Key":  "artifact_seafoam_description",
+                        "Before":  "Морская Пена — прославленная полутораручная сабля из валирийской стали, родовая реликвия Дома Веларионов.",
+                        "After":  "Морская Пена — прославленная полуторная сабля из валирийской стали, родовая реликвия Дома Веларионов."
+                    },
+                    {
+                        "Issue":  "EN-COLOR",
+                        "Catalog":  "EN",
+                        "File":  "localization/english/artifacts/lotd_artifacts_l_english.yml",
+                        "Key":  "valyrian_mask_05_tooltip",
+                        "Before":  "A mask of #BOLD;COLOR:{0.81.00,0.81,0.81} Silver#! make will suffice.",
+                        "After":  "A mask of #BOLD;COLOR:{0.81,0.81,0.81} Silver#! make will suffice."
+                    },
+                    {
+                        "Issue":  "EN-PLACEHOLDER",
+                        "Catalog":  "EN",
+                        "File":  "localization/english/event_localization/rediscover_l_english.yml",
+                        "Key":  "rediscover_mechanic_effect_1",
+                        "Before":  "d",
+                        "After":  ""
+                    },
+                    {
+                        "Issue":  "EDITORIAL-MEMORY-CASES",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/lotd_memories_l_russian.yml",
+                        "Key":  "read_prophecy_to_heir_desc",
+                        "Before":  "Я [Select_CString(owner.IsFemale, \u0027передала\u0027, \u0027передал\u0027)] пророчество, сокрытое в кинжале [aegonTargLoc.GetFirstNameNicknamedPossessive], своему наследнику, [heir.GetName]",
+                        "After":  "Я [Select_CString(owner.IsFemale, \u0027передала\u0027, \u0027передал\u0027)] пророчество, сокрытое в кинжале [aegonTargLoc.GetFirstNameNicknamedPossessive]. [heir.GetName] теперь хранит эту тайну"
+                    },
+                    {
+                        "Issue":  "EDITORIAL-MEMORY-CASES",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/lotd_memories_l_russian.yml",
+                        "Key":  "read_prophecy_to_heir_desc_second_perspective",
+                        "Before":  "Вы передали пророчество, сокрытое в кинжале [aegonTargLoc.GetFirstNameNicknamedPossessive], своему наследнику, [heir.GetName]",
+                        "After":  "Вы передали пророчество, сокрытое в кинжале [aegonTargLoc.GetFirstNameNicknamedPossessive]. [heir.GetName] теперь хранит эту тайну"
+                    },
+                    {
+                        "Issue":  "EDITORIAL-MEMORY-CASES",
+                        "Catalog":  "RU",
+                        "File":  "localization/russian/lotd_memories_l_russian.yml",
+                        "Key":  "read_prophecy_desc_to_heir_third_perspective",
+                        "Before":  "[owner.GetName] [Select_CString(owner.IsFemale, \u0027передала\u0027, \u0027передал\u0027)] пророчество, сокрытое в кинжале [aegonTargLoc.GetFirstNameNicknamedPossessive], наследнику [heir.GetName]",
+                        "After":  "[owner.GetName] [Select_CString(owner.IsFemale, \u0027передала\u0027, \u0027передал\u0027)] пророчество, сокрытое в кинжале [aegonTargLoc.GetFirstNameNicknamedPossessive]. [heir.GetName] теперь хранит эту тайну"
+                    }
+                ],
+    "ScriptChanges":  {
+                          "value":  [
+                                        {
+                                            "Issue":  "LOTD-001,LOTD-002",
+                                            "File":  "common/character_memory_types/lotd_memories.txt",
+                                            "Before":  "read_prophecy_to_heir = {\n\tcategories = { positive family prophecy }\n\ticon = \"diplomacy.dds\"\n\tdescription = {\n\t\trandom_valid = {\n\t\t\tdesc = read_prophecy_to_heir_desc\n\t\t}\n\t}\n\n\tsecond_perspective_description = {\n\t\trandom_valid = {\n\t\t\tdesc = read_prophecy_desc_second_perspective\n\t\t}\n\t}\n\n\tthird_perspective_description = {\n\t\trandom_valid = {\n\t\t\tdesc = read_prophecy_desc_third_perspective\n\t\t}\n\t}\n\n\tparticipants = { heir aegonTargLoc }\n\n\tduration = {\n\t\tyears = memory_default_duration \n\t}\n}",
+                                            "After":  "read_prophecy_to_heir = {\n\tcategories = { positive family prophecy }\n\ticon = \"diplomacy.dds\"\n\tdescription = {\n\t\trandom_valid = {\n\t\t\tdesc = read_prophecy_to_heir_desc\n\t\t}\n\t}\n\n\tsecond_perspective_description = {\n\t\trandom_valid = {\n\t\t\tdesc = read_prophecy_to_heir_desc_second_perspective\n\t\t}\n\t}\n\n\tthird_perspective_description = {\n\t\trandom_valid = {\n\t\t\tdesc = read_prophecy_desc_to_heir_third_perspective\n\t\t}\n\t}\n\n\tparticipants = { heir aegonTargLoc }\n\n\tduration = {\n\t\tyears = memory_default_duration \n\t}\n}"
+                                        },
+                                        {
+                                            "Issue":  "LOTD-003",
+                                            "File":  "events/decisions_events/rehilt_blackfyre_events.txt",
+                                            "Before":  "\tdesc = {\n\t\tfirst_valid = {\n\t\t\ttriggered_desc = {\n\t\t\t\ttrigger = {\n\t\t\t\t\texists = scope:blackfyre_artifact_rehilt\n\t\t\t\t}\n\t\t\t\tdesc = rehilt_blackfyre.0002_desc\n\t\t\t}\n\t\t\tdesc = rehilt_blackfyre.0001_desc\n\t\t}\n\t}",
+                                            "After":  "\tdesc = {\n\t\tfirst_valid = {\n\t\t\ttriggered_desc = {\n\t\t\t\ttrigger = {\n\t\t\t\t\texists = scope:blackfyre_artifact_rehilt\n\t\t\t\t}\n\t\t\t\tdesc = rehilt_blackfyre.0001_desc\n\t\t\t}\n\t\t\tdesc = rehilt_blackfyre.0002_desc\n\t\t}\n\t}"
+                                        },
+                                        {
+                                            "Issue":  "LOTD-003",
+                                            "File":  "events/decisions_events/rehilt_blackfyre_events.txt",
+                                            "Before":  "\tleft_portrait = {\n\t\tcharacter = root\n\t\ttriggered_animation = {\n\t\t\ttrigger = {\n\t\t\t\texists = scope:blackfyre_artifact_rehilt\n\t\t\t}\n\t\t\tanimation = valyrian_invasion_blackfyre_2\n\t\t}\n\t\ttriggered_animation = {\n\t\t\ttrigger = {\n\t\t\t\texists = scope:blackfyre_artifact\n\t\t\t}\n\t\t\tanimation = valyrian_invasion_blackfyre_rehilt_2\n\t\t}\n\t\tanimation = idle\n\t}",
+                                            "After":  "\tleft_portrait = {\n\t\tcharacter = root\n\t\ttriggered_animation = {\n\t\t\ttrigger = {\n\t\t\t\texists = scope:blackfyre_artifact_rehilt\n\t\t\t}\n\t\t\tanimation = valyrian_invasion_blackfyre_rehilt_2\n\t\t}\n\t\ttriggered_animation = {\n\t\t\ttrigger = {\n\t\t\t\texists = scope:blackfyre_artifact\n\t\t\t}\n\t\t\tanimation = valyrian_invasion_blackfyre_2\n\t\t}\n\t\tanimation = idle\n\t}"
+                                        },
+                                        {
+                                            "Issue":  "EDITORIAL-AEGON",
+                                            "File":  "events/decisions_events/read_prophecy.txt",
+                                            "Before":  "read_prophecy.0001 = {\n\ttype = character_event\n\ttitle = read_prophecy_0001\n\tdesc = {\n\t\tfirst_valid = {\n\t\t\ttriggered_desc = { \n\t\t\t\tdesc =  read_prophecy_0001_desc\n\t\t\t}\n\t\t}\n\t}",
+                                            "After":  "read_prophecy.0001 = {\n\ttype = character_event\n\ttitle = read_prophecy_0001\n\tdesc = {\n\t\tfirst_valid = {\n\t\t\ttriggered_desc = {\n\t\t\t\ttrigger = { root = character:Targaryen_27 }\n\t\t\t\tdesc = read_prophecy_0001_aegon_desc\n\t\t\t}\n\t\t\tdesc = read_prophecy_0001_desc\n\t\t}\n\t}"
+                                        },
+                                        {
+                                            "Issue":  "EDITORIAL-AEGON",
+                                            "File":  "events/decisions_events/read_prophecy.txt",
+                                            "Before":  "read_prophecy.0003 = {\n\ttype = character_event\n\ttitle = read_prophecy_0001\n\tdesc = {\n\t\tfirst_valid = {\n\t\t\ttriggered_desc = { \n\t\t\t\tdesc =  read_prophecy_0003_desc\n\t\t\t}\n\t\t}\n\t}",
+                                            "After":  "read_prophecy.0003 = {\n\ttype = character_event\n\ttitle = read_prophecy_0001\n\tdesc = {\n\t\tfirst_valid = {\n\t\t\ttriggered_desc = {\n\t\t\t\ttrigger = { root = character:Targaryen_27 }\n\t\t\t\tdesc = read_prophecy_0003_aegon_desc\n\t\t\t}\n\t\t\tdesc = read_prophecy_0003_desc\n\t\t}\n\t}"
+                                        }
+                                    ],
+                          "Count":  5
+                      },
+    "Outputs":  [
+                    {
+                        "File":  "localization/replace/russian/zzzz_legacy_of_the_dragon_rus_correct_l_russian.yml",
+                        "SHA256":  "DCFEDF768AF3D10686124AECDB11517315D5F2BBE5D3850B7FD47C911A40B689"
+                    },
+                    {
+                        "File":  "localization/replace/english/zzzz_legacy_of_the_dragon_rus_correct_l_english.yml",
+                        "SHA256":  "E32C76AA4C419D31A9A35F7F9718434D5D4D8FF9CF9184D8417EE3BABED731CD"
+                    },
+                    {
+                        "File":  "common/character_memory_types/lotd_memories.txt",
+                        "SHA256":  "5A0DBFEC19E180CDAA455623BC95BBDF1154909516E8340DA5AEED5F7949064E"
+                    },
+                    {
+                        "File":  "events/decisions_events/rehilt_blackfyre_events.txt",
+                        "SHA256":  "1315F0B091E2B50271D5ABA254152C32B96BBA7A52B668E57FE7B14855A3D642"
+                    },
+                    {
+                        "File":  "events/decisions_events/read_prophecy.txt",
+                        "SHA256":  "EE3E0DB5A7041F53ABBEF33B0DCB545BB91BBFCCEEBC3A948D84891265DAFB6E"
+                    },
+                    {
+                        "File":  "descriptor.mod",
+                        "SHA256":  "3B3599B46155596C6666083624155700B65E313D859DD47AA1254CDDD620F47D"
+                    }
+                ],
+    "ExternalDescriptorSHA256":  "A900CDEEE537188645AD041F5ECB733A56A9101B5AAF002881141F2690ED172E"
+}

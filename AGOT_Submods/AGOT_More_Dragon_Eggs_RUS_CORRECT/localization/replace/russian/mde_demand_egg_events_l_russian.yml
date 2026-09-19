@@ -1,0 +1,95 @@
+﻿l_russian:
+  
+ demand_braavosi_eggs_decision:0 "Потребовать возвращения украденных драконьих яиц"
+ demand_braavosi_eggs_decision_desc:0 "О драконьих яйцах в Вольных городах известно уже давно. Старые долги были погашены, а сомнения в том, что эти яйца вообще способны вылупиться, годами удерживали всех от решительных действий.\n\nНо даже малая вероятность появления нового дома, способного оседлать драконов, слишком опасна, чтобы и дальше делать вид, будто ничего не происходит.\n\nХватит этой удобной лжи. Мы потребуем вернуть яйца — официально и под угрозой войны.\n\n@warning_icon!#X Это решение можно принять только один раз за жизнь, даже если затем оно будет отменено!#!"
+ demand_braavosi_eggs_decision_confirm:0 "Выдвинуть требование!"
+ demand_braavosi_eggs_decision_tooltip:0 "Потребовать возвращения яиц из Вольных городов"
+  
+ mde_demand_egg_events.0001.t:0 "[egg_taker.GetPrimaryTitle.GetNameNoTier] выдвигает ультиматум!"
+ mde_demand_egg_events.0001.desc:0 "Великая кража [thief.GetFullName] стала печально известной. Желая построить корабль для плавания к Закатному морю и не добившись помощи от своей подруги [rhaena.GetFullName], [thief.GetFullName] украла три яйца, отложенные [dreamfyre.GetName], а затем продала их морскому лорду Браавоса.\n\nПрежде погашение долга Таргариенов морским лордом помогало удерживать дело от открытого конфликта, но теперь [egg_taker.GetFullName] выдвигает новое, куда более опасное требование. До нас дошли вести: им известно о драконьих яйцах в наших владениях, и они готовы начать за них войну."
+ mde_demand_egg_events.0001.a:0 "Мы не можем рисковать войной. Придётся уступить."
+ mde_demand_egg_events.0001.a.tt:0 "Мы передадим драконьи яйца [egg_taker.GetFullName]:\n• [egg_drogon.GetName]\n• [egg_viserion.GetName]\n• [egg_rhaegal.GetName]"
+ mde_demand_egg_events.0001.b:0 "Возможно, золото их умиротворит."
+ mde_demand_egg_events.0001.b.tt:0 "Мы предложим [egg_taker.GetFullName] [gold_i]#emphasis $5000|V0$#! вместо яиц."
+ mde_demand_egg_events.0001.c:0 "К чёрту угрозы. Мы не дрогнем."
+ mde_demand_egg_events.0001.c.tt:0 "@warning_icon!#X [egg_taker.GetFullName] с большой вероятностью объявит нам войну!#!"
+  
+ mde_demand_egg_events.0002.t:0 "Война за драконьи яйца!"
+ mde_demand_egg_events.0002.desc:0 "[egg_target.GetFullName] отказывается отдать нам драконьи яйца, которые принадлежат нам по праву, и не предлагает достойной компенсации. Остаётся лишь собрать войска и начать войну.\n\nНо стоит всё тщательно взвесить: хватит ли у нас сил одержать победу — и стоят ли яйца такой цены?"
+ mde_demand_egg_events.0002.a:0 "Яйца принадлежат нам по праву. К оружию!"
+ mde_demand_egg_events.0002.b:0 "Пусть яйца останутся у них..."
+ mde_demand_egg_events.0002.b.tt:0 "@warning_icon!#X Мы потеряем наши претензии на яйца и не получим другого шанса потребовать их!#!"
+  
+ mde_demand_egg_events.0003.t:0 "Предложение золота"
+ mde_demand_egg_events.0003.desc:0 "[egg_target.GetFullName] выслушивает наши требования и предлагает встречный дар — огромную сумму золота, [gold_i]#emphasis $5000|V0$#!. Теперь нам решать, принесёт ли это золото больше пользы, чем попытка вернуть яйца силой."
+ mde_demand_egg_events.0003.a:0 "В их руках это лишь камни... а золото куда полезнее."
+ mde_demand_egg_events.0003.a.tt:0 "Мы получим [gold_i]#emphasis $5000|V0$#!, а [egg_target.GetFullName] потеряет [gold_i]#emphasis $5000|V0$#!\n\n@warning_icon!#X Мы потеряем наши претензии на яйца и не получим другого шанса потребовать их!#!"
+ mde_demand_egg_events.0003.b:0 "Что золото рядом с плотью, ставшей огнём?"
+ mde_demand_egg_events.0003.b.tt:0 "Мы обдумаем, стоит ли доводить дело до войны."
+  
+ mde_demand_egg_events.0004.t:0 "[egg_taker.GetNameNoTooltip] требует наше [egg_target.GetNameNoTooltip]!"
+ mde_demand_egg_events.0004.desc:0 "[egg_taker.GetFullName] заявляет права на наше [egg_target.GetName] — по законам богов и людей!\n\nТакое требование опасно и требует величайшей осторожности. Мы можем уступить, предложить внушительную сумму золота — [gold_i]#emphasis $1500|V0$#! — или рискнуть навлечь их гнев — арестом либо войной."
+ mde_demand_egg_events.0004.a:0 "Угроза от [egg_taker.GetNameNoTooltip] слишком велика. Придётся уступить."
+ mde_demand_egg_events.0004.a.tt:0 "@warning_icon!#X Мы потеряем наше [egg_target.GetName]!#!"
+ mde_demand_egg_events.0004.b:0 "Возможно, золото их умиротворит..."
+ mde_demand_egg_events.0004.c:0 "К чёрту угрозы. Мы не дрогнем."
+ mde_demand_egg_events.0004.c.tt:0 "@warning_icon!#X [egg_taker.GetFullName] с большой вероятностью объявит нам войну или попытается нас арестовать!#!"
+  
+ mde_demand_egg_events.0005.t:0 "Предложение золота"
+ mde_demand_egg_events.0005.desc:0 "[egg_victim.GetFullName] выслушивает наши требования и предлагает встречный дар — огромную сумму золота, [gold_i]#emphasis $1500|V0$#!. Теперь нам решать, принесёт ли это золото больше пользы, чем попытка вернуть [egg_target.GetName] силой."
+ mde_demand_egg_events.0005.a:0 "Сумма и правда немалая..."
+ mde_demand_egg_events.0005.a.tt:0 "@warning_icon!#X Мы потеряем наши претензии на яйца и не получим другого шанса потребовать их!#!"
+ mde_demand_egg_events.0005.b:0 "Что золото рядом с плотью, ставшей огнём?"
+ mde_demand_egg_events.0005.b.tt:0 "Мы обдумаем, стоит ли доводить дело до войны."
+  
+ mde_demand_egg_events.0006.t:0 "Требование отклонено!"
+ mde_demand_egg_events.0006.desc:0 "[egg_victim.GetName] отказывается отдать нам драконье яйцо, которое принадлежит нам по праву, и не предлагает достойной компенсации. Теперь нужно взвесить варианты.\n\nМы можем собрать войска и начать войну, если закон это позволяет; арестовать владельца, если закон на нашей стороне; предъявить претензию на яйцо и искать иной путь его возвращения — или окончательно отказаться от этого дела."
+ mde_demand_egg_events.0006.a:0 "[egg_target.GetNameNoTooltip] принадлежит нам по праву. К оружию!"
+ mde_demand_egg_events.0006.a.tt:0 "@warning_icon!#X Мы не можем воевать с [egg_victim.GetFullName]!#!"
+ mde_demand_egg_events.0006.b:0 "Они владеют [egg_target.GetNameNoTooltip] незаконно!"
+ mde_demand_egg_events.0006.b.tt:0 "Мы получим претензию на [egg_target.GetName] и откроем связанные с ней возможности."
+ mde_demand_egg_events.0006.c:0 "Пусть яйцо останется у них..."
+ mde_demand_egg_events.0006.c.tt:0 "@warning_icon!#X Мы потеряем наши претензии на яйца и не получим другого шанса потребовать их!#!"
+  
+ mde_demand_egg_events.0007.t:0 "Требования приняты!"
+ mde_demand_egg_events.0007.desc:0 "Наша угроза возымела действие: [egg_victim.GetFullName] уступает и передаёт нам [egg_target.GetName]!"
+ mde_demand_egg_events.0007.a:0 "Победа за нами!"
+  
+  
+ demand_egg:0 "Потребовать яйцо"
+ demand_egg_desc:0 "[recipient.GetName] незаконно владеет драконьим яйцом."
+ demanded_egg_interaction.desc:0 "[actor.GetName] требует передать драконье яйцо!"
+ mde_start_demand_egg_event_chain:0 "@warning_icon!#X Это выдвинет требование к [recipient.GetFullName] о передаче яйца!#!"
+ mde_egg_access_gained:0 "Владение драконьим яйцом разрешено."
+ mde_egg_access_removed:0 "Владение драконьим яйцом запрещено."
+  
+ debug_take_egg:0 "#bold #color_red Отладка:#!#! Взять драконье яйцо"
+ debug_take_egg_desc:0 "[actor.GetName] получает это драконье яйцо"
+  
+ debug_take_all_eggs:0 "#bold #color_red Отладка:#!#! Взять все драконьи яйца"
+ debug_take_all_eggs_desc:0 "[actor.GetName] получает все драконьи яйца"
+ debug_give_all_eggs:0 "#bold #color_red Отладка:#!#! Отдать все драконьи яйца"
+ debug_give_all_eggs_desc:0 "[recipient.GetName] получает все драконьи яйца"
+  
+ debug_hatch_egg:0 "#bold #color_red Отладка:#!#! Вывести дракона из яйца"
+ debug_hatch_egg_bond_desc:0 "[recipient.GetName] установит связь с драконом, появившимся из этого яйца"
+ debug_hatch_egg_own_desc:0 "[recipient.GetName] станет владельцем дракона, появившегося из этого яйца"
+ debug_hatch_egg_own_pit_desc:0 "[recipient.GetEmployer.GetName] станет владельцем дракона, появившегося из этого яйца"
+  
+ demanded_egg_opinion:0 "Незаконно владеет драконьим яйцом"
+  
+ mde_grant_egg_permission:0 "Разрешить владение драконьим яйцом"
+ mde_grant_egg_permission_desc:0 "Это лицо получит законное право владеть драконьими яйцами."
+ mde_remove_egg_permission:0 "Запретить владение драконьим яйцом"
+ mde_remove_egg_permission_desc:0 "Владение драконьими яйцами для этого лица будет считаться незаконным."
+ mde_egg_access_gained_interface_tt:0 "[recipient.GetFullName] получит защиту от наших претензий на драконьи яйца."
+ mde_egg_access_removed_interface_tt:0 "Мы сможем законно требовать любые драконьи яйца во владении [recipient.GetFullName]."
+  
+ take_prisoner_egg:0 "Изъять яйцо"
+ take_prisoner_egg_desc:0 "[recipient.GetFullName] находится у нас в плену и незаконно владеет драконьим яйцом. Мы можем законно изъять его."
+ mde_transfer_prison_egg_tt:0 "[actor.GetFullName] законно изымает [target.GetName]!"
+  
+ demanded_egg_interaction.t:0 "Требование драконьего яйца!"
+  
+ agot_dragon_hatching.0401.opt.b:0 "Мои дети!"
+ mde_include_egg:0 "Включить"

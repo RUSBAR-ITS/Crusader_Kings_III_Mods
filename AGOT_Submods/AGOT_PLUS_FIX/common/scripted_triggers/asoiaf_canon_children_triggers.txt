@@ -1,0 +1,2588 @@
+﻿asoiaf_canon_children_enabled_trigger = {
+	has_game_rule = agot_canon_children_disabled #vanilla AGOT's system is DISABLED
+	OR = { #either of AGOT+'s Canon Children settings are ENABLED
+		has_game_rule = asoiaf_canon_children_rule_on_traits
+		has_game_rule = asoiaf_canon_children_rule_on
+	}
+}
+
+asoiaf_canon_children_pregnancy_negation_termination_trigger = {
+	scope:mother = { has_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+}
+
+asoiaf_canon_children_alicent_pregnancy_termination_trigger = { #she's shrewd enough to conceal unwanted pregnancies
+	asoiaf_canon_children_enabled_trigger = yes	
+	scope:mother = {
+		has_inactive_trait = asoiaf_Hightower_97_trait #Alicent Hightower (daughter of Otto)
+		is_married = no #she's widowed/unwed
+		is_ai = yes
+	}
+}
+
+asoiaf_canon_children_rhaenyra_pregnancy_termination_trigger = { #she's shrewd enough to conceal unwanted pregnancies
+	asoiaf_canon_children_enabled_trigger = yes	
+	scope:mother = {
+		has_inactive_trait = asoiaf_Targaryen_63_trait #Rhaenyra Targaryen (daughter of Viserys I)
+		is_married = no #she's widowed/unwed
+		is_ai = yes
+	}
+}
+
+asoiaf_canon_children_cersei_robert_block_trigger = { #After Alaric, Cersei aborts her children with Robert if she has a secret lover who she'd prefer to have her children with. If not, she behaves normally.
+	asoiaf_canon_children_enabled_trigger = yes
+	asoiaf_historical_trigger = yes
+	exists = global_var:asoiaf_canon_children_Baratheon_2_1_born_variable #Alaric has been born
+	scope:real_father = { has_inactive_trait = asoiaf_Baratheon_2_trait } #Robert I Baratheon
+	scope:mother = {
+		has_inactive_trait = asoiaf_Lannister_6_trait #Cersei Lannister (daughter of Tywin)
+		AND = {
+			num_of_relation_lover > 0 #if Cersei has a lover, but that's NOT Robert, she aborts the child (doesn't want to bear Robert's child while she has a lover)
+			NOT = { has_relation_lover = scope:real_father }
+		}
+	}
+}
+asoiaf_canon_children_cersei_pregnancy_termination_trigger = { #she's shrewd enough to conceal unwanted pregnancies
+	asoiaf_canon_children_enabled_trigger = yes
+	scope:mother = {
+		has_inactive_trait = asoiaf_Lannister_6_trait #Cersei Lannister (daughter of Tywin)
+		is_married = no #she's widowed/unwed
+		is_ai = yes
+	}
+}
+
+asoiaf_canon_children_margaery_pregnancy_termination_trigger = { #she's shrewd enough to conceal unwanted pregnancies
+	asoiaf_canon_children_enabled_trigger = yes
+	scope:mother = {
+		has_inactive_trait = asoiaf_Tyrell_14_trait #Margaery Tyrell (daughter of Mace)
+		is_married = no #she's widowed/unwed
+		is_ai = yes
+	}
+}
+
+asoiaf_canon_children_lysa_pregnancy_termination_trigger = {
+	asoiaf_canon_children_enabled_trigger = yes
+	scope:mother = {
+		has_inactive_trait = asoiaf_Tully_6_trait #Lysa Tully (daughter of Hoster)
+		is_married = no #she's widowed/unwed
+		is_ai = yes
+	}
+}
+
+asoiaf_canon_children_Stark_86_trigger = { #Cregan Stark (son of Rickon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_86_born_variable } #Cregan hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_87_born_variable } #Bennard hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_84_trait } #Rickon Stark (son of Benjen)
+	scope:mother.dynasty ?= dynasty:dynn_Glover
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_87_trigger = { #Bennard Stark (son of Rickon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_86_born_variable #Cregan has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_87_born_variable } #Bennard hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_84_trait } #Rickon Stark (son of Benjen)
+	scope:mother.dynasty ?= dynasty:dynn_Glover
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_88_trigger = { #Sara Snow (bastard of Rickon)
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Stark_88_born_variable } #Sara hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_84_trait } #Rickon Stark (son of Benjen)
+	scope:mother.culture ?= { has_cultural_pillar = heritage_first_man }
+	scope:real_father = { NOT = { is_spouse_of_even_if_dead = scope:mother } } #born out of wedlock
+}
+asoiaf_canon_children_Stark_94_trigger = { #Rickon Stark (son of Cregan)
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Stark_94_born_variable } #Rickon hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_86_trait } #Cregan Stark (son of Rickon)
+	scope:mother.dynasty ?= dynasty:dynn_Norrey
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_95_trigger = { #Sarra Stark (daughter of Cregan)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_95_born_variable } #Sarra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_96_born_variable } #Alys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_97_born_variable } #Raya hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_98_born_variable } #Mariah hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_86_trait } #Cregan Stark (son of Rickon)
+	scope:mother.dynasty ?= dynasty:dynn_Blackwood
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_96_trigger = { #Alys Stark (daughter of Cregan)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_95_born_variable #Sarra has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_96_born_variable } #Alys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_97_born_variable } #Raya hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_98_born_variable } #Mariah hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_86_trait } #Cregan Stark (son of Rickon)
+	scope:mother.dynasty ?= dynasty:dynn_Blackwood
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_97_trigger = { #Raya Stark (daughter of Cregan)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_95_born_variable #Sarra has been born
+		exists = global_var:asoiaf_canon_children_Stark_96_born_variable #Alys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_97_born_variable } #Raya hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_98_born_variable } #Mariah hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_86_trait } #Cregan Stark (son of Rickon)
+	scope:mother.dynasty ?= dynasty:dynn_Blackwood
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_98_trigger = { #Mariah Stark (daughter of Cregan)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_95_born_variable #Sarra has been born
+		exists = global_var:asoiaf_canon_children_Stark_96_born_variable #Alys has been born
+		exists = global_var:asoiaf_canon_children_Stark_97_born_variable #Raya has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_98_born_variable } #Mariah hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_86_trait } #Cregan Stark (son of Rickon)
+	scope:mother.dynasty ?= dynasty:dynn_Blackwood
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_99_trigger = { #Jonnel Stark (son of Cregan)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_99_born_variable } #Jonnel hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_100_born_variable } #Edric hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_101_born_variable } #Lyanna hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_102_born_variable } #Barthogan hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_103_born_variable } #Brandon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_86_trait } #Cregan Stark (son of Rickon)
+	scope:mother.house ?= character:Stark_12.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_100_trigger = { #Edric Stark (son of Cregan)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_99_born_variable #Jonnel has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_100_born_variable } #Edric hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_101_born_variable } #Lyanna hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_102_born_variable } #Barthogan hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_103_born_variable } #Brandon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_86_trait } #Cregan Stark (son of Rickon)
+	scope:mother.house ?= character:Stark_12.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_101_trigger = { #Lyanna Stark (daughter of Cregan)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_99_born_variable #Jonnel has been born
+		exists = global_var:asoiaf_canon_children_Stark_100_born_variable #Edric has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_101_born_variable } #Lyanna hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_102_born_variable } #Barthogan hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_103_born_variable } #Brandon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_86_trait } #Cregan Stark (son of Rickon)
+	scope:mother.house ?= character:Stark_12.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_102_trigger = { #Barthogan Stark (son of Cregan)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_99_born_variable #Jonnel has been born
+		exists = global_var:asoiaf_canon_children_Stark_100_born_variable #Edric has been born
+		exists = global_var:asoiaf_canon_children_Stark_101_born_variable #Lyanna has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_102_born_variable } #Barthogan hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_103_born_variable } #Brandon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_86_trait } #Cregan Stark (son of Rickon)
+	scope:mother.house ?= character:Stark_12.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_103_trigger = { #Brandon Stark (son of Cregan)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_99_born_variable #Jonnel has been born
+		exists = global_var:asoiaf_canon_children_Stark_100_born_variable #Edric has been born
+		exists = global_var:asoiaf_canon_children_Stark_101_born_variable #Lyanna has been born
+		exists = global_var:asoiaf_canon_children_Stark_102_born_variable #Barthogan has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_103_born_variable } #Brandon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_86_trait } #Cregan Stark (son of Rickon)
+	scope:mother.house ?= character:Stark_12.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_2_trigger = { #Brandon Stark (son of Rickard)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_2_born_variable } #Brandon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_3_born_variable } #Eddard hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_5_born_variable } #Lyanna hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_4_born_variable } #Benjen hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_1_trait } #Rickard Stark (son of Edwyle)
+	scope:mother.house ?= character:Stark_12.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_3_trigger = { #Eddard Stark (son of Rickard)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_2_born_variable #Brandon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_3_born_variable } #Eddard hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_5_born_variable } #Lyanna hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_4_born_variable } #Benjen hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_1_trait } #Rickard Stark (son of Edwyle)
+	scope:mother.house ?= character:Stark_12.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_5_trigger = { #Lyanna Stark (daughter of Rickard)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_2_born_variable #Brandon has been born
+		exists = global_var:asoiaf_canon_children_Stark_3_born_variable #Eddard has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_5_born_variable } #Lyanna hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_4_born_variable } #Benjen hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_1_trait } #Rickard Stark (son of Edwyle)
+	scope:mother.house ?= character:Stark_12.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_4_trigger = { #Benjen Stark (son of Rickard)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_2_born_variable #Brandon has been born
+		exists = global_var:asoiaf_canon_children_Stark_3_born_variable #Eddard has been born
+		exists = global_var:asoiaf_canon_children_Stark_5_born_variable #Lyanna has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_4_born_variable } #Benjen hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_1_trait } #Rickard Stark (son of Edwyle)
+	scope:mother.house ?= character:Stark_12.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_6_trigger = { #Robb Stark (son of Eddard)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_6_born_variable } #Robb hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_8_born_variable } #Sansa hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_9_born_variable } #Arya hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_10_born_variable } #Bran hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_11_born_variable } #Rickon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_3_trait } #Eddard Stark (son of Rickard)
+	scope:mother.dynasty ?= dynasty:dynn_Tully
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_8_trigger = { #Sansa Stark (daughter of Eddard)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_6_born_variable #Robb has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_8_born_variable } #Sansa hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_9_born_variable } #Arya hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_10_born_variable } #Bran hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_11_born_variable } #Rickon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_3_trait } #Eddard Stark (son of Rickard)
+	scope:mother.dynasty ?= dynasty:dynn_Tully
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_9_trigger = { #Arya Stark (daughter of Eddard)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_6_born_variable #Robb has been born
+		exists = global_var:asoiaf_canon_children_Stark_8_born_variable #Sansa has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_9_born_variable } #Arya hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_10_born_variable } #Bran hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_11_born_variable } #Rickon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_3_trait } #Eddard Stark (son of Rickard)
+	scope:mother.dynasty ?= dynasty:dynn_Tully
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_10_trigger = { #Brandon Stark (son of Eddard)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_6_born_variable #Robb has been born
+		exists = global_var:asoiaf_canon_children_Stark_8_born_variable #Sansa has been born
+		exists = global_var:asoiaf_canon_children_Stark_9_born_variable #Arya has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_10_born_variable } #Bran hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_11_born_variable } #Rickon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_3_trait } #Eddard Stark (son of Rickard)
+	scope:mother.dynasty ?= dynasty:dynn_Tully
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_11_trigger = { #Rickon Stark (son of Eddard)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Stark_6_born_variable #Robb has been born
+		exists = global_var:asoiaf_canon_children_Stark_8_born_variable #Sansa has been born
+		exists = global_var:asoiaf_canon_children_Stark_9_born_variable #Arya has been born
+		exists = global_var:asoiaf_canon_children_Stark_10_born_variable #Bran has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Stark_11_born_variable } #Rickon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Stark_3_trait } #Eddard Stark (son of Rickard)
+	scope:mother.dynasty ?= dynasty:dynn_Tully
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+
+asoiaf_canon_children_Reed_2_trigger = { #Meera Reed (daughter of Howland)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Reed_2_born_variable } #Meera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Reed_3_born_variable } #Jojen hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Reed_1_trait } #Howland Reed (son of Edwyle)
+	scope:mother.culture ?= culture:crannogman
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Reed_3_trigger = { #Jojen Reed (son of Howland)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Reed_2_born_variable #Meera has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Reed_3_born_variable } #Jojen hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Reed_1_trait } #Howland Reed (son of Edwyle)
+	scope:mother.culture ?= culture:crannogman
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+
+asoiaf_canon_children_Baratheon_1_trigger = { #Steffon Baratheon (son of Ormund)
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Baratheon_1_born_variable } #Steffon hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Baratheon_75_trait } #Ormund Baratheon (son of Lyonel)
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Baratheon_2_trigger = { #Robert I Baratheon
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_2_born_variable } #Robert hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_3_born_variable } #Stannis hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_4_born_variable } #Renly hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Baratheon_1_trait } #Steffon Baratheon (son of Ormund)
+	scope:mother.dynasty ?= dynasty:dynn_Estermont
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Baratheon_3_trigger = { #Stannis Baratheon (son of Steffon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Baratheon_2_born_variable #Robert has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_3_born_variable } #Stannis hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_4_born_variable } #Renly hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Baratheon_1_trait } #Steffon Baratheon (son of Ormund)
+	scope:mother.dynasty ?= dynasty:dynn_Estermont
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Baratheon_4_trigger = { #Renly Baratheon (son of Steffon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Baratheon_2_born_variable #Robert has been born
+		exists = global_var:asoiaf_canon_children_Baratheon_3_born_variable #Stannis has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_4_born_variable } #Renly hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Baratheon_1_trait } #Steffon Baratheon (son of Ormund)
+	scope:mother.dynasty ?= dynasty:dynn_Estermont
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Baratheon_2_1_trigger = { #Alaric Baratheon (son of Robert I)
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Baratheon_2_1_born_variable } #Alaric hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Baratheon_2_trait } #Robert I Baratheon
+	scope:mother.house ?= character:Lannister_29.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+#Cersei's pregnancy termination trigger with Robert is handled in a unique trigger at the top of the file
+asoiaf_canon_children_Baratheon_5_trigger = { #Joffrey I Baratheon
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_5_born_variable } #Joffrey hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_6_born_variable } #Myrcella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_7_born_variable } #Tommen hasn't been born
+	}
+	scope:mother = { has_inactive_trait = asoiaf_Lannister_6_trait } #Cersei Lannister (daughter of Tywin)
+	scope:real_father = { is_close_or_extended_family_of = scope:mother }
+	scope:real_father.house ?= character:Lannister_29.house
+}
+asoiaf_canon_children_Baratheon_6_trigger = { #Myrcella Baratheon (daughter of Robert I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Baratheon_5_born_variable #Joffrey has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_6_born_variable } #Myrcella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_7_born_variable } #Tommen hasn't been born
+	}
+	scope:mother = { has_inactive_trait = asoiaf_Lannister_6_trait } #Cersei Lannister (daughter of Tywin)
+	scope:real_father = { is_close_or_extended_family_of = scope:mother }
+	scope:real_father.house ?= character:Lannister_29.house
+}
+asoiaf_canon_children_Baratheon_7_trigger = { #Tommen I Baratheon
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Baratheon_5_born_variable #Joffrey has been born
+		exists = global_var:asoiaf_canon_children_Baratheon_6_born_variable #Myrcella has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_7_born_variable } #Tommen hasn't been born
+	}
+	scope:mother = { has_inactive_trait = asoiaf_Lannister_6_trait } #Cersei Lannister (daughter of Tywin)
+	scope:real_father = { is_close_or_extended_family_of = scope:mother }
+	scope:real_father.house ?= character:Lannister_29.house
+}
+asoiaf_canon_children_Baratheon_3_1_trigger = { #Petyr Baratheon (son of Stannis)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_3_1_born_variable } #Petyr hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_3_2_born_variable } #Tommard hasn't happened
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_3_3_born_variable } #Edric hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_13_born_variable } #Shireen hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Baratheon_3_trait } #Stannis Baratheon (son of Steffon)
+	scope:mother.dynasty ?= dynasty:dynn_Florent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Baratheon_3_2_trigger = { #Tommard Baratheon (son of Stannis)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Baratheon_3_1_born_variable #Petyr has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_3_2_born_variable } #Tommard hasn't happened
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_3_3_born_variable } #Edric hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_13_born_variable } #Shireen hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Baratheon_3_trait } #Stannis Baratheon (son of Steffon)
+	scope:mother.dynasty ?= dynasty:dynn_Florent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Baratheon_3_3_trigger = { #Edric Baratheon (son of Stannis)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Baratheon_3_1_born_variable #Petyr has been born
+		exists = global_var:asoiaf_canon_children_Baratheon_3_2_born_variable #Tommard has happened
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_3_3_born_variable } #Edric hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_13_born_variable } #Shireen hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Baratheon_3_trait } #Stannis Baratheon (son of Steffon)
+	scope:mother.dynasty ?= dynasty:dynn_Florent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Baratheon_13_trigger = { #Shireen Baratheon (daughter of Stannis)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Baratheon_3_1_born_variable #Petyr has been born
+		exists = global_var:asoiaf_canon_children_Baratheon_3_2_born_variable #Tommard has happened
+		exists = global_var:asoiaf_canon_children_Baratheon_3_3_born_variable #Edric has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Baratheon_13_born_variable } #Shireen hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Baratheon_3_trait } #Stannis Baratheon (son of Steffon)
+	scope:mother.dynasty ?= dynasty:dynn_Florent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+
+asoiaf_canon_children_Lannister_1_trigger = { #Tywin Lannister (son of Tytos)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_1_born_variable } #Tywin hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_2_born_variable } #Kevan hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_3_born_variable } #Genna hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_4_born_variable } #Tygett hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_5_born_variable } #Gerion hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Lannister_129_trait } #Tytos Lannister (son of Gerold)
+	scope:mother.dynasty ?= dynasty:dynn_Marbrand
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Lannister_2_trigger = { #Kevan Lannister (son of Tytos)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Lannister_1_born_variable #Tywin has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_2_born_variable } #Kevan hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_3_born_variable } #Genna hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_4_born_variable } #Tygett hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_5_born_variable } #Gerion hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Lannister_129_trait } #Tytos Lannister (son of Gerold)
+	scope:mother.dynasty ?= dynasty:dynn_Marbrand
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Lannister_3_trigger = { #Genna Lannister (daughter of Tytos)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Lannister_1_born_variable #Tywin has been born
+		exists = global_var:asoiaf_canon_children_Lannister_2_born_variable #Kevan has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_3_born_variable } #Genna hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_4_born_variable } #Tygett hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_5_born_variable } #Gerion hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Lannister_129_trait } #Tytos Lannister (son of Gerold)
+	scope:mother.dynasty ?= dynasty:dynn_Marbrand
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Lannister_4_trigger = { #Tygett Lannister (son of Tytos)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Lannister_1_born_variable #Tywin has been born
+		exists = global_var:asoiaf_canon_children_Lannister_2_born_variable #Kevan has been born
+		exists = global_var:asoiaf_canon_children_Lannister_3_born_variable #Genna has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_4_born_variable } #Tygett hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_5_born_variable } #Gerion hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Lannister_129_trait } #Tytos Lannister (son of Gerold)
+	scope:mother.dynasty ?= dynasty:dynn_Marbrand
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Lannister_5_trigger = { #Gerion Lannister (son of Tytos)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Lannister_1_born_variable #Tywin has been born
+		exists = global_var:asoiaf_canon_children_Lannister_2_born_variable #Kevan has been born
+		exists = global_var:asoiaf_canon_children_Lannister_3_born_variable #Genna has been born
+		exists = global_var:asoiaf_canon_children_Lannister_4_born_variable #Tygett has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_5_born_variable } #Gerion hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Lannister_129_trait } #Tytos Lannister (son of Gerold)
+	scope:mother.dynasty ?= dynasty:dynn_Marbrand
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Lannister_6_trigger = { #Cersei Lannister (daughter of Tywin)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_6_born_variable } #Cersei hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_7_born_variable } #Jaime hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_8_born_variable } #Tyrion hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Lannister_1_trait } #Tywin Lannister (son of Tytos)
+	scope:mother.house ?= character:Lannister_29.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Lannister_8_trigger = { #Tyrion Lannister (son of Tywin)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Lannister_6_born_variable #Cersei has been born
+		exists = global_var:asoiaf_canon_children_Lannister_7_born_variable #Jaime has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_8_born_variable } #Tyrion hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Lannister_1_trait } #Tywin Lannister (son of Tytos)
+	scope:mother.house ?= character:Lannister_29.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Lannister_9_trigger = { #Lancel Lannister (son of Kevan)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_9_born_variable } #Lancel hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_10_born_variable } #Willem hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_11_born_variable } #Martyn hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_12_born_variable } #Janei hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Lannister_2_trait } #Kevan Lannister (son of Tytos)
+	scope:mother.dynasty ?= dynasty:dynn_Swyft
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Lannister_10_trigger = { #Willem Lannister (son of Kevan)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Lannister_9_born_variable #Lancel has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_10_born_variable } #Willem hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_11_born_variable } #Martyn hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_12_born_variable } #Janei hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Lannister_2_trait } #Kevan Lannister (son of Tytos)
+	scope:mother.dynasty ?= dynasty:dynn_Swyft
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Lannister_12_trigger = { #Janei Lannister (daughter of Kevan)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Lannister_9_born_variable #Lancel has been born
+		exists = global_var:asoiaf_canon_children_Lannister_10_born_variable #Willem has been born
+		exists = global_var:asoiaf_canon_children_Lannister_11_born_variable #Martyn has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Lannister_12_born_variable } #Janei hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Lannister_2_trait } #Kevan Lannister (son of Tytos)
+	scope:mother.dynasty ?= dynasty:dynn_Swyft
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+
+asoiaf_canon_children_Arryn_7_trigger = { #Jeyne Arryn (daughter of Jon)
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Arryn_7_born_variable } #Jeyne hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Arryn_3_trait } #Jon Arryn (son of Jasper)
+	scope:mother.dynasty ?= dynasty:dynn_Royce
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Arryn_3_1_trigger = { #Cariah Arryn (daughter of Jon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Arryn_3_1_born_variable } #Cariah hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Arryn_3_2_born_variable } #Eldric hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Arryn_8_born_variable } #Robin hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Arryn_3_trait } #Jon Arryn (son of Jasper)
+	scope:mother.dynasty ?= dynasty:dynn_Tully
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Arryn_3_2_trigger = { #Eldric Arryn (son of Jon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Arryn_3_1_born_variable #Cariah has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Arryn_3_2_born_variable } #Eldric hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Arryn_8_born_variable } #Robin hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Arryn_3_trait } #Jon Arryn (son of Jasper)
+	scope:mother.dynasty ?= dynasty:dynn_Tully
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Arryn_8_trigger = { #Robin Arryn (son of Jon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Arryn_3_1_born_variable #Cariah has been born
+		exists = global_var:asoiaf_canon_children_Arryn_3_2_born_variable #Eldric has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Arryn_8_born_variable } #Robin hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Arryn_3_trait } #Jon Arryn (son of Jasper)
+	scope:mother.dynasty ?= dynasty:dynn_Tully
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+
+asoiaf_canon_children_Tyrell_8_trigger = { #Mace Tyrell (son of Luthor)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_8_born_variable } #Mace hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_9_born_variable } #Mina hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_10_born_variable } #Janna hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tyrell_4_trait } #Luthor Tyrell (son of Garlan)
+	scope:mother.dynasty ?= dynasty:dynn_Redwyne
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tyrell_9_trigger = { #Mina Tyrell (daughter of Luthor)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tyrell_8_born_variable #Mace has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_9_born_variable } #Mina hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_10_born_variable } #Janna hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tyrell_4_trait } #Luthor Tyrell (son of Garlan
+	scope:mother.dynasty ?= dynasty:dynn_Redwyne
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tyrell_10_trigger = { #Janna Tyrell (daughter of Luthor)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tyrell_8_born_variable #Mace has been born
+		exists = global_var:asoiaf_canon_children_Tyrell_9_born_variable #Mina has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_10_born_variable } #Janna hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tyrell_4_trait } #Luthor Tyrell (son of Garlan)
+	scope:mother.dynasty ?= dynasty:dynn_Redwyne
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tyrell_11_trigger = { #Willas Tyrell (son of Mace)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_11_born_variable } #Willas hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_12_born_variable } #Garlan hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_13_born_variable } #Loras hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_14_born_variable } #Margaery hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tyrell_8_trait } #Mace Tyrell (son of Luthor)
+	scope:mother.dynasty ?= dynasty:dynn_Hightower
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tyrell_12_trigger = { #Garlan Tyrell (son of Mace)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tyrell_11_born_variable #Willas has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_12_born_variable } #Garlan hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_13_born_variable } #Loras hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_14_born_variable } #Margaery hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tyrell_8_trait } #Mace Tyrell (son of Luthor)
+	scope:mother.dynasty ?= dynasty:dynn_Hightower
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tyrell_13_trigger = { #Loras Tyrell (son of Mace)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tyrell_11_born_variable #Willas has been born
+		exists = global_var:asoiaf_canon_children_Tyrell_12_born_variable #Garlan has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_13_born_variable } #Loras hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_14_born_variable } #Margaery hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tyrell_8_trait } #Mace Tyrell (son of Luthor)
+	scope:mother.dynasty ?= dynasty:dynn_Hightower
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tyrell_14_trigger = { #Margaery Tyrell (son of Mace)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tyrell_11_born_variable #Willas has been born
+		exists = global_var:asoiaf_canon_children_Tyrell_12_born_variable #Garlan has been born
+		exists = global_var:asoiaf_canon_children_Tyrell_13_born_variable #Loras has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tyrell_14_born_variable } #Margaery hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tyrell_8_trait } #Mace Tyrell (son of Luthor)
+	scope:mother.dynasty ?= dynasty:dynn_Hightower
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+
+asoiaf_canon_children_Tarly_2_trigger = { #Samwell Tarly (son of Randyll)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_2_born_variable } #Samwell hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_3_born_variable } #Talla hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_4_born_variable } #Samantha hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_5_born_variable } #Sansara hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_6_born_variable } #Dickon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tarly_1_trait } #Randyll Tyrell (son of Talbert)
+	scope:mother.dynasty ?= dynasty:dynn_Florent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tarly_3_trigger = { #Talla Tarly (daughter of Randyll)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tarly_2_born_variable #Samwell has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_3_born_variable } #Talla hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_4_born_variable } #Samantha hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_5_born_variable } #Sansara hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_6_born_variable } #Dickon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tarly_1_trait } #Randyll Tyrell (son of Talbert)
+	scope:mother.dynasty ?= dynasty:dynn_Florent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tarly_4_trigger = { #Samantha Tarly (daughter of Randyll)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tarly_2_born_variable #Samwell has been born
+		exists = global_var:asoiaf_canon_children_Tarly_3_born_variable #Talla has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_4_born_variable } #Samantha hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_5_born_variable } #Sansara hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_6_born_variable } #Dickon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tarly_1_trait } #Randyll Tyrell (son of Talbert)
+	scope:mother.dynasty ?= dynasty:dynn_Florent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tarly_5_trigger = { #Sansara Tarly (daughter of Randyll)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tarly_2_born_variable #Samwell has been born
+		exists = global_var:asoiaf_canon_children_Tarly_3_born_variable #Talla has been born
+		exists = global_var:asoiaf_canon_children_Tarly_4_born_variable #Samantha has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_5_born_variable } #Sansara hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_6_born_variable } #Dickon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tarly_1_trait } #Randyll Tyrell (son of Talbert)
+	scope:mother.dynasty ?= dynasty:dynn_Florent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tarly_6_trigger = { #Dickon Tarly (son of Randyll)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tarly_2_born_variable #Samwell has been born
+		exists = global_var:asoiaf_canon_children_Tarly_3_born_variable #Talla has been born
+		exists = global_var:asoiaf_canon_children_Tarly_4_born_variable #Samantha has been born
+		exists = global_var:asoiaf_canon_children_Tarly_5_born_variable #Sansara has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tarly_6_born_variable } #Dickon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tarly_1_trait } #Randyll Tyrell (son of Talbert)
+	scope:mother.dynasty ?= dynasty:dynn_Florent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+
+asoiaf_canon_children_Hightower_96_trigger = { #Bryndon Hightower (son of Otto)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Hightower_96_born_variable } #Bryndon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Hightower_97_born_variable } #Alicent hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Hightower_98_born_variable } #Myles hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Hightower_99_born_variable } #Gwayne hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Hightower_90_trait } #Otto Hightower (brother of Hobert)
+	scope:mother.dynasty ?= dynasty:dynn_Florent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Hightower_97_trigger = { #Alicent Hightower (daughter of Otto)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Hightower_96_born_variable #Bryndon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Hightower_97_born_variable } #Alicent hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Hightower_98_born_variable } #Myles hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Hightower_99_born_variable } #Gwayne hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Hightower_90_trait } #Otto Hightower (brother of Hobert)
+	scope:mother.dynasty ?= dynasty:dynn_Florent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Hightower_98_trigger = { #Myles Hightower (son of Otto)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Hightower_96_born_variable #Bryndon has been born
+		exists = global_var:asoiaf_canon_children_Hightower_97_born_variable #Alicent hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Hightower_98_born_variable } #Myles hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Hightower_99_born_variable } #Gwayne hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Hightower_90_trait } #Otto Hightower (brother of Hobert)
+	scope:mother.dynasty ?= dynasty:dynn_Florent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Hightower_99_trigger = { #Gwayne Hightower (son of Otto)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Hightower_96_born_variable #Bryndon has been born
+		exists = global_var:asoiaf_canon_children_Hightower_97_born_variable #Alicent hasn't been born
+		exists = global_var:asoiaf_canon_children_Hightower_98_born_variable #Myles hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Hightower_99_born_variable } #Gwayne hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Hightower_90_trait } #Otto Hightower (brother of Hobert)
+	scope:mother.dynasty ?= dynasty:dynn_Florent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+
+asoiaf_canon_children_Targaryen_30_trigger = { #Aenys I Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_30_born_variable } #Aenys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_31_born_variable } #Maegor hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_27_trait } #Aegon I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_31_trigger = { #Maegor I Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_30_born_variable #Aenys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_31_born_variable } #Maegor hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_27_trait } #Aegon I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_32_trigger = { #Rhaena Targaryen (daughter of Aenys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_32_born_variable } #Rhaena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_33_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_34_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_35_born_variable } #Jaehaerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_36_born_variable } #Alysanne hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_37_born_variable } #Vaella hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_30_trait } #Aenys I Targaryen
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_33_trigger = { #Aegon Targaryen (son of Aenys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_32_born_variable #Rhaena has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_33_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_34_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_35_born_variable } #Jaehaerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_36_born_variable } #Alysanne hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_37_born_variable } #Vaella hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_30_trait } #Aenys I Targaryen
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_34_trigger = { #Viserys Targaryen (son of Aenys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_32_born_variable #Rhaena has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_33_born_variable #Aegon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_34_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_35_born_variable } #Jaehaerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_36_born_variable } #Alysanne hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_37_born_variable } #Vaella hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_30_trait } #Aenys I Targaryen
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_35_trigger = { #Jaehaerys I Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_32_born_variable #Rhaena has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_33_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_34_born_variable #Viserys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_35_born_variable } #Jaehaerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_36_born_variable } #Alysanne hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_37_born_variable } #Vaella hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_30_trait } #Aenys I Targaryen
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_36_trigger = { #Alysanne Targaryen (daughter of Aenys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_32_born_variable #Rhaena has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_33_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_34_born_variable #Viserys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_35_born_variable #Jaehaerys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_36_born_variable } #Alysanne hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_37_born_variable } #Vaella hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_30_trait } #Aenys I Targaryen
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_37_trigger = { #Vaella Targaryen (daughter of Aenys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_32_born_variable #Rhaena has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_33_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_34_born_variable #Viserys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_35_born_variable #Jaehaerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_36_born_variable #Alysanne has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_37_born_variable } #Vaella hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_30_trait } #Aenys I Targaryen
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_38_trigger = { #Aegon Targaryen (son of Maegor I)
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_38_born_variable } #Aegon hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_31_trait } #Maegor I Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Harroway
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_40_trigger = { #Rhaenys Targaryen (daughter of Maegor I)
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_40_born_variable } #Rhaenys hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_31_trait } #Maegor I Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Westerling
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_39_trigger = { #Viserys Targaryen (son of Maegor I)
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_39_born_variable } #Viserys hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_31_trait } #Maegor I Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Costayne
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_maegor_children_trigger = { #generic maegor children trigger
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = {
+		asoiaf_canon_children_Targaryen_38_trigger = yes
+		asoiaf_canon_children_Targaryen_40_trigger = yes
+		asoiaf_canon_children_Targaryen_39_trigger = yes
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_31_trait } #Maegor I Targaryen
+}
+asoiaf_canon_children_Targaryen_41_trigger = { #Aerea Targaryen (daughter of Aegon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_41_born_variable } #Aerea hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_42_born_variable } #Rhaella hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_33_trait } #Aegon Targaryen (son of Aenys I)
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_43_trigger = { #Aegon Targaryen (son of Jaehaerys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_43_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_44_born_variable } #Daenerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_45_born_variable } #Aemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_46_born_variable } #Baelon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_47_born_variable } #Alyssa hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_48_born_variable } #Maegelle hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_49_born_variable } #Vaegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_50_born_variable } #Daella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_51_born_variable } #Saera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_52_born_variable } #Viserra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_53_born_variable } #Gaemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_54_born_variable } #Valerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_born_variable } #Gael hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_35_trait } #Jaehaerys I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_44_trigger = { #Daenerys Targaryen (daughter of Jaehaerys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_43_born_variable #Aegon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_44_born_variable } #Daenerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_45_born_variable } #Aemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_46_born_variable } #Baelon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_47_born_variable } #Alyssa hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_48_born_variable } #Maegelle hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_49_born_variable } #Vaegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_50_born_variable } #Daella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_51_born_variable } #Saera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_52_born_variable } #Viserra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_53_born_variable } #Gaemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_54_born_variable } #Valerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_born_variable } #Gael hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_35_trait } #Jaehaerys I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_45_trigger = { #Aemon Targaryen (son of Jaehaerys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_43_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_44_born_variable #Daenerys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_45_born_variable } #Aemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_46_born_variable } #Baelon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_47_born_variable } #Alyssa hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_48_born_variable } #Maegelle hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_49_born_variable } #Vaegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_50_born_variable } #Daella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_51_born_variable } #Saera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_52_born_variable } #Viserra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_53_born_variable } #Gaemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_54_born_variable } #Valerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_born_variable } #Gael hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_35_trait } #Jaehaerys I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_46_trigger = { #Baelon Targaryen (son of Jaehaerys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_43_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_44_born_variable #Daenerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_45_born_variable #Aemon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_46_born_variable } #Baelon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_47_born_variable } #Alyssa hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_48_born_variable } #Maegelle hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_49_born_variable } #Vaegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_50_born_variable } #Daella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_51_born_variable } #Saera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_52_born_variable } #Viserra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_53_born_variable } #Gaemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_54_born_variable } #Valerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_born_variable } #Gael hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_35_trait } #Jaehaerys I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_47_trigger = { #Alyssa Targaryen (daughter of Jaehaerys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_43_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_44_born_variable #Daenerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_45_born_variable #Aemon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_46_born_variable #Baelon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_47_born_variable } #Alyssa hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_48_born_variable } #Maegelle hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_49_born_variable } #Vaegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_50_born_variable } #Daella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_51_born_variable } #Saera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_52_born_variable } #Viserra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_53_born_variable } #Gaemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_54_born_variable } #Valerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_born_variable } #Gael hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_35_trait } #Jaehaerys I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_48_trigger = { #Maegelle Targaryen (daughter of Jaehaerys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_43_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_44_born_variable #Daenerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_45_born_variable #Aemon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_46_born_variable #Baelon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_47_born_variable #Alyssa has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_48_born_variable } #Maegelle hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_49_born_variable } #Vaegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_50_born_variable } #Daella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_51_born_variable } #Saera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_52_born_variable } #Viserra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_53_born_variable } #Gaemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_54_born_variable } #Valerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_born_variable } #Gael hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_35_trait } #Jaehaerys I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_49_trigger = { #Vaegon Targaryen (son of Jaehaerys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_43_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_44_born_variable #Daenerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_45_born_variable #Aemon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_46_born_variable #Baelon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_47_born_variable #Alyssa has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_48_born_variable #Maegelle has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_49_born_variable } #Vaegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_50_born_variable } #Daella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_51_born_variable } #Saera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_52_born_variable } #Viserra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_53_born_variable } #Gaemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_54_born_variable } #Valerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_born_variable } #Gael hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_35_trait } #Jaehaerys I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_50_trigger = { #Daella Targaryen (daughter of Jaehaerys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_43_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_44_born_variable #Daenerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_45_born_variable #Aemon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_46_born_variable #Baelon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_47_born_variable #Alyssa has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_48_born_variable #Maegelle has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_49_born_variable #Vaegon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_50_born_variable } #Daella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_51_born_variable } #Saera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_52_born_variable } #Viserra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_53_born_variable } #Gaemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_54_born_variable } #Valerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_born_variable } #Gael hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_35_trait } #Jaehaerys I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_51_trigger = { #Saera Targaryen (daughter of Jaehaerys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_43_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_44_born_variable #Daenerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_45_born_variable #Aemon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_46_born_variable #Baelon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_47_born_variable #Alyssa has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_48_born_variable #Maegelle has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_49_born_variable #Vaegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_50_born_variable #Daella has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_51_born_variable } #Saera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_52_born_variable } #Viserra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_53_born_variable } #Gaemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_54_born_variable } #Valerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_born_variable } #Gael hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_35_trait } #Jaehaerys I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_52_trigger = { #Viserra Targaryen (daughter of Jaehaerys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_43_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_44_born_variable #Daenerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_45_born_variable #Aemon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_46_born_variable #Baelon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_47_born_variable #Alyssa has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_48_born_variable #Maegelle has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_49_born_variable #Vaegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_50_born_variable #Daella has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_51_born_variable #Saera has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_52_born_variable } #Viserra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_53_born_variable } #Gaemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_54_born_variable } #Valerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_born_variable } #Gael hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_35_trait } #Jaehaerys I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_53_trigger = { #Gaemon Targaryen (son of Jaehaerys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_43_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_44_born_variable #Daenerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_45_born_variable #Aemon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_46_born_variable #Baelon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_47_born_variable #Alyssa has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_48_born_variable #Maegelle has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_49_born_variable #Vaegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_50_born_variable #Daella has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_51_born_variable #Saera has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_52_born_variable #Viserra has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_53_born_variable } #Gaemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_54_born_variable } #Valerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_born_variable } #Gael hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_35_trait } #Jaehaerys I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_54_trigger = { #Valerion Targaryen (son of Jaehaerys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_43_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_44_born_variable #Daenerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_45_born_variable #Aemon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_46_born_variable #Baelon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_47_born_variable #Alyssa has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_48_born_variable #Maegelle has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_49_born_variable #Vaegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_50_born_variable #Daella has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_51_born_variable #Saera has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_52_born_variable #Viserra has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_53_born_variable #Gaemon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_54_born_variable } #Valerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_born_variable } #Gael hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_35_trait } #Jaehaerys I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_55_trigger = { #Gael Targaryen (daughter of Jaehaerys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_43_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_44_born_variable #Daenerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_45_born_variable #Aemon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_46_born_variable #Baelon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_47_born_variable #Alyssa has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_48_born_variable #Maegelle has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_49_born_variable #Vaegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_50_born_variable #Daella has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_51_born_variable #Saera has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_52_born_variable #Viserra has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_53_born_variable #Gaemon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_54_born_variable #Valerion has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_born_variable } #Gael hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_35_trait } #Jaehaerys I Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_55_1_trigger = { #Gael's Stillborn Son
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_55_1_born_variable } #Gael's stillborn son hasn't been born
+	scope:mother = { has_inactive_trait = asoiaf_Targaryen_55_trait } #Gael Targaryen (daughter of Jaehaerys I)
+	scope:real_father = { is_lowborn = yes }
+}
+asoiaf_canon_children_Targaryen_56_trigger = { #Aelor (bastard of Saera)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_56_born_variable } #Aelor hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_57_born_variable } #Jaecerys hasn't been born
+	}
+	scope:mother = { has_inactive_trait = asoiaf_Targaryen_51_trait } #Saera Targaryen (daughter of Jaehaerys I)
+	scope:real_father.culture ?= culture:lyseni
+}
+asoiaf_canon_children_Targaryen_57_trigger = { #Jaecerys (bastard of Saera)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_56_born_variable #Aelor has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_57_born_variable } #Jaecerys hasn't been born
+	}
+	scope:mother = { has_inactive_trait = asoiaf_Targaryen_51_trait } #Saera Targaryen (daughter of Jaehaerys I)
+	scope:real_father.culture ?= culture:lyseni
+}
+asoiaf_canon_children_Targaryen_58_trigger = { #Aegon (bastard of Saera)
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_58_born_variable } #Aegon hasn't been born
+	scope:mother = { has_inactive_trait = asoiaf_Targaryen_51_trait } #Saera Targaryen (daughter of Jaehaerys I)
+	scope:real_father.culture ?= culture:volantene
+}
+asoiaf_canon_children_Hammer_1_trigger = { #Hugh the Hammer
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Hammer_1_born_variable } #Hugh hasn't been born
+	scope:mother = { has_inactive_trait = asoiaf_Targaryen_51_trait } #Saera Targaryen (daughter of Jaehaerys I)
+	scope:real_father.culture ?= { has_cultural_pillar = heritage_andal } #I presume Hugh's father was a patron of King's Landing, likely an Andal
+}
+asoiaf_canon_children_Hammer_2_trigger = { #Hugh's daughter
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Hammer_2_born_variable } #Hugh's daughter hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Hammer_1_trait } #Hugh the Hammer
+	scope:mother.culture ?= culture:sand_dornish
+}
+asoiaf_canon_children_Targaryen_59_trigger = { #Rhaenys Targaryen (daughter of Aemon)
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_59_born_variable } #Rhaenys hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_45_trait } #Aemon Targaryen (son of Jaehaerys I)
+	scope:mother.dynasty ?= dynasty:dynn_Baratheon
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_60_trigger = { #Viserys I Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_60_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_61_born_variable } #Daemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_62_born_variable } #Aegon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_46_trait } #Baelon Targaryen (son of Jaehaerys I)
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_61_trigger = { #Daemon Targaryen (son of Baelon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_60_born_variable #Viserys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_61_born_variable } #Daemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_62_born_variable } #Aegon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_46_trait } #Baelon Targaryen (son of Jaehaerys I)
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_62_trigger = { #Aegon Targaryen (son of Baelon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_60_born_variable #Viserys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_61_born_variable #Daemon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_62_born_variable } #Aegon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_46_trait } #Baelon Targaryen (son of Jaehaerys I)
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_131_trigger = { #Aemon Targaryen (son of Viserys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_131_born_variable } #Aemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_63_born_variable } #Rhaenyra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_64_born_variable } #Baelon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_60_trait } #Viserys I Targaryen
+	scope:mother.house ?= character:Arryn_15.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_63_trigger = { #Rhaenyra Targaryen (daughter of Viserys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_131_born_variable #Aemon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_63_born_variable } #Rhaenyra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_64_born_variable } #Baelon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_60_trait } #Viserys I Targaryen
+	scope:mother.house ?= character:Arryn_15.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_63_personality_change_trigger = { #PERSONALITY CHANGE AFTER BECOMING A MOTHER for Rhaenyra
+	OR = {
+		asoiaf_canon_children_enabled_trigger = yes #either has Canon Children enabled
+		has_game_rule = asoiaf_got_traits_rule_on #or has the alt traits/relations game rule enabled
+	}
+	scope:mother = { #Rhaenyra Targaryen (daughter of Viserys I)
+		has_inactive_trait = asoiaf_Targaryen_63_trait #this is Rhaenyra for sure
+		AND = {
+			has_trait = brave
+			has_trait = arrogant #she has her childhood traits; prevents triggering on every pregnancy since the effect will change her traits
+			has_trait = authoritative
+			has_trait = rude
+		}
+	}
+}
+asoiaf_canon_children_Targaryen_64_trigger = { #Baelon Targaryen (son of Viserys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_131_born_variable #Aemon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_63_born_variable #Rhaenyra has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_64_born_variable } #Baelon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_60_trait } #Viserys I Targaryen
+	scope:mother.house ?= character:Arryn_15.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_65_trigger = { #Aegon II Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_65_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_66_born_variable } #Helaena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_67_born_variable } #Aemond hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_68_born_variable } #Daeron hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_60_trait } #Viserys I Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Hightower
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_66_trigger = { #Helaena Targaryen (daughter Viserys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_65_born_variable #Aegon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_66_born_variable } #Helaena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_67_born_variable } #Aemond hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_68_born_variable } #Daeron hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_60_trait } #Viserys I Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Hightower
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_67_trigger = { #Aemond Targaryen (son Viserys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_65_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_66_born_variable #Helaena has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_67_born_variable } #Aemond hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_68_born_variable } #Daeron hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_60_trait } #Viserys I Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Hightower
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_68_trigger = { #Daeron Targaryen (son Viserys I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_65_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_66_born_variable #Helaena has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_67_born_variable #Aemond has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_68_born_variable } #Daeron hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_60_trait } #Viserys I Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Hightower
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_69_trigger = { #Baela Targaryen (daughter of Daemon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_69_born_variable } #Baela hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_70_born_variable } #Rhaena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_61_1_born_variable } #Laena's third child hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_61_trait } #Daemon Targaryen (son of Baelon)
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_70_trigger = { #Rhaena Targaryen (daughter of Daemon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_69_born_variable #Baela has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_70_born_variable } #Rhaena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_61_1_born_variable } #Laena's third child hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_61_trait } #Daemon Targaryen (son of Baelon)
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_61_1_trigger = { #Laena's third child
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_69_born_variable #Baela has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_70_born_variable #Rhaena has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_61_1_born_variable } #Laena's third child hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_61_trait } #Daemon Targaryen (son of Baelon)
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_71_trigger = { #Jaehaera Targaryen (daughter of Aegon II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_71_born_variable } #Jaehaera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_72_born_variable } #Jaehaerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_73_born_variable } #Maelor hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_65_trait } #Aegon II Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_73_trigger = { #Maelor Targaryen (son of Aegon II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_71_born_variable #Jaehaera has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_72_born_variable #Jaehaerys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_73_born_variable } #Maelor hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_65_trait } #Aegon II Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_75_trigger = { #Jacaerys Velaryon (son of Rhaenyra)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_75_born_variable } #Jacaerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_76_born_variable } #Lucerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_77_born_variable } #Joffrey hasn't been born
+	}
+	scope:mother = { has_inactive_trait = asoiaf_Targaryen_63_trait } #Rhaenyra Targaryen (daughter of Viserys I)
+	scope:real_father.dynasty ?= dynasty:dynn_Strong
+}
+asoiaf_canon_children_Targaryen_76_trigger = { #Lucerys Velaryon (son of Rhaenyra)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_75_born_variable #Jacaerys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_76_born_variable } #Lucerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_77_born_variable } #Joffrey hasn't been born
+	}
+	scope:mother = { has_inactive_trait = asoiaf_Targaryen_63_trait } #Rhaenyra Targaryen (daughter of Viserys I)
+	scope:real_father.dynasty ?= dynasty:dynn_Strong
+}
+asoiaf_canon_children_Targaryen_77_trigger = { #Joffrey Velaryon (son of Rhaenyra)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_75_born_variable #Jacaerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_76_born_variable #Lucerys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_77_born_variable } #Joffrey hasn't been born
+	}
+	scope:mother = { has_inactive_trait = asoiaf_Targaryen_63_trait } #Rhaenyra Targaryen (daughter of Viserys I)
+	scope:real_father.dynasty ?= dynasty:dynn_Strong
+}
+asoiaf_canon_children_Targaryen_78_trigger = { #Aegon III Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_78_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_79_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_80_born_variable } #Visenya hasn't been born
+	}
+	scope:mother = { has_inactive_trait = asoiaf_Targaryen_63_trait } #Rhaenyra Targaryen (daughter of Viserys I)
+	scope:real_father.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_79_trigger = { #Viserys II Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_78_born_variable #Aegon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_79_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_80_born_variable } #Visenya hasn't been born
+	}
+	scope:mother = { has_inactive_trait = asoiaf_Targaryen_63_trait } #Rhaenyra Targaryen (daughter of Viserys I)
+	scope:real_father.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_80_trigger = { #Visenya Targaryen (daughter of Rhaenyra)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_78_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_79_born_variable #Viserys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_80_born_variable } #Visenya hasn't been born
+	}
+	scope:mother = { has_inactive_trait = asoiaf_Targaryen_63_trait } #Rhaenyra Targaryen (daughter of Viserys I)
+	scope:real_father.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_81_trigger = { #Daeron I Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_81_born_variable } #Daeron hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_82_born_variable } #Baelor hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_83_born_variable } #Daena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_84_born_variable } #Rhaena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_85_born_variable } #Elaena hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_78_trait } #Aegon III Targaryen
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_82_trigger = { #Baelor I Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_81_born_variable #Daeron has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_82_born_variable } #Baelor hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_83_born_variable } #Daena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_84_born_variable } #Rhaena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_85_born_variable } #Elaena hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_78_trait } #Aegon III Targaryen
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_83_trigger = { #Daena Targaryen (daughter of Aegon III)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_81_born_variable #Daeron has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_82_born_variable #Baelor has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_83_born_variable } #Daena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_84_born_variable } #Rhaena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_85_born_variable } #Elaena hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_78_trait } #Aegon III Targaryen
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_84_trigger = { #Rhaena Targaryen (daughter of Aegon III)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_81_born_variable #Daeron has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_82_born_variable #Baelor has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_83_born_variable #Daena has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_84_born_variable } #Rhaena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_85_born_variable } #Elaena hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_78_trait } #Aegon III Targaryen
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_85_trigger = { #Elaena Targaryen (daughter of Aegon III)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_81_born_variable #Daeron has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_82_born_variable #Baelor has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_83_born_variable #Daena has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_84_born_variable #Rhaena has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_85_born_variable } #Elaena hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_78_trait } #Aegon III Targaryen
+	scope:mother.house ?= character:Velaryon_6.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_88_trigger = { #Aegon IV Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_88_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_89_born_variable } #Aemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_90_born_variable } #Naerys hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_79_trait } #Viserys II Targaryen
+	scope:mother.house ?= character:Rogare_32.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_89_trigger = { #Aemon Targaryen (son of Viserys II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_88_born_variable #Aegon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_89_born_variable } #Aemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_90_born_variable } #Naerys hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_79_trait } #Viserys II Targaryen
+	scope:mother.house ?= character:Rogare_32.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_90_trigger = { #Naerys Targaryen (daughter of Viserys II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_88_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_89_born_variable #Aemon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_90_born_variable } #Naerys hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_79_trait } #Viserys II Targaryen
+	scope:mother.house ?= character:Rogare_32.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_91_trigger = { #Daeron II Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	scope:mother = { agot_plus_fix_megette_trigger = no }
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_91_born_variable } #Daeron hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_134_born_variable } #Viserra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_132_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_133_born_variable } #Baelon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_92_born_variable } #Daenerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_93_born_variable } #Aemond hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_135_born_variable } #Haegon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen
+	exists = scope:mother.house
+	scope:mother.house = character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_134_trigger = { #Viserra Targaryen (daughter of Aegon IV)
+	asoiaf_canon_children_enabled_trigger = yes
+	scope:mother = { agot_plus_fix_megette_trigger = no }
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_91_born_variable #Daeron has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_134_born_variable } #Viserra hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_132_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_133_born_variable } #Baelon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_92_born_variable } #Daenerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_93_born_variable } #Aemond hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_135_born_variable } #Haegon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen
+	exists = scope:mother.house
+	scope:mother.house = character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_132_trigger = { #Viserys Targaryen (son of Aegon IV)
+	asoiaf_canon_children_enabled_trigger = yes
+	scope:mother = { agot_plus_fix_megette_trigger = no }
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_91_born_variable #Daeron has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_134_born_variable #Viserra has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_132_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_133_born_variable } #Baelon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_92_born_variable } #Daenerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_93_born_variable } #Aemond hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_135_born_variable } #Haegon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen
+	exists = scope:mother.house
+	scope:mother.house = character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_92_trigger = { #Daenerys Targaryen (daughter of Aegon IV)
+	asoiaf_canon_children_enabled_trigger = yes
+	scope:mother = { agot_plus_fix_megette_trigger = no }
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_91_born_variable #Daeron has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_134_born_variable #Viserra has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_132_born_variable #Viserys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_133_born_variable #Baelon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_92_born_variable } #Daenerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_93_born_variable } #Aemond hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_135_born_variable } #Haegon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen
+	exists = scope:mother.house
+	scope:mother.house = character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_135_trigger = { #Haegon Targaryen (son of Aegon IV)
+	asoiaf_canon_children_enabled_trigger = yes
+	scope:mother = { agot_plus_fix_megette_trigger = no }
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_91_born_variable #Daeron has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_134_born_variable #Viserra has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_132_born_variable #Viserys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_133_born_variable #Baelon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_92_born_variable #Daenerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_93_born_variable #Aemond has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_135_born_variable } #Haegon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen
+	exists = scope:mother.house
+	scope:mother.house = character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_98_trigger = { # Alysanne
+	asoiaf_canon_children_enabled_trigger = yes
+	exists = scope:real_father
+	exists = scope:mother
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait }
+	scope:mother = {
+		is_alive = yes
+		has_trait = pregnant
+		agot_plus_fix_megette_trigger = yes
+	}
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_98_born_variable }
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_99_born_variable }
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_100_born_variable }
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_101_born_variable }
+}
+asoiaf_canon_children_Targaryen_99_trigger = { # Lily
+	asoiaf_canon_children_enabled_trigger = yes
+	exists = scope:real_father
+	exists = scope:mother
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait }
+	scope:mother = {
+		is_alive = yes
+		has_trait = pregnant
+		agot_plus_fix_megette_trigger = yes
+	}
+	exists = global_var:asoiaf_canon_children_Targaryen_98_born_variable
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_99_born_variable }
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_100_born_variable }
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_101_born_variable }
+}
+asoiaf_canon_children_Targaryen_100_trigger = { # Willow
+	asoiaf_canon_children_enabled_trigger = yes
+	exists = scope:real_father
+	exists = scope:mother
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait }
+	scope:mother = {
+		is_alive = yes
+		has_trait = pregnant
+		agot_plus_fix_megette_trigger = yes
+	}
+	exists = global_var:asoiaf_canon_children_Targaryen_98_born_variable
+	exists = global_var:asoiaf_canon_children_Targaryen_99_born_variable
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_100_born_variable }
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_101_born_variable }
+}
+asoiaf_canon_children_Targaryen_101_trigger = { # Rosey
+	asoiaf_canon_children_enabled_trigger = yes
+	exists = scope:real_father
+	exists = scope:mother
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait }
+	scope:mother = {
+		is_alive = yes
+		has_trait = pregnant
+		agot_plus_fix_megette_trigger = yes
+	}
+	exists = global_var:asoiaf_canon_children_Targaryen_98_born_variable
+	exists = global_var:asoiaf_canon_children_Targaryen_99_born_variable
+	exists = global_var:asoiaf_canon_children_Targaryen_100_born_variable
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_101_born_variable }
+}
+asoiaf_canon_children_Targaryen_94_trigger = { #Daemon I Blackfyre
+	asoiaf_canon_children_enabled_trigger = yes
+	scope:mother = { agot_plus_fix_megette_trigger = no }
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_94_born_variable } #Daemon hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_88_trait } #Aegon IV Targaryen
+	OR = {
+		AND = {
+			NOT = { scope:real_father = { is_spouse_of_even_if_dead = scope:mother } } #EITHER the mother is a generic Targaryen woman whom Aegon is NOT married to
+			exists = scope:mother.house
+			scope:mother.house = character:Targaryen_13.house
+		}
+		scope:mother = { has_inactive_trait = asoiaf_Targaryen_83_trait } #OR the mother is specifically Daena Targaryen, whether married to her or not
+	}
+}
+asoiaf_canon_children_Targaryen_107_trigger = { #Baelor Targaryen (son of Daeron II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_107_born_variable } #Baelor hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_108_born_variable } #Aerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_109_born_variable } #Rhaegel hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_110_born_variable } #Maekar hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_91_trait } #Daeron II Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Martell
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_108_trigger = { #Aerys I Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_107_born_variable #Baelor has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_108_born_variable } #Aerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_109_born_variable } #Rhaegel hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_110_born_variable } #Maekar hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_91_trait } #Daeron II Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Martell
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_109_trigger = { #Rhaegel Targaryen (son of Daeron II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_107_born_variable #Baelor has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_108_born_variable #Aerys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_109_born_variable } #Rhaegel hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_110_born_variable } #Maekar hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_91_trait } #Daeron II Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Martell
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_110_trigger = { #Maekar I Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_107_born_variable #Baelor has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_108_born_variable #Aerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_109_born_variable #Rhaegel has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_110_born_variable } #Maekar hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_91_trait } #Daeron II Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Martell
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_111_trigger = { #Valarr Targaryen (son of Baelor)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_111_born_variable } #Valarr hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_112_born_variable } #Matarys hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_107_trait } #Baelor Targaryen (son of Daeron II)
+	scope:mother.dynasty ?= dynasty:dynn_Dondarrion
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_112_trigger = { #Matarys Targaryen (son of Baelor)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_111_born_variable #Valarr has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_112_born_variable } #Matarys hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_107_trait } #Baelor Targaryen (son of Daeron II)
+	scope:mother.dynasty ?= dynasty:dynn_Dondarrion
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_113_trigger = { #Daeron Targaryen (son of Valarr)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_113_born_variable } #Daeron hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_114_born_variable } #Baelor hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_111_trait } #Valarr Targaryen (son of Baelor)
+	scope:mother.culture ?= culture:tyroshi
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_114_trigger = { #Baelor Targaryen (son of Valarr)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_113_born_variable #Daeron has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_114_born_variable } #Baelor hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_111_trait } #Valarr Targaryen (son of Baelor)
+	scope:mother.culture ?= culture:tyroshi
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_115_trigger = { #Aelor Targaryen (son of Rhaegel)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_115_born_variable } #Aelor hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_116_born_variable } #Aelora hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_117_born_variable } #Daenora hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_109_trait } #Rhaegel Targaryen (son of Daeron II)
+	scope:mother.house ?= character:Arryn_15.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_117_trigger = { #Daenora Targaryen (daughter of Rhaegel)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_115_born_variable #Aelor has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_116_born_variable #Aelora has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_117_born_variable } #Daenora hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_109_trait } #Rhaegel Targaryen (son of Daeron II)
+	scope:mother.house ?= character:Arryn_15.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_118_trigger = { #Daeron Targaryen (son of Maekar I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_118_born_variable } #Daeron hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_119_born_variable } #Aerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_120_born_variable } #Aemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_121_born_variable } #Daella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_122_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_123_born_variable } #Rhae hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_110_trait } #Maekar I Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Dayne
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_119_trigger = { #Aerion Targaryen (son of Maekar I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_118_born_variable #Daeron has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_119_born_variable } #Aerion hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_120_born_variable } #Aemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_121_born_variable } #Daella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_122_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_123_born_variable } #Rhae hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_110_trait } #Maekar I Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Dayne
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_120_trigger = { #Aemon Targaryen (son of Maekar I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_118_born_variable #Daeron has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_119_born_variable #Aerion has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_120_born_variable } #Aemon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_121_born_variable } #Daella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_122_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_123_born_variable } #Rhae hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_110_trait } #Maekar I Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Dayne
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_121_trigger = { #Daella Targaryen (daughter of Maekar I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_118_born_variable #Daeron has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_119_born_variable #Aerion has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_120_born_variable #Aemon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_121_born_variable } #Daella hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_122_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_123_born_variable } #Rhae hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_110_trait } #Maekar I Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Dayne
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_122_trigger = { #Aegon Targaryen (son of Maekar I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_118_born_variable #Daeron has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_119_born_variable #Aerion has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_120_born_variable #Aemon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_121_born_variable #Daella has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_122_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_123_born_variable } #Rhae hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_110_trait } #Maekar I Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Dayne
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_123_trigger = { #Rhae Targaryen (daughter of Maekar I)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_118_born_variable #Daeron has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_119_born_variable #Aerion has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_120_born_variable #Aemon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_121_born_variable #Daella has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_122_born_variable #Aegon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_123_born_variable } #Rhae hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_110_trait } #Maekar I Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Dayne
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_124_trigger = { #Vaella Targaryen (daughter of Daeron)
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_124_born_variable } #Vaella hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_118_trait } #Daeron Targaryen (son of Maekar I)
+	scope:mother.culture ?= culture:tyroshi
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_125_trigger = { #Maegor Targaryen (son of Aerion)
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_125_born_variable } #Maegor hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_119_trait } #Aerion Targaryen (son of Maekar I)
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_126_trigger = { #Duncan Targaryen (son of Aegon V)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_126_born_variable } #Duncan hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_127_born_variable } #Jaehaerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_128_born_variable } #Shaera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_129_born_variable } #Daeron hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_130_born_variable } #Rhaelle hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_122_trait } #Aegon V Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Blackwood
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_127_trigger = { #Jaehaerys II Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_126_born_variable #Duncan has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_127_born_variable } #Jaehaerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_128_born_variable } #Shaera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_129_born_variable } #Daeron hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_130_born_variable } #Rhaelle hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_122_trait } #Aegon V Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Blackwood
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_128_trigger = { #Shaera Targaryen (daughter of Aegon V)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_126_born_variable #Duncan has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_127_born_variable #Jaehaerys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_128_born_variable } #Shaera hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_129_born_variable } #Daeron hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_130_born_variable } #Rhaelle hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_122_trait } #Aegon V Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Blackwood
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_129_trigger = { #Daeron Targaryen (son of Aegon V)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_126_born_variable #Duncan has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_127_born_variable #Jaehaerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_128_born_variable #Shaera has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_129_born_variable } #Daeron hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_130_born_variable } #Rhaelle hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_122_trait } #Aegon V Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Blackwood
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_130_trigger = { #Rhaelle Targaryen (daughter of Aegon V)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_126_born_variable #Duncan has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_127_born_variable #Jaehaerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_128_born_variable #Shaera has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_129_born_variable #Daeron has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_130_born_variable } #Rhaelle hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_122_trait } #Aegon V Targaryen
+	scope:mother.dynasty ?= dynasty:dynn_Blackwood
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_1_trigger = { #Aerys II Targaryen
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_1_born_variable } #Aerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_2_born_variable } #Rhaella hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_127_trait } #Jaehaerys II Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_2_trigger = { #Rhaella Targaryen (daughter of Jaehaerys II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_1_born_variable #Aerys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_2_born_variable } #Rhaella hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_127_trait } #Jaehaerys II Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_3_trigger = { #Rhaegar Targaryen (son of Aerys II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_3_born_variable } #Rhaegar hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_4_born_variable } #Shaena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_5_born_variable } #Daeron hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_6_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_7_born_variable } #Jaehaerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_8_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_9_born_variable } #Daenerys hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_1_trait } #Aerys II Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_4_trigger = { #Shaena Targaryen (daughter of Aerys II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_3_born_variable #Rhaegar has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_4_born_variable } #Shaena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_5_born_variable } #Daeron hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_6_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_7_born_variable } #Jaehaerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_8_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_9_born_variable } #Daenerys hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_1_trait } #Aerys II Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_5_trigger = { #Daeron Targaryen (son of Aerys II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_3_born_variable #Rhaegar has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_4_born_variable #Shaena has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_5_born_variable } #Daeron hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_6_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_7_born_variable } #Jaehaerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_8_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_9_born_variable } #Daenerys hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_1_trait } #Aerys II Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_6_trigger = { #Aegon Targaryen (son of Aerys II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_3_born_variable #Rhaegar has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_4_born_variable #Shaena has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_5_born_variable #Daeron has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_6_born_variable } #Aegon hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_7_born_variable } #Jaehaerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_8_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_9_born_variable } #Daenerys hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_1_trait } #Aerys II Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_7_trigger = { #Jaehaerys Targaryen (son of Aerys II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_3_born_variable #Rhaegar has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_4_born_variable #Shaena has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_5_born_variable #Daeron has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_6_born_variable #Aegon has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_7_born_variable } #Jaehaerys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_8_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_9_born_variable } #Daenerys hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_1_trait } #Aerys II Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_8_trigger = { #Viserys Targaryen (son of Aerys II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_3_born_variable #Rhaegar has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_4_born_variable #Shaena has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_5_born_variable #Daeron has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_6_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_7_born_variable #Jaehaerys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_8_born_variable } #Viserys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_9_born_variable } #Daenerys hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_1_trait } #Aerys II Targaryen
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_9_trigger = { #Daenerys Targaryen (daughter of Aerys II)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_3_born_variable #Rhaegar has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_4_born_variable #Shaena has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_5_born_variable #Daeron has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_6_born_variable #Aegon has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_7_born_variable #Jaehaerys has been born
+		exists = global_var:asoiaf_canon_children_Targaryen_8_born_variable #Viserys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_9_born_variable } #Daenerys hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_1_trait } #Daenerys Targaryen (daughter of Aerys II)
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_9_trigger_yearly = { #birth trigger for Daenerys when triggered via the yearly_on_action for the NPK bookmark
+	NOT = { exists = global_var:asoiaf_canon_children_Targaryen_9_born_variable } #Daenerys hasn't been born yet
+	root = {
+		dynasty ?= dynasty:dynn_Targaryen
+		father ?= character:Targaryen_1 #Aerys
+		mother ?= character:Targaryen_2 #Rhaella
+		is_female = yes
+		has_trait = beauty_good_3
+		has_trait = intellect_good_1
+	}
+}
+asoiaf_canon_children_Targaryen_10_trigger = { #Rhaenys Targaryen (daughter of Rhaegar)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_10_born_variable } #Rhaenys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_11_born_variable } #Aegon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_3_trait } #Rhaegar Targaryen (son of Aerys II)
+	scope:mother.dynasty ?= dynasty:dynn_Martell
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Targaryen_11_trigger = { #Aegon Targaryen (son of Rhaegar)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Targaryen_10_born_variable #Rhaenys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_11_born_variable } #Aegon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_3_trait } #Rhaegar Targaryen (son of Aerys II)
+	scope:mother.dynasty ?= dynasty:dynn_Martell
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Stark_7_trigger = { #Jon Snow
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Stark_7_born_variable } #Jon hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Targaryen_3_trait } #Rhaegar Targaryen
+	scope:mother.house ?= character:Stark_12.house
+}
+
+asoiaf_canon_children_Velaryon_34_trigger = { #Laena Velaryon (daughter of Corlys)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Velaryon_34_born_variable } #Laena hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Velaryon_35_born_variable } #Laenor hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Velaryon_31_trait } #Corlys Velaryon (the Sea Snake)
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Velaryon_35_trigger = { #Laenor Velaryon (daughter of Corlys)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Velaryon_34_born_variable #Laena has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Velaryon_35_born_variable } #Laenor hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Velaryon_31_trait } #Corlys Velaryon (the Sea Snake)
+	scope:mother.house ?= character:Targaryen_13.house
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Velaryon_43_trigger = { #Addam Velaryon (bastard of Corlys)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Velaryon_43_born_variable } #Addam hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Velaryon_44_born_variable } #Alyn hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Velaryon_31_trait } #Corlys Velaryon (the Sea Snake)
+	scope:mother ?= { is_lowborn = yes }
+}
+asoiaf_canon_children_Velaryon_44_trigger = { #Alyn Velaryon (bastard of Corlys)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Velaryon_43_born_variable #Addam has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Velaryon_44_born_variable } #Alyn hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Velaryon_31_trait } #Corlys Velaryon (the Sea Snake)
+	scope:mother ?= { is_lowborn = yes }
+}
+
+asoiaf_canon_children_Martell_9_trigger = { #Arianne Martell (daughter of Doran)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Martell_9_born_variable } #Arianne hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Martell_10_born_variable } #Quentyn hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Martell_11_born_variable } #Trystane hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Martell_4_trait } #Doran Martell (son of Loreza)
+	scope:mother.culture ?= culture:norvoshi
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Martell_10_trigger = { #Quentyn Martell (son of Doran)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Martell_9_born_variable #Arianne has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Martell_10_born_variable } #Quentyn hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Martell_11_born_variable } #Trystane hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Martell_4_trait } #Doran Martell (son of Loreza)
+	scope:mother.culture ?= culture:norvoshi
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Martell_11_trigger = { #Trystane Martell (son of Doran)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Martell_9_born_variable #Arianne has been born
+		exists = global_var:asoiaf_canon_children_Martell_10_born_variable #Quentyn has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Martell_11_born_variable } #Trystane hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Martell_4_trait } #Doran Martell (son of Loreza)
+	scope:mother.culture ?= culture:norvoshi
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+
+asoiaf_canon_children_Dayne_3_trigger = { #Ulrick Martell (son of Beric)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Dayne_3_born_variable } #Ulrick hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Dayne_5_born_variable } #Arthur hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Dayne_4_born_variable } #Ashara hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Dayne_6_born_variable } #Allyria hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Dayne_1_trait } #Beric Dayne (son of Davos)
+	OR = {
+		scope:mother.culture ?= culture:stone_dornish
+		scope:mother.culture ?= culture:salt_dornish
+		scope:mother.culture ?= culture:sand_dornish
+	}
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Dayne_5_trigger = { #Arthur Martell (son of Beric)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Dayne_3_born_variable #Ulrick has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Dayne_5_born_variable } #Arthur hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Dayne_4_born_variable } #Ashara hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Dayne_6_born_variable } #Allyria hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Dayne_1_trait } #Beric Dayne (son of Davos)
+	OR = {
+		scope:mother.culture ?= culture:stone_dornish
+		scope:mother.culture ?= culture:salt_dornish
+		scope:mother.culture ?= culture:sand_dornish
+	}
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Dayne_4_trigger = { #Ashara Martell (son of Beric)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Dayne_3_born_variable #Ulrick has been born
+		exists = global_var:asoiaf_canon_children_Dayne_5_born_variable #Arthur has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Dayne_4_born_variable } #Ashara hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Dayne_6_born_variable } #Allyria hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Dayne_1_trait } #Beric Dayne (son of Davos)
+	OR = {
+		scope:mother.culture ?= culture:stone_dornish
+		scope:mother.culture ?= culture:salt_dornish
+		scope:mother.culture ?= culture:sand_dornish
+	}
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Dayne_6_trigger = { #Allyria Martell (son of Beric)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Dayne_3_born_variable #Ulrick has been born
+		exists = global_var:asoiaf_canon_children_Dayne_5_born_variable #Arthur has been born
+		exists = global_var:asoiaf_canon_children_Dayne_4_born_variable #Ashara has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Dayne_6_born_variable } #Allyria hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Dayne_1_trait } #Beric Dayne (son of Davos)
+	OR = {
+		scope:mother.culture ?= culture:stone_dornish
+		scope:mother.culture ?= culture:salt_dornish
+		scope:mother.culture ?= culture:sand_dornish
+	}
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Dayne_7_trigger = { #Edric Martell (son of Ulrick)
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Dayne_7_born_variable } #Edric hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Dayne_3_trait } #Ulrick Dayne (son of Beric)
+	OR = {
+		scope:mother.culture ?= culture:stone_dornish
+		scope:mother.culture ?= culture:salt_dornish
+		scope:mother.culture ?= culture:sand_dornish
+	}
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+
+asoiaf_canon_children_Tully_2_trigger = { #Edmund Tully (son of Hoster)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_2_born_variable } #Edmund hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_3_born_variable } #Denys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_4_born_variable } #Catelyn hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_6_born_variable } #Lysa hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_7_born_variable } #Edmure hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_8_born_variable } #Patrek hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tully_1_trait } #Hoster Tully (son of Edmyn)
+	scope:mother.dynasty ?= dynasty:dynn_Whent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tully_3_trigger = { #Denys Tully (son of Hoster)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tully_2_born_variable #Edmund has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_3_born_variable } #Denys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_4_born_variable } #Catelyn hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_6_born_variable } #Lysa hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_7_born_variable } #Edmure hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_8_born_variable } #Patrek hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tully_1_trait } #Hoster Tully (son of Edmyn)
+	scope:mother.dynasty ?= dynasty:dynn_Whent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tully_4_trigger = { #Catelyn Tully (son of Hoster)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tully_2_born_variable #Edmund has been born
+		exists = global_var:asoiaf_canon_children_Tully_3_born_variable #Denys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_4_born_variable } #Catelyn hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_6_born_variable } #Lysa hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_7_born_variable } #Edmure hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_8_born_variable } #Patrek hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tully_1_trait } #Hoster Tully (son of Edmyn)
+	scope:mother.dynasty ?= dynasty:dynn_Whent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tully_6_trigger = { #Lysa Tully (son of Hoster)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tully_2_born_variable #Edmund has been born
+		exists = global_var:asoiaf_canon_children_Tully_3_born_variable #Denys has been born
+		exists = global_var:asoiaf_canon_children_Tully_4_born_variable #Catelyn has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_6_born_variable } #Lysa hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_7_born_variable } #Edmure hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_8_born_variable } #Patrek hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tully_1_trait } #Hoster Tully (son of Edmyn)
+	scope:mother.dynasty ?= dynasty:dynn_Whent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tully_7_trigger = { #Edmure Tully (son of Hoster)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tully_2_born_variable #Edmund has been born
+		exists = global_var:asoiaf_canon_children_Tully_3_born_variable #Denys has been born
+		exists = global_var:asoiaf_canon_children_Tully_4_born_variable #Catelyn has been born
+		exists = global_var:asoiaf_canon_children_Tully_6_born_variable #Lysa has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_7_born_variable } #Edmure hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_8_born_variable } #Patrek hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tully_1_trait } #Hoster Tully (son of Edmyn)
+	scope:mother.dynasty ?= dynasty:dynn_Whent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Tully_8_trigger = { #Patrek Tully (son of Hoster)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Tully_2_born_variable #Edmund has been born
+		exists = global_var:asoiaf_canon_children_Tully_3_born_variable #Denys has been born
+		exists = global_var:asoiaf_canon_children_Tully_4_born_variable #Catelyn has been born
+		exists = global_var:asoiaf_canon_children_Tully_6_born_variable #Lysa has been born
+		exists = global_var:asoiaf_canon_children_Tully_7_born_variable #Edmure has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Tully_8_born_variable } #Patrek hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Tully_1_trait } #Hoster Tully (son of Edmyn)
+	scope:mother.dynasty ?= dynasty:dynn_Whent
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+
+asoiaf_canon_children_Strong_34_trigger = { #Alys Rivers
+	asoiaf_canon_children_enabled_trigger = yes
+	NOT = { exists = global_var:asoiaf_canon_children_Strong_34_born_variable } #Alys hasn't been born
+	scope:real_father = { has_inactive_trait = asoiaf_Strong_29_trait } #Lyonel Strong (son of Osmund)
+	scope:mother.culture ?= culture:riverman_main
+	NOT = { scope:real_father = { is_spouse_of_even_if_dead = scope:mother } } #must explicitly be a bastard
+}
+asoiaf_canon_children_Strong_30_trigger = { #Harwin Strong (son of Lyonel)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Strong_30_born_variable } #Harwin hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Strong_31_born_variable } #Larys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Strong_32_born_variable } #Catelyn hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Strong_33_born_variable } #Lysa hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Strong_29_trait } #Lyonel Strong (son of Osmund)
+	scope:mother.culture ?= culture:riverman_main
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Strong_31_trigger = { #Larys Strong (son of Lyonel)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Strong_30_born_variable #Harwin has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Strong_31_born_variable } #Larys hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Strong_32_born_variable } #Catelyn hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Strong_33_born_variable } #Lysa hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Strong_29_trait } #Lyonel Strong (son of Osmund)
+	scope:mother.culture ?= culture:riverman_main
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Strong_32_trigger = { #Catelyn Strong (daughter of Lyonel)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Strong_30_born_variable #Harwin has been born
+		exists = global_var:asoiaf_canon_children_Strong_31_born_variable #Larys has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Strong_32_born_variable } #Catelyn hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Strong_33_born_variable } #Lysa hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Strong_29_trait } #Lyonel Strong (son of Osmund)
+	scope:mother.culture ?= culture:riverman_main
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Strong_33_trigger = { #Lysa Strong (daughter of Lyonel)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Strong_30_born_variable #Harwin has been born
+		exists = global_var:asoiaf_canon_children_Strong_31_born_variable #Larys has been born
+		exists = global_var:asoiaf_canon_children_Strong_32_born_variable #Catelyn has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Strong_33_born_variable } #Lysa hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Strong_29_trait } #Lyonel Strong (son of Osmund)
+	scope:mother.culture ?= culture:riverman_main
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+
+asoiaf_canon_children_Greyjoy_11_trigger = { #Rodrik Greyjoy (son of Balon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		NOT = { exists = global_var:asoiaf_canon_children_Greyjoy_11_born_variable } #Rodrik hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Greyjoy_12_born_variable } #Maron hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Greyjoy_13_born_variable } #Yara hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Greyjoy_14_born_variable } #Theon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Greyjoy_5_trait } #Balon Greyjoy (son of Quellon)
+	scope:mother.dynasty ?= dynasty:dynn_Harlaw
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Greyjoy_12_trigger = { #Maron Greyjoy (son of Balon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Greyjoy_11_born_variable #Rodrik hasn been born
+		NOT = { exists = global_var:asoiaf_canon_children_Greyjoy_12_born_variable } #Maron hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Greyjoy_13_born_variable } #Yara hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Greyjoy_14_born_variable } #Theon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Greyjoy_5_trait } #Balon Greyjoy (son of Quellon)
+	scope:mother.dynasty ?= dynasty:dynn_Harlaw
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Greyjoy_13_trigger = { #Yara Greyjoy (daughter of Balon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Greyjoy_11_born_variable #Rodrik hasn been born
+		exists = global_var:asoiaf_canon_children_Greyjoy_12_born_variable #Maron has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Greyjoy_13_born_variable } #Yara hasn't been born
+		NOT = { exists = global_var:asoiaf_canon_children_Greyjoy_14_born_variable } #Theon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Greyjoy_5_trait } #Balon Greyjoy (son of Quellon)
+	scope:mother.dynasty ?= dynasty:dynn_Harlaw
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}
+asoiaf_canon_children_Greyjoy_14_trigger = { #Theon Greyjoy (son of Balon)
+	asoiaf_canon_children_enabled_trigger = yes
+	AND = {
+		exists = global_var:asoiaf_canon_children_Greyjoy_11_born_variable #Rodrik hasn been born
+		exists = global_var:asoiaf_canon_children_Greyjoy_12_born_variable #Maron has been born
+		exists = global_var:asoiaf_canon_children_Greyjoy_13_born_variable #Yara has been born
+		NOT = { exists = global_var:asoiaf_canon_children_Greyjoy_14_born_variable } #Theon hasn't been born
+	}
+	scope:real_father = { has_inactive_trait = asoiaf_Greyjoy_5_trait } #Balon Greyjoy (son of Quellon)
+	scope:mother.dynasty ?= dynasty:dynn_Harlaw
+	scope:real_father = { is_spouse_of_even_if_dead = scope:mother }
+}

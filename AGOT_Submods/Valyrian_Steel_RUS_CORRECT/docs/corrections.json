@@ -1,0 +1,44 @@
+[
+  {
+    "Issue": "VS-001",
+    "File": "localization/russian/valyrian_memories_l_russian.yml",
+    "Key": "funded_my_expedition_valyria_desc_third_perspective",
+    "Before": "[adventurer.GetFullNamePossessiveRegnal]",
+    "After": "[owner.GetFullNamePossessiveRegnal]"
+  },
+  {
+    "Issue": "VS-003",
+    "File": "localization/russian/valyrian_decisions_l_russian.yml",
+    "Key": "fund_expedition_0001_desc",
+    "Before": "я готов снарядить",
+    "After": "я [Select_CString(ROOT.Char.IsFemale, 'готова', 'готов')] снарядить"
+  },
+  {
+    "Issue": "VS-004",
+    "File": "localization/russian/valyrian_decisions_l_russian.yml",
+    "Key": "fund_expedition_00021_desc",
+    "Before": "Я велел искать",
+    "After": "Я [Select_CString(ROOT.Char.IsFemale, 'велела', 'велел')] искать"
+  },
+  {
+    "Issue": "VS-005",
+    "File": "localization/russian/valyrian_decisions_l_russian.yml",
+    "Key": "fund_expedition_0014_desc",
+    "Before": "которого я ждал",
+    "After": "которого я [Select_CString(ROOT.Char.IsFemale, 'ждала', 'ждал')]"
+  },
+  {
+    "Issue": "VS-006",
+    "File": "localization/russian/valyrian_decisions_l_russian.yml",
+    "Key": "fund_expedition_0014_alt_desc",
+    "Before": "которого я ждал",
+    "After": "которого я [Select_CString(ROOT.Char.IsFemale, 'ждала', 'ждал')]"
+  },
+  {
+    "Issue": "VS-007",
+    "File": "localization/russian/valyrian_decisions_l_russian.yml",
+    "Key": "bond_with_dragon_scheme_success_chance_add",
+    "Before": " с помощью драконьего рога",
+    "After": ""
+  }
+]

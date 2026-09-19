@@ -1,0 +1,48 @@
+--- a/history/characters/asoiaf_char_dummies.txt
++++ b/history/characters/asoiaf_char_dummies.txt
+@@ -6594,7 +6594,7 @@
+ # 	religion = old_gods_wnw
+ # 	culture = skagosi
+ # 	disallow_random_traits = yes
+-	trait = agot_dummy_trait
++# 	trait = agot_dummy_trait
+ 	
+ # 	trait = ill
+ # 	trait = bubonic_plague
+@@ -6603,9 +6603,9 @@
+ # 	trait = physique_bad_3
+ 
+ # 	1.1.1 = {
+-		birth = yes
+-		effect = { make_unprunable = yes }
+-	}
++# 		birth = yes
++# 		effect = { make_unprunable = yes }
++# 	}
+ # 	#eventually add him to a far-away court so no player knows he exists
+ # }
+ 
+@@ -6644,7 +6644,7 @@
+ }
+ asoiaf_Blackfyre_16_mother = {
+ 	name = Melara
+-	dynasty = none
++	# dynasty = none # No dynasty: retain lowborn status
+ 	female = yes
+ 
+ 	religion = fc_pan_lys
+--- a/history/characters/asoiaf_char_stormlands.txt
++++ b/history/characters/asoiaf_char_stormlands.txt
+@@ -149,7 +149,11 @@
+ 			add_trait = witch
+ 			add_trait = immortal
+ 			set_immortal_age = 38
+-			add_trait = lifestyle_mystic_3_history
++			add_trait = lifestyle_mystic
++			add_trait_xp = {
++				trait = lifestyle_mystic
++				value = trait_third_level
++			}
+ 			learn_language = language_agot_westeros
+ 			agot_safe_set_location_history_effect = { CASTLE = title:c_triarchs_fall } #TODO: change to Red Priesthood in Volantis when it's added
+ 			create_artifact_asoiaf_red_priest_necklace_effect = { OWNER = character:asoiaf_Melisandre_1 }

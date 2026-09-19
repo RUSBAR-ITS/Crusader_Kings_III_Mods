@@ -1,0 +1,165 @@
+﻿#######################
+### HOUSE BARATHEON ###
+#######################
+
+Baratheon_asoiaf_baby = {
+	name = Alaric
+	# dna = Baratheon_asoiaf_baby # AGOT_PLUS_FIX: unavailable AGOT+ DNA.
+	dynasty = dynn_Baratheon
+	
+	trait = beauty_good_1
+
+	religion = fots_seven
+	culture = stormlander_main
+
+	trait = stubborn
+	
+	father = Baratheon_2 #Robert I Baratheon
+	mother = Lannister_6 #Cersei Lannister (daughter of Tywin)
+
+	8284.9.1 = { #conceived on wedding night (8284.1.1)
+		birth = yes
+		effect = {
+			make_unprunable = yes
+			make_trait_inactive = blue_eyes
+			make_trait_inactive = black_hair
+		}
+	}
+	8284.11.1 = {
+		trait = sickly
+		trait = ill  #fever took him
+	}
+	8284.11.4 = {
+		death = { death_reason = death_ill }
+	}
+}
+
+Baratheon_asoiaf_3_1 = {
+	name = Petyr
+	#dna = Baratheon_asoiaf_3_1
+	dynasty = dynn_Baratheon
+
+	religion = fots_seven
+	culture = stormlander_main
+	
+	father = Baratheon_3 #Stannis Baratheon (son of Steffon)
+	mother = Florent_10 #Selyse Florent (daughter of Ryman)
+
+	8285.2.1 = {
+		birth = yes
+		effect = {
+			make_unprunable = yes
+			make_trait_inactive = blue_eyes
+			make_trait_inactive = black_hair
+		}
+		trait = sickly
+		death = { death_reason = death_stillborn }
+	}
+}
+
+Baratheon_asoiaf_3_2 = {
+	name = Tommard
+	#dna = Baratheon_asoiaf_3_2
+	dynasty = dynn_Baratheon
+
+	religion = fots_seven
+	culture = stormlander_main
+	
+	father = Baratheon_3 #Stannis Baratheon (son of Steffon)
+	mother = Florent_10 #Selyse Florent (daughter of Ryman)
+
+	8287.1.1 = {
+		birth = yes
+		effect = {
+			make_unprunable = yes
+			make_trait_inactive = blue_eyes
+			make_trait_inactive = black_hair
+		}
+		trait = sickly
+		death = { death_reason = death_stillborn }
+	}
+}
+
+Baratheon_asoiaf_3_3 = {
+	name = Edric
+	#dna = Baratheon_asoiaf_3_3
+	dynasty = dynn_Baratheon
+
+	religion = fots_seven
+	culture = stormlander_main
+	
+	father = Baratheon_3 #Stannis Baratheon (son of Steffon)
+	mother = Florent_10 #Selyse Florent (daughter of Ryman)
+
+	8288.4.1 = {
+		birth = yes
+		effect = {
+			make_unprunable = yes
+			make_trait_inactive = blue_eyes
+			make_trait_inactive = black_hair
+		}
+		trait = sickly
+		death = { death_reason = death_stillborn }
+	}
+}
+
+##################
+### MELISANDRE ###
+##################
+asoiaf_Melisandre_1 = {
+	name = Melisandre # Version for earlier bookmarks, Melisandre of Asshai
+	#dynasty = 69115
+	female = yes
+	dna = Melisandre_1
+
+	martial = 3
+	diplomacy = 17
+	intrigue = 18
+	stewardship = 15
+	learning = 23
+
+	religion = rhllor_asshai
+	culture = volantene # AGOT TODO asshaii
+
+	trait = education_intrigue_5
+	trait = authoritative
+	trait = callous
+	trait = stubborn
+	trait = beauty_good_3
+	trait = charming
+
+	disallow_random_traits = yes
+
+	7898.1.1 = {
+		birth = yes
+		add_character_flag = has_scripted_appearance
+		add_character_flag = canon_status_canon
+		effect = {
+			add_trait = slave
+			agot_safe_set_location_history_effect = { CASTLE = title:c_triarchs_fall } #TODO: change to Asshai when it's added
+		}
+	}
+	7918.1.1 = {
+		effect = {
+			remove_trait = slave
+			add_trait = freedman
+			add_trait = red_priest
+			add_trait = zealous
+			add_trait = fire_obsessed
+			add_trait = witch
+			add_trait = immortal
+			set_immortal_age = 38
+			add_trait = lifestyle_mystic
+			add_trait_xp = {
+				trait = lifestyle_mystic
+				value = trait_third_level
+			}
+			learn_language = language_agot_westeros
+			agot_safe_set_location_history_effect = { CASTLE = title:c_triarchs_fall } #TODO: change to Red Priesthood in Volantis when it's added
+			create_artifact_asoiaf_red_priest_necklace_effect = { OWNER = character:asoiaf_Melisandre_1 }
+		}
+	}
+	8273.1.1 = { #The real Melisandre is born, get rid of the historical version
+		death = { death_reason = death_vanished }
+	}
+}

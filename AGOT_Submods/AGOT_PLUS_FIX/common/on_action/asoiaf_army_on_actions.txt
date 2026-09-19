@@ -1,0 +1,285 @@
+﻿on_siege_completion = {
+	on_actions = {
+		asoiaf_assisted_ruler_capture_player_only
+		asoiaf_assisted_ruler_capture_universal
+	}
+}
+
+asoiaf_assisted_ruler_capture_player_only = {
+	trigger = {
+		has_game_rule = asoiaf_assisted_ruler_capture_player_only
+		root = { is_ai = no }
+	}
+	effect = {
+		scope:barony.holder ?= { save_scope_as = holder }
+		if = { #capture the RULER being sieged
+			limit = {
+				scope:holder ?= {
+					location = scope:barony.title_province
+					NOR = {
+						exists = commanding_army
+						exists = knight_army
+						is_imprisoned = yes
+					}
+					#NOT = { has_character_modifier = isolating_modifier }
+				}
+			}
+			prisoner_of_war_capture_effect = {
+				TARGET = scope:holder
+				IMPRISONER = root
+			}
+		}
+		scope:barony.holder ?= { #capture the CLOSE FAMILY of the ruler being sieged
+			every_close_family_member = {
+				if = {
+					limit = {
+						location = scope:barony.title_province
+						NOR = {
+							exists = commanding_army
+							exists = knight_army
+							is_imprisoned = yes
+						}
+						#NOT = { has_character_modifier = isolating_modifier }
+					}
+					save_scope_as = captured_family
+					prisoner_of_war_capture_effect = {
+						TARGET = scope:captured_family
+						IMPRISONER = root
+					}
+				}
+			}
+			every_spouse = {
+				if = {
+					limit = {
+						location = scope:barony.title_province
+						NOR = {
+							exists = commanding_army
+							exists = knight_army
+							is_imprisoned = yes
+						}
+						#NOT = { has_character_modifier = isolating_modifier }
+					}
+					save_scope_as = captured_spouses
+					prisoner_of_war_capture_effect = {
+						TARGET = scope:captured_spouses
+						IMPRISONER = root
+					}
+				}
+			}
+		}
+		clear_saved_scope = asoiaf_war_claimant
+		scope:war = {
+			casus_belli = {
+				if = {
+					limit = { exists = claimant }
+					claimant = { save_scope_as = asoiaf_war_claimant }
+				}
+			}
+			if = { #capture the WAR CLAIMANT in a claimant war
+				limit = {
+					exists = scope:asoiaf_war_claimant
+					scope:asoiaf_war_claimant = {
+						location = scope:barony.title_province
+						is_courtier = yes #if the claimant is outside of the castle being sieged, they can't be taken
+						NOR = {
+							exists = commanding_army
+							exists = knight_army
+							is_imprisoned = yes
+						}
+						#NOT = { has_character_modifier = isolating_modifier }
+					}
+					primary_defender = root
+				}
+				prisoner_of_war_capture_effect = {
+					TARGET = scope:asoiaf_war_claimant
+					IMPRISONER = root
+				}
+			}
+		}
+		scope:barony.holder ?= { #liberate prisoners relevant to the besieger
+			every_prisoner = {
+				limit = {
+					location = scope:barony.title_province
+					OR = {
+						#close family of root who is not at war with them
+						AND = {
+							is_close_family_of = root
+							NOT = { is_at_war_with = root } #not at war against root
+						}
+						AND = {
+							is_uncle_or_aunt_of = root
+							NOT = { is_at_war_with = root } #not at war against root
+						}
+						#House members of root who is not at war with them
+						AND = {
+							house ?= root.house
+							NOT = { is_at_war_with = root } #not at war against root
+						}
+						#friends, best friends, lovers, and soulmates of root
+						AND = {
+							OR = {
+								has_relation_friend = root
+								has_relation_best_friend = root
+								has_relation_lover = root
+								has_relation_soulmate = root
+							}
+							NOT = { is_at_war_with = root } #not at war against root
+						}
+						#root's courtiers
+						is_courtier_of = root
+						#root's war allies who are not at war with them in another war
+						AND = {
+							is_allied_in_war = root
+							NOT = { is_at_war_with = root } #not at war against root (just because they're allies in THIS war doesn't mean they're enemies in another war)
+						}
+						#courtiers of root's war allies
+						AND = {
+							is_courtier = yes
+							liege ?= { is_allied_in_war = root }
+						}
+					}
+				}
+				release_from_prison = yes
+			}
+		}
+	}
+}
+
+asoiaf_assisted_ruler_capture_universal = {
+	trigger = {
+		has_game_rule = asoiaf_assisted_ruler_capture_universal
+	}
+	effect = {
+		scope:barony.holder ?= { save_scope_as = holder }
+		if = { #capture the RULER being sieged
+			limit = {
+				scope:holder ?= {
+					location = scope:barony.title_province
+					NOR = {
+						exists = commanding_army
+						exists = knight_army
+						is_imprisoned = yes
+					}
+					#NOT = { has_character_modifier = isolating_modifier }
+				}
+			}
+			prisoner_of_war_capture_effect = {
+				TARGET = scope:holder
+				IMPRISONER = root
+			}
+		}
+		scope:barony.holder ?= { #capture the CLOSE FAMILY of the ruler being sieged
+			every_close_family_member = {
+				if = {
+					limit = {
+						location = scope:barony.title_province
+						NOR = {
+							exists = commanding_army
+							exists = knight_army
+							is_imprisoned = yes
+						}
+						#NOT = { has_character_modifier = isolating_modifier }
+					}
+					save_scope_as = captured_family
+					prisoner_of_war_capture_effect = {
+						TARGET = scope:captured_family
+						IMPRISONER = root
+					}
+				}
+			}
+			every_spouse = {
+				if = {
+					limit = {
+						location = scope:barony.title_province
+						NOR = {
+							exists = commanding_army
+							exists = knight_army
+							is_imprisoned = yes
+						}
+						#NOT = { has_character_modifier = isolating_modifier }
+					}
+					save_scope_as = captured_spouses
+					prisoner_of_war_capture_effect = {
+						TARGET = scope:captured_spouses
+						IMPRISONER = root
+					}
+				}
+			}
+		}
+		clear_saved_scope = asoiaf_war_claimant
+		scope:war = {
+			casus_belli = {
+				if = {
+					limit = { exists = claimant }
+					claimant = { save_scope_as = asoiaf_war_claimant }
+				}
+			}
+			if = { #capture the WAR CLAIMANT in a claimant war
+				limit = {
+					exists = scope:asoiaf_war_claimant
+					scope:asoiaf_war_claimant = {
+						location = scope:barony.title_province
+						is_courtier = yes #if the claimant is outside of the castle being sieged, they can't be taken
+						NOR = {
+							exists = commanding_army
+							exists = knight_army
+							is_imprisoned = yes
+						}
+						#NOT = { has_character_modifier = isolating_modifier }
+					}
+					primary_defender = root
+				}
+				prisoner_of_war_capture_effect = {
+					TARGET = scope:asoiaf_war_claimant
+					IMPRISONER = root
+				}
+			}
+		}
+		scope:barony.holder ?= { #liberate prisoners relevant to the besieger
+			every_prisoner = {
+				limit = {
+					location = scope:barony.title_province
+					OR = {
+						#close family of root who is not at war with them
+						AND = {
+							is_close_family_of = root
+							NOT = { is_at_war_with = root } #not at war against root
+						}
+						AND = {
+							is_uncle_or_aunt_of = root
+							NOT = { is_at_war_with = root } #not at war against root
+						}
+						#House members of root who is not at war with them
+						AND = {
+							house ?= root.house
+							NOT = { is_at_war_with = root } #not at war against root
+						}
+						#friends, best friends, lovers, and soulmates of root
+						AND = {
+							OR = {
+								has_relation_friend = root
+								has_relation_best_friend = root
+								has_relation_lover = root
+								has_relation_soulmate = root
+							}
+							NOT = { is_at_war_with = root } #not at war against root
+						}
+						#root's courtiers
+						is_courtier_of = root
+						#root's war allies who are not at war with them in another war
+						AND = {
+							is_allied_in_war = root
+							NOT = { is_at_war_with = root } #not at war against root (just because they're allies in THIS war doesn't mean they're enemies in another war)
+						}
+						#courtiers of root's war allies
+						AND = {
+							is_courtier = yes
+							liege ?= { is_allied_in_war = root }
+						}
+					}
+				}
+				release_from_prison = yes
+			}
+		}
+	}
+}

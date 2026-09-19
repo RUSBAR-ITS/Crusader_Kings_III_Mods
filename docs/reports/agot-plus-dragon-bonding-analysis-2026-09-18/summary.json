@@ -1,0 +1,42 @@
+{
+    "CapturedAt":  "2026-09-18T15:29:05.8244871+07:00",
+    "AnalysisOnly":  true,
+    "RuntimeFilesChanged":  false,
+    "TargetMessages":  102,
+    "SchemeSites":  34,
+    "BirthSites":  24,
+    "YearlySites":  10,
+    "DiagnosticComponents":  [
+                                 {
+                                     "Name":  "jomini_effect.cpp:914",
+                                     "Count":  34
+                                 },
+                                 {
+                                     "Name":  "jomini_script_system.cpp:303",
+                                     "Count":  68
+                                 }
+                             ],
+    "DirectBondBeforeEveryScheme":  true,
+    "AllBirthActorsAreNewborns":  true,
+    "RootTriggerIdentityTraits":  9,
+    "RetryBranches":  10,
+    "MissingRootTriggerIdentities":  [
+                                         {
+                                             "IdentityTrait":  "asoiaf_Targaryen_41_trait",
+                                             "Actor":  "scope:asoiaf_aerea",
+                                             "Dragon":  "character:dragon_balerion"
+                                         }
+                                     ],
+    "OptionalDragonGuards":  34,
+    "ExplicitDragonExistenceGuards":  0,
+    "SelectedCandidateAliveGuards":  0,
+    "SelectedCandidateNightswatchGuards":  0,
+    "BaseAndEffectiveBondAndOwnershipHelpersEqual":  true,
+    "SchemeOverrideLogLines":  1,
+    "BaseAndEffectiveBondTriggersEqual":  true,
+    "BothSchemeDefinitionsRequireUnbondedPairAndAgeSix":  true,
+    "BaselineErrorLogSHA256":  "7F2C9CA25A66FEAB013B789123407C05DDF0C970A654D4FCED5A72A4DFFE5CD9",
+    "PatchManifestSHA256":  "856C9B818E0B8C10E010B3D7EA6EDF9E0B0AADF8261C8CA14B9D974A459C9B16",
+    "RecommendedPolicy":  "Retain canonical automatic bonding, remove all 34 redundant scheme launches, harden target/candidate guards and yearly recipient handling; preserve pair priority.",
+    "EngineExecutionChecked":  false
+}

@@ -1,0 +1,146 @@
+﻿asoiaf_targaryen_invasion_claimants_spawn_aegon_effect = {
+	if = {
+		limit = {
+			character:Targaryen_11 ?= {
+				is_alive = no
+				OR = {
+					death_reason = death_vanished
+					character:Clegane_3 ?= { #Gregor Clegane
+						any_killed_character = { this = character:Targaryen_11 } #killed by Gregor in the scripted event or historically
+					}
+				}
+			}
+		}
+		#Create dummy parents for old Aegon
+		create_character = {
+			gender = female
+			age = 50
+			culture = culture:high_valyrian
+			faith = faith:fots_seven
+			location = scope:faegon.location
+			
+			dynasty = none
+			
+			save_scope_as = culler_mother
+			
+			after_creation = {
+				death =  { death_reason = death_disappearance }
+			}
+		}
+		create_character = {
+			gender = male
+			age = 50
+			culture = culture:high_valyrian
+			faith = faith:fots_seven
+			location = scope:faegon.location
+			
+			dynasty = generate
+			
+			save_scope_as = culler_father
+			
+			after_creation = {
+				death =  { death_reason = death_disappearance }
+			}
+		}
+		character:Targaryen_11 = {
+			set_mother = scope:culler_mother
+			set_father = scope:culler_father
+			set_house =  scope:culler_father.house
+		}
+		#Create the new Aegon
+		create_character = {
+			name = "Aegon"
+			gender = male
+			culture = culture:high_valyrian
+			faith = faith:fots_seven
+			location = scope:asoiaf_targaryen_invasion_claimant.location
+			age = agot_get_faegon_age
+			mother = character:Martell_7
+			father = character:Targaryen_3
+			dynasty_house = character:Targaryen_3.house
+
+			martial = 5
+			diplomacy = 7
+			intrigue = 4
+			stewardship = 7
+			learning = 7
+			prowess = 8
+
+			random_traits = no
+
+			save_scope_as = asoiaf_spawned_aegon
+
+			after_creation = {
+				#NICKNAME, SEXUALITY, LANGUAGES, AND INACTIVE TRAITS
+				give_nickname = nick_agot_young_griff
+				set_sexuality = heterosexual
+				add_character_flag = has_scripted_appearance
+				add_character_flag = canon_status_canon
+				make_trait_inactive = asoiaf_Targaryen_11_trait
+				make_trait_inactive = cool_neutral_silver_hair
+				learn_language = language_agot_westeros
+				learn_language = language_agot_rhoyne
+				copy_inheritable_appearance_from = character:Targaryen_asoiaf_11
+				
+				#CC MODIFIER
+				if = {
+					limit = { asoiaf_canon_children_enabled_trigger = yes }
+					add_character_modifier = asoiaf_Targaryen_11_modifier
+				}
+
+				#CLAIMS
+				add_pressed_claim = title:h_the_iron_throne
+				add_pressed_claim = title:e_the_crownlands
+				add_pressed_claim = title:k_the_blackwater
+				add_pressed_claim = title:d_kings_landing
+				add_pressed_claim = title:c_kings_landing
+				add_pressed_claim = title:k_dragonstone
+				add_pressed_claim = title:d_dragonstone
+				add_pressed_claim = title:c_dragonstone
+
+				#PERSONALITY STUFF
+				add_trait = diligent
+				add_trait = authoritative
+				add_trait = brave
+				add_trait = ambitious
+				add_trait = education_martial_3
+				add_trait = education_martial_prowess_3
+				add_trait = aggressive_attacker
+				add_trait = lifestyle_poet
+				
+				add_perk = bellum_justum_perk
+				add_perk = parthian_tactics_perk
+				add_perk = envelopment_perk
+				add_perk = organized_retreat_perk
+				add_perk = hit_and_run_perk
+				add_perk = engineered_for_destruction_perk
+				add_perk = living_off_the_land_perk
+				add_perk = sappers_perk
+				add_perk = strategist_perk
+				add_perk = meritocracy_perk
+				add_perk = chains_of_loyalty_perk
+				
+				if = {
+					limit = { age < 16 }
+					set_focus = education_martial
+				}
+
+				if = {
+					limit = {
+						character:Clegane_3 ?= { #Gregor Clegane
+							is_alive = yes
+							any_killed_character = {
+								this = character:Martell_7 #Elia Martell (daughter of Loreza)
+							}
+						}
+					}
+					set_relation_grudge = { reason = asoiaf_aegon_gregor_grudge_desc target = character:Clegane_3 } #Grudge with Gregor Clegane over murdering his mother
+				}
+
+				scope:asoiaf_targaryen_invasion_claimant = {
+					add_courtier = scope:asoiaf_spawned_aegon
+				}
+			}
+		}
+	}
+}

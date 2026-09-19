@@ -1,0 +1,541 @@
+﻿@dragonpit_law_cooldown_years = 5
+@egg_law_cooldown_years = 5
+
+dragonpit_laws = {
+	default = dragonpit_close_family_law
+	cumulative = no
+	flag = all_realm_law
+	flag = agot_realm_law
+	flag = admin_law
+
+    dragonpit_ruler_law = {
+		flag = dragonpit_ruler
+		can_have = {
+			OR = { # MDE Modified
+				any_held_title = {
+					has_variable = has_dragonkeeper_order
+				}
+				domicile ?= { has_variable = has_dragonkeeper_order }
+			}
+		}
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_dragonpit_law_cooldown"
+				NOT = { has_variable = dragonpit_law_cooldown }
+			}
+		}
+
+		pass_cost = {
+			prestige = increase_crown_authority_prestige_cost
+		}
+
+		on_pass = {
+			set_variable = {
+				name = dragonpit_law_cooldown
+				years = @dragonpit_law_cooldown_years
+			}
+		}
+
+		can_keep = {
+			OR = { # MDE Modified
+				any_held_title = {
+					has_variable = has_dragonkeeper_order
+				}
+				domicile ?= { has_variable = has_dragonkeeper_order }
+			}
+		}
+
+		ai_will_do = {
+			value = 0
+		}
+	}
+
+	dragonpit_close_family_law = {
+		flag = dragonpit_close_family
+
+		can_have = {
+			OR = { # MDE Modified
+				any_held_title = {
+					has_variable = has_dragonkeeper_order
+				}
+				domicile ?= { has_variable = has_dragonkeeper_order }
+			}
+		}
+
+		should_start_with = {
+			always = yes
+		}
+
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_dragonpit_law_cooldown"
+				NOT = { has_variable = dragonpit_law_cooldown }
+			}
+		}
+
+		pass_cost = {
+			prestige = increase_crown_authority_prestige_cost
+		}
+
+		on_pass = {
+			set_variable = {
+				name = dragonpit_law_cooldown
+				years = @dragonpit_law_cooldown_years
+			}
+		}
+
+		ai_will_do = {
+			value = 25
+		}
+	}
+
+	dragonpit_house_law = {
+		flag = dragonpit_house
+		can_have = {
+			OR = { # MDE Modified
+				any_held_title = {
+					has_variable = has_dragonkeeper_order
+				}
+				domicile ?= { has_variable = has_dragonkeeper_order }
+			}
+		}
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_dragonpit_law_cooldown"
+				NOT = { has_variable = dragonpit_law_cooldown }
+			}
+		}
+
+		pass_cost = {
+			prestige = increase_crown_authority_prestige_cost
+		}
+
+		on_pass = {
+			set_variable = {
+				name = dragonpit_law_cooldown
+				years = @dragonpit_law_cooldown_years
+			}
+		}
+
+		can_keep = {
+			OR = { # MDE Modified
+				any_held_title = {
+					has_variable = has_dragonkeeper_order
+				}
+				domicile ?= { has_variable = has_dragonkeeper_order }
+			}
+		}
+
+		ai_will_do = {
+			value = 0
+		}
+	}
+
+	dragonpit_dynasty_law = {
+		flag = dragonpit_dynasty
+		can_have = {
+			OR = { # MDE Modified
+				any_held_title = {
+					has_variable = has_dragonkeeper_order
+				}
+				domicile ?= { has_variable = has_dragonkeeper_order }
+			}
+		}
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_dragonpit_law_cooldown"
+				NOT = { has_variable = dragonpit_law_cooldown }
+			}
+		}
+
+		pass_cost = {
+			prestige = increase_crown_authority_prestige_cost
+		}
+
+		on_pass = {
+			set_variable = {
+				name = dragonpit_law_cooldown
+				years = @dragonpit_law_cooldown_years
+			}
+		}
+
+		can_keep = {
+			OR = { # MDE Modified
+				any_held_title = {
+					has_variable = has_dragonkeeper_order
+				}
+				domicile ?= { has_variable = has_dragonkeeper_order }
+			}
+		}
+
+		ai_will_do = {
+			value = 0
+		}
+	}
+
+	dragonpit_everyone_law = {
+		flag = dragonpit_everyone
+		can_have = {
+			OR = { # MDE Modified
+				any_held_title = {
+					has_variable = has_dragonkeeper_order
+				}
+				domicile ?= { has_variable = has_dragonkeeper_order }
+			}
+		}
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_dragonpit_law_cooldown"
+				NOT = { has_variable = dragonpit_law_cooldown }
+			}
+		}
+
+		pass_cost = {
+			prestige = increase_crown_authority_prestige_cost
+		}
+
+		on_pass = {
+			set_variable = {
+				name = dragonpit_law_cooldown
+				years = @dragonpit_law_cooldown_years
+			}
+		}
+
+		can_keep = {
+			OR = { # MDE Modified
+				any_held_title = {
+					has_variable = has_dragonkeeper_order
+				}
+				domicile ?= { has_variable = has_dragonkeeper_order }
+			}
+		}
+
+		ai_will_do = {
+			value = 0
+		}
+	}
+
+}
+
+egg_laws = {
+	default = egg_everyone_law
+	cumulative = no
+	flag = all_realm_law
+	flag = agot_realm_law
+	flag = admin_law
+	flag = mde_realm_law
+
+    egg_ruler_law = {
+		flag = egg_ruler
+		can_have = {
+			NOT = {
+				realm_law_use_camp_purpose = yes
+			}
+			is_independent_ruler = yes
+			OR = {
+				has_trait = dragonrider
+				house ?= {
+					has_house_modifier = dragonrider_house_modifier
+				}
+			}
+		}
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_egg_law_cooldown"
+				NOT = { has_variable = egg_law_cooldown }
+			}
+			custom_description = {
+				subject = root
+                text = "NEEDS_ABSOLUTE_CROWN_AUTHORITY"
+				has_realm_law = crown_authority_3
+			}
+			
+		}
+
+		pass_cost = {
+			prestige = increase_crown_authority_prestige_cost
+		}
+
+		on_pass = {
+			set_variable = {
+				name = egg_law_cooldown
+				years = @egg_law_cooldown_years
+			}
+		}
+
+		can_keep = {
+			is_independent_ruler = yes
+			OR = {
+				has_trait = dragonrider
+				house ?= {
+					has_house_modifier = dragonrider_house_modifier
+				}
+			}
+		}
+
+		ai_will_do = {
+			value = 0
+		}
+	}
+
+	egg_close_family_law = {
+		flag = egg_close_family
+
+		can_have = {
+			NOT = {
+				realm_law_use_camp_purpose = yes
+			}
+			is_independent_ruler = yes
+			OR = {
+				has_trait = dragonrider
+				house ?= {
+					has_house_modifier = dragonrider_house_modifier
+				}
+			}	
+		}
+		should_start_with = {
+			always = no
+		}
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_egg_law_cooldown"
+				NOT = { has_variable = egg_law_cooldown }
+			}
+			has_realm_law = crown_authority_3
+		}
+
+		pass_cost = {
+			prestige = increase_crown_authority_prestige_cost
+		}
+
+		on_pass = {
+			set_variable = {
+				name = egg_law_cooldown
+				years = @egg_law_cooldown_years
+			}
+		}
+
+		can_keep = {
+			is_independent_ruler = yes
+			OR = {
+				has_trait = dragonrider
+				house ?= {
+					has_house_modifier = dragonrider_house_modifier
+				}
+			}
+		}
+
+		ai_will_do = {
+			value = 0
+		}
+	}
+
+	egg_house_law = {
+		flag = egg_house
+		can_have = {
+			NOT = {
+				realm_law_use_camp_purpose = yes
+			}
+			is_independent_ruler = yes
+			OR = {
+				has_trait = dragonrider
+				house ?= {
+					has_house_modifier = dragonrider_house_modifier
+				}
+			}
+		}
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_egg_law_cooldown"
+				NOT = { has_variable = egg_law_cooldown }
+			}
+			has_realm_law = crown_authority_3
+		}
+
+		pass_cost = {
+			prestige = increase_crown_authority_prestige_cost
+		}
+
+		on_pass = {
+			set_variable = {
+				name = egg_law_cooldown
+				years = @egg_law_cooldown_years
+			}
+		}
+
+		can_keep = {
+			is_independent_ruler = yes
+			OR = {
+				has_trait = dragonrider
+				house ?= {
+					has_house_modifier = dragonrider_house_modifier
+				}
+			}
+		}
+
+		ai_will_do = {
+			value = 0
+		}
+	}
+
+	egg_dynasty_law = {
+		flag = egg_dynasty
+		can_have = {
+			NOT = {
+				realm_law_use_camp_purpose = yes
+			}
+			is_independent_ruler = yes
+			OR = {
+				has_trait = dragonrider
+				house ?= {
+					has_house_modifier = dragonrider_house_modifier
+				}
+			}
+		}
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_egg_law_cooldown"
+				NOT = { has_variable = egg_law_cooldown }
+			}
+			has_realm_law = crown_authority_3
+		}
+
+		pass_cost = {
+			prestige = increase_crown_authority_prestige_cost
+		}
+
+		on_pass = {
+			set_variable = {
+				name = egg_law_cooldown
+				years = @egg_law_cooldown_years
+			}
+		}
+
+		can_keep = {
+			is_independent_ruler = yes
+			OR = {
+				has_trait = dragonrider
+				house ?= {
+					has_house_modifier = dragonrider_house_modifier
+				}
+			}
+		}
+
+		ai_will_do = {
+			value = 0
+		}
+	}
+
+	egg_dragonrider_house_law = {
+		flag = egg_dynasty
+		can_have = {
+			NOT = {
+				realm_law_use_camp_purpose = yes
+			}
+			is_independent_ruler = yes
+			OR = {
+				has_trait = dragonrider
+				house ?= {
+					has_house_modifier = dragonrider_house_modifier
+				}
+			}
+		}
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_egg_law_cooldown"
+				NOT = { has_variable = egg_law_cooldown }
+			}
+			has_realm_law = crown_authority_3
+		}
+
+		pass_cost = {
+			prestige = increase_crown_authority_prestige_cost
+		}
+
+		on_pass = {
+			set_variable = {
+				name = egg_law_cooldown
+				years = @egg_law_cooldown_years
+			}
+		}
+
+		can_keep = {
+			is_independent_ruler = yes
+			OR = {
+				has_trait = dragonrider
+				house ?= {
+					has_house_modifier = dragonrider_house_modifier
+				}
+			}
+		}
+
+		ai_will_do = {
+			value = 0
+		}
+	}
+
+	egg_everyone_law = {
+		flag = egg_everyone
+		can_have = {
+			NOT = {
+				realm_law_use_camp_purpose = yes
+			}
+			is_independent_ruler = yes
+			OR = {
+				has_trait = dragonrider
+				house ?= {
+					has_house_modifier = dragonrider_house_modifier
+				}
+			}
+		}
+
+		should_start_with = {
+			always = yes
+		}
+
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_egg_law_cooldown"
+				NOT = { has_variable = egg_law_cooldown }
+			}
+			has_realm_law = crown_authority_3
+		}
+
+		pass_cost = {
+			prestige = increase_crown_authority_prestige_cost
+		}
+
+		on_pass = {
+			set_variable = {
+				name = egg_law_cooldown
+				years = @egg_law_cooldown_years
+			}
+		}
+
+		can_keep = {
+			is_independent_ruler = yes
+			OR = {
+				has_trait = dragonrider
+				house ?= {
+					has_house_modifier = dragonrider_house_modifier
+				}
+			}
+		}
+
+		ai_will_do = {
+			value = 25
+		}
+	}
+
+}

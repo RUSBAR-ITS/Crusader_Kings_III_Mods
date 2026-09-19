@@ -1,0 +1,4052 @@
+﻿# A title is destroyed
+# root = the holder before destruction
+# scope:landed_title = the title that is being destroyed
+# Does *not* provide scope:transfer_type
+on_title_destroyed = {
+	on_actions = {
+		agot_pentos_treaty_pentos_destroyed_on_action
+		agot_title_destroyed_mega_wars_on_action
+		agot_lc_kingsguard_destruction_check
+	}
+}
+
+# A title is transferred to a new character
+# root = the new holder
+# scope:title = the title that changes hands
+# scope:previous_holder = previous holder. Might be dead
+on_title_gain = {
+	on_actions = {
+		agot_pentos_treaty_on_action
+		agot_shattered_kingdom_formed
+		agot_on_title_gain
+	}
+}
+
+# A title is lost by a character
+# root = the old holder
+# scope:title = the title that changes hands
+# scope:new_holder = new holder.
+on_title_lost = {
+	on_actions = {
+		agot_pentos_treaty_on_action_title_lost
+		agot_pentos_treaty_conquered
+		agot_small_council_title_lost
+		agot_on_title_lost_mega_wars_action
+		agot_landless_pirate_vassal_manager
+		agot_destroy_nw_on_d_wall_lost
+	}
+}
+
+on_vassal_gained = {
+	on_actions = {
+		agot_pentos_treaty_on_action
+	}
+}
+
+on_vassal_change = {
+	on_actions = {
+		agot_pentos_treaty_on_action_independence
+	}
+}
+
+agot_shattered_kingdom_formed = {
+	trigger = {
+		agot_has_any_shattered_rule_trigger = yes
+		AND = {
+			OR = {
+				AND = {
+					culture = { has_cultural_pillar = ethos_bureaucratic }
+					highest_held_title_tier = tier_kingdom
+				}
+				AND = {
+					culture = { NOT = { has_cultural_pillar = ethos_bureaucratic } }
+					highest_held_title_tier = tier_empire
+				}
+			}
+			OR = {
+				government_has_flag = government_is_pirate_trigger_check
+				has_government = republic_government
+				has_government = feudal_government
+				has_government = lp_feudal_government
+			}
+		}
+		capital_province = { geographical_region = world_essos }
+	}
+	effect  = {
+		trigger_event = { id = agot_shattered_world.1000 }
+	}
+}
+
+agot_pentos_treaty_on_action = {
+	trigger = {
+		exists = global_var:braavos_treaty
+		exists = title:k_pentos.holder
+	}
+	effect = {
+		if = {
+			limit = {
+				OR = {
+					top_liege = title:k_pentos.holder
+					has_title = title:k_pentos
+				}
+				NOT = {
+					has_character_modifier = agot_pentos_braavos_treaty
+				}
+			}
+			add_character_modifier = agot_pentos_braavos_treaty
+		}
+		scope:vassal ?= {
+			if = {
+				limit = {
+					OR = {
+						top_liege = title:k_pentos.holder
+						root = { has_title = title:k_pentos }
+					}
+					NOT = {
+						has_character_modifier = agot_pentos_braavos_treaty
+					}
+				}
+				add_character_modifier = agot_pentos_braavos_treaty
+			}
+			else_if = {
+				limit = {
+					NOR = {
+						top_liege = title:k_pentos.holder
+						root = { has_title = title:k_pentos }
+					}
+					has_character_modifier = agot_pentos_braavos_treaty
+				}
+				remove_character_modifier = agot_pentos_braavos_treaty
+			}
+		}
+	}
+}
+
+agot_pentos_treaty_conquered = {
+	trigger = {
+		exists = global_var:braavos_treaty
+		scope:title = title:k_pentos
+		OR = {
+			scope:transfer_type = flag:conquest
+			scope:transfer_type = flag:usurped
+			scope:transfer_type = flag:conquest_holy_war
+			scope:transfer_type = flag:conquest_claim
+			scope:transfer_type = flag:conquest_populist
+		}
+	}
+	effect = {
+		remove_global_variable = braavos_treaty
+		if = {
+			limit = {
+				has_character_modifier = agot_pentos_braavos_treaty
+			}
+			remove_character_modifier = agot_pentos_braavos_treaty
+		}
+		every_vassal_or_below = {
+			limit = {
+				has_character_modifier = agot_pentos_braavos_treaty
+			}
+			remove_character_modifier = agot_pentos_braavos_treaty
+		}
+		scope:new_holder = {
+			if = {
+				limit = {
+					has_character_modifier = agot_pentos_braavos_treaty
+				}
+				remove_character_modifier = agot_pentos_braavos_treaty
+			}
+			every_vassal_or_below = {
+				limit = {
+					has_character_modifier = agot_pentos_braavos_treaty
+				}
+				remove_character_modifier = agot_pentos_braavos_treaty
+			}
+		}
+		title:k_braavos.holder ?= {
+			trigger_event = { id = agot_decisions_events.0206 days = 1 }
+		}
+	}
+}
+
+agot_pentos_treaty_on_action_independence = {
+	trigger = {
+		scope:old_liege = title:k_pentos.holder
+		NOR = {
+			liege ?= title:k_pentos.holder
+			top_liege ?= title:k_pentos.holder
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_character_modifier = agot_pentos_braavos_treaty
+			}
+			remove_character_modifier = agot_pentos_braavos_treaty
+		}
+		every_vassal_or_below = {
+			limit = {
+				has_character_modifier = agot_pentos_braavos_treaty
+			}
+			remove_character_modifier = agot_pentos_braavos_treaty
+		}
+	}
+}
+
+# For when a vassal is conquered and removed from Pentos
+agot_pentos_treaty_on_action_title_lost = {
+	trigger = {
+		NOR = {
+			has_title = title:k_pentos
+			liege ?= title:k_pentos.holder
+			top_liege ?= title:k_pentos.holder
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_character_modifier = agot_pentos_braavos_treaty
+			}
+			remove_character_modifier = agot_pentos_braavos_treaty
+		}
+	}
+}
+
+agot_pentos_treaty_pentos_destroyed_on_action = {
+	trigger = {
+		NOR = {
+			exists = title:k_pentos.holder
+			exists = title:k_braavos.holder
+		}
+	}
+	effect = {
+		every_living_character = {
+			limit = {
+				has_character_modifier = agot_pentos_braavos_treaty
+			}
+			remove_character_modifier = agot_pentos_braavos_treaty
+			trigger_event = { id = agot_decisions_events.0201 days = 1 }
+		}
+	}
+}
+
+agot_small_council_title_lost = {
+	trigger = {
+		scope:title = {
+			has_variable = small_council_vassal_title
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				exists = scope:new_holder
+				exists = scope:title.var:small_council_vassal_title.holder
+				scope:new_holder = {
+					has_relation_small_councillor = scope:title.var:small_council_vassal_title.holder
+				}
+			}
+			scope:new_holder = {
+				remove_relation_small_councillor = scope:title.var:small_council_vassal_title.holder
+			}
+			scope:title.var:small_council_vassal_title.holder = {
+				if = {
+					limit = { has_variable = special_contract_none }
+					vassal_contract_set_obligation_level = { type = special_contract level = 0 }
+				}
+				if = {
+					limit = { has_variable = special_contract_scutage }
+					vassal_contract_set_obligation_level = { type = special_contract level = 1 }
+				}
+				if = {
+					limit = { has_variable = special_contract_march }
+					vassal_contract_set_obligation_level = { type = special_contract level = 2 }
+				}
+				if = {
+					limit = { has_variable = special_contract_palatinate }
+					vassal_contract_set_obligation_level = { type = special_contract level = 3 }
+				}
+				remove_variable = small_council
+				remove_variable = small_council_liege_title
+				remove_variable = small_council_original_liege_title
+				remove_localized_text = small_council_title
+				remove_character_flag = ai_should_not_transfer
+			}
+			scope:title = {
+				remove_variable = small_council_vassal_title
+			}
+			agot_remove_repatriation_modifiers = yes
+		}
+		else_if = {
+			limit = {
+				exists = scope:new_holder
+			}
+			save_scope_as = old_holder
+			agot_reassign_repatriation_modifier = { OLD_LIEGE = scope:old_holder NEW_LIEGE = scope:new_holder }
+		}
+		else = {
+			agot_remove_repatriation_modifiers = yes
+		}
+	}
+}
+
+agot_on_title_gain = {
+	effect = {
+		#Apply silent sister laws
+		if = {
+			limit = { scope:title = title:d_the_silent_sisterhood }
+			if = {
+				limit = { NOT = { has_realm_law = female_only_law } }
+				add_realm_law_skip_effects = female_only_law
+			}
+			if = {
+				limit = { NOT = { has_government = silent_sisterhood_government } }
+				change_government = silent_sisterhood_government
+			}
+			scope:title = {
+				if = {
+					limit = { NOT = { has_title_law = silent_sisterhood_succession_law } }
+					add_title_law = silent_sisterhood_succession_law
+				}
+			}
+		}
+
+		#Night's Watch landless titles set to black
+		if = {
+			limit = {
+				exists = scope:previous_holder
+				scope:previous_holder = {
+					government_has_flag = government_is_nw
+				}
+				scope:title = title:d_nw_landless_first_ranger
+			}
+			every_held_title = {
+				set_coa = c_castle_black
+			}
+		}
+		#Night's Watch titles set to black
+		if = {
+			limit = {
+				exists = scope:previous_holder
+				scope:previous_holder = {
+					government_has_flag = government_is_nw
+				}
+				has_variable = lc_primary_title
+				var:lc_primary_title = scope:title
+			}
+			save_scope_as = new_lc
+
+			# Set all Night's Watch titles to black
+			every_held_title = {
+				set_coa = c_castle_black
+			}
+
+			# Move old LC courtiers to the new LC
+			every_in_list = {
+				variable = lc_courtiers
+				limit = {
+					NOR = {
+						is_ruler = yes
+						AND = {
+							exists = employer
+							employer = { has_trait = nightswatch }
+						}
+						AND = {
+							exists = employer
+							employer = root
+						}
+					}
+				}
+				scope:new_lc = { add_courtier ?= prev }
+			}
+
+			# Clear variables
+			remove_variable = lc_primary_title
+			clear_variable_list = lc_courtiers
+			remove_global_variable = nights_watch_temp_realm_succession_law_active
+
+			# Ensure Night's Watch government and succession
+			if = {
+				limit = {
+					NOT = { government_has_flag = government_is_nw }
+				}
+				change_government = nights_watch_government
+				add_realm_law_skip_effects = nights_watch_realm_succession_law
+			}
+
+			add_character_modifier = {
+				modifier = nw_warden
+				months = 3
+			}
+
+			# Handle First Ranger title
+			if = {
+				limit = { has_character_flag = nw_ranger_title }
+				remove_character_flag = nw_ranger_title
+			}
+			#First Ranger Title should be handled via event
+			if = {
+				limit = {
+					exists = title:d_nw_landless_first_ranger.holder
+					title:d_nw_landless_first_ranger.holder = this
+					NOT = { has_character_flag = fr_assign_block }
+				}
+				add_character_flag = {
+					flag = fr_assign_block
+					days = 3
+				}
+			}
+
+			trigger_event = { id = agot_nights_watch.0026 days = 1 }
+		}
+		#Unknown Handling
+		if = {
+			limit = {
+				scope:title = title:c_unknown
+			}
+			set_culture = culture:unknown_culture
+			set_character_faith = faith:fg_unknown
+			add_trait = unknown
+		}
+		#Wilderness Handling
+		if = {
+			limit = {
+				scope:title = title:c_wilderness
+			}
+			set_culture = culture:unknown_culture
+			set_character_faith = faith:fg_unknown
+			add_trait = wilderness
+		}
+		#Ruin Handling
+		if = {
+			limit = {
+				scope:title = title:c_ruins
+			}
+			set_culture = culture:unknown_culture
+			set_character_faith = faith:fg_unknown
+			add_trait = ruin
+		}
+
+		agot_unknown_culture_conversion = yes
+		agot_unknown_faith_conversion = yes
+
+		# Ruins + dragon storage stuff
+		if = {
+			limit = {
+				scope:title = title:c_ruins
+			}
+
+			#Something dumb happened
+			if = {
+				limit = {
+					scope:previous_holder = {
+						is_alive = yes
+						any_owned_story = {
+							story_type = story_dragon_variable_storage
+						}
+					}
+				}
+				scope:previous_holder = {
+					get_title = title:c_ruins
+				}
+			}
+		}
+
+		#Rebuilding Major Buildings
+		if = {
+			limit = {
+				scope:title = title:c_moat_cailin
+				scope:previous_holder ?= { has_character_flag = rebuilding_moat_cailin }
+			}
+			scope:previous_holder ?= { remove_character_flag = rebuilding_moat_cailin }
+			add_character_flag = rebuilding_moat_cailin
+		}
+		if = {
+			limit = {
+				scope:title = title:c_harrenhal
+				scope:previous_holder ?= { has_character_flag = rebuilding_harrenhal }
+			}
+			scope:previous_holder ?= { remove_character_flag = rebuilding_harrenhal }
+			add_character_flag = rebuilding_harrenhal
+		}
+
+		#Remove Exiled From Westeros
+		if = {
+			limit = {
+				has_character_flag = exiled_from_iron_throne
+				OR = {
+					top_liege ?= title:h_the_iron_throne.holder
+					agot_is_part_of_paramountcy_realm = yes
+				}
+			}
+			remove_character_flag = exiled_from_iron_throne
+			if = {
+				limit = {
+					any_courtier_or_guest = {
+						has_character_flag = exiled_from_iron_throne
+					}
+				}
+				every_courtier_or_guest = {
+					limit = {
+						has_character_flag = exiled_from_iron_throne
+					}
+					remove_character_flag = exiled_from_iron_throne
+				}
+			}
+		}
+
+		#Ruins COAs
+		every_held_title = {
+			limit = {
+				tier = tier_barony
+				title_province = { has_holding_type = ruin_holding }
+			}
+			set_coa = ruins_coa
+		}
+
+		#BTW Struggle
+		if = {
+			limit = {
+				# We are only interested in the title within the Struggle Region
+				title:e_beyond_the_wall = {
+					any_in_de_jure_hierarchy = {
+						this = 	scope:title
+					}
+				}
+				# Only for usurpation
+				scope:transfer_type = flag:usurped
+
+				root = {
+					any_character_struggle = {
+						involvement = involved
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_usurp_title_btw
+							CHAR = root
+						}
+					}
+				}
+			}
+			root = {
+				every_character_struggle = {
+					involvement = involved
+					limit = {
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_usurp_title_btw
+							CHAR = root
+						}
+					}
+					activate_struggle_catalyst = {
+						catalyst = catalyst_usurp_title_btw
+						character = root
+					}
+				}
+			}
+		}
+
+		#Stannis Rooloo Event
+		if = {
+			limit = {
+				has_character_flag = is_Baratheon_3
+				agot_has_historical_events_trigger = yes
+				NOT = { has_character_flag = rooloo_blocker }
+			}
+			random_list = {
+				0 = {
+					trigger_event = { id = agot_filler_rhllor.0001 days = { 4000 5500 } } # R'hllor Conversion
+					modifier = {
+						add = agot_historic_event_chance
+					}
+				}
+				0 = {
+					add_character_flag = rooloo_blocker
+					modifier = {
+						add = agot_nonhistoric_event_chance
+						has_game_rule = agot_story_random_events_random_outcomes
+					}
+				}
+			}
+		}
+
+		#Iron Throne
+		if = {
+			limit = { scope:title = title:h_the_iron_throne }
+			remove_character_flag = mw_gave_up_crown_after_megawar # To deal if a person who gives it up gets it again
+			# Prince title needs to be king if gained
+			if = {
+				limit = {
+					has_nickname = nick_agot_historical_the_rogue_prince
+				}
+				give_nickname = nick_agot_the_rogue_king
+			}
+			if = {
+				limit = {
+					has_inappropriate_monarch_nickname = yes
+				}
+				remove_nickname = yes
+			}
+			# Robert is known as usurper if targs take throne back
+			if = {
+				limit = {
+					game_start_date > 8262.10.1 # After Robert is born
+					root.house = character:Targaryen_13.house
+				}
+				scope:title = {
+					every_past_holder = {
+						limit = {
+							this = character:Baratheon_2
+						}
+						give_nickname = nick_agot_the_usurper
+					}
+				}
+			}
+			if = {
+				limit = { is_ai = yes }
+				if = {
+					limit = { has_title = title:c_kings_landing }
+					set_realm_capital = title:c_kings_landing
+				}
+				else_if = {
+					limit = {
+						any_vassal_or_below = {
+							is_ai = yes
+							has_title = title:c_kings_landing
+						}
+					}
+
+					create_title_and_vassal_change = {
+						type = revoked
+						save_scope_as = change
+						add_claim_on_loss = yes
+					}
+					title:c_kings_landing = {
+						change_title_holder = {
+							holder = root
+							change = scope:change
+						}
+					}
+					resolve_title_and_vassal_change = scope:change
+					set_realm_capital = title:c_kings_landing
+				}
+			}
+		}
+		#Pirates
+		if = {
+			limit = {
+				scope:transfer_type = flag:created
+				is_alive = yes
+				government_has_flag = government_is_pirate_trigger_check
+				scope:title.tier > tier_county
+			}
+			scope:title = { add_title_law = pirate_succession_law }
+		}
+		if = {
+			limit = {
+				is_from_ruler_designer = no
+				has_government = pirate_government
+				NOT = {
+					any_held_title = { title_domicile ?= { agot_domicile_is_non_nomad_county_tier_domicile_trigger = yes } }
+				}
+				highest_held_title_tier >= tier_county
+			}
+			if = {
+				limit = {
+					agot_dlc_check_for_landless_pirates = yes
+				}
+				agot_create_pirate_domicile_effect = { PIRATE = root }
+			}
+			else = {
+				change_government = pirate_no_dlc_government
+			}
+		}
+		if = {
+			limit = {
+				any_held_title = {
+					this != scope:title
+					agot_is_pirate_domicile_title_trigger = yes
+				}
+				scope:title = {
+					agot_is_pirate_domicile_title_trigger = yes
+				}
+			}
+			destroy_title = scope:title
+		}
+		if = {
+			limit = {
+				any_held_title = { agot_is_pirate_domicile_title_trigger = yes }
+				NOT = { has_government = pirate_government }
+				NOT = { has_variable = pirate_title_on_action_blocker }
+				NOT = { has_variable = pirate_jank_succession_variable }
+			}
+			every_held_title = {
+				limit = { agot_is_pirate_domicile_title_trigger = yes }
+				save_scope_as = pirate_title
+				prev = { destroy_title = scope:pirate_title }
+			}
+		}
+		# Remove Port Rate Modifiers
+		if = {
+			limit = {
+				NOT = { has_government = pirate_government }
+				any_held_title = {
+					tier = tier_county
+					OR = {
+						has_county_modifier = pirate_tax_rate_04_displayer_modifier
+						has_county_modifier = pirate_tax_rate_03_displayer_modifier
+						has_county_modifier = pirate_tax_rate_02_displayer_modifier
+						has_county_modifier = pirate_tax_rate_01_displayer_modifier
+					}
+				}
+				is_landed = yes
+			}
+			every_held_title = {
+				limit = {
+					tier = tier_county
+					OR = {
+						has_county_modifier = pirate_tax_rate_04_displayer_modifier
+						has_county_modifier = pirate_tax_rate_03_displayer_modifier
+						has_county_modifier = pirate_tax_rate_02_displayer_modifier
+						has_county_modifier = pirate_tax_rate_01_displayer_modifier
+					}
+				}
+				remove_county_modifier = pirate_tax_rate_04_displayer_modifier
+				remove_county_modifier = pirate_tax_rate_03_displayer_modifier
+				remove_county_modifier = pirate_tax_rate_02_displayer_modifier
+				remove_county_modifier = pirate_tax_rate_01_displayer_modifier
+			}
+		}
+		#Wilderness check for
+		if = {
+			limit = {
+				has_government = wilderness_government
+				any_held_title = {
+					tier = tier_county
+					OR = {
+						has_county_modifier = pirate_level_1_control_modifier
+						has_county_modifier = pirate_level_2_control_modifier
+						has_county_modifier = pirate_level_3_control_modifier
+						has_county_modifier = pirate_level_4_control_modifier
+						has_county_modifier = pirate_level_5_control_modifier
+					}
+				}
+			}
+			every_held_title = {
+				limit = {
+					tier = tier_county
+					OR = {
+						has_county_modifier = pirate_level_1_control_modifier
+						has_county_modifier = pirate_level_2_control_modifier
+						has_county_modifier = pirate_level_3_control_modifier
+						has_county_modifier = pirate_level_4_control_modifier
+						has_county_modifier = pirate_level_5_control_modifier
+					}
+				}
+				remove_county_modifier = pirate_level_1_control_modifier
+				remove_county_modifier = pirate_level_2_control_modifier
+				remove_county_modifier = pirate_level_3_control_modifier
+				remove_county_modifier = pirate_level_4_control_modifier
+				remove_county_modifier = pirate_level_5_control_modifier
+			}
+		}
+		#Move pirate domicile to newly conquered land
+		if = {
+			limit = {
+				is_landed = yes
+				scope:title.title_province = root.capital_province
+				has_government = pirate_government
+				any_held_title = {
+					agot_is_pirate_domicile_title_trigger = yes
+				}
+				domicile ?= {
+					domicile_location != root.capital_province
+				}
+			}
+			root.domicile = { move_domicile = root.capital_province }
+		}
+		if = {
+			limit = {
+				is_landed = yes
+				OR = {
+					has_variable = appointed_pirate_jank_heir
+					any_relation = {
+						type = pirate_ship_designated_heir
+					}
+				}
+			}
+			if = {
+				limit = {
+					any_relation = {
+						type = pirate_ship_designated_heir
+					}
+				}
+				remove_relation_pirate_ship_designated_heir = var:appointed_pirate_jank_heir
+			}
+			if = {
+				limit = {
+					has_variable = appointed_pirate_jank_heir
+				}
+				remove_variable = appointed_pirate_jank_heir
+			}
+		}
+		#Slavery
+		if = {
+			limit = {
+				scope:title.tier = tier_county
+				scope:title = {
+					any_county_province = {
+						has_building_or_higher = agot_slave_camps_01
+					}
+				}
+			}
+			trigger_event = {
+				id = agot_slavery.9100
+				days = 1
+			}
+		}
+		else_if = {
+			limit = {
+				agot_has_slave_population_trigger = yes
+				NOT = { government_has_flag = government_is_pirate_trigger_check }
+			}
+			trigger_event = {
+				id = agot_slavery.0001
+				days = 1
+			}
+		}
+
+		#Free Cities
+		if = {
+			limit = {
+				agot_has_free_city_succession_law_type_general_check = yes
+			}
+
+			scope:title = { save_scope_as = term_limit_country }
+
+			if = {
+				limit = {
+					OR = {
+						scope:term_limit_country.title_capital_county = { has_title_law = magisterial_attached_titles_law }
+						scope:term_limit_country.title_capital_county.duchy = { has_title_law = magisterial_attached_titles_law }
+					}
+				}
+
+				create_title_and_vassal_change = {
+					type = election
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				if = {
+					limit = {
+						scope:term_limit_country.title_capital_county = { has_title_law = magisterial_attached_titles_law }
+						NOT = { has_title = scope:term_limit_country.title_capital_county }
+					}
+					scope:term_limit_country.title_capital_county = {
+						change_title_holder = {
+							holder = root
+							change = scope:title_change
+						}
+					}
+				}
+				if = {
+					limit = {
+						scope:term_limit_country.title_capital_county.duchy = { has_title_law = magisterial_attached_titles_law }
+						NOT = { has_title = scope:term_limit_country.title_capital_county.duchy }
+					}
+					scope:term_limit_country.title_capital_county.duchy = {
+						change_title_holder = {
+							holder = root
+							change = scope:title_change
+						}
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+			}
+		}
+		# Can't have more than 1 Kingdom title
+		if = {
+			limit = {
+				highest_held_title_tier = tier_kingdom
+				scope:title.tier = tier_kingdom
+				scope:title != primary_title
+				government_has_flag = government_is_free_city
+			}
+			destroy_title = scope:title
+		}
+
+		#Governments
+		if = {
+			limit = {
+				has_government = ruins_government
+				NOT = { top_liege = title:c_ruins.holder }
+				any_held_county = {
+					any_county_province = {
+						has_holding_type = castle_holding
+						barony = {
+							NOT = { is_capital_barony = yes }
+						}
+					}
+				}
+			}
+			random_held_county = {
+				limit = {
+					any_county_province = {
+						has_holding_type = castle_holding
+					}
+				}
+				random_county_province = {
+					limit = {
+						has_holding_type = castle_holding
+					}
+					county.holder = { save_scope_as = county_holder }
+
+					create_title_and_vassal_change = {
+						type = granted
+						save_scope_as = change
+						add_claim_on_loss = no
+					}
+					barony = {
+						change_title_holder = {
+							holder = scope:county_holder
+							change = scope:change
+						}
+					}
+					resolve_title_and_vassal_change = scope:change
+
+					barony = { set_capital_barony = yes }
+					root = { set_realm_capital = prev.county }
+				}
+			}
+		}
+		else_if = { # Things that don't change government
+			limit = {
+				OR = {
+					has_government = ruins_government # Ruins don't change government
+					has_government = unknown_government # Removed realms don't change government
+					has_government = wilderness_government # Wilderness realms don't change government
+					scope:transfer_type = flag:created # Creating a title doesn't change government
+					any_held_title = { # If gained a title of existing tier or lower, don't change government
+						tier >= scope:title.tier
+						count > 1
+					}
+				}
+			}
+			#Do Nothing
+		}
+		# If we pass this, then we didn't make the title and it's higher than any of our others
+		else_if = {
+			limit = {
+				NOT = { government_has_flag = government_is_pirate_trigger_check }
+				agot_is_valid_pirate_government_target = yes
+				scope:title = {
+					kingdom = title:k_the_stepstones
+				}
+			}
+			if = {
+				limit = {
+					agot_dlc_check_for_landless_pirates = yes
+				}
+				change_government = pirate_government
+			}
+			else = {
+				change_government = pirate_no_dlc_government
+			}
+		}
+		else_if = {
+			limit = {
+				top_liege ?= { government_has_flag = government_is_norvos }
+				NOT = { has_government = norvos_government }
+				agot_is_valid_free_city_government_target = yes
+			}
+			change_government = norvos_government
+		}
+		else_if = { #AGOT FreeCityPlaceholder
+			limit = {
+				NOT = { has_government = administrative_government }
+				agot_is_valid_free_city_government_target = yes
+				top_liege ?= {has_realm_law = free_city_election_succession_law}
+			}
+			change_government = administrative_government
+		}
+		else_if = {
+			limit = {
+				NOT = { has_government = lp_feudal_government }
+			}
+			if = { # If can just change, do so
+				limit = { agot_is_valid_lp_feudal_government_target = yes }
+				change_government = lp_feudal_government
+			}
+			if = { # Now, special case for weird inheritence of IT by non-feudal
+				limit = { # If I have gotten the Iron Throne + capital and I am not feudal
+					scope:title = title:h_the_iron_throne
+					has_title = title:h_the_iron_throne.title_capital_county
+					NOR = {
+						has_government = theocracy_government
+						has_government = republic_government
+						has_government = kingsguard_government
+						has_government = ruins_government
+						has_government = unknown_government
+						has_government = wilderness_government
+						government_has_flag = government_is_administrative
+					}
+				}
+				set_realm_capital = scope:title.title_capital_county
+				change_government = lp_feudal_government
+			}
+		}
+
+		#Dragonpits
+		if = {
+			limit = {
+				has_variable_list = banned_dragonpit_locations
+				is_target_in_variable_list = {
+					name = banned_dragonpit_locations
+					target = scope:title
+				}
+			}
+			remove_list_variable = {
+				name = banned_dragonpit_locations
+				target = scope:title
+			}
+		}
+
+		# Legitimate houses
+		if = {
+			limit = {
+				scope:title = { title_uses_legitimate_house_mechanic = yes }
+			}
+			if = { # Is this a shattered world start case?
+				limit = {
+					OR = {
+						scope:title = { has_variable = shattered_world_start }
+						NOT = { exists = scope:title.var:legitimate_house }
+					}
+				}
+				agot_set_current_house = {
+					TITLE = scope:title
+					HOUSE = scope:title.holder.house
+				}
+				agot_set_legitimate_house = {
+					TITLE = scope:title
+					HOUSE = scope:title.holder.house
+				}
+				agot_set_new_house_progress = {
+					TITLE = scope:title
+					PROGRESS = 100
+				}
+				if = {
+					limit = { scope:title = { has_variable = shattered_world_start } }
+					scope:title = { remove_variable = shattered_world_start }
+				}
+			}
+			else_if = { # Have we changed houses to an illegitimate house?
+				limit = {
+					scope:title = {
+						NOT = { var:current_house = root.house }
+						NOT = { var:legitimate_house = root.house }
+					}
+				}
+				agot_set_current_house = {
+					TITLE = scope:title
+					HOUSE = root.house
+				}
+				agot_set_new_house_progress = {
+					TITLE = scope:title
+					PROGRESS = 0
+				}
+				if = { # Did we change from a legitimate house to an illegitimate house?
+					limit = {
+						exists = scope:previous_holder
+						scope:previous_holder.house = scope:title.var:legitimate_house
+					}
+					every_player = {
+						limit = {
+							NOT = { this = root } # I think they know
+						}
+						trigger_event = {
+							id = agot_legitimate_house.0003
+							days = 1
+						}
+					}
+				}
+			}
+			else_if = { # Have we stuck with the same illegitimate house?
+				limit = {
+					scope:title = {
+						var:current_house = root.house
+						exists = var:legitimate_house
+						NOT = { var:legitimate_house = root.house }
+					}
+				}
+				send_interface_message = {
+					type = msg_lh_inheritance_bad
+					title = msg_inherited_illegitimate_title
+					desc = msg_inherited_illegitimate_title_desc
+					add_legitimacy_effect = { LEGITIMACY = medium_legitimacy_loss }
+					if = {
+						limit = {
+							exists = scope:title.var:legitimate_house.house_head
+							scope:title.var:legitimate_house.house_head = {
+								NOR = {
+									has_trait = humble
+									has_trait = content
+								}
+							}
+						}
+						progress_towards_rival_effect = {
+							CHARACTER = scope:title.var:legitimate_house.house_head
+							REASON = rival_has_my_legitimate_house_title
+							OPINION = 0
+						}
+					}
+					left_icon = root
+					right_icon ?= scope:previous_holder
+				}
+			}
+			else_if = { # Is the new holder the legitimate house?
+				limit = {
+					exists = scope:title.var:legitimate_house
+					scope:title.var:legitimate_house = root.house
+				}
+				if = {
+					limit = { NOT = { scope:title.var:current_house = root.house } }
+					agot_set_current_house = {
+						TITLE = scope:title
+						HOUSE = root.house
+					}
+				}
+				if = {
+					limit = { NOT = { scope:title.var:new_house_progress = 100 } }
+					agot_set_new_house_progress = {
+						TITLE = scope:title
+						PROGRESS = 100
+					}
+				}
+				send_interface_message = {
+					type = msg_lh_inheritance_good
+					title = msg_inherited_legitimate_title
+					desc = msg_inherited_legitimate_title_desc
+					add_legitimacy_effect = { LEGITIMACY = medium_legitimacy_gain }
+					if = {
+						limit = { scope:title.tier = tier_kingdom }
+						dynasty = { add_dynasty_prestige = minor_prestige_value }
+					}
+					else_if = {
+						limit = { scope:title.tier = tier_empire }
+						dynasty = { add_dynasty_prestige = medium_prestige_value }
+					}
+					else_if = {
+						limit = { scope:title.tier = tier_hegemony }
+						dynasty = { add_dynasty_prestige = major_prestige_value }
+					}
+					left_icon = root
+					right_icon ?= scope:previous_holder
+				}
+			}
+		}
+		#If doesn't have legitimate title var (custom created titles for example), do things that make sense
+		if = {
+			limit = {
+				NOT = { scope:title = { has_variable = legitimate_house_title } }
+			}
+			# Should it have a legitimate house mechanic?
+			scope:title = {
+				if = {
+					limit = {
+						tier >= tier_kingdom # Is it a kingdom or higher?
+						root.capital_province = { # Is it in the Seven Kingdoms? - Note this is the new capital as that's how the script makes new titles
+							geographical_region = world_westeros_seven_kingdoms
+							NOT = { geographical_region = world_westeros_the_wall } # But not the Wall
+						}
+					}
+					set_variable = { # Enable the mechanic for this title
+						name = legitimate_house_title
+						value = 1
+					}
+					set_variable = { # Set the progress to 0 by default
+						name = new_house_progress
+						value = 0
+					}
+					add_to_global_variable_list = { # Add it to the list of titles that have the mechanic
+						name = legitimate_house_titles
+						target = this
+					}
+					set_variable = { # Set the current house to the holder's house
+						name = current_house
+						value = root.house
+					}
+					# If it doesn't have a legitimate house already, set it to the holder's house
+					if = {
+						limit = { NOT = { has_variable = legitimate_house } }
+						set_variable = {
+							name = legitimate_house
+							value = root.house
+						}
+						set_variable = {
+							name = new_house_progress
+							value = 100
+						}
+					}
+					else = { # If it does, check if it's the same as the holder's house and set the progress accordingly
+						# Note: this shouldn't happen, but just in case
+						if = {
+							limit = { var:legitimate_house = root.house }
+							set_variable = {
+								name = new_house_progress
+								value = 100
+							}
+						}
+						else = {
+							set_variable = {
+								name = new_house_progress
+								value = 0
+							}
+						}
+					}
+				}
+				else = { # If not appropriate, set it to 0 so it's marked as not having the mechanic
+					set_variable = {
+						name = legitimate_house_title
+						value = 0
+					}
+				}
+			}
+		}
+
+		# Automatically set all new applicable county feudal vassals to Landed Knights
+		if = {
+			limit = {
+				scope:title = {
+					tier = tier_county
+					recent_history = {
+						type = granted
+						days = 1
+					}
+				}
+				scope:previous_holder ?= {
+					government_has_flag = government_is_feudal
+				}
+				scope:new_holder ?= {
+					government_has_flag = government_is_feudal
+					liege.culture = {
+						has_innovation = innovation_agot_landed_gentry
+					}
+					NOT = {
+						is_independent_ruler = yes
+					}
+					trigger_if = {
+						limit = { exists = house }
+						NOT = {
+							house.house_head ?= {
+								highest_held_title_tier >= tier_empire
+							}
+						}
+					}
+					OR = {
+						domain_size = 1
+						AND = {
+							domain_size > 1
+							primary_title = {
+								recent_history = {
+									type = granted
+									days = 1
+								}
+							}
+						}
+					}
+				}
+			}
+			scope:new_holder = {
+				add_character_flag = {
+					flag = agot_newly_created_landed_knight
+					days = 1
+				}
+				vassal_contract_set_obligation_level = { type = special_contract level = 6 }
+				additional_flavor_check_effect = yes
+			}
+		}
+
+		# Scion Maintenance
+		if = {
+			limit = {
+				ruler_is_royal = yes
+				scope:title ?= primary_title
+			}
+			agot_on_accession_bestow_scion_status_effect = {
+				SCOPED_ROYAL = root
+				SCOPED_TITLE = scope:title
+			}
+			trigger_event = {
+				id = agot_title_and_name_events.0002
+				days = 1
+			}
+		}
+
+		if = {
+			limit = {
+				exists = title:k_the_wall.holder
+				this = title:k_the_wall.holder
+				NOR = {
+					has_trait = nightswatch
+					has_trait = nightswatch_temp
+					has_trait = nightswatch_historical
+				}
+				scope:previous_holder ?= {
+					OR = {
+						has_trait = nightswatch
+						has_trait = nightswatch_temp
+						has_trait = nightswatch_historical
+					}
+				}
+			}
+			every_player = {
+				limit = {
+					culture = { NOT = { agot_is_wildling_culture = yes } }
+					NOT = { this = title:d_nw_landless_first_ranger.holder }
+				}
+				trigger_event = agot_nw_ranger_events.0108
+			}
+		}
+
+		#Ruinment
+		if = {
+			limit = {
+				scope:title = {
+					tier = tier_county
+					any_county_province = {
+						OR = {
+							has_holding_type = ruin_holding
+							has_holding_type = settlement_holding
+						}
+					}
+				}
+			}
+			if = {
+				limit = { exists = var:domain_var }
+				every_held_county = {
+					every_county_province = {
+						limit = {
+							OR = {
+								has_holding_type = ruin_holding
+								has_holding_type = settlement_holding
+							}
+						}
+						root = {
+							increase_variable = {
+								NAME = domain_var
+								AMOUNT = 1
+							}
+						}
+					}
+				}
+			}
+			else = {
+				set_variable = {
+					name = domain_var
+					value = 0
+				}
+				every_held_county = {
+					every_county_province = {
+						limit = {
+							OR = {
+								has_holding_type = ruin_holding
+								has_holding_type = settlement_holding
+							}
+						}
+						root = {
+							increase_variable = {
+								NAME = domain_var
+								AMOUNT = 1
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit = { has_character_modifier = agot_ruinment_domain_modifier }
+				remove_character_modifier = agot_ruinment_domain_modifier
+			}
+			add_character_modifier = {
+				modifier = agot_ruinment_domain_modifier
+				days = 7
+			}
+			remove_variable = domain_var
+		}
+
+		release_excess_colony = yes
+		correct_wilderness_tracker = yes
+		scope:previous_holder ?= { correct_wilderness_tracker = yes }
+
+		#Banking
+		dissolve_conquered_bank = yes
+
+		#Set Birthplace if it was not set already
+		agot_birthplace_effect = yes
+
+		#Set Government Data
+		agot_on_change_government_data_effect = { SCOPE = root }
+
+		#Independent Status Data
+		agot_assign_independent_data_effect = yes
+
+		#Landed Knight Status Data
+		if = {
+			limit = { primary_title ?= scope:title }
+			if = {
+				limit = { vassal_contract_has_flag = has_landed_knight_contract }
+				agot_assign_landed_knight_data_effect = { SCOPE = root }
+				root = {
+					add_character_flag = {
+						flag = agot_newly_created_landed_knight
+						days = 1
+					}
+				}
+			}
+			else = {
+				agot_remove_landed_knight_data_effect = { SCOPE = root }
+			}
+		}
+
+		#LAAMP Quest to restore NW
+		agot_last_ranger_effect = yes
+
+		#Lorath Three Princes
+		if = {
+			limit = { scope:title = title:k_lorath }
+			agot_lorath_three_princes_setup_effect = yes
+		}
+	}
+	on_actions = {
+		agot_on_title_gain_mega_wars_action
+	}
+}
+
+agot_on_title_gain_inheritance = {
+	effect = {
+		if = {
+			limit = {
+				scope:title = {
+					OR = {
+						is_outpost_county = yes
+						is_command_county = yes
+					}
+				}
+			}
+
+			create_title_and_vassal_change = {
+				type = returned
+				save_scope_as = title_change
+				add_claim_on_loss = no
+			}
+
+			scope:title = {
+				change_title_holder = {
+					holder = duchy.holder
+					change = scope:title_change
+				}
+			}
+
+			resolve_title_and_vassal_change = scope:title_change
+		}
+
+		# Returns Dragonstone to the Iron Throne
+		if = {
+			limit = {
+				exists = title:h_the_iron_throne.holder
+				title:h_the_iron_throne.holder = {
+					has_variable_list = dragonstone_titles
+				}
+				OR = {
+					has_title = title:k_dragonstone
+					NOT = { exists = title:k_dragonstone.holder }
+				}
+				has_title = title:d_dragonstone
+				has_title = title:c_dragonstone
+				title:h_the_iron_throne.holder ?= {
+					exists = dynasty
+					dynasty = dynasty:dynn_Targaryen
+				}
+				NOT = {
+					this = title:h_the_iron_throne.holder
+				}
+			}
+			create_title_and_vassal_change = {
+				type = returned
+				save_scope_as = dragonstone_change
+				add_claim_on_loss = no
+			}
+			title:h_the_iron_throne.holder = { clear_variable_list = dragonstone_titles }
+			title:c_dragonstone = {
+				change_title_holder_include_vassals = {
+					holder = title:h_the_iron_throne.holder
+					change = scope:dragonstone_change
+				}
+				copy_title_history = title:k_dummy_dragonstone
+			}
+			title:d_dragonstone = {
+				change_title_holder_include_vassals = {
+					holder = title:h_the_iron_throne.holder
+					change = scope:dragonstone_change
+				}
+				copy_title_history = title:k_dummy_dragonstone
+			}
+			title:k_dragonstone = {
+				change_title_holder_include_vassals = {
+					holder = title:h_the_iron_throne.holder
+					change = scope:dragonstone_change
+				}
+				copy_title_history = title:k_dummy_dragonstone
+			}
+
+			title:k_dragonstone = {
+				every_in_de_jure_hierarchy = {
+					limit = {
+						tier = tier_county
+						holder.house = root.house
+						holder = { is_ai = yes }
+						NOT = { this = title:c_dragonstone }
+					}
+
+					change_title_holder_include_vassals = {
+						holder = title:h_the_iron_throne.holder
+						change = scope:dragonstone_change
+					}
+				}
+			}
+			resolve_title_and_vassal_change = scope:dragonstone_change
+			if = {
+				limit = {
+					NOR = {
+						is_landed = yes
+						is_landless_adventurer = yes
+					}
+					NOT = { has_character_flag = marked_for_termination }
+				}
+				title:h_the_iron_throne.holder = { add_courtier ?= prev }
+			}
+			else_if = {
+				limit = {
+					has_character_flag = marked_for_termination
+				}
+				death = {
+					death_reason = death_vanished
+				}
+			}
+			if = {
+				limit = {
+					title:k_dragonstone = { title_uses_legitimate_house_mechanic = yes }
+				}
+				agot_set_current_house = {
+					TITLE = title:k_dragonstone
+					HOUSE = title:h_the_iron_throne.holder.house
+				}
+			}
+		}
+
+		if = {
+			limit = { scope:title = title:d_the_silent_sisterhood }
+			if = {
+				limit = { NOT = { has_realm_law = female_only_law } }
+				add_realm_law_skip_effects = female_only_law
+			}
+			if = {
+				limit = { NOT = { has_government = silent_sisterhood_government } }
+				change_government = silent_sisterhood_government
+			}
+			scope:title = {
+				if = {
+					limit = { NOT = { has_title_law = silent_sisterhood_succession_law } }
+					add_title_law = silent_sisterhood_succession_law
+				}
+			}
+		}
+	}
+}
+
+agot_on_title_gain_usurpation = {
+	effect = {
+		if = {
+			limit = { # BTW
+				# We are only interested in the title within the Struggle Region
+				title:e_beyond_the_wall = {
+					any_in_de_jure_hierarchy = {
+						this = 	scope:title
+					}
+				}
+				# Only for usurpation
+				scope:transfer_type = flag:usurped
+
+				root = {
+					any_character_struggle = {
+						involvement = involved
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_usurp_title_btw
+							CHAR = root
+						}
+					}
+				}
+			}
+			root = {
+				every_character_struggle = {
+					involvement = involved
+					limit = {
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_usurp_title_btw
+							CHAR = root
+						}
+					}
+					activate_struggle_catalyst = {
+						catalyst = catalyst_usurp_title_btw
+						character = root
+					}
+				}
+			}
+		}
+	}
+}
+
+agot_on_explicit_claim_gain = {
+	effect = {
+		if = {
+			limit = {
+				NOT = { scope:transfer_type = flag:inheritance }
+
+				title:e_beyond_the_wall = {
+					any_in_de_jure_hierarchy = {
+						this = 	scope:title
+					}
+				}
+				root = {
+					any_character_struggle = {
+						involvement = involved
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_gain_claim_on_title_btw
+							CHAR = root
+						}
+					}
+				}
+			}
+			root = {
+				every_character_struggle = {
+					involvement = involved
+					limit = {
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_gain_claim_on_title_btw
+							CHAR = root
+						}
+					}
+					activate_struggle_catalyst = {
+						catalyst = catalyst_gain_claim_on_title_btw
+						character = root
+					}
+				}
+			}
+		}
+	}
+}
+
+agot_on_title_gain_iron_throne = {
+	trigger = {
+		scope:title = {
+			this = title:h_the_iron_throne
+		}
+		has_government = feudal_government
+	}
+	effect = {
+		change_government = lp_feudal_government
+	}
+}
+
+agot_on_title_gain_black_brother_iron_throne = {
+	trigger = {
+		scope:title = {
+			this = title:h_the_iron_throne
+		}
+		has_trait = nightswatch
+	}
+	effect = {
+		remove_trait = nightswatch
+	}
+}
+
+agot_on_title_gain_iron_throne_dragonstone = {
+	trigger = {
+		scope:title = {
+			this = title:h_the_iron_throne
+		}
+		dynasty = dynasty:dynn_Targaryen
+	}
+	effect = {
+		trigger_event = {
+			id = agot_dragonstone.0003
+			days = 2
+		}
+	}
+}
+
+agot_on_title_inheritance_lannister_baratheon_coa = {
+	# AGOT+ uses its own cadet branch instead of the native personal CoA.
+	trigger = { always = no }
+	effect = { }
+}
+
+
+agot_on_title_gain_iron_throne_kingslanding = {
+	trigger = {
+		scope:title = {
+			tier = tier_county
+			duchy = title:d_kings_landing
+			NOT = { this = title:c_kings_landing }
+		}
+		dynasty = dynasty:dynn_Targaryen
+		is_ai = yes
+	}
+	effect = {
+		trigger_event = {
+			id = agot_dragonstone.0005
+			days = 1
+		}
+	}
+}
+
+agot_on_title_gain_nightswatch = {
+	trigger = {
+		OR = {
+			government_has_flag = government_is_nw
+			any_liege_or_above = {
+				government_has_flag = government_is_nw
+			}
+		}
+		NOT = { has_government = republic_government }
+	}
+	effect = {
+		agot_debug_log_effect = { MSG = agot_debug_msg_on_title_gain_nightswatch }
+
+		if = {
+			limit = {
+				agot_valid_potential_nw_member = no
+			}
+			agot_remove_nightswatch_traits_effect = yes
+			depose = yes
+		}
+		else_if = {
+			limit = {
+				NOR = {
+					has_trait = nightswatch
+					has_trait = nightswatch_temp
+				}
+			}
+			agot_add_to_nightswatch_effect = yes
+		}
+
+		if = {
+			limit = {
+				has_trait = nightswatch
+				has_trait_xp = {
+					trait = nightswatch
+					value < 100
+				}
+				age > 15
+			}
+			trigger_event = agot_nightswatch_maintenance.0101
+		}
+
+		every_courtier = {
+			if = {
+				limit = {
+					NOT = { has_trait = nightswatch }
+					OR = {
+						is_close_family_of = prev
+						agot_reasonable_potential_nw_member = no
+					}
+				}
+				every_traveling_family_member = {
+					limit = { NOT = { is_in_pool_at = title:d_winterfell.holder.capital_province } }
+					move_to_pool_at = title:d_winterfell.holder.capital_province
+				}
+			}
+			else_if = {
+				limit = {
+					is_human = yes
+					NOT = {
+						has_trait = nightswatch
+					}
+				}
+				agot_add_to_nightswatch_effect = yes
+			}
+
+			if = {
+				limit = {
+					has_trait = nightswatch
+					has_trait_xp = {
+						trait = nightswatch
+						value < 100
+					}
+					age > 15
+				}
+				trigger_event = agot_nightswatch_maintenance.0101
+			}
+		}
+
+		if = {
+			limit = {
+				NOT = { government_has_flag = government_is_nw }
+				NOT = { this = title:d_nw_landless_first_ranger.holder }
+			}
+			change_government = nights_watch_government
+		}
+	}
+}
+
+agot_on_title_gain_silent_sister = {
+	trigger = {
+		has_government = silent_sisterhood_government
+	}
+	effect = {
+		every_courtier_or_guest = {
+			if = {
+				limit = {
+					NOT = { has_trait = silent_sister }
+				}
+				if = {
+					limit = {
+						exists = father.liege_or_court_owner
+					}
+					move_to_pool_at = father.liege_or_court_owner.capital_province
+				}
+				else_if = {
+					limit = {
+						exists = mother.liege_or_court_owner
+					}
+					move_to_pool_at = mother.liege_or_court_owner.capital_province
+				}
+				else = {
+					move_to_pool_at = title:c_oldtown.holder.capital_province
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { has_trait = silent_sister }
+				}
+				agot_add_to_silent_sisters_effect = yes
+			}
+		}
+	}
+}
+
+agot_on_title_gain_citadel = {
+	trigger = {
+		trigger_if = {
+			limit = {
+				exists = global_var:citadel_title
+			}
+			scope:title = global_var:citadel_title
+		}
+		trigger_else = {
+			scope:title = title:b_the_citadel
+		}
+	}
+	effect = {
+		title:b_the_citadel = { set_coa = b_the_citadel }
+		if = {
+			limit = {
+				NOT = {
+					has_trait = archmaester
+				}
+			}
+
+			random_living_maester = {
+				limit = {
+					has_trait = archmaester
+				}
+				save_scope_as = new_seneschal
+			}
+
+			root = {
+				create_title_and_vassal_change = {
+					type = granted
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+
+				global_var:citadel_title = {
+
+					change_title_holder = {
+						holder = scope:new_seneschal
+						change = scope:change
+						take_baronies = yes
+					}
+				}
+
+			}
+			resolve_title_and_vassal_change = scope:change
+			#Name is unintuitive, but it has the trigger for moving maesters to court
+			trigger_event = {
+				on_action = agot_citadel_find_lost_maesters
+				days = 0
+			}
+			trigger_event = {
+				id = agot_maester.9011
+				days = 1
+			}
+		}
+		else = {
+			save_scope_as = new_seneschal
+			# Readd maester experience
+			add_trait = maester
+			add_trait_xp = {
+				trait = maester
+				value = 100
+			}
+
+			# Make them whole again
+			if = {
+				limit = { has_variable = is_disinherited }
+				add_trait = disinherited
+			}
+			if = {
+				limit = { has_variable = is_eunuch }
+				add_trait = eunuch_1
+			}
+			if = {
+				limit = { has_variable = is_beardless_eunuch }
+				add_trait = beardless_eunuch
+			}
+			if = {
+				limit = { has_variable = is_devoted }
+				add_trait = devoted
+			}
+			if = {
+				limit = { has_variable = is_order_member }
+				add_trait = order_member
+			}
+			if = {
+				limit = { has_variable = is_bastard }
+				add_trait = bastard
+			}
+			if = {
+				limit = { has_variable = is_bastard_founder }
+				add_trait = bastard_founder
+			}
+
+			every_in_list = {
+				variable = citadel_courtiers
+				limit = {
+					is_alive = yes
+				}
+
+				if = {
+					limit = {
+						has_character_flag = blocked_from_leaving
+					}
+					remove_character_flag = blocked_from_leaving
+				}
+				if = {
+					limit = {
+						NOT = {
+							is_courtier_of = global_var:citadel_title.holder
+						}
+					}
+					global_var:citadel_title.holder = {
+						add_courtier = prev
+					}
+				}
+				if = {
+					limit = { # Trying to avoid dragon issues
+						is_human = yes
+					}
+					add_character_flag = blocked_from_leaving
+				}
+			}
+			clear_variable_list = citadel_courtiers
+		}
+
+		global_var:citadel_title.holder = {
+			change_government = the_citadel_government
+		}
+	}
+}
+
+agot_on_title_gain_high_valyrian = {
+	trigger = {
+		culture = culture:high_valyrian
+		exists = scope:previous_holder
+		scope:previous_holder.culture = culture:high_valyrian
+		NOT = { has_game_rule = agot_hv_conversion_unrestricted }
+		agot_has_fake_dynasty = yes
+		is_ai = yes
+	}
+	effect = {
+		if = {
+			limit = {
+				has_game_rule = agot_hv_conversion_offshoots
+				scope:title.title_province = { geographical_region = world_westeros }
+			}
+			set_culture = culture:westerosi_valyrian
+		}
+		else_if = {
+			limit = {
+				has_game_rule = agot_hv_conversion_offshoots
+				NOT = {
+					scope:title.title_province = { geographical_region = world_westeros }
+				}
+			}
+			set_culture = culture:essosi_valyrian
+		}
+		else_if = {
+			limit = {
+				has_game_rule = agot_hv_conversion_disallowed
+			}
+			set_culture = scope:title.culture
+		}
+	}
+}
+
+agot_on_title_gain_kingsguard = { # This only works if the previous owner has a title to fall back on, and thus, has a court
+	trigger = {
+		scope:title = {
+			title_has_kingsguard_trigger = yes
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				scope:title = {
+					exists = var:kingsguard_lord_commander
+				}
+			}
+			add_courtier ?= scope:title.var:kingsguard_lord_commander
+			assign_councillor_type = {
+				type = kingsguard_lord_commander
+				target = scope:title.var:kingsguard_lord_commander
+			}
+		}
+		if = {
+			limit = {
+				scope:title = {
+					exists = var:kingsguard_1
+				}
+			}
+			add_courtier ?= scope:title.var:kingsguard_1
+			assign_councillor_type = {
+				type = kingsguard_1
+				target = scope:title.var:kingsguard_1
+			}
+		}
+		if = {
+			limit = {
+				scope:title = {
+					exists = var:kingsguard_2
+				}
+			}
+			add_courtier ?= scope:title.var:kingsguard_2
+			assign_councillor_type = {
+				type = kingsguard_2
+				target = scope:title.var:kingsguard_2
+			}
+		}
+		if = {
+			limit = {
+				scope:title = {
+					exists = var:kingsguard_3
+				}
+			}
+			add_courtier ?= scope:title.var:kingsguard_3
+			assign_councillor_type = {
+				type = kingsguard_3
+				target = scope:title.var:kingsguard_3
+			}
+		}
+		if = {
+			limit = {
+				scope:title = {
+					exists = var:kingsguard_4
+				}
+			}
+			add_courtier ?= scope:title.var:kingsguard_4
+			assign_councillor_type = {
+				type = kingsguard_4
+				target = scope:title.var:kingsguard_4
+			}
+		}
+		if = {
+			limit = {
+				scope:title = {
+					exists = var:kingsguard_5
+				}
+			}
+			add_courtier ?= scope:title.var:kingsguard_5
+			assign_councillor_type = {
+				type = kingsguard_5
+				target = scope:title.var:kingsguard_5
+			}
+		}
+		if = {
+			limit = {
+				scope:title = {
+					exists = var:kingsguard_6
+				}
+			}
+			add_courtier ?= scope:title.var:kingsguard_6
+			assign_councillor_type = {
+				type = kingsguard_6
+				target = scope:title.var:kingsguard_6
+			}
+		}
+	}
+}
+
+agot_on_title_gain_goldcloaks = {
+	effect = {
+		#court position assignment
+		if = {
+			limit = {
+				scope:title = title:b_goldguard_heights
+			}
+			title:b_goldguard_heights = { set_coa = b_goldguard_heights }
+			title:c_kings_landing.holder = {
+				if = {
+					limit = {
+						NOT = { title:b_goldguard_heights.holder = title:c_kings_landing.holder }
+					}
+					appoint_court_position = {
+						recipient = title:b_goldguard_heights.holder
+						court_position = goldcloaks_court_position
+					}
+				}
+			}
+		}
+	}
+}
+
+agot_on_title_gain_high_septon = {
+	trigger = {
+		scope:title = {
+			this = title:k_the_most_devout
+		}
+	}
+	effect = {
+		agot_assign_high_septon_effect = yes
+		agot_assign_high_septon_name_effect = yes
+	}
+}
+
+agot_on_title_gain_iron_throne_appoint_high_septon = {
+	trigger = {
+		scope:title = {
+			this = title:h_the_iron_throne
+		}
+		exists = title:k_the_most_devout.holder
+		exists = faith.religious_head
+		faith.religious_head = title:k_the_most_devout.holder
+		NAND = {
+			exists = cp:councillor_court_chaplain
+			cp:councillor_court_chaplain = title:k_the_most_devout.holder
+		}
+	}
+	effect = {
+		title:h_the_iron_throne.holder = {
+
+			create_title_and_vassal_change = {
+				type = swear_fealty
+				save_scope_as = change
+			}
+			title:k_the_most_devout.holder = {
+				change_liege = {
+					liege = title:h_the_iron_throne.holder
+					change = scope:change
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+
+			create_title_and_vassal_change = {
+				type = granted
+				save_scope_as = title_change
+				add_claim_on_loss = no
+			}
+			title:b_visenyas_hill = {
+				change_title_holder_include_vassals = {
+					holder = title:k_the_most_devout.holder
+					change = scope:title_change
+				}
+				resolve_title_and_vassal_change = scope:title_change
+			}
+
+			if = {
+				limit = {
+					exists = cp:councillor_court_chaplain
+				}
+				set_variable = {
+					name = setting_up_high_septon
+					value = yes
+					days = 1
+				}
+				fire_councillor = cp:councillor_court_chaplain
+			}
+			assign_councillor_type = {
+				type = councillor_court_chaplain
+				target = title:k_the_most_devout.holder
+			}
+		}
+	}
+}
+
+agot_on_title_gain_moat_cailin = {
+	trigger = {
+		scope:previous_holder ?= { has_character_flag = rebuilding_moat_cailin }
+		scope:title = title:c_moat_cailin
+	}
+	effect = {
+		add_character_flag = rebuilding_moat_cailin
+		scope:previous_holder = { remove_character_flag = rebuilding_moat_cailin }
+	}
+}
+
+agot_on_title_throne_management = {
+	trigger = { agot_artifact_throne_county = yes }
+	effect = {
+		trigger_event = {
+			id = agot_artifact_events.0002
+			days = 2
+		}
+	}
+}
+
+agot_on_title_lost_iron_throne = {
+	trigger = {
+		scope:title = {
+			this = title:h_the_iron_throne
+		}
+	}
+	effect = {
+		every_councillor = {
+			limit = { has_variable = small_council }
+			fire_small_councillor = yes
+		}
+		scope:new_holder = { # to have small council also reset after claim mw.
+			every_councillor = {
+				limit = { has_variable = small_council }
+				fire_small_councillor = yes
+			}
+			every_vassal_or_below = {
+				limit = {
+					highest_held_title_tier > tier_barony
+					has_variable = small_council
+				}
+				fire_small_councillor = yes
+			}
+		}
+	}
+}
+
+agot_on_title_lost_nightswatch = {
+	trigger = {
+		has_trait = nightswatch
+	}
+	effect = {
+		every_living_black_brother = {
+			limit = { #yeet black brothers back to wall AGAIN
+				is_ruler = no
+				NOR = {
+					exists = employer
+					AND = {
+						exists = employer
+						employer = { has_trait = nightswatch }
+					}
+				}
+			}
+			if = {
+				limit = {
+					exists = title:k_the_wall.holder
+					NOT = { is_in_pool_at = title:k_the_wall.holder.capital_province }
+				}
+				move_to_pool_at = title:k_the_wall.holder.capital_province
+			}
+			if = {
+				limit = {
+					exists = title:k_the_wall.holder
+					NOT = { employer = title:k_the_wall.holder }
+				}
+				set_employer = title:k_the_wall.holder
+			}
+		}
+
+		if = {
+			limit = {
+				has_title = title:k_the_wall
+				capital_county = title:c_moles_town
+				capital_province = { has_holding_type = city_holding }
+			}
+			title:c_moles_town = {
+				random_county_province = {
+					limit = {
+						has_holding_type = castle_holding
+					}
+					county.holder = { save_scope_as = county_holder }
+
+					create_title_and_vassal_change = {
+						type = granted
+						save_scope_as = change
+						add_claim_on_loss = no
+					}
+					barony = {
+						change_title_holder = {
+							holder = scope:county_holder
+							change = scope:change
+						}
+					}
+					resolve_title_and_vassal_change = scope:change
+
+					barony = { set_capital_barony = yes }
+				}
+			}
+			change_government = nights_watch_government
+		}
+	}
+}
+
+agot_on_title_lost_silent_sister = {
+	trigger = {
+		has_trait = silent_sister
+	}
+	effect = {
+		every_living_silent_sister = {
+			limit = {
+				is_ruler = no
+				NOR = {
+					exists = employer
+					AND = {
+						exists = employer
+						employer = { has_trait = silent_sister }
+					}
+				}
+			}
+			if = {
+				limit = {
+					NOT = { is_in_pool_at = title:c_oldtown.title_province }
+				}
+				move_to_pool_at = title:c_oldtown.title_province
+			}
+			if = {
+				limit = {
+					NOT = { employer = title:d_the_silent_sisterhood.holder }
+				}
+				set_employer = title:d_the_silent_sisterhood.holder
+			}
+		}
+	}
+}
+
+agot_on_title_lost_dragonpit = {
+	trigger = {
+		scope:title.tier = tier_county
+		scope:title = {
+			any_county_province = {
+				OR = {
+					AND = {
+						has_holding_type = castle_holding
+						has_building_or_higher = generic_dragon_pit_01
+					}
+					has_building_or_higher = dragonpit_01 # Historical Version
+					has_building = dragonpit_ruins_03 # Fully Restored Ruin Version
+					has_building = agot_dragonmont_01 # Dragonmont Version
+				}
+			}
+		}
+		scope:previous_holder = {
+			is_alive = yes
+			exists = var:current_dragon
+			var:current_dragon ?= {
+				has_character_flag = dragon_put_in_different_pit
+				scope:title = var:pitted_dragon_location
+			}
+		}
+	}
+	effect = {
+		scope:previous_holder = {
+			var:current_dragon = {
+				save_scope_as = dragon
+				remove_character_flag = dragon_put_in_different_pit
+				agot_remove_from_dragonpit_skip_county_effects = { DRAGON = scope:dragon }
+				return_to_court = yes
+			}
+		}
+	}
+}
+
+agot_on_title_gain_wildfire = {
+	trigger = {
+		exists = scope:previous_holder
+		scope:previous_holder = {
+			has_character_flag = kingslanding_will_resolve_soon
+		}
+		scope:title = {
+			this = title:h_the_iron_throne
+		}
+	}
+	effect = {
+		add_character_flag = kingslanding_will_resolve_soon
+		trigger_event = {
+			id = agot_events_rr_minor.0121
+			months = { 1 2 }
+		}
+	}
+}
+
+agot_on_title_gain_ruins = {
+	trigger = {
+		has_government = ruins_government
+		NOT = {
+			capital_province ?= { has_holding_type = ruin_holding }
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				agot_is_valid_lp_feudal_government_target = yes
+			}
+			change_government = lp_feudal_government
+		}
+	}
+}
+
+agot_on_title_gain_unique_crown = {
+	trigger = {
+		is_ai = yes
+		OR = {
+			primary_title.tier = tier_hegemony
+			AND = {
+				primary_title.tier >= tier_kingdom
+				agot_is_independent_ruler = yes
+			}
+		}
+		OR = {
+			agot_aegon_i_crown_trigger = yes
+			agot_aenys_crown_trigger = yes
+			agot_jaehaerys_crown_trigger = yes
+			agot_aegon_iii_crown_trigger = yes
+			agot_baelors_crown_trigger = yes
+			agot_aegon_iv_crown_trigger = yes
+			agot_maekars_crown_trigger = yes
+			agot_daenerys_crown_trigger = yes
+			agot_robertI_crown_trigger = yes
+			agot_stannis_crown_trigger = yes
+			agot_renly_crown_trigger = yes
+			agot_joffreyI_crown_trigger = yes
+			agot_jeyne_westerling_crown_trigger = yes
+			agot_lyanna_crown_trigger = yes
+			agot_rhaella_crown_trigger = yes
+			agot_night_king_crown_trigger = yes
+			agot_ice_crown_trigger = yes
+		}
+		NOT = { has_character_flag = has_had_event_agot_commission_special_artifact_crown.0005 }
+		NOT = { government_has_flag = government_is_nw }
+		NOT = { has_government = silent_sisterhood_government }
+	}
+	effect = {
+		trigger_event = agot_commission_special_artifact_crown.0005
+	}
+}
+
+agot_on_title_gain_tyroshi_landing = {
+	trigger = {
+		scope:title = title:c_uhyrosh_coast
+		culture = {
+			NOT = {
+				this = culture:tyroshi
+				any_parent_culture_or_above = {
+					this = culture:tyroshi
+				}
+			}
+		}
+		exists = scope:previous_holder
+		scope:previous_holder.culture = {
+			OR = {
+				this = culture:tyroshi
+				any_parent_culture_or_above = {
+					this = culture:tyroshi
+				}
+			}
+		}
+	}
+	effect = {
+		scope:title = { reset_title_name = yes }
+	}
+}
+
+agot_on_title_gain_uhyrosh_coast = {
+	trigger = {
+		scope:title = title:c_uhyrosh_coast
+		culture = {
+			OR = {
+				this = culture:tyroshi
+				any_parent_culture_or_above = {
+					this = culture:tyroshi
+				}
+			}
+		}
+		exists = scope:previous_holder
+		scope:previous_holder.culture = {
+			NOT = {
+				this = culture:tyroshi
+				any_parent_culture_or_above = {
+					this = culture:tyroshi
+				}
+			}
+		}
+	}
+	effect = {
+		scope:title = {
+			save_title_name_change_data = { TRANSFER_VAR = yes }
+			set_title_name = c_tyroshi_landing
+		}
+	}
+}
+
+agot_on_title_gain_crownlands_inheritance = {
+	trigger = {
+		scope:title = { this = title:h_the_iron_throne }
+		exists = scope:previous_holder
+		OR = {
+			scope:previous_holder = {
+				OR = {
+					has_title = title:e_the_crownlands
+					has_title = title:k_the_blackwater
+					has_title = title:d_kings_landing
+					has_title = title:c_kings_landing
+				}
+			}
+			AND = {
+				scope:previous_holder.dynasty = dynasty:dynn_Targaryen
+				root.dynasty = dynasty:dynn_Targaryen
+				scope:previous_holder = {
+					OR = {
+						has_title = title:e_the_crownlands
+						has_title = title:k_the_blackwater
+						has_title = title:d_kings_landing
+						has_title = title:c_kings_landing
+						has_title = title:k_dragonstone
+						has_title = title:d_dragonstone
+						has_title = title:c_dragonstone
+					}
+				}
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				scope:previous_holder = {
+					OR = {
+						has_title = title:e_the_crownlands
+						has_title = title:k_the_blackwater
+						has_title = title:d_kings_landing
+						has_title = title:c_kings_landing
+					}
+				}
+			}
+			if = {
+				limit = { scope:previous_holder = { has_title = title:e_the_crownlands } }
+				create_title_and_vassal_change = {
+					type = faction_demand
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				title:e_the_crownlands = {
+					change_title_holder = {
+						holder = root
+						change = scope:change
+					}
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+			if = {
+				limit = { scope:previous_holder = { has_title = title:k_the_blackwater } }
+				create_title_and_vassal_change = {
+					type = faction_demand
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				title:k_the_blackwater = {
+					change_title_holder = {
+						holder = root
+						change = scope:change
+					}
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+			if = {
+				limit = { scope:previous_holder = { has_title = title:d_kings_landing } }
+				create_title_and_vassal_change = {
+					type = faction_demand
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				title:d_kings_landing = {
+					change_title_holder = {
+						holder = root
+						change = scope:change
+					}
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+			if = {
+				limit = { scope:previous_holder = { has_title = title:c_kings_landing } }
+				create_title_and_vassal_change = {
+					type = faction_demand
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				title:c_kings_landing = {
+					change_title_holder = {
+						holder = root
+						change = scope:change
+					}
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+		if = {
+			limit = {
+				scope:previous_holder.dynasty = dynasty:dynn_Targaryen
+				root.dynasty = dynasty:dynn_Targaryen
+				scope:previous_holder = {
+					OR = {
+						has_title = title:k_dragonstone
+						has_title = title:d_dragonstone
+						has_title = title:c_dragonstone
+					}
+				}
+			}
+			if = {
+				limit = { scope:previous_holder = { has_title = title:k_dragonstone } }
+				create_title_and_vassal_change = {
+					type = faction_demand
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				title:k_dragonstone = {
+					change_title_holder = {
+						holder = root
+						change = scope:change
+					}
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+			if = {
+				limit = { scope:previous_holder = { has_title = title:d_dragonstone } }
+				create_title_and_vassal_change = {
+					type = faction_demand
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				title:d_dragonstone = {
+					change_title_holder = {
+						holder = root
+						change = scope:change
+					}
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+			if = {
+				limit = { scope:previous_holder = { has_title = title:c_dragonstone } }
+				create_title_and_vassal_change = {
+					type = faction_demand
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				title:c_dragonstone = {
+					change_title_holder = {
+						holder = root
+						change = scope:change
+					}
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+	}
+}
+
+agot_secret_child_on_title_gain = {
+	trigger = {
+		exists = scope:previous_holder
+		NOT = { root.house = scope:previous_holder.house }
+		scope:title.tier > tier_county
+		scope:previous_holder = {
+			any_close_family_member = {
+				agot_secret_character_eligible = yes
+				house = scope:previous_holder.house
+				mother ?= { NOT = { is_alive = yes } }
+				father ?= { NOT = { is_alive = yes } }
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				scope:previous_holder.house = {
+					NOT = { any_house_member = { is_playable_character = yes } }
+				}
+			}
+			scope:previous_holder = {
+				random_close_family_member = {
+					limit = {
+						agot_secret_character_eligible = yes
+						house = scope:previous_holder.house
+						mother ?= { NOT = { is_alive = yes } }
+						father ?= { NOT = { is_alive = yes } }
+					}
+					add_character_flag = from_title_gain
+					agot_start_secret_identity_effect = yes
+				}
+			}
+		}
+	}
+}
+
+agot_on_rank_up = {
+	effect = {
+		#Court Language
+		if = {
+			limit = {
+				has_dlc_feature = royal_court
+				culture = culture:high_valyrian
+				capital_county.title_province ?= {
+					geographical_region = world_westeros
+				}
+				scope:title.tier < tier_kingdom
+				primary_title.tier > tier_duchy
+			}
+			set_court_language = language_agot_westeros
+			if = {
+				limit = { NOT = { knows_court_language_of = this } }
+				learn_court_language_of = this
+			}
+		}
+	}
+}
+
+agot_on_title_gain_free_city_attached_titles = {
+	trigger = {
+		government_has_flag = government_is_free_city
+		scope:title = {
+			OR = {
+				this = title:k_pentos
+				this = title:k_myr
+				this = title:k_lys
+				this = title:k_tyrosh
+				this = title:k_braavos
+				this = title:k_norvos
+			}
+		}
+	}
+	effect = {
+		save_scope_as = new_holder
+		if = {
+			limit = {
+				scope:title = title:k_pentos
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:d_pentos }
+					any_vassal_or_below = {
+						has_title = title:d_pentos
+					}
+				}
+				create_title_and_vassal_change = {
+					type = election
+					save_scope_as = duchy_title_change
+					add_claim_on_loss = no
+				}
+				title:d_pentos = {
+					change_title_holder = {
+						holder = scope:new_holder
+						change = scope:duchy_title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:duchy_title_change
+			}
+			if = {
+				limit = {
+					has_title = title:d_pentos
+					title:d_pentos = {
+						NOT = { has_title_law = magisterial_attached_titles_law }
+					}
+				}
+				title:d_pentos = {
+					add_title_law = magisterial_attached_titles_law
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:c_princes_quarter }
+					any_vassal_or_below = {
+						has_title = title:c_princes_quarter
+					}
+				}
+				create_title_and_vassal_change = {
+					type = election
+					save_scope_as = county_title_change
+					add_claim_on_loss = no
+				}
+				title:c_princes_quarter = {
+					change_title_holder = {
+						holder = scope:new_holder
+						change = scope:county_title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:county_title_change
+			}
+			if = {
+				limit = {
+					has_title = title:c_princes_quarter
+					title:c_princes_quarter = {
+						NOT = { has_title_law = magisterial_attached_titles_law }
+					}
+				}
+				title:c_princes_quarter = {
+					add_title_law = magisterial_attached_titles_law
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:title = title:k_myr
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:d_myr }
+					any_vassal_or_below = {
+						has_title = title:d_myr
+					}
+				}
+				create_title_and_vassal_change = {
+					type = election
+					save_scope_as = duchy_title_change
+					add_claim_on_loss = no
+				}
+				title:d_myr = {
+					change_title_holder = {
+						holder = scope:new_holder
+						change = scope:duchy_title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:duchy_title_change
+			}
+			if = {
+				limit = {
+					has_title = title:d_myr
+					title:d_myr = {
+						NOT = { has_title_law = magisterial_attached_titles_law }
+					}
+				}
+				title:d_myr = {
+					add_title_law = magisterial_attached_titles_law
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:c_myr }
+					any_vassal_or_below = {
+						has_title = title:c_myr
+					}
+				}
+				create_title_and_vassal_change = {
+					type = election
+					save_scope_as = county_title_change
+					add_claim_on_loss = no
+				}
+				title:c_myr = {
+					change_title_holder = {
+						holder = scope:new_holder
+						change = scope:county_title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:county_title_change
+			}
+			if = {
+				limit = {
+					has_title = title:c_myr
+					title:c_myr = {
+						NOT = { has_title_law = magisterial_attached_titles_law }
+					}
+				}
+				title:c_myr = {
+					add_title_law = magisterial_attached_titles_law
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:title = title:k_lys
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:d_lys }
+					any_vassal_or_below = {
+						has_title = title:d_lys
+					}
+				}
+				create_title_and_vassal_change = {
+					type = election
+					save_scope_as = duchy_title_change
+					add_claim_on_loss = no
+				}
+				title:d_lys = {
+					change_title_holder = {
+						holder = scope:new_holder
+						change = scope:duchy_title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:duchy_title_change
+			}
+			if = {
+				limit = {
+					has_title = title:d_lys
+					title:d_lys = {
+						NOT = { has_title_law = magisterial_attached_titles_law }
+					}
+				}
+				title:d_lys = {
+					add_title_law = magisterial_attached_titles_law
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:c_lys }
+					any_vassal_or_below = {
+						has_title = title:c_lys
+					}
+				}
+				create_title_and_vassal_change = {
+					type = election
+					save_scope_as = county_title_change
+					add_claim_on_loss = no
+				}
+				title:c_lys = {
+					change_title_holder = {
+						holder = scope:new_holder
+						change = scope:county_title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:county_title_change
+			}
+			if = {
+				limit = {
+					has_title = title:c_lys
+					title:c_lys = {
+						NOT = { has_title_law = magisterial_attached_titles_law }
+					}
+				}
+				title:c_lys = {
+					add_title_law = magisterial_attached_titles_law
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:title = title:k_tyrosh
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:d_tyrosh }
+					any_vassal_or_below = {
+						has_title = title:d_tyrosh
+					}
+				}
+				create_title_and_vassal_change = {
+					type = election
+					save_scope_as = duchy_title_change
+					add_claim_on_loss = no
+				}
+				title:d_tyrosh = {
+					change_title_holder = {
+						holder = scope:new_holder
+						change = scope:duchy_title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:duchy_title_change
+			}
+			if = {
+				limit = {
+					has_title = title:d_tyrosh
+					title:d_tyrosh = {
+						NOT = { has_title_law = magisterial_attached_titles_law }
+					}
+				}
+				title:d_tyrosh = {
+					add_title_law = magisterial_attached_titles_law
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:c_tyrosh }
+					any_vassal_or_below = {
+						has_title = title:c_tyrosh
+					}
+				}
+				create_title_and_vassal_change = {
+					type = election
+					save_scope_as = county_title_change
+					add_claim_on_loss = no
+				}
+				title:c_tyrosh = {
+					change_title_holder = {
+						holder = scope:new_holder
+						change = scope:county_title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:county_title_change
+			}
+			if = {
+				limit = {
+					has_title = title:c_tyrosh
+					title:c_tyrosh = {
+						NOT = { has_title_law = magisterial_attached_titles_law }
+					}
+				}
+				title:c_tyrosh = {
+					add_title_law = magisterial_attached_titles_law
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:title = title:k_braavos
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:d_braavos }
+					any_vassal_or_below = {
+						has_title = title:d_braavos
+					}
+				}
+				create_title_and_vassal_change = {
+					type = election
+					save_scope_as = duchy_title_change
+					add_claim_on_loss = no
+				}
+				title:d_braavos = {
+					change_title_holder = {
+						holder = scope:new_holder
+						change = scope:duchy_title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:duchy_title_change
+			}
+			if = {
+				limit = {
+					has_title = title:d_braavos
+					title:d_braavos = {
+						NOT = { has_title_law = magisterial_attached_titles_law }
+					}
+				}
+				title:d_braavos = {
+					add_title_law = magisterial_attached_titles_law
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:c_braavos }
+					any_vassal_or_below = {
+						has_title = title:c_braavos
+					}
+				}
+				create_title_and_vassal_change = {
+					type = election
+					save_scope_as = county_title_change
+					add_claim_on_loss = no
+				}
+				title:c_braavos = {
+					change_title_holder = {
+						holder = scope:new_holder
+						change = scope:county_title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:county_title_change
+			}
+			if = {
+				limit = {
+					has_title = title:c_braavos
+					title:c_braavos = {
+						NOT = { has_title_law = magisterial_attached_titles_law }
+					}
+				}
+				title:c_braavos = {
+					add_title_law = magisterial_attached_titles_law
+				}
+			}
+			if = {
+				limit = {
+					scope:title = title:k_norvos
+				}
+				if = {
+					limit = {
+						NOT = { has_title = title:d_norvos }
+						any_vassal_or_below = {
+							has_title = title:d_norvos
+						}
+					}
+					create_title_and_vassal_change = {
+						type = election
+						save_scope_as = duchy_title_change
+						add_claim_on_loss = no
+					}
+					title:d_norvos = {
+						change_title_holder = {
+							holder = scope:new_holder
+							change = scope:duchy_title_change
+						}
+					}
+					resolve_title_and_vassal_change = scope:duchy_title_change
+				}
+				if = {
+					limit = {
+						has_title = title:d_norvos
+						title:d_norvos = {
+							NOT = { has_title_law = magisterial_attached_titles_law }
+						}
+					}
+					title:d_norvos = {
+						add_title_law = magisterial_attached_titles_law
+					}
+				}
+				if = {
+					limit = {
+						NOT = { has_title = title:c_the_high_city }
+						any_vassal_or_below = {
+							has_title = title:c_the_high_city
+						}
+					}
+					create_title_and_vassal_change = {
+						type = election
+						save_scope_as = county_title_change
+						add_claim_on_loss = no
+					}
+					title:c_the_high_city = {
+						change_title_holder = {
+							holder = scope:new_holder
+							change = scope:county_title_change
+						}
+					}
+					resolve_title_and_vassal_change = scope:county_title_change
+				}
+				if = {
+					limit = {
+						has_title = title:c_the_high_city
+						title:c_the_high_city = {
+							NOT = { has_title_law = magisterial_attached_titles_law }
+						}
+					}
+					title:c_the_high_city = {
+						add_title_law = magisterial_attached_titles_law
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:title = title:k_lorath
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:d_lorath }
+					any_vassal_or_below = {
+						has_title = title:d_lorath
+					}
+				}
+				create_title_and_vassal_change = {
+					type = election
+					save_scope_as = duchy_title_change
+					add_claim_on_loss = no
+				}
+				title:d_lorath = {
+					change_title_holder = {
+						holder = scope:new_holder
+						change = scope:duchy_title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:duchy_title_change
+			}
+			if = {
+				limit = {
+					has_title = title:d_lorath
+					title:d_lorath = {
+						NOT = { has_title_law = magisterial_attached_titles_law }
+					}
+				}
+				title:d_lorath = {
+					add_title_law = magisterial_attached_titles_law
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_title = title:c_makers_maze }
+					any_vassal_or_below = {
+						has_title = title:c_makers_maze
+					}
+				}
+				create_title_and_vassal_change = {
+					type = election
+					save_scope_as = county_title_change
+					add_claim_on_loss = no
+				}
+				title:c_makers_maze = {
+					change_title_holder = {
+						holder = scope:new_holder
+						change = scope:county_title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:county_title_change
+			}
+			if = {
+				limit = {
+					has_title = title:c_makers_maze
+					title:c_makers_maze = {
+						NOT = { has_title_law = magisterial_attached_titles_law }
+					}
+				}
+				title:c_makers_maze = {
+					add_title_law = magisterial_attached_titles_law
+				}
+			}
+		}
+	}
+}
+
+### Mega Wars
+# Upon title change story cycle should by given to new holder; also changes pre-war-liege variables
+agot_on_title_gain_mega_wars_action = {
+	trigger = { # trigger for on_title_gain
+		exists = scope:previous_holder
+		exists = scope:title
+		scope:previous_holder = {
+			OR = {
+				mw_on_action_crown_trigger = yes				# previous_holder has story_agot_mw_crown
+				mw_on_action_rebel_leader_trigger = yes			# previous_holder has story_agot_mw_rebel
+				mw_on_action_loyalist_trigger = yes				# previous_holder is loyalist
+				mw_on_action_neutral_trigger = yes				# previous_holder is neutral
+				mw_on_action_rebel_trigger = yes				# previous_holder is rebel supporter
+				mw_on_action_is_rebel_leader_trigger = yes		# previous_holder is rebel leader --> add to crown's lists
+				mw_on_action_pwl_variables_trigger = yes		# pre-war-liege variables
+				mw_on_action_remove_pwl_variables_trigger = yes	# remove pre-war-liege variables if applicable
+			}
+		}
+	}
+	effect = {
+		if = { # --> triggered by on_title_gain
+			limit = { exists = scope:previous_holder }
+
+			scope:previous_holder = { save_scope_as = previous_holder }
+			root = { save_scope_as = new_holder }
+		}
+		else_if = { # --> triggered by on_title_destroy; caution, there is no new_holder!
+			limit = { exists = scope:landed_title }
+
+			root = { save_scope_as = previous_holder }
+		}
+
+		scope:previous_holder = {
+			if = { # Check 1: has crown story cycle
+				limit = { mw_on_action_crown_trigger = yes }
+
+				random_owned_story = {
+					limit = { story_type = story_agot_mw_crown }
+
+					save_scope_as = mw_crown_story
+					set_variable = { name = mw_former_story_owner value = scope:previous_holder }
+					make_story_owner = scope:new_holder
+				}
+			}
+			if = { # Check 2: has rebel story cycle
+				limit = { mw_on_action_rebel_leader_trigger = yes }
+
+				every_owned_story = {
+					limit = { story_type = story_agot_mw_rebel }
+
+					if = {
+						limit = { # if new_holder is not in mw_loyalist_list and previous_holder is not in mw_rebel_leader_list; make new_holder the mw_new_rebel_leader
+							var:mw_crown_story_var ?= {
+								NOT = {
+									is_target_in_variable_list = { name = mw_loyalist_list target = scope:new_holder }
+								}
+								is_target_in_variable_list = { name = mw_rebel_leader_list target = scope:previous_holder }
+							}
+						}
+						scope:new_holder = { save_scope_as = mw_new_rebel_leader }
+					}
+					else = { # else take one from the rebel supporter list
+						random_in_list = {
+							variable = mw_rebel_supporter_list
+
+							weight = {
+								base = 1
+
+								modifier = {
+									add = 4000
+									primary_title ?= { tier = tier_empire }
+								}
+								modifier = {
+									add = 3000
+									primary_title ?= { tier = tier_kingdom }
+								}
+								modifier = {
+									add = 2000
+									primary_title ?= { tier = tier_duchy }
+								}
+								modifier = {
+									add = 1000
+									primary_title ?= { tier = tier_county }
+								}
+							}
+
+							save_scope_as = mw_new_rebel_leader
+						}
+					}
+					add_to_variable_list = { name = mw_former_rebel_leaders_list target = scope:previous_holder }
+
+					var:mw_crown_story_var ?= {
+						add_to_variable_list = { name = mw_rebel_leader_list target = scope:mw_new_rebel_leader }
+						remove_list_variable = { name = mw_rebel_leader_list target = scope:previous_holder }
+					}
+
+					make_story_owner = scope:mw_new_rebel_leader
+				}
+			}
+			if = { # Check 3: if new_holder is in loyalist list, add new_holder
+				limit = { mw_on_action_loyalist_trigger = yes }
+
+				every_ruler = {
+					limit = {
+						any_owned_story = {
+							story_type = story_agot_mw_crown
+							trigger_if = {
+								limit = { NOT = { exists = scope:mw_crown_story } }
+								save_temporary_scope_as = mw_crown_story
+							}
+							OR = {
+								is_target_in_variable_list = { name = mw_loyalist_list target = scope:previous_holder }
+								story_owner = scope:previous_holder
+							}
+							NOR = {
+								is_target_in_variable_list = { name = mw_loyalist_list target = scope:new_holder }
+								story_owner = scope:new_holder
+							}
+						}
+						NOT = { # Don't add to loyalist list if previous_holder just won a mw and has both mw story cycles
+							any_owned_story = {
+								story_type = story_agot_mw_rebel
+								var:mw_crown_story_var ?= scope:mw_crown_story
+								var:mw_outcome = flag:rebels_won
+							}
+						}
+					}
+					random_owned_story = {
+						limit = {
+							story_type = story_agot_mw_crown
+							is_target_in_variable_list = { name = mw_loyalist_list target = scope:previous_holder }
+							NOR = {
+								is_target_in_variable_list = { name = mw_loyalist_list target = scope:new_holder } # don't add him, if he is already in loyalist list
+								agot_mw_is_in_neutral_list_trigger = { TARGET = scope:new_holder } # don't add him, if he is already in neutral list
+								agot_mw_is_in_rebel_list_trigger = { TARGET = scope:new_holder } # don't add him, if he is already in rebel list
+							}
+						}
+						add_to_variable_list = { name = mw_loyalist_list target = scope:new_holder }
+						if = {
+							limit = {
+								scope:previous_holder = {
+									OR = {
+										is_landed = no
+										highest_held_title_tier = tier_barony
+									}
+								}
+							}
+							remove_list_variable = { name = mw_loyalist_list target = scope:previous_holder }
+						}
+					}
+				}
+			}
+			if = { # Check 4: if new_holder is in neutral list, add new_holder
+				limit = { mw_on_action_neutral_trigger = yes }
+
+				every_ruler = {
+					limit = {
+						any_owned_story = {
+							story_type = story_agot_mw_crown
+							is_target_in_variable_list = { name = mw_neutral_list target = scope:previous_holder }
+							NOT = { is_target_in_variable_list = { name = mw_neutral_list target = scope:new_holder } }
+						}
+					}
+					random_owned_story = {
+						limit = {
+							story_type = story_agot_mw_crown
+							is_target_in_variable_list = { name = mw_neutral_list target = scope:previous_holder }
+							NOT = { is_target_in_variable_list = { name = mw_neutral_list target = scope:new_holder } }
+						}
+						add_to_variable_list = { name = mw_neutral_list target = scope:new_holder }
+						if = {
+							limit = {
+								scope:previous_holder = {
+									OR = {
+										is_landed = no
+										highest_held_title_tier = tier_barony
+									}
+								}
+							}
+							remove_list_variable = { name = mw_neutral_list target = scope:previous_holder }
+						}
+					}
+				}
+			}
+			if = { # Check 5: if new_holder is in rebel supporter list, add new_holder
+				limit = { mw_on_action_rebel_trigger = yes }
+
+				every_ruler = {
+					limit = {
+						any_owned_story = {
+							story_type = story_agot_mw_rebel
+							is_target_in_variable_list = { name = mw_rebel_supporter_list target = scope:previous_holder }
+							NOT = { is_target_in_variable_list = { name = mw_rebel_supporter_list target = scope:new_holder } }
+						}
+					}
+					random_owned_story = {
+						limit = {
+							story_type = story_agot_mw_rebel
+							is_target_in_variable_list = { name = mw_rebel_supporter_list target = scope:previous_holder }
+							NOT = { is_target_in_variable_list = { name = mw_rebel_supporter_list target = scope:new_holder } }
+						}
+						add_to_variable_list = { name = mw_rebel_supporter_list target = scope:new_holder }
+						if = {
+							limit = {
+								scope:previous_holder = {
+									OR = {
+										is_landed = no
+										highest_held_title_tier = tier_barony
+									}
+								}
+							}
+							remove_list_variable = { name = mw_rebel_supporter_list target = scope:previous_holder }
+						}
+					}
+				}
+			}
+			if = { # Check 6: if previous holder is rebel leader, add new_holder to neutral list
+				limit = { mw_on_action_is_rebel_leader_trigger = yes }
+
+				every_ruler = {
+					limit = {
+						any_owned_story = {
+							story_type = story_agot_mw_crown
+							is_target_in_variable_list = { name = mw_rebel_leader_list target = scope:previous_holder }
+							NOT = { is_target_in_variable_list = { name = mw_rebel_leader_list target = scope:new_holder } }
+						}
+					}
+					random_owned_story = {
+						limit = {
+							story_type = story_agot_mw_crown
+							is_target_in_variable_list = { name = mw_rebel_leader_list target = scope:previous_holder }
+							NOT = { is_target_in_variable_list = { name = mw_rebel_leader_list target = scope:new_holder } }
+						}
+						add_to_variable_list = { name = mw_neutral_list target = scope:new_holder }
+						if = {
+							limit = {
+								scope:previous_holder = {
+									OR = {
+										is_landed = no
+										highest_held_title_tier = tier_barony
+									}
+								}
+							}
+							remove_list_variable = { name = mw_rebel_leader_list target = scope:previous_holder }
+						}
+					}
+				}
+			}
+			if = { # Check 7: handle new pre-war-liege variables
+				limit = {
+					OR = {
+						mw_on_action_pwl_variables_trigger = yes		# new holder did not have a pwl_direct; old holder did
+						exists = scope:new_holder.var:agot_pwl_direct	# new holder already has plw_direct --> prevnt conflicts, reassign pwl_direct
+					}
+				}
+
+				if = { # in case previous holder had a pre war liege, transfer data to new holder
+					limit = {
+						exists = scope:previous_holder.var:agot_pwl_direct
+						NOT = { scope:new_holder = scope:previous_holder.var:agot_pwl_direct }
+						scope:new_holder = {
+							NOR = {
+								liege = scope:previous_holder
+								has_character_flag = mw_changed_pwl_all
+							}
+						}
+					}
+
+					scope:new_holder = {
+						set_variable = { name = agot_pwl_direct value = scope:previous_holder.var:agot_pwl_direct }
+						set_variable = { name = agot_pwl_top value = scope:previous_holder.var:agot_pwl_top }
+						add_character_flag = { flag = mw_changed_pwl_all days = 1 }
+					}
+				}
+				if = { # if we have this case we probably usurped the title of our previous liege
+					limit = {
+						scope:new_holder.var:agot_pwl_direct ?= scope:previous_holder
+						scope:title.tier > scope:previous_holder.highest_held_title_tier # we need to be of higher rank
+					}
+
+					agot_set_mw_pwl_variables = { SET_SCOPE = scope:new_holder REF_SCOPE = scope:previous_holder }
+					agot_set_mw_pwl_variables = { SET_SCOPE = scope:previous_holder REF_SCOPE = scope:new_holder }
+				}
+				every_ruler = {
+					limit = {
+						save_temporary_scope_as = t_scope
+						exists = var:agot_pwl_direct
+						var:agot_pwl_direct = scope:previous_holder
+						NOT = { this = scope:new_holder }
+						trigger_if = { # if ruler is rebel leader only make new_holder agot_pwl_direct if ruler has lower tier
+							limit = {
+								scope:new_holder = {
+									any_owned_story = {
+										story_type = story_agot_mw_crown
+										NOR = {
+											is_target_in_variable_list = { name = mw_rebel_leader_list target = scope:t_scope }
+											is_target_in_variable_list = { name = mw_rebel_leader_backup_list target = scope:t_scope }
+										}
+									}
+								}
+							}
+
+							primary_title.tier < scope:title.tier
+						}
+						trigger_if = { # if previous_holder still has titles his tier must be lower than scope:title's | Btw I don't know why added it this way; if the goal was to not steal vassals from previous_holder, then this is a bad way...
+							limit = {
+								exists = scope:previous_holder.highest_held_title_tier
+								scope:previous_holder = { is_alive = yes }
+							}
+							scope:previous_holder.highest_held_title_tier < scope:title.tier
+						}
+					}
+
+					if = {
+						limit = {
+							NOR = {
+								this = scope:new_holder
+								var:agot_pwl_direct ?= scope:new_holder
+							}
+						}
+
+						agot_set_mw_pwl_variables = { SET_SCOPE = this REF_SCOPE = scope:new_holder }
+					}
+					else = {
+						remove_variable = agot_pwl_direct
+					}
+				}
+				if = { # To prevent crown from becoming independent if mw ends
+					limit = {
+						is_landed = yes
+						primary_title.tier < scope:title.tier
+						scope:mw_crown_story ?= {
+							NOR = {
+								is_target_in_variable_list = { name = mw_loyalist_list target = scope:previous_holder }
+								is_target_in_variable_list = { name = mw_neutral_list target = scope:previous_holder }
+								any_in_list = {
+									variable = mw_rebel_leader_list
+									any_owned_story = {
+										story_type = story_agot_mw_rebel
+										is_target_in_variable_list = { name = mw_rebel_supporter_list target = scope:previous_holder }
+									}
+								}
+							}
+						}
+					}
+					agot_mw_change_vassalage = { LIEGE = scope:new_holder }
+				}
+			}
+		}
+
+		scope:new_holder = { # Check 8: Scenarios where we want to remove agot_pwl_direct; we change it regardless of Check 7;
+			# Updates new_holder's agot_pwl_direct overwriting Check 7; if new_holder inherited title from previous_holder who also participated in the mw,
+			# but had a different stance, new_holder might be become de facto vassal of a liege who does not have the same stance; we do not want that; this fixes it;
+			if = {
+				limit = {
+					NOR = { # these requirements prevent it from being triggered when a char wins a mw and gains a title; in this case it would rebuild parts of the realm via this block, which we do not want!
+						agot_mw_crown_trigger = yes
+						agot_mw_rebel_leader_trigger = yes
+					}
+				}
+				agot_mw_fetch_crown_story_from_char_scope = { CHECK_CHAR = scope:new_holder }
+				agot_mw_fetch_rebel_story_from_char_scope = { CHECK_CHAR = scope:new_holder }
+				agot_assign_temp_vassalage_effect = { RULER = scope:new_holder SIDE_TARGET = scope:mw_rebel_story.story_owner STORY_SCOPE = scope:mw_rebel_story TARGET_LIST = mw_rebel_supporter_list }
+			}
+			############
+			scope:previous_holder = { save_scope_as = old_holder } # to work with the following on action which requires old_holder (is designed for on_title_lost)
+			trigger_event = { on_action = agot_on_title_lost_mega_wars_action }
+		}
+	}
+}
+
+agot_on_title_lost_mega_wars_action = {
+	trigger = {
+		OR = {
+			mw_on_action_remove_pwl_variables_trigger = yes
+			mw_action_remove_from_list_trigger = yes
+		}
+	}
+	effect = {
+		if = {
+			limit = { mw_on_action_remove_pwl_variables_trigger = yes }
+			remove_variable = agot_pwl_direct
+		}
+		if = {
+			limit = { mw_action_remove_from_list_trigger = yes }
+			every_ruler = {
+				limit = {
+					any_owned_story = {
+						OR = {
+							story_type = story_agot_mw_crown
+							story_type = story_agot_mw_rebel
+						}
+					}
+				}
+				every_owned_story = {
+					limit = {
+						OR = {
+							story_type = story_agot_mw_crown
+							story_type = story_agot_mw_rebel
+						}
+					}
+					remove_list_variable = { name = mw_loyalist_list target = root }
+					remove_list_variable = { name = mw_neutral_list target = root }
+					remove_list_variable = { name = mw_rebel_supporter_list target = root }
+				}
+			}
+		}
+	}
+}
+
+agot_title_destroyed_mega_wars_on_action = {
+	trigger = {
+		OR = {
+			any_ruler = {
+				save_temporary_scope_as = t_scope
+				var:agot_pwl_direct ?= root
+				highest_held_title_tier >= root.highest_held_title_tier
+				root = {
+					any_held_title = {
+						tier = root.highest_held_title_tier
+						NOT = { scope:t_scope.capital_county = { target_is_de_jure_liege_or_above = root.primary_title } }
+					}
+				}
+				is_independent_ruler = yes
+			}
+			AND = {
+				agot_mw_crown_trigger = yes
+				NOT = {
+					any_held_title = {
+						NOT = { this = scope:landed_title }
+						tier = scope:landed_title.tier
+					}
+				}
+			}
+		}
+	}
+	effect = {
+		# If a title was destroyed and its former ruler is deranked and is pre-war-liege to rulers no of same rank.
+		every_ruler = {
+			limit = {
+				save_temporary_scope_as = t_scope
+				var:agot_pwl_direct ?= root
+				highest_held_title_tier >= root.highest_held_title_tier
+				root = {
+					any_held_title = {
+						tier = root.highest_held_title_tier
+						NOT = { scope:t_scope.capital_county = { target_is_de_jure_liege_or_above = root.primary_title } }
+					}
+				}
+				is_independent_ruler = yes
+			}
+
+			save_scope_as = t_ruler
+
+			if = { # first try to make the de_jure_liege liege
+				limit = {
+					capital_county = {
+						any_this_title_or_de_jure_above = {
+							holder.highest_held_title_tier > scope:t_ruler.highest_held_title_tier
+							exists = this
+						}
+					}
+				}
+				capital_county = {
+					ordered_this_title_or_de_jure_above = {
+						limit = { holder.highest_held_title_tier > scope:t_ruler.highest_held_title_tier }
+
+						order_by = {
+							if = {
+								limit = { tier = tier_duchy }
+								add = 30
+							}
+							if = {
+								limit = { tier = tier_kingdom }
+								add = 20
+							}
+							if = {
+								limit = { tier = tier_empire }
+								add = 10
+							}
+						}
+
+						scope:t_ruler = {
+							agot_set_mw_pwl_variables = { SET_SCOPE = this REF_SCOPE = prev.holder }
+						}
+					}
+				}
+			}
+			else_if = { # else try to find the story owners and make them new agot_pwl_direct
+				limit = {
+					scope:t_ruler.highest_held_title_tier < tier_kingdom # block this for kingdom titles in general
+					any_ruler = {
+						any_owned_story = {
+							OR = {
+								AND = { # trigger for crown side
+									story_type = story_agot_mw_crown
+									OR = {
+										is_target_in_variable_list = { name = mw_loyalist_list target = scope:t_ruler }
+									}
+								}
+								AND = { # trigger for neutrals
+									story_type = story_agot_mw_crown
+									OR = {
+										is_target_in_variable_list = { name = mw_neutral_list target = scope:t_ruler }
+									}
+								}
+								AND = { # trigger for rebel side
+									story_type = story_agot_mw_rebel
+									OR = {
+										is_target_in_variable_list = { name = mw_rebel_supporter_list target = scope:t_ruler }
+										var:mw_crown_story_var.story_owner ?= scope:old_holder
+									}
+								}
+							}
+						}
+					}
+				}
+
+				random_ruler = {
+					limit = {
+						highest_held_title_tier > scope:t_ruler.highest_held_title_tier
+						any_owned_story = {
+							OR = {
+								AND = { # trigger for crown side
+									story_type = story_agot_mw_crown
+									OR = {
+										is_target_in_variable_list = { name = mw_loyalist_list target = scope:t_ruler }
+									}
+								}
+								AND = { # trigger for neutrals
+									story_type = story_agot_mw_crown
+									OR = {
+										is_target_in_variable_list = { name = mw_neutral_list target = scope:t_ruler }
+									}
+								}
+								AND = { # trigger for rebel side
+									story_type = story_agot_mw_rebel
+									OR = {
+										is_target_in_variable_list = { name = mw_rebel_supporter_list target = scope:t_ruler }
+										var:mw_crown_story_var.story_owner ?= scope:old_holder
+									}
+								}
+							}
+						}
+					}
+					scope:t_ruler = {
+						agot_set_mw_pwl_variables = { SET_SCOPE = this REF_SCOPE = prev }
+					}
+				}
+			}
+			else = { # else, after we did not find a new liege, remove the variables to prevent buggy behaviour
+				remove_variable = agot_pwl_direct
+				agot_mw_clear_vassal_contract_variables_effect = yes
+			}
+		}
+		####
+
+		if = {
+			limit = {
+				agot_mw_crown_trigger = yes
+				NOT = {
+					any_held_title = {
+						NOT = { this = scope:landed_title }
+						tier = scope:landed_title.tier
+					}
+				}
+			}
+
+			random_owned_story = {
+				limit = { story_type = story_agot_mw_crown }
+
+				save_scope_as = mw_crown_story
+			}
+			every_held_title = { # AGOT TODO what is this? I am saving a scope while fetching a bunch of entries? That doesn't seem to make sense. Turn it into random_?
+				limit = {
+					NOT = { this = scope:landed_title }
+					tier < scope:landed_title.tier
+				}
+				save_scope_as = root_titles_scope
+
+				scope:mw_crown_story = {
+					every_in_list = {
+						variable = mw_rebel_leader_list
+
+						primary_title = { save_scope_as = rebel_leader_list_title_scope }
+
+						if = {
+							limit = {
+								primary_title.tier >= scope:root_titles_scope.tier
+							}
+
+							add_to_list = remove_pwl_direct
+							add_to_list = stories_to_end_list
+						}
+
+						every_in_list = {
+							variable = mw_rebel_supporter_list
+
+							if = {
+								limit = { primary_title.tier >= scope:root_titles_scope.tier }
+
+								add_to_list = remove_pwl_direct
+							}
+						}
+					}
+				}
+			}
+
+			every_in_list = {
+				list = remove_pwl_direct
+
+				remove_variable = agot_pwl_direct
+			}
+
+			every_in_list = {
+				list = stories_to_end_list
+
+				every_owned_story = {
+					limit = {
+						story_type = story_agot_mw_rebel
+						var:mw_crown_story_var ?= scope:mw_crown_story
+						NOT = { story_owner = { is_at_war_with = root } } # Else we invalidate ongoing conflicts with crown
+					}
+
+					if = {
+						limit = { NOT = { var:mw_war_cb ?= flag:dissolution_war } }
+						set_variable = {
+							name = mw_outcome
+							value = flag:invalidated
+						}
+					}
+					set_variable = {
+						name = mw_status
+						value = flag:ending
+					}
+				}
+			}
+		}
+	}
+}
+
+agot_landless_pirate_vassal_manager = {
+	trigger = {
+		agot_is_landless_pirate_character = yes
+		is_independent_ruler = no
+	}
+	effect = {
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+		}
+		becomes_independent = { change = scope:change }
+		resolve_title_and_vassal_change = scope:change
+	}
+}
+
+# Destroy the NW when it converts to republic
+agot_destroy_nw_on_d_wall_lost = {
+	trigger = {
+		exists = title:k_the_wall.holder
+		this = title:k_the_wall.holder
+		OR = {
+			has_trait = nightswatch
+			has_trait = nightswatch_temp
+			has_trait = nightswatch_historical
+		}
+		government_has_flag = government_is_republic
+	}
+	effect = {
+		save_scope_as = the_lc
+		scope:the_lc = {
+			if = {
+				limit = {
+					has_multiple_players = no
+					is_ai = no
+					has_dlc_feature = landless_playable
+					exists = title:d_nw_landless_first_ranger.holder
+				}
+				set_player_character = title:d_nw_landless_first_ranger.holder
+			}
+		}
+		destroy_title = title:k_the_wall
+		if = {
+			limit = {
+				exists = title:d_the_wall.holder
+				this = title:d_the_wall.holder
+			}
+			destroy_title = title:d_the_wall
+		}
+		if = {
+			limit = {
+				scope:new_holder = { culture = { agot_is_wildling_culture = yes } }
+				any_held_title = {
+					tier = tier_county
+					any_neighboring_county = {
+						exists = holder
+						holder = { government_has_flag = government_is_republic }
+					}
+				}
+			}
+			primary_title = {
+				random_neighboring_county = {
+					limit = {
+						exists = holder
+						holder = { government_has_flag = government_is_republic }
+					}
+					holder = { save_scope_as = to_be_holder }
+				}
+			}
+			if = {
+				limit = { exists = scope:to_be_holder }
+				create_title_and_vassal_change = {
+					type = conquest
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				every_held_title = {
+					limit = { tier > tier_barony }
+					change_title_holder = {
+						holder = scope:to_be_holder
+						change = scope:change
+					}
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+		death = {
+			death_reason = death_execution
+			killer = scope:new_holder
+		}
+
+		if = {
+			limit = {
+				scope:new_holder = {
+					any_vassal_or_below = {
+						OR = {
+							has_trait = nightswatch
+							has_trait = nightswatch_temp
+							has_trait = nightswatch_historical
+						}
+					}
+				}
+			}
+			scope:new_holder = {
+				every_vassal_or_below = {
+					limit = {
+						OR = {
+							has_trait = nightswatch
+							has_trait = nightswatch_temp
+							has_trait = nightswatch_historical
+						}
+					}
+					create_title_and_vassal_change = {
+						type = revoked
+						save_scope_as = change
+						add_claim_on_loss = no
+					}
+					every_held_title = {
+						limit = { tier > tier_barony }
+						change_title_holder = {
+							holder = scope:new_holder
+							change = scope:change
+						}
+					}
+					resolve_title_and_vassal_change = scope:change
+				}
+			}
+		}
+
+		every_player = {
+			limit = {
+				culture = { NOT = { agot_is_wildling_culture = yes } }
+				NOT = { this = title:d_nw_landless_first_ranger.holder }
+			}
+			trigger_event = agot_nw_ranger_events.0108
+		}
+	}
+}
+
+agot_nw_conquered = {
+	trigger = {
+		exists = title:k_the_wall.holder
+		this = title:k_the_wall.holder
+		NOR = {
+			has_trait = nightswatch
+			has_trait = nightswatch_temp
+			has_trait = nightswatch_historical
+		}
+	}
+	effect = {
+		every_player = {
+			limit = {
+				culture = { NOT = { agot_is_wildling_culture = yes } }
+				NOT = { this = title:d_nw_landless_first_ranger.holder }
+			}
+			trigger_event = agot_nw_ranger_events.0108
+		}
+	}
+}
+
+agot_lc_kingsguard_destruction_check = {
+	trigger = {
+		scope:landed_title = title:d_kingsguard
+		title:h_the_iron_throne.var:kingsguard_lord_commander ?= {
+			OR = {
+				is_alive = no
+				NOT = {
+					has_trait = kingsguard
+				}
+			}
+		}
+	}
+	effect = {
+		title:h_the_iron_throne = {
+			remove_variable = kingsguard_lord_commander
+		}
+	}
+}
+
+on_diarch_change = {
+	on_actions = {
+		norvos_elderly_diarchy_manager
+	}
+}
+
+norvos_elderly_diarchy_manager = {
+	trigger = {
+		scope:reason = flag:invalid
+	}
+	effect = {
+		if = {
+			limit = {
+				title:d_norvos_high_priesthood.holder ?= scope:old_diarch
+			}
+			scope:old_diarch = {
+				depose = yes
+			}
+		}
+	}
+}

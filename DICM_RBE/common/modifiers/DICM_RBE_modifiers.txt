@@ -511,6 +511,11 @@ DICM_RBE_Ceasar_Husband = {
 
 DICM_RBE_Ceasar_Child = {
 	icon = DICM_RBE_ceasar_child
+	# Also grants 1% income upkeep for the top Caesar liege's legend.
+	# Eligibility and costs are implemented by DICM_RBE_legend_support_* scripts.
+
+	# Domain capacity
+	domain_limit = 100
 
 	# Personal resilience
 	health = 10
@@ -547,6 +552,8 @@ DICM_RBE_Ceasar_Master = {
 
 DICM_RBE_Ceasar_Official = {
 	icon = DICM_RBE_ceasar_official
+	# Also grants 1% income upkeep for the top Caesar liege's legend.
+	# Eligibility and costs are implemented by DICM_RBE_legend_support_* scripts.
 
 	# Personal resilience and suppressed fertility
 	health = 10

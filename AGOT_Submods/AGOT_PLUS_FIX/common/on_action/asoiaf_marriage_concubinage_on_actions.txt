@@ -1,0 +1,203 @@
+﻿# Characters getting married
+# root = Major partner of the marriage
+# scope:spouse = Minor partner of the marriage
+on_marriage = { # Will not fire from historical marriages
+	on_actions = {
+		asoiaf_canon_children_pregnancy_negation_removal_marriage
+		asoiaf_rhaenyra_personal_coa_marriage
+		asoiaf_joffrey_tommen_margaery_marriage #NO betrothal version, unfortunately
+		asoiaf_Targaryen_9_traits_change_marriage
+	}
+}
+
+asoiaf_canon_children_pregnancy_negation_removal_marriage = { #just in case some woman for some reason has it while unmarried, but someone else wants to marry her and have children
+	trigger = {
+		OR = {
+			root = { has_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+			scope:spouse = { has_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				root = { has_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+			}
+			root = { remove_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+		}
+		if = {
+			limit = {
+				scope:spouse = { has_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+			}
+			scope:spouse = { remove_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+		}
+	}
+}
+
+asoiaf_rhaenyra_personal_coa_marriage = {
+	trigger = {
+		root = {
+			NOT = { has_character_flag = has_personal_coa }
+			OR = {
+				has_inactive_trait = asoiaf_Targaryen_63_trait
+				dynasty ?= dynasty:dynn_Velaryon
+			}
+		}
+		scope:spouse = {
+			NOT = { has_character_flag = has_personal_coa }
+			OR = {
+				has_inactive_trait = asoiaf_Targaryen_63_trait
+				dynasty ?= dynasty:dynn_Velaryon
+			}
+		}
+	}
+	effect = {
+		# AGOT_PLUS_FIX: the retired Arryn rule and alternate personal COA are absent.
+		if = {
+			limit = { root = { has_inactive_trait = asoiaf_Targaryen_63_trait } }
+			agot_create_personal_coa_for_historical_ai = { ACTOR = root COA_KEY = rhaenrya_personal_coa }
+		}
+		if = {
+			limit = { scope:spouse = { has_inactive_trait = asoiaf_Targaryen_63_trait } }
+			agot_create_personal_coa_for_historical_ai = { ACTOR = scope:spouse COA_KEY = rhaenrya_personal_coa }
+		}
+	}
+}
+
+asoiaf_joffrey_tommen_margaery_marriage = {
+	trigger = {
+		NOT = { exists = global_var:asoiaf_joffrey_tommen_margaery_marriage_events }
+		AND = {
+			asoiaf_historical_trigger = yes
+			OR = {
+				root = character:Tyrell_14 #Margaery Tyrell (daughter of Mace)
+				scope:spouse = character:Tyrell_14
+			}
+			OR = {
+				OR = {
+					root = character:Baratheon_5 #Joffrey I Baratheon
+					scope:spouse = character:Baratheon_5
+				}
+				OR = {
+					root = character:Baratheon_7 #Tommen I Baratheon
+					scope:spouse = character:Baratheon_7
+				}
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				character:Lannister_6 ?= {
+					is_alive = yes #Cersei is alive
+					OR = {
+						is_courtier_of = character:Baratheon_5
+						is_courtier_of = character:Baratheon_7
+						is_vassal_of = character:Baratheon_5
+						is_vassal_of = character:Baratheon_7
+					}
+				}
+			}
+			character:Lannister_6 = {
+				set_relation_rival = { reason = asoiaf_cersei_margaery_rival_desc target = character:Tyrell_14 }
+			}
+		}
+		if = {
+			limit = {
+				character:Stark_8 ?= { #Sansa Stark (daughter of Eddard)
+					is_alive = yes
+					OR = {
+						is_courtier_of = character:Baratheon_5
+						is_courtier_of = character:Baratheon_7
+						is_hostage_of = character:Baratheon_5
+						is_hostage_of = character:Baratheon_7
+					}
+				}
+			}
+			character:Tyrell_14 = {
+				set_relation_friend = { reason = asoiaf_margaery_sansa_friend_desc target = character:Stark_8 }
+			}
+		}
+		set_global_variable = asoiaf_joffrey_tommen_margaery_marriage_events #can only happen once
+	}
+}
+
+asoiaf_Targaryen_9_traits_change_marriage = {
+	trigger = {
+		NOT = { exists = global_var:asoiaf_Targaryen_9_traits_change_variable }
+		OR = {
+			AND = { #dominant partner is Daenerys
+				root = { has_inactive_trait = asoiaf_Targaryen_9_trait } #Daenerys
+				NOT = {
+					scope:spouse = { has_inactive_trait = asoiaf_Targaryen_8_trait } #spouse cannot be Viserys, as he would never have let her grow like this
+				}
+			}
+			AND = { #dominant partner is Daenerys' spouse
+				scope:spouse = { has_inactive_trait = asoiaf_Targaryen_9_trait } #Daenerys
+				NOT = {
+					root = { has_inactive_trait = asoiaf_Targaryen_8_trait } #spouse cannot be Viserys, as he would never have let her grow like this
+				}
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				AND = { #dominant partner is Daenerys
+					root = { has_inactive_trait = asoiaf_Targaryen_9_trait } #Daenerys
+					NOT = {
+						scope:spouse = { has_inactive_trait = asoiaf_Targaryen_8_trait } #spouse cannot be Viserys, as he would never have let her grow like this
+					}
+				}
+			}
+			root = {
+				trigger_event = { id = asoiaf_maintenance_events.0002 days = 180 } #half a year after marriage (will include custom localisation for if her spouse dies beforehand)
+			}
+		}
+		if = {
+			limit = {
+				AND = { #dominant partner is Daenerys' spouse
+					scope:spouse = { has_inactive_trait = asoiaf_Targaryen_9_trait } #Daenerys
+					NOT = {
+						root = { has_inactive_trait = asoiaf_Targaryen_8_trait } #spouse cannot be Viserys, as he would never have let her grow like this
+					}
+				}
+			}
+			scope:spouse = {
+				trigger_event = { id = asoiaf_maintenance_events.0002 days = 180 } #half a year after marriage (will include custom localisation for if her spouse dies beforehand)
+			}
+		}
+	}
+}
+
+# Characters get divorced in any way
+# root = character initiating the divorce
+# scope:spouse = the divorced spouse
+# scope:reason = flag:script or flag:faith
+on_divorce = { # Will not fire from historical divorces
+	on_actions = {
+		asoiaf_canon_children_pregnancy_negation_removal_divorce
+	}
+}
+
+asoiaf_canon_children_pregnancy_negation_removal_divorce = {
+	trigger = {
+		OR = {
+			root = { has_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+			scope:spouse = { has_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				root = { has_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+			}
+			root = { remove_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+		}
+		if = {
+			limit = {
+				scope:spouse = { has_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+			}
+			scope:spouse = { remove_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+		}
+	}
+}

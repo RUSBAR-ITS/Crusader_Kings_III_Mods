@@ -1,0 +1,260 @@
+﻿asoiaf_jaimes_sword_template = {
+	can_equip = {
+		always = yes
+	}
+
+	# can this character benefit from the full modifiers of the artifact?
+	can_benefit = {
+	}
+
+	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
+	fallback = {
+	}
+
+	unique = yes
+	ai_score = {
+		value = 100
+	}
+}
+
+asoiaf_targaryen_falchion_template = {
+	can_equip = {
+		always = yes
+	}
+
+	# can this character benefit from the full modifiers of the artifact?
+	can_benefit = {
+	}
+
+	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
+	fallback = {
+	}
+
+	unique = yes
+	ai_score = {
+		value = 100
+	}
+}
+
+asoiaf_krakenfall_template = {
+	can_equip = {
+		always = yes
+	}
+
+	# can this character benefit from the full modifiers of the artifact?
+	can_benefit = {
+	}
+
+	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
+	fallback = {
+	}
+
+	unique = yes
+	ai_score = {
+		value = 100
+		if = {
+			limit = {
+				house = house:house_BaratheonKL
+				OR = {
+					any_artifact = { has_variable = asoiaf_is_hearteater } #members of House Baratheon of King's Landing would prefer to wield either of these three over Krakenfall, even if Krakenfall is of higher quality
+					any_artifact = { has_variable = widows_wail_artifact }
+					any_artifact = { has_variable = oathkeeper_artifact }
+				}
+			}
+			add = -100
+		}
+	}
+}
+
+asoiaf_red_priest_necklace_template = {
+	can_equip = {
+		always = yes
+	}
+
+	# can this character benefit from the full modifiers of the artifact?
+	can_benefit = {
+		OR = {
+			has_trait = lifestyle_mystic
+			has_trait = witch
+		}
+	}
+
+	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
+	fallback = {
+		#high_valyrian_opinion = 10 #change later to asshaii_opinion = 10
+		dread_baseline_add = 5
+	}
+
+	unique = yes
+	ai_score = {
+		value = 100
+	}
+}
+
+asoiaf_aerys_II_crown_template = {
+	can_equip = {
+		agot_can_wear_crown_trigger = yes
+	}
+
+	# can this character benefit from the full modifiers of the artifact?
+	can_benefit = {
+		always = yes
+	}
+
+	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
+	fallback = {
+	}
+
+	unique = yes
+	ai_score = {
+		value = 101 #1 more than the vanilla AGOT Stannis crown
+		if = { #if you're not Valyrian or Rhllorist, then don't wear it
+			limit = {
+				NOR = {
+					culture = { has_cultural_pillar = heritage_valyrian }
+					religion = religion:the_rhllor_religion
+				}
+			}
+			add = -10000
+		}
+		if = {
+			limit = {
+				any_equipped_character_artifact = {
+					has_variable = stannis_crown_artifact
+					NOT = { has_variable = asoiaf_aerys_II_crown_artefact }
+				}
+			}
+			add = 100000 #In AGOT+'s modcanon, Stannis wears Aerys II's crown, not vanilla AGOT's crown
+		}
+	}
+}
+
+asoiaf_stark_throne_template = {
+	can_equip = {
+		always = yes
+	}
+
+	# can this character benefit from the full modifiers of the artifact?
+	can_benefit = {
+	}
+
+	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
+	fallback = {
+	}
+
+	unique = yes
+}
+
+asoiaf_radzig_sword_template = {
+	can_equip = {
+		always = yes
+	}
+
+	# can this character benefit from the full modifiers of the artifact?
+	can_benefit = {
+	}
+
+	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
+	fallback = {
+	}
+
+	unique = yes
+	ai_score = {
+		value = 100
+	}
+}
+
+asoiaf_hound_armour_template = {
+	can_equip = {
+		always = yes
+	}
+
+	# can this character benefit from the full modifiers of the artifact?
+	can_benefit = {
+	}
+
+	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
+	fallback = {
+	}
+
+	unique = yes
+	ai_score = {
+		value = 100
+		#if = { #characters close to high prestige rulers would prefer not to wear such grubby armour
+		#	limit = {
+		#		this.any_close_family_member = { highest_held_title_tier >= tier_kingdom }
+		#	}
+		#	add = -75
+		#}
+		if = { #Sandor likes his armour
+			limit = {
+				exists = character:Clegane_4
+				this = character:Clegane_4
+			}
+			add = 100
+		}
+	}
+}
+
+asoiaf_needle_template = {
+	can_equip = {
+		always = yes
+	}
+
+	# can this character benefit from the full modifiers of the artifact?
+	can_benefit = {
+	}
+
+	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
+	fallback = {
+	}
+
+	unique = yes
+	ai_score = {
+		value = 50 #normal people prefer other swords
+		if = { #Arya prefers Needle, but would wield something better like Valryian steel if available
+			limit = {
+				has_inactive_trait = asoiaf_Stark_9_trait
+			}
+			add = 50
+		}
+	}
+}
+
+asoiaf_hearteater_template = {
+	can_equip = {
+		always = yes
+	}
+
+	# can this character benefit from the full modifiers of the artifact?
+	can_benefit = {
+	}
+
+	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
+	fallback = {
+	}
+
+	unique = yes
+	ai_score = {
+		value = 100
+	}
+}
+
+asoiaf_red_vipers_spear_template = {
+	can_equip = {
+		always = yes
+	}
+
+	# can this character benefit from the full modifiers of the artifact?
+	can_benefit = {
+	}
+
+	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
+	fallback = {
+	}
+
+	unique = yes
+	ai_score = {
+		value = 100
+	}
+}

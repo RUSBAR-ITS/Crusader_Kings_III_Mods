@@ -1,0 +1,274 @@
+﻿asoiaf_westerosi_southern_portrait_trigger = {
+	exists = this
+	OR = {
+		asoiaf_andal_portrait_trigger = yes
+		asoiaf_crownlander_portrait_trigger = yes
+		asoiaf_valeman_portrait_trigger = yes
+		asoiaf_riverman_portrait_trigger = yes
+		asoiaf_westerlander_portrait_trigger = yes
+		asoiaf_reachman_portrait_trigger = yes
+		asoiaf_stormlander_portrait_trigger = yes
+	}
+}
+
+asoiaf_andal_portrait_trigger = {
+	exists = this
+	OR = {
+		this.culture = culture:andal
+		this.culture = {
+			any_parent_culture_or_above = {
+				this = culture:andal
+			}
+		}
+	}
+	OR = { #all clothing graphics of the main culture(s)
+		this.culture = { has_clothing_gfx = western_clothing_gfx }
+		this.culture = { has_clothing_gfx = andal_clothing_gfx }
+	}
+}
+
+asoiaf_crownlander_portrait_trigger = {
+	exists = this
+	OR = {
+		this.culture = culture:crownlander
+		this.culture = {
+			any_parent_culture_or_above = {
+				this = culture:crownlander
+			}
+		}
+	}
+	OR = { #all clothing graphics of the main culture(s)
+		this.culture = { has_clothing_gfx = western_clothing_gfx }
+		this.culture = { has_clothing_gfx = andal_clothing_gfx }
+		this.culture = { has_clothing_gfx = crownlander_clothing_gfx }
+	}
+}
+
+asoiaf_valeman_portrait_trigger = {
+	exists = this
+	OR = {
+		this.culture = culture:valeman_upper
+		this.culture = culture:valeman_finger
+		this.culture = culture:valeman_main
+		this.culture = {
+			any_parent_culture_or_above = {
+				OR = {
+					this = culture:valeman_upper
+					this = culture:valeman_finger
+					this = culture:valeman_main
+				}
+			}
+		}
+	}
+	OR = { #all clothing graphics of the main culture(s)
+		this.culture = { has_clothing_gfx = western_clothing_gfx }
+		this.culture = { has_clothing_gfx = andal_clothing_gfx }
+		this.culture = { has_clothing_gfx = valeman_clothing_gfx }
+		this.culture = { has_clothing_gfx = valeman_upper_clothing_gfx }
+	}
+}
+
+asoiaf_riverman_portrait_trigger = {
+	exists = this
+	OR = {
+		this.culture = culture:riverman_main
+		this.culture = {
+			any_parent_culture_or_above = {
+				this = culture:riverman_main
+			}
+		}
+	}
+	OR = { #all clothing graphics of the main culture(s)
+		this.culture = { has_clothing_gfx = western_clothing_gfx }
+		this.culture = { has_clothing_gfx = riverlander_clothing_gfx }
+	}
+}
+
+asoiaf_westerlander_portrait_trigger = {
+	exists = this
+	OR = {
+		this.culture = culture:westerman_main
+		this.culture = {
+			any_parent_culture_or_above = {
+				this = culture:westerman_main
+			}
+		}
+	}
+	OR = { #all clothing graphics of the main culture(s)
+		this.culture = { has_clothing_gfx = western_clothing_gfx }
+		this.culture = { has_clothing_gfx = westerman_clothing_gfx }
+	}
+}
+
+asoiaf_reachman_portrait_trigger = {
+	exists = this
+	OR = {
+		this.culture = culture:reachman
+		this.culture = culture:honeywiner
+		this.culture = culture:vineman
+		this.culture = culture:shieldman
+		this.culture = {
+			any_parent_culture_or_above = {
+				OR = {
+					this = culture:reachman
+					this = culture:honeywiner
+					this = culture:vineman
+					this = culture:shieldman
+				}
+			}
+		}
+	}
+	OR = { #all clothing graphics of the main culture(s)
+		this.culture = { has_clothing_gfx = western_clothing_gfx }
+		this.culture = { has_clothing_gfx = andal_clothing_gfx }
+		this.culture = { has_clothing_gfx = reachman_clothing_gfx }
+		this.culture = { has_clothing_gfx = honeywiner_clothing_gfx }
+		this.culture = { has_clothing_gfx = vineman_clothing_gfx }
+		this.culture = { has_clothing_gfx = shieldman_clothing_gfx }
+		this.culture = { has_clothing_gfx = dde_hre_clothing_gfx }
+		this.culture = { has_clothing_gfx = french_clothing_gfx }
+		this.culture = { has_clothing_gfx = iberian_christian_clothing_gfx }
+	}
+}
+
+asoiaf_stormlander_portrait_trigger = {
+	exists = this
+	OR = {
+		this.culture = culture:stormlander_main
+		this.culture = culture:marcher
+		this.culture = {
+			any_parent_culture_or_above = {
+				OR = {
+					this = culture:stormlander_main
+					this = culture:marcher
+				}
+			}
+		}
+	}
+	OR = { #all clothing graphics of the main culture(s)
+		this.culture = { has_clothing_gfx = western_clothing_gfx }
+		this.culture = { has_clothing_gfx = andal_clothing_gfx }
+		this.culture = { has_clothing_gfx = stormlander_clothing_gfx }
+		this.culture = { has_clothing_gfx = marcher_clothing_gfx }
+		this.culture = { has_clothing_gfx = iberian_christian_clothing_gfx }
+	}
+}
+
+################
+### NORTHERN ###
+################
+
+asoiaf_northern_portrait_trigger = {
+	exists = this
+	OR = {
+		this.culture = culture:first_man
+		this.culture = culture:northman
+		this.culture = culture:northern_clan #adjust later
+		this.culture = culture:barrowman
+		this.culture = culture:wolfswood_clansman
+		this.culture = culture:bearman
+		this.culture = culture:crannogman
+		this.culture = culture:krakenman
+		this.culture = culture:harborman
+		this.culture = culture:sisterman
+		this.culture = culture:clawman
+		this.culture = {
+			any_parent_culture_or_above = {
+				OR = {
+					this = culture:first_man
+					this = culture:northman
+					this = culture:northern_clan #adjust later
+					this = culture:barrowman
+					this = culture:wolfswood_clansman
+					this = culture:bearman
+					this = culture:crannogman
+					this = culture:krakenman
+					this = culture:harborman
+					this = culture:sisterman
+					this = culture:clawman
+				}
+				NOT = { this = culture:skagosi } #closer to wildlings than northmen
+			}
+			NOR = {
+				has_cultural_pillar = heritage_ironman
+				has_cultural_pillar = heritage_wildling
+				this = culture:skagosi #closer to wildlings than northmen
+			}
+		}
+	}
+	OR = { #all clothing graphics of the main culture(s)
+		this.culture = { has_clothing_gfx = first_man_clothing_gfx }
+		this.culture = { has_clothing_gfx = northern_clothing_gfx }
+		this.culture = { has_clothing_gfx = northman_clothing_gfx }
+		this.culture = { has_clothing_gfx = northern_clan_clothing_gfx } #adjust later
+		this.culture = { has_clothing_gfx = wolfswood_clansman_clothing_gfx }
+		this.culture = { has_clothing_gfx = krakenman_clothing_gfx }
+		this.culture = { has_clothing_gfx = harborman_clothing_gfx }
+		this.culture = { has_clothing_gfx = sisterman_clothing_gfx }
+		this.culture = { has_clothing_gfx = clawman_clothing_gfx }
+	}
+}
+
+################
+### IRONBORN ###
+################
+
+asoiaf_ironborn_portrait_trigger = {
+	exists = this
+	OR = {
+		this.culture = culture:ironborn
+		this.culture = culture:greenborn
+		this.culture = {
+			any_parent_culture_or_above = {
+				OR = {
+					this = culture:ironborn
+					this = culture:greenborn
+				}
+			}
+		}
+	}
+	OR = { #all clothing graphics of the main culture(s)
+		this.culture = { has_clothing_gfx = ironborn_clothing_gfx }
+		this.culture = { has_clothing_gfx = fp1_norse_clothing_gfx }
+		this.culture = { has_clothing_gfx = northern_clothing_gfx }
+		this.culture = { has_clothing_gfx = greenborn_clothing_gfx }
+	}
+}
+
+###############
+### DORNISH ###
+###############
+
+asoiaf_dornish_portrait_trigger = {
+	exists = this
+	OR = {
+		this.culture = culture:dornish_andal
+		this.culture = culture:greenblood
+		this.culture = culture:salt_dornish
+		this.culture = culture:sand_dornish
+		this.culture = culture:stone_dornish
+		this.culture = {
+			any_parent_culture_or_above = {
+				OR = {
+					this = culture:dornish_andal
+					this = culture:greenblood
+					this = culture:salt_dornish
+					this = culture:sand_dornish
+					this = culture:stone_dornish
+				}
+			}
+		}
+	}
+	OR = { #all clothing graphics of the main culture(s)
+		this.culture = { has_clothing_gfx = stone_dornish_clothing_gfx }
+		this.culture = { has_clothing_gfx = iberian_muslim_clothing_gfx }
+		this.culture = { has_clothing_gfx = stormlander_clothing_gfx }
+		this.culture = { has_clothing_gfx = mena_clothing_gfx }
+		this.culture = { has_clothing_gfx = andal_clothing_gfx }
+		this.culture = { has_clothing_gfx = salt_dornish_clothing_gfx }
+		this.culture = { has_clothing_gfx = rhoynish_clothing_gfx }
+		this.culture = { has_clothing_gfx = sand_dornish_clothing_gfx }
+		this.culture = { has_clothing_gfx = afr_berber_clothing_gfx }
+		this.culture = { has_clothing_gfx = indian_clothing_gfx }
+	}
+}

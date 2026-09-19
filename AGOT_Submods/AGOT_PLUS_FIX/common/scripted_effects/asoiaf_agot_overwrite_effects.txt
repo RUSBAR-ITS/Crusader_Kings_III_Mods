@@ -1,0 +1,1673 @@
+﻿agot_scenario_rr_toj_create_baby_snow_effect = {
+	create_character = {
+		age = 0
+		random_traits = no
+		#mother = character:Stark_5
+		real_father = character:Targaryen_3
+		location = character:Stark_5.location
+		gender_female_chance = {
+			value = agot_canon_children_male_female_chance
+		}
+		faith = faith:old_gods_wnw
+		culture = culture:northman
+		dynasty = none
+		trait = bastard
+		random_traits = no
+		save_scope_as = baby_snow
+	}
+	hidden_effect = {
+		scope:baby_snow = {
+			if = {
+				limit = { is_male = yes }
+				change_first_name = "Jon"
+			}
+			if = {
+				limit = { is_female = yes }
+				change_first_name = "Joanna"
+			}
+			copy_inheritable_appearance_from = character:Stark_67
+			set_global_variable = asoiaf_canon_children_Stark_7_born_variable #AGOT+ added, due to the bug that one guy reported of 2 Jons
+			if = { #AGOT+ added; Canon Children effects
+				limit = {
+					is_male = yes
+					asoiaf_canon_children_enabled_trigger = yes
+				}
+				asoiaf_canon_children_Stark_7_birth_effect_scripted = yes
+			}
+			if = { #AGOT+ added; for those with Alternative DNA but not Canon Children
+				limit = {
+					#is_male = yes
+					has_game_rule = asoiaf_new_dnas_north_rule_on
+				}
+				copy_inheritable_appearance_from = character:Stark_asoiaf_7
+				make_trait_inactive = asoiaf_Stark_7_trait #for the hairstyles
+			}
+			make_trait_inactive = surname_snow #Gives bastard surname
+			set_real_mother = character:Stark_5
+			make_trait_inactive = dark_brown_hair
+			make_trait_inactive = grey_eyes
+		}
+		# AGOT_PLUS_FIX stage12: Retired title metadata has no readers; keep baby_snow creation and duplicate-birth protection.
+		# title:h_the_iron_throne = {
+			# set_variable = {
+				# name = agot_faegon_jon_snow_char
+				# value = scope:baby_snow
+			# }
+			# set_variable = {
+				# name = agot_faegon_jae_birth_year
+				# value = current_year
+			# }
+		# }
+		if = {
+			limit = { exists = character:Stark_5.liege_or_court_owner }
+			character:Stark_5.liege_or_court_owner = { add_courtier ?= scope:baby_snow }
+		}
+	}
+}
+
+agot_adjust_adult_traits_posthistory_effect = { #absolutely no reason why this should exist; done so that AGOT+'s traits game rule can apply properly to children without traits being purged
+	
+}
+
+agot_spawn_vermax_effect = {
+	create_character = {
+		name = "Vermax"
+		gender = male
+		culture = culture:dragon_culture
+		faith = faith:valyrian_pan_freehold
+		location = location
+		age = 0
+		mother = character:dragon_syrax
+		dynasty = none
+
+		trait = dragon
+		trait = education_dragon_3
+		trait = dragon_solitary
+		trait = dragon_aggressive
+		trait = dragon_impulsive
+
+		random_traits = no
+
+		save_scope_as = dragon
+
+		after_creation = {
+			set_variable = {
+				name = dragon_gender_hidden
+				value = 1
+			}
+
+			create_story = story_dragon_alive
+
+			# Needed for visuals
+			set_variable = {
+				name = dragon_age
+				value = age
+			}
+			set_variable = {
+				name = dragon_size
+				value = 0
+			}
+			set_variable = {
+				name = dragon_size_base
+				value = 0
+			}
+
+			#Set dragon visual gene ranges here.
+			agot_back_apply_dragon_aging_effect = yes
+
+			#Drogon Appearance
+			set_variable = {
+				name = gene_dragon_primary_color_hue
+				value = 0.2
+			}
+		
+			set_variable = {
+				name = gene_dragon_primary_color_value
+				value = 0.68
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_hue
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_value
+				value = 0.51
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_hue
+				value = 0.063
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_value
+				value = 0.447
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_hue
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_value
+				value = 0.53
+			}
+		
+			set_variable = {
+				name = gene_dragon_brow_width
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_cheek_width
+				value = 0.6
+			}
+		
+			set_variable = {
+				name = gene_dragon_chin_profile
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_crest_depth
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_head_roundness
+				value = 0.05
+			}
+
+			set_variable = {
+				name = gene_dragon_horns_eyebrow
+				value = 0.263
+			}
+		
+			set_variable = {
+				name = gene_dragon_horns_eyebrow_length
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_template #Small
+				value = 10
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_value
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_jaw_width
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_height
+				value = 0.475
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_width
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_old_neck
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_outer_brow_height
+				value = 0.576
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_height
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_length
+				value = 0.45
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_profile
+				value = 0.25
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_width
+				value = 0.15
+			}
+		
+			set_variable = {
+				name = gene_dragon_upper_jaw_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_center_fin_size
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_back_spike_size
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_spike_size
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_side_fin_size
+				value = 0.6
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_end_width
+				value = 0.569
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_length
+				value = 0.25
+			}
+		
+			set_variable = {
+				name = gene_dragon_tail_length
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = primary_color_grading
+				value = flag:lighter
+			}
+		
+			set_variable = {
+				name = primary_color
+				value = flag:green
+			}
+
+			# Create and pass the variables to the story cycle
+			agot_dragon_transfer_vars_to_story_cycle_effect = { DRAGON = scope:dragon }
+		}
+	}
+}
+
+agot_spawn_drogon_effect = {
+	create_character = {
+		name = "Drogon"
+		gender = male
+		culture = culture:dragon_culture
+		faith = faith:valyrian_pan_freehold
+		location = location
+		age = 0
+		mother = character:dragon_dreamfyre
+		dynasty = none
+
+		trait = dragon
+		trait = education_dragon_2
+		trait = dragon_destined
+		trait = dragon_physique_good_3
+		trait = dragon_defiant
+		trait = dragon_voracious
+		trait = dragon_impulsive
+
+		random_traits = no
+
+		save_scope_as = dragon
+
+		after_creation = {
+			set_variable = {
+				name = dragon_gender_hidden
+				value = 1
+			}
+
+			create_story = story_dragon_alive
+
+			# Needed for visuals
+			set_variable = {
+				name = dragon_age
+				value = age
+			}
+			set_variable = {
+				name = dragon_size
+				value = 0
+			}
+			set_variable = {
+				name = dragon_size_base
+				value = 0
+			}
+
+			#Set dragon visual gene ranges here.
+			agot_back_apply_dragon_aging_effect = yes
+
+			#Drogon Appearance
+			set_variable = {
+				name = gene_dragon_primary_color_hue
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_primary_color_value
+				value = 0.95
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_hue
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_value
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_hue
+				value = 0.05
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_value
+				value = 0.68
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_hue
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_value
+				value = 0.85
+			}
+		
+			set_variable = {
+				name = gene_dragon_brow_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_cheek_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_chin_profile
+				value = 0.2
+			}
+		
+			set_variable = {
+				name = gene_dragon_crest_depth
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_head_roundness
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_horns_eyebrow_length
+				value = 0.48
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_template #Dreamfyre
+				value = 5
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_value
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_jaw_width
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_height
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_width
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_old_neck
+				value = 0.2
+			}
+		
+			set_variable = {
+				name = gene_dragon_outer_brow_height
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_height
+				value = 0.6
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_length
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_profile
+				value = 0.75
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_width
+				value = 0.3
+			}
+		
+			set_variable = {
+				name = gene_dragon_upper_jaw_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_center_fin_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_back_spike_size
+				value = 0.25
+			}
+		
+			set_variable = {
+				name = gene_dragon_horns_eyebrow
+				value = 0.024
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_spike_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_side_fin_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_end_width
+				value = 0.15
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_length
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_tail_length
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = primary_color_grading
+				value = flag:darkest
+			}
+		
+			set_variable = {
+				name = primary_color
+				value = flag:black
+			}
+
+			# Create and pass the variables to the story cycle
+			agot_dragon_transfer_vars_to_story_cycle_effect = { DRAGON = scope:dragon }
+		}
+	}
+}
+
+agot_spawn_adult_drogon_effect = {
+	create_character = {
+		name = "Drogon"
+		gender = male
+		culture = culture:dragon_culture
+		faith = faith:valyrian_pan_freehold
+		location = location
+		age = 2
+		mother = character:dragon_dreamfyre
+		dynasty = none
+
+		trait = dragon
+		trait = education_dragon_2
+		trait = dragon_destined
+		trait = dragon_physique_good_3
+		trait = dragon_defiant
+		trait = dragon_voracious
+		trait = dragon_impulsive
+
+		random_traits = no
+
+		save_scope_as = dragon
+
+		after_creation = {
+			set_variable = {
+				name = dragon_gender_hidden
+				value = 1
+			}
+
+			create_story = story_dragon_alive
+
+			# Needed for visuals
+			set_variable = {
+				name = dragon_age
+				value = age
+			}
+
+			#Set dragon visual gene ranges here.
+			agot_back_apply_dragon_aging_effect = yes
+
+			#Drogon Appearance
+			set_variable = {
+				name = gene_dragon_primary_color_hue
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_primary_color_value
+				value = 0.95
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_hue
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_value
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_hue
+				value = 0.05
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_value
+				value = 0.68
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_hue
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_value
+				value = 0.85
+			}
+		
+			set_variable = {
+				name = gene_dragon_brow_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_cheek_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_chin_profile
+				value = 0.2
+			}
+		
+			set_variable = {
+				name = gene_dragon_crest_depth
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_head_roundness
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_horns_eyebrow_length
+				value = 0.48
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_template #Dreamfyre
+				value = 5
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_value
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_jaw_width
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_height
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_width
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_old_neck
+				value = 0.2
+			}
+		
+			set_variable = {
+				name = gene_dragon_outer_brow_height
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_height
+				value = 0.6
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_length
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_profile
+				value = 0.75
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_width
+				value = 0.3
+			}
+		
+			set_variable = {
+				name = gene_dragon_upper_jaw_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_center_fin_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_back_spike_size
+				value = 0.25
+			}
+		
+			set_variable = {
+				name = gene_dragon_horns_eyebrow
+				value = 0.024
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_spike_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_side_fin_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_end_width
+				value = 0.15
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_length
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_tail_length
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = primary_color_grading
+				value = flag:darkest
+			}
+		
+			set_variable = {
+				name = primary_color
+				value = flag:black
+			}
+
+			# Create and pass the variables to the story cycle
+			agot_dragon_transfer_vars_to_story_cycle_effect = { DRAGON = scope:dragon }
+		}
+	}
+}
+
+agot_spawn_rhaegal_effect = {
+	create_character = {
+		name = "Rhaegal"
+		gender = female
+		culture = culture:dragon_culture
+		faith = faith:valyrian_pan_freehold
+		location = location
+		age = 0
+		mother = character:dragon_dreamfyre
+		dynasty = none
+
+		trait = dragon
+		trait = education_dragon_3
+		trait = dragon_destined
+		trait = dragon_physique_good_2
+		trait = dragon_impulsive
+		trait = dragon_accepting
+		trait = dragon_cooperative
+
+		random_traits = no
+
+		save_scope_as = dragon
+
+		after_creation = {
+			set_variable = {
+				name = dragon_gender_hidden
+				value = 1
+			}
+
+			create_story = story_dragon_alive
+
+			# Needed for visuals
+			set_variable = {
+				name = dragon_age
+				value = age
+			}
+
+			#Set dragon visual gene ranges here.
+			agot_back_apply_dragon_aging_effect = yes
+
+			#Drogon Appearance
+			set_variable = {
+				name = gene_dragon_primary_color_hue
+				value = 0.45
+			}
+		
+			set_variable = {
+				name = gene_dragon_primary_color_value
+				value = 0.81
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_hue
+				value = 0.15
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_value
+				value = 0.69
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_hue
+				value = 0.04
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_value
+				value = 0.68
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_hue
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_value
+				value = 0.8
+			}
+		
+			set_variable = {
+				name = gene_dragon_brow_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_cheek_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_chin_profile
+				value = 0.2
+			}
+		
+			set_variable = {
+				name = gene_dragon_crest_depth
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_head_roundness
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_horns_eyebrow_length
+				value = 0.48
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_template #Dreamfyre
+				value = 5
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_value
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_jaw_width
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_height
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_width
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_old_neck
+				value = 0.2
+			}
+		
+			set_variable = {
+				name = gene_dragon_outer_brow_height
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_height
+				value = 0.6
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_length
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_profile
+				value = 0.75
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_width
+				value = 0.3
+			}
+		
+			set_variable = {
+				name = gene_dragon_upper_jaw_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_center_fin_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_back_spike_size
+				value = 0.25
+			}
+		
+			set_variable = {
+				name = gene_dragon_horns_eyebrow
+				value = 0.024
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_spike_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_side_fin_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_end_width
+				value = 0.15
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_length
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_tail_length
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = primary_color_grading
+				value = flag:darkest
+			}
+		
+			set_variable = {
+				name = primary_color
+				value = flag:green
+			}
+
+			# Create and pass the variables to the story cycle
+			agot_dragon_transfer_vars_to_story_cycle_effect = { DRAGON = scope:dragon }
+		}
+	}
+}
+
+agot_spawn_adult_rhaegal_effect = {
+	create_character = {
+		name = "Rhaegal"
+		gender = female
+		culture = culture:dragon_culture
+		faith = faith:valyrian_pan_freehold
+		location = location
+		age = 2
+		mother = character:dragon_dreamfyre
+		dynasty = none
+
+		trait = dragon
+		trait = education_dragon_3
+		trait = dragon_destined
+		trait = dragon_physique_good_2
+		trait = dragon_impulsive
+		trait = dragon_accepting
+		trait = dragon_cooperative
+
+		random_traits = no
+
+		save_scope_as = dragon
+
+		after_creation = {
+			set_variable = {
+				name = dragon_gender_hidden
+				value = 1
+			}
+
+			create_story = story_dragon_alive
+
+			# Needed for visuals
+			set_variable = {
+				name = dragon_age
+				value = age
+			}
+
+			#Set dragon visual gene ranges here.
+			agot_back_apply_dragon_aging_effect = yes
+
+			#Drogon Appearance
+			set_variable = {
+				name = gene_dragon_primary_color_hue
+				value = 0.45
+			}
+		
+			set_variable = {
+				name = gene_dragon_primary_color_value
+				value = 0.81
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_hue
+				value = 0.15
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_value
+				value = 0.69
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_hue
+				value = 0.04
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_value
+				value = 0.68
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_hue
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_value
+				value = 0.8
+			}
+		
+			set_variable = {
+				name = gene_dragon_brow_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_cheek_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_chin_profile
+				value = 0.2
+			}
+		
+			set_variable = {
+				name = gene_dragon_crest_depth
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_head_roundness
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_horns_eyebrow_length
+				value = 0.48
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_template #Dreamfyre
+				value = 5
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_value
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_jaw_width
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_height
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_width
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_old_neck
+				value = 0.2
+			}
+		
+			set_variable = {
+				name = gene_dragon_outer_brow_height
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_height
+				value = 0.6
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_length
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_profile
+				value = 0.75
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_width
+				value = 0.3
+			}
+		
+			set_variable = {
+				name = gene_dragon_upper_jaw_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_center_fin_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_back_spike_size
+				value = 0.25
+			}
+		
+			set_variable = {
+				name = gene_dragon_horns_eyebrow
+				value = 0.024
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_spike_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_side_fin_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_end_width
+				value = 0.15
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_length
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_tail_length
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = primary_color_grading
+				value = flag:darkest
+			}
+		
+			set_variable = {
+				name = primary_color
+				value = flag:green
+			}
+
+			# Create and pass the variables to the story cycle
+			agot_dragon_transfer_vars_to_story_cycle_effect = { DRAGON = scope:dragon }
+		}
+	}
+}
+
+agot_spawn_viserion_effect = {
+	create_character = {
+		name = "Viserion"
+		gender = male
+		culture = culture:dragon_culture
+		faith = faith:valyrian_pan_freehold
+		location = location
+		age = 0
+		mother = character:dragon_dreamfyre
+		dynasty = none
+
+		trait = dragon
+		trait = education_dragon_3
+		trait = dragon_destined
+		trait = dragon_physique_good_2
+		trait = dragon_friendly
+		trait = dragon_supporting
+		trait = dragon_calculating
+
+		random_traits = no
+
+		save_scope_as = dragon
+
+		after_creation = {
+			set_variable = {
+				name = dragon_gender_hidden
+				value = 1
+			}
+
+			create_story = story_dragon_alive
+
+			# Needed for visuals
+			set_variable = {
+				name = dragon_age
+				value = age
+			}
+
+			#Set dragon visual gene ranges here.
+			agot_back_apply_dragon_aging_effect = yes
+
+			#Drogon Appearance
+			set_variable = {
+				name = gene_dragon_primary_color_hue
+				value = 0.1
+			}
+		
+			set_variable = {
+				name = gene_dragon_primary_color_value
+				value = 0.67
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_hue
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_value
+				value = 0.75
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_hue
+				value = 0.02
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_value
+				value = 0.68
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_hue
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_value
+				value = 0.25
+			}
+		
+			set_variable = {
+				name = gene_dragon_brow_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_cheek_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_chin_profile
+				value = 0.2
+			}
+		
+			set_variable = {
+				name = gene_dragon_crest_depth
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_head_roundness
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_horns_eyebrow_length
+				value = 0.48
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_template #Dreamfyre
+				value = 5
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_value
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_jaw_width
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_height
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_width
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_old_neck
+				value = 0.2
+			}
+		
+			set_variable = {
+				name = gene_dragon_outer_brow_height
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_height
+				value = 0.6
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_length
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_profile
+				value = 0.75
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_width
+				value = 0.3
+			}
+		
+			set_variable = {
+				name = gene_dragon_upper_jaw_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_center_fin_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_back_spike_size
+				value = 0.25
+			}
+		
+			set_variable = {
+				name = gene_dragon_horns_eyebrow
+				value = 0.024
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_spike_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_side_fin_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_end_width
+				value = 0.15
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_length
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_tail_length
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = primary_color_grading
+				value = flag:darkest
+			}
+		
+			set_variable = {
+				name = primary_color
+				value = flag:yellow
+			}
+
+			# Create and pass the variables to the story cycle
+			agot_dragon_transfer_vars_to_story_cycle_effect = { DRAGON = scope:dragon }
+		}
+	}
+}
+
+agot_spawn_adult_viserion_effect = {
+	create_character = {
+		name = "Viserion"
+		gender = male
+		culture = culture:dragon_culture
+		faith = faith:valyrian_pan_freehold
+		location = location
+		age = 2
+		mother = character:dragon_dreamfyre
+		dynasty = none
+
+		trait = dragon
+		trait = education_dragon_3
+		trait = dragon_destined
+		trait = dragon_physique_good_2
+		trait = dragon_friendly
+		trait = dragon_supporting
+		trait = dragon_calculating
+
+		random_traits = no
+
+		save_scope_as = dragon
+
+		after_creation = {
+			set_variable = {
+				name = dragon_gender_hidden
+				value = 1
+			}
+
+			create_story = story_dragon_alive
+
+			# Needed for visuals
+			set_variable = {
+				name = dragon_age
+				value = age
+			}
+
+			#Set dragon visual gene ranges here.
+			agot_back_apply_dragon_aging_effect = yes
+
+			#Drogon Appearance
+			set_variable = {
+				name = gene_dragon_primary_color_hue
+				value = 0.1
+			}
+		
+			set_variable = {
+				name = gene_dragon_primary_color_value
+				value = 0.67
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_hue
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_secondary_value
+				value = 0.75
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_hue
+				value = 0.02
+			}
+		
+			set_variable = {
+				name = gene_dragon_eye_color_value
+				value = 0.68
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_hue
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_horn_color_value
+				value = 0.25
+			}
+		
+			set_variable = {
+				name = gene_dragon_brow_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_cheek_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_chin_profile
+				value = 0.2
+			}
+		
+			set_variable = {
+				name = gene_dragon_crest_depth
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_head_roundness
+				value = 0.0
+			}
+		
+			set_variable = {
+				name = gene_dragon_horns_eyebrow_length
+				value = 0.48
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_template #Dreamfyre
+				value = 5
+			}
+		
+			set_variable = {
+				name = gene_dragon_main_horn_shape_value
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_jaw_width
+				value = 0.7
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_height
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_lower_jaw_width
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_old_neck
+				value = 0.2
+			}
+		
+			set_variable = {
+				name = gene_dragon_outer_brow_height
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_height
+				value = 0.6
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_length
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_profile
+				value = 0.75
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_width
+				value = 0.3
+			}
+		
+			set_variable = {
+				name = gene_dragon_upper_jaw_width
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_center_fin_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_back_spike_size
+				value = 0.25
+			}
+		
+			set_variable = {
+				name = gene_dragon_horns_eyebrow
+				value = 0.024
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_spike_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_side_fin_size
+				value = 0.5
+			}
+		
+			set_variable = {
+				name = gene_dragon_snout_end_width
+				value = 0.15
+			}
+		
+			set_variable = {
+				name = gene_dragon_neck_length
+				value = 0.4
+			}
+		
+			set_variable = {
+				name = gene_dragon_tail_length
+				value = 1.0
+			}
+		
+			set_variable = {
+				name = primary_color_grading
+				value = flag:darkest
+			}
+		
+			set_variable = {
+				name = primary_color
+				value = flag:yellow
+			}
+
+			# Create and pass the variables to the story cycle
+			agot_dragon_transfer_vars_to_story_cycle_effect = { DRAGON = scope:dragon }
+		}
+	}
+}

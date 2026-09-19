@@ -1,0 +1,796 @@
+﻿window = {
+	name = "dragonpits_viewer_window"
+	visible = "[And( And( Not( IsGameViewOpen('barbershop') ), IsDefaultGUIMode ), GetVariableSystem.Exists( 'dragonpits_viewer_toggle' ) )]"
+	parentanchor = center
+	widgetanchor = center
+	size = { 550 585 }
+	layer = middle
+	alpha = 1
+
+	using = Window_Background
+	using = Window_Decoration_Spike
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Standard
+		using = Sound_WindowShow_Standard
+		on_start = "[GetScriptedGui('mde_build_dragonpits_ui_list_sgui').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+		on_start = "[GetVariableSystem.Clear( 'dragonpit_single_viewer_toggle' )]"
+		on_start = "[PdxGuiWidget.StackTop]"
+	}
+
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+		using = Sound_WindowHide_Standard
+		on_start = "[GetScriptedGui('mde_clean_dragonpits_ui_list_sgui').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+		on_start = "[GetVariableSystem.Clear( 'dragonpits_viewer_toggle' )]"
+	}
+
+	state = {
+		name = mde_dragonpits_restack
+		on_start = "[PdxGuiWidget.StackTop]"
+	}
+
+	margin_widget = {
+		name = "foreground_shader_vfx_container"
+		position = { 40 20 }
+		size = { 100% 100% }
+		margin = { 40 20 }
+	}
+	margin_widget = {
+		name = "faux_event_background"
+		size = { 100% 100% }
+		margin = { 40 20 }
+
+		state = {
+			name = _show
+			using = Animation_FadeIn_Standard
+			duration = 0.7
+		}
+
+		state = {
+			name = background_shake_loop
+			next = background_shake_loop_1
+			duration = 0.0
+			alpha = 1.0
+		}
+
+		state = {
+			name = background_shake_loop_1
+			next = background_shake_loop_2
+			position = { -6 0 }
+			duration = 0.2
+		}
+
+		state = {
+			name = background_shake_loop_2
+			next = background_shake_loop_3
+			position = { 5 0 }
+			duration = 0.12
+		}
+
+		state = {
+			name = background_shake_loop_3
+			next = background_shake_loop_1
+			position = { 7 1 }
+			duration = 0.12
+		}
+
+		blockoverride "event_picture_properties"
+		{}
+		widget = {
+			name = "event_picture"
+			size = { 100% 100% }
+
+			background = {
+				texture = "gfx/interface/illustrations/event_scenes/agot_dragonpit.dds"
+				fittype = centercrop
+
+				block "event_mask" {
+					modify_texture = {
+						name = mask
+						texture = "gfx/interface/window_event/mask_event_image_large.dds"
+						blend_mode = alphamultiply
+
+						block "event_mask_properties"
+						{
+							loop = no
+						}
+					}
+				}
+
+				block "event_picture_properties"
+				{
+				}
+			}
+		}
+	}
+	vbox = {
+		name = "not_event_window"
+		using = Animation_Tab_Switch
+		layoutpolicy_vertical = expanding
+		ignoreinvisible = yes
+		spacer = { size = { 0 12 } }
+		widget = {
+			name = "dragonpits_viewer_window_widget_all"
+			size = { 500 480 }
+			visible = "[GetVariableSystem.HasValue('dragonpits_viewer_mode', 'viewer_mode_all')]"
+			state = {
+				name = _show
+				on_start = "[PdxGuiWidget.AccessParent.AccessParent.StackTop]"
+			}
+			vbox = {
+				scrollbox = {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					minimumsize = { 460 307 }
+					blockoverride "scrollbox_content"
+					{
+						flowcontainer = {
+							name = "pit_grid"
+							direction = vertical
+							ignoreinvisible = yes
+							datamodel = "[GetPlayer.MakeScope.GetList('possible_dragonpit_view_only')]"
+							item = {
+								button_standard = {
+									size = { 436 68 }
+									using = tooltip_ws
+									layoutpolicy_vertical = expanding
+									datacontext = "[Scope.Title]"
+									tooltip_offset = { 0 0 }
+									tooltip_verticalbehavior = slide
+									tooltip_horizontalbehavior = mirror
+
+									hbox = { #Landed
+										visible = "[Not(GetScriptedGui('mde_is_title_landless').IsShown( GuiScope.SetRoot( Title.MakeScope ).End))]"
+										tooltipwidget = {
+											holding_tooltip_click = {
+												datacontext = "[Title.GetProvince.GetHolding]"
+											}
+										}
+										layoutpolicy_horizontal = expanding
+										hbox = {
+											agot_coa_house_small = {
+												datacontext = "[Scope.Title.GetHolder.GetHouse]"
+											}
+										}
+										hbox = {
+											vbox = {
+												layoutpolicy_vertical = expanding
+												layoutpolicy_horizontal = expanding
+												hbox = {
+													text_single = {
+														name = "title_name"
+														text = "[Scope.Title.GetNameNoTierNoTooltip|V]"
+														using = Font_Size_Huge
+														align = top
+													}
+												}
+												hbox = {
+													layoutpolicy_horizontal = expanding
+													text_single = {
+														name = "dragonpit_type"
+														text = "dragonpit_type"
+														using = Font_Size_Huge
+														align = top
+													}
+													expand = {}
+												}
+												expand = {}
+											}
+										}
+										expand = {}
+										hbox = {
+											vbox = {
+												layoutpolicy_vertical = expanding
+												hbox = {
+													text_single = {
+														name = "num_dragons"
+														text = "num_dragons_in_pit"
+														using = Font_Size_Huge
+														align = top
+													}
+												}
+												hbox = {
+													text_single = {
+														name = "num_egg"
+														text = "num_eggs_in_pit"
+														using = Font_Size_Huge
+														align = top
+													}
+												}
+											}
+										}
+										expand = {}
+
+										vbox = {
+											layoutpolicy_vertical = expanding
+											expand = {}
+											button_round = {
+												name = "VIEW_DRAGONPIT_DRAGONS"
+												datacontext = "[GetScriptedGui( 'mde_view_dragons_in_dragonpit' )]"
+												visible = "[GetScriptedGui('mde_view_dragons_in_dragonpit').IsShown( GuiScope.SetRoot( Title.MakeScope ).End)]"
+												tooltip = "VIEW_DRAGONPIT_DRAGONS_TT"
+												onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'dp_county', Title.MakeScope ).End)]"
+												onclick = "[GetVariableSystem.Toggle( 'dragonpit_single_viewer_toggle' )]"
+
+												size = { 30 30 }
+												button_icon_highlight = {
+													texture = "gfx/interface/icons/flat_icons/feudalize_tribe.dds"
+													parentanchor = center
+													alwaystransparent = yes
+													size = { 20 20 }
+												}
+											}
+											button_round = {
+												name = "SEND_TO_DRAGONPIT"
+												datacontext = "[GetScriptedGui('mde_can_use_this_pit')]"
+												visible = "[ScriptedGui.IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'dp_county', Title.MakeScope ).End)]"
+												tooltip = "SEND_DRAGONS"
+												onclick = "[GetScriptedGui('mde_move_all_into_pit').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'dp_county', Title.MakeScope ).End)]"
+												size = { 30 30 }
+
+												button_send_to_dragonpit = {
+													parentanchor = center
+													alwaystransparent = yes
+													size = { 30 30 }
+													modify_texture = {
+														texture = "gfx/interface/icons/focuses/hud_icon_mask.dds"
+														blend_mode = alphamultiply
+													}
+												}
+											}
+											expand = {}
+										}
+
+									}
+									hbox = { #Landless
+										visible = "[GetScriptedGui('mde_is_title_landless').IsShown( GuiScope.SetRoot( Title.MakeScope ).End)]"
+										tooltip = "[Title.GetHolder.GetDefaultRealmFlagTooltip]"
+										layoutpolicy_horizontal = expanding
+										hbox = {
+											agot_coa_house_small = {
+												datacontext = "[Scope.Title.GetHolder.GetHouse]"
+											}
+										}
+										hbox = {
+											vbox = {
+												layoutpolicy_vertical = expanding
+												layoutpolicy_horizontal = expanding
+												hbox = {
+													text_single = {
+														name = "title_name"
+														text = "[Scope.Title.GetNameNoTierNoTooltip|V]"
+														using = Font_Size_Huge
+														align = top
+														max_width = 175
+													}
+												}
+												hbox = {
+													layoutpolicy_horizontal = expanding
+													text_single = {
+														name = "dragonpit_type_landless"
+														text = "dragonpit_type_landless"
+														using = Font_Size_Huge
+														align = top
+													}
+													expand = {}
+												}
+												expand = {}
+											}
+										}
+										expand = {}
+										hbox = {
+											vbox = {
+												layoutpolicy_vertical = expanding
+												hbox = {
+													text_single = {
+														name = "num_dragons"
+														text = "num_dragons_in_pit"
+														using = Font_Size_Huge
+														align = top
+													}
+												}
+												hbox = {
+													text_single = {
+														name = "num_egg"
+														text = "num_eggs_in_pit"
+														using = Font_Size_Huge
+														align = top
+													}
+												}
+											}
+										}
+										expand = {}
+
+										vbox = {
+											layoutpolicy_vertical = expanding
+											expand = {}
+											button_round = {
+												name = "VIEW_DRAGONPIT_DRAGONS"
+												datacontext = "[GetScriptedGui( 'mde_view_dragons_in_dragonpit' )]"
+												visible = "[GetScriptedGui('mde_view_dragons_in_dragonpit').IsShown( GuiScope.SetRoot( Title.MakeScope ).End)]"
+												tooltip = "VIEW_DRAGONPIT_DRAGONS_TT"
+												onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'dp_county', Title.MakeScope ).End)]"
+												onclick = "[GetVariableSystem.Toggle( 'dragonpit_single_viewer_toggle' )]"
+
+												size = { 30 30 }
+												button_icon_highlight = {
+													texture = "gfx/interface/icons/flat_icons/feudalize_tribe.dds"
+													parentanchor = center
+													alwaystransparent = yes
+													size = { 20 20 }
+												}
+											}
+											button_round = {
+												name = "SEND_TO_DRAGONPIT"
+												datacontext = "[GetScriptedGui('mde_can_use_this_pit')]"
+												visible = "[ScriptedGui.IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'dp_county', Title.MakeScope ).End)]"
+												tooltip = "SEND_DRAGONS"
+												onclick = "[GetScriptedGui('mde_move_all_into_pit').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'dp_county', Title.MakeScope ).End)]"
+												size = { 30 30 }
+
+												button_send_to_dragonpit = {
+													parentanchor = center
+													alwaystransparent = yes
+													size = { 30 30 }
+													modify_texture = {
+														texture = "gfx/interface/icons/focuses/hud_icon_mask.dds"
+														blend_mode = alphamultiply
+													}
+												}
+											}
+											expand = {}
+										}
+
+									}
+									expand = {}
+								}
+							}
+						}
+
+					}
+				}
+				button_event_standard = {
+					visible = "[GetVariableSystem.HasValue('dragonpits_viewer_mode', 'viewer_mode_all')]"
+					block "button_size" {
+						size = { 460 36 }
+					}
+					highlight_icon = {
+						size = { 460 100% }
+						gfxtype = togglepushbuttongfx
+						effectname = "NoHighlight"
+						texture = "gfx/interface/buttons/button_mouseover_event.dds"
+						spriteType = Corneredstretched
+						spriteborder = { 20 20 }
+						framesize  = { 238 63 }
+						parentanchor = center
+
+						upframe = 1
+						uphoverframe = 2
+						uppressedframe = 1
+						downframe = 1
+						downhoverframe = 1
+						downpressedframe = 1
+						disableframe = 1
+
+						alpha = 0.5
+
+						block "button_standard_mouseover" {}
+					}
+					modify_texture = {
+						name = "mask"
+						texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick.dds"
+						spriteType = Corneredtiled
+						spriteborder_left = 40
+						spriteborder_right = 40
+						blend_mode = alphamultiply
+					}
+					text_single = {
+						alwaystransparent = yes
+						parentanchor = center
+						text = "MDE_gui_exit"
+						default_format = "#high"
+						align = center|nobaseline
+						fontsize_min = 12
+					}
+
+					onclick = "[GetVariableSystem.Toggle( 'dragonpits_viewer_toggle' )]"
+					
+				}
+			}
+
+		}
+		widget = {
+			name = "dragonpits_viewer_window_widget_available"
+			size = { 500 480 }
+			visible = "[GetVariableSystem.HasValue('dragonpits_viewer_mode', 'viewer_mode_available')]"
+			visible_at_creation = no
+
+			state = {
+				name = _show
+				on_start = "[PdxGuiWidget.AccessParent.AccessParent.StackTop]"
+			}
+			vbox = {
+				scrollbox = {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					minimumsize = { 460 307 }
+					blockoverride "scrollbox_content"
+					{
+						flowcontainer = {
+							name = "pit_grid"
+							direction = vertical
+							ignoreinvisible = yes
+							datamodel = "[GetPlayer.MakeScope.GetList('possible_dragonpit_view_only')]"
+
+							item = {
+								button_standard = {
+									size = { 436 68 }
+									using = tooltip_ws
+									layoutpolicy_vertical = expanding
+									datacontext = "[Scope.Title]"
+
+									tooltip_offset = { 0 0 }
+									tooltip_verticalbehavior = slide
+									tooltip_horizontalbehavior = mirror
+									visible = "[And( GetScriptedGui('mde_dragon_can_move_into_this_pit').IsShown( GuiScope.SetRoot( GetPlayer.MakeScope.Var('sgui_selected_dragon').GetCharacter.MakeScope ).AddScope( 'dp_county', Title.MakeScope ).End ), GetScriptedGui('mde_can_use_this_pit').IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'dp_county', Title.MakeScope ).End ) )]"
+									
+									hbox = {
+										visible = "[Not(GetScriptedGui('mde_is_title_landless').IsShown( GuiScope.SetRoot( Title.MakeScope ).End))]"
+										tooltipwidget = {
+											holding_tooltip_click = {
+												datacontext = "[Title.GetProvince.GetHolding]"
+											}
+										}
+									}
+									hbox = {
+										visible = "[GetScriptedGui('mde_is_title_landless').IsShown( GuiScope.SetRoot( Title.MakeScope ).End)]"
+										tooltip = "[Title.GetHolder.GetDefaultRealmFlagTooltip]"
+									}
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											agot_coa_house_small = {
+												datacontext = "[Scope.Title.GetHolder.GetHouse]"
+											}
+											expand = {}
+										}
+									}
+									expand = {}
+									vbox = {
+										layoutpolicy_horizontal = expanding
+										expand = {}
+										ignoreinvisible = yes
+										hbox = {
+											text_single = {
+												name = "title_name"
+												text = "[Scope.Title.GetNameNoTierNoTooltip|V]"
+												using = Font_Size_Huge
+												align = top
+											}
+										}
+										hbox = {
+											visible = "[Not(GetScriptedGui('mde_is_title_landless').IsShown( GuiScope.SetRoot( Title.MakeScope ).End))]"
+											text_single = {
+												name = "dragonpit_type"
+												text = "dragonpit_type"
+												using = Font_Size_Huge
+												align = top
+											}
+										}
+										hbox = {
+											visible = "[GetScriptedGui('mde_is_title_landless').IsShown( GuiScope.SetRoot( Title.MakeScope ).End)]"
+											text_single = {
+												name = "dragonpit_type_landless"
+												text = "dragonpit_type_landless"
+												using = Font_Size_Huge
+												align = top
+											}
+										}
+										expand = {}
+									}
+									button_round = {
+										parentanchor = right|vcenter
+										name = "SEND_TO_DRAGONPIT"
+										datacontext = "[GetScriptedGui('mde_can_use_this_pit')]"
+										visible = "[ScriptedGui.IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'dp_county', Title.MakeScope ).End)]"
+										tooltip = "SEND_DRAGON"
+										onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'dp_county', Title.MakeScope ).End)]"
+										size = { 30 30 }
+										position = { -10 0 }
+
+										button_send_to_dragonpit = {
+											parentanchor = center
+											alwaystransparent = yes
+											size = { 30 30 }
+											modify_texture = {
+												texture = "gfx/interface/icons/focuses/hud_icon_mask.dds"
+												blend_mode = alphamultiply
+											}
+										}
+									}
+								}
+							}
+
+
+						}
+						button_standard = {
+							size = { 436 68 }
+							max_height = 68
+							using = tooltip_ws
+							layoutpolicy_vertical = expanding
+							tooltip_offset = { 0 0 }
+							tooltip_verticalbehavior = slide
+							tooltip_horizontalbehavior = mirror
+							datacontext = "[GetPlayer.MakeScope.Var('sgui_selected_dragon').GetCharacter]"
+							visible = "[GetScriptedGui('mde_in_a_pit_sgui').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								position = { 2 0 }
+								datacontext = "[Character.MakeScope.Var('pitted_dragon_location').Title]"
+								icon = {
+									name = "terrain"
+									visible = "[Not(GetScriptedGui('mde_is_title_landless').IsShown( GuiScope.SetRoot( Title.MakeScope ).End))]"
+									datacontext = "[Title.GetProvince.GetTerrain]"
+									texture = "[Terrain.GetIcon]"
+									size = { 60 60 }
+									tooltip = "HOLDING_TERRAIN_TOOLTIP"
+								}
+								icon = {
+									name = "terrain_landless"
+									visible = "[GetScriptedGui('mde_is_title_landless').IsShown( GuiScope.SetRoot( Title.MakeScope ).End)]"
+									datacontext = "[Title.GetHolder.GetDomicile.GetLocation.GetTerrain]"
+									texture = "[Terrain.GetIcon]"
+									size = { 60 60 }
+									tooltip = "HOLDING_TERRAIN_TOOLTIP"
+								}
+								expand = {}
+							}
+							hbox = {
+								#layoutpolicy_horizontal = expanding
+								text_single = {
+									name = "outside"
+									text = "MDE_gui_move_outside"
+									using = Font_Size_Huge
+									align = top
+								}
+							}
+							button_round = {
+								parentanchor = right|vcenter
+								name = "MOVE_DRAGON_OUTSIDE"
+								datacontext = "[Character.MakeScope.Var('pitted_dragon_location').Title]"
+								tooltip = "REMOVE_FROM_DRAGONPIT_TT"
+								onclick = "[GetScriptedGui('mde_move_outside').Execute( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'dp_county', Title.MakeScope ).AddScope('owner', Title.GetHolder.MakeScope ).End)]"
+								size = { 30 30 }
+								position = { -10 0 }
+
+								button_remove_from_dragonpit = {
+									parentanchor = center
+									alwaystransparent = yes
+									size = { 30 30 }
+									modify_texture = {
+										texture = "gfx/interface/icons/focuses/hud_icon_mask.dds"
+										blend_mode = alphamultiply
+									}
+								}
+							}
+						}
+					}
+				}
+				button_event_standard = {
+					visible = "[GetVariableSystem.HasValue('dragonpits_viewer_mode', 'viewer_mode_available')]"
+					block "button_size" {
+						size = { 460 36 }
+					}
+					highlight_icon = {
+						size = { 460 100% }
+						gfxtype = togglepushbuttongfx
+						effectname = "NoHighlight"
+						texture = "gfx/interface/buttons/button_mouseover_event.dds"
+						spriteType = Corneredstretched
+						spriteborder = { 20 20 }
+						framesize  = { 238 63 }
+						parentanchor = center
+
+						upframe = 1
+						uphoverframe = 2
+						uppressedframe = 1
+						downframe = 1
+						downhoverframe = 1
+						downpressedframe = 1
+						disableframe = 1
+
+						alpha = 0.5
+
+						block "button_standard_mouseover" {}
+					}
+					modify_texture = {
+						name = "mask"
+						texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick.dds"
+						spriteType = Corneredtiled
+						spriteborder_left = 40
+						spriteborder_right = 40
+						blend_mode = alphamultiply
+					}
+					text_single = {
+						alwaystransparent = yes
+						parentanchor = center
+						text = "MDE_gui_exit"
+						default_format = "#high"
+						align = center|nobaseline
+						fontsize_min = 12
+					}
+					onclick = "[GetVariableSystem.Toggle( 'dragonpits_viewer_toggle' )]"
+					
+				}
+			}
+
+		}
+
+	}
+
+	widget = {
+		size = { 550 76 }
+
+		widget = {
+			size = { 100% 57 }
+			position = { 0 20 }
+
+			icon = {
+				name = "theme_header"
+				position = { 24 0 }
+				size = { 550 57 }
+				texture = "gfx/interface/window_event/event_header_red.dds"
+
+				modify_texture = {
+					name = overlay
+					texture = "gfx/interface/component_effects/effect_header_blue_shine.dds"
+					blend_mode = colordodge
+					translate_uv = { 0.6 0 }
+				}
+
+				state = {
+					name = right
+					next = left
+
+					duration = 8
+					bezier = { 0.8 0.18 0.96 .05 }
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { -0.6 0 }
+					}
+				}
+
+				state = {
+					name = left
+					next = right
+
+					duration = 0.0
+					delay = 5
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { 0.6 0 }
+					}
+				}
+
+				state = {
+					trigger_on_create = yes
+					name = start
+					next = right
+
+					duration = 0.0
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { 0.6 0 }
+					}
+				}
+			}
+
+			text_single = {
+				name = "title_all"
+				position = { 114 1 }
+				fontsize = 29
+				fontsize_min = 16
+				text = "dragonpits_viewer.t"
+				default_format = "#high;glow_color:{0.1,0.1,0.1,1.0}"
+				using = Font_Type_Flavor
+				max_width = 950
+				visible = "[Not(GetVariableSystem.HasValue('dragonpits_viewer_mode', 'viewer_mode_available'))]"
+				alpha = 0
+
+				state = {
+					name = start
+					trigger_on_create = yes
+					delay = 0.2
+					using = Animation_Curve_Default
+					alpha = 1
+					duration = 0.5
+				}
+			}
+			text_single = {
+				name = "title"
+				position = { 114 1 }
+				fontsize = 29
+				fontsize_min = 16
+				text = "move_dragon.t"
+				default_format = "#high;glow_color:{0.1,0.1,0.1,1.0}"
+				using = Font_Type_Flavor
+				max_width = 950
+				visible = "[GetVariableSystem.HasValue('dragonpits_viewer_mode', 'viewer_mode_available')]"
+				alpha = 0
+
+				state = {
+					name = start
+					trigger_on_create = yes
+					delay = 0.2
+					using = Animation_Curve_Default
+					alpha = 1
+					duration = 0.5
+				}
+			}
+
+			icon = {
+				name = "theme_icon"
+				position = { 28 -19 }
+				size = { 80 80 }
+				texture = "gfx/interface/icons/event_types/type_dragon.dds"
+
+				modify_texture = {
+					name = overlay
+					texture = "gfx/interface/component_effects/effect_blue_shine.dds"
+					blend_mode = colordodge
+					translate_uv = { 0.6 0 }
+				}
+
+				state = {
+					name = right
+					next = left
+
+					duration = 2
+					bezier = { .8 .18 .96 .05 }
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { -0.6 0 }
+					}
+				}
+
+				state = {
+					name = left
+					next = right
+
+					duration = 0.0
+					delay = 5
+
+
+					modify_texture = {
+						name = overlay
+						translate_uv = { 0.6 0 }
+					}
+				}
+
+				state = {
+					trigger_on_create = yes
+					name = start
+					next = right
+
+					duration = 0.0
+
+					modify_texture = {
+						name = overlay
+						translate_uv = {0.6 0}
+					}
+				}
+
+			}
+
+		}
+	}
+}

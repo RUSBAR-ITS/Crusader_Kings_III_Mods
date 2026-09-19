@@ -1,0 +1,1675 @@
+--- before/gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt
++++ candidate/gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt
+@@ -13,14 +13,14 @@
+             }
+ 			accessory = {
+ 				mode = add
+-				gene = secondary_headgear
++				gene = secondary_headgears
+ 				template = no_headgear
+ 				value = 0
+             }
+ 			accessory = {
+ 				mode = add
+ 				gene = additive_headgear
+-				template = no_headgear
++				template = no_additive
+ 				value = 0
+             }
+ 		}
+@@ -159,7 +159,7 @@
+ 			morph = {
+ 				mode = add
+ 				gene = gene_lovers_pox
+-				template = none
++				template = lovers_pox
+ 				value = 0
+ 			}
+ 		}
+@@ -219,7 +219,7 @@
+ 			morph = {
+ 				mode = add
+ 				gene = gene_lovers_pox
+-				template = none
++				template = lovers_pox
+ 				value = 0
+ 			}
+ 		}
+@@ -348,7 +348,7 @@
+ 			accessory = { #hidden under the eyepatch, but it's good to know it's there :)
+ 				mode = add
+ 				gene = eye_accessory_gem
+-				template = one_eyed_gem_saphire
++				template = one_eyed_gem_light_blue
+ 				value = 1.0
+             }
+         }
+@@ -1251,13 +1251,13 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+@@ -1269,7 +1269,7 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+@@ -1330,31 +1330,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -1409,31 +1409,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -1896,25 +1896,25 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -1969,31 +1969,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -2449,19 +2449,19 @@
+ 			morph = { #remove the vanilla AGOT blush
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT lip colour
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT foundation
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -2965,31 +2965,31 @@
+ 			morph = { #remove the vanilla AGOT blush
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT lip colour
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT foundation
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT eyeliner
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT eyeshadow
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 		}
+@@ -3047,31 +3047,31 @@
+ 			morph = { #remove the vanilla AGOT blush
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT lip colour
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT foundation
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT eyeliner
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT eyeshadow
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 		}
+@@ -3519,19 +3519,19 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -3598,19 +3598,19 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -3849,7 +3849,7 @@
+ 			morph = {
+ 				mode = replace
+ 				gene = complexion
+-				template = complexion_beauty_2
++				template = complexion_beauty_1
+ 				value = 1.0
+ 			}
+ 		}
+@@ -3913,31 +3913,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -4065,19 +4065,19 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -4179,7 +4179,7 @@
+ 			morph = {
+ 				mode = modify
+ 				gene = gene_body_hair
+-				template = body_hair_average
++				template = body_hair_avg
+ 				value = 0.15
+ 			}
+ 		}
+@@ -4427,19 +4427,19 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -4671,31 +4671,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -4765,7 +4765,7 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+@@ -4777,13 +4777,13 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -4859,19 +4859,19 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -5036,31 +5036,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -5234,31 +5234,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -5362,31 +5362,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -6158,13 +6158,13 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+@@ -6176,13 +6176,13 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -6252,25 +6252,25 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -6334,31 +6334,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -6492,19 +6492,19 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -7292,19 +7292,19 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -7726,31 +7726,31 @@
+ 			morph = { #remove the vanilla AGOT blush
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT lip colour
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT foundation
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT eyeliner
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT eyeshadow
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+         }
+@@ -8872,31 +8872,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0.0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0.0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -8951,7 +8951,7 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0.0
+ 			}
+ 			morph = {
+@@ -8963,19 +8963,19 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -9459,31 +9459,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0.0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0.0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -10639,31 +10639,31 @@
+ 			morph = { #remove the vanilla AGOT blush
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT lip colour
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT foundation
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT eyeliner
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT eyeshadow
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 		}
+@@ -10767,13 +10767,13 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+@@ -10785,13 +10785,13 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -11962,7 +11962,7 @@
+ 				add = 2000
+ 				exists = character:Clegane_4 #Sandor Clegane (son of Robert)
+ 				this = character:Clegane_4
+-				NOT = { portrait_wear_lannister_armour_torso_courtiers = yes }
++				NOT = { portrait_wear_lannister_armour_courtiers_trigger = yes }
+ 				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+ 			}
+ 		}
+@@ -12215,31 +12215,31 @@
+ 			morph = { #remove the vanilla AGOT blush
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT lip colour
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT foundation
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT eyeliner
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT eyeshadow
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 		}
+@@ -12791,31 +12791,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -13014,31 +13014,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -13609,25 +13609,25 @@
+ 			morph = { #remove the vanilla AGOT blush
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT lip colour
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT foundation
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 			morph = { #remove the vanilla AGOT eyeshadow
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 		}
+@@ -13788,31 +13788,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -14180,31 +14180,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -14561,31 +14561,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0.0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0.0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -14640,31 +14640,31 @@
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeliner
+-				template = none
++				template = eyeliner_none
+ 				value = 0.0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_eyeshadow
+-				template = none
++				template = eyeshadow_none
+ 				value = 0.0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_blush
+-				template = none
++				template = blush_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_lipcolor
+-				template = none
++				template = lipcolor_none
+ 				value = 0
+ 			}
+ 			morph = {
+ 				mode = add
+ 				gene = cosmetics_foundation
+-				template = none
++				template = foundation_none
+ 				value = 0
+ 			}
+ 		}
+@@ -17854,7 +17854,7 @@
+ 				mode = add
+ 				gene = cloaks
+ 				template = stormcloak_01
+-				accesory = male_cloaks_secular_stormcloak_01
++				accessory = male_cloaks_secular_stormcloak_01
+             }
+ 		}
+ 		weight = {
+@@ -19159,7 +19159,7 @@
+ 			accessory = {
+ 				mode = add
+ 				gene = clothes
+-				template = asoiaf_fots_religious_clothes
++				template = asoiaf_religious_clothes
+ 				accessory = male_clothes_asoiaf_septon_robes_1
+             }
+ 			accessory = {
+--- before/gfx/portraits/portrait_modifiers/asoiaf_clothes.txt
++++ candidate/gfx/portraits/portrait_modifiers/asoiaf_clothes.txt
+@@ -798,7 +798,7 @@
+ 				mode = add
+ 				gene = clothes
+ 				template = religious_catholic_high_clothes
+-				accessory = male_clothes_religious_catholic_high_1
++				accessory = male_clothes_religious_catholic_high_01
+             }
+ 			accessory = {
+ 				mode = add
+@@ -1089,7 +1089,7 @@
+ 					is_male = yes
+ 					has_religion = religion:the_ways_religion
+ 					exists = liege
+-					liege.has_religion = religion:the_ways_religion
++					liege = { has_religion = religion:the_ways_religion }
+ 				}
+ 				has_game_rule = asoiaf_new_clothes_iron_isles_rule_on
+ 			}
+@@ -1173,7 +1173,7 @@
+ 					is_male = yes
+ 					has_religion = religion:the_ways_religion
+ 					exists = liege
+-					liege.has_religion = religion:the_ways_religion
++					liege = { has_religion = religion:the_ways_religion }
+ 					OR = { #Landed drowned men of duke-tier or above will always wear high robes, OR Court Chaplains of duke-tier rulers will too
+ 						AND = {
+ 							is_landed = yes
+--- before/gfx/portraits/portrait_modifiers/asoiaf_clothes_armor.txt
++++ candidate/gfx/portraits/portrait_modifiers/asoiaf_clothes_armor.txt
+@@ -6707,7 +6707,7 @@
+ 				mode = add
+ 				gene = legwear
+ 				template = asoiaf_all_legwears
+-				accessory = male_legwear_asoiaf_hound_legs
++				accessory = female_legwear_asoiaf_hound_legs
+ 				type = female
+ 			}
+             accessory = {
+--- before/gfx/portraits/portrait_modifiers/asoiaf_dragon_appearance_flags.txt
++++ candidate/gfx/portraits/portrait_modifiers/asoiaf_dragon_appearance_flags.txt
+@@ -98,8 +98,8 @@
+ 			morph = {
+ 				mode = replace
+ 				gene = gene_dragon_main_horn_shape
+-				template = dragon_horns_small
+-				value = 0.7
++				template = dragon_horns_drogon
++				value = 0.3
+ 			}
+ 			morph = {
+ 				mode = replace
+@@ -522,8 +522,8 @@
+ 			morph = {
+ 				mode = replace
+ 				gene = gene_dragon_main_horn_shape
+-				template = dragon_horns_small
+-				value = 1.0
++				template = dragon_horns_drogon
++				value = 0.0
+ 			}
+ 			morph = {
+ 				mode = replace
+--- before/gfx/portraits/portrait_modifiers/asoiaf_hairs_custom_flags.txt
++++ candidate/gfx/portraits/portrait_modifiers/asoiaf_hairs_custom_flags.txt
+@@ -1911,7 +1911,7 @@
+ 			accessory = {
+ 				mode = add
+ 				gene = hairstyles
+-				template = agot_all_hairstyles
++				template = fp1_hairstyles_straight
+ 				accessory = male_hair_fp1_09
+ 			}
+ 		}
+--- before/gfx/portraits/portrait_modifiers/asoiaf_headgear_armor.txt
++++ candidate/gfx/portraits/portrait_modifiers/asoiaf_headgear_armor.txt
+@@ -3409,7 +3409,7 @@
+ 			morph = {
+ 				mode = replace
+ 				gene = gene_head_top_width
+-				template = head_top_height_neg
++				template = head_top_width_neg
+ 				value = 0.3
+ 			}
+ 			morph = {
+@@ -3548,7 +3548,7 @@
+ 			morph = {
+ 				mode = replace
+ 				gene = gene_head_top_width
+-				template = head_top_height_neg
++				template = head_top_width_neg
+ 				value = 0.3
+ 			}
+ 			morph = {
+@@ -3679,7 +3679,7 @@
+ 			morph = {
+ 				mode = replace
+ 				gene = gene_head_top_width
+-				template = head_top_height_neg
++				template = head_top_width_neg
+ 				value = 0.3
+ 			}
+ 			morph = {
+@@ -4026,7 +4026,7 @@
+ 			morph = {
+ 				mode = replace
+ 				gene = gene_head_top_width
+-				template = head_top_height_neg
++				template = head_top_width_neg
+ 				value = 0.3
+ 			}
+ 			morph = {
+@@ -4144,7 +4144,7 @@
+ 			morph = {
+ 				mode = replace
+ 				gene = gene_head_top_width
+-				template = head_top_height_neg
++				template = head_top_width_neg
+ 				value = 0.3
+ 			}
+ 			morph = {
+--- before/gfx/portraits/portrait_modifiers/asoiaf_legwear_armour.txt
++++ candidate/gfx/portraits/portrait_modifiers/asoiaf_legwear_armour.txt
+@@ -10,7 +10,7 @@
+ 				mode = add
+ 				gene = legwear
+ 				template = asoiaf_all_legwears
+-				accessory = male_legwear_asoiaf_kingsguard_legs_1
++				accessory = male_legwear_asoiaf_kingsguard_legs_default
+ 			}
+ 		}
+ 		weight = {
+@@ -41,7 +41,7 @@
+                 mode = add
+                 gene = legwear
+                 template = asoiaf_all_legwears
+-                accessory = male_legwear_asoiaf_kingsguard_legs_2
++                accessory = male_legwear_asoiaf_kingsguard_legs_boots
+             }
+         }
+         weight = {
+@@ -91,8 +91,8 @@
+ 			accessory = {
+ 				mode = add
+ 				gene = legwear
+-				template = high_valyrian_war_legwear
+-				value = 1
++				template = agot_all_legwear
++				accessory = male_legwear_secular_valyrian_war_04
+ 			}
+ 		}
+ 		weight = {
+@@ -114,8 +114,8 @@
+ 			accessory = {
+ 				mode = add
+ 				gene = legwear
+-				template = stormlands_war_04_legwear
+-				value = 1
++				template = agot_all_legwear
++				accessory = male_legwear_secular_stormlands_war_04
+ 			}
+ 		}
+ 		weight = {
+--- before/gfx/portraits/portrait_modifiers/asoiaf_headgear_crowns.txt
++++ candidate/gfx/portraits/portrait_modifiers/asoiaf_headgear_crowns.txt
+@@ -78,7 +78,7 @@
+ 				add = 275
+ 				is_male = yes
+ 				agot_default_wear_crown_trigger = yes
+-				is_character_baratheon_3 = yes
++				OR = { this = character:Baratheon_3 has_inactive_trait = asoiaf_Baratheon_3_trait }
+ 				has_religion = religion:the_rhllor_religion
+ 			}
+ 			modifier = {
+@@ -162,7 +162,7 @@
+ 				add = 275
+ 				is_female = yes
+ 				agot_default_wear_crown_trigger = yes
+-				is_character_baratheon_3 = yes
++				OR = { this = character:Baratheon_3 has_inactive_trait = asoiaf_Baratheon_3_trait }
+ 				has_religion = religion:the_rhllor_religion
+ 			}
+ 			modifier = {
+@@ -261,7 +261,7 @@
+ 				add = 275
+ 				is_male = yes
+ 				agot_default_wear_crown_trigger = yes
+-				is_character_baratheon_4 = yes # Renly Baratheon
++				OR = { this = character:Baratheon_4 has_inactive_trait = asoiaf_Baratheon_4_trait } # Renly Baratheon
+ 				OR = {
+ 					AND = {
+ 						exists = character:Tyrell_13
+@@ -327,7 +327,7 @@
+ 				add = 275
+ 				is_female = yes
+ 				agot_default_wear_crown_trigger = yes
+-				is_character_baratheon_4 = yes # Renly Baratheon
++				OR = { this = character:Baratheon_4 has_inactive_trait = asoiaf_Baratheon_4_trait } # Renly Baratheon
+ 				OR = {
+ 					AND = {
+ 						exists = character:Tyrell_13
+@@ -642,9 +642,9 @@
+ 				agot_default_wear_crown_trigger = yes
+ 				dynasty ?= dynasty:dynn_Baratheon
+ 				OR = {
+-					is_character_baratheon_5 = yes
+-					is_character_baratheon_6 = yes
+-					is_character_baratheon_7 = yes
++					OR = { this = character:Baratheon_5 has_inactive_trait = asoiaf_Baratheon_5_trait }
++					OR = { this = character:Baratheon_6 has_inactive_trait = asoiaf_Baratheon_6_trait }
++					OR = { this = character:Baratheon_7 has_inactive_trait = asoiaf_Baratheon_7_trait }
+ 					AND = {
+ 						has_inactive_trait = gold_hair
+ 						has_inactive_trait = emerald_eyes
+@@ -691,9 +691,9 @@
+ 				agot_default_wear_crown_trigger = yes
+ 				dynasty ?= dynasty:dynn_Baratheon
+ 				OR = {
+-					is_character_baratheon_5 = yes
+-					is_character_baratheon_6 = yes
+-					is_character_baratheon_7 = yes
++					OR = { this = character:Baratheon_5 has_inactive_trait = asoiaf_Baratheon_5_trait }
++					OR = { this = character:Baratheon_6 has_inactive_trait = asoiaf_Baratheon_6_trait }
++					OR = { this = character:Baratheon_7 has_inactive_trait = asoiaf_Baratheon_7_trait }
+ 					AND = {
+ 						has_inactive_trait = gold_hair
+ 						has_inactive_trait = emerald_eyes
+--- before/gfx/portraits/accessories/asoiaf_cloaks.txt
++++ candidate/gfx/portraits/accessories/asoiaf_cloaks.txt
+@@ -47,9 +47,9 @@
+ male_cloak_asoiaf_stormlands_stannis_cloak_1 = {
+ 	entity = { required_tags = ""		shared_pose_entity = torso		entity = male_cloak_asoiaf_stannis_cloak_1 }
+ }
+-female_cloak_asoiaf_stormlands_stannis_cloak_1 = {
+-	entity = { required_tags = ""		shared_pose_entity = torso		entity = female_cloak_asoiaf_stannis_cloak_1 }
+-}
++# AGOT_PLUS_FIX candidate: female_cloak_asoiaf_stormlands_stannis_cloak_1 = {
++# AGOT_PLUS_FIX candidate: 	entity = { required_tags = ""		shared_pose_entity = torso		entity = female_cloak_asoiaf_stannis_cloak_1 }
++# AGOT_PLUS_FIX candidate: }
+ 
+ ## Kingsguard ##
+ male_cloak_asoiaf_kingsguard_cloak_default = {
+--- before/gfx/portraits/accessories/asoiaf_clothes.txt
++++ candidate/gfx/portraits/accessories/asoiaf_clothes.txt
+@@ -421,10 +421,10 @@
+ 	set_tags = "shrink_arms,shrink_chest,shrink_belly"
+ 	entity = { required_tags = ""		shared_pose_entity = torso		entity = male_clothes_asoiaf_stannis_clothes_1 }
+ }
+-female_clothes_asoiaf_stormlands_stannis_clothes_1 = {
+-	set_tags = "shrink_arms,shrink_chest,shrink_belly"
+-	entity = { required_tags = ""		shared_pose_entity = torso		entity = female_clothes_asoiaf_stannis_clothes_1 }
+-}
++# AGOT_PLUS_FIX candidate: female_clothes_asoiaf_stormlands_stannis_clothes_1 = {
++# AGOT_PLUS_FIX candidate: 	set_tags = "shrink_arms,shrink_chest,shrink_belly"
++# AGOT_PLUS_FIX candidate: 	entity = { required_tags = ""		shared_pose_entity = torso		entity = female_clothes_asoiaf_stannis_clothes_1 }
++# AGOT_PLUS_FIX candidate: }
+ 
+ male_clothes_asoiaf_stormlands_overcoat_1_high = {
+ 	set_tags = "shrink_hands,shrink_arms,shrink_chest,shrink_belly"
+--- before/gfx/portraits/accessories/asoiaf_jewellery.txt
++++ candidate/gfx/portraits/accessories/asoiaf_jewellery.txt
+@@ -30,9 +30,9 @@
+ male_jewellery_asoiaf_septon_necklace_1 = {
+ 	entity = { required_tags = ""		shared_pose_entity = torso		entity = male_jewellery_asoiaf_septon_necklace_1 }
+ }
+-female_jewellery_asoiaf_septon_necklace_1 = {
+-	entity = { required_tags = ""		shared_pose_entity = torso		entity = female_jewellery_asoiaf_septon_necklace_1 }
+-}
++# AGOT_PLUS_FIX candidate: female_jewellery_asoiaf_septon_necklace_1 = {
++# AGOT_PLUS_FIX candidate: 	entity = { required_tags = ""		shared_pose_entity = torso		entity = female_jewellery_asoiaf_septon_necklace_1 }
++# AGOT_PLUS_FIX candidate: }
+ 
+ ## Maesters ##
+ male_jewellery_asoiaf_maester_chain_1 = {
+--- before/gfx/models/portraits/m_legwear/asoiaf/asoiaf_iron_isles/asoiaf_ironborn_legs_coa/asoiaf_ironborn_legs_coa.asset
++++ candidate/gfx/models/portraits/m_legwear/asoiaf/asoiaf_iron_isles/asoiaf_ironborn_legs_coa/asoiaf_ironborn_legs_coa.asset
+@@ -8,7 +8,7 @@
+ 	blend_shape = { id = "male_legwear_asoiaf_ironborn_legs_coa_bs_old"			type = "asoiaf_ironborn_legs_coa_bs_old.mesh" }
+ 	blend_shape = { id = "male_legwear_asoiaf_ironborn_legs_coa_bs_dwarf"		type = "asoiaf_ironborn_legs_coa_bs_dwarf.mesh" }
+ 	blend_shape = { id = "male_legwear_asoiaf_ironborn_legs_coa_bs_infant"		type = "asoiaf_ironborn_legs_coa_bs_infant.mesh" }
+-	blend_shape = { id = "male_legwear_asoiaf_ironborn_legs_coa_bs_no_left_leg"	type = "asoiaf_greyjoy_legs_bs_no_left_leg.mesh" }
++	blend_shape = { id = "male_legwear_asoiaf_ironborn_legs_coa_bs_no_left_leg"	type = "asoiaf_ironborn_legs_coa_bs_no_left_leg.mesh" }
+ 
+ 	meshsettings = {
+ 		name = "asoiaf_ironborn_legs_coaShape"
+--- before/gfx/models/portraits/m_cloaks/asoiaf/asoiaf_westerlands/asoiaf_lannister_cloaks/asoiaf_lannister_cloak_royal/asoiaf_lannister_cloak_royal.asset
++++ candidate/gfx/models/portraits/m_cloaks/asoiaf/asoiaf_westerlands/asoiaf_lannister_cloaks/asoiaf_lannister_cloak_royal/asoiaf_lannister_cloak_royal.asset
+@@ -1,27 +1,4 @@
+-pdxmesh = {
+-	name = "male_cloaks_secular_shouldercape_01_mesh"
+-	file = "male_cloaks_secular_shouldercape_01.mesh"
+-
+-	blend_shape = { id = "male_cloaks_secular_shouldercape_01_bs_fat"			type = "male_cloaks_secular_shouldercape_01_bs_fat.mesh" }
+-	blend_shape = { id = "male_cloaks_secular_shouldercape_01_bs_gaunt"			type = "male_cloaks_secular_shouldercape_01_bs_gaunt.mesh" }
+-	blend_shape = { id = "male_cloaks_secular_shouldercape_01_bs_muscular"		type = "male_cloaks_secular_shouldercape_01_bs_muscular.mesh" }	
+-	blend_shape = { id = "male_cloaks_secular_shouldercape_01_bs_old"			type = "male_cloaks_secular_shouldercape_01_bs_old.mesh" }
+-	blend_shape = { id = "male_cloaks_secular_shouldercape_01_bs_dwarf"			type = "male_cloaks_secular_shouldercape_01_bs_dwarf.mesh" }
+-	blend_shape = { id = "male_cloaks_secular_shouldercape_01_bs_infant"		type = "male_cloaks_secular_shouldercape_01_bs_infant.mesh" }
+-	blend_shape = { id = "male_cloaks_secular_shouldercape_01_bs_offset"		type = "male_cloaks_secular_shouldercape_01_bs_offset.mesh" }
+-	blend_shape = { id = "male_cloaks_secular_shouldercape_01_bs_offset2"		type = "male_cloaks_secular_shouldercape_01_bs_offset2.mesh" }
+-	blend_shape = { id = "male_cloaks_secular_shouldercape_01_bs_offset3"		type = "male_cloaks_secular_shouldercape_01_bs_offset3.mesh" }
+-
+-	meshsettings = {
+-		name = "male_cloaks_secular_shouldercape_01Shape"
+-		index = 0
+-		texture_diffuse = "male_cloaks_secular_shouldercape_01_diffuse.dds"
+-		texture_normal = "male_cloaks_secular_shouldercape_01_normal.dds"
+-		texture_specular = "male_cloaks_secular_shouldercape_01_properties.dds"
+-		shader = "portrait_attachment_pattern"
+-		shader_file = "gfx/FX/jomini/portrait.shader"
+-	}
+-}
++# AGOT_PLUS_FIX candidate: use the identical AGOT pdxmesh; retain the unique AGOT+ entities below.
+ 
+ entity = {
+ 	name = "male_cloaks_asoiaf_lannister_cloak_royal_entity"
+--- before/gfx/models/portraits/f_cloaks/asoiaf/asoiaf_westerlands/asoiaf_lannister_cloaks/f_asoiaf_lannister_cloak_royal/f_asoiaf_lannister_cloak_royal.asset
++++ candidate/gfx/models/portraits/f_cloaks/asoiaf/asoiaf_westerlands/asoiaf_lannister_cloaks/f_asoiaf_lannister_cloak_royal/f_asoiaf_lannister_cloak_royal.asset
+@@ -1,29 +1,4 @@
+-pdxmesh = {
+-	name = "female_cloaks_secular_shouldercape_01_mesh"
+-	file = "female_cloaks_secular_shouldercape_01.mesh"
+-
+-	blend_shape = { id = "female_cloaks_secular_shouldercape_01_bs_fat"			type = "female_cloaks_secular_shouldercape_01_bs_fat.mesh" }
+-	blend_shape = { id = "female_cloaks_secular_shouldercape_01_bs_gaunt"		type = "female_cloaks_secular_shouldercape_01_bs_gaunt.mesh" }
+-	blend_shape = { id = "female_cloaks_secular_shouldercape_01_bs_muscular"		type = "female_cloaks_secular_shouldercape_01_bs_muscular.mesh" }	
+-	blend_shape = { id = "female_cloaks_secular_shouldercape_01_bs_old"			type = "female_cloaks_secular_shouldercape_01_bs_old.mesh" }
+-	blend_shape = { id = "female_cloaks_secular_shouldercape_01_bs_dwarf"		type = "female_cloaks_secular_shouldercape_01_bs_dwarf.mesh" }
+-	blend_shape = { id = "female_cloaks_secular_shouldercape_01_bs_infant"		type = "female_cloaks_secular_shouldercape_01_bs_infant.mesh" }
+-	blend_shape = { id = "female_cloaks_secular_shouldercape_01_bs_offset"		type = "female_cloaks_secular_shouldercape_01_bs_offset.mesh" }
+-	#blend_shape = { id = "female_cloaks_secular_shouldercape_01_bs_offset2"		type = "female_cloaks_secular_shouldercape_01_bs_offset2.mesh" }
+-	#blend_shape = { id = "female_cloaks_secular_shouldercape_01_bs_offset3"		type = "female_cloaks_secular_shouldercape_01_bs_offset3.mesh" }
+-	blend_shape = { id = "female_cloaks_secular_shouldercape_01_bs_breast_size_max"	type = "female_cloaks_secular_shouldercape_01_bs_breast_size_max.mesh" }
+-	blend_shape = { id = "female_cloaks_secular_shouldercape_01_bs_breast_size_min"	type = "female_cloaks_secular_shouldercape_01_bs_breast_size_min.mesh" }
+-
+-	meshsettings = {
+-		name = "female_cloaks_secular_shouldercape_01Shape"
+-		index = 0
+-		texture_diffuse = "male_cloaks_secular_shouldercape_01_diffuse.dds"
+-		texture_normal = "male_cloaks_secular_shouldercape_01_normal.dds"
+-		texture_specular = "male_cloaks_secular_shouldercape_01_properties.dds"
+-		shader = "portrait_attachment_pattern"
+-		shader_file = "gfx/FX/jomini/portrait.shader"
+-	}
+-}
++# AGOT_PLUS_FIX candidate: use the identical AGOT pdxmesh; retain the unique AGOT+ entities below.
+ 
+ entity = {
+ 	name = "female_cloaks_asoiaf_lannister_cloak_royal_entity"

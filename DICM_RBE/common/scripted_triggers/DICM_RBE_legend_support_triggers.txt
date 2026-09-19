@@ -1,0 +1,44 @@
+﻿# Applies only to subjects carrying an Official or Caesar Child modifier.
+DICM_RBE_is_ceasar_legend_supporter_trigger = {
+	OR = {
+		has_character_modifier = DICM_RBE_Ceasar_Official
+		has_character_modifier = DICM_RBE_Ceasar_Child
+	}
+	exists = top_liege
+	top_liege != this
+	top_liege = {
+		DICM_RBE_is_ceasar_ruler_trigger = yes
+	}
+}
+
+# The candidate legend takes precedence over any legend already being promoted.
+# Vanilla maintenance and autonomous AI evaluation provide scope:legend. The
+# request interaction instead provides actor/recipient; chronicler tasks and
+# other current-support checks can use the character's promoted_legend.
+DICM_RBE_has_ceasar_legend_support_discount_trigger = {
+	DICM_RBE_is_ceasar_legend_supporter_trigger = yes
+
+	trigger_if = {
+		limit = { exists = scope:legend }
+		exists = scope:legend.legend_owner
+		top_liege = scope:legend.legend_owner
+	}
+	trigger_else_if = {
+		limit = {
+			exists = scope:actor
+			exists = scope:recipient
+			this = scope:recipient
+			exists = scope:actor.promoted_legend
+		}
+		exists = scope:actor.promoted_legend.legend_owner
+		top_liege = scope:actor.promoted_legend.legend_owner
+	}
+	trigger_else_if = {
+		limit = { exists = promoted_legend }
+		exists = promoted_legend.legend_owner
+		top_liege = promoted_legend.legend_owner
+	}
+	trigger_else = {
+		always = no
+	}
+}

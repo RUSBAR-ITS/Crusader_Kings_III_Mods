@@ -1,0 +1,15 @@
+﻿# Called from after_creation in the scope of this newborn (not a shared child scope).
+agot_plus_fix_place_newborn_effect = {
+	save_scope_as = agot_plus_fix_newborn
+	if = {
+		limit = { scope:mother = { is_ruler = yes } }
+		scope:mother = { add_courtier = scope:agot_plus_fix_newborn }
+	}
+	else_if = {
+		limit = { exists = scope:mother.employer }
+		scope:mother.employer = { add_courtier = scope:agot_plus_fix_newborn }
+	}
+	# Court transfer can move the child; restore the mother's actual location.
+	# The original AGOT+ travel helper runs afterwards.
+	set_location = scope:mother.location
+}

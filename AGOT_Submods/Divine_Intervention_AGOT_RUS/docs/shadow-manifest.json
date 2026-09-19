@@ -1,0 +1,31 @@
+﻿[
+    {
+        "Catalog":  "BaseRussian",
+        "File":  "localization/russian/gui/DI_RUS_l_russian.yml",
+        "SourceSHA256":  "47148649DE5C762DEBCE8F2D31F91742A3F0696F98F7695B9CB18C2916484CC0",
+        "PatchedSHA256":  "059B79446FBF018119C66895779850889696A4E069DE529281280EC4C984785E",
+        "Changes":  [
+                        {
+                            "File":  "localization/russian/gui/DI_RUS_l_russian.yml",
+                            "Key":  "DI_STRESS_TOOLTIP",
+                            "Line":  356,
+                            "Before":  " DI_STRESS_TOOLTIP: \"#T [stress_level|E]: [Character.GetStressLevel|V]/[GetDefine(\u0027NCharacter\u0027, \u0027MAX_STRESS_LEVEL\u0027)|V]\\n#![ConcatIfNeitherEmpty(\u0027#S Effects:#!\\n\u0027, Character.StressLevelEffect )]\\n[ДобавитьTextIf(Not(StringIsEmpty(Character.StressLevelEffect)), \u0027\\n\u0027)]#S [stress|E]: [stress_i][Character.GetStress|V]/[GetMaxStress|V]#!\\n[Character.StressProgressDesc]\"",
+                            "After":  " DI_STRESS_TOOLTIP: \"#T [stress_level|E]: [Character.GetStressLevel|V]/[GetDefine(\u0027NCharacter\u0027, \u0027MAX_STRESS_LEVEL\u0027)|V]\\n#![ConcatIfNeitherEmpty(\u0027#S Эффекты:#!\\n\u0027, Character.StressLevelEffect )]\\n[AddTextIf(Not(StringIsEmpty(Character.StressLevelEffect)), \u0027\\n\u0027)]#S [stress|E]: [stress_i][Character.GetStress|V]/[GetMaxStress|V]#!\\n[Character.StressProgressDesc]\""
+                        },
+                        {
+                            "File":  "localization/russian/gui/DI_RUS_l_russian.yml",
+                            "Key":  "DI_select_kingdoms_tt",
+                            "Line":  408,
+                            "Before":  " DI_select_kingdoms_tt: \"#Bold ЛКМ#! чтобы выбрать все королевства\\n#Bold ПКМ#! чтобы отменить выбор всех королевств\".",
+                            "After":  " DI_select_kingdoms_tt: \"#Bold ЛКМ#! чтобы выбрать все королевства\\n#Bold ПКМ#! чтобы отменить выбор всех королевств\""
+                        },
+                        {
+                            "File":  "localization/russian/gui/DI_RUS_l_russian.yml",
+                            "Key":  "DI_select_counties_tt",
+                            "Line":  412,
+                            "Before":  " DI_select_counties_tt: \"#Bold ЛКМ#! чтобы выбрать все графств\\n#Bold ПКМ#! чтобы отменить выбор всех графств\".",
+                            "After":  " DI_select_counties_tt: \"#Bold ЛКМ#! чтобы выбрать все графства\\n#Bold ПКМ#! чтобы отменить выбор всех графств\""
+                        }
+                    ]
+    }
+]

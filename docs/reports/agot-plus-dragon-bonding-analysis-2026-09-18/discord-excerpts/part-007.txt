@@ -1,0 +1,108 @@
+LTSpec — 03.09.2024 2:09
+weird bug that one, i thought it was someone else starting the bonding schemes but it seems that it's forcing myself (Viserys) to start those schemes, even though i'm already bonded to Balerion, the schemes don't move forward but they do stop other personal schemes, in this instance i was Romancing Aemma and it stopped the scheme, just some info @Anumaril
+Anumaril [AVE], Значок роли, Targaryen
+TC
+ — 03.09.2024 2:13
+Thanks for letting me know!
+Out of curiosity, do you have the auto-dragon bonding game rule enabled in your game?
+If so, I'll know where to look. If not, I'll look elsewhere.
+ [AVE], 
+LTSpec — 03.09.2024 2:34
+sorry for taking so long to reply, yes, auto-dragon bonding on, Rhaenys dead, Vaegon, Maegelle, Saera and Rhaella (Daughter of Aegon the Uncrowned) alive but banned from dragonpit, Viserys bonded with Balerion as expected, Daemon with Caraxes as expected
+Anumaril [AVE], Значок роли, Targaryen
+TC
+ — 03.09.2024 2:35
+Great, thanks!
+Ser WabbaЗначок роли, Targaryen — 03.09.2024 3:15
+I was also experiencing this, but I ran a lot of submods so I didn't report incase it was an issue with another mod
+but yeah when I was playing Viserys it was constantly trying to bond with a dragon
+ [AVE], 
+evan1795Значок роли, Targaryen — 03.09.2024 5:28
+What is the auto dragon bonding game rule? I must have missed this when setting up
+DandyЗначок роли, Velaryon — 03.09.2024 6:43
+somebody has the non steam link?
+LTSpec — 03.09.2024 6:52
+when enabled in the game rules it basically makes canon dragon bonding, for example, Viserys will bond with Balerion, Daemon with Caraxes, Aegon "The Elder" with Sunfyre etc
+LTSpec — 03.09.2024 6:52
+there's a google drive link on the steam workshop page
+Ser WabbaЗначок роли, Targaryen — 04.09.2024 1:10
+@Anumaril I started in the 82 start and married Corlys with Rhaenys so they could have Laena and Laenor, had a weird bug where Laenor keeps getting cloned for every child they have after that
+Idk if another submod was causing it
+Cedinero — 04.09.2024 1:21
+You gotta deactivate AGOT+ canon children game rules, it seems you enabled base game's canon children + Canon Children+ 
+Ser WabbaЗначок роли, Targaryen — 04.09.2024 1:41
+I disabled the base game
+The clones are from AGOT+
+They spawn with all his traits
+So that's not the issue I don't think
+Anumaril [AVE], Значок роли, Targaryen
+TC
+ — 04.09.2024 1:44
+I'll test around to see what's up
+Found the bug. I'll patch it now.
+ [AVE], 
+Cedinero — 04.09.2024 2:27
+Means now we can enable the three game rule sets? Base game, Canon Children+ and AGOT+?
+Ser WabbaЗначок роли, Targaryen — 04.09.2024 2:32
+Nope
+That was never the issue
+Like I said I already had the AGOT canon children setting disabled
+There was just a bug with AGOT+ children being cloned for some reason I guess
+Cedinero — 04.09.2024 2:35
+So you got Canon Children+ and AGOT+ Canon Children together? And disabled base game's?
+Ser WabbaЗначок роли, Targaryen — 04.09.2024 2:35
+No
+I don't use Canon Children+
+And I disable the base game
+I never said I use Canon Children+ 😵‍💫
+Moulton — 04.09.2024 6:47
+Any idea why Daenerys Stormborn aint spawning with the canon children modifier?
+Anumaril [AVE], Значок роли, Targaryen
+TC
+ — 05.09.2024 1:12
+They're there
+Check again
+What do you mean by bugged?
+That's a load order issue.
+It should be below anything that impacts clothes files
+Right now as far as I'm aware only Submod Core mods add new clothes items, so it needs to be below those.
+Brandon BlackfyreЗначок роли, Blackfyre — 05.09.2024 4:26
+Is it possible to turn off the DNAs while using this? I prefer the original character models
+Moulton — 05.09.2024 4:29
+game rules
+Melkor [ASC],  — 05.09.2024 5:19
+any link other than the steam one?
+Anumaril [AVE], Значок роли, Targaryen
+TC
+ — 05.09.2024 13:15
+Yep, there's a Google Drive link in the Steam Workshop description
+Drago, #2 Sarugorn Shipper [AGOT], Значок роли, Cargyll — 05.09.2024 16:36
+Last time I checked AGOT+ didn't add Valyrian Robes, that's a Submod Core/Legacy of the Dragon addition. I believe those items are included in the AGOT+ gene files for compatibility but without the corresponding Submod installed they won't show up on a character when selected
+Drago, #2 Sarugorn Shipper [AGOT], Значок роли, Cargyll — 05.09.2024 16:54
+Most likely. The game can't find localization for those items so they appear as the base code lines and don't have any models to call from
+Daemon VelaryonЗначок роли, Velaryon — 05.09.2024 20:06
+Hey, I did a custom mod based on yours, it basically just mess around with the CoA, cause I like the majority of the vanilla ones, with lil exceptions, is there a problem?
+I didn't posted it anywhere, cause idk if you'd let me do so, if not, i'm fine abt using it just personally
+Moulton — 05.09.2024 21:36
+waiting desperately/patiently for that update
+Anumaril [AVE], Значок роли, Targaryen
+TC
+ — 05.09.2024 23:10
+The parentage assignment problem is taking far longer than I thought it would. I'm testing some new code right now which should hopefully work
+Moulton — 05.09.2024 23:11
+it did seem to work for everyone except daenerys in the invasions
+Anumaril [AVE], Значок роли, Targaryen
+TC
+ — 05.09.2024 23:12
+No there's never a problem with personal mods (no one even knows they exist unless you talk about it, after all). I'm also pretty liberal when it comes to using things from my mod, so I'm not bothered or anything.
+Anumaril [AVE], Значок роли, Targaryen
+TC
+ — 05.09.2024 23:12
+That's not what I mean. Someone on the Steam Workshop mentioned a different problem where Canon Children would be assigned their father's House/faith/culture regardless of if the marriage was matrilineal or not.
+Moulton — 05.09.2024 23:13
+ah
+Anumaril [AVE], Значок роли, Targaryen
+TC
+ — 05.09.2024 23:44
+New update is out
+Currently uploading to Google Drive too (should take another 6 minutes to finish)

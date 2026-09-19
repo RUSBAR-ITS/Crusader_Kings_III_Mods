@@ -1,0 +1,255 @@
+﻿on_game_start = {
+	on_actions = {
+		asoiaf_start
+		asoiaf_assign_inactive_traits
+		asoiaf_canon_children_assign_pregnancy_negation_modifiers
+		asoiaf_feudal_contract_fixes
+		asoiaf_setup_alternative_ages
+		asoiaf_setup_general
+		asoiaf_setup_fertility_health_boost
+		asoiaf_setup_culture_fixes
+		asoiaf_setup_heresy_fixes
+		asoiaf_got_names
+		asoiaf_got_traits
+		asoiaf_alternative_dayne_sigil
+		asoiaf_new_dnas
+		asoiaf_hbo_velaryons
+		asoiaf_npk_rhaegar_birth_effects
+		asoiaf_setup_sexuality_fixes
+	}
+}
+
+asoiaf_start = {
+	effect = {
+		set_global_variable = {
+			name = asoiaf_enabled
+			value = yes
+		}
+		if = {
+			limit = {
+				exists = global_var:asoiaf_enabled
+			}
+		}
+	}
+}
+
+asoiaf_feudal_contract_fixes = {
+	effect = {
+		#cant be effect because the AGOT effect making these contracts is an on_action for game start too
+		title:c_driftmark.holder = {
+			trigger_event = { id = asoiaf_setup_events.1 days = 1 }
+		}
+		title:c_claw_isle.holder = {
+			trigger_event = { id = asoiaf_setup_events.1 days = 1 }
+		}
+		title:c_wolf_branch.holder = {
+			trigger_event = { id = asoiaf_setup_events.1 days = 1 }
+		}
+		if = {
+			limit = {
+				character:Baratheon_3 ?= { primary_title ?= title:k_dragonstone }
+			}
+			title:k_dragonstone.holder = {
+				trigger_event = { id = asoiaf_setup_events.6 days = 1 }
+			}
+		}
+	}
+}
+
+asoiaf_setup_alternative_ages = {
+	trigger = {
+		AND = {
+			has_game_rule = asoiaf_alternative_ages_rule_on
+			has_game_rule = asoiaf_got_traits_rule_on
+		}
+	}
+	effect = {
+		asoiaf_alternative_ages_effect = yes
+	}
+}
+
+asoiaf_setup_culture_fixes = {
+	trigger = {
+		has_game_rule = asoiaf_westeros_culture_fix_rule_on
+	}
+	effect = {
+		asoiaf_westeros_culture_fix_effect = yes
+	}
+}
+
+asoiaf_setup_heresy_fixes = {
+	trigger = {
+		has_game_rule = asoiaf_westeros_heresy_fix_rule_on
+	}
+	effect = {
+		asoiaf_westeros_heresy_fix_effect = yes
+	}
+}
+
+asoiaf_setup_general = {
+	effect = {
+		if = {
+			limit = {
+				NOT = { current_date = 8282.9.15 } #NO TITLE DELETE during RR, or RR events break for some reason
+			}
+			#title:e_the_crownlands.holder = {
+			#	asoiaf_destroy_crownlands_title_effect = yes
+			#}
+		}
+		if = { #cleanup for Summerhall after the Tragedy
+			limit = {
+				#NOT = { current_date = 8282.9.15 } #NO TITLE CHANGE during RR or RR events break for some reason
+				title:h_the_iron_throne.holder ?= { has_title = title:c_summerfield } #if the King holds Summerhall
+				character:Targaryen_122 ?= { is_alive = no } #but Aegon V is already dead (so Summerhall is a ruin)
+			}
+			title:d_grandview.holder ?= { get_title = title:c_summerfield } #give Summerhall to the High Lord of Grandview
+			dynasty:dynn_Targaryen = { #cleanup claims for Targaryens
+				every_dynasty_member = {
+					limit = {
+						OR = {
+							has_weak_claim_on = title:c_summerfield
+							has_strong_claim_on = title:c_summerfield
+						}
+					}
+					remove_claim = title:c_summerfield
+				}
+			}
+		}
+		asoiaf_setup_houses_effect = yes
+		asoiaf_setup_characters_effect = yes
+		#asoiaf_setup_coa_fixes_effect = yes
+		asoiaf_religion_doctrines_effect = yes
+		#title:e_the_riverlands = {
+		#	set_definitive_form = yes
+		#}
+		#title:e_the_crownlands = {
+		#	set_definitive_form = yes
+		#}
+		#title:e_dorne = {
+		#	set_definitive_form = yes
+		#}
+		title:d_brandons_gift = {
+			set_definitive_form = yes
+		}
+		title:d_new_gift = {
+			set_definitive_form = yes
+		}
+		title:k_thenn = {
+			set_definitive_form = yes
+		}
+		title:k_first_forest = {
+			set_definitive_form = yes
+		}
+		title:h_the_iron_throne = {
+			clear_title_laws = yes
+		}
+		title:e_the_crownlands = {
+			clear_title_laws = yes
+		}
+		title:d_kings_landing = {
+			clear_title_laws = yes
+		}
+		title:c_kings_landing = {
+			clear_title_laws = yes
+		}
+		title:c_blackstripe = {
+			clear_title_laws = yes
+		}
+		title:k_dragonstone = {
+			clear_title_laws = yes
+		}
+		title:d_dragonstone = {
+			clear_title_laws = yes
+		}
+	}
+}
+
+asoiaf_setup_fertility_health_boost = {
+	trigger = {
+		has_game_rule = asoiaf_fertility_health_boost_rule_on
+	}
+	effect = {
+		asoiaf_setup_health_fertility_effect = yes
+	}
+}
+
+asoiaf_got_names = {
+	trigger = {
+		has_game_rule = asoiaf_got_names_rule_on
+	}
+	effect = {
+		asoiaf_got_names_effect = yes
+	}
+}
+
+asoiaf_got_traits = {
+	trigger = {
+		has_game_rule = asoiaf_got_traits_rule_on
+	}
+	effect = {
+		asoiaf_got_traits_effect = yes
+	}
+}
+
+asoiaf_alternative_dayne_sigil = {
+	trigger = {
+		has_game_rule = asoiaf_alternative_dayne_sigil_rule_on
+	}
+	effect = {
+		asoiaf_alternative_dayne_sigil_effect = yes
+	}
+}
+
+asoiaf_new_dnas = {
+	effect = {
+		asoiaf_new_dnas_effect = yes
+	}
+}
+
+asoiaf_hbo_velaryons = {
+	effect = {
+		asoiaf_hbo_velaryons_dna_effect = yes
+	}
+}
+
+asoiaf_assign_inactive_traits = {
+	effect = {
+		asoiaf_assign_inactive_traits_effect = yes
+	}
+}
+
+asoiaf_canon_children_assign_pregnancy_negation_modifiers = {
+	trigger = {
+		asoiaf_canon_children_enabled_trigger = yes
+		has_game_rule = asoiaf_canon_children_pregnancy_negation_rule_on
+	}
+	effect = {
+		asoiaf_canon_children_assign_pregnancy_negation_modifiers_effect = yes
+	}
+}
+
+asoiaf_npk_rhaegar_birth_effects = {
+	trigger = {
+		NOT = { exists = global_var:asoiaf_canon_children_Targaryen_3_born_variable } #Rhaegar hasn't been born yet
+		AND = { #this is the NPK bookmark
+			current_date >= 8258.1.1
+			current_date <= 8258.12.30
+		}
+	}
+	effect = {
+		dynasty:dynn_Targaryen = {
+			every_dynasty_member = {
+				trigger_event = { id = asoiaf_setup_events.7 months = 11 }
+			}
+		}
+	}
+}
+
+asoiaf_setup_sexuality_fixes = {
+	trigger = {
+		has_game_rule = asoiaf_sexuality_fix_rule_on
+	}
+	effect = {
+		asoiaf_sexuality_fix_effect = yes
+	}
+}

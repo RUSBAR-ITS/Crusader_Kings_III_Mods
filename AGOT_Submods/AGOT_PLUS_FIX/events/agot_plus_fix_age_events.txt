@@ -1,0 +1,26 @@
+﻿namespace = agot_plus_fix_ages
+
+# Called only after this character crosses from age < 16 to age >= 16.
+# No delay: use the character's own ROOT for AGOT education and crush effects.
+agot_plus_fix_ages.0001 = {
+	type = character_event
+	hidden = yes
+	trigger = {
+		is_alive = yes
+		age >= 16
+	}
+	immediate = {
+		# Event chains may inherit saved targets. Rebuild all optional cleanup
+		# targets from this character instead of reusing an earlier character's.
+		clear_saved_scope = educator
+		clear_saved_scope = victim
+		clear_saved_scope = bully
+		clear_saved_scope = crush
+		clear_saved_scope = crushed_crush
+		clear_saved_scope = root_crush
+		clear_saved_scope = hostage
+		clear_saved_scope = education_memory
+		clear_saved_scope = new_memory
+		asoiaf_alternative_ages_cleanup_effect = yes
+	}
+}

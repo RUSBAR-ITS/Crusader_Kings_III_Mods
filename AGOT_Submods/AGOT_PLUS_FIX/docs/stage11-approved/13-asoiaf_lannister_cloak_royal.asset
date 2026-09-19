@@ -1,0 +1,25 @@
+# AGOT_PLUS_FIX: use the identical AGOT pdxmesh; retain the unique AGOT+ entities below.
+
+entity = {
+	name = "male_cloaks_asoiaf_lannister_cloak_royal_entity"
+	pdxmesh = "male_cloaks_secular_shouldercape_01_mesh"
+
+	attribute = { name = "bs_body_fat_1"					blend_shape = "male_cloaks_secular_shouldercape_01_bs_fat" }
+	attribute = { name = "bs_body_gaunt_1"					blend_shape = "male_cloaks_secular_shouldercape_01_bs_gaunt" }
+	attribute = { name = "bs_body_muscular_1"				blend_shape = "male_cloaks_secular_shouldercape_01_bs_muscular" }	
+	attribute = { name = "bs_body_old_1"					blend_shape = "male_cloaks_secular_shouldercape_01_bs_old" }
+	attribute = { name = "bs_body_dwarf_1"					blend_shape = "male_cloaks_secular_shouldercape_01_bs_dwarf" }
+	attribute = { name = "bs_body_infant_1"					blend_shape = "male_cloaks_secular_shouldercape_01_bs_infant" }
+	attribute = { name = "bs_cloak_offset"					blend_shape = "male_cloaks_secular_shouldercape_01_bs_offset" }
+	attribute = { name = "bs_cloak_offset2"					blend_shape = "male_cloaks_secular_shouldercape_01_bs_offset2" }
+	attribute = { name = "bs_cloak_offset3"					blend_shape = "male_cloaks_secular_shouldercape_01_bs_offset3" }
+
+	game_data = {
+		portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/m_cloaks/agot/shouldercape/male_cloaks_secular_shouldercape_01_masks.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "asoiaf_lannister_cloak_royal"	#A "variation" object in gfx/portraits/accessory_variations/
+			}
+		}
+	}
+}

@@ -1,0 +1,5704 @@
+﻿asoiaf_hairs_custom_appearances = {
+
+    usage = game
+	selection_behavior = max
+	priority = 10
+	
+	#override={
+	#	portrait_modifier_overrides={
+	#		custom_beards=male_empty
+	#		custom_hair=male_hair_custom_08
+	#	}
+	#}
+	
+	#HAIRSTLYES - check 02_all_agot_characters.txt for up-to-date values
+	asoiaf_bald = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = no_hairstyles
+				value = 0
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Westerling_23 #Harrold Westerling (Lord Commander)
+				this = character:Westerling_23
+				age >= 30
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Slynt_1 #Janos Slynt
+				this = character:Slynt_1
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Payne_6 #Ilyn Payne (son of Wendel)
+				this = character:Payne_6
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Baratheon_hh_7 #Patchface
+				this = character:Baratheon_hh_7
+				has_game_rule = asoiaf_new_dnas_essos_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_long_and_tied_back = { #male_hair_custom_08
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_custom_08
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_67_trait #Aemond Targaryen (son of Viserys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						age < 12
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_67_trait
+						NOT = { this = character:Targaryen_67 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						age < 12
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_86_trait #Cregan Stark (son of Rickon)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_86_trait
+						NOT = { this = character:Stark_86 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_68_trait #Daeron Targaryen (son of Viserys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_68_trait
+						NOT = { this = character:Targaryen_68 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_3_trait #Eddard Stark (son of Rickard)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_3_trait
+						NOT = { this = character:Stark_3 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_3_trait #Rhaegar Targaryen (son of Aerys II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						age >= 18
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_3_trait
+						NOT = { this = character:Targaryen_3 }
+						age >= 18
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Velaryon_2 #Monford Velaryon (son of Lucerys)
+				this = character:Velaryon_2
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_1_trait #Rickard Stark (son of Edwyle)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_1_trait
+						NOT = { this = character:Stark_1 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Vikary_1 #Lymond Vikary
+				this = character:Vikary_1
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_character_flag = is_Stark_7
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+						OR = {
+							has_title = title:c_winterfell
+							has_title = title:d_winterfell
+							has_title = title:e_the_north
+							has_title = title:e_the_north
+						}
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_7_trait #Jon Snow
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+						OR = {
+							has_title = title:c_winterfell
+							has_title = title:d_winterfell
+							has_title = title:e_the_north
+							has_title = title:e_the_north
+						}
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_7_trait
+						NOT = { this = character:Stark_7 }
+						OR = {
+							has_title = title:c_winterfell
+							has_title = title:d_winterfell
+							has_title = title:e_the_north
+							has_title = title:e_the_north
+						}
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_long_flowing = { #male_hair_western_07
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_western_07
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_1_trait #Aerys II Targaryen
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_1_trait
+						NOT = { this = character:Targaryen_1 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_5_trait #Gerion Lannister (son of Tytos)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_5_trait
+						NOT = { this = character:Lannister_5 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Karstark_4_trait #Rickard Karstark (son of Brandon)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Karstark_4_trait
+						NOT = { this = character:Karstark_4 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Cassel_4 #Jory Cassel
+				this = character:Cassel_4
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Greyjoy_7 #Victarion Greyjoy (son of Quellon)
+				this = character:Greyjoy_7
+				has_game_rule = asoiaf_new_dnas_iron_isles_rule_on
+			}
+		}
+	}
+	#asoiaf_hair_male_rogue_prince = {
+	#	dna_modifiers = {
+	#		accessory = {
+	#			mode = add
+	#			gene = hairstyles
+	#			template = agot_all_hairstyles
+	#			accessory = male_hair_custom_15
+	#		}
+	#	}
+	#	weight = {
+	#		base = 0
+	#		modifier = {
+	#			add = 2000
+	#			OR = {
+	#				AND = {
+	#					has_inactive_trait = asoiaf_Stark_3_trait #Eddard Stark (son of Rickard)
+	#					has_game_rule = asoiaf_new_dnas_north_rule_on
+	#				}
+	#				AND = {
+	#					has_inactive_trait = asoiaf_Stark_3_trait
+	#					NOT = { this = character:Stark_3 }
+	#					asoiaf_canon_children_enabled_trigger = yes
+	#					NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+	#				}
+	#			}
+	#		}
+	#	}
+	#}
+	asoiaf_hair_male_valyrian_loose_hair_01 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_valyrian_loose_hair_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_60_trait #Viserys I Targaryen
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_60_trait
+						NOT = { this = character:Targaryen_60 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_valyrian_loose_hair_02 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_valyrian_loose_hair_02
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_61_trait #Daemon Targaryen (son of Baelon)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						age >= 30
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_61_trait
+						NOT = { this = character:Targaryen_61 }
+						age >= 30
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_96_trait #Brynden Rivers (Bloodraven)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						age < 45
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_96_trait
+						NOT = { this = character:Targaryen_96 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						age < 45
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Lannister_24 #Daven Lannister (son of Stafford)
+				this = character:Lannister_24
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_medium_flowing = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_western_05
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Darry_8 #Raymun Darry (son of Lyman)
+				this = character:Darry_8
+				has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_pulled_back = { #male_hair_indian_01
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_indian_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_1_trait #Tywin Lannister (son of Tytos)
+						age >= 27
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_1_trait
+						NOT = { this = character:Lannister_1 }
+						age >= 27
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000 #balding hairstyle will overwrite
+				exists = character:Mormont_3 #Jorah Mormont (son of Jeor)
+				this = character:Mormont_3
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_medium_wavy = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_western_08
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Stokeworth_2 #Manly Stokeworth (son of Addam)
+				this = character:Stokeworth_2
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Lannister_129 #Tytos Lannister (son of Gerold)
+				this = character:Lannister_129
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_pulled_back_medium_wavy = { #male_hair_indian_02
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_indian_02
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Hightower_90_trait #Otto Hightower (brother of Hobert)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Hightower_90_trait
+						NOT = { this = character:Hightower_90 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Staunton_19 #Simon Staunton
+				this = character:Staunton_19
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Lannister_91 #Tyland Lannister (twin of Jason)
+				this = character:Lannister_91
+				has_game_rule = asoiaf_new_dnas_vale_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tully_9_trait #Brynden Tully (son of Edmyn)
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tully_9_trait
+						NOT = { this = character:Tully_9 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Blackwater_1 #Bronn of the Blackwater
+				this = character:Blackwater_1
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Branfield_2 #Melcolm Branfield (son of Talia)
+				this = character:Branfield_2
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Maester_Kings_Landing_2 #Qyburn
+				this = character:Maester_Kings_Landing_2
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+		}
+	}
+	#asoiaf_hair_male_high_bun = { #male_hair_indian_03
+	#	dna_modifiers = {
+	#		accessory = {
+	#			mode = add
+	#			gene = hairstyles
+	#			template = all_hairstyles
+	#			accessory = male_hair_indian_03
+	#		}
+	#	}
+	#	weight = {
+	#		base = 0
+	#		modifier = {
+	#			add = 2000
+	#			exists = character:Brotherhood_8 #Thoros of Myr
+	#			this = character:Brotherhood_8
+	#			has_game_rule = asoiaf_new_dnas_essos_rule_on
+	#		}
+	#	}
+	#}
+	asoiaf_hair_male_medium_unkempt = { #male_hair_western_02
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_western_02
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_35_trait #Jaehaerys I Targaryen
+						age >= 50
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_35_trait
+						NOT = { this = character:Targaryen_35 }
+						age >= 50
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Beesbury_21 #Lyman Beesbury (father of Braxton)
+				this = character:Beesbury_21
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Strong_29_trait #Lyonel Strong (son of Osmund)
+						age < 50
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Strong_29_trait
+						NOT = { this = character:Strong_29 }
+						age < 50
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tully_1_trait #Hoster Tully (son of Edmyn)
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tully_1_trait
+						NOT = { this = character:Tully_1 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Martell_4_trait #Doran Martell (son of Loreza)
+						has_game_rule = asoiaf_new_dnas_dorne_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Martell_4_trait
+						NOT = { this = character:Martell_4 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_dorne_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Hollard_10 #Dontos Hollard (son of Steffon)
+				this = character:Hollard_10
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_8_trait #Mace Tyrell (son of Luthor)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_8_trait
+						NOT = { this = character:Tyrell_8 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Manderly_8 #Wendel Manderly (son of Wyman)
+				this = character:Manderly_8
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Hightower_7 #Baelor Hightower (son of Leyton)
+				this = character:Hightower_7
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Greyjoy_14_trait #Theon Greyjoy (son of Balon) AS REEK
+						has_game_rule = asoiaf_new_dnas_iron_isles_rule_on
+						has_trait = eunuch #Reek conditions
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Greyjoy_14_trait
+						NOT = { this = character:Greyjoy_14 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_iron_isles_rule_on }
+						has_trait = eunuch #Reek conditions
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Greyjoy_6 #Euron Greyjoy (son of Quellon)
+				this = character:Greyjoy_6
+				has_game_rule = asoiaf_new_dnas_iron_isles_rule_on
+			}
+			modifier = {
+				add = 2000 #overwritten by bald hairstyle
+				exists = character:Baratheon_hh_3 #Maester Cressen
+				this = character:Baratheon_hh_3
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Giantsbane_1 #Tormund Giantsbane
+				this = character:Giantsbane_1
+				has_game_rule = asoiaf_new_dnas_beyond_the_wall_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_short_wavy = { #male_hair_western_09
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_western_09
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Baratheon_34 #Boremund Baratheon (son of Rogar)
+				this = character:Baratheon_34
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_84_trait #Rickon Stark (father of Cregan)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_84_trait
+						NOT = { this = character:Stark_84 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Hightower_89 #Hobert Hightower
+				this = character:Hightower_89
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Hightower_92 #Ormund Hightower (son of Hobert)
+				this = character:Hightower_92
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Estermont_44 #Leon Estermont (friend of Aegon)
+				this = character:Estermont_44
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Stokeworth_1 #Samwell Stokeworth (son of Addam)
+				this = character:Stokeworth_1
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Moore_2 #Mandon Moore (son of Jon)
+				this = character:Moore_2
+				has_game_rule = asoiaf_new_dnas_vale_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Florent_2 #Alester Florent (son of Imry)
+				this = character:Florent_2
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_4_trait #Renly Baratheon (son of Steffon)
+						has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_4_trait
+						NOT = { this = character:Baratheon_4 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_stormlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000 #overwritten by balding hairstyle
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tully_7_trait #Edmure Tully (son of Hoster)
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tully_7_trait
+						NOT = { this = character:Tully_7 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Martell_10_trait #Quentyn Martell (son of Doran)
+						has_game_rule = asoiaf_new_dnas_dorne_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Martell_10_trait
+						NOT = { this = character:Martell_10 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_dorne_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Glover_5 #Robett Glover (brother of Galbart)
+				this = character:Glover_5
+				age < 35
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_96_trait #Brynden Rivers (Bloodraven)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						age >= 45
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_96_trait
+						NOT = { this = character:Targaryen_96 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						age >= 45
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_120_trait #Aemon Targaryen (son of Maekar I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						age < 40
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_120_trait
+						NOT = { this = character:Targaryen_120 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						age < 40
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_1_trait #Steffon Baratheon (son of Ormund)
+						has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_1_trait
+						NOT = { this = character:Baratheon_1 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_stormlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Forrester_4 #Asher Forrester (son of Gregor)
+				this = character:Forrester_4
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Degore_1 #Royland Degore
+				this = character:Degore_1
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Manderly_7 #Wylis Manderly (son of Wyman)
+				this = character:Manderly_7
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Pycelle_1 #Grandmaester Pycelle
+				this = character:Pycelle_1
+				age < 35
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Swyft_1 #Harys Swyft (son of Sheldon)
+				this = character:Swyft_1
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2000 #overwritten by bald hairstyle
+				exists = character:Bolton_1 #Roose Bolton
+				this = character:Bolton_1
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Most_Devout_21 #High Septon (The One After the Fat One)
+				this = character:Most_Devout_21
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Umber_8 #Jon Umber (Greatjon)
+				this = character:Umber_8
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_11_trait #Willas Tyrell (son of Mace)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_11_trait
+						NOT = { this = character:Tyrell_11 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:asoiaf_Kobyla_2 #Henry of Skalitz
+				this = character:asoiaf_Kobyla_2
+			}
+			modifier = {
+				add = 2000
+				exists = character:Selmy_3 #Barristan Selmy (son of Lyonel)
+				this = character:Selmy_3
+				age < 35
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Royce_1 #Yohn Royce (Bronze)
+				this = character:Royce_1
+				age < 50
+				has_game_rule = asoiaf_new_dnas_vale_rule_on
+			}
+			modifier = {
+				add = 2000 #balding hairstyle will overwrite this
+				exists = character:Seaworth_1 #Davos Seaworth
+				this = character:Seaworth_1
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_2_trait #Kevan Lannister (son of Tytos)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+						age < 40
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_2_trait
+						NOT = { this = character:Lannister_2 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+						age < 40
+					}
+				}
+			}
+		}
+	}
+	#asoiaf_hair_male_long_wild = { #male_hair_northern_02
+	#	dna_modifiers = {
+	#		accessory = {
+	#			mode = add
+	#			gene = hairstyles
+	#			template = all_hairstyles
+	#			accessory = male_hair_northern_02
+	#		}
+	#	}
+	#	weight = {
+	#		base = 0
+	#		modifier = {
+	#			add = 2000
+	#			OR = {
+	#				AND = {
+	#					has_inactive_trait = asoiaf_Stark_4_trait #Benjen Stark (son of Rickard)
+	#					has_game_rule = asoiaf_new_dnas_north_rule_on
+	#				}
+	#				AND = {
+	#					has_inactive_trait = asoiaf_Stark_4_trait
+	#					NOT = { this = character:Stark_4 }
+	#					asoiaf_canon_children_enabled_trigger = yes
+	#					NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+	#				}
+	#			}
+	#		}
+	#	}
+	#}
+	asoiaf_hair_male_very_long_wild = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_northern_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_65_trait #Aegon II Targaryen
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						age < 16
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_65_trait
+						NOT = { this = character:Targaryen_65 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						age < 16
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_fringed_hair = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_custom_21
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_110_trait #Maekar I Targaryen
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_110_trait
+						NOT = { this = character:Targaryen_110 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_roman_fade = { #male_hair_byzantine_02
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = byzantine_hairstyles_straight
+				accessory = male_hair_byzantine_02
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Westerling_23 #Harrold Westerling (Lord Commander)
+				this = character:Westerling_23
+				age < 30
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Thorne_17 #Rickard Thorne (son of Ellera)
+				this = character:Thorne_17
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_119_trait #Aerion Targaryen (son of Maekar I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_119_trait
+						NOT = { this = character:Targaryen_119 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Lefford_1 #Leo Lefford
+				this = character:Lefford_1
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Martell_8 #Oberyn Martell
+				this = character:Martell_8
+				has_game_rule = asoiaf_new_dnas_dorne_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Stark_hh_2 #Hodor
+				this = character:Stark_hh_2
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_7_trait #Jaime Lannister (son of Tywin)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+						has_trait = one_handed
+						#later add a NOT condition for the initial mutilation injury modifier
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_7_trait
+						NOT = { this = character:Lannister_7 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+						has_trait = one_handed
+						#later add a NOT condition for the initial mutilation injury modifier
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Dayne_5_trait #Arthur Dayne (son of Beric)
+						has_game_rule = asoiaf_new_dnas_dorne_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Dayne_5_trait
+						NOT = { this = character:Dayne_5 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_dorne_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Baelish_2 #Petyr Baelish (Littlefinger)
+				this = character:Baelish_2
+				has_game_rule = asoiaf_new_dnas_vale_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Lannister_134 #Alton Lannister (son of Tybolt)
+				this = character:Lannister_134
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Tuttle_4 #Duncan Tuttle
+				this = character:Tuttle_4
+				age < 40
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_fade = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_western_04
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:asoiaf_Leipa_12 #Hanush of Leipa (uncle of Hans Capon)
+				this = character:asoiaf_Leipa_12
+			}
+			modifier = {
+				add = 2000
+				exists = character:asoiaf_Erik #Erik (lover of Istvan)
+				this = character:asoiaf_Erik
+			}
+		}
+	}
+	asoiaf_hair_male_curly = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_mena_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Wylde_27 #Jasper Wylde (Ironrod)
+				this = character:Wylde_27
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_bondis_cut = { #male_hair_fp1_01
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_fp1_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_45_trait #Aemon Targaryen (son of Jaehaerys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_45_trait
+						NOT = { this = character:Targaryen_45 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Reyne_63 #Martyn Reyne (friend of Aegon)
+				this = character:Reyne_63
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_43_trait #Addam Velaryon (bastard of Corlys)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_43_trait
+						NOT = { this = character:Velaryon_43 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_78_trait #Aegon III Targaryen
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_78_trait
+						NOT = { this = character:Targaryen_78 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Tall_1 #Duncan the Tall
+				this = character:Tall_1
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_1_trait #Tywin Lannister (son of Tytos)
+						age < 27
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_1_trait
+						NOT = { this = character:Lannister_1 }
+						age < 27
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_11_trait #Aegon Targaryen (son of Rhaegar)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_11_trait
+						NOT = { this = character:Targaryen_11 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tarly_2_trait #Samwell Tarly (son of Randyll)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tarly_2_trait
+						NOT = { this = character:Tarly_2 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_27_trait #Aegon I Targaryen
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_27_trait
+						NOT = { this = character:Targaryen_27 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Bolton_4 #Domeric Bolton (son of Roose)
+				this = character:Bolton_4
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000 #bald hairstyle will overwrite
+				exists = character:Mormont_2 #Jeor Mormont (the Old Bear)
+				this = character:Mormont_2
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Connington_4 #Jon Connington (son of Armond)
+				this = character:Connington_4
+				age < 32 #293 AC
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Tuttle_5 #Gared Tuttle
+				this = character:Tuttle_5
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:asoiaf_Toth_2 #Istvan Toth
+				this = character:asoiaf_Toth_2
+			}
+		}
+	}
+	asoiaf_hair_male_young_vigman = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_fp1_06
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Rayder_1 #Mance Rayder (King Beyond the Wall)
+				this = character:Rayder_1
+				has_game_rule = asoiaf_new_dnas_beyond_the_wall_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_medium_curls = { #male_hair_mena_02
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_mena_02
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_35_trait #Jaehaerys I Targaryen
+						age < 50
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_35_trait
+						NOT = { this = character:Targaryen_35 }
+						age < 50
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_44_trait #Alyn Velaryon (bastard of Corlys)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_44_trait
+						NOT = { this = character:Velaryon_44 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_2_trait #Robert I Baratheon
+						has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+						age < 27
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_2_trait
+						NOT = { this = character:Baratheon_2 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_stormlands_rule_on }
+						age < 27
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Velaryon_5 #Aurane Waters (bastard son of Lucerys)
+				this = character:Velaryon_5
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Hightower_5 #Leyton Hightower (the Old Man)
+				this = character:Hightower_5
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_127_trait #Jaehaerys II Targaryen
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_127_trait
+						NOT = { this = character:Targaryen_127 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_medium_short_wavy = { #male_hair_fp2_iberian_muslim_01
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_fp2_iberian_muslim_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_76_trait #Lucerys Velaryon (son of Rhaenyra)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_76_trait
+						NOT = { this = character:Targaryen_76 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Ashford_24 #Alyn Ashford (father of Gwin)
+				this = character:Ashford_24
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_71_trait #Lyonel Baratheon (son of Symeon)
+						has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_71_trait
+						NOT = { this = character:Baratheon_71 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_stormlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Arryn_hh_4 #Hugh of the Vale
+				this = character:Arryn_hh_4
+				has_game_rule = asoiaf_new_dnas_vale_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Oakheart_4 #Arys Oakheart (son of Arwyn)
+				this = character:Oakheart_4
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Redwyne_6 #Hobber Redwyne (son of Paxter)
+				this = character:Redwyne_6
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_character_flag = is_Stark_7
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_7_trait #Jon Snow
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_7_trait
+						NOT = { this = character:Stark_7 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_12_trait #Garlan Tyrell (son of Mace)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_12_trait
+						NOT = { this = character:Tyrell_12 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_13_trait #Loras Tyrell (son of Mace)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_13_trait
+						NOT = { this = character:Tyrell_13 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Martell_11_trait #Trystane Martell (son of Doran)
+						has_game_rule = asoiaf_new_dnas_dorne_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Martell_11_trait
+						NOT = { this = character:Martell_11 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_dorne_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tarly_6_trait #Dickon Tarly (son of Randyll)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tarly_6_trait
+						NOT = { this = character:Tarly_6 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_6_trait #Robb Stark (son of Eddard)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_6_trait
+						NOT = { this = character:Stark_6 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Hightower_3 #Gerold Hightower (the White Bull)
+				this = character:Hightower_3
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Arryn_3_trait #Jon Arryn (son of Jasper)
+						has_game_rule = asoiaf_new_dnas_vale_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Arryn_3_trait
+						NOT = { this = character:Arryn_3 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_vale_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000 #overwritten by bald hairstyle
+				exists = character:Cassel_3 #Rodrik Cassel (Ser)
+				this = character:Cassel_3
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_long_wavy = { #male_hair_fp1_05
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_fp1_05
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Greyjoy_9 #Aeron Greyjoy (son of Quellon)
+				this = character:Greyjoy_9
+				has_game_rule = asoiaf_new_dnas_iron_isles_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Umber_11 #Jon Umber (Smalljon)
+				this = character:Umber_11
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_straight_long = { #male_hair_custom_09
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_custom_09
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_73_trait #Maelor Targaryen (son of Aegon II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_73_trait
+						NOT = { this = character:Targaryen_73 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_122_trait #Aegon V Targaryen
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_122_trait
+						NOT = { this = character:Targaryen_122 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_long_with_two_braids = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_fp1_08
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Greyjoy_1 #Quellon Greyjoy (son of Torwyn)
+				this = character:Greyjoy_1
+				has_game_rule = asoiaf_new_dnas_iron_isles_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_long_windswept = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_fp2_iberian_muslim_03
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Frey_1 #Walder Frey (the Late)
+				this = character:Frey_1
+				age < 50
+				has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Poole_2 #Vayon Poole (father of Jeyne)
+				this = character:Poole_2
+				age < 30
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_very_short = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_western_03
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Celtigar_24 #Bartimos Celtigar (son of Harrold)
+				this = character:Celtigar_24
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+				age < 40
+			}
+			modifier = {
+				add = 2000
+				exists = character:Broome_35 #Alfred Broome (son of Briony)
+				this = character:Broome_35
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Knight_Kings_Landing_16 #Red Eddard (friend of Aegon)
+				this = character:Knight_Kings_Landing_16
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_107_trait #Baelor Targaryen (son of Daeron II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_107_trait
+						NOT = { this = character:Targaryen_107 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Deem_1 #Allar Deem
+				this = character:Deem_1
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Clegane_3 #Gregor Clegane (the Mountain)
+				this = character:Clegane_3
+				age < 25
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tarly_1_trait #Randyll Tarly (son of Talbert)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tarly_1_trait
+						NOT = { this = character:Tarly_1 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_3_trait #Stannis Baratheon (son of Steffon)
+						has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_3_trait
+						NOT = { this = character:Baratheon_3 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_stormlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Saan_2 #Salladhor Saan (son of Samarro)
+				this = character:Saan_2
+				has_game_rule = asoiaf_new_dnas_essos_rule_on
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_9_trait #Lancel Lannister (son of Kevan)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+						has_trait = order_member
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_9_trait
+						NOT = { this = character:Lannister_9 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+						has_trait = order_member
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_single_large_braid = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = fp1_hairstyles_straight
+				accessory = male_hair_fp1_09
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_35_trait #Laenor Velaryon (HBO)
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_35_trait
+						NOT = { this = character:Velaryon_35 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_messy = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_western_06
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_77_trait #Joffrey Velaryon (son of Rhaenyra)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_77_trait
+						NOT = { this = character:Targaryen_77 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Fossoway_New_Barrel_1 #Raymun Fossoway (founder of the Line)
+				this = character:Fossoway_New_Barrel_1
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_8_trait #Tyrion Lannister (son of Tywin)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_8_trait
+						NOT = { this = character:Lannister_8 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_10_trait #Willem Lannister (son of Kevan)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_10_trait
+						NOT = { this = character:Lannister_10 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_carolingian_bowl_cut = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = m_hair_ep2_western_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Strong_28_trait #Simon Strong
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Strong_28_trait
+						NOT = { this = character:Strong_28 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Stark_hh_1 #Maester Luwin
+				this = character:Stark_hh_1
+				age < 38
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Reed_1_trait #Howland Reed (son of Edwyle)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Reed_1_trait
+						NOT = { this = character:Reed_1 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Glover_4 #Galbart Glover (brother of Robett)
+				this = character:Glover_4
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Hardyng_5 #Harrold Hardyng (the Young Falcon)
+				this = character:Hardyng_5
+				has_game_rule = asoiaf_new_dnas_vale_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_10_trait #Brandon Stark (son of Eddard)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_10_trait
+						NOT = { this = character:Stark_10 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_11_trait #Martyn Lannister (son of Kevan)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_11_trait
+						NOT = { this = character:Lannister_11 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Arryn_8_trait #Robin Arryn (son of Jon)
+						has_game_rule = asoiaf_new_dnas_vale_rule_on
+						age < 14
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Arryn_8_trait
+						NOT = { this = character:Arryn_8 }
+						age < 14
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_vale_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_bowl = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_western_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Allyrion_6 #Daemon Sand (bastard son of Ryon)
+				this = character:Allyrion_6
+				has_game_rule = asoiaf_new_dnas_dorne_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:asoiaf_Capon_2 #Hans Capon
+				this = character:asoiaf_Capon_2
+			}
+		}
+	}
+	asoiaf_hair_male_top_cut = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_custom_04
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:asoiaf_Kobyla_1 #Radzig Kobyla (father of Henry)
+				this = character:asoiaf_Kobyla_1
+			}
+		}
+	}
+	asoiaf_hair_male_brave_princes_hair = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_the_brave_cut_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_111_trait #Valarr Targaryen (son of Baelor)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_111_trait
+						NOT = { this = character:Targaryen_111 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Reed_3_trait #Jojen Reed (son of Howland)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Reed_3_trait
+						NOT = { this = character:Reed_3 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Bolton_5 #Ramsay Bolton/Snow (son of Roose)
+				this = character:Bolton_5
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_5_trait #Joffrey I Baratheon
+						has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_5_trait
+						NOT = { this = character:Baratheon_5 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_stormlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_7_trait #Tommen I Baratheon
+						has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_7_trait
+						NOT = { this = character:Baratheon_7 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_stormlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Velaryon_3 #Monterys Velaryon (son of Monford)
+				this = character:Velaryon_3
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_long_curly_middle_parted = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_fp2_iberian_muslim_02
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Strong_30_trait #Harwin Strong (son of Lyonel)
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Strong_30_trait
+						NOT = { this = character:Strong_30 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Connington_4 #Jon Connington (son of Armond)
+				this = character:Connington_4
+				age >= 32 #293 AC
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_ponytail_over_the_shoulder = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_custom_14
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_35_trait #Laenor Velaryon (son of Corlys)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_35_trait
+						NOT = { this = character:Velaryon_35 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_72_trait #Jaehaerys Velaryon (son of Aegon II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_72_trait
+						NOT = { this = character:Targaryen_72 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_3_trait #Rhaegar Targaryen (son of Aerys II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						age < 18
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_3_trait
+						NOT = { this = character:Targaryen_3 }
+						age < 18
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_ponytail = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_fp1_02
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Cargyll_11 #Arryk Cargyll (twin of Erryk)
+				this = character:Cargyll_11
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Cargyll_12 #Erryk Cargyll (twin of Arryk)
+				this = character:Cargyll_12
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_medium_with_wavy_ends = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = m_hair_fp3_iranian_03
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Velaryon_37 #Vaemond Velaryon (son of Daemon)
+				this = character:Velaryon_37
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_2_trait #Robert I Baratheon
+						has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+						age >= 27
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_2_trait
+						NOT = { this = character:Baratheon_2 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_stormlands_rule_on }
+						age >= 27
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_curly_chevelure = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_mena_04
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_11_trait #Rickon Stark (son of Eddard)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_11_trait
+						NOT = { this = character:Stark_11 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_darkstar = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_custom_10
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Dayne_8 #Gerold Dayne (Darkstar)
+				this = character:Dayne_8
+				has_game_rule = asoiaf_new_dnas_dorne_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_dark_waves = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_custom_10_2
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_46_trait #Baelon Targaryen (son of Jaehaerys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_46_trait
+						NOT = { this = character:Targaryen_46 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_75_trait #Jacaerys Velaryon (son of Rhaenyra)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_75_trait
+						NOT = { this = character:Targaryen_75 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_79_trait #Viserys II Targaryen
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_79_trait
+						NOT = { this = character:Targaryen_79 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_129_trait #Daeron Targaryen (son of Aegon V)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_129_trait
+						NOT = { this = character:Targaryen_129 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Greyjoy_5_trait #Balon Greyjoy (son of Quellon)
+						has_game_rule = asoiaf_new_dnas_iron_isles_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Greyjoy_5_trait
+						NOT = { this = character:Greyjoy_5 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_iron_isles_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_2_trait #Brandon Stark (son of Rickard)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_2_trait
+						NOT = { this = character:Stark_2 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_4_trait #Benjen Stark (son of Rickard)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_4_trait
+						NOT = { this = character:Stark_4 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_long_split = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_custom_17
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_31_trait #Corlys Velaryon (the Sea Snake)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_31_trait
+						NOT = { this = character:Velaryon_31 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_82_trait #Baelor I Targaryen
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_82_trait
+						NOT = { this = character:Targaryen_82 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_one_eyed_prince = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_custom_18
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_31_trait #Corlys Velaryon (HBO)
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_31_trait
+						NOT = { this = character:Velaryon_31 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_61_trait #Daemon Targaryen (son of Baelon)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						age < 30
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_61_trait
+						NOT = { this = character:Targaryen_61 }
+						age < 30
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_67_trait #Aemond Targaryen (son of Viserys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_67_trait
+						NOT = { this = character:Targaryen_67 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_jarl = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_fp1_04
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Strickland_1 #Harry Strickland (Homeless)
+				this = character:Strickland_1
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Marbrand_4 #Addam Marbrand (son of Damon)
+				this = character:Marbrand_4
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_short_sides = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_fp1_03
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:asoiaf_Svennis #Svennis (vanity)
+				this = character:asoiaf_Svennis
+			}
+		}
+	}
+	asoiaf_hair_male_short_cut = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_custom_23
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Redwyne_4 #Paxter Redwyne (son of Denys)
+				this = character:Redwyne_4
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_striders_hair = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_custom_12_no_dye
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Lonmouth_16 #Joffrey Lonmouth (lover of Laenor)
+				this = character:Lonmouth_16
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Baratheon_36 #Borros Baratheon (son of Boremund)
+				this = character:Baratheon_36
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Lannister_90 #Jason Lannister (twin of Tyland)
+				this = character:Lannister_90
+				has_game_rule = asoiaf_new_dnas_vale_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:White_1 #Ulf the White
+				this = character:White_1
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_65_trait #Aegon II Targaryen
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_65_trait
+						NOT = { this = character:Targaryen_65 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_118_trait #Daeron Targaryen (son of Maekar I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_118_trait
+						NOT = { this = character:Targaryen_118 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Manderly_6 #Wyman Manderly (Lamprey Lord)
+				this = character:Manderly_6
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_8_trait #Viserys Targaryen (son of Aerys II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_8_trait
+						NOT = { this = character:Targaryen_8 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_4_trait #Tygett Lannister (son of Tytos)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_4_trait
+						NOT = { this = character:Lannister_4 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_9_trait #Lancel Lannister (son of Kevan)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_9_trait
+						NOT = { this = character:Lannister_9 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Velaryon_4 #Jacaerys Velaryon (son of Monford)
+				this = character:Velaryon_4
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Egen_3 #Vardis Egen
+				this = character:Egen_3
+				has_game_rule = asoiaf_new_dnas_vale_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_faceless_man = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_custom_12
+			}
+		}
+		weight = {
+			base = 0
+			#modifier = {
+			#	add = 2000
+			#	OR = {
+			#		AND = {
+			#			has_inactive_trait = asoiaf_Targaryen_8_trait #Viserys Targaryen (son of Aerys II)
+			#			has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+			#		}
+			#		AND = {
+			#			has_inactive_trait = asoiaf_Targaryen_8_trait
+			#			NOT = { this = character:Targaryen_8 }
+			#			asoiaf_canon_children_enabled_trigger = yes
+			#			NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+			#		}
+			#	}
+			#}
+		}
+	}
+	asoiaf_hair_male_greek_nobles_middle_part = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = m_hair_ep3_byzantine_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Darklyn_18 #Steffon Darklyn (son of Harrold)
+				this = character:Darklyn_18
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Cole_11_trait #Criston Cole (the Kingmaker)
+						has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Cole_11_trait
+						NOT = { this = character:Cole_11 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_stormlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Hightower_99_trait #Gwayne Hightower (son of Otto)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Hightower_99_trait
+						NOT = { this = character:Hightower_99 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Strong_31_trait #Larys Strong (son of Lyonel)
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Strong_31_trait
+						NOT = { this = character:Strong_31 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_126_trait #Duncan Targaryen (son of Aegon V)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_126_trait
+						NOT = { this = character:Targaryen_126 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Mopatis_1 #Illyrio Mopatis
+				this = character:Mopatis_1
+				has_game_rule = asoiaf_new_dnas_essos_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_4_trait #Luthor Tyrell (son of Garlan)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_4_trait
+						NOT = { this = character:Tyrell_4 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_7_trait #Jaime Lannister (son of Tywin)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_7_trait
+						NOT = { this = character:Lannister_7 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Lannister_hh_4 #Vylarr (Lannister Captain of the Household Guard)
+				this = character:Lannister_hh_4
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Redwyne_5 #Horas Redwyne (son of Paxter)
+				this = character:Redwyne_5
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Stormcrows_1 #Daario Naharis
+				this = character:Stormcrows_1
+				has_game_rule = asoiaf_new_dnas_essos_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Greyjoy_14_trait #Theon Greyjoy (son of Balon)
+						has_game_rule = asoiaf_new_dnas_iron_isles_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Greyjoy_14_trait
+						NOT = { this = character:Greyjoy_14 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_iron_isles_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Arryn_8_trait #Robin Arryn (son of Jon)
+						has_game_rule = asoiaf_new_dnas_vale_rule_on
+						age >= 14
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Arryn_8_trait
+						NOT = { this = character:Arryn_8 }
+						age >= 14
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_vale_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_iconic_locks = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = m_hair_ep3_byzantine_04
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_81_trait #Daeron I Targaryen
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_81_trait
+						NOT = { this = character:Targaryen_81 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_89_trait #Aemon Targaryen (son of Viserys II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_89_trait
+						NOT = { this = character:Targaryen_89 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_short_afro = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_sub_saharan_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Most_Devout_20 #High Septon (The Fat One)
+				this = character:Most_Devout_20
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Thorne_3 #Alliser Thorne (son of Joffrey)
+				this = character:Thorne_3
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_long_tied_down_hair = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = male_hair_custom_16
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Hammer_1_trait #Hugh the Hammer (bastard of Saera)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Hammer_1_trait
+						NOT = { this = character:Hammer_1 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_43_trait #Addam Velaryon (HBO)
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_43_trait
+						NOT = { this = character:Velaryon_43 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+				}
+			}
+		}
+	}
+
+	### BALDING MALE HAIRSTYLES ###
+
+	asoiaf_hair_male_bald = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = no_hairstyles
+				accessory = bald
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_44_trait #Alyn Velaryon (HBO)
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_44_trait
+						NOT = { this = character:Velaryon_44 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+				}
+			}
+			modifier = {
+				add = 2500
+				exists = character:Targaryen_122 #Aegon V Targaryen
+				this = character:Targaryen_122
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+				AND = {
+					any_relation = {
+						type = agot_knight
+						this = character:Tall_1
+					}
+					character:Tall_1 ?= {
+						OR = {
+							is_courtier = no
+							is_landless_ruler = yes
+						}
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Hotah_1_B #Areo Hotah
+				this = character:Hotah_1_B
+				has_game_rule = asoiaf_new_dnas_essos_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_short_and_sweet = { #male_hair_western_baby_01 (short and sweet male)
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_special_scripted_hairstyles
+				accessory = male_hair_western_baby_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_120_trait #Aemon Targaryen (son of Maekar I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						age >= 40
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_120_trait
+						NOT = { this = character:Targaryen_120 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						age >= 40
+					}
+				}
+			}
+			modifier = {
+				add = 2500
+				exists = character:Lefford_1 #Leo Lefford
+				this = character:Lefford_1
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+				age >= 45
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tully_7_trait #Edmure Tully (son of Hoster)
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+						age >= 30
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tully_7_trait
+						NOT = { this = character:Tully_7 }
+						age >= 30
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Pycelle_1 #Grandmaester Pycelle
+				this = character:Pycelle_1
+				age >= 35
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Trant_2 #Meryn Trant (son of Donnel)
+				this = character:Trant_2
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Selmy_3 #Barristan Selmy (son of Lyonel)
+				this = character:Selmy_3
+				age >= 35
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Royce_1 #Yohn Royce (Bronze)
+				this = character:Royce_1
+				age >= 50
+				has_game_rule = asoiaf_new_dnas_vale_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Tuttle_4 #Duncan Tuttle
+				this = character:Tuttle_4
+				age >= 40
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Santagar_6 #Aron Santagar (son of Sylva)
+				this = character:Santagar_6
+				has_game_rule = asoiaf_new_dnas_dorne_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_balding = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_special_scripted_hairstyles
+				accessory = male_hair_custom_02
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Celtigar_24 #Bartimos Celtigar (son of Harrold)
+				this = character:Celtigar_24
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+				age >= 40
+			}
+			modifier = {
+				add = 2500
+				exists = character:Swyft_1 #Harys Swyft (son of Sheldon)
+				this = character:Swyft_1
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+				age >= 40
+			}
+			modifier = {
+				add = 2000
+				exists = character:Stark_hh_1 #Maester Luwin
+				this = character:Stark_hh_1
+				age >= 38
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tarly_1_trait #Randyll Tarly (son of Talbert)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+						age >= 30
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tarly_1_trait
+						NOT = { this = character:Tarly_1 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+						age >= 30
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_balding_with_patch = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_special_scripted_hairstyles
+				accessory = male_hair_custom_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Clegane_3 #Gregor Clegane (the Mountain)
+				this = character:Clegane_3
+				age >= 25
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_balding_vanilla_1 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = fp4_bald_hairstyles
+				accessory = m_hair_fp4_mena_01_bald
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				exists = character:Wylde_27 #Jasper Wylde (Ironrod)
+				this = character:Wylde_27
+				age >= 40
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_balding_vanilla_2 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = fp4_bald_hairstyles
+				accessory = m_hair_fp4_mena_02_bald
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_8_trait #Mace Tyrell (son of Luthor)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+						age >= 40
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_8_trait
+						NOT = { this = character:Tyrell_8 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+						age >= 40
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Frey_1 #Walder Frey (the Late)
+				this = character:Frey_1
+				age >= 50
+				has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Poole_2 #Vayon Poole (father of Jeyne)
+				this = character:Poole_2
+				age >= 30
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_balding_vanilla_3 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = fp4_bald_hairstyles
+				accessory = m_hair_fp4_indian_01_bald
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				exists = character:Beesbury_21 #Lyman Beesbury (father of Braxton)
+				this = character:Beesbury_21
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+				age >= 70
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Strong_29_trait #Lyonel Strong (son of Osmund)
+						age >= 50
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Strong_29_trait
+						NOT = { this = character:Strong_29 }
+						age >= 50
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Arryn_3_trait #Jon Arryn (son of Jasper)
+						has_game_rule = asoiaf_new_dnas_vale_rule_on
+						age >= 50
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Arryn_3_trait
+						NOT = { this = character:Arryn_3 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_vale_rule_on }
+						age >= 50
+					}
+				}
+			}
+			modifier = {
+				add = 2500
+				exists = character:Staunton_19 #Simon Staunton
+				this = character:Staunton_19
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+				age >= 45
+			}
+			modifier = {
+				add = 2500
+				exists = character:Cassel_3 #Rodrik Cassel (Ser)
+				this = character:Cassel_3
+				age >= 40
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Glover_5 #Robett Glover (brother of Galbart)
+				this = character:Glover_5
+				age >= 35
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+		}
+	}
+	# asoiaf_hair_male_balding_vanilla_4 = {
+	# 	dna_modifiers = {
+	# 		accessory = {
+	# 			mode = add
+	# 			gene = hairstyles
+	# 			template = fp4_bald_hairstyles
+	# 			accessory = m_hair_fp4_indian_01_full_bald
+	# 		}
+	# 	}
+	# 	weight = {
+	# 		base = 0
+	# 		modifier = {
+	# 			add = 2500
+	# 			exists = character:Clegane_3 #Gregor Clegane (the Mountain)
+	# 			this = character:Clegane_3
+	# 			age >= 25
+	# 			has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+	# 		}
+	# 	}
+	# }
+	# asoiaf_hair_male_balding_vanilla_5 = {
+	# 	dna_modifiers = {
+	# 		accessory = {
+	# 			mode = add
+	# 			gene = hairstyles
+	# 			template = fp4_bald_hairstyles
+	# 			accessory = m_hair_fp4_sub_saharan_02_bald
+	# 		}
+	# 	}
+	# 	weight = {
+	# 		base = 0
+	# 		modifier = {
+	# 			add = 2500
+	# 			exists = character:Clegane_3 #Gregor Clegane (the Mountain)
+	# 			this = character:Clegane_3
+	# 			age >= 25
+	# 			has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+	# 		}
+	# 	}
+	# }
+	# asoiaf_hair_male_balding_vanilla_6 = {
+	# 	dna_modifiers = {
+	# 		accessory = {
+	# 			mode = add
+	# 			gene = hairstyles
+	# 			template = fp4_bald_hairstyles
+	# 			accessory = m_hair_fp4_western_02_bald
+	# 		}
+	# 	}
+	# 	weight = {
+	# 		base = 0
+	# 		modifier = {
+	# 			add = 2500
+	# 			exists = character:Clegane_3 #Gregor Clegane (the Mountain)
+	# 			this = character:Clegane_3
+	# 			age >= 25
+	# 			has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+	# 		}
+	# 	}
+	# }
+	asoiaf_hair_male_balding_vanilla_7 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = fp4_bald_hairstyles
+				accessory = m_hair_fp4_western_07_bald
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				exists = character:Hightower_5 #Leyton Hightower (the Old Man)
+				this = character:Hightower_5
+				age >= 50
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Greyjoy_5_trait #Balon Greyjoy (son of Quellon)
+						has_game_rule = asoiaf_new_dnas_iron_isles_rule_on
+						age >= 37
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Greyjoy_5_trait
+						NOT = { this = character:Greyjoy_5 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_iron_isles_rule_on }
+						age >= 37
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_male_balding_vanilla_8 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = fp4_bald_hairstyles
+				accessory = m_hair_fp4_western_08_bald
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				exists = character:Baratheon_hh_3 #Maester Cressen
+				this = character:Baratheon_hh_3
+				age >= 50
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Karstark_4_trait #Rickard Karstark (son of Brandon)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+						age >= 40
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Karstark_4_trait
+						NOT = { this = character:Karstark_4 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+						age >= 40
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Brotherhood_8 #Thoros of Myr
+				this = character:Brotherhood_8
+				has_game_rule = asoiaf_new_dnas_essos_rule_on
+			}
+		}
+	}
+	asoiaf_hair_male_balding_vanilla_9 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = fp4_bald_hairstyles
+				accessory = m_hair_fp4_western_09_bald
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_2_trait #Kevan Lannister (son of Tytos)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+						age >= 40
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_2_trait
+						NOT = { this = character:Lannister_2 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+						age >= 40
+					}
+				}
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_3_trait #Stannis Baratheon (son of Steffon)
+						has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+						age >= 30
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_3_trait
+						NOT = { this = character:Baratheon_3 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_stormlands_rule_on }
+						age >= 30
+					}
+				}
+			}
+			modifier = {
+				add = 2500
+				exists = character:Florent_2 #Alester Florent (son of Imry)
+				this = character:Florent_2
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+				age >= 50
+			}
+			modifier = {
+				add = 2500
+				exists = character:Redwyne_4 #Paxter Redwyne (son of Denys)
+				this = character:Redwyne_4
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+				age >= 45
+			}
+			modifier = {
+				add = 2500
+				exists = character:Bolton_1 #Roose Bolton
+				this = character:Bolton_1
+				age >= 40
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2500
+				exists = character:Seaworth_1 #Davos Seaworth
+				this = character:Seaworth_1
+				age >= 40
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+			modifier = {
+				add = 2500
+				exists = character:Mormont_2 #Jeor Mormont (the Old Bear)
+				this = character:Mormont_2
+				age >= 50
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+		}
+	}
+
+	#########################
+	### FEMALE HAIRSTYLES ###
+	#########################
+
+	asoiaf_hair_female_very_long_double_braids = { #female_hair_western_04
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_western_04
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			#modifier = {
+			#	add = 2000
+			#	exists = character:Tully_6 #Lysa Tully (daughter of Hoster)
+			#	this = character:Tully_6
+			#	has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+			#}
+		}
+	}
+	asoiaf_hair_female_back_knot = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_northern_01
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Baratheon_50 #Cassandra Baratheon (daughter of Borros)
+				this = character:Baratheon_50
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_tied_back_updo = { #female_hair_custom_13
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_13
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Hightower_97_trait #Alicent Hightower (daughter of Otto)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Hightower_97_trait
+						NOT = { this = character:Hightower_97 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Lannister_17 #Joanna Lannister (wife of Tywin)
+				this = character:Lannister_17
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Stokeworth_5 #Felyse Stokeworth (daughter of Tanda)
+				this = character:Stokeworth_5
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tully_4_trait #Catelyn Tully (daughter of Hoster)
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tully_4_trait
+						NOT = { this = character:Tully_4 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_5_trait #Lyanna Stark (daughter of Rickard)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_5_trait
+						NOT = { this = character:Stark_5 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tarly_3_trait #Talla Tarly (daughter of Randyll)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tarly_3_trait
+						NOT = { this = character:Tarly_3 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Whitehill_5 #Gwyn Whitehill (daughter of Ludd)
+				this = character:Whitehill_5
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_128_trait #Shaera Targaryen (daughter of Aegon V)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_128_trait
+						NOT = { this = character:Targaryen_128 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_classic_updo = { #female_hair_custom_09
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_09
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Arryn_84_trait #Jeyne Arryn (the Maiden of the Vale)
+						has_game_rule = asoiaf_new_dnas_vale_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Arryn_84_trait
+						NOT = { this = character:Arryn_84 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_vale_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Targaryen_hh_3 #Mysaria (the White Worm)
+				this = character:Targaryen_hh_3
+				has_game_rule = asoiaf_new_dnas_essos_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Royce_37 #Rhea Royce (daughter of Yorbert)
+				this = character:Royce_37
+				has_game_rule = asoiaf_new_dnas_vale_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_66_trait #Helaena Targaryen (daughter of Viserys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_66_trait
+						NOT = { this = character:Targaryen_66 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Martell_7 #Elia Martell
+				this = character:Martell_7
+				has_game_rule = asoiaf_new_dnas_dorne_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Frey_82 #Roslin Frey (daughter of Walder)
+				this = character:Frey_82
+				has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_8_trait #Sansa Stark (daughter of Eddard)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+						age >= 12
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_8_trait
+						NOT = { this = character:Stark_8 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+						age >= 12
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_straight_updo = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_18
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Branfield_1 #Elissa Branfield (daughter of Talia)
+				this = character:Branfield_1
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Targaryen_29 #Rhaenys Targaryen (daughter of Aerion)
+				this = character:Targaryen_29
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Poole_3 #Jeyne Poole (daughter of Vayon)
+				this = character:Poole_3
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Poole_Dummy_3 #Jeyne Poole DUMMY (daughter of Vayon)
+				this = character:Poole_Dummy_3
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_short_curls = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_38
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Waynwood_5 #Anya Waynwood
+				this = character:Waynwood_5
+				age <= 30
+				has_game_rule = asoiaf_new_dnas_vale_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Reed_2_trait #Meera Reed (daughter of Howland)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Reed_2_trait
+						NOT = { this = character:Reed_2 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_wrapped_braid = { #female_hair_custom_12
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_12
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Targaryen_28 #Visenya Targaryen (daughter of Aerion)
+				this = character:Targaryen_28
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+			}
+			modifier = {
+				add = 2250 #between the base hair and the war hair
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_63_trait #Rhaenyra Targaryen (daughter of Viserys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						involved_activity ?= {
+							OR = {
+								has_activity_type = activity_feast
+								has_activity_type = activity_funeral
+								has_activity_type = activity_wedding
+								has_activity_type = activity_coronation
+							}
+						}
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_63_trait
+						NOT = { this = character:Targaryen_63 }
+						involved_activity ?= {
+							OR = {
+								has_activity_type = activity_feast
+								has_activity_type = activity_funeral
+								has_activity_type = activity_wedding
+								has_activity_type = activity_coronation
+							}
+						}
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_framing_curls = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_fp2_iberian_muslim_01_common
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_36_trait #Alysanne Targaryen (daughter of Aenys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_36_trait
+						NOT = { this = character:Targaryen_36 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_63_trait #Rhaenyra Targaryen (daughter of Viserys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_63_trait
+						NOT = { this = character:Targaryen_63 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_warriors_braid = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_43
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				exists = character:Melisandre_1 #Melisandre of Asshai
+				this = character:Melisandre_1
+				is_travelling = yes
+				has_game_rule = asoiaf_new_dnas_essos_rule_on
+			}
+			modifier = {
+				add = 2500
+				exists = character:asoiaf_Melisandre_1 #Melisandre of Asshai (historical)
+				this = character:asoiaf_Melisandre_1
+				is_travelling = yes
+				has_game_rule = asoiaf_new_dnas_essos_rule_on
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_63_trait #Rhaenyra Targaryen (daughter of Viserys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						involved_activity ?= { has_activity_type = activity_tournament }
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_63_trait #Rhaenyra Targaryen (daughter of Viserys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						#is_commanding_army = yes
+						is_at_war = yes
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_63_trait
+						NOT = { this = character:Targaryen_63 }
+						#is_commanding_army = yes
+						is_at_war = yes
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tully_4_trait #Catelyn Tully (daughter of Hoster)
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+						is_travelling = yes
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tully_4_trait
+						NOT = { this = character:Tully_4 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+						is_travelling = yes
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Baratheon_10 #Mya Stone (bastard of Robert I)
+				this = character:Baratheon_10
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_wavy_shoulder_length = { #female_hair_fp2_iberian_christian_03
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_fp2_iberian_christian_03
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Uller_6 #Ellaria Sand (daughter of Harmen)
+				this = character:Uller_6
+				has_game_rule = asoiaf_new_dnas_dorne_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Redwyne_2 #Olenna Tyrell (Queen of Thorns)
+				this = character:Redwyne_2
+				age < 40
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_long_straight_with_middle_part = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_fp2_iberian_christian_02
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Strong_34_trait #Alys Rivers
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Strong_34_trait
+						NOT = { this = character:Strong_34 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Dayne_4_trait #Ashara Dayne (daughter of Beric)
+						has_game_rule = asoiaf_new_dnas_dorne_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Dayne_4_trait
+						NOT = { this = character:Dayne_4 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_dorne_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_twist = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_western_09
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Redwyne_2 #Olenna Tyrell (Queen of Thorns)
+				this = character:Redwyne_2
+				age >= 40
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Most_Devout_23 #Septa Unella
+				this = character:Most_Devout_23
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_mother_of_dragons = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_19
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_9_trait #Daenerys Targaryen (daughter of Aerys II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						exists = global_var:asoiaf_Targaryen_9_traits_change_variable
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_9_trait
+						NOT = { this = character:Targaryen_9 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						exists = global_var:asoiaf_Targaryen_9_traits_change_variable
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_bun = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = western_hairstyles_straight
+				accessory = female_hair_western_03
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_84_trait #Rhaena Targaryen (daughter of Aegon II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_84_trait
+						NOT = { this = character:Targaryen_84 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Hightower_9 #Alerie Hightower (daughter of Leyton)
+				this = character:Hightower_9
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_2_trait #Rhaella Targaryen (son of Jaehaerys II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_2_trait
+						NOT = { this = character:Targaryen_2 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_3_trait #Genna Lannister (daughter of Tytos)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_3_trait
+						NOT = { this = character:Lannister_3 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_long_with_ribbons = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_fp1_05
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Florent_10 #Selyse Florent (daughter of Ryam)
+				this = character:Florent_10
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_ribboned = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_western_10
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Rowan_28 #Lynesse Rowan (daughter of Robert)
+				this = character:Rowan_28
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_messy_braid = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_fp1_02
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Hightower_14 #Lynesse Hightower (daughter of Leyton)
+				this = character:Hightower_14
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_34_trait #Laena Velaryon (daughter of Corlys)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_34_trait
+						NOT = { this = character:Velaryon_34 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_valyrian_large_braid = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = fem_valyrian_large_braid_01
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_130_trait #Rhaelle Targaryen (daughter of Aegon V)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_130_trait
+						NOT = { this = character:Targaryen_130 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_12_trait #Janei Lannister (daughter of Kevan)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_12_trait
+						NOT = { this = character:Lannister_12 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_love_and_beauty = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_27
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:asoiaf_Melisandre_1 #Melisandre of Asshai (historical)
+				this = character:asoiaf_Melisandre_1
+				has_game_rule = asoiaf_new_dnas_essos_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Melisandre_1 #Melisandre of Asshai
+				this = character:Melisandre_1
+				has_game_rule = asoiaf_new_dnas_essos_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_50_trait #Daella Targaryen (daughter of Jaehaerys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_50_trait
+						NOT = { this = character:Targaryen_50 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Stokeworth_6 #Lollys Stokeworth (daughter of Tanda)
+				this = character:Stokeworth_6
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Manderly_10 #Wylla Manderly (daughter of Wylis)
+				this = character:Manderly_10
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_noblewomans_locks = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = f_hair_sp4_western_01
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_6_trait #Myrcella Baratheon (daughter of Robert I)
+						has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_6_trait
+						NOT = { this = character:Baratheon_6 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_stormlands_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_maidens_curls = { #female_hair_fp2_iberian_christian_01
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_fp2_iberian_christian_01
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			#modifier = {
+			#	add = 2000
+			#	exists = character:Melisandre_1 #Melisandre of Asshai
+			#	this = character:Melisandre_1
+			#	has_game_rule = asoiaf_new_dnas_essos_rule_on
+			#}
+		}
+	}
+	asoiaf_hair_female_pigtails = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_fp1_03
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			#modifier = {
+			#	add = 2500
+			#	exists = character:Frey_82 #Roslin Frey (daughter of Walder)
+			#	this = character:Frey_82
+			#	has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+			#	involved_activity ?= {
+			#		OR = {
+			#			has_activity_type = activity_feast
+			#			has_activity_type = activity_funeral
+			#			has_activity_type = activity_wedding
+			#			has_activity_type = activity_coronation
+			#			has_activity_type = activity_no_dlc_coronation
+			#			has_activity_type = activity_tournament
+			#		}
+			#	}
+			#}
+		}
+	}
+	asoiaf_hair_female_wavy_sides_no_jewellery = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_01
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Frey_50 #Amerei Frey (Gatehouse Ami)
+				this = character:Frey_50
+				has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_9_trait #Daenerys Targaryen (daughter of Aerys II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_9_trait
+						NOT = { this = character:Targaryen_9 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_courageous_and_groomed = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_04
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Redwyne_7 #Desmera Redwyne (daughter of Paxter)
+				this = character:Redwyne_7
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_wavy_updo = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_14
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_14_trait #Margaery Tyrell (daughter of Mace)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tyrell_14_trait
+						NOT = { this = character:Tyrell_14 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Forrester_5 #Mira Forrester (daughter of Gregor)
+				this = character:Forrester_5
+				has_game_rule = asoiaf_new_dnas_north_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_four_braids = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_fp2_iberian_muslim_03_common
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tully_6_trait #Lysa Tully (daughter of Hoster)
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tully_6_trait
+						NOT = { this = character:Tully_6 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_brigands_daughter = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_fp1_06
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			#modifier = {
+			#	add = 2000
+			#	exists = character:Greyjoy_13 #Asha/Yara Greyjoy (daughter of Balon)
+			#	this = character:Greyjoy_13
+			#	has_game_rule = asoiaf_new_dnas_iron_isles_rule_on
+			#}
+		}
+	}
+	asoiaf_hair_female_carolingian_decorated_hair_roll = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = ep2_hairstyles_western_common
+				accessory = f_hair_ep2_western_01
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Ashford_27
+				this = character:Ashford_27
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_fine_curls = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_fp2_iberian_muslim_02_common
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_34_trait #Laena Velaryon (HBO)
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Velaryon_34_trait
+						NOT = { this = character:Velaryon_34 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+				}
+			}
+		}
+	}
+	#asoiaf_hair_female_short_and_messy = {
+	#	dna_modifiers = {
+	#		accessory = {
+	#			mode = add
+	#			gene = hairstyles
+	#			template = agot_all_hairstyles
+	#			accessory = female_hair_custom_22
+	#			type = female
+	#		}
+	#	}
+	#	weight = {
+	#		base = 0
+	#		
+	#	}
+	#}
+	asoiaf_hair_female_reavers_cut = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = f_hair_byz_short_hair_01
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Tarth_6 #Brienne Tarth (daughter of Selwyn)
+				this = character:Tarth_6
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Martell_14 #Tyene Sand (bastard of Oberyn)
+				this = character:Martell_14
+				has_game_rule = asoiaf_new_dnas_dorne_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_lady_of_parchments = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_36
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_85_trait #Elaena Targaryen (daughter of Aegon II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_85_trait
+						NOT = { this = character:Targaryen_85 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_short_and_sweet = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_special_scripted_hairstyles
+				accessory = female_hair_western_baby_01
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Greyjoy_13_trait #Yara Greyjoy (daughter of Balon)
+						has_game_rule = asoiaf_new_dnas_iron_isles_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Greyjoy_13_trait
+						NOT = { this = character:Greyjoy_13 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_iron_isles_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_9_trait #Arya Stark (daughter of Eddard)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_9_trait
+						NOT = { this = character:Stark_9 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_crown_curls = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = byzantine_hairstyles_curly
+				accessory = female_hair_byzantine_02
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_51_trait #Saera Targaryen (daughter of Jaehaerys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_51_trait
+						NOT = { this = character:Targaryen_51 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Hightower_97_trait #Alicent Hightower (daughter of Otto)
+						has_game_rule = asoiaf_new_dnas_reach_rule_on
+						involved_activity ?= {
+							OR = {
+								has_activity_type = activity_feast
+								has_activity_type = activity_funeral
+								has_activity_type = activity_wedding
+								has_activity_type = activity_coronation
+							}
+						}
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Hightower_97_trait
+						NOT = { this = character:Hightower_97 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_reach_rule_on }
+						involved_activity ?= {
+							OR = {
+								has_activity_type = activity_feast
+								has_activity_type = activity_funeral
+								has_activity_type = activity_wedding
+								has_activity_type = activity_coronation
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_crown_curls_no_jewellery = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_06
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Stokeworth_3 #Tanda Stokeworth (daughter of Samwell)
+				this = character:Stokeworth_3
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Waynwood_5 #Anya Waynwood
+				this = character:Waynwood_5
+				age > 30
+				has_game_rule = asoiaf_new_dnas_vale_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_westerland_updo = { #female_hair_custom_26
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_26
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_6_trait #Cersei Lannister (daughter of Tywin)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+						involved_activity ?= {
+							OR = {
+								has_activity_type = activity_feast
+								has_activity_type = activity_funeral
+								has_activity_type = activity_wedding
+								has_activity_type = activity_coronation
+								has_activity_type = activity_tournament
+							}
+						}
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_6_trait
+						NOT = { this = character:Lannister_6 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+						involved_activity ?= {
+							OR = {
+								has_activity_type = activity_feast
+								has_activity_type = activity_funeral
+								has_activity_type = activity_wedding
+								has_activity_type = activity_coronation
+								has_activity_type = activity_tournament
+							}
+						}
+					}
+				}
+			}
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_8_trait #Sansa Stark (daughter of Eddard)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+						is_courtier = yes
+						OR = {
+							this.liege.capital_province = { geographical_region = world_westeros_the_westerlands }
+							this.liege.capital_province = { geographical_region = world_westeros_the_crownlands }
+						}
+						OR = {
+							opinion = {
+								target = this.liege
+								value >= 50
+							}
+							has_dread_level_towards = {
+								target = this.liege
+								level >= 2
+							}
+						}
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_8_trait
+						NOT = { this = character:Stark_8 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+						is_courtier = yes
+						OR = {
+							this.liege.capital_province = { geographical_region = world_westeros_the_westerlands }
+							this.liege.capital_province = { geographical_region = world_westeros_the_crownlands }
+						}
+						OR = {
+							opinion = {
+								target = this.liege
+								value >= 50
+							}
+							has_dread_level_towards = {
+								target = this.liege
+								level >= 2
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_elegant_waves = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_15
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_6_trait #Cersei Lannister (daughter of Tywin)
+						has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Lannister_6_trait
+						NOT = { this = character:Lannister_6 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_westerlands_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Florent_8 #Melessa Florent (daughter of Alester)
+				this = character:Florent_8
+				has_game_rule = asoiaf_new_dnas_reach_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_norse_crown_braid = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_fp1_04
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_90_trait #Naerys Targaryen (daughter of Viserys II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_90_trait
+						NOT = { this = character:Targaryen_90 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_long_with_crown_braid = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_northern_03
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Arryn_80_trait #Aemma Arryn (daughter of Rodrik)
+						has_game_rule = asoiaf_new_dnas_vale_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Arryn_80_trait
+						NOT = { this = character:Arryn_80 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_vale_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Lefford_2 #Myranda Lefford (sister of Leo)
+				this = character:Lefford_2
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Frey_52 #Walda Frey (Fat Walda)
+				this = character:Frey_52
+				has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+			}
+			modifier = {
+				add = 2000
+				exists = character:Lowborn_Kings_Landing_1 #Shae (lover of Tyrion)
+				this = character:Lowborn_Kings_Landing_1
+				has_game_rule = asoiaf_new_dnas_essos_rule_on
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Stark_8_trait #Sansa Stark (daughter of Eddard)
+						has_game_rule = asoiaf_new_dnas_north_rule_on
+						age < 12
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Stark_8_trait
+						NOT = { this = character:Stark_8 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_north_rule_on }
+						age < 12
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_13_trait #Shireen Baratheon (daughter of Stannis)
+						has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Baratheon_13_trait
+						NOT = { this = character:Baratheon_13 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_stormlands_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_maiden_braid = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_11
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Baratheon_52 #Floris Baratheon (daughter of Borros)
+				this = character:Baratheon_52
+				has_game_rule = asoiaf_new_dnas_stormlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_beautiful_waves_and_curls = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_41
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_47_trait #Alyssa Targaryen (daughter of Jaehaerys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_47_trait
+						NOT = { this = character:Targaryen_47 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_striped_beautiful_waves_and_curls = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_41_1
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_10_trait #Rhaenys Targaryen (daughter of Rhaegar)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_10_trait
+						NOT = { this = character:Targaryen_10 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_loose_curls = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_23
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_83_trait #Daena Targaryen (daughter of Aegon II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_83_trait
+						NOT = { this = character:Targaryen_83 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Martell_9_trait #Arianne Martell (daughter of Doran)
+						has_game_rule = asoiaf_new_dnas_dorne_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Martell_9_trait
+						NOT = { this = character:Martell_9 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_dorne_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Lefford_5 #Alysanne Lefford (daughter of Leo)
+				this = character:Lefford_5
+				has_game_rule = asoiaf_new_dnas_westerlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_northern_princess = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_21
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_59_trait #Rhaenys Targaryen (daughter of Aemon)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_59_trait
+						NOT = { this = character:Targaryen_59 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_neatly_braided = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_24
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				exists = character:Stokeworth_4 #Samantha Stokeworth (daughter of Samwell)
+				this = character:Stokeworth_4
+				has_game_rule = asoiaf_new_dnas_crownlands_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_medium_curls = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = f_hair_fp3_iranian_01_common
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_69_trait #Baela Targaryen (daughter of Daemon)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_69_trait
+						NOT = { this = character:Targaryen_69 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_mesmerisingly_long = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_42
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_70_trait #Rhaena Targaryen (daughter of Daemon)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_70_trait
+						NOT = { this = character:Targaryen_70 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_long_split_in_strands = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = f_hair_fp3_iranian_02_common
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_48_trait #Maegelle Targaryen (daughter of Jaehaerys I)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_48_trait
+						NOT = { this = character:Targaryen_48 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Tully_5_trait #Lady Stoneheart
+						has_game_rule = asoiaf_new_dnas_riverlands_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Tully_5_trait
+						NOT = { this = character:Tully_5 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_riverlands_rule_on }
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_single_braid = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_northern_02
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_71_trait #Jaehaera Targaryen (daughter of Aegon II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						age < 9
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_71_trait
+						NOT = { this = character:Targaryen_71 }
+						age < 9
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+			modifier = {
+				add = 2000
+				exists = character:Martell_12 #Obara Sand (bastard of Oberyn)
+				this = character:Martell_12
+				has_game_rule = asoiaf_new_dnas_dorne_rule_on
+			}
+		}
+	}
+	asoiaf_hair_female_medium_thin_braids = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_sub_saharan_02
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_70_trait #Rhaena Targaryen (HBO)
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_70_trait
+						NOT = { this = character:Targaryen_70 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_greek_maidens_coiffure = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = ep3_byzantine_hairstyle
+				accessory = f_hair_ep3_byzantine_03_common
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2500
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_69_trait #Baela Targaryen (HBO)
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_69_trait
+						NOT = { this = character:Targaryen_69 }
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+						has_game_rule = asoiaf_hbo_velaryons_rule_on
+					}
+				}
+			}
+		}
+	}
+	asoiaf_hair_female_pulled_back_braided = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = agot_all_hairstyles
+				accessory = female_hair_custom_17
+				type = female
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_71_trait #Jaehaera Targaryen (daughter of Aegon II)
+						has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+						age >= 9
+					}
+					AND = {
+						has_inactive_trait = asoiaf_Targaryen_71_trait
+						NOT = { this = character:Targaryen_71 }
+						age >= 9
+						asoiaf_canon_children_enabled_trigger = yes
+						NOT = { has_game_rule = asoiaf_new_dnas_valyrian_rule_on }
+					}
+				}
+			}
+		}
+	}
+}

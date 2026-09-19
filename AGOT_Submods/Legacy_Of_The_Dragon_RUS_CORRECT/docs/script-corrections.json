@@ -1,0 +1,32 @@
+﻿[
+    {
+        "Issue":  "LOTD-001,LOTD-002",
+        "File":  "common/character_memory_types/lotd_memories.txt",
+        "Before":  "read_prophecy_to_heir = {\n\tcategories = { positive family prophecy }\n\ticon = \"diplomacy.dds\"\n\tdescription = {\n\t\trandom_valid = {\n\t\t\tdesc = read_prophecy_to_heir_desc\n\t\t}\n\t}\n\n\tsecond_perspective_description = {\n\t\trandom_valid = {\n\t\t\tdesc = read_prophecy_desc_second_perspective\n\t\t}\n\t}\n\n\tthird_perspective_description = {\n\t\trandom_valid = {\n\t\t\tdesc = read_prophecy_desc_third_perspective\n\t\t}\n\t}\n\n\tparticipants = { heir aegonTargLoc }\n\n\tduration = {\n\t\tyears = memory_default_duration \n\t}\n}",
+        "After":  "read_prophecy_to_heir = {\n\tcategories = { positive family prophecy }\n\ticon = \"diplomacy.dds\"\n\tdescription = {\n\t\trandom_valid = {\n\t\t\tdesc = read_prophecy_to_heir_desc\n\t\t}\n\t}\n\n\tsecond_perspective_description = {\n\t\trandom_valid = {\n\t\t\tdesc = read_prophecy_to_heir_desc_second_perspective\n\t\t}\n\t}\n\n\tthird_perspective_description = {\n\t\trandom_valid = {\n\t\t\tdesc = read_prophecy_desc_to_heir_third_perspective\n\t\t}\n\t}\n\n\tparticipants = { heir aegonTargLoc }\n\n\tduration = {\n\t\tyears = memory_default_duration \n\t}\n}"
+    },
+    {
+        "Issue":  "LOTD-003",
+        "File":  "events/decisions_events/rehilt_blackfyre_events.txt",
+        "Before":  "\tdesc = {\n\t\tfirst_valid = {\n\t\t\ttriggered_desc = {\n\t\t\t\ttrigger = {\n\t\t\t\t\texists = scope:blackfyre_artifact_rehilt\n\t\t\t\t}\n\t\t\t\tdesc = rehilt_blackfyre.0002_desc\n\t\t\t}\n\t\t\tdesc = rehilt_blackfyre.0001_desc\n\t\t}\n\t}",
+        "After":  "\tdesc = {\n\t\tfirst_valid = {\n\t\t\ttriggered_desc = {\n\t\t\t\ttrigger = {\n\t\t\t\t\texists = scope:blackfyre_artifact_rehilt\n\t\t\t\t}\n\t\t\t\tdesc = rehilt_blackfyre.0001_desc\n\t\t\t}\n\t\t\tdesc = rehilt_blackfyre.0002_desc\n\t\t}\n\t}"
+    },
+    {
+        "Issue":  "LOTD-003",
+        "File":  "events/decisions_events/rehilt_blackfyre_events.txt",
+        "Before":  "\tleft_portrait = {\n\t\tcharacter = root\n\t\ttriggered_animation = {\n\t\t\ttrigger = {\n\t\t\t\texists = scope:blackfyre_artifact_rehilt\n\t\t\t}\n\t\t\tanimation = valyrian_invasion_blackfyre_2\n\t\t}\n\t\ttriggered_animation = {\n\t\t\ttrigger = {\n\t\t\t\texists = scope:blackfyre_artifact\n\t\t\t}\n\t\t\tanimation = valyrian_invasion_blackfyre_rehilt_2\n\t\t}\n\t\tanimation = idle\n\t}",
+        "After":  "\tleft_portrait = {\n\t\tcharacter = root\n\t\ttriggered_animation = {\n\t\t\ttrigger = {\n\t\t\t\texists = scope:blackfyre_artifact_rehilt\n\t\t\t}\n\t\t\tanimation = valyrian_invasion_blackfyre_rehilt_2\n\t\t}\n\t\ttriggered_animation = {\n\t\t\ttrigger = {\n\t\t\t\texists = scope:blackfyre_artifact\n\t\t\t}\n\t\t\tanimation = valyrian_invasion_blackfyre_2\n\t\t}\n\t\tanimation = idle\n\t}"
+    },
+    {
+        "Issue":  "EDITORIAL-AEGON",
+        "File":  "events/decisions_events/read_prophecy.txt",
+        "Before":  "read_prophecy.0001 = {\n\ttype = character_event\n\ttitle = read_prophecy_0001\n\tdesc = {\n\t\tfirst_valid = {\n\t\t\ttriggered_desc = { \n\t\t\t\tdesc =  read_prophecy_0001_desc\n\t\t\t}\n\t\t}\n\t}",
+        "After":  "read_prophecy.0001 = {\n\ttype = character_event\n\ttitle = read_prophecy_0001\n\tdesc = {\n\t\tfirst_valid = {\n\t\t\ttriggered_desc = {\n\t\t\t\ttrigger = { root = character:Targaryen_27 }\n\t\t\t\tdesc = read_prophecy_0001_aegon_desc\n\t\t\t}\n\t\t\tdesc = read_prophecy_0001_desc\n\t\t}\n\t}"
+    },
+    {
+        "Issue":  "EDITORIAL-AEGON",
+        "File":  "events/decisions_events/read_prophecy.txt",
+        "Before":  "read_prophecy.0003 = {\n\ttype = character_event\n\ttitle = read_prophecy_0001\n\tdesc = {\n\t\tfirst_valid = {\n\t\t\ttriggered_desc = { \n\t\t\t\tdesc =  read_prophecy_0003_desc\n\t\t\t}\n\t\t}\n\t}",
+        "After":  "read_prophecy.0003 = {\n\ttype = character_event\n\ttitle = read_prophecy_0001\n\tdesc = {\n\t\tfirst_valid = {\n\t\t\ttriggered_desc = {\n\t\t\t\ttrigger = { root = character:Targaryen_27 }\n\t\t\t\tdesc = read_prophecy_0003_aegon_desc\n\t\t\t}\n\t\t\tdesc = read_prophecy_0003_desc\n\t\t}\n\t}"
+    }
+]

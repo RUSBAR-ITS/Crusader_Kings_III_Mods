@@ -1,0 +1,1323 @@
+{
+    "PatchVersion":  "0.1.0",
+    "Revision":  3,
+    "AGOTPlusWorkshopId":  "2950245430",
+    "AGOTPlusMetadataVersion":  "1.0.0",
+    "AGOTVersion":  "0.5.2.1",
+    "CK3Version":  "1.19.0.6",
+    "SourceHashesChecked":  46,
+    "FixGroups":  13,
+    "ReplacementRules":  43,
+    "ReplacementOccurrences":  681,
+    "ShadowFiles":  21,
+    "AddedFiles":  5,
+    "Files":  [
+                  {
+                      "File":  "common/scripted_character_templates/asoiaf_invader_templates.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "67ED5A01E2B1226AD6EB5C496CFC00E71EF6536D699CFC547002EBE05889C0F2",
+                      "PatchedSHA256":  "2E773EABDEE8C3285478B2C1D53A647AA0989750E186BE5870ED1F1730B5D719",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "nickname-invader",
+                                          "Group":  "F01",
+                                          "SourceLines":  [
+                                                              96
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "give_nickname = nick_young_griff",
+                                          "After":  "give_nickname = nick_agot_young_griff"
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/scripted_effects/asoiaf_targaryen_invasion_claimants_effects.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "D4F006BB9434F0975828DF61854904213124A3168D45C67A53AB533A681B96BB",
+                      "PatchedSHA256":  "2434B3FD6D4016AAB1EE8C1C4612C3F09C37BA26BD51A007BD268836C5867C42",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "nickname-claimant",
+                                          "Group":  "F01",
+                                          "SourceLines":  [
+                                                              75
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "give_nickname = nick_young_griff",
+                                          "After":  "give_nickname = nick_agot_young_griff"
+                                      },
+                                      {
+                                          "Id":  "retired-griff-identity-trait",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              79
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "\t\t\t\tmake_trait_inactive = is_targaryen_11\r\n",
+                                          "After":  ""
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/scripted_effects/asoiaf_setup_effects.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "02D7650B6D706312B3259C91D484729B3B5452D5EB3AB14033BCB5442B401671",
+                      "PatchedSHA256":  "056707DA9015E6E80C490A9FB19F360D09CBB0C5498E666117BCB48E6821F18C",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "darry-title-trigger",
+                                          "Group":  "F02",
+                                          "SourceLines":  [
+                                                              758
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "has_title ?= title:c_darry",
+                                          "After":  "has_title = title:c_darry"
+                                      },
+                                      {
+                                          "Id":  "trait-august",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              4310
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "add_trait = august_trait",
+                                          "After":  "add_trait = august"
+                                      },
+                                      {
+                                          "Id":  "trait-tourney-participant",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              4635
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "add_trait = tourney_participan\r\n",
+                                          "After":  "add_trait = tourney_participant\r\n"
+                                      },
+                                      {
+                                          "Id":  "trait-blademaster",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              5564
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "add_trait = blademaster\r\n",
+                                          "After":  "add_trait = lifestyle_blademaster\r\n"
+                                      },
+                                      {
+                                          "Id":  "focus-stewardship",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              6249
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "set_focus = education_stewardhip",
+                                          "After":  "set_focus = education_stewardship"
+                                      },
+                                      {
+                                          "Id":  "bossy-is-trait",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              6669
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "set_focus = bossy",
+                                          "After":  "add_trait = bossy"
+                                      },
+                                      {
+                                          "Id":  "retired-reveler-history-trait",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              5470
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "\t\tremove_trait = lifestyle_reveler_2_history\r\n",
+                                          "After":  ""
+                                      },
+                                      {
+                                          "Id":  "ironrod-nickname",
+                                          "Group":  "F10",
+                                          "SourceLines":  [
+                                                              10704
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "has_nickname = nick_the_ironrod",
+                                          "After":  "has_nickname = nick_agot_historical_ironrod"
+                                      },
+                                      {
+                                          "Id":  "rhllor-religion-family",
+                                          "Group":  "F10",
+                                          "SourceLines":  [
+                                                              8439,
+                                                              9082
+                                                          ],
+                                          "Occurrences":  2,
+                                          "Before":  "faith = faith:rhllor\r\n",
+                                          "After":  "religion = religion:the_rhllor_religion\r\n"
+                                      },
+                                      {
+                                          "Id":  "rhllor-followers-family",
+                                          "Group":  "F10",
+                                          "SourceLines":  [
+                                                              9086,
+                                                              9087,
+                                                              9088
+                                                          ],
+                                          "Occurrences":  3,
+                                          "Before":  "faith = faith:rhllor }",
+                                          "After":  "religion = religion:the_rhllor_religion }"
+                                      },
+                                      {
+                                          "Id":  "alternative-age-reset-candidate",
+                                          "Group":  "F13",
+                                          "SourceLines":  [
+                                                              2899,
+                                                              2912,
+                                                              2925,
+                                                              2938,
+                                                              2951,
+                                                              2964,
+                                                              2977,
+                                                              2990,
+                                                              3003,
+                                                              3016,
+                                                              3029,
+                                                              3042,
+                                                              3055,
+                                                              3068,
+                                                              3081,
+                                                              3094,
+                                                              3107,
+                                                              3120,
+                                                              3133,
+                                                              3146,
+                                                              3159,
+                                                              3172,
+                                                              3185,
+                                                              3198,
+                                                              3211,
+                                                              3224,
+                                                              3237,
+                                                              3250,
+                                                              3263,
+                                                              3276,
+                                                              3289,
+                                                              3302,
+                                                              3315,
+                                                              3328,
+                                                              3341,
+                                                              3354,
+                                                              3367,
+                                                              3380,
+                                                              3393,
+                                                              3406,
+                                                              3419,
+                                                              3432,
+                                                              3445,
+                                                              3458,
+                                                              3471,
+                                                              3484,
+                                                              3497,
+                                                              3510,
+                                                              3523,
+                                                              3536,
+                                                              3549,
+                                                              3562,
+                                                              3575,
+                                                              3588,
+                                                              3601,
+                                                              3614,
+                                                              3627,
+                                                              3640,
+                                                              3653,
+                                                              3666,
+                                                              3679,
+                                                              3692,
+                                                              3705,
+                                                              3718,
+                                                              3731,
+                                                              3744,
+                                                              3757,
+                                                              3770,
+                                                              3783,
+                                                              3796,
+                                                              3809,
+                                                              3822,
+                                                              3835,
+                                                              3848,
+                                                              3861,
+                                                              3874,
+                                                              3887,
+                                                              3900,
+                                                              3913,
+                                                              3926,
+                                                              3939,
+                                                              3952,
+                                                              3965,
+                                                              3978,
+                                                              3991,
+                                                              4004,
+                                                              4017,
+                                                              4030,
+                                                              4043,
+                                                              4056,
+                                                              4069,
+                                                              4082,
+                                                              4095,
+                                                              4108,
+                                                              4123,
+                                                              4136,
+                                                              4149,
+                                                              4162,
+                                                              4177,
+                                                              4190,
+                                                              4203,
+                                                              4216,
+                                                              4229,
+                                                              4242,
+                                                              4255,
+                                                              4268,
+                                                              4281
+                                                          ],
+                                          "Occurrences":  107,
+                                          "Before":  "\t\tif = {\r\n\t\t\tlimit = { age \u003c 16 }\r\n\t\t\tsave_scope_as = asoiaf_underaged\r\n\t\t}",
+                                          "After":  "\t\tclear_saved_scope = asoiaf_underaged\r\n\t\tif = {\r\n\t\t\tlimit = { age \u003c 16 }\r\n\t\t\tsave_scope_as = asoiaf_underaged\r\n\t\t}"
+                                      },
+                                      {
+                                          "Id":  "alternative-age-adult-transition",
+                                          "Group":  "F13",
+                                          "SourceLines":  [
+                                                              2904,
+                                                              2917,
+                                                              2930,
+                                                              2943,
+                                                              2956,
+                                                              2969,
+                                                              2982,
+                                                              2995,
+                                                              3008,
+                                                              3021,
+                                                              3034,
+                                                              3047,
+                                                              3060,
+                                                              3073,
+                                                              3086,
+                                                              3099,
+                                                              3112,
+                                                              3125,
+                                                              3138,
+                                                              3151,
+                                                              3164,
+                                                              3177,
+                                                              3190,
+                                                              3203,
+                                                              3216,
+                                                              3229,
+                                                              3242,
+                                                              3255,
+                                                              3268,
+                                                              3281,
+                                                              3294,
+                                                              3307,
+                                                              3320,
+                                                              3333,
+                                                              3346,
+                                                              3359,
+                                                              3372,
+                                                              3385,
+                                                              3398,
+                                                              3411,
+                                                              3424,
+                                                              3437,
+                                                              3450,
+                                                              3463,
+                                                              3476,
+                                                              3489,
+                                                              3502,
+                                                              3515,
+                                                              3528,
+                                                              3541,
+                                                              3554,
+                                                              3567,
+                                                              3580,
+                                                              3593,
+                                                              3606,
+                                                              3619,
+                                                              3632,
+                                                              3645,
+                                                              3658,
+                                                              3671,
+                                                              3684,
+                                                              3697,
+                                                              3710,
+                                                              3723,
+                                                              3736,
+                                                              3749,
+                                                              3762,
+                                                              3775,
+                                                              3788,
+                                                              3801,
+                                                              3814,
+                                                              3827,
+                                                              3840,
+                                                              3853,
+                                                              3866,
+                                                              3879,
+                                                              3892,
+                                                              3905,
+                                                              3918,
+                                                              3931,
+                                                              3944,
+                                                              3957,
+                                                              3970,
+                                                              3983,
+                                                              3996,
+                                                              4009,
+                                                              4022,
+                                                              4035,
+                                                              4048,
+                                                              4061,
+                                                              4074,
+                                                              4087,
+                                                              4100,
+                                                              4115,
+                                                              4128,
+                                                              4141,
+                                                              4154,
+                                                              4169,
+                                                              4182,
+                                                              4195,
+                                                              4208,
+                                                              4221,
+                                                              4234,
+                                                              4247,
+                                                              4260,
+                                                              4273,
+                                                              4286
+                                                          ],
+                                          "Occurrences":  107,
+                                          "Before":  "\t\tif = {\r\n\t\t\tlimit = {\r\n\t\t\t\tasoiaf_underaged ?= { age \u003e= 16 }\r\n\t\t\t}\r\n\t\t\tasoiaf_alternative_ages_cleanup_effect = yes\r\n\t\t}",
+                                          "After":  "\t\tif = {\r\n\t\t\tlimit = {\r\n\t\t\t\texists = scope:asoiaf_underaged\r\n\t\t\t\tthis = scope:asoiaf_underaged\r\n\t\t\t\tage \u003e= 16\r\n\t\t\t\tis_alive = yes\r\n\t\t\t}\r\n\t\t\t# The character event makes this character ROOT for education and relations.\r\n\t\t\ttrigger_event = { id = agot_plus_fix_ages.0001 }\r\n\t\t}\r\n\t\tclear_saved_scope = asoiaf_underaged"
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/character_interactions/asoiaf_character_interactions.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "1F389A58092F01F5A2F0DBEAD32B82DC701F30949ABA9283BEC4731918C34472",
+                      "PatchedSHA256":  "5FC7CE2E9697E4DAB40B9B5E129D8394685429ADE876A42D6C1C4495E9DDB631",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "dismiss-notification-actor",
+                                          "Group":  "F03",
+                                          "SourceLines":  [
+                                                              328
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "NOT = scope:actor #no double notifications for the dismisser",
+                                          "After":  "NOT = { this = scope:actor } #no double notifications for the dismisser"
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/artifacts/templates/asoiaf_artifacts_templates.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "7819E8E963BC5929A3F43A39328F74C2AC6D543CAF395263EC98D4E7B1E58450",
+                      "PatchedSHA256":  "6CBB6D381365390E925FAF56685B9648BC96F709EE97ADF114481FE72DDF1155",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "krakenfall-house-link",
+                                          "Group":  "F04",
+                                          "SourceLines":  [
+                                                              57
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "house = house_BaratheonKL",
+                                          "After":  "house = house:house_BaratheonKL"
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/on_action/asoiaf_yearly_on_actions.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "FB8C2952993E341FE23BF9E8BD0CC92C8C40E7F7E19540023DB6C06CD9A031A9",
+                      "PatchedSHA256":  "94B5B78AD6A099868A201D444CC41A1172FBD26F26E9C7C95283ED966D670158",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "mance-giants-unit",
+                                          "Group":  "F05",
+                                          "SourceLines":  [
+                                                              141
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "type = giant #100",
+                                          "After":  "type = giant_regiment #100"
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/scripted_effects/asoiaf_agot_overwrite_effects.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "04D527EDCE9813F551BFA06AA69FD0647C5D81B9BFEB0FEAE82F41BDA08B2E6B",
+                      "PatchedSHA256":  "7675EC7E53462A2446A729D3B4EE5841AEC97F3EC04198653AAB3BD36794C23B",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "dragon-culture-id",
+                                          "Group":  "F06",
+                                          "SourceLines":  [
+                                                              76,
+                                                              309,
+                                                              544,
+                                                              771,
+                                                              998,
+                                                              1225,
+                                                              1452
+                                                          ],
+                                          "Occurrences":  7,
+                                          "Before":  "culture = culture:dragon",
+                                          "After":  "culture = culture:dragon_culture"
+                                      },
+                                      {
+                                          "Id":  "dragon-faith-id",
+                                          "Group":  "F06",
+                                          "SourceLines":  [
+                                                              77,
+                                                              310,
+                                                              545,
+                                                              772,
+                                                              999,
+                                                              1226,
+                                                              1453
+                                                          ],
+                                          "Occurrences":  7,
+                                          "Before":  "faith = faith:valyrian",
+                                          "After":  "faith = faith:valyrian_pan_freehold"
+                                      },
+                                      {
+                                          "Id":  "retired-jon-identity-trait",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              49
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "\t\t\tmake_trait_inactive = is_stark_7\r\n",
+                                          "After":  ""
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "gfx/court_scene/character_roles/asoiaf_default_roles.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "52526F47B8329EBDADFC7CEB45E5821CB14AC0E0AFFC59786ECCAAE60BE2F92F",
+                      "PatchedSHA256":  "39EA6D5BD2FC5EEBC6E52AD5EA964B20D8C8BF0E7AB8C777D5FCF7CF2B2294A4",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "court-filter-1",
+                                          "Group":  "F07",
+                                          "SourceLines":  [
+                                                              31,
+                                                              163
+                                                          ],
+                                          "Occurrences":  2,
+                                          "Before":  "\t\t\t\t\tany_vassal = {\r\n\t\t\t\t\t\tlimit = {\r\n\t\t\t\t\t\t\thas_court_position = goldcloaks_court_position\r\n\t\t\t\t\t\t\tis_target_in_global_variable_list = {\r\n\t\t\t\t\t\t\t\tname = agot_goldcloaks_founded\r\n\t\t\t\t\t\t\t\ttarget = flag:goldcloaks_founded\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n",
+                                          "After":  "\t\t\t\t\tany_vassal = {\r\n\t\t\t\t\t\thas_court_position = goldcloaks_court_position\r\n\t\t\t\t\t\tis_target_in_global_variable_list = {\r\n\t\t\t\t\t\t\tname = agot_goldcloaks_founded\r\n\t\t\t\t\t\t\ttarget = flag:goldcloaks_founded\r\n\t\t\t\t\t\t}\r\n"
+                                      },
+                                      {
+                                          "Id":  "court-filter-2",
+                                          "Group":  "F07",
+                                          "SourceLines":  [
+                                                              295
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "\t\t\t\t\tany_vassal = {\r\n\t\t\t\t\t\tlimit = {\r\n\t\t\t\t\t\t\thas_court_position = goldcloaks_court_position\r\n\t\t\t\t\t\t\tis_target_in_global_variable_list = {\r\n\t\t\t\t\t\t\t\tname = agot_goldcloaks_founded\r\n\t\t\t\t\t\t\t\ttarget = flag:goldcloaks_founded\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tlocation ?= capital_province #Goldguard Heights\r\n\t\t\t\t\t\t\tis_available_healthy_ai_adult = yes\r\n\t\t\t\t\t\t\tis_clergy = no\r\n\t\t\t\t\t\t\tNOT = { has_court_position = court_jester_court_position }\r\n\t\t\t\t\t\t\tNOT = { has_short_disease_trigger = yes }\r\n\t\t\t\t\t\t\tNOT = { has_trait = maimed }\r\n\t\t\t\t\t\t}\r\n",
+                                          "After":  "\t\t\t\t\tany_vassal = {\r\n\t\t\t\t\t\thas_court_position = goldcloaks_court_position\r\n\t\t\t\t\t\tis_target_in_global_variable_list = {\r\n\t\t\t\t\t\t\tname = agot_goldcloaks_founded\r\n\t\t\t\t\t\t\ttarget = flag:goldcloaks_founded\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tlocation ?= capital_province #Goldguard Heights\r\n\t\t\t\t\t\tis_available_healthy_ai_adult = yes\r\n\t\t\t\t\t\tis_clergy = no\r\n\t\t\t\t\t\tNOT = { has_court_position = court_jester_court_position }\r\n\t\t\t\t\t\tNOT = { has_short_disease_trigger = yes }\r\n\t\t\t\t\t\tNOT = { has_trait = maimed }\r\n"
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/scripted_effects/asoiaf_canon_children_effects.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "919D83FF542167E0E2AF695ED4FF8EF97D9D8E4F088DDFEE34A36823E91A71DB",
+                      "PatchedSHA256":  "E2B86820818CB71D2912155A7C9748532FF65870035DE8C9031FBF0FE97435D9",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "children-placement-argument",
+                                          "Group":  "F08",
+                                          "SourceLines":  [
+                                                              135,
+                                                              191,
+                                                              230,
+                                                              367,
+                                                              429,
+                                                              462,
+                                                              495,
+                                                              528,
+                                                              561,
+                                                              596,
+                                                              629,
+                                                              662,
+                                                              707,
+                                                              740,
+                                                              801,
+                                                              867,
+                                                              929,
+                                                              988,
+                                                              1056,
+                                                              1110,
+                                                              1170,
+                                                              1215,
+                                                              1263,
+                                                              1315,
+                                                              1375,
+                                                              1434,
+                                                              1499,
+                                                              1571,
+                                                              1645,
+                                                              1717,
+                                                              1865,
+                                                              2007,
+                                                              2178,
+                                                              2227,
+                                                              2276,
+                                                              2325,
+                                                              2385,
+                                                              2469,
+                                                              2541,
+                                                              2592,
+                                                              2646,
+                                                              2717,
+                                                              2786,
+                                                              2877,
+                                                              2998,
+                                                              3053,
+                                                              3098,
+                                                              3153,
+                                                              3214,
+                                                              3259,
+                                                              3299,
+                                                              3338,
+                                                              3403,
+                                                              3467,
+                                                              3506,
+                                                              3559,
+                                                              3627,
+                                                              3689,
+                                                              3773,
+                                                              3860,
+                                                              3926,
+                                                              3978,
+                                                              4010,
+                                                              4042,
+                                                              4105,
+                                                              4150,
+                                                              4207,
+                                                              4249,
+                                                              4323,
+                                                              4406,
+                                                              4513,
+                                                              4567,
+                                                              4655,
+                                                              4707,
+                                                              4817,
+                                                              4908,
+                                                              4957,
+                                                              5004,
+                                                              5052,
+                                                              5128,
+                                                              5201,
+                                                              5272,
+                                                              5314,
+                                                              5364,
+                                                              5444,
+                                                              5499,
+                                                              5578,
+                                                              5643,
+                                                              5709,
+                                                              5763,
+                                                              5827,
+                                                              5881,
+                                                              5924,
+                                                              5967,
+                                                              6027,
+                                                              6085,
+                                                              6122,
+                                                              6157,
+                                                              6192,
+                                                              6245,
+                                                              6280,
+                                                              6364,
+                                                              6466,
+                                                              6569,
+                                                              6631,
+                                                              6674,
+                                                              6768,
+                                                              6829,
+                                                              6962,
+                                                              7061,
+                                                              7227,
+                                                              7366,
+                                                              7453,
+                                                              7541,
+                                                              7620,
+                                                              7669,
+                                                              7724,
+                                                              7771,
+                                                              7927,
+                                                              8075,
+                                                              8231,
+                                                              8317,
+                                                              8381,
+                                                              8438,
+                                                              8506,
+                                                              8575,
+                                                              8633,
+                                                              8686,
+                                                              8747,
+                                                              8815,
+                                                              8898,
+                                                              8959,
+                                                              9024,
+                                                              9066,
+                                                              9104,
+                                                              9150,
+                                                              9219,
+                                                              9265,
+                                                              9317,
+                                                              9491,
+                                                              9550,
+                                                              9618,
+                                                              9676,
+                                                              9746,
+                                                              9812,
+                                                              9863,
+                                                              9905,
+                                                              9947,
+                                                              9996,
+                                                              10053,
+                                                              10112,
+                                                              10172,
+                                                              10248,
+                                                              10305,
+                                                              10358,
+                                                              10415,
+                                                              10475,
+                                                              10534,
+                                                              10584,
+                                                              10646,
+                                                              10702,
+                                                              10756,
+                                                              10824,
+                                                              10885,
+                                                              10940,
+                                                              11002,
+                                                              11092,
+                                                              11135,
+                                                              11178,
+                                                              11222,
+                                                              11265,
+                                                              11325,
+                                                              11461,
+                                                              11498,
+                                                              11582,
+                                                              11680,
+                                                              11771,
+                                                              11872,
+                                                              12005,
+                                                              12170,
+                                                              12231,
+                                                              12296,
+                                                              12367,
+                                                              12400,
+                                                              12464,
+                                                              12517,
+                                                              12556,
+                                                              12617,
+                                                              12658,
+                                                              12699,
+                                                              12760,
+                                                              12812,
+                                                              12865,
+                                                              12924,
+                                                              13037,
+                                                              13091,
+                                                              13161,
+                                                              13194,
+                                                              13233,
+                                                              13290,
+                                                              13344,
+                                                              13419
+                                                          ],
+                                          "Occurrences":  202,
+                                          "Before":  "\t\temployer = scope:mother.employer\r\n",
+                                          "After":  ""
+                                      },
+                                      {
+                                          "Id":  "children-placement-effect",
+                                          "Group":  "F08",
+                                          "SourceLines":  [
+                                                              139,
+                                                              195,
+                                                              234,
+                                                              371,
+                                                              433,
+                                                              466,
+                                                              499,
+                                                              532,
+                                                              565,
+                                                              600,
+                                                              633,
+                                                              666,
+                                                              711,
+                                                              744,
+                                                              805,
+                                                              871,
+                                                              933,
+                                                              992,
+                                                              1060,
+                                                              1114,
+                                                              1174,
+                                                              1219,
+                                                              1267,
+                                                              1319,
+                                                              1379,
+                                                              1438,
+                                                              1503,
+                                                              1575,
+                                                              1649,
+                                                              1721,
+                                                              1869,
+                                                              2011,
+                                                              2182,
+                                                              2231,
+                                                              2280,
+                                                              2329,
+                                                              2389,
+                                                              2473,
+                                                              2545,
+                                                              2596,
+                                                              2650,
+                                                              2723,
+                                                              2793,
+                                                              2881,
+                                                              3002,
+                                                              3059,
+                                                              3105,
+                                                              3157,
+                                                              3218,
+                                                              3263,
+                                                              3303,
+                                                              3342,
+                                                              3407,
+                                                              3471,
+                                                              3510,
+                                                              3563,
+                                                              3631,
+                                                              3693,
+                                                              3777,
+                                                              3864,
+                                                              3930,
+                                                              3982,
+                                                              4014,
+                                                              4046,
+                                                              4109,
+                                                              4154,
+                                                              4211,
+                                                              4253,
+                                                              4327,
+                                                              4410,
+                                                              4517,
+                                                              4571,
+                                                              4659,
+                                                              4711,
+                                                              4821,
+                                                              4912,
+                                                              4961,
+                                                              5008,
+                                                              5056,
+                                                              5134,
+                                                              5208,
+                                                              5276,
+                                                              5318,
+                                                              5368,
+                                                              5448,
+                                                              5503,
+                                                              5582,
+                                                              5647,
+                                                              5713,
+                                                              5767,
+                                                              5831,
+                                                              5885,
+                                                              5928,
+                                                              5971,
+                                                              6031,
+                                                              6089,
+                                                              6126,
+                                                              6161,
+                                                              6196,
+                                                              6249,
+                                                              6284,
+                                                              6368,
+                                                              6470,
+                                                              6573,
+                                                              6635,
+                                                              6678,
+                                                              6772,
+                                                              6833,
+                                                              6966,
+                                                              7065,
+                                                              7231,
+                                                              7370,
+                                                              7457,
+                                                              7545,
+                                                              7626,
+                                                              7676,
+                                                              7728,
+                                                              7775,
+                                                              7931,
+                                                              8079,
+                                                              8235,
+                                                              8321,
+                                                              8385,
+                                                              8442,
+                                                              8510,
+                                                              8579,
+                                                              8637,
+                                                              8690,
+                                                              8751,
+                                                              8819,
+                                                              8902,
+                                                              8963,
+                                                              9028,
+                                                              9072,
+                                                              9111,
+                                                              9156,
+                                                              9226,
+                                                              9269,
+                                                              9321,
+                                                              9495,
+                                                              9554,
+                                                              9622,
+                                                              9680,
+                                                              9750,
+                                                              9816,
+                                                              9867,
+                                                              9909,
+                                                              9953,
+                                                              10003,
+                                                              10057,
+                                                              10116,
+                                                              10176,
+                                                              10252,
+                                                              10309,
+                                                              10362,
+                                                              10419,
+                                                              10479,
+                                                              10538,
+                                                              10588,
+                                                              10650,
+                                                              10706,
+                                                              10760,
+                                                              10828,
+                                                              10889,
+                                                              10944,
+                                                              11006,
+                                                              11096,
+                                                              11139,
+                                                              11182,
+                                                              11226,
+                                                              11269,
+                                                              11329,
+                                                              11465,
+                                                              11502,
+                                                              11586,
+                                                              11684,
+                                                              11775,
+                                                              11876,
+                                                              12009,
+                                                              12174,
+                                                              12235,
+                                                              12300,
+                                                              12371,
+                                                              12404,
+                                                              12468,
+                                                              12521,
+                                                              12560,
+                                                              12621,
+                                                              12662,
+                                                              12703,
+                                                              12764,
+                                                              12816,
+                                                              12869,
+                                                              12928,
+                                                              13041,
+                                                              13095,
+                                                              13165,
+                                                              13198,
+                                                              13237,
+                                                              13294,
+                                                              13348,
+                                                              13423
+                                                          ],
+                                          "Occurrences":  202,
+                                          "Before":  "asoiaf_canon_children_parentage_assignment_effect = yes",
+                                          "After":  "agot_plus_fix_place_newborn_effect = yes\r\n\t\t\tasoiaf_canon_children_parentage_assignment_effect = yes"
+                                      },
+                                      {
+                                          "Id":  "tyrion-nickname",
+                                          "Group":  "F10",
+                                          "SourceLines":  [
+                                                              2899
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "give_nickname = nick_the_imp",
+                                          "After":  "give_nickname = nick_agot_the_imp"
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "events/asoiaf_young_griff_landing_events.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "78E72DDCCB21730DE508AA056158EB9618EB0C3D6EA5EA0595C179297F82B4ED",
+                      "PatchedSHA256":  "4D1C8AC0029C18F521D637D60DB8D48C11017E7C5552E6320F3367F318DD6DAC",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "griff-parents-location",
+                                          "Group":  "F08",
+                                          "SourceLines":  [
+                                                              81,
+                                                              96
+                                                          ],
+                                          "Occurrences":  2,
+                                          "Before":  "#location = scope:faegon.location",
+                                          "After":  "location = scope:faegon.location"
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/scripted_effects/asoiaf_clear_traits_effects.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "D595A8D3B2DD2F60FBB186D2765D98CB28F21AB789E3BC3896B7F7477C59087E",
+                      "PatchedSHA256":  "5882D4AD8DE46F467DB18956371A678EF565D88DC09E7D4348344BE1283ED054",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "retired-lifestyle_hunter_2_history",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              773
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "\tif = {\r\n\t\tlimit = {\r\n\t\t\thas_trait = lifestyle_hunter_2_history\r\n\t\t}\r\n\t\tremove_trait = lifestyle_hunter_2_history\r\n\t}\r\n",
+                                          "After":  ""
+                                      },
+                                      {
+                                          "Id":  "retired-lifestyle_hunter_3_history",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              779
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "\tif = {\r\n\t\tlimit = {\r\n\t\t\thas_trait = lifestyle_hunter_3_history\r\n\t\t}\r\n\t\tremove_trait = lifestyle_hunter_3_history\r\n\t}\r\n",
+                                          "After":  ""
+                                      },
+                                      {
+                                          "Id":  "retired-lifestyle_blademaster_2_history",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              803
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "\tif = {\r\n\t\tlimit = {\r\n\t\t\thas_trait = lifestyle_blademaster_2_history\r\n\t\t}\r\n\t\tremove_trait = lifestyle_blademaster_2_history\r\n\t}\r\n",
+                                          "After":  ""
+                                      },
+                                      {
+                                          "Id":  "retired-lifestyle_blademaster_3_history",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              809
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "\tif = {\r\n\t\tlimit = {\r\n\t\t\thas_trait = lifestyle_blademaster_3_history\r\n\t\t}\r\n\t\tremove_trait = lifestyle_blademaster_3_history\r\n\t}\r\n",
+                                          "After":  ""
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/scripted_effects/asoiaf_assign_inactive_traits_effects.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "4786ED9B37B34D4382DCBAEA41132CED9958F06E6F5AF6A04EC3688A2262416B",
+                      "PatchedSHA256":  "0D7A5920EF3DBF60100C17B4C44BD31BC113981CEA15E027A1060FEA25D2471F",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "alaric-identity-trait",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              1714
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "make_trait_inactive = asoiaf_Baratheon_baby_trait",
+                                          "After":  "make_trait_inactive = asoiaf_Baratheon_2_1_trait"
+                                      },
+                                      {
+                                          "Id":  "retired-pregnancy-negation-trait",
+                                          "Group":  "F09",
+                                          "SourceLines":  [
+                                                              92
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "\t\tmake_trait_inactive = asoiaf_canon_children_pregnancy_negation_trait\r\n",
+                                          "After":  ""
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/on_action/agot_on_actions/test_title_on_actions.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "C5D8C4ED2A7E7D74C3CE69B813A59B79F2F9BA7A9051B986D8BE9B8DA6D3C909",
+                      "PatchedSHA256":  "B33A5243473A3F79B0301C5ED8FC5567D3107C1E153F4D01DC2BE372F7643B2E",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "retired-blood-point-claim",
+                                          "Group":  "F10",
+                                          "SourceLines":  [
+                                                              1030
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "\t\t\t\tremove_claim = title:c_blood_point\r\n",
+                                          "After":  ""
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/scripted_triggers/asoiaf_cultural_portrait_triggers.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "AFA7D370413B23E25BC4D85EA6C4BCB1254C14AA0CACF7DC31DB1315B031C037",
+                      "PatchedSHA256":  "AECD3282A07D56D6DED60B561461D2FB337D46FEEB690A6138073D1FA35D4278",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "riverlander-clothing-gfx",
+                                          "Group":  "F10",
+                                          "SourceLines":  [
+                                                              83
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "has_clothing_gfx = riverman_main",
+                                          "After":  "has_clothing_gfx = riverlander_clothing_gfx"
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "gfx/interface/illustrations/scripted_illustrations/ingame.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "7926254222CF475D4523DEE9C4CF595E6563ED1536E81D54E8E56E8F9C22C45B",
+                      "PatchedSHA256":  "211F218F05DC24E4376DA3683AB5F42172F8ACC6CDFCF4476E1A341DFFB4E8B3",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "retired-coronation-ingame-1",
+                                          "Group":  "F10",
+                                          "SourceLines":  [
+                                                              115
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "\r\n\t\t\t\t\t\t\thas_activity_type = activity_no_dlc_coronation\r\n",
+                                          "After":  "\r\n"
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "gfx/portraits/portrait_modifiers/asoiaf_character_custom_flags.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "F4D773BEAC227AD8BB5830F704B1F43FCDD107F83E20EF29D0FF21680D84EAEE",
+                      "PatchedSHA256":  "77E337C286FBB6FD4411FBEA3CD80EADB8BACFF0505315F11DE231DD54DF3695",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "retired-coronation-asoiaf_character_custom_flags-1",
+                                          "Group":  "F10",
+                                          "SourceLines":  [
+                                                              15773,
+                                                              18126
+                                                          ],
+                                          "Occurrences":  2,
+                                          "Before":  "\r\n\t\t\t\t\t\thas_activity_type = activity_no_dlc_coronation\r\n",
+                                          "After":  "\r\n"
+                                      },
+                                      {
+                                          "Id":  "retired-coronation-asoiaf_character_custom_flags-2",
+                                          "Group":  "F10",
+                                          "SourceLines":  [
+                                                              16488,
+                                                              18566
+                                                          ],
+                                          "Occurrences":  2,
+                                          "Before":  "\r\n\t\t\t\t\t\t\thas_activity_type = activity_no_dlc_coronation\r\n",
+                                          "After":  "\r\n"
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "gfx/portraits/portrait_modifiers/asoiaf_hairs_custom_flags.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "AE2EB65492606C72E55533F3A0B4D04DD80CD7BB8F10207E5FEAE09C6E821261",
+                      "PatchedSHA256":  "63A8010E9F6F8ACAA81C37B600709DE1899B3A9B107A0475C58E29EEB13F1EE9",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "retired-coronation-asoiaf_hairs_custom_flags-1",
+                                          "Group":  "F10",
+                                          "SourceLines":  [
+                                                              4082,
+                                                              4095,
+                                                              5011,
+                                                              5026,
+                                                              5085,
+                                                              5101
+                                                          ],
+                                          "Occurrences":  6,
+                                          "Before":  "\r\n\t\t\t\t\t\t\t\thas_activity_type = activity_no_dlc_coronation\r\n",
+                                          "After":  "\r\n"
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/on_action/asoiaf_marriage_concubinage_on_actions.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "E7D473B5AC906A8CF4AF3BEB3AD8180FCB458DCC67A302CAE17A446B609F3F93",
+                      "PatchedSHA256":  "27A72708705DB73CED857E8153105B8F99E7B3A76F9D824EB534194B90C69253",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "rhaenyra-current-coa",
+                                          "Group":  "F12",
+                                          "SourceLines":  [
+                                                              36
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "asoiaf_rhaenyra_personal_coa_marriage = {\r\n\ttrigger = {\r\n\t\troot = {\r\n\t\t\tNOT = { has_character_flag = has_personal_coa }\r\n\t\t\tOR = {\r\n\t\t\t\thas_inactive_trait = asoiaf_Targaryen_63_trait\r\n\t\t\t\tdynasty ?= dynasty:dynn_Velaryon\r\n\t\t\t}\r\n\t\t}\r\n\t\tscope:spouse = {\r\n\t\t\tNOT = { has_character_flag = has_personal_coa }\r\n\t\t\tOR = {\r\n\t\t\t\thas_inactive_trait = asoiaf_Targaryen_63_trait\r\n\t\t\t\tdynasty ?= dynasty:dynn_Velaryon\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n\teffect = {\r\n\t\tif = {\r\n\t\t\tlimit = {\r\n\t\t\t\thas_game_rule = asoiaf_alternative_arryn_sigil_rule_off\r\n\t\t\t}\r\n\t\t\tif = {\r\n\t\t\t\tlimit = {\r\n\t\t\t\t\troot = { has_inactive_trait = asoiaf_Targaryen_63_trait }\r\n\t\t\t\t}\r\n\t\t\t\tagot_create_personal_coa_for_historical_ai = { ACTOR = root COA_KEY = rhaenrya_personal_coa }\r\n\t\t\t}\r\n\t\t\tif = {\r\n\t\t\t\tlimit = {\r\n\t\t\t\t\tscope:spouse = { has_inactive_trait = asoiaf_Targaryen_63_trait }\r\n\t\t\t\t}\r\n\t\t\t\tagot_create_personal_coa_for_historical_ai = { ACTOR = scope:spouse COA_KEY = rhaenrya_personal_coa }\r\n\t\t\t}\r\n\t\t}\r\n\t\tif = {\r\n\t\t\tlimit = {\r\n\t\t\t\thas_game_rule = asoiaf_alternative_arryn_sigil_rule_on\r\n\t\t\t}\r\n\t\t\tif = {\r\n\t\t\t\tlimit = {\r\n\t\t\t\t\troot = { has_inactive_trait = asoiaf_Targaryen_63_trait }\r\n\t\t\t\t}\r\n\t\t\t\tagot_create_personal_coa_for_historical_ai = { ACTOR = root COA_KEY = rhaenrya_personal_coa_alt }\r\n\t\t\t}\r\n\t\t\tif = {\r\n\t\t\t\tlimit = {\r\n\t\t\t\t\tscope:spouse = { has_inactive_trait = asoiaf_Targaryen_63_trait }\r\n\t\t\t\t}\r\n\t\t\t\tagot_create_personal_coa_for_historical_ai = { ACTOR = scope:spouse COA_KEY = rhaenrya_personal_coa_alt }\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}",
+                                          "After":  "asoiaf_rhaenyra_personal_coa_marriage = {\r\n\ttrigger = {\r\n\t\troot = {\r\n\t\t\tNOT = { has_character_flag = has_personal_coa }\r\n\t\t\tOR = {\r\n\t\t\t\thas_inactive_trait = asoiaf_Targaryen_63_trait\r\n\t\t\t\tdynasty ?= dynasty:dynn_Velaryon\r\n\t\t\t}\r\n\t\t}\r\n\t\tscope:spouse = {\r\n\t\t\tNOT = { has_character_flag = has_personal_coa }\r\n\t\t\tOR = {\r\n\t\t\t\thas_inactive_trait = asoiaf_Targaryen_63_trait\r\n\t\t\t\tdynasty ?= dynasty:dynn_Velaryon\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n\teffect = {\r\n\t\t# AGOT_PLUS_FIX: the retired Arryn rule and alternate personal COA are absent.\r\n\t\tif = {\r\n\t\t\tlimit = { root = { has_inactive_trait = asoiaf_Targaryen_63_trait } }\r\n\t\t\tagot_create_personal_coa_for_historical_ai = { ACTOR = root COA_KEY = rhaenrya_personal_coa }\r\n\t\t}\r\n\t\tif = {\r\n\t\t\tlimit = { scope:spouse = { has_inactive_trait = asoiaf_Targaryen_63_trait } }\r\n\t\t\tagot_create_personal_coa_for_historical_ai = { ACTOR = scope:spouse COA_KEY = rhaenrya_personal_coa }\r\n\t\t}\r\n\t}\r\n}"
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/on_action/asoiaf_setup.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "7F25A4EEBEEA047BE468ADF362AE73D266A7B308D23897A31BBEA237C35BD239",
+                      "PatchedSHA256":  "4F02869D2915635D638A9AEE17825DA9E370DF681E1B60CA2B222C3BE243B0F3",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "retired-arryn-startup-hook",
+                                          "Group":  "F12",
+                                          "SourceLines":  [
+                                                              15
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "\t\tasoiaf_alternative_arryn_sigil\n",
+                                          "After":  ""
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "gfx/portraits/portrait_modifiers/asoiaf_clothes_situational.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "83382DA14ED0923BF7CB806EAD7980A7B5D94EA07E3CE49880AECB531912F099",
+                      "PatchedSHA256":  "4D409EA8812DF0B8D482AA5B1B5991BC3791DBCE767644CE3E5724483E527485",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "uninstalled-aotk-asoiaf_clothes_situational",
+                                          "Group":  "F12",
+                                          "SourceLines":  [
+                                                              94
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "            modifier = {\r\n\t\t\t\tfactor = 0\r\n\t\t\t\tis_aotk_loaded_trigger = yes\r\n\t\t\t\thas_game_rule = show_armor_enabled #if the player is using AOTK and has its armour enabled, disable AGOT+\u0027s version\r\n\t\t\t}\r\n",
+                                          "After":  ""
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "gfx/portraits/portrait_modifiers/asoiaf_headgear_situational.txt",
+                      "Kind":  "Shadow",
+                      "SourceSHA256":  "97C17944F7861BABA3E6D90A84171FE354A486490B371FA7F7D40CBD527C5A8B",
+                      "PatchedSHA256":  "8CA9025D045CB46466A6120B1AD83C25DF07D1F75119CD611547C52286A05AF5",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+                                      {
+                                          "Id":  "uninstalled-aotk-asoiaf_headgear_situational",
+                                          "Group":  "F12",
+                                          "SourceLines":  [
+                                                              179
+                                                          ],
+                                          "Occurrences":  1,
+                                          "Before":  "\t\t\tmodifier = {\r\n\t\t\t\tfactor = 0\r\n\t\t\t\tis_aotk_loaded_trigger = yes\r\n\t\t\t\thas_game_rule = show_armor_enabled #if the player is using AOTK and has its armour enabled, disable AGOT+\u0027s version\r\n\t\t\t}\r\n",
+                                          "After":  ""
+                                      }
+                                  ]
+                  },
+                  {
+                      "File":  "common/scripted_effects/zz_agot_plus_fix_child_effects.txt",
+                      "Kind":  "Addition",
+                      "SourceSHA256":  null,
+                      "PatchedSHA256":  "8ECB09F197CB64EE5F739C10BB8745F4C6C63440A7ACFACC5134F9FAE5127E93",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+
+                                  ]
+                  },
+                  {
+                      "File":  "common/modifiers/zz_agot_plus_fix_modifiers.txt",
+                      "Kind":  "Addition",
+                      "SourceSHA256":  null,
+                      "PatchedSHA256":  "979F19963B15134D64D518483C0CBF3E4BBD23CE476C6F68524218C5594322B0",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+
+                                  ]
+                  },
+                  {
+                      "File":  "localization/english/agot_plus_fix_l_english.yml",
+                      "Kind":  "Addition",
+                      "SourceSHA256":  null,
+                      "PatchedSHA256":  "EA5F4306C08FC8FE38719E2C20976D5F9AA37F3602CE5D8ABE50479C750E5161",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+
+                                  ]
+                  },
+                  {
+                      "File":  "localization/russian/agot_plus_fix_l_russian.yml",
+                      "Kind":  "Addition",
+                      "SourceSHA256":  null,
+                      "PatchedSHA256":  "46F71F286D51826F259D4060C141078149F484A1356CB5BCEA7850DD24CD86FD",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+
+                                  ]
+                  },
+                  {
+                      "File":  "events/agot_plus_fix_age_events.txt",
+                      "Kind":  "Addition",
+                      "SourceSHA256":  null,
+                      "PatchedSHA256":  "EC3BFB6A19AD533F3277D3619803F6C5AC1A600755D07FCC3EF38262D0F154C7",
+                      "UTF8BOM":  true,
+                      "Changes":  [
+
+                                  ]
+                  }
+              ]
+}

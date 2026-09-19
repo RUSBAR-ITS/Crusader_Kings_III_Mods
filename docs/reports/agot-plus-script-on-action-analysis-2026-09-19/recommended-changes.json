@@ -1,0 +1,148 @@
+[
+  {
+    "Group": "decision_widgets",
+    "LogLines": [
+      9753,
+      9755,
+      9758,
+      9761
+    ],
+    "MessageCount": 4,
+    "Files": [
+      "common/decisions/asoiaf_house_branch_decisions.txt"
+    ],
+    "Recommendation": "Remove two obsolete widget properties in each of four decisions; retain option list, selection flags and effects.",
+    "Implemented": true,
+    "Revision": 8,
+    "FixGroup": "F25",
+    "GameExecutionChecked": false,
+    "ImplementationReport": "../../../AGOT_Submods/AGOT_PLUS_FIX/docs/stage8-analysis.md"
+  },
+  {
+    "Group": "unfinished_births",
+    "LogLines": [
+      9994,
+      9995,
+      9996,
+      9997,
+      9998,
+      9999,
+      10000,
+      10001,
+      10002,
+      10003,
+      10004,
+      10046,
+      10047
+    ],
+    "MessageCount": 13,
+    "Files": [
+      "common/on_action/asoiaf_pregnancy_childbirth_on_actions.txt",
+      "events/asoiaf_canon_children_events/asoiaf_canon_children_targaryen_events.txt"
+    ],
+    "Recommendation": "Implemented seven births with Megette identity for the first chain and Braavosi culture for the second, as clarified by the user. Exclude Megette and the pre-existing Targaryen/Daena paths from the second chain; guard actual house existence in those older paths. Preserve sequencing, parentage, appearance donors, historical initialization and native birth notification dispatch.",
+    "Implemented": true,
+    "Revision": 8,
+    "FixGroup": "F24",
+    "GameExecutionChecked": false,
+    "ImplementationReport": "../../../AGOT_Submods/AGOT_PLUS_FIX/docs/stage8-analysis.md"
+  },
+  {
+    "Group": "orphan_megawar",
+    "LogLines": [
+      10017
+    ],
+    "MessageCount": 1,
+    "Files": [
+      "events/asoiaf_mega_war_events.txt"
+    ],
+    "Recommendation": "Retain the hidden event ID as an inert compatibility shell; comment the undefined effect call.",
+    "Implemented": true,
+    "Revision": 8,
+    "FixGroup": "F31",
+    "GameExecutionChecked": false,
+    "ImplementationReport": "../../../AGOT_Submods/AGOT_PLUS_FIX/docs/stage8-analysis.md"
+  },
+  {
+    "Group": "heir_availability",
+    "LogLines": [
+      10033
+    ],
+    "MessageCount": 1,
+    "Files": [
+      "common/character_interactions/asoiaf_character_interactions.txt"
+    ],
+    "Recommendation": "Replace the missing legacy check with a namespaced helper preserving its two documented negative yearly_1010 flag checks and localized explanations; retain all other heir conditions and consequences. Historical implementation located; see followup-analysis.md.",
+    "Implemented": true,
+    "Revision": 8,
+    "FixGroup": "F26",
+    "GameExecutionChecked": false,
+    "ImplementationReport": "../../../AGOT_Submods/AGOT_PLUS_FIX/docs/stage8-analysis.md"
+  },
+  {
+    "Group": "siege_claimant",
+    "LogLines": [
+      10035,
+      10036
+    ],
+    "MessageCount": 2,
+    "Files": [
+      "common/on_action/asoiaf_army_on_actions.txt"
+    ],
+    "Recommendation": "Use primary_defender = root in war scope, and explicitly guard the saved claimant scope in both siege handlers.",
+    "Implemented": true,
+    "Revision": 8,
+    "FixGroup": "F29",
+    "GameExecutionChecked": false,
+    "ImplementationReport": "../../../AGOT_Submods/AGOT_PLUS_FIX/docs/stage8-analysis.md"
+  },
+  {
+    "Group": "duplicate_title_handler",
+    "LogLines": [
+      10052,
+      10053
+    ],
+    "MessageCount": 2,
+    "Files": [
+      "common/on_action/agot_on_actions/test_title_on_actions.txt"
+    ],
+    "Recommendation": "Keep one explicitly disabled native CoA handler in its canonical AGOT file; remove the PLUS duplicate definition and redundant registration; retain the separate PLUS cadet-branch handler.",
+    "Implemented": true,
+    "Revision": 8,
+    "FixGroup": "F27",
+    "GameExecutionChecked": false,
+    "ImplementationReport": "../../../AGOT_Submods/AGOT_PLUS_FIX/docs/stage8-analysis.md"
+  },
+  {
+    "Group": "child_regency",
+    "LogLines": [
+      10054
+    ],
+    "MessageCount": 1,
+    "Files": [
+      "common/on_action/agot_on_actions/test_title_on_actions.txt"
+    ],
+    "Recommendation": "Migrate start_diarchy to try_start_diarchy, respecting eligibility and existing diarchy state before setting the mother as regent.",
+    "Implemented": true,
+    "Revision": 8,
+    "FixGroup": "F28",
+    "GameExecutionChecked": false,
+    "ImplementationReport": "../../../AGOT_Submods/AGOT_PLUS_FIX/docs/stage8-analysis.md"
+  },
+  {
+    "Group": "retired_crownlands_cleanup",
+    "LogLines": [
+      10055
+    ],
+    "MessageCount": 1,
+    "Files": [
+      "common/on_action/agot_on_actions/test_title_on_actions.txt"
+    ],
+    "Recommendation": "Comment the remaining obsolete destroy-Crownlands call; preserve the Young Griff victory event and flag.",
+    "Implemented": true,
+    "Revision": 8,
+    "FixGroup": "F30",
+    "GameExecutionChecked": false,
+    "ImplementationReport": "../../../AGOT_Submods/AGOT_PLUS_FIX/docs/stage8-analysis.md"
+  }
+]

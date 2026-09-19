@@ -1,0 +1,1627 @@
+﻿asoiaf_maester_clothes_modifiers = {
+    usage = game
+	selection_behavior = max
+	priority = 5
+
+	asoiaf_maester_robes_black = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_maester_clothes
+				accessory = male_clothes_asoiaf_maester_robes_black
+            }
+			accessory = {
+                mode = add
+                gene = legwear
+                template = agot_all_legwear
+                accessory = male_legwear_secular_agot_trousers_black_01
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = { #Maesters of the Night's Watch
+				add = 2000
+				AND = {
+					OR = {
+						has_trait = maester
+						has_trait = archmaester
+						has_trait = maester_historical
+					}
+					OR = {
+						has_trait = nightswatch
+						has_trait = nightswatch_historical
+						has_trait = lifestyle_nw_builder
+						has_trait = lifestyle_nw_ranger
+						has_trait = lifestyle_nw_steward
+					}
+				}
+			}
+			modifier = { #THE Maester of Dragonstone
+				add = 2000
+				exists = liege
+				liege.capital_province.barony ?= { this = title:b_dragonstone }
+				OR = {
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = maester_historical
+				}
+				has_court_position = maester_court_position
+			}
+			modifier = { #THE Maester of the Dreadfort
+				add = 2000
+				exists = liege
+				liege.capital_province.barony ?= { this = title:b_the_dreadfort }
+				OR = {
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = maester_historical
+				}
+				has_court_position = maester_court_position
+			}
+			modifier = { #religious clothing/being kingsguard takes precedence (idk how this would be possible, but for edge cases it's here), same with being a jester
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = kingsguard
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_maester_robes_tan = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_maester_clothes
+				accessory = male_clothes_asoiaf_maester_robes_tan
+            }
+			accessory = {
+                mode = add
+                gene = legwear
+                template = agot_all_legwear
+                accessory = male_legwear_secular_agot_trousers_black_01
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = { #Maesters studying at the Citadel
+				add = 2000
+				exists = liege
+				liege.primary_title = title:b_the_citadel
+				OR = {
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = maester_historical
+				}
+			}
+			modifier = { #Senechals of the Citadel
+				add = 2000
+				has_title = title:b_the_citadel
+				OR = {
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = maester_historical
+				}
+			}
+			modifier = {
+				add = -3000
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_maester_robes_brown = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_maester_clothes
+				accessory = male_clothes_asoiaf_maester_robes_brown
+            }
+			accessory = {
+                mode = add
+                gene = legwear
+                template = agot_all_legwear
+                accessory = male_legwear_secular_agot_trousers_black_01
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				has_inactive_trait = grandmaester
+				OR = {
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = maester_historical
+				}
+			}
+			modifier = { #religious clothing/being kingsguard takes precedence (idk how this would be possible, but for edge cases it's here), same with being a jester
+				add = -3000
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_maester_robes_pale_green = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_maester_clothes
+				accessory = male_clothes_asoiaf_maester_robes_pale_green
+            }
+			accessory = {
+                mode = add
+                gene = legwear
+                template = agot_all_legwear
+                accessory = male_legwear_secular_agot_trousers_black_01
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = { #THE Maester of Highgarden
+				add = 2000
+				exists = liege
+				liege.capital_province.barony ?= { this = title:b_highgarden }
+				OR = {
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = maester_historical
+				}
+				has_court_position = maester_court_position
+			}
+			modifier = { #religious clothing/being kingsguard takes precedence (idk how this would be possible, but for edge cases it's here), same with being a jester
+				add = -3000
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = kingsguard
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_maester_robes_universal = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_maester_clothes
+				range = { 0.0 1.0 }
+            }
+			accessory = {
+                mode = add
+                gene = legwear
+                template = agot_all_legwear
+                accessory = male_legwear_secular_agot_trousers_black_01
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				OR = {
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = maester_historical
+				}
+			}
+			modifier = {
+				add = -3000
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_maester_robes_universal_dorne = { #excludes the black colour from the range, otherwise same as universal
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_maester_clothes
+				range = { 0.17 1.0 }
+            }
+			accessory = {
+                mode = add
+                gene = legwear
+                template = agot_all_legwear
+                accessory = male_legwear_secular_agot_trousers_black_01
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1500
+				exists = liege
+				liege.capital_province = { geographical_region = world_westeros_dorne }
+				OR = {
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = maester_historical
+				}
+			}
+			modifier = {
+				add = -3000
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+}
+
+asoiaf_maester_chains_modifiers = {
+    usage = game
+	selection_behavior = max
+	priority = 5
+
+	asoiaf_maester_chain_1 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = special_accessories_jewelry
+				template = asoiaf_unique_jewellery
+				accessory = male_jewellery_asoiaf_maester_chain_1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = { #SAME as vanilla AGOT
+				add = 505 #5 more than vanilla AGOT
+				OR = {
+					has_trait_xp = {
+						trait = maester
+						value = 100
+					}
+					has_trait = maester_historical
+				}
+				age > 15
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_court_position = court_jester_court_position
+				}
+			}
+		}
+	}
+	asoiaf_maester_chain_2 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = special_accessories_jewelry
+				template = asoiaf_unique_jewellery
+				accessory = male_jewellery_asoiaf_maester_chain_2
+			}
+		}
+		weight = {
+			base = 0
+			modifier = { #SAME as vanilla AGOT
+				add = 515 #5 more than vanilla AGOT
+				OR = {
+					has_trait_xp = {
+						trait = maester
+						value = 100
+					}
+					has_trait = maester_historical
+				}
+				learning >= 10
+				age >= 25
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_court_position = court_jester_court_position
+				}
+			}
+		}
+	}
+	asoiaf_maester_chain_3 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = special_accessories_jewelry
+				template = asoiaf_unique_jewellery
+				accessory = male_jewellery_asoiaf_maester_chain_3
+			}
+		}
+		weight = {
+			base = 0
+			modifier = { #SAME as vanilla AGOT
+				add = 525 #5 more than vanilla AGOT
+				OR = {
+					has_trait_xp = {
+						trait = maester
+						value = 100
+					}
+					has_trait = maester_historical
+				}
+				learning >= 18
+				age >= 30
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_court_position = court_jester_court_position
+				}
+			}
+		}
+	}
+	asoiaf_maester_chain_4 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = special_accessories_jewelry
+				template = asoiaf_unique_jewellery
+				accessory = male_jewellery_asoiaf_maester_chain_4
+			}
+		}
+		weight = {
+			base = 0
+			modifier = { #SAME as vanilla AGOT
+				add = 535 #5 more than vanilla AGOT
+				OR = {
+					has_trait_xp = {
+						trait = maester
+						value = 100
+					}
+					has_trait = maester_historical
+				}
+				has_trait = archmaester
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_court_position = court_jester_court_position
+				}
+			}
+		}
+	}
+	asoiaf_maester_chain_5 = { #Grandmaester
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = special_accessories_jewelry
+				template = asoiaf_unique_jewellery
+				accessory = male_jewellery_asoiaf_maester_chain_5
+			}
+		}
+		weight = {
+			base = 0
+			modifier = { #SAME as vanilla AGOT
+				add = 1005 #5 more than vanilla AGOT
+				has_inactive_trait = grandmaester
+				OR = {
+					any_equipped_character_artifact = {
+						artifact_type = grandmaester_chain
+					}
+					is_alive = no
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_court_position = court_jester_court_position
+				}
+			}
+		}
+	}
+}
+
+asoiaf_septon_clothes_modifiers = {
+    usage = game
+	selection_behavior = max
+	priority = 3 #MUST be 3 so it doesn't overwrite armour
+	
+	asoiaf_septon_universal = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_religious_clothes
+				accessory = male_clothes_asoiaf_septon_robes_2
+            }
+			accessory = {
+                mode = add
+                gene = legwear
+                template = asoiaf_all_legwears
+                accessory = male_legwear_asoiaf_slippers_1
+            }
+			accessory = {
+                mode = add
+                gene = special_accessories_jewelry
+                template = asoiaf_fots_religious_jewellery
+                accessory = male_jewellery_asoiaf_septon_necklace_1
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 500
+				AND = {
+					has_trait = septon
+					is_male = yes
+				}
+			}
+			modifier = { #Baelor I Targaryen exemption; SAME trigger for his clothes to remain consistent
+				factor = 0
+				has_inactive_trait = asoiaf_Targaryen_82_trait
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+				AND = {
+					has_trait = humble
+					OR = {
+						has_trait = celibate
+						has_trait = septon
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = maester_historical
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_septon_humble = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_religious_clothes
+				accessory = male_clothes_asoiaf_septon_robes_1
+            }
+			accessory = {
+                mode = add
+                gene = legwear
+                template = asoiaf_all_legwears
+                accessory = male_legwear_asoiaf_slippers_1
+            }
+			accessory = {
+                mode = add
+                gene = special_accessories_jewelry
+                template = asoiaf_fots_religious_jewellery
+                accessory = male_jewellery_asoiaf_septon_necklace_1
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				AND = {
+					has_trait = septon
+					is_male = yes
+					has_trait = humble
+				}
+			}
+			modifier = { #Baelor I Targaryen exemption; SAME trigger for his clothes to remain consistent
+				factor = 0
+				has_inactive_trait = asoiaf_Targaryen_82_trait
+				has_game_rule = asoiaf_new_dnas_valyrian_rule_on
+				AND = {
+					has_trait = humble
+					OR = {
+						has_trait = celibate
+						has_trait = septon
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = maester_historical
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_septon_ornate = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = religious_orthodox_high_clothes
+				accessory = male_clothes_religious_orthodox_high_01
+            }
+			accessory = {
+				mode = add
+				gene = legwear
+				template = mena_nobility_legwear
+				accessory = male_legwear_secular_mena_nobility_01
+            }
+			accessory = {
+                mode = add
+                gene = special_accessories_jewelry
+                template = asoiaf_fots_religious_jewellery
+                accessory = male_jewellery_asoiaf_septon_necklace_1
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1500
+				AND = {
+					has_trait = septon
+					is_male = yes
+					OR = { #fashionable/profligate septons will waste their money on expensive clothes, but only if they're NOT also humble (otherwise they'll stick with their humble clothes)
+						has_trait = fashionable
+						has_trait = profligate
+						OR = { #Landed septons of king-tier or above will always wear ornate robes, OR Court Chaplains of emperor-tier rulers will too
+							AND = {
+								is_landed = yes
+								highest_held_title_tier >= tier_kingdom
+							}
+							AND = {
+								exists = liege
+								liege.highest_held_title_tier >= tier_empire
+								has_council_position = councillor_court_chaplain
+							}
+						}
+					}
+					NOT = { has_trait = humble }
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = maester_historical
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_high_septon = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = religious_catholic_high_clothes
+				accessory = male_clothes_religious_catholic_high_01
+            }
+			accessory = {
+				mode = add
+				gene = legwear
+				template = mena_nobility_legwear
+				accessory = male_legwear_secular_mena_nobility_01
+            }
+			accessory = {
+                mode = add
+                gene = special_accessories_jewelry
+                template = asoiaf_fots_religious_jewellery
+                accessory = male_jewellery_asoiaf_septon_necklace_1
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				AND = {
+					is_male = yes
+					has_title = title:k_the_most_devout
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = maester_historical
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+}
+
+asoiaf_septa_clothes_modifiers = { #includes Silent Sisters
+    usage = game
+	selection_behavior = max
+	priority = 6
+
+	asoiaf_septa_universal = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = female_headgear_asoiaf_septa_wimple
+				type = female
+            }
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_religious_clothes
+				accessory = female_clothes_asoiaf_septa_robes
+				type = female
+            }
+			accessory = {
+                mode = add
+                gene = legwear
+                template = asoiaf_all_legwears
+                accessory = female_legwear_asoiaf_leather_boots_1
+				type = female
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			morph = { #to prevent forehead clipping
+                mode = replace
+                gene = gene_bs_forehead_brow_forward
+                template = forehead_brow_forward_neg
+				value = 0.75
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 500
+				AND = {
+					has_trait = septon
+					is_female = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = maester_historical
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_silent_sister_universal = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_religious_clothes
+				accessory = female_clothes_asoiaf_silent_sister_robes
+				type = female
+            }
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = female_headgear_asoiaf_silent_sister_hood
+				type = female
+            }
+			accessory = {
+                mode = add
+                gene = legwear
+                template = asoiaf_all_legwears
+                accessory = female_legwear_asoiaf_leather_boots_1
+				type = female
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			accessory = {
+                mode = add
+                gene = special_accessories_jewelry
+                template = no_jewelry
+                value = 0
+            }
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = female_hair_western_09
+				type = female
+			}
+			morph = { #to prevent ear clipping
+				mode = add
+				gene = gene_bs_ear_outward
+				template = ear_outward_neg
+				value = 1
+			}
+			morph = { #to prevent nose clipping
+				mode = add
+				gene = gene_bs_nose_length
+				template = nose_length_neg
+				value = 0.5
+			}
+			morph = { #to prevent cheek clipping 1
+				mode = add
+				gene = gene_bs_cheek_width
+				template = cheek_width_neg
+				value = 1.0
+			}
+			morph = { #to prevent cheek clipping 2
+				mode = add
+				gene = gene_bs_cheek_forward
+				template = cheek_forward_neg
+				value = 0.5
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				AND = {
+					has_trait = silent_sister
+					is_female = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = red_priest
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = maester_historical
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = nightswatch_historical
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+}
+
+asoiaf_drowned_man_clothes_modifiers = {
+    usage = game
+	selection_behavior = max
+	priority = 3 #MUST be 3 so it doesn't overwrite armour
+	
+	asoiaf_drowned_man_low = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_religious_clothes
+				accessory = male_clothes_asoiaf_drowned_man_robes_low
+            }
+			accessory = {
+                mode = add
+                gene = legwear
+                template = no_legwear
+                value = 0
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 500
+				AND = {
+					has_trait = drowned_man
+					is_male = yes
+				}
+				has_game_rule = asoiaf_new_clothes_iron_isles_rule_on
+			}
+			modifier = {
+				add = 500
+				AND = {
+					has_council_position = councillor_court_chaplain
+					is_male = yes
+					has_religion = religion:the_ways_religion
+					exists = liege
+					liege = { has_religion = religion:the_ways_religion }
+				}
+				has_game_rule = asoiaf_new_clothes_iron_isles_rule_on
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_drowned_man_high = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_religious_clothes
+				accessory = male_clothes_asoiaf_drowned_man_robes_high
+            }
+			accessory = {
+                mode = add
+                gene = legwear
+                template = no_legwear
+                value = 0
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				AND = {
+					has_trait = drowned_man
+					is_male = yes
+					OR = { #Landed drowned men of duke-tier or above will always wear high robes, OR Court Chaplains of duke-tier rulers will too
+						AND = {
+							is_landed = yes
+							highest_held_title_tier >= tier_duchy
+						}
+						AND = {
+							exists = liege
+							liege.highest_held_title_tier >= tier_duchy
+							has_council_position = councillor_court_chaplain
+						}
+					}
+				}
+				has_game_rule = asoiaf_new_clothes_iron_isles_rule_on
+			}
+			modifier = {
+				add = 1000
+				AND = {
+					has_council_position = councillor_court_chaplain
+					is_male = yes
+					has_religion = religion:the_ways_religion
+					exists = liege
+					liege = { has_religion = religion:the_ways_religion }
+					OR = { #Landed drowned men of duke-tier or above will always wear high robes, OR Court Chaplains of duke-tier rulers will too
+						AND = {
+							is_landed = yes
+							highest_held_title_tier >= tier_duchy
+						}
+						AND = {
+							exists = liege
+							liege.highest_held_title_tier >= tier_duchy
+							has_council_position = councillor_court_chaplain
+						}
+					}
+				}
+				has_game_rule = asoiaf_new_clothes_iron_isles_rule_on
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+}
+
+asoiaf_court_position_clothes_modifiers = {
+	usage = game
+	selection_behavior = max
+	priority = 3 #MUST be 3 so it doesn't overwrite armour
+
+	asoiaf_smith_clothes_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_unique_clothes
+				accessory = male_clothes_asoiaf_blacksmith_apron
+            }
+			accessory = {
+				mode = add
+				gene = legwear
+				template = asoiaf_all_legwears
+				accessory = male_legwear_asoiaf_blacksmith_legs
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+            }
+		}
+		outfit_tags = { asoiaf_smith }
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				is_male = yes
+				has_court_position = court_smith_court_position
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_smith_clothes_female = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_unique_clothes
+				accessory = female_clothes_asoiaf_blacksmith_apron
+				type = female
+            }
+			accessory = {
+				mode = add
+				gene = legwear
+				template = asoiaf_all_legwears
+				accessory = female_legwear_asoiaf_blacksmith_legs
+				type = female
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+            }
+		}
+		outfit_tags = { asoiaf_smith }
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				is_female = yes
+				has_court_position = court_smith_court_position
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+
+	asoiaf_huntsman_clothes_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_unique_clothes
+				accessory = male_clothes_asoiaf_huntsman_jerkin
+            }
+			accessory = {
+				mode = add
+				gene = legwear
+				template = asoiaf_all_legwears
+				accessory = male_legwear_asoiaf_huntsman_legs
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+            }
+		}
+		outfit_tags = { asoiaf_hunter }
+		weight = {
+			base = 0
+			modifier = { #for non-landed Masters of the Hunt
+				add = 2000
+				is_male = yes
+				has_court_position = master_of_hunt_court_position
+				is_landed = no
+			}
+			modifier = { #for landed Masters of the Hunt
+				add = 2000
+				is_male = yes
+				has_court_position = master_of_hunt_court_position
+				is_landed = yes
+				involved_activity ?= { has_activity_type = activity_hunt }
+				this = { is_vassal_of = involved_activity.activity_host } #attending liege's hunt
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_huntsman_clothes_female = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_unique_clothes
+				accessory = female_clothes_asoiaf_huntsman_jerkin
+				type = female
+            }
+			accessory = {
+				mode = add
+				gene = legwear
+				template = asoiaf_all_legwears
+				accessory = female_legwear_asoiaf_huntsman_legs
+				type = female
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				value = 0
+            }
+		}
+		outfit_tags = { asoiaf_hunter }
+		weight = {
+			base = 0
+			modifier = { #for non-landed Masters of the Hunt
+				add = 2000
+				is_female = yes
+				has_court_position = master_of_hunt_court_position
+				is_landed = no
+			}
+			modifier = { #for landed Masters of the Hunt
+				add = 2000
+				is_female = yes
+				has_court_position = master_of_hunt_court_position
+				is_landed = yes
+				involved_activity ?= { has_activity_type = activity_hunt }
+				this = { is_vassal_of = involved_activity.activity_host } #attending liege's hunt
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					has_trait = septon
+					has_trait = most_devout_member
+					has_trait = silent_sister
+					has_trait = red_priest
+					has_trait = devoted
+					has_trait = drowned_man
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = kingsguard
+					has_trait = nightswatch
+					has_trait = lifestyle_nw_builder
+					has_trait = lifestyle_nw_ranger
+					has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_executioner_clothes_male = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_unique_clothes
+				accessory = male_clothes_asoiaf_executioner_jerkin
+            }
+			accessory = {
+				mode = add
+				gene = legwear
+				template = asoiaf_all_legwears
+				accessory = male_legwear_asoiaf_executioner_legs
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = male_headgear_asoiaf_executioner_cowl
+            }
+			morph = {
+				mode = replace
+				gene = gene_head_top_height
+				template = head_top_height_neg
+				value = 0.3
+			}
+		}
+		#outfit_tags = { asoiaf_executioner }
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				is_male = yes
+				has_court_position = executioner_court_position
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					#has_trait = septon
+					#has_trait = most_devout_member
+					has_trait = silent_sister
+					#has_trait = red_priest
+					#has_trait = devoted
+					#has_trait = drowned_man
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = kingsguard
+					#has_trait = nightswatch
+					#has_trait = lifestyle_nw_builder
+					#has_trait = lifestyle_nw_ranger
+					#has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+	asoiaf_executioner_clothes_female = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = asoiaf_unique_clothes
+				accessory = female_clothes_asoiaf_executioner_jerkin
+				type = female
+            }
+			accessory = {
+				mode = add
+				gene = legwear
+				template = asoiaf_all_legwears
+				accessory = female_legwear_asoiaf_executioner_legs
+				type = female
+            }
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 0
+            }
+			accessory = {
+				mode = add
+				gene = headgear
+				template = asoiaf_unique_headgears
+				accessory = female_headgear_asoiaf_executioner_cowl
+				type = female
+            }
+			morph = {
+				mode = replace
+				gene = gene_head_top_height
+				template = head_top_height_neg
+				value = 0.3
+			}
+		}
+		#outfit_tags = { asoiaf_executioner }
+		weight = {
+			base = 0
+			modifier = {
+				add = 2000
+				is_female = yes
+				has_court_position = executioner_court_position
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					should_be_naked_trigger = yes
+					#has_trait = septon
+					#has_trait = most_devout_member
+					has_trait = silent_sister
+					#has_trait = red_priest
+					#has_trait = devoted
+					#has_trait = drowned_man
+					has_trait = maester
+					has_trait = archmaester
+					has_trait = kingsguard
+					#has_trait = nightswatch
+					#has_trait = lifestyle_nw_builder
+					#has_trait = lifestyle_nw_ranger
+					#has_trait = lifestyle_nw_steward
+					has_court_position = court_jester_court_position
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT =  { is_agot_plus_loaded_trigger = yes }
+			}
+		}
+	}
+}

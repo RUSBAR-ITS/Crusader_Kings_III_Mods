@@ -1,0 +1,47 @@
+﻿# GENERATED FILE: vanilla promoter costs with a conditional Caesar-subject discount.
+# Regenerate with tools/Sync-DICMRBELegendSupport.ps1 after game updates.
+# Source: common/script_values/06_ce1_legends_values.txt
+# Source SHA256: F096FAB6772F93B480D35A7A5278EB9BA2CCB2FD1EBF6DD9A179E6CE0F6A6EF2
+# Only the three promoter-cost objects are overridden. Owner costs are unchanged.
+
+famed_legend_promoter_cost = {
+	if = {
+		limit = { DICM_RBE_has_ceasar_legend_support_discount_trigger = yes }
+		value = DICM_RBE_ceasar_legend_support_cost
+	}
+	else = {
+		value = monthly_character_income
+		multiply = 0.05
+		add = 0.5
+		multiply = legend_cost_scale_by_era
+		multiply = legend_game_rule_multiplier
+	}
+}
+
+illustrious_legend_promoter_cost = {
+	if = {
+		limit = { DICM_RBE_has_ceasar_legend_support_discount_trigger = yes }
+		value = DICM_RBE_ceasar_legend_support_cost
+	}
+	else = {
+		value = monthly_character_income
+		multiply = 0.1
+		add = 1
+		multiply = legend_cost_scale_by_era
+		multiply = legend_game_rule_multiplier
+	}
+}
+
+mythical_legend_promoter_cost = {
+	if = {
+		limit = { DICM_RBE_has_ceasar_legend_support_discount_trigger = yes }
+		value = DICM_RBE_ceasar_legend_support_cost
+	}
+	else = {
+		value = monthly_character_income
+		multiply = 0.2
+		add = 1.5
+		multiply = legend_cost_scale_by_era
+		multiply = legend_game_rule_multiplier
+	}
+}

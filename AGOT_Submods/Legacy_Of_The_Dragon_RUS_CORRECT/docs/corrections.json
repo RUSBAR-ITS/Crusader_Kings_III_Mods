@@ -1,0 +1,324 @@
+[
+  {
+    "Catalog": "RU",
+    "Key": "agot_house_customizer.0020.d",
+    "Issue": "LOTD-004",
+    "Alias": "$agot_house_customizer.0020.da$"
+  },
+  {
+    "Catalog": "RU",
+    "Key": "agot_house_customizer.0020.e",
+    "Issue": "LOTD-005",
+    "Alias": "$agot_house_customizer.0020.ea$"
+  },
+  {
+    "Catalog": "EN",
+    "Key": "agot_house_customizer.0020.d",
+    "Issue": "LOTD-004",
+    "Alias": "$agot_house_customizer.0020.da$"
+  },
+  {
+    "Catalog": "EN",
+    "Key": "agot_house_customizer.0020.e",
+    "Issue": "LOTD-005",
+    "Alias": "$agot_house_customizer.0020.ea$"
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/lotd_decisions_l_russian.yml",
+    "Key": "setting_rediscover_mechanic_enabled_desc",
+    "Issue": "LOTD-006",
+    "Replacements": [
+      {
+        "Before": "Эйрис больше не будет появляться сразу со всеми артефактами Таргариенов. Вместо этого любой правитель из Дома Таргариенов получит решение для их возвращения. Ваш хранитель древностей сможет отыскать несколько реликвий Таргариенов. Поддерживаются только закладки после Войны Девятигрошовых королей.",
+        "After": "Открывает решение о поиске утраченных реликвий Таргариенов. Поиск доступен совершеннолетнему правителю с земельными владениями из династии Таргариенов или дома Блэкфайр, если при дворе есть хранитель древностей и ещё остались ненайденные реликвии.\\n\\nПоддерживаются кампании, начатые в следующие даты от Завоевания Эйгона: 8 февраля 233 года, 11 января 239 года, 21 декабря 258 года, 1 января 277 года, 15 сентября 282 года и 2 июня 284 года. Начальный набор доступных реликвий зависит от выбранной даты.",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "EN",
+    "File": "localization/english/lotd_decisions_l_english.yml",
+    "Key": "setting_rediscover_mechanic_enabled_desc",
+    "Issue": "LOTD-006",
+    "Replacements": [
+      {
+        "Before": "Aerys will no longer spawn with all Targaryen Artifacts, instead a decision to recover them will be given to any Targaryen ruler. Your Antiquarian can recover a number of Targaryen artifacts. This is only supported for bookmarks after Nine Penny Kings.",
+        "After": "Enables a decision to recover lost Targaryen relics. The search is available to an adult landed ruler of the Targaryen dynasty or House Blackfyre who employs an Antiquarian, while undiscovered relics remain.\\n\\nSupported campaign start dates: 8 February 233 AC, 11 January 239 AC, 21 December 258 AC, 1 January 277 AC, 15 September 282 AC and 2 June 284 AC. The initial set of available relics depends on the start date.",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/rediscover_l_russian.yml",
+    "Key": "rediscover_events_1006_desc",
+    "Issue": "LOTD-007",
+    "Replacements": [
+      {
+        "Before": "пока не погиб от рук [maegor.GetTitledFirstName]",
+        "After": "до своей смерти",
+        "Count": 1
+      },
+      {
+        "Before": "«Корона [aenys.GetTitledFirstName]... Она была утрачена вскоре после смерти [jaehaerys.GetTitledFirstName], но теперь, вопреки всем ожиданиям, найдена...»",
+        "After": "«[aenys.GetTitledFirstName] когда-то носил эту корону... Вскоре после того, как умер [jaehaerys.GetTitledFirstName], след реликвии затерялся, но теперь, вопреки всем ожиданиям, она найдена...»",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "EN",
+    "File": "localization/english/event_localization/rediscover_l_english.yml",
+    "Key": "rediscover_events_1006_desc",
+    "Issue": "LOTD-007",
+    "Replacements": [
+      {
+        "Before": "before his death at the hands of [maegor.GetTitledFirstName]",
+        "After": "until his death",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/read_prophecy_l_russian.yml",
+    "Key": "read_prophecy_0021_b_desc",
+    "Issue": "LOTD-008",
+    "Replacements": [
+      {
+        "Before": "Первым в тумане появляется",
+        "After": "[Select_CString(ancestor_1.IsFemale, 'Первой', 'Первым')] в тумане появляется",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/lotd_artifacts_l_russian.yml",
+    "Key": "artifact_orys_hammer_description",
+    "Issue": "EDITORIAL-CASES",
+    "Replacements": [
+      {
+        "Before": "Ярость — боевой молот, который [aegonTarg.GetTitledFirstName] даровал [orys.GetFirstName], когда узаконил его как основателя Дома [orys.GetDynasty.GetBaseName].\\n\\nМолот воплощает силу и славу Дома [orys.GetDynasty.GetBaseName] и придаёт новому роду законность.",
+        "After": "Ярость — боевой молот, который получил в дар [orys.GetFirstName], когда [aegonTarg.GetTitledFirstName] узаконил его и признал основателем нового дома — [orys.GetDynasty.GetBaseName].\\n\\nДом [orys.GetDynasty.GetBaseName] видит в этом молоте символ своей силы, славы и законности.",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/read_prophecy_l_russian.yml",
+    "Key": "read_prophecy.0001.b",
+    "Issue": "EDITORIAL-CASES",
+    "Replacements": [
+      {
+        "Before": "Настало время открыть это пророчество моему наследнику, [heir.GetFirstName].",
+        "After": "Пусть [heir.GetFirstName] узнает пророчество.",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/read_prophecy_l_russian.yml",
+    "Key": "read_prophecy.0003.a",
+    "Issue": "EDITORIAL-CASES",
+    "Replacements": [
+      {
+        "Before": "Пророчество передано [heir.GetFirstName]...",
+        "After": "[heir.GetFirstName] теперь знает пророчество...",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/read_prophecy_l_russian.yml",
+    "Key": "read_prophecy_0001_desc",
+    "Issue": "EDITORIAL-CASES",
+    "Replacements": [
+      {
+        "Before": "кинжал, некогда принадлежавший [aegonTarg.GetTitledFirstName]",
+        "After": "кинжал, которым некогда владел [aegonTarg.GetTitledFirstName]",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/rediscover_l_russian.yml",
+    "Key": "rediscover_events_0001_desc",
+    "Issue": "EDITORIAL-CASES",
+    "Replacements": [
+      {
+        "Before": "некоторые восходят ещё ко временам до прибытия [aegonTarg.GetTitledFirstName] в Вестерос",
+        "After": "некоторые появились ещё до того, как [aegonTarg.GetTitledFirstName] прибыл в Вестерос",
+        "Count": 1
+      },
+      {
+        "Before": "эти сокровища удастся вернуть Дому [main.GetDynasty.GetBaseName]",
+        "After": "эти сокровища снова получит дом [main.GetDynasty.GetBaseName]",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/rediscover_l_russian.yml",
+    "Key": "rediscover_events_1005_desc",
+    "Issue": "EDITORIAL-CASES",
+    "Replacements": [
+      {
+        "Before": "Да возродится в вас сила [aegonTarg.GetTitledFirstName]",
+        "After": "Да обретёте вы ту же силу, которой обладал [aegonTarg.GetTitledFirstName]",
+        "Count": 1
+      },
+      {
+        "Before": "[aegonTarg.GetTitledFirstName] был коронован этим обручем своей сестрой-женой [visenya.GetFirstName] после прибытия в Вестерос.",
+        "After": "После прибытия в Вестерос [aegonTarg.GetTitledFirstName] был коронован этим обручем. Коронацию провела [visenya.GetFirstName], его сестра и жена.",
+        "Count": 1
+      },
+      {
+        "Before": "Она переходила от одного короля Дома [aegonTarg.GetDynasty.GetBaseName] к другому, пока не была утрачена в Дорне вместе с [daeron.GetTitledFirstName].",
+        "After": "Дом [aegonTarg.GetDynasty.GetBaseName] передавал корону от одного короля к другому. В Дорне [daeron.GetTitledFirstName] утратил эту реликвию.",
+        "Count": 1
+      },
+      {
+        "Before": "Теперь она вернулась в Дом [main.GetDynasty.GetBaseName], хотя рубины вырваны из гнёзд",
+        "After": "Теперь дом [main.GetDynasty.GetBaseName] вновь владеет ею, хотя рубины вырваны из гнёзд",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/lotd_decisions_l_russian.yml",
+    "Key": "setting_extra_visuals_desc",
+    "Issue": "EDITORIAL-AXE",
+    "Replacements": [
+      {
+        "Before": "Морская Пена и Клешня Краба получат новые качественные 3D-модели.",
+        "After": "Морская Пена и топор Селтигаров получат новые качественные 3D-модели. В этом облике топор, известный как Клешня Краба, носит название «Бедствие».",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "EN",
+    "File": "localization/english/lotd_decisions_l_english.yml",
+    "Key": "setting_extra_visuals_desc",
+    "Issue": "EDITORIAL-AXE",
+    "Replacements": [
+      {
+        "Before": "Seafoam and Pincer will have new high quality 3D models with alternate visuals.",
+        "After": "Seafoam and the Celtigar axe will receive new high-quality 3D models. In this form, the axe known as Pincer is named Calamity.",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/lotd_artifacts_l_russian.yml",
+    "Key": "artifact_viserys_mask_requirements",
+    "Issue": "EDITORIAL-MASK",
+    "Replacements": [
+      {
+        "Before": "Эту маску могут носить только правители с телесными недугами.",
+        "After": "Для личного ношения маски нужны увечье, шрамы, рана или болезнь. Выставить её на пьедестале можно независимо от состояния здоровья.",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "EN",
+    "File": "localization/english/artifacts/lotd_artifacts_l_english.yml",
+    "Key": "artifact_viserys_mask_requirements",
+    "Issue": "EDITORIAL-MASK",
+    "Replacements": [
+      {
+        "Before": "Only rulers with a physical affliction may wear this mask.",
+        "After": "Wearing this mask requires disfigurement, scars, a wound or an illness. Displaying it on a pedestal has no health requirement.",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/lotd_artifacts_l_russian.yml",
+    "Key": "artifact_seafoam_description",
+    "Issue": "EDITORIAL-SABRE",
+    "Replacements": [
+      {
+        "Before": "полутораручная сабля",
+        "After": "полуторная сабля",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "EN",
+    "File": "localization/english/artifacts/lotd_artifacts_l_english.yml",
+    "Key": "valyrian_mask_05_tooltip",
+    "Issue": "EN-COLOR",
+    "Replacements": [
+      {
+        "Before": "0.81.00,0.81,0.81",
+        "After": "0.81,0.81,0.81",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "EN",
+    "File": "localization/english/event_localization/rediscover_l_english.yml",
+    "Key": "rediscover_mechanic_effect_1",
+    "Issue": "EN-PLACEHOLDER",
+    "Replacements": [
+      {
+        "Before": "d",
+        "After": "",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/lotd_memories_l_russian.yml",
+    "Key": "read_prophecy_to_heir_desc",
+    "Issue": "EDITORIAL-MEMORY-CASES",
+    "Replacements": [
+      {
+        "Before": ", своему наследнику, [heir.GetName]",
+        "After": ". [heir.GetName] теперь хранит эту тайну",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/lotd_memories_l_russian.yml",
+    "Key": "read_prophecy_to_heir_desc_second_perspective",
+    "Issue": "EDITORIAL-MEMORY-CASES",
+    "Replacements": [
+      {
+        "Before": ", своему наследнику, [heir.GetName]",
+        "After": ". [heir.GetName] теперь хранит эту тайну",
+        "Count": 1
+      }
+    ]
+  },
+  {
+    "Catalog": "RU",
+    "File": "localization/russian/lotd_memories_l_russian.yml",
+    "Key": "read_prophecy_desc_to_heir_third_perspective",
+    "Issue": "EDITORIAL-MEMORY-CASES",
+    "Replacements": [
+      {
+        "Before": ", наследнику [heir.GetName]",
+        "After": ". [heir.GetName] теперь хранит эту тайну",
+        "Count": 1
+      }
+    ]
+  }
+]

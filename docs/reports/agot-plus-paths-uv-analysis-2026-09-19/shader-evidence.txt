@@ -1,0 +1,265 @@
+FILE: E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032\gfx\FX\jomini\portrait.shader
+SHA256: E9BD241708F6F90BF11D1490029744018DEBAF47EBE654DEEE194531928D7783
+153: 	float2 	UV1				: TEXCOORD4;
+154: 	float2 	UV2				: TEXCOORD5;
+155: 	float3 	WorldSpacePos	: TEXCOORD6;
+156: 	float4 	ShadowProj		: TEXCOORD7;
+157: 	# This instance index is used to fetch custom user data from the Data[] array (see pdxmesh.fxh)
+158: 	uint 	InstanceIndex	: TEXCOORD8;
+159: 	# MOD(agot)
+160: 	# Cannot use bool because OpenGL doesn't support it, apparently.
+161: 	uint AGOT_IsDynamicTerrainLoaded : TEXCOORD9;
+162: 	# Smuggled per-character values, searched once in the vertex shader instead of
+163: 	# per pixel (see AGOT_GatherSmuggledPortraitData in agot_portrait_decals_shared.fxh):
+164: 	# x = skin palette (MAGENTA), y = clothing decay (RED), z = salt-n-pepper hair (GREEN).
+165: 	float3 AGOT_SmuggledWeights : TEXCOORD10;
+166: 	uint AGOT_DecayDiffuseIndex : TEXCOORD11;
+167: 	# END MOD
+168: };
+169: 
+170: VertexStruct VS_INPUT_PDXMESHSTANDARD_ID
+171: {
+172:     float3 Position			: POSITION;
+173: 	float3 Normal      		: TEXCOORD0;
+174: 	float4 Tangent			: TEXCOORD1;
+175: 	float2 UV0				: TEXCOORD2;
+176: @ifdef PDX_MESH_UV1     	
+177: 	float2 UV1				: TEXCOORD3;
+178: @endif
+179: @ifdef PDX_MESH_UV2
+180: 	float2 UV2				: TEXCOORD4;
+240: 			Out.Position = In.Position;
+241: 			Out.Normal = In.Normal;
+242: 			Out.Tangent = In.Tangent;
+243: 			Out.Bitangent = In.Bitangent;
+244: 			Out.UV0 = In.UV0;
+245: 			Out.UV1 = In.UV1;
+246: 			Out.UV2 = In.UV2;
+247: 			Out.WorldSpacePos = In.WorldSpacePos;
+248: 			return Out;
+249: 		}
+250: 	]]
+789: 	MainCode PS_attachment
+790: 	{		
+791: 		Input = "VS_OUTPUT_PDXMESHPORTRAIT"
+792: 		Output = "PS_COLOR_SSAO"
+793: 		Code
+794: 		[[
+795: 			PDX_MAIN
+796: 			{
+797: 				PS_COLOR_SSAO Out;
+798: 
+799: 				float2 UV0 = Input.UV0;
+800: 				float4 Diffuse = PdxTex2D( DiffuseMap, UV0 );								
+801: 				float4 Properties = PdxTex2D( PropertiesMap, UV0 );
+802: 				float4 NormalSampleRaw = PdxTex2D( NormalMap, UV0 );
+803: 				#ifdef DOUBLE_SIDED_ENABLED
+804: 					float3 NormalSample = UnpackRRxGNormal( NormalSampleRaw ) * ( PDX_IsFrontFace ? 1 : -1 );
+805: 				#else
+806: 					float3 NormalSample = UnpackRRxGNormal( NormalSampleRaw );
+807: 				#endif
+808: 
+809: 				#ifdef VARIATIONS_ENABLED
+810: 					float4 SecondColorMask = vec4( 0.0f );
+811: 					SecondColorMask.r = Properties.r;
+812: 					SecondColorMask.g =  NormalSampleRaw.b;
+813: 					float3 PatternNormal = NormalSample;
+814: 					float NormalUVChannel = 0.0f;
+815: 					ApplyVariationPatterns( Input, Diffuse, Properties, PatternNormal, SecondColorMask, NormalUVChannel );
+816: 
+817: 				// MOD(agot)
+1485: Effect portrait_attachment
+1486: {
+1487: 	VertexShader = "VS_standard"
+1488: 	PixelShader = "PS_attachment"
+1489: 	# MOD(agot)
+1490: 	#Defines = { "PDX_MESH_BLENDSHAPES" }
+1491: 	Defines = { "PDX_MESH_BLENDSHAPES" "PORTRAIT_WIDGET"}
+1492: 	# END MOD
+1493: }
+1582: Effect portrait_attachment_alpha_to_coverage
+1583: {
+1584: 	VertexShader = "VS_standard"
+1585: 	PixelShader = "PS_attachment"
+1586: 	BlendState = "alpha_to_coverage"
+1587: 	# MOD(agot)
+1588: 	#Defines = { "PDX_MESH_BLENDSHAPES" }
+1589: 	Defines = { "PDX_MESH_BLENDSHAPES" "PORTRAIT_WIDGET"}
+1590: 	# END MOD
+1591: }
+FILE: E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032\gfx\FX\court_scene.shader
+SHA256: 7391978FA05A1625D6A04382D4015FFFBCCD6AA31EC8658C0781E40295A2724E
+2014: 	MainCode PS_court
+2015: 	{
+2016: 		Input = "VS_OUTPUT_PDXMESHPORTRAIT"
+2017: 		Output = "PS_COLOR_SSAO"
+2018: 		Code
+2019: 		[[
+2020: 			#ifndef PROPERTIES_UV_SET
+2021: 				#define PROPERTIES_UV_SET Input.UV0
+2022: 			#endif
+2023: 			#ifndef NORMAL_UV_SET
+2024: 				#define NORMAL_UV_SET Input.UV0
+2025: 			#endif
+2038: 
+2039: 				#if defined( COA ) || defined( USER_COLOR )
+2040: 					static const int USER_DATA_PRIMARY_COLOR = 0;
+2041: 					static const int USER_DATA_SECONDARY_COLOR = 1;
+2042: 					static const int USER_DATA_ATLAS_SLOT = 2;
+2043: 					static const int USER_DATA_HOVER_SLOT = 3;
+2044: 				#else
+2045: 					static const int USER_DATA_HOVER_SLOT = 0;
+2046: 				#endif
+2047: 
+2048: 				float4 Properties = PdxTex2D( PropertiesMap, Input.UV0 );
+2058: 				#if defined( COA )
+2059: 					float4 CoAAtlasSlot = GetUserData( Input.InstanceIndex, USER_DATA_ATLAS_SLOT );
+2060: 
+2061: 					// Primitive method to tile a non-tiled texture
+2062: 					Input.UV1 = TileUV( Input.UV1 );
+2063: 
+2064: 					// Fix for seam artifacts in atlas texture
+2065: 					CoAAtlasSlot.xy += 0.0003f;
+2066: 					CoAAtlasSlot.zw -= 0.0006f;
+2067: 
+2068: 					// CoA Atlas UV
+2069: 					float2 AtlasUV = Input.UV1 * CoAAtlasSlot.zw;
+2070: 					float2 FlagCoords = CoAAtlasSlot.xy + AtlasUV;
+2071: 
+2072: 					// Primary and secondary color grab
+2073: 					float3 PrimaryColor = GetUserData( Input.InstanceIndex, USER_DATA_PRIMARY_COLOR ).rgb;
+2074: 					float3 SecondaryColor = GetUserData( Input.InstanceIndex, USER_DATA_SECONDARY_COLOR ).rgb;
+2075: 
+2076: 					// Blend
+2077: 					float3 CoAColor = lerp( PrimaryColor, PdxTex2D( PatternMask, FlagCoords ).rgb, Properties.g );
+2078: 					UserColor = lerp( UserColor, CoAColor, Properties.r );
+2079: 				#endif
+2080: 
+2081: 				float4 Diffuse = PdxTex2D( DiffuseMap, Input.UV0 );
+2082: 				#if defined( PDX_MESH_UV1 ) && defined( TILING_AO )
+2083: 					Diffuse.rgb *= PdxTex2D( DiffuseMap, Input.UV1 ).a;
+2084: 					Diffuse.a = 1.0f;
+2085: 				#endif
+2089: 
+2090: 				float4 NormalSampleRaw = PdxTex2D( NormalMap, Input.UV0 );
+2091: 				#ifdef DOUBLE_SIDED_ENABLED
+2092: 					float3 NormalSample = UnpackRRxGNormal( NormalSampleRaw ) * ( PDX_IsFrontFace ? 1 : -1 );
+2093: 				#else
+2094: 					float3 NormalSample = UnpackRRxGNormal( NormalSampleRaw );
+2095: 				#endif
+2096: 
+2097: 				Properties.g = 0.16f;	// Fixed specular mesh value /JR
+2098: 				float HoverMult = GetUserData( Input.InstanceIndex, USER_DATA_HOVER_SLOT ).r;
+2099: 				float3 Color = CommonPixelShader( Diffuse, Properties, NormalSample, Input, HoverMult );
+2100: 
+2101: 				#ifdef ALPHA_TO_COVERAGE
+2102: 					Diffuse.a = RescaleAlphaByMipLevel( Diffuse.a, Input.UV0, DiffuseMap );
+2103: 					const float CUTOFF = 0.5f;
+2104: 					Diffuse.a = SharpenAlpha( Diffuse.a, CUTOFF );
+2105: 				#endif
+2106: 
+2107: 				#if defined( EMISSIVE )
+2108: 					float emissiveMask = PdxTex2D( NormalMap, Input.UV0 ).b;
+2109: 					float3 emissiveColor = Diffuse.rgb * EmissiveStrength;
+2110: 					Color = lerp(Color, emissiveColor, emissiveMask);
+2111: 				#endif
+2112: 
+2113: 				Out.Color = float4( Color, Diffuse.a );
+2114: 				Out.SSAOColor = float4( 0.0f, 0.0f, 0.0f, Diffuse.a );
+2115: 
+2719: Effect court
+2720: {
+2721: 	VertexShader = "VS_standard"
+2722: 	PixelShader = "PS_court"
+2723: 
+2724: 	Defines = { "EMISSIVE" }
+2725: }
+2726: 
+2727: Effect court_no_shadow
+2728: {
+2729: 	VertexShader = "VS_standard"
+2730: 	PixelShader = "PS_court"
+2731: 
+2732: 	Defines = { "EMISSIVE" }
+2733: }
+2734: 
+2735: Effect court_alpha_to_coverage
+2736: {
+2737: 	VertexShader = "VS_standard"
+2738: 	PixelShader = "PS_court"
+2739: 
+2740: 	BlendState = "alpha_to_coverage"
+2741: 	Defines = { "EMISSIVE" "ALPHA_TO_COVERAGE" }
+2742: }
+FILE: E:\SteamLibrary\steamapps\common\Crusader Kings III\clausewitz\gfx\FX\cw\pdxmesh.fxh
+SHA256: F5F70353F31D71E1652C4780A1E47045CBB5276E3F0EEEFAAEE317A740D16D25
+12: 		{
+13: 			float4 Position;
+14: 			float3 WorldSpacePos;
+15: 			float3 Normal;
+16: 			float3 Tangent;
+17: 			float3 Bitangent;
+18: 			float2 UV0;
+19: 			float2 UV1;
+20: 			float2 UV2;
+21: 		};
+22: 		
+23: 		struct VS_INPUT_PDXMESH
+24: 		{
+25: 			float3 Position;
+26: 			float3 Normal;
+27: 			float4 Tangent;
+28: 			float2 UV0;
+29: 		#ifdef PDX_MESH_UV1
+30: 			float2 UV1;
+31: 		#endif
+32: 		#ifdef PDX_MESH_UV2
+33: 			float2 UV2;
+34: 		#endif
+35: 		#ifdef PDX_MESH_SKINNED
+36: 			uint4 BoneIndex;
+37: 			float3 BoneWeight;
+38: 		#endif
+39: 		#ifdef PDX_MESH_BLENDSHAPES
+40: 			uint ObjectInstanceIndex;
+41: 			uint BlendShapeInstanceIndex;
+42: 			uint VertexID;
+43: 		#endif
+145: 			Out.Bitangent = normalize( mul( CastTo3x3(WorldMatrix), normalize( SkinnedBitangent ) ) );
+146: 
+147: 			Out.UV0 = Input.UV0;
+148: 		#ifdef PDX_MESH_UV1
+149: 			Out.UV1 = Input.UV1;
+150: 		#else
+151: 			Out.UV1 = vec2( 0.0 );
+152: 		#endif
+153: 		#ifdef PDX_MESH_UV2
+154: 			Out.UV2 = Input.UV2;
+155: 		#else
+156: 			Out.UV2 = vec2( 0.0 );
+157: 		#endif
+158: 
+159: 			return Out;
+160: 		}
+FILE: E:\SteamLibrary\steamapps\common\Crusader Kings III\clausewitz\gfx\FX\cw\pdxmesh_buffers.fxh
+SHA256: CAAE65DD5CC6E53BFDD6649A48E4A9A5283222BD1E017FA40C989D76B8D2267E
+1: 
+2: VertexStruct VS_INPUT_PDXMESHSTANDARD
+3: {
+4:     float3 Position			: POSITION;
+5: 	float3 Normal      		: TEXCOORD0;
+6: 	float4 Tangent			: TEXCOORD1;
+7: 	float2 UV0				: TEXCOORD2;
+8: 	
+9: @ifdef PDX_MESH_UV1
+10: 	float2 UV1				: TEXCOORD3;
+11: @endif
+12: @ifdef PDX_MESH_UV2
+13: 	float2 UV2				: TEXCOORD4;
+14: @endif
+15: 
+16: 	# Instance array offset indices, [JointDataIndex][ObjectDataIndex][BlendShapeDataIndex][Unused]
+17: 	uint4 InstanceIndices 	: TEXCOORD5;
+18: 
+19: @ifdef PDX_MESH_SKINNED
+20: 	uint4 BoneIndex 		: TEXCOORD6;
