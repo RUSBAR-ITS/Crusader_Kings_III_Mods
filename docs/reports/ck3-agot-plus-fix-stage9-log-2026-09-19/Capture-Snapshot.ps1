@@ -1,4 +1,6 @@
 param([string]$Profile='C:/Users/RUSBAR/Documents/Paradox Interactive/Crusader Kings III')
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 $ErrorActionPreference='Stop'
 $repo=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../../..'))
 $snapshot=Join-Path $PSScriptRoot 'snapshot'
@@ -55,5 +57,5 @@ foreach($file in @('source-baseline.json','stage9-plan.json','stage9-validation.
  Copy-Item -LiteralPath (Join-Path $repo ('AGOT_Submods/AGOT_PLUS_FIX/docs/'+$file)) -Destination (Join-Path $snapshot $file)
 }
 $summary=[ordered]@{CapturedAt=[DateTimeOffset]::Now.ToString('o');ActiveMods=$mods.Count;Logs=$logRecords;PatchManifestSHA256=$manifestHashes.patch;LocalizationManifestSHA256=$manifestHashes.localization;RuntimeFiles=$runtime.Count;RuntimeMatchesManifest=$true;ActiveVFSMatches=$true}
-[IO.File]::WriteAllText((Join-Path $PSScriptRoot 'snapshot-summary.json'),($summary|ConvertTo-Json -Depth 5)+[Environment]::NewLine,$utf8)
+[RepositoryText]::WriteAllText((Join-Path $PSScriptRoot 'snapshot-summary.json'),($summary|ConvertTo-Json -Depth 5)+[Environment]::NewLine,$utf8)
 $summary|ConvertTo-Json -Depth 5

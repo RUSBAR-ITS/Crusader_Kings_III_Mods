@@ -20,7 +20,7 @@ log = OUT.parent/'ck3-agot-plus-fix-stage10-log-2026-09-19/all-agot-plus-associa
 targets = [r for r in d.rows(log) if r['Category'] in ('variable_not_set','variable_unused')]
 symbols = sorted({r['Symbols'] for r in targets})
 assert len(targets) == 130 and len(symbols) == 65
-(OUT/'symbols.txt').write_text('\n'.join(symbols)+'\n',encoding='utf-8')
+(OUT/'symbols.txt').write_text('\n'.join(symbols)+'\n',encoding='utf-8', newline='\n')
 pattern = re.compile(r'(?<![\w])(?:'+'|'.join(map(re.escape,sorted(symbols,key=len,reverse=True)))+r')(?![\w])')
 
 def code(s):
@@ -87,12 +87,12 @@ for symbol in symbols:
                         Reads=counts[symbol,'read'],Writes=counts[symbol,'write'],Removals=counts[symbol,'remove'],
                         Files=sorted({r['File'] for r in rows})))
 for name,data in [('targets.json',targets),('references.json',references),('summary.json',summary),('parse-failures.json',failures)]:
-    (OUT/name).write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    (OUT/name).write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8', newline='\n')
 pins={str(provider(rel)[1]):d.sha(provider(rel)[1]) for rel in {r['File'] for r in references}}
 pins[str(log)]=d.sha(log)
-(OUT/'source-pins.json').write_text(json.dumps(pins,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+(OUT/'source-pins.json').write_text(json.dumps(pins,ensure_ascii=False,indent=2)+'\n',encoding='utf-8', newline='\n')
 assert before == {row['File']:d.sha(d.MOD/row['File']) for row in manifest['Files']}
-(OUT/'runtime-before.json').write_text(json.dumps(before,indent=2)+'\n',encoding='utf-8')
+(OUT/'runtime-before.json').write_text(json.dumps(before,indent=2)+'\n',encoding='utf-8', newline='\n')
 print(f'{len(targets)} log messages, {len(symbols)} IDs, {len(references)} variable/flag/scope references, {len(pins)} pinned inputs, {len(failures)} parse failures.')
 for row in summary:
     print(row['Symbol'],row['Reads'],row['Writes'],row['Removals'],len(row['Files']))

@@ -39,7 +39,7 @@ def csv_write(name, rows):
 
 
 def json_write(name, obj):
-    (OUT / name).write_text(json.dumps(obj, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    (OUT / name).write_text(json.dumps(obj, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
 
 
 def clean(text):
@@ -137,7 +137,7 @@ def main():
         excerpts += [f'# {rel}', f'# Effective provider: {item["Mod"]}', f'# SHA256: {sha(item["Path"])}']
         excerpts.extend(f'{n}: {line}' for n, line in enumerate(text.splitlines(), 1))
         excerpts.append('')
-    (OUT / 'current-source-excerpts.txt').write_text('\n'.join(excerpts), encoding='utf-8')
+    (OUT / 'current-source-excerpts.txt').write_text('\n'.join(excerpts), encoding='utf-8', newline='\n')
     assert all(sha(p) == h for p, h in before.items())
     assert sha(PATCH / 'docs/source-manifest.json') == manifest_hash
     json_write('audit-summary.json', dict(PatchRevision=7, ManifestSHA256=manifest_hash,

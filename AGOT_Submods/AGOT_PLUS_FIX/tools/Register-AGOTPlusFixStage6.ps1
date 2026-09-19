@@ -1,6 +1,8 @@
 # One-time registration against reviewed upstream files; normal rebuilds use Build/Test.
 param([string]$MainPath='E:\SteamLibrary\steamapps\workshop\content\1158310\2950245430',
       [string]$AgotPath='E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032')
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 $ErrorActionPreference='Stop'
 $modRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $utf8=[Text.UTF8Encoding]::new($false,$true)
@@ -82,7 +84,7 @@ foreach($entry in @(
 $reportPath=Join-Path $modRoot '../../docs/reports/ck3-agot-plus-fix-stage4-log-2026-09-18/agot-plus-without-portraits.csv'
 $targets=@(Import-Csv -LiteralPath $reportPath|Where-Object {$_.IssueClass -ceq 'Artifact_templates_and_arguments' -or $_.Message -match 'Unexpected token: westerman_opinion'})
 if($targets.Count -ne 49){throw 'Expected 49 historical diagnostic targets'}
-[IO.File]::WriteAllText($fixPath,($all|ConvertTo-Json -Depth 8)+"`n",$utf8)
-[IO.File]::WriteAllText($basePath,($baseline|ConvertTo-Json -Depth 5)+"`n",$utf8)
-[IO.File]::WriteAllText((Join-Path $modRoot 'docs/stage6-targeted-log-messages.csv'),(($targets|ConvertTo-Csv -NoTypeInformation)-join "`r`n")+"`r`n",$utf8)
+[RepositoryText]::WriteAllText($fixPath,($all|ConvertTo-Json -Depth 8)+"`n",$utf8)
+[RepositoryText]::WriteAllText($basePath,($baseline|ConvertTo-Json -Depth 5)+"`n",$utf8)
+[RepositoryText]::WriteAllText((Join-Path $modRoot 'docs/stage6-targeted-log-messages.csv'),(($targets|ConvertTo-Csv -NoTypeInformation)-join "`r`n")+"`r`n",$utf8)
 Write-Output "Registered $($newRules.Count) rules / 28 replacements; $($baseline.Count) baseline hashes; 49 historical targets."

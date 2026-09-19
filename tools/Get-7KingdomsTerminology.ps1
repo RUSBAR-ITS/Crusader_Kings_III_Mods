@@ -2,6 +2,8 @@ param(
 	[Parameter(Mandatory=$true)][string[]]$Titles,
 	[switch]$Search
 )
+. (Join-Path $PSScriptRoot 'RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 $cacheRoot = Join-Path ([IO.Path]::GetTempPath()) 'ck3-agot-rus-correct-7kingdoms'
@@ -30,7 +32,7 @@ foreach ($title in ($Titles -split ',')) {
 			$plain = $body -replace '(?s)<(script|style)\b[^>]*>.*?</\1>', '' -replace '(?i)<(?:br\s*/?|/?p|/?li|/?h[1-6]|/?div|/?tr)\b[^>]*>', "`n" -replace '<[^>]+>', ''
 			$plain = [Net.WebUtility]::HtmlDecode($plain) -replace '[ \t]+', ' ' -replace '(\r?\n\s*){3,}', "`n`n"
 			$record = [pscustomobject]@{ Query=$title; URL=$response.BaseResponse.ResponseUri.AbsoluteUri; Heading=$heading; FetchedAt=(Get-Date).ToString('o'); Text=$plain.Trim() }
-			[IO.File]::WriteAllText($cachePath, ($record | ConvertTo-Json -Depth 4), [Text.UTF8Encoding]::new($true))
+			[RepositoryText]::WriteAllText($cachePath, ($record | ConvertTo-Json -Depth 4), [Text.UTF8Encoding]::new($true))
 		} catch {
 			[pscustomobject]@{ Query=$title; Error=$_.Exception.Message } | ConvertTo-Json -Compress
 			continue

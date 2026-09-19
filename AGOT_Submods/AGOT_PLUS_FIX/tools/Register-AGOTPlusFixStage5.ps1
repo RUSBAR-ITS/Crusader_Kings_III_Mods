@@ -1,6 +1,8 @@
 # Register reviewed replacements against the upstream source, then use Build/Test.
 param([string]$MainPath='E:\SteamLibrary\steamapps\workshop\content\1158310\2950245430',
       [string]$AgotPath='E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032')
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 $ErrorActionPreference='Stop'
 $modRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $reportRoot=[IO.Path]::GetFullPath((Join-Path $modRoot '../../docs/reports/agot-plus-dragon-bonding-analysis-2026-09-18'))
@@ -140,7 +142,7 @@ foreach($g in $all|Group-Object File){
   $body=$body.Replace($fix.Before,$fix.After)
  }
 }
-[IO.File]::WriteAllText($fixPath,($all|ConvertTo-Json -Depth 8)+"`n",$utf8)
+[RepositoryText]::WriteAllText($fixPath,($all|ConvertTo-Json -Depth 8)+"`n",$utf8)
 # Pin the base relation helpers, plus the active override in the stage-five test.
 $basePath=Join-Path $modRoot 'docs/source-baseline.json'
 $baseline=Get-Content -LiteralPath $basePath -Raw -Encoding UTF8|ConvertFrom-Json
@@ -149,7 +151,7 @@ foreach($file in @('common/scripted_effects/00_agot_dragon_effects.txt','common/
   $baseline+=[pscustomobject]@{Catalog='AGOT';File=$file;SHA256=(Get-FileHash -LiteralPath (Join-Path $AgotPath $file)).Hash}
  }
 }
-[IO.File]::WriteAllText($basePath,($baseline|ConvertTo-Json -Depth 5)+"`n",$utf8)
-[IO.File]::WriteAllText((Join-Path $modRoot 'docs/stage5-targeted-log-messages.csv'),[IO.File]::ReadAllText((Join-Path $reportRoot 'targeted-log-messages.csv')),$utf8)
-[IO.File]::WriteAllText((Join-Path $modRoot 'docs/stage5-bond-sites.csv'),[IO.File]::ReadAllText((Join-Path $reportRoot 'scheme-sites.csv')),$utf8)
+[RepositoryText]::WriteAllText($basePath,($baseline|ConvertTo-Json -Depth 5)+"`n",$utf8)
+[RepositoryText]::WriteAllText((Join-Path $modRoot 'docs/stage5-targeted-log-messages.csv'),[IO.File]::ReadAllText((Join-Path $reportRoot 'targeted-log-messages.csv')),$utf8)
+[RepositoryText]::WriteAllText((Join-Path $modRoot 'docs/stage5-bond-sites.csv'),[IO.File]::ReadAllText((Join-Path $reportRoot 'scheme-sites.csv')),$utf8)
 Write-Output "Registered $($newRules.Count) stage-five rules / 35 replacements; total $($all.Count) rules / 753 replacements."

@@ -35,7 +35,7 @@ def pin(path):
 
 
 def save(name, value):
-    (OUT / name).write_text(json.dumps(value, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+    (OUT / name).write_text(json.dumps(value, indent=2, ensure_ascii=False) + '\n', encoding='utf-8', newline='\n')
 
 
 def load_csv(path):
@@ -111,7 +111,7 @@ def paths(manifest):
             size = k.SizeofResource(handle, res)
             data = ctypes.string_at(k.LockResource(k.LoadResource(handle, res)), size)
             text = data.decode('utf-8-sig')
-            (OUT / f'ck3-embedded-manifest-{resource_id}.xml').write_text(text, encoding='utf-8')
+            (OUT / f'ck3-embedded-manifest-{resource_id}.xml').write_text(text, encoding='utf-8', newline='\n')
             manifests.append(dict(ResourceID=resource_id, LongPathAwareElement='longPathAware' in text, Text=text))
     finally:
         k.FreeLibrary(handle)

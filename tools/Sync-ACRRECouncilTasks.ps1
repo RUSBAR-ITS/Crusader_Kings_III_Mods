@@ -2,6 +2,8 @@ param(
 	[string]$GamePath = 'E:\SteamLibrary\steamapps\common\Crusader Kings III\game',
 	[string]$OutputPath
 )
+. (Join-Path $PSScriptRoot 'RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 
@@ -231,7 +233,7 @@ foreach ($spec in $taskSpecs) {
 $outputDirectory = Split-Path -Parent $OutputPath
 [IO.Directory]::CreateDirectory($outputDirectory) | Out-Null
 $encoding = [Text.UTF8Encoding]::new($true)
-[IO.File]::WriteAllText($OutputPath, (($output -join "`r`n") + "`r`n"), $encoding)
+[RepositoryText]::WriteAllText($OutputPath, (($output -join "`r`n") + "`r`n"), $encoding)
 
 Write-Output "Generated $OutputPath"
 Write-Output "Overridden council tasks: $($taskSpecs.Count)"

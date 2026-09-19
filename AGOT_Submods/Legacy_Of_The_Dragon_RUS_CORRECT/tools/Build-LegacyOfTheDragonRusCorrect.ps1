@@ -5,6 +5,8 @@
     [string]$AgotRussianPath = 'E:\SteamLibrary\steamapps\workshop\content\1158310\2962803371',
     [switch]$Check
 )
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 $modRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
@@ -161,13 +163,14 @@ if ($externalDescriptor -notmatch '(?m)^path="([^"\r\n]+)"$' -or [IO.Path]::GetF
 foreach ($line in $externalDescriptor -split '\r?\n') { if ([regex]::Matches($line, '"').Count % 2) { throw 'Malformed descriptor string.' } }
 
 function Write-Or-Check([string]$Path, [string]$Content) {
+    $Content=[RepositoryText]::Normalize($Content)
     if ($Check) {
         $expectedBytes = $utf8.GetPreamble() + $utf8.GetBytes($Content)
         if (-not (Test-Path -LiteralPath $Path) -or
             [Convert]::ToBase64String([IO.File]::ReadAllBytes($Path)) -cne [Convert]::ToBase64String($expectedBytes)) { throw "Generated file differs: $Path" }
     } else {
         [IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($Path)) | Out-Null
-        [IO.File]::WriteAllText($Path, $Content, $utf8)
+        [RepositoryText]::WriteAllText($Path, $Content, $utf8)
     }
 }
 

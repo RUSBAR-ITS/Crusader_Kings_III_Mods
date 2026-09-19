@@ -1,3 +1,5 @@
+
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
 # Loaded by Test-AGOTPlusFix.ps1. Interpret the actual bonding control flow only.
 # Native AGOT bonding is a checked call boundary, NOT an emulation of CK3.
 $s5Sites=@(Import-Csv -LiteralPath (Join-Path $modRoot 'docs/stage5-bond-sites.csv'))
@@ -297,7 +299,7 @@ $s5Result=[ordered]@{
  ManifestSHA256=(Get-FileHash -LiteralPath (Join-Path $modRoot 'docs/source-manifest.json')).Hash
 }
 if($manifest.Revision -eq 5){
- [IO.File]::WriteAllText((Join-Path $modRoot 'docs/stage5-validation.json'),($s5Result|ConvertTo-Json -Depth 7)+"`n",$utf8)
+ [RepositoryText]::WriteAllText((Join-Path $modRoot 'docs/stage5-validation.json'),($s5Result|ConvertTo-Json -Depth 7)+"`n",$utf8)
 }
 Write-Output "PASS: bonding: $s5BirthCases birth, $s5YearCases yearly and $s5ExtraCases additional control-flow scenarios; repeat calls, scope cleanup, actor notification and pair priorities."
 Write-Output 'PASS: all 34 contradictory scheme launches removed; effective native bond/ownership/relation helpers and original yearly pulse checked. CK3 runtime not exercised.'

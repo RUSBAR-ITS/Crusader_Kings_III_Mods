@@ -173,19 +173,20 @@ def main():
         b = s.one(code(s.EVENT),'asoiaf_canon_children_targaryen_events.'+suffix)
         assert 'terminate_pregnancy' not in b
         assert b.index('agot_plus_fix_initialize_aegon_children_effect') < b.index('if =')
-    # Existing pregnancy events and all nearby birth chains stay byte-identical.
+    # Existing pregnancy events and nearby birth chains retain their exact
+    # text after the repository-wide LF conversion.
     old_events = s.read(s.PLUS/s.EVENT)
     for b in s.blocks(old_events):
         if b['Depth']==0 and b['Id'] not in ('asoiaf_canon_children_targaryen_events.0882','asoiaf_canon_children_targaryen_events.0883'):
             expected = b['Body']
             for r in fixes:
                 if r['File']==s.EVENT and int(r['Group'][1:])<24: expected=expected.replace(r['Before'],r['After'])
-            assert s.one(text(s.EVENT),b['Id'])==expected, b['Id']
+            assert s.one(text(s.EVENT),b['Id'])==expected.replace('\r\n','\n').replace('\r','\n'), b['Id']
 
     choices = 0
     for b in s.blocks(code(s.DECISIONS)):
         if b['Depth'] != 0: continue
-        old = s.one(s.read(s.PLUS/s.DECISIONS),b['Id'])
+        old = s.one(s.read(s.PLUS/s.DECISIONS).replace('\r\n','\n').replace('\r','\n'),b['Id'])
         values = re.findall(r'(?m)^\s*value\s*=\s*(\w+)',b['Body'])
         assert len(values) and values == re.findall(r'(?m)^\s*value\s*=\s*(\w+)',old)
         old_effect = next(x['Body'] for x in s.blocks(old) if x['Id']=='effect' and x['Depth']==1)
@@ -207,7 +208,7 @@ def main():
     assert (definition_count,registration_count)==(1,1)
     disabled = s.one(code(s.NATIVE_TITLE),native_id)
     assert 'always = no' in disabled and 'add_gold' not in disabled
-    old_native = s.read(s.AGOT/s.NATIVE_TITLE)
+    old_native = s.read(s.AGOT/s.NATIVE_TITLE).replace('\r\n','\n').replace('\r','\n')
     assert text(s.NATIVE_TITLE).replace(s.one(text(s.NATIVE_TITLE),native_id),s.one(old_native,native_id))==old_native
     coa = s.one(code(s.TITLE),'asoiaf_on_title_inheritance_lannister_baratheon_coa')
     for check in ('is_diarch_valid_trigger = yes','basic_eligible_for_diarchy_trigger = yes','has_diarchy_type = regency','has_active_diarchy = yes','try_start_diarchy = regency','set_diarch = root.mother'):

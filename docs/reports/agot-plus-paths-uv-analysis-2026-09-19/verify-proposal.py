@@ -36,7 +36,7 @@ for path, intervals in excerpt_specs:
     excerpts.append(f'FILE: {path}\nSHA256: {d.sha(path)}')
     for lo, hi in intervals:
         excerpts.extend(f'{i+1}: {lines[i]}' for i in range(lo-1,hi))
-(OUT / 'shader-evidence.txt').write_text('\n'.join(excerpts)+'\n',encoding='utf-8')
+(OUT / 'shader-evidence.txt').write_text('\n'.join(excerpts)+'\n',encoding='utf-8', newline='\n')
 
 proposal = []
 for f in files:

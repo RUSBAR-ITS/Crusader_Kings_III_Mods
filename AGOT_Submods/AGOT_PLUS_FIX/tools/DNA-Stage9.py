@@ -52,7 +52,7 @@ def rows(path):
 
 
 def save(name, value):
-    (DOC / name).write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    (DOC / name).write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
 
 
 class Block:
@@ -316,7 +316,10 @@ def check(before_stage10=False):
     dna_files = {**effective('common/dna_data', mods), **effective('common/bookmark_portraits', mods)}
     for rel in plan['NewFiles']:
         assert dna_files[rel][1].resolve() == (MOD / rel).resolve(), ('Shadowed migration', rel)
-        before, after = read(PLUS / rel), read(runtime_path(rel))
+        # Source bytes stay pinned; compare the semantic delta using the same
+        # LF output convention as the builder and archived repository files.
+        before = read(PLUS / rel).replace('\r\n', '\n').replace('\r', '\n')
+        after = read(runtime_path(rel))
         old, new = parse(before), parse(after)
         assert [b.key for b in old.children] == [b.key for b in new.children]
         for src, dst in zip(old.children, new.children):

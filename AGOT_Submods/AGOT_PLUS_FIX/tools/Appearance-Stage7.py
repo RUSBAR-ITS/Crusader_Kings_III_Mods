@@ -38,7 +38,7 @@ def load(p):
 
 
 def save(p, value):
-    Path(p).write_text(json.dumps(value, ensure_ascii=False, indent=4) + '\n', encoding='utf-8')
+    Path(p).write_text(json.dumps(value, ensure_ascii=False, indent=4) + '\n', encoding='utf-8', newline='\n')
 
 
 def csv_rows(p):
@@ -387,17 +387,19 @@ else:
             if new_dna: one('DNA', new_dna)
             biographies += 1
     assert biographies == 406 and valid_dna == 302
-    # Birth logic remains byte-identical after restoring only this stage's
-    # appearance edits. Earlier stage contracts are checked by the main suite.
+    # Birth logic remains identical in LF form after restoring only this
+    # stage's appearance edits. Raw source hashes are checked separately.
     rules = load(DOC / 'fixes.json')
     before = read(PLUS / CHILDREN)
     for r in [r for r in rules if r['File'] == CHILDREN and r['Group'] not in ('F21', 'F22', 'F23')]:
         before = before.replace(r['Before'], r['After'])
     restored = children
     for r in reversed([r for r in rules if r['File'] == CHILDREN and r['Group'] in ('F21', 'F22')]):
-        assert restored.count(r['After']) == 1
-        restored = restored.replace(r['After'], r['Before'])
-    assert restored == before
+        old = r['Before'].replace('\r\n', '\n').replace('\r', '\n')
+        new = r['After'].replace('\r\n', '\n').replace('\r', '\n')
+        assert restored.count(new) == 1
+        restored = restored.replace(new, old)
+    assert restored == before.replace('\r\n', '\n').replace('\r', '\n')
     save(DOC / 'stage7-validation.json', {'Revision': 7, 'Status': 'PASS',
          'GameExecutionChecked': False, 'FreshLogChecked': False, 'HistoryDNACommented': 97,
          'ThorrenBaseDNARestored': 1, 'BirthAppearancesRestored': 61, 'ExistingNativeDonors': 57,

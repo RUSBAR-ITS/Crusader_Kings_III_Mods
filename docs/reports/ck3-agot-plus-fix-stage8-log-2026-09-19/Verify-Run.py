@@ -23,7 +23,7 @@ def rows(path):
     with Path(path).open(encoding='utf-8-sig', newline='') as stream:
         return list(csv.DictReader(stream))
 def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest().upper()
-def save(name, obj): (HERE/name).write_text(json.dumps(obj, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+def save(name, obj): (HERE/name).write_text(json.dumps(obj, ensure_ascii=False, indent=2)+'\n', encoding='utf-8', newline='\n')
 def export(name, data, fields):
     with (HERE/name).open('w', encoding='utf-8-sig', newline='') as stream:
         writer = csv.DictWriter(stream, fieldnames=fields)

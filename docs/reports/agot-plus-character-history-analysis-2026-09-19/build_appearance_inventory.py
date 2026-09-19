@@ -145,7 +145,7 @@ doc += ['', '## Проверка', '',
         '[80 доноров с именами](missing-appearance-donors.csv). '
         'Воспроизведение: `python docs/reports/agot-plus-character-history-analysis-2026-09-19/'
         'build_appearance_inventory.py`.']
-(OUT / 'missing-appearances.md').write_text('\n'.join(doc) + '\n', encoding='utf-8')
+(OUT / 'missing-appearances.md').write_text('\n'.join(doc) + '\n', encoding='utf-8', newline='\n')
 result = {'MissingDNA': len(missing), 'MissingDonors': len(donors),
           'MissingDNAByGroup': {label: len(items) for label, items in groups.items()},
           'PhysicalAGOTPlusDNAHits': physical_missing_dna_hits,
@@ -153,5 +153,5 @@ result = {'MissingDNA': len(missing), 'MissingDonors': len(donors),
           'AuditHelperSHA256': hashlib.sha256(audit.read_bytes()).hexdigest().upper(),
           'SourceSHA256': source_hashes, 'RuntimeFilesWritten': 0}
 (OUT / 'appearance-inventory-checks.json').write_text(
-    json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
 print(json.dumps({k: v for k, v in result.items() if k != 'SourceSHA256'}, ensure_ascii=True))

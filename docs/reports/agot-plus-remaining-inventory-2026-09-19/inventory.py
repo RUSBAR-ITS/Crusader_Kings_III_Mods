@@ -22,7 +22,7 @@ GAME=Path('E:/SteamLibrary/steamapps/common/Crusader Kings III/game')
 def read(p): return Path(p).read_text(encoding='utf-8-sig')
 def rows(p):
     with Path(p).open(encoding='utf-8-sig',newline='') as f:return list(csv.DictReader(f))
-def save(name,value): (HERE/name).write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+def save(name,value): (HERE/name).write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n',encoding='utf-8', newline='\n')
 def export(name,data,fields):
     with (HERE/name).open('w',encoding='utf-8-sig',newline='') as f:
         w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(data)
@@ -73,7 +73,7 @@ def keys(row):
 
 unlocated=[r for r in data if not r['Key'] and (not r['Owner'] or r['Owner']=='Unresolved file')]
 symbols=sorted({k for r in unlocated for k in keys(r)})
-(HERE/'search-symbols.txt').write_text('\n'.join(symbols)+'\n',encoding='utf-8')
+(HERE/'search-symbols.txt').write_text('\n'.join(symbols)+'\n',encoding='utf-8', newline='\n')
 pattern=re.compile(r'(?<![\w.])(?:'+ '|'.join(re.escape(s) for s in sorted(symbols,key=len,reverse=True)) +r')(?![\w.])')
 command=['rg','--json','--no-heading','--no-ignore','-F','-f',str(HERE/'search-symbols.txt'),'-g','*.txt','-g','*.asset','-g','*.gui','-g','*.yml']
 command += [m['Path'] for m in roots]
@@ -206,7 +206,7 @@ for cat,label in CATEGORIES.items():
                            MultiPathMessages=counts['Source/resource paths include AGOT+'],
                            UniqueSymbolMessages=counts['Symbol only in AGOT+ effective text'],SharedSymbolMessages=counts['Symbol shared with other sources']))
     export(cat+'.csv',items,fields)
-    (HERE/(cat+'.log')).write_text('\n\n'.join(f"[original line {r['LogLine']}][{r['Component']}] {r['Message']}" for r in items)+'\n',encoding='utf-8')
+    (HERE/(cat+'.log')).write_text('\n\n'.join(f"[original line {r['LogLine']}][{r['Component']}] {r['Message']}" for r in items)+'\n',encoding='utf-8', newline='\n')
 export('categories.csv',categories,list(categories[0]))
 save('summary.json',dict(LogSHA256=sha(RUN/'snapshot/error.log'),ManifestSHA256=sha(REPO/'AGOT_Submods/AGOT_PLUS_FIX/docs/source-manifest.json'),
  TotalLogEntries=len(data),AssociatedMessages=len(selected),AttributionCounts=dict(collections.Counter(r['Attribution'] for r in selected)),
@@ -244,7 +244,7 @@ for cat in ('dna_missing_gene','dna_unknown_gene','dna_template','dna_accessory'
             key=item['Diagnostic'].replace('|','\\|').replace('\n','; ')
             detail.append(f"| `{key}` | {item['Messages']} | {item['FirstLogLine']} |")
     detail.append('')
-(HERE/'details.md').write_text('\n'.join(detail)+'\n',encoding='utf-8')
+(HERE/'details.md').write_text('\n'.join(detail)+'\n',encoding='utf-8', newline='\n')
 print(json.dumps(dict(Associated=len(selected),Attribution=dict(collections.Counter(r['Attribution'] for r in selected)),
  CategoryCounts={r['Category']:r['Messages'] for r in categories},DuplicateCandidates=len(duplicates),
  ReferenceSites=len(references),GroupedDiagnostics=len(group_rows)),ensure_ascii=False,indent=2))

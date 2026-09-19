@@ -1,4 +1,6 @@
 param([int]$MaxPage=27,[switch]$OfflineOnly)
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 $ErrorActionPreference='Stop'
 $utf8=[Text.UTF8Encoding]::new($false,$true)
 $destination=Join-Path $PSScriptRoot 'author-sources'
@@ -13,7 +15,7 @@ for($page=1;$page -le $MaxPage;$page++){
   try {$response=Invoke-WebRequest -UseBasicParsing -Uri $url -TimeoutSec 30}
   catch {Write-Warning "Request failed on page $page; keeping available coverage. $($_.Exception.Message)";break}
   $html=$response.Content
-  [IO.File]::WriteAllText($file,$html,$utf8)
+  [RepositoryText]::WriteAllText($file,$html,$utf8)
  }
  $matches=[regex]::Matches($html,'(?s)<div class="changelog headline">\s*Update:\s*(?<date>.*?)</div>.*?<p id="(?<timestamp>\d+)">(?<body>.*?)</p>')
  if($matches.Count -eq 0){throw "No changelog entries on page $page"}
@@ -26,8 +28,8 @@ for($page=1;$page -le $MaxPage;$page++){
  $sources.Add([pscustomobject]@{URL=$url;File=[IO.Path]::GetFileName($file);Entries=$matches.Count;SHA256=(Get-FileHash -LiteralPath $file).Hash})
  Write-Output "Page $page : $($matches.Count) entries"
 }
-[IO.File]::WriteAllText((Join-Path $destination 'changelog-entries.json'),(ConvertTo-Json -InputObject $entries.ToArray() -Depth 5)+[Environment]::NewLine,$utf8)
-[IO.File]::WriteAllText((Join-Path $destination 'source-manifest.json'),(ConvertTo-Json -InputObject $sources.ToArray() -Depth 5)+[Environment]::NewLine,$utf8)
+[RepositoryText]::WriteAllText((Join-Path $destination 'changelog-entries.json'),(ConvertTo-Json -InputObject $entries.ToArray() -Depth 5)+[Environment]::NewLine,$utf8)
+[RepositoryText]::WriteAllText((Join-Path $destination 'source-manifest.json'),(ConvertTo-Json -InputObject $sources.ToArray() -Depth 5)+[Environment]::NewLine,$utf8)
 $relevant=@(foreach($entry in $entries){
  $lines=@($entry.Body -split '\r?\n'|Where-Object {$_ -match '(?i)dragon|bond|scheme|canon children|obsolete'})
  if($lines.Count){[pscustomobject]@{Date=$entry.UTC;Page=$entry.Page;URL=$entry.URL;Text=$lines -join [Environment]::NewLine}}

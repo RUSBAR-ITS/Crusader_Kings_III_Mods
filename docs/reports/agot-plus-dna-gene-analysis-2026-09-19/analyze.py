@@ -15,7 +15,7 @@ def export(name,data,fields=None):
     if fields is None:fields=list(data[0])
     with (HERE/name).open('w',encoding='utf-8-sig',newline='') as f:
         w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(data)
-def save(name,data):(HERE/name).write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+def save(name,data):(HERE/name).write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8', newline='\n')
 
 class Block:
     def __init__(self,key,line,start,parent=None):
@@ -146,7 +146,7 @@ def excerpts(name,items):
     out=[]
     for m,rel,b,text in items:
         out.extend([f"# SOURCE {m['Name']}: {rel}:{b.line}",b.body(text),''])
-    (HERE/name).write_text('\n'.join(out),encoding='utf-8')
+    (HERE/name).write_text('\n'.join(out),encoding='utf-8', newline='\n')
 excerpts('affected-gene-definitions.txt',[d for k in sorted(targets) for d in schema.get(k,[])])
 export('source-hashes.csv',sources)
 save('summary.json',dict(LogMessages=len(dna_log),GenesMentioned=len(targets),Presets=len(pres_rows),

@@ -1,3 +1,5 @@
+
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
 # Read-only audit of runtime scripts; writes report artifacts in this directory.
 $ErrorActionPreference='Stop'
 $repo=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../../..'))
@@ -129,7 +131,7 @@ $inputs|Export-Csv -LiteralPath (Join-Path $PSScriptRoot 'source-hashes.csv') -N
 $sourceConflicts='C:/Users/RUSBAR/Documents/Paradox Interactive/Crusader Kings III/logs/database_conflicts.log'
 $conflictText=[IO.File]::ReadAllText($sourceConflicts)
 $conflictLines=@($conflictText -split '\r?\n'|Where-Object {$_ -match "Overriding entry 'bond_with_dragon_scheme'"})
-[IO.File]::WriteAllText((Join-Path $PSScriptRoot 'scheme-override-evidence.log'),($conflictLines -join [Environment]::NewLine)+[Environment]::NewLine,$utf8)
+[RepositoryText]::WriteAllText((Join-Path $PSScriptRoot 'scheme-override-evidence.log'),($conflictLines -join [Environment]::NewLine)+[Environment]::NewLine,$utf8)
 $summary=[ordered]@{
  CapturedAt=[DateTimeOffset]::Now.ToString('o');AnalysisOnly=$true;RuntimeFilesChanged=$false
  TargetMessages=$diagnostics.Count;SchemeSites=$sites.Count;BirthSites=@($sites|Where-Object Kind -ceq 'Birth').Count;YearlySites=@($retry).Count
@@ -145,5 +147,5 @@ $summary=[ordered]@{
  RecommendedPolicy='Retain canonical automatic bonding, remove all 34 redundant scheme launches, harden target/candidate guards and yearly recipient handling; preserve pair priority.'
  EngineExecutionChecked=$false
 }
-[IO.File]::WriteAllText((Join-Path $PSScriptRoot 'summary.json'),($summary|ConvertTo-Json -Depth 6)+[Environment]::NewLine,$utf8)
+[RepositoryText]::WriteAllText((Join-Path $PSScriptRoot 'summary.json'),($summary|ConvertTo-Json -Depth 6)+[Environment]::NewLine,$utf8)
 $summary|ConvertTo-Json -Depth 6

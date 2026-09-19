@@ -1,0 +1,20 @@
+# Use LF in both Git and working trees. Keep each file's encoding and BOM.
+* text=auto eol=lf
+
+# Game assets and compiled files must remain byte-for-byte intact.
+*.dds -text
+*.mesh -text
+*.anim -text
+*.png -text
+*.jpg -text
+*.jpeg -text
+*.gif -text
+*.ico -text
+*.zip -text
+*.7z -text
+*.pdf -text
+*.pyc -text
+
+# This archived PowerShell output is UTF-16 LE. The normalizer preserves its
+# encoding and writes UTF-16 LF; Git must not transform individual bytes.
+docs/reports/agot-plus-portrait-graphics-analysis-2026-09-19/inspection-output.txt -text

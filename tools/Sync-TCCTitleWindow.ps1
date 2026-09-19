@@ -1,6 +1,8 @@
 param(
 	[string]$VanillaTitleWindow = 'E:\SteamLibrary\steamapps\common\Crusader Kings III\game\gui\window_title.gui'
 )
+. (Join-Path $PSScriptRoot 'RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 
@@ -51,7 +53,7 @@ function Write-TCCTitleWindow {
 	$generated = $content.Insert($insertAt, $buttonBlock + [Environment]::NewLine)
 	$outputDirectory = Split-Path -Parent $Output
 	[IO.Directory]::CreateDirectory($outputDirectory) | Out-Null
-	[IO.File]::WriteAllText($Output, $generated, [Text.UTF8Encoding]::new($hasUtf8Bom))
+	[RepositoryText]::WriteAllText($Output, $generated, [Text.UTF8Encoding]::new($hasUtf8Bom))
 	Write-Output "Generated $Output from $Source"
 }
 

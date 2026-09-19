@@ -2,6 +2,8 @@ param(
     [string]$MainPath='E:\SteamLibrary\steamapps\workshop\content\1158310\2950245430',
     [string]$AgotPath='E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032'
 )
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 $ErrorActionPreference='Stop'
 . (Join-Path $PSScriptRoot 'NativeFiles.ps1')
 $modRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
@@ -75,7 +77,7 @@ $files=@(foreach($item in $prepared){
     if($item.Kind -eq 'BinaryShadow'){
         [IO.File]::WriteAllBytes((Get-NativePath $item.Destination),$item.Bytes)
     }else{
-        [IO.File]::WriteAllText((Get-NativePath $item.Destination),$item.Body,[Text.UTF8Encoding]::new($item.BOM,$true))
+        [RepositoryText]::WriteAllText((Get-NativePath $item.Destination),$item.Body,[Text.UTF8Encoding]::new($item.BOM,$true))
     }
     [pscustomobject]@{File=$item.File;Kind=$item.Kind;Catalog=$item.Catalog;SourceSHA256=$item.SourceSHA256;PatchedSHA256=(Get-NativeSHA256 $item.Destination);UTF8BOM=$item.BOM;Changes=$item.Changes}
 })
@@ -87,10 +89,10 @@ $manifest=[ordered]@{
     BinaryShadowFiles=$binaryFixes.Count;BinaryBytesRemoved=($binaryFixes|ForEach-Object {$_.RemoveHex.Length/2}|Measure-Object -Sum).Sum
     Files=$files
 }
-[IO.File]::WriteAllText((Join-Path $modRoot 'docs/source-manifest.json'),($manifest|ConvertTo-Json -Depth 9)+"`n",$utf8)
+[RepositoryText]::WriteAllText((Join-Path $modRoot 'docs/source-manifest.json'),($manifest|ConvertTo-Json -Depth 9)+"`n",$utf8)
 $descriptor=[IO.File]::ReadAllText((Join-Path $modRoot 'descriptor.mod'),$utf8).TrimEnd()
 if($descriptor -match '(?m)^\s*(replace_path|path)\s*='){throw 'Internal descriptor must not replace directories or include an external path.'}
 $external=$descriptor+"`n"+'path="'+$modRoot.Replace('\','/')+'"'+"`n"
-[IO.File]::WriteAllText((Join-Path $modRoot '../AGOT_PLUS_FIX.mod'),$external,$utf8)
+[RepositoryText]::WriteAllText((Join-Path $modRoot '../AGOT_PLUS_FIX.mod'),$external,$utf8)
 Write-Output "Built $($manifest.ShadowFiles) file shadows and $($manifest.AddedFiles) additions; $($manifest.FixGroups) groups; $($manifest.ReplacementOccurrences) exact replacements."
 Write-Output 'External descriptor prepared in the repository. Game profile and playsets were not changed.'

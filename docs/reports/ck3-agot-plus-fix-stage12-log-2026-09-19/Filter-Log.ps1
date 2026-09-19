@@ -1,4 +1,6 @@
 param([string]$GamePath='E:\SteamLibrary\steamapps\common\Crusader Kings III\game')
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 $ErrorActionPreference='Stop'
 $mods=@(Import-Csv -LiteralPath (Join-Path $PSScriptRoot 'active-mods.csv'))
 $repoRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../../..'))
@@ -112,7 +114,7 @@ $separateSave=@($remaining|Where-Object Category -eq 'Save portrait / DNA compat
 $actionable=@($remaining|Where-Object Category -ne 'Save portrait / DNA compatibility')
 function Write-LogEntries($List,[string]$Name){
     $text=($List|ForEach-Object {'['+$_.Time+']['+$_.Component+'] [original line '+$_.Line+'] '+$_.Message})-join "`n"
-    [IO.File]::WriteAllText((Join-Path $PSScriptRoot $Name),$text,[Text.UTF8Encoding]::new($true))
+    [RepositoryText]::WriteAllText((Join-Path $PSScriptRoot $Name),$text,[Text.UTF8Encoding]::new($true))
 }
 Write-LogEntries $actionable 'errors-filtered.log'
 Write-LogEntries $separateSave 'save-portrait-errors.log'

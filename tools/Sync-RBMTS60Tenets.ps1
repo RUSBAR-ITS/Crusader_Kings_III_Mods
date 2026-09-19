@@ -4,6 +4,8 @@
 	[string]$DoctrineSourcePath,
 	[string]$GuiSourcePath
 )
+. (Join-Path $PSScriptRoot 'RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 
@@ -239,7 +241,7 @@ function Write-TextFile {
 	$directory = Split-Path -Parent $Path
 	[IO.Directory]::CreateDirectory($directory) | Out-Null
 	$content = [string]::Join("`r`n", $Lines) + "`r`n"
-	[IO.File]::WriteAllText($Path, $content, $Encoding)
+	[RepositoryText]::WriteAllText($Path, $content, $Encoding)
 }
 
 function New-ScrollableGridReplacement {

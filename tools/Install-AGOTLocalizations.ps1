@@ -2,6 +2,8 @@ param(
 	[string]$GameDataPath = 'C:\Users\RUSBAR\Documents\Paradox Interactive\Crusader Kings III',
 	[switch]$Apply
 )
+. (Join-Path $PSScriptRoot 'RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'LauncherSqlite.ps1')
@@ -125,7 +127,7 @@ try {
 	$db.Execute("UPDATE playsets SET loadOrder='custom',updatedOn=" + ($timestamp * 1000) + ' WHERE id=' + (Sql $playsetId))
 	foreach ($mod in $mods) { Copy-Item -LiteralPath $mod.Source -Destination (Join-Path $modDirectory $mod.File) -Force }
 	$load.enabled_mods = $newEnabled
-	[IO.File]::WriteAllText($loadPath, ($load | ConvertTo-Json -Compress -Depth 10), $utf8)
+	[RepositoryText]::WriteAllText($loadPath, ($load | ConvertTo-Json -Compress -Depth 10), $utf8)
 	$actual = @($db.Query('SELECT m.gameRegistryId FROM playsets_mods pm JOIN mods m ON m.id=pm.modId WHERE pm.enabled=1 AND pm.playsetId=' + (Sql $playsetId) + ' ORDER BY pm.position') | ForEach-Object { $_['gameRegistryId'] })
 	$savedLoad = Get-Content -LiteralPath $loadPath -Raw -Encoding UTF8 | ConvertFrom-Json
 	if (($actual -join "`n") -cne ($newEnabled -join "`n") -or (@($savedLoad.enabled_mods) -join "`n") -cne ($newEnabled -join "`n")) { throw 'Installed load order verification failed.' }

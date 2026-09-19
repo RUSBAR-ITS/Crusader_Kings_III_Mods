@@ -9,6 +9,8 @@ param(
     [string]$LayoutPath,
     [string]$SettingsPath
 )
+. (Join-Path $PSScriptRoot 'RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 2.0
@@ -371,7 +373,7 @@ function Write-GeneratedText {
     param([string]$Path, [string]$Text, [bool]$Bom)
     [IO.Directory]::CreateDirectory((Split-Path -Parent $Path)) | Out-Null
     $encoding = [Text.UTF8Encoding]::new($Bom)
-    [IO.File]::WriteAllText($Path, (Normalize-GeneratedText $Text), $encoding)
+    [RepositoryText]::WriteAllText($Path, (Normalize-GeneratedText $Text), $encoding)
 }
 
 function Test-Utf8Bom {

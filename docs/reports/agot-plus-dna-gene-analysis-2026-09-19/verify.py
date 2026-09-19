@@ -31,7 +31,7 @@ for rel in ['gfx/models/portraits/male_head/male_head.asset','gfx/models/portrai
     for n,line in enumerate(read(p).splitlines(),1):
         if re.search(r'bs_eye_fold_2|bs_head_round_shape|eye_shut_top|eye_shut_bottom|inner_eyebrow_width|brow_inner_width|\bPS_dragon\b|AddDragonDecals',line):
             evidence.append(f'{rel}:{n}: {line.strip()}')
-(HERE/'model-evidence.txt').write_text('\n'.join(evidence)+'\n',encoding='utf-8')
+(HERE/'model-evidence.txt').write_text('\n'.join(evidence)+'\n',encoding='utf-8', newline='\n')
 index=rows(HERE/'dna-log-index.csv');covered=rows(HERE/'proposed-covered-log.csv');deferred=rows(HERE/'proposed-deferred-log.csv')
 assert len(index)==8368 and len(covered)==8118 and len(deferred)==250
 assert sorted(r['LogLine'] for r in index)==sorted(r['LogLine'] for r in covered+deferred)
@@ -42,5 +42,5 @@ assert summary['HumanDonors']==5273 and summary['CompleteDonors']==5273
 snapshot=run/'snapshot/error.log';live=Path('C:/Users/RUSBAR/Documents/Paradox Interactive/Crusader Kings III/logs/error.log')
 assert sha(snapshot)=='66781C0707B4EF82A775FBA0C6B3A72360135D2B9982E1D0FB7136A7D8FEBB03'
 out=dict(Revision=m['Revision'],RuntimeFilesVerified=len(checks),RuntimeHashesUnchanged=True,ManifestSHA256=sha(manifest),AnalysisSourcesVerified=len(sources),PreviousSourceHashesVerified=len(previous_sources),LogSHA256=sha(snapshot),LiveLogMatchesSnapshot=live.exists() and sha(live)==sha(snapshot),Covered=8118,Deferred=250,LogPartitionValidated=True,SupportingSources=support)
-(HERE/'verification.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+(HERE/'verification.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8', newline='\n')
 print(json.dumps(out,ensure_ascii=False,indent=2))

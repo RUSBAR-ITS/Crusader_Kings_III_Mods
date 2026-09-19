@@ -3,6 +3,8 @@ param(
     [string]$ManifestPath,
     [string]$ModPath
 )
+. (Join-Path $PSScriptRoot 'RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
@@ -620,7 +622,7 @@ $markdownDirectory = Split-Path -Parent $markdownOutputPath
 [IO.Directory]::CreateDirectory($markdownDirectory) | Out-Null
 $utf8NoBom = [Text.UTF8Encoding]::new($false)
 $utf8Bom = [Text.UTF8Encoding]::new($true)
-[IO.File]::WriteAllText($jsonOutputPath, ($plan | ConvertTo-Json -Depth 100 -Compress), $utf8NoBom)
+[RepositoryText]::WriteAllText($jsonOutputPath, ($plan | ConvertTo-Json -Depth 100 -Compress), $utf8NoBom)
 
 $lines = [Collections.Generic.List[string]]::new()
 $lines.Add('# RB_UD — план переопределений ванильных домицилей')
@@ -758,7 +760,7 @@ $lines.Add('## Что остаётся перед генерацией кода'
 $lines.Add('')
 foreach ($check in $planCore.RemainingImplementationChecks) { $lines.Add("- $check") }
 
-[IO.File]::WriteAllText($markdownOutputPath, ($lines -join "`r`n") + "`r`n", $utf8Bom)
+[RepositoryText]::WriteAllText($markdownOutputPath, ($lines -join "`r`n") + "`r`n", $utf8Bom)
 
 Write-Output "RB_UD override plan completed for CK3 $($manifest.GameVersion)."
 Write-Output "Plan:   $jsonOutputPath"

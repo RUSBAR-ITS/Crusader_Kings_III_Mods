@@ -48,7 +48,7 @@ def load(p):
 
 
 def save(name, obj):
-    (DOC / name).write_text(json.dumps(obj, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    (DOC / name).write_text(json.dumps(obj, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
 
 
 def one(text, key):

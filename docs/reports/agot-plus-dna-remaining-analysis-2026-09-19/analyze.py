@@ -55,9 +55,9 @@ for e in errors:
     if e['Gene'] in ('legwear','gene_bs_ear_outward'):
         contexts.append(dict(File=e['File'], DNA=e['DNA'], State=state))
 save_csv('remaining-values.csv', output)
-(OUT / 'accessory-ear-context.json').write_text(json.dumps(contexts, indent=2)+'\n', encoding='utf-8')
+(OUT / 'accessory-ear-context.json').write_text(json.dumps(contexts, indent=2)+'\n', encoding='utf-8', newline='\n')
 (OUT / 'summary.json').write_text(json.dumps(dict(Messages=len(errors), Presets=len({(e['File'],e['DNA']) for e in errors}),
-    Groups=summary, Sources=sources, RuntimeSHA256=runtime), indent=2)+'\n', encoding='utf-8')
+    Groups=summary, Sources=sources, RuntimeSHA256=runtime), indent=2)+'\n', encoding='utf-8', newline='\n')
 print(json.dumps(summary, indent=2))
 print('TEMPLATES')
 for gene in targets:

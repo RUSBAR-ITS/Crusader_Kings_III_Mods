@@ -2,6 +2,8 @@ param(
 	[string]$MainModPath = 'E:\SteamLibrary\steamapps\workshop\content\1158310\2950245430',
 	[string]$TranslationPath = 'E:\SteamLibrary\steamapps\workshop\content\1158310\3465601037'
 )
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 $modRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
@@ -116,14 +118,14 @@ $manifestFiles = @()
 foreach ($output in $outputs) {
 	$destination = Join-Path $modRoot $output.File
 	[IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($destination)) | Out-Null
-	[IO.File]::WriteAllText($destination, $output.Content, $utf8)
+	[RepositoryText]::WriteAllText($destination, $output.Content, $utf8)
 	$manifestFiles += [pscustomobject]@{
 		Catalog=$output.Catalog; File=$output.File; SourceSHA256=$output.SourceSHA256
 		PatchedSHA256=(Get-FileHash -LiteralPath $destination -Algorithm SHA256).Hash; Changes=$output.Changes
 	}
 }
 $addedDestination = Join-Path $modRoot $additions.Output
-[IO.File]::WriteAllText($addedDestination, ($addedLines -join "`n") + "`n", $utf8)
+[RepositoryText]::WriteAllText($addedDestination, ($addedLines -join "`n") + "`n", $utf8)
 $manifest = [ordered]@{
 	AGOTPlusVersion='1.0.0'; TranslationVersion='1.1'; CK3Version='1.19.0.6'
 	MainWorkshopId='2950245430'; TranslationWorkshopId='3465601037'
@@ -139,5 +141,5 @@ $manifest = [ordered]@{
 	EnglishRepairs=$englishChanged; RussianReplacementRepairs=$russianChanged; Files=$manifestFiles
 }
 [IO.Directory]::CreateDirectory((Join-Path $modRoot 'docs')) | Out-Null
-[IO.File]::WriteAllText((Join-Path $modRoot 'docs/source-manifest.json'), ($manifest | ConvertTo-Json -Depth 8) + "`n", $utf8)
+[RepositoryText]::WriteAllText((Join-Path $modRoot 'docs/source-manifest.json'), ($manifest | ConvertTo-Json -Depth 8) + "`n", $utf8)
 Write-Output "Built: 33 Russian overrides; 386 runtime names; 6 file shadows; 5 English repairs; 3 synchronized Russian replacements."

@@ -35,7 +35,7 @@ for sex in ('male','female'):
         assets.append(dict(File=rel,Owner=owner[0]['Name'] if owner else None,
             Path=str(owner[1]) if owner else None,SHA256=d.sha(owner[1]) if owner else None))
 scope['EffectiveAssets']=assets
-(OUT/'restoration-scope.json').write_text(json.dumps(scope,indent=2)+'\n',encoding='utf-8')
+(OUT/'restoration-scope.json').write_text(json.dumps(scope,indent=2)+'\n',encoding='utf-8', newline='\n')
 
 core=Path('E:/SteamLibrary/steamapps/workshop/content/1158310/3034473189')
 txt=d.read(core/'common/genes/07_genes_special_accessories_misc.txt')

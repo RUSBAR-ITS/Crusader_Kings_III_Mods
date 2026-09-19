@@ -21,7 +21,7 @@ queries=[
  'asoiaf_sword_krakenfall_visuals','asoiaf_needle_visuals','asoiaf_red_vipers_spear_visuals',
  'agot_create_artifact_vs_dark_sister_effect','asoiaf_canon_children_$','_born_variable$',
 ] + [s+'_trait' for s in starks] + ['asoiaf_canon_children_'+s+'_birth' for s in founders]
-(OUT/'evidence-queries.txt').write_text('\n'.join(queries)+'\n',encoding='utf-8')
+(OUT/'evidence-queries.txt').write_text('\n'.join(queries)+'\n',encoding='utf-8', newline='\n')
 result=subprocess.run(['rg','--json','--no-ignore','-F','-f',str(OUT/'evidence-queries.txt'),'-g','*.txt','-g','*.gui','-g','*.yml']+[m['Path'] for m in mods],capture_output=True,encoding='utf-8')
 assert result.returncode in (0,1),result.stderr
 roots=sorted([(str(Path(m['Path']).resolve()).replace('\\','/'),m) for m in mods],key=lambda x:len(x[0]),reverse=True)
@@ -50,10 +50,10 @@ for line in result.stdout.splitlines():
  for q in queries:
   if re.search(r'(?<!\w)'+re.escape(q)+r'(?!\w)',code):
    rows.append(dict(Query=q,Owner=mod['Name'],File=rel,Path=str(eff[1]),Line=x['line_number'],Text=raw.strip()))
-(OUT/'supporting-references.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+(OUT/'supporting-references.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n',encoding='utf-8', newline='\n')
 pins=d.load(OUT/'source-pins.json')
 for p in {r['Path'] for r in rows}:pins[p]=d.sha(p)
-(OUT/'source-pins.json').write_text(json.dumps(pins,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+(OUT/'source-pins.json').write_text(json.dumps(pins,ensure_ascii=False,indent=2)+'\n',encoding='utf-8', newline='\n')
 assignment=d.read(d.MOD/'common/scripted_effects/asoiaf_assign_inactive_traits_effects.txt').splitlines()
 refs=d.load(OUT/'references.json')
 table=[]
@@ -65,7 +65,7 @@ for char in founders:
  exact=subprocess.run(['rg','-l','--no-ignore','-F',needle,str(d.MOD/'common'),str(d.PLUS/'common'),str(d.PLUS/'events')],capture_output=True,encoding='utf-8')
  assert exact.returncode in (0,1)
  table.append(dict(Character=char,MarkerLine=r['Line'],Assignment=context,BirthEffectFiles=exact.stdout.splitlines()))
-(OUT/'born-marker-audit.json').write_text(json.dumps(table,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+(OUT/'born-marker-audit.json').write_text(json.dumps(table,ensure_ascii=False,indent=2)+'\n',encoding='utf-8', newline='\n')
 print('Supporting references:',len(rows),'source pins:',len(pins))
 for q in queries[:17]:
  hits=[x for x in rows if x['Query']==q]

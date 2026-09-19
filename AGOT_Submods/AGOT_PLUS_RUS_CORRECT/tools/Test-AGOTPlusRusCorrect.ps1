@@ -3,6 +3,8 @@
 	[string]$TranslationPath = 'E:\SteamLibrary\steamapps\workshop\content\1158310\3465601037',
 	[string]$GamePath = 'E:\SteamLibrary\steamapps\common\Crusader Kings III\game'
 )
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 $modRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
@@ -119,7 +121,7 @@ foreach ($file in $manifest.Files) {
 		$lines[$i] = $change.After + $lines[$i].Substring($before.Length)
 		$repairCount++
 	}
-	if ([string]::Concat($lines) -cne [IO.File]::ReadAllText($destination, $utf8)) { throw "Unrecorded edits: $destination" }
+	if ([RepositoryText]::Normalize([string]::Concat($lines)) -cne [IO.File]::ReadAllText($destination, $utf8)) { throw "Unrecorded edits: $destination" }
 }
 if ($repairCount -ne 8 -or $manifest.EnglishRepairs -ne 5) { throw 'Missing source repairs.' }
 

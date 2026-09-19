@@ -4,6 +4,8 @@
 
     [string]$ModPath
 )
+. (Join-Path $PSScriptRoot 'RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 2.0
@@ -2021,7 +2023,7 @@ function Write-MarkdownReport {
     }
     $output.Add('')
 
-    [IO.File]::WriteAllLines($Path, $output, [Text.UTF8Encoding]::new($true))
+    [RepositoryText]::WriteAllLines($Path, $output, [Text.UTF8Encoding]::new($true))
 }
 
 $script:ResolvedGamePath = [IO.Path]::GetFullPath($GamePath).TrimEnd('\', '/')
@@ -2436,7 +2438,7 @@ $manifestPath = Join-Path $manifestDirectory 'RB_UD_vanilla_manifest.json'
 $reportPath = Join-Path $reportDirectory 'RB_UD_VANILLA_AUDIT.md'
 
 $manifestJson = $manifest | ConvertTo-Json -Depth 100 -Compress
-[IO.File]::WriteAllText($manifestPath, $manifestJson + "`n", [Text.UTF8Encoding]::new($false))
+[RepositoryText]::WriteAllText($manifestPath, $manifestJson + "`n", [Text.UTF8Encoding]::new($false))
 Write-MarkdownReport -Path $reportPath -Manifest $manifest
 
 $unresolvedCount = @(

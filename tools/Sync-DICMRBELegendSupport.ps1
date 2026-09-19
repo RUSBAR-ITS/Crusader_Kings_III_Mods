@@ -2,6 +2,8 @@ param(
 	[string]$GamePath = 'E:\SteamLibrary\steamapps\common\Crusader Kings III\game',
 	[string]$ModPath
 )
+. (Join-Path $PSScriptRoot 'RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 $repositoryRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
@@ -89,5 +91,5 @@ foreach ($name in $objectNames) {
 
 $outputPath = Join-Path $ModPath 'common/script_values/zzz_DICM_RBE_legend_support_costs.txt'
 [IO.Directory]::CreateDirectory((Split-Path -Parent $outputPath)) | Out-Null
-[IO.File]::WriteAllText($outputPath, ($output -join "`n"), [Text.UTF8Encoding]::new($true))
+[RepositoryText]::WriteAllText($outputPath, ($output -join "`n"), [Text.UTF8Encoding]::new($true))
 Write-Output "Generated $outputPath (3 promoter-cost overrides; source SHA256: $sourceHash)"

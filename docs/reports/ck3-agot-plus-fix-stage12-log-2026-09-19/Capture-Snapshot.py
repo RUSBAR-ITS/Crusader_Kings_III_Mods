@@ -76,5 +76,5 @@ summary = dict(CapturedAt=dt.datetime.now().astimezone().isoformat(), ActiveMods
                PatchManifestSHA256=manifests['patch'], LocalizationManifestSHA256=manifests['localization'],
                RuntimeFiles=len(runtime), RuntimeMatchesManifest=True, LastDeclaredProvidersMatch=True,
                EngineIndividualResourceLoadingProven=False)
-(HERE / 'snapshot-summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+(HERE / 'snapshot-summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2)+'\n', encoding='utf-8', newline='\n')
 print(json.dumps(summary, ensure_ascii=False, indent=2))

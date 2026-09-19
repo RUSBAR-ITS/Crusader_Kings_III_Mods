@@ -6,6 +6,8 @@
     [string]$AgotRussianPath='E:\SteamLibrary\steamapps\workshop\content\1158310\2962803371',
     [string]$GamePath='E:\SteamLibrary\steamapps\common\Crusader Kings III\game'
 )
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 $ErrorActionPreference='Stop'
 $modRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $utf8=[Text.UTF8Encoding]::new($false,$true)
@@ -77,7 +79,7 @@ foreach($shadow in $shadows){
         if($fix.After -notmatch '^\s*[^:]+:\s*(?:\d+\s+)?"(.*)"\s*$' -or $Matches[1] -cne $ru[$fix.Key]){throw "Shadow/overlay mismatch: $($fix.Key)"}
         $lines[$i]=$fix.After+$lines[$i].Substring($body.Length)
     }
-    if([string]::Concat($lines) -cne [IO.File]::ReadAllText($destination,$utf8)){throw 'Unrecorded change in base DI translation shadow.'}
+    if([RepositoryText]::Normalize([string]::Concat($lines)) -cne [IO.File]::ReadAllText($destination,$utf8)){throw 'Unrecorded change in base DI translation shadow.'}
 }
 foreach($item in $additions){
     if(-not $ru.ContainsKey($item.Key)){throw "Missing additional label: $($item.Key)"}
@@ -189,8 +191,8 @@ $manifest=[ordered]@{
     LocalizationSHA256=(Get-FileHash -LiteralPath $runtimePath -Algorithm SHA256).Hash
 }
 foreach($folder in @('common','events','gui','gfx','history')){if(Test-Path -LiteralPath (Join-Path $modRoot $folder)){throw 'Translation-only package contains script/assets folder.'}}
-$review|Export-Csv -LiteralPath (Join-Path $modRoot 'docs/translations.csv') -NoTypeInformation -Encoding UTF8
-$expanded|Export-Csv -LiteralPath (Join-Path $modRoot 'docs/holding-labels-expanded.csv') -NoTypeInformation -Encoding UTF8
-$references|Export-Csv -LiteralPath (Join-Path $modRoot 'docs/script-references.csv') -NoTypeInformation -Encoding UTF8
-$manifest|ConvertTo-Json -Depth 6|Set-Content -LiteralPath (Join-Path $modRoot 'docs/source-manifest.json') -Encoding UTF8
+[RepositoryText]::WriteAllLines((Join-Path $modRoot 'docs/translations.csv'), [string[]]@($review | ConvertTo-Csv -NoTypeInformation), [Text.UTF8Encoding]::new($true))
+[RepositoryText]::WriteAllLines((Join-Path $modRoot 'docs/holding-labels-expanded.csv'), [string[]]@($expanded | ConvertTo-Csv -NoTypeInformation), [Text.UTF8Encoding]::new($true))
+[RepositoryText]::WriteAllLines((Join-Path $modRoot 'docs/script-references.csv'), [string[]]@($references | ConvertTo-Csv -NoTypeInformation), [Text.UTF8Encoding]::new($true))
+[RepositoryText]::WriteAllText((Join-Path $modRoot 'docs/source-manifest.json'), ($manifest|ConvertTo-Json -Depth 6)+"`n", [Text.UTF8Encoding]::new($true))
 $manifest|ConvertTo-Json -Depth 6

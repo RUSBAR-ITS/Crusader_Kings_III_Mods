@@ -77,7 +77,7 @@ def main():
                 InventoryCounts=dict(Genes=len(genes), AssetIDs=len(assets), Accessories=len(accessories)),
                 AssetParseFailures=parse_failures,
                 MissingEntityProof=missing_proof)
-    (OUT / 'effective-resources.json').write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding='utf-8')
+    (OUT / 'effective-resources.json').write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding='utf-8', newline='\n')
     print('Inventoried', len(genes), 'genes,', len(assets), 'asset IDs,', len(accessories), 'accessories.')
     for key in assets:
         if ('female' in key and ('stannis' in key or 'septon' in key)) or 'shouldercape_01_mesh' in key:

@@ -10,7 +10,7 @@ def fetch(url, name):
     ledger = OUT / 'downloads.json'
     records = json.loads(ledger.read_text()) if ledger.exists() else {}
     records[name] = dict(URL=url, SHA256=hashlib.sha256(data).hexdigest(), Bytes=len(data))
-    ledger.write_text(json.dumps(records, indent=2)+'\n')
+    ledger.write_text(json.dumps(records, indent=2)+'\n', newline='\n')
     return data
 if __name__ == '__main__':
     result = fetch(sys.argv[1], sys.argv[2])

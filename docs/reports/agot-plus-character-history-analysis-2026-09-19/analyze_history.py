@@ -29,7 +29,7 @@ def write_csv(name, rows, fields=None):
         writer.writerows(rows)
 
 def write_json(name, data):
-    (OUT / name).write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    (OUT / name).write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
 
 def mask(text):
     # Preserve offsets and newlines; braces in comments/strings are not syntax.
@@ -257,8 +257,8 @@ for rel in sorted({row['Evidence'] for row in history}):
                                 'CharacterIdsAndBiographiesPreserved': True, 'Characters': len(after_defs)})
     minimal_diff.extend(difflib.unified_diff(original.splitlines(True), minimal.splitlines(True), fromfile='a/'+rel, tofile='b/'+rel))
     dna_diff.extend(difflib.unified_diff(minimal.splitlines(True), fallback.splitlines(True), fromfile='a/'+rel, tofile='b/'+rel))
-(OUT / 'proposal-01-minimal.patch').write_text(''.join(minimal_diff), encoding='utf-8')
-(OUT / 'proposal-02-dna-fallback.patch').write_text(''.join(dna_diff), encoding='utf-8')
+(OUT / 'proposal-01-minimal.patch').write_text(''.join(minimal_diff), encoding='utf-8', newline='\n')
+(OUT / 'proposal-02-dna-fallback.patch').write_text(''.join(dna_diff), encoding='utf-8', newline='\n')
 write_json('proposal-checks.json', proposal_checks)
 assert 'trait_third_level = 100' in text_for('common/script_values/00_trait_values.txt')
 assert 'Forrester_1' in indexes['DNA'] and 'Forrester_1' in indexes['Character']

@@ -5,6 +5,8 @@
     [string]$AgotRussianPath='E:\SteamLibrary\steamapps\workshop\content\1158310\2962803371',
     [switch]$Check
 )
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 $ErrorActionPreference='Stop'
 $modRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $utf8=[Text.UTF8Encoding]::new($true,$true)
@@ -205,10 +207,11 @@ $descriptor=@('version="1.0.0"','tags={','    "Translation"','    "Fixes"','}',
 $outputs['descriptor.mod']=$descriptor+"`n"
 $external=$descriptor+"`npath="""+$modRoot.Replace('\','/')+"""`n"
 function Write-Or-Check([string]$Path,[string]$Content){
+    $Content=[RepositoryText]::Normalize($Content)
     $expected=$utf8.GetPreamble()+$utf8.GetBytes($Content)
     if($Check){
         if(-not(Test-Path -LiteralPath $Path) -or [Convert]::ToBase64String([IO.File]::ReadAllBytes($Path)) -cne [Convert]::ToBase64String($expected)){throw "Generated file differs: $Path"}
-    }else{[IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($Path))|Out-Null;[IO.File]::WriteAllText($Path,$Content,$utf8)}
+    }else{[IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($Path))|Out-Null;[RepositoryText]::WriteAllText($Path,$Content,$utf8)}
 }
 $outputHashes=@(foreach($file in $outputs.Keys | Sort-Object -CaseSensitive){
     $path=Join-Path $modRoot $file

@@ -2,6 +2,8 @@
 	[string]$MainModPath = 'E:\SteamLibrary\steamapps\workshop\content\1158310\3149692324',
 	[string]$TranslationPath = 'E:\SteamLibrary\steamapps\workshop\content\1158310\3518584623'
 )
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 $modRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
@@ -72,7 +74,7 @@ foreach ($file in $manifest.Files) {
 		}
 		$lines[$i] = $change.After + $lines[$i].Substring($before.Length)
 	}
-	if ([string]::Concat($lines) -cne [IO.File]::ReadAllText($destination, $utf8)) { throw "Unrecorded changes: $destination" }
+	if ([RepositoryText]::Normalize([string]::Concat($lines)) -cne [IO.File]::ReadAllText($destination, $utf8)) { throw "Unrecorded changes: $destination" }
 }
 if ($continuations -ne 2 -or $manifest.JoinedDescriptions -ne 2) { throw 'Expected two complete Joffrey repairs.' }
 

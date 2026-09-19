@@ -2,6 +2,8 @@ param(
 	[string]$GamePath = 'E:\SteamLibrary\steamapps\common\Crusader Kings III\game',
 	[string]$ModPath
 )
+. (Join-Path $PSScriptRoot 'RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 
@@ -118,7 +120,7 @@ foreach ($specification in $specifications) {
 
 	$outputPath = Join-Path $ModPath (Join-Path 'events' $specification.File)
 	[IO.Directory]::CreateDirectory((Split-Path -Parent $outputPath)) | Out-Null
-	[IO.File]::WriteAllText($outputPath, $generated, [Text.UTF8Encoding]::new($hasUtf8Bom))
+	[RepositoryText]::WriteAllText($outputPath, $generated, [Text.UTF8Encoding]::new($hasUtf8Bom))
 
 	$sourceHash = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash
 	Write-Output "Generated $outputPath from $sourcePath (source SHA256: $sourceHash)"

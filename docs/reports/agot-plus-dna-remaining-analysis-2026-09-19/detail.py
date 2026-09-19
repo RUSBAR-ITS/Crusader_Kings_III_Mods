@@ -50,5 +50,5 @@ for path,keys in sources:
         if b.key in keys:
             line=txt.count('\n',0,b.start)+1
             pieces.append(f'FILE {path}\nSHA256 {d.sha(path)}\nLINE {line}\n{b.body(txt)}\n')
-(OUT/'definition-evidence.txt').write_text('\n'.join(pieces),encoding='utf-8')
+(OUT/'definition-evidence.txt').write_text('\n'.join(pieces),encoding='utf-8', newline='\n')
 print('evidence blocks',len(pieces))

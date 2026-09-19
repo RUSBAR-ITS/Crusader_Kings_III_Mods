@@ -1,3 +1,5 @@
+
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
 # Loaded after the common parser and regression tests. These are source/contract
 # checks plus a limited model of crown creation, not execution of CK3 artifacts.
 $s6File='common/scripted_effects/asoiaf_scripted_effects_artifacts.txt'
@@ -167,7 +169,7 @@ foreach($name in $s6Crowns){
 $null=Get-ScriptBlock $s6Culture 'westerman_main'
 if((Clear-ScriptText $s6Culture) -match '(?m)^westerman\s*='){throw 'Obsolete westerman culture returned; review the modifier migration'}
 $s6ModifierFile='common/modifiers/asoiaf_artifact_modifiers.txt'
-$s6OldModifier=[IO.File]::ReadAllText((Join-Path $MainPath $s6ModifierFile))
+$s6OldModifier=[RepositoryText]::Normalize([IO.File]::ReadAllText((Join-Path $MainPath $s6ModifierFile)))
 if((Read-Plus $s6ModifierFile) -cne $s6OldModifier.Replace('westerman_opinion = 20','westerman_main_opinion = 20')){throw 'Other artifact bonuses changed'}
 if((Clear-ScriptText $s6Modifiers) -notmatch '\bwesterman_main_opinion\s*='){throw 'Current AGOT does not corroborate the culture opinion key'}
 $s6Targets=@(Import-Csv -LiteralPath (Join-Path $modRoot 'docs/stage6-targeted-log-messages.csv'))
@@ -180,6 +182,6 @@ $s6Result=[ordered]@{
  PreviousRegressionChecksPassed=$true;DragonBondingScenarios=($s5BirthCases+$s5YearCases+$s5ExtraCases)
  SourceHashes=$baseline.Count;ManifestSHA256=(Get-FileHash -LiteralPath (Join-Path $modRoot 'docs/source-manifest.json')).Hash
 }
-[IO.File]::WriteAllText((Join-Path $modRoot 'docs/stage6-validation.json'),($s6Result|ConvertTo-Json -Depth 8)+"`n",$utf8)
+[RepositoryText]::WriteAllText((Join-Path $modRoot 'docs/stage6-validation.json'),($s6Result|ConvertTo-Json -Depth 8)+"`n",$utf8)
 Write-Output "PASS: artifact contracts: 21 sword templates; six crown branches; $s6Cases crown creation scenarios; $($s6Calls.Count) effective calls; current culture opinion key."
 Write-Output 'PASS: artifact histories/claims/modifiers/visual choices preserved; only approved unused marker writes excluded; 49 historical diagnostic targets. CK3 runtime not exercised.'

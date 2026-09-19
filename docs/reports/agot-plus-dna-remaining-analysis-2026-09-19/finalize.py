@@ -42,7 +42,7 @@ for mod in a.mods:
 for r in d.rows(OUT/'author-reference-comparison.csv'):
     source_paths.add(str(a.files[r['DonorFile']][1]))
 pins={p:d.sha(p) for p in sorted(source_paths)}
-(OUT/'source-pins.json').write_text(json.dumps(pins,indent=2)+'\n',encoding='utf-8')
+(OUT/'source-pins.json').write_text(json.dumps(pins,indent=2)+'\n',encoding='utf-8', newline='\n')
 downloads=d.load(OUT/'historical/downloads.json')
 for name,meta in downloads.items():
     assert d.sha(OUT/'historical'/name).lower()==meta['SHA256'].lower(),name
@@ -53,5 +53,5 @@ result=dict(Messages=250,Presets=88,Methods=dict(Counter(r['Method'] for r in ma
  HistoricalGenesIdenticalToUncommentedCurrent=identical,RuntimeFilesChecked=len(runtime),RuntimeUnchanged=True,
  SourcePins=len(pins),HistoricalDownloadsVerified=len(downloads),GameExecuted=False,
  Note='Static evidence validation, not engine or visual validation')
-(OUT/'verification.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+(OUT/'verification.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8', newline='\n')
 print(json.dumps(result,indent=2))

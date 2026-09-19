@@ -1,4 +1,6 @@
 param([string]$BaseRussianPath='E:\SteamLibrary\steamapps\workshop\content\1158310\3041996936')
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 $ErrorActionPreference='Stop'
 $modRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $utf8=[Text.UTF8Encoding]::new($true,$true)
@@ -24,8 +26,8 @@ foreach($group in $repairs|Group-Object File){
 $manifest=@(foreach($item in $prepared){
     $path=Join-Path $modRoot $item.File
     [IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($path))|Out-Null
-    [IO.File]::WriteAllText($path,$item.Content,$utf8)
+    [RepositoryText]::WriteAllText($path,$item.Content,$utf8)
     [pscustomobject]@{Catalog='BaseRussian';File=$item.File;SourceSHA256=$item.SourceSHA256;PatchedSHA256=(Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash;Changes=$item.Changes}
 })
-[IO.File]::WriteAllText((Join-Path $modRoot 'docs/shadow-manifest.json'),(ConvertTo-Json -InputObject $manifest -Depth 7)+"`n",$utf8)
+[RepositoryText]::WriteAllText((Join-Path $modRoot 'docs/shadow-manifest.json'),(ConvertTo-Json -InputObject $manifest -Depth 7)+"`n",$utf8)
 Write-Output "Built $($manifest.Count) localization shadow with $($repairs.Count) audited base DI repairs."

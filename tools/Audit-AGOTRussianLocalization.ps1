@@ -4,6 +4,8 @@ param(
 	[string]$GamePath = 'E:\SteamLibrary\steamapps\common\Crusader Kings III\game',
 	[string]$OutputPath
 )
+. (Join-Path $PSScriptRoot 'RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 if ([string]::IsNullOrWhiteSpace($OutputPath)) {
@@ -118,10 +120,10 @@ $stats = [ordered]@{
 	Method='Case-sensitive declared-key comparison, including entries with missing closing quotes flagged in diagnostics. Duplicate definitions retained. Identical-text results match at least one source and translation definition; engine precedence and runtime references are not inferred.'
 }
 [IO.Directory]::CreateDirectory($OutputPath) | Out-Null
-$missing | Export-Csv -LiteralPath (Join-Path $OutputPath 'missing-from-translation.csv') -NoTypeInformation -Encoding UTF8
-$uncovered | Export-Csv -LiteralPath (Join-Path $OutputPath 'missing-russian.csv') -NoTypeInformation -Encoding UTF8
-$identical | Export-Csv -LiteralPath (Join-Path $OutputPath 'identical-text-review.csv') -NoTypeInformation -Encoding UTF8
-$proseCandidates | Export-Csv -LiteralPath (Join-Path $OutputPath 'english-prose-review.csv') -NoTypeInformation -Encoding UTF8
-$diagnostics | Export-Csv -LiteralPath (Join-Path $OutputPath 'diagnostics.csv') -NoTypeInformation -Encoding UTF8
-[IO.File]::WriteAllText((Join-Path $OutputPath 'summary.json'), ($stats | ConvertTo-Json -Depth 3), [Text.UTF8Encoding]::new($true))
+[RepositoryText]::WriteAllLines((Join-Path $OutputPath 'missing-from-translation.csv'), [string[]]@($missing | ConvertTo-Csv -NoTypeInformation), [Text.UTF8Encoding]::new($true))
+[RepositoryText]::WriteAllLines((Join-Path $OutputPath 'missing-russian.csv'), [string[]]@($uncovered | ConvertTo-Csv -NoTypeInformation), [Text.UTF8Encoding]::new($true))
+[RepositoryText]::WriteAllLines((Join-Path $OutputPath 'identical-text-review.csv'), [string[]]@($identical | ConvertTo-Csv -NoTypeInformation), [Text.UTF8Encoding]::new($true))
+[RepositoryText]::WriteAllLines((Join-Path $OutputPath 'english-prose-review.csv'), [string[]]@($proseCandidates | ConvertTo-Csv -NoTypeInformation), [Text.UTF8Encoding]::new($true))
+[RepositoryText]::WriteAllLines((Join-Path $OutputPath 'diagnostics.csv'), [string[]]@($diagnostics | ConvertTo-Csv -NoTypeInformation), [Text.UTF8Encoding]::new($true))
+[RepositoryText]::WriteAllText((Join-Path $OutputPath 'summary.json'), ($stats | ConvertTo-Json -Depth 3), [Text.UTF8Encoding]::new($true))
 $stats | ConvertTo-Json -Depth 3

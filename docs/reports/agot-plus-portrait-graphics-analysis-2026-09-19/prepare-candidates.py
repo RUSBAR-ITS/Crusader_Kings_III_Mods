@@ -284,8 +284,8 @@ for folder, rel in [('history/characters', 'history/characters/00_agot_char_stor
 for key, value in [('actions.json', actions), ('source-pins.json', pins), ('mesh-proof.json', meshproof),
                    ('duplicate-pairs.json', duplicate_pairs), ('unused-accessory-references.json', unused_hits),
                    ('candidate-files.json', candidate_files)]:
-    (OUT / key).write_text(json.dumps(value, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
-(OUT / 'candidate-text.patch').write_text('\n'.join(diff)+'\n', encoding='utf-8')
+    (OUT / key).write_text(json.dumps(value, ensure_ascii=False, indent=2)+'\n', encoding='utf-8', newline='\n')
+(OUT / 'candidate-text.patch').write_text('\n'.join(diff)+'\n', encoding='utf-8', newline='\n')
 result = dict(Status='CANDIDATES_VERIFIED_NOT_INSTALLED', BaselineRevision=10,
               Runtime69FilesUnchanged=True, CandidateTextFiles=len(bodies), CandidateBinaryFiles=1,
               ExactTextOccurrences=sum(a['Count'] for a in actions), Recipes=len(actions),
@@ -294,5 +294,5 @@ result = dict(Status='CANDIDATES_VERIFIED_NOT_INSTALLED', BaselineRevision=10,
               IdenticalResourcePairs=len(duplicate_pairs), BinaryBytesRemoved=8,
               SourcePins=len(pins), GameExecutionChecked=False, VisualEquivalenceClaimed=False,
               FourTextureWarningsRequireFreshLog=True)
-(OUT / 'validation.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n', encoding='utf-8')
+(OUT / 'validation.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n', encoding='utf-8', newline='\n')
 print(json.dumps(result,ensure_ascii=False,indent=2))

@@ -2,6 +2,8 @@ param(
 	[string]$MainModPath = 'E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032',
 	[string]$TranslationPath = 'E:\SteamLibrary\steamapps\workshop\content\1158310\2962803371'
 )
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 $modRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
@@ -101,7 +103,7 @@ $manifestFiles = [Collections.Generic.List[object]]::new()
 foreach ($output in $outputs) {
 	$destination = Join-Path $modRoot $output.File
 	[IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($destination)) | Out-Null
-	[IO.File]::WriteAllText($destination, $output.Content, $utf8)
+	[RepositoryText]::WriteAllText($destination, $output.Content, $utf8)
 	$manifestFiles.Add([pscustomobject]@{
 		Catalog=$output.Catalog; File=$output.File; SourceSHA256=$output.SourceSHA256
 		PatchedSHA256=(Get-FileHash -LiteralPath $destination -Algorithm SHA256).Hash; Changes=$output.Changes
@@ -114,5 +116,5 @@ $manifest = [ordered]@{
 	Files=@($manifestFiles.ToArray())
 }
 [IO.Directory]::CreateDirectory((Join-Path $modRoot 'docs')) | Out-Null
-[IO.File]::WriteAllText((Join-Path $modRoot 'docs/source-manifest.json'), ($manifest | ConvertTo-Json -Depth 8) + "`n", $utf8)
+[RepositoryText]::WriteAllText((Join-Path $modRoot 'docs/source-manifest.json'), ($manifest | ConvertTo-Json -Depth 8) + "`n", $utf8)
 Write-Output "Built $($outputs.Count) upstream file shadows, $($seenRepairs.Count) quote repairs, $($seenRuntimeRepairs.Count) runtime repairs, $($patch.Count) overlay keys."

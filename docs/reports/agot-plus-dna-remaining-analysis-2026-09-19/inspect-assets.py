@@ -53,4 +53,4 @@ for sex in ('male','female'):
             BoneCount=len(old),MissingBones=sorted(set(old)-set(bones)),
             AnimationBoneProperties=old,SampleArrays={k:len(v) for n in nodes(parsed) if n['name']=='samples' for k,v in n['props'].items()}))
         print(anim.name,'bones',len(old),'missing',len(set(old)-set(bones)), 'info',report[-1]['Info'])
-(OUT/'animation-structure.json').write_text(json.dumps(report,indent=2)+'\n')
+(OUT/'animation-structure.json').write_text(json.dumps(report,indent=2)+'\n', newline='\n')

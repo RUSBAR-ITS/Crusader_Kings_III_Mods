@@ -4,6 +4,8 @@ param(
 
     [string]$ModPath
 )
+. (Join-Path $PSScriptRoot 'RepositoryText.ps1')
+
 
 $ErrorActionPreference = 'Stop'
 
@@ -302,6 +304,6 @@ foreach ($triggerFile in $triggerFiles) {
     }
 
     $content = ($output -join "`r`n").TrimEnd() + "`r`n"
-    [IO.File]::WriteAllText($targetPath, $content, $utf8WithBom)
+    [RepositoryText]::WriteAllText($targetPath, $content, $utf8WithBom)
     Write-Output "Updated $triggerFile ($($buildingIds.Count) building tiers)."
 }

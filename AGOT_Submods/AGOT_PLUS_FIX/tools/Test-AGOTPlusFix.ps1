@@ -2,6 +2,7 @@ param(
     [string]$MainPath='E:\SteamLibrary\steamapps\workshop\content\1158310\2950245430',
     [string]$AgotPath='E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032'
 )
+. (Join-Path $PSScriptRoot '../../../tools/RepositoryText.ps1')
 $ErrorActionPreference='Stop'
 . (Join-Path $PSScriptRoot 'NativeFiles.ps1')
 $modRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
@@ -15,6 +16,7 @@ $binaryFixes=Get-Content -LiteralPath (Join-Path $modRoot 'docs/binary-fixes.jso
 function Read-Plus([string]$File){[IO.File]::ReadAllText((Get-NativePath (Join-Path $modRoot $File)),$utf8)}
 function Read-Agot([string]$File){[IO.File]::ReadAllText((Join-Path $AgotPath $File),$utf8)}
 function Clear-ScriptText([string]$Text){
+    $Text=[RepositoryText]::Normalize($Text)
     [regex]::Replace($Text,'"(?:\\.|[^"\\])*"|#[^\r\n]*',{param($m) if($m.Value.StartsWith('#')){''}else{'""'}})
 }
 function Get-ScriptBlock([string]$Text,[string]$Key){
@@ -62,9 +64,11 @@ foreach($item in $manifest.Files){
     }
     if($item.Kind -eq 'Addition'){
         $addition=@($additions|Where-Object File -CEQ $item.File)
-        if($addition.Count -ne 1 -or (Read-Plus $item.File) -cne $addition[0].Text){throw "Unrecorded addition: $($item.File)"}
+        if($addition.Count -ne 1){throw "Unexpected addition count: $($item.File)"}
+        $additionText=[RepositoryText]::Normalize($addition[0].Text)
+        if((Read-Plus $item.File) -cne $additionText){throw "Unrecorded addition: $($item.File)"}
         $encoding=[Text.UTF8Encoding]::new($addition[0].UTF8BOM,$true)
-        [byte[]]$expectedBytes=$encoding.GetPreamble()+$encoding.GetBytes($addition[0].Text)
+        [byte[]]$expectedBytes=$encoding.GetPreamble()+$encoding.GetBytes($additionText)
         if([Convert]::ToBase64String($expectedBytes) -cne [Convert]::ToBase64String([IO.File]::ReadAllBytes($path))){throw "Addition encoding changed: $($item.File)"}
         if((Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash -cne $item.PatchedSHA256){throw "Addition manifest mismatch: $($item.File)"}
         if($item.File.EndsWith('.txt')){Test-Braces $addition[0].Text $item.File}
@@ -87,6 +91,9 @@ foreach($item in $manifest.Files){
         $expected=$expected.Replace($fix.Before,$fix.After)
         $applied+=$fix.ExpectedCount
     }
+    # Recipes match the byte-pinned upstream spelling first; normalize only
+    # the completed output, just as the builder's text writer does.
+    $expected=[RepositoryText]::Normalize($expected)
     $actual=Read-Plus $item.File
     if($actual -cne $expected){throw "Unrecorded edit in $($item.File)"}
     if((Get-NativeSHA256 $path) -cne $item.PatchedSHA256 -or (Get-NativeSHA256 $source) -cne $item.SourceSHA256){throw 'Source/output manifest hash mismatch.'}
