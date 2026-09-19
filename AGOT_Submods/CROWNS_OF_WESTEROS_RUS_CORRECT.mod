@@ -9,4 +9,4 @@ dependencies={
     "AGOT - Crowns of Westeros"
     "AGOT - Crowns of Westeros - Русификация"
 }
-path="D:/RUSBAR/YandexDisk/PC RUSBAR-PC/Yandex Drive/Work/Rusbar IT Services/Repositories/Crusader_Kings_III_Mods/AGOT_Submods/Crowns_of_Westeros_RUS_CORRECT"
+path="D:/Repos/Crusader_Kings_III_Mods/AGOT_Submods/Crowns_of_Westeros_RUS_CORRECT"

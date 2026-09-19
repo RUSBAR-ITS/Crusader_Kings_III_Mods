@@ -8,4 +8,4 @@ dependencies={
     "Divine Intervention Cheat Menu"
     "Divine Intervention AGOT Cheat Menu"
 }
-path="D:/RUSBAR/YandexDisk/PC RUSBAR-PC/Yandex Drive/Work/Rusbar IT Services/Repositories/Crusader_Kings_III_Mods/AGOT_Submods/Divine_Intervention_AGOT_RUS"
+path="D:/Repos/Crusader_Kings_III_Mods/AGOT_Submods/Divine_Intervention_AGOT_RUS"

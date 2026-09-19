@@ -9,4 +9,4 @@ dependencies={
     "Legacy Of The Dragon"
     "Legacy Of The Dragon - Русификация"
 }
-path="D:/RUSBAR/YandexDisk/PC RUSBAR-PC/Yandex Drive/Work/Rusbar IT Services/Repositories/Crusader_Kings_III_Mods/AGOT_Submods/Legacy_Of_The_Dragon_RUS_CORRECT"
+path="D:/Repos/Crusader_Kings_III_Mods/AGOT_Submods/Legacy_Of_The_Dragon_RUS_CORRECT"

@@ -9,4 +9,4 @@ dependencies={
     "COW-AGOT: 3D Models & Bigger Castles"
     "COW-AGOT: 3D Models & Bigger Castles rus"
 }
-path="D:/RUSBAR/YandexDisk/PC RUSBAR-PC/Yandex Drive/Work/Rusbar IT Services/Repositories/Crusader_Kings_III_Mods/AGOT_Submods/COW_AGOT_RUS_CORRECT"
+path="D:/Repos/Crusader_Kings_III_Mods/AGOT_Submods/COW_AGOT_RUS_CORRECT"
