@@ -13,6 +13,8 @@ $fixes=Get-Content -LiteralPath (Join-Path $modRoot 'docs/fixes.json') -Raw -Enc
 $additions=Get-Content -LiteralPath (Join-Path $modRoot 'docs/additions.json') -Raw -Encoding UTF8|ConvertFrom-Json
 $manifest=Get-Content -LiteralPath (Join-Path $modRoot 'docs/source-manifest.json') -Raw -Encoding UTF8|ConvertFrom-Json
 $binaryFixes=Get-Content -LiteralPath (Join-Path $modRoot 'docs/binary-fixes.json') -Raw -Encoding UTF8|ConvertFrom-Json
+$uvFixes=Get-Content -LiteralPath (Join-Path $modRoot 'docs/uv-fixes.json') -Raw -Encoding UTF8|ConvertFrom-Json
+$binaryFixes=@($binaryFixes)+@($uvFixes)
 function Read-Plus([string]$File){[IO.File]::ReadAllText((Get-NativePath (Join-Path $modRoot $File)),$utf8)}
 function Read-Agot([string]$File){[IO.File]::ReadAllText((Join-Path $AgotPath $File),$utf8)}
 function Clear-ScriptText([string]$Text){
@@ -44,8 +46,9 @@ foreach($source in $baseline){
     $path=Join-Path $roots[$source.Catalog] $source.File
     if((Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash -cne $source.SHA256){throw "Upstream file changed: $path"}
 }
-$currentPlan=Get-Content -LiteralPath (Join-Path $modRoot 'docs/stage12-plan.json') -Raw -Encoding UTF8|ConvertFrom-Json
-if($manifest.Revision -ne 12 -or $manifest.Files.Count -ne ($currentPlan.Shadows+$currentPlan.Additions) -or $manifest.ShadowFiles -ne $currentPlan.Shadows -or $manifest.AddedFiles -ne $currentPlan.Additions -or $manifest.FixGroups -ne $currentPlan.FixGroups -or $manifest.ReplacementOccurrences -ne $currentPlan.Occurrences -or $fixes.Count -ne $currentPlan.Rules -or $manifest.BinaryShadowFiles -ne 1 -or $manifest.BinaryBytesRemoved -ne 8){throw 'Unexpected stage-twelve repair inventory.'}
+$currentPlan=Get-Content -LiteralPath (Join-Path $modRoot 'docs/stage15-plan.json') -Raw -Encoding UTF8|ConvertFrom-Json
+$uvPlan=Get-Content -LiteralPath (Join-Path $modRoot 'docs/stage13-plan.json') -Raw -Encoding UTF8|ConvertFrom-Json
+if($manifest.Revision -ne 15 -or $manifest.Files.Count -ne $currentPlan.RuntimeFiles -or $manifest.ShadowFiles -ne $currentPlan.Shadows -or $manifest.AddedFiles -ne $currentPlan.Additions -or $manifest.FixGroups -ne $currentPlan.FixGroups -or $manifest.ReplacementOccurrences -ne $currentPlan.Occurrences -or $fixes.Count -ne $currentPlan.Rules -or $manifest.BinaryShadowFiles -ne $uvPlan.BinaryShadows -or $manifest.BinaryBytesRemoved -ne (8+$uvPlan.UVBytesRemoved)){throw 'Unexpected stage-fifteen repair inventory.'}
 $nativeRoot=Get-NativePath $modRoot
 $packaged=@(foreach($dir in @('common','gfx','events','localization','history')){[IO.Directory]::EnumerateFiles((Get-NativePath (Join-Path $modRoot $dir)),'*',[IO.SearchOption]::AllDirectories)|ForEach-Object {$_.Substring($nativeRoot.Length+1).Replace('\','/')}})
 if((($packaged|Sort-Object)-join '|') -cne (($manifest.Files.File|Sort-Object)-join '|')){throw 'Unexpected runtime files in package.'}
@@ -147,7 +150,11 @@ foreach($id in @('asoiaf_kingsguard','asoiaf_gold_cloak','asoiaf_gold_cloak_comm
 }
 $descriptor=Read-Plus 'descriptor.mod'
 $external=[IO.File]::ReadAllText((Join-Path $modRoot '../AGOT_PLUS_FIX.mod'),$utf8)
-if($descriptor -match '\breplace_path\s*=' -or $external -match '\breplace_path\s*='){throw 'Patch must not discard upstream directories.'}
+# Stage14 validates the sole allowed leaf exclusion and every excluded file.
+& python (Join-Path $PSScriptRoot 'Crowns-Stage15.py') check
+if($LASTEXITCODE -ne 0){throw 'Stage-fifteen crown grant contract failed.'}
+& python (Join-Path $PSScriptRoot 'Remaining-Stage14.py') check
+if($LASTEXITCODE -ne 0){throw 'Stage-fourteen repair or descriptor contract failed.'}
 $path=[regex]::Match($external,'(?m)^path="([^"]+)"').Groups[1].Value
 if([IO.Path]::GetFullPath($path) -ine $modRoot){throw 'External descriptor points to the wrong directory.'}
 . (Join-Path $PSScriptRoot 'Test-AGOTPlusFixStage2.ps1')
@@ -167,6 +174,8 @@ if($LASTEXITCODE -ne 0){throw 'Stage-ten DNA validation failed.'}
 if($LASTEXITCODE -ne 0){throw 'Stage-eleven portrait/model validation failed.'}
 & python (Join-Path $PSScriptRoot 'Variables-Stage12.py') check
 if($LASTEXITCODE -ne 0){throw 'Stage-twelve variable validation failed.'}
+& python (Join-Path $PSScriptRoot 'UV-Stage13.py') check
+if($LASTEXITCODE -ne 0){throw 'Stage-thirteen UV model validation failed.'}
 Write-Output "PASS: $($baseline.Count) source hashes; $($manifest.ShadowFiles) exact file shadows and $($manifest.AddedFiles) additions; $applied replacements in $($manifest.FixGroups) groups."
 Write-Output 'PASS: script braces and definition inventory; source/output bytes reconstruct exactly.'
 Write-Output 'PASS: real nickname, house, title, giant unit, dragon culture/faith and court role contracts.'

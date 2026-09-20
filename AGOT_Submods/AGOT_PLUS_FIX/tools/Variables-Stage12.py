@@ -273,7 +273,7 @@ def prepare():
 
 def sources():
     plan=d.load(DOC/'stage12-plan.json');mods=d.active_mods()
-    for p,h in plan['Sources'].items():assert d.sha(p)==h,('Stage12 source changed',p)
+    for p,h in plan['Sources'].items():assert d.sha(d.before_stage14_path(p))==h,('Stage12 source changed',p)
     for row in plan['Evidence']:assert d.sha(DOC/row['File'])==row['SHA256'],('Stage12 evidence changed',row['File'])
     print(f'PASS: {len(plan["Sources"])} stage-twelve source pins and {len(plan["Evidence"])} evidence hashes.')
     return plan,mods
@@ -281,11 +281,15 @@ def sources():
 
 def check():
     plan,mods=sources();manifest=d.load(DOC/'source-manifest.json')
-    assert manifest['Revision']==12 and len(manifest['Files'])==84
-    fixes=d.load(DOC/'fixes.json');prior=d.load(DOC/'stage12-before-fixes.json')
+    live_manifest=manifest
+    assert manifest['Revision'] in (12, 13, 14, 15)
+    if manifest['Revision'] in (14, 15): manifest=d.load(DOC/'stage14-before-manifest.json')
+    expected_files = 84 if manifest['Revision'] == 12 else d.load(DOC/'stage13-plan.json')['RuntimeFiles']
+    assert len(manifest['Files']) == expected_files
+    fixes=d.load(d.before_stage14_path(DOC/'fixes.json'));prior=d.load(DOC/'stage12-before-fixes.json')
     assert fixes[:745]==prior and len(fixes)==plan['Rules']
     for row in manifest['Files']:
-        assert d.sha(MOD/row['File'])==row['PatchedSHA256']
+        assert d.sha(d.before_stage14_path(MOD/row['File']))==row['PatchedSHA256']
         provider=None
         for mod in mods:
             if any(row['File']==rp or row['File'].startswith(rp.rstrip('/')+'/') for rp in mod['Replace']):provider=None
@@ -293,11 +297,11 @@ def check():
             if d.native(p).is_file():provider=p
         assert provider and provider.resolve()==(MOD/row['File']).resolve(),('Shadowed repair',row['File'])
     for row in plan['Files']:
-        assert d.sha(MOD/row['File'])==row['OutputSHA256']
+        assert d.sha(d.before_stage14_path(MOD/row['File']))==row['OutputSHA256']
         d.parse(d.read(MOD/row['File']))
     untouched=[r for r in plan['PreviousFiles'] if r['File'] not in plan['Archives']]
     assert len(untouched)==72
-    for row in untouched:assert d.sha(MOD/row['File'])==row['PatchedSHA256']
+    for row in untouched:assert d.sha(d.before_stage14_path(MOD/row['File']))==row['PatchedSHA256']
     for p,h in plan['ProtectedFiles'].items():assert d.sha(p)==h,('Unrelated user file changed',p)
     decisions=d.load(DOC/'stage12-decisions.json')
     for row in plan['Files']:
@@ -317,7 +321,7 @@ def check():
     expected=code(prior_text(assignment))
     for r in decisions:
         if r['Group']=='V05':expected=re.sub(r'\bset_global_variable\s*=\s*'+re.escape(r['Symbol'])+r'\b','',expected)
-    assert tokens(expected)==tokens(d.read(MOD/assignment)), 'Birth/identity logic changed beyond unused writes'
+    assert tokens(expected)==tokens(d.read(d.before_stage14_path(MOD/assignment))), 'Birth/identity logic changed beyond unused writes'
     overwrite='common/scripted_effects/asoiaf_agot_overwrite_effects.txt'
     expected=prior_text(overwrite).replace(full_block(prior_text(overwrite),'title:h_the_iron_throne'),'')
     actual=d.read(MOD/overwrite).replace('name = primary_color_grading','name = color_grading').replace('name = primary_color','name = color')
@@ -337,7 +341,8 @@ def check():
         hits=[x for x in support if x['Query']==key]
         assert len(hits)==1 and hits[0]['Text'].startswith(key+' = {')
     portrait_cases = portrait_contracts(plan)
-    result=dict(Revision=12,Status='PASS',RuntimeFiles=84,ChangedExistingFiles=10,NewShadows=2,
+    result=dict(Revision=12,Status='PASS',RuntimeFiles=84,ValidatedRuntimeRevision=live_manifest['Revision'],ArchivedStage14Delta=live_manifest['Revision'] in (14,15),
+                ValidatedRuntimeFiles=len(live_manifest['Files']),ChangedExistingFiles=10,NewShadows=2,
                 PreviousFilesUnchanged=72,Previous745RecipesUnchanged=True,Rules=plan['NewRules'],Occurrences=plan['NewOccurrences'],
                 TargetedMessages=130,UniqueSymbols=65,SharedLOTDMessagesDeferred=2,LOTDSourceUnchanged=True,
                 BirthIdentityAndDescendantLogicPreserved=True,DragonGenesAndJonCreationPreserved=True,ArtifactPayloadsPreserved=True,

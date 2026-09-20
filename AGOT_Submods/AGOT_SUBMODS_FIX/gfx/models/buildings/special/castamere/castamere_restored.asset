@@ -1,0 +1,146 @@
+pdxmesh = {
+	name = "castamere_restored_mesh"
+	file = "castamere_restored.mesh"
+	
+	
+	
+	meshsettings = {
+		name = "pallet"
+		index = 0
+		texture_diffuse = "building_pallet_diffuse.dds"
+		texture_normal = "usf_castamere_neutral_normal.dds"
+		texture_specular = "usf_castamere_neutral_properties.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+		shader = "standard_atlas"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	
+	
+	meshsettings = {
+		name = "lift"
+		index = 0
+		texture_diffuse = "building_lift_diffuse.dds"
+		texture_normal = "usf_castamere_neutral_normal.dds"
+		texture_specular = "usf_castamere_neutral_properties.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+		shader = "standard_atlas"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	
+
+	meshsettings = {
+		name = "roof"
+		index = 0
+		texture_diffuse = "building_special_the_eyrie_1_diffuse.dds"
+		texture_normal = "building_special_the_eyrie_1_normal.dds"
+		texture_specular = "building_special_the_eyrie_1_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	
+	meshsettings = {
+		name = "mountains"
+		index = 0
+		texture_diffuse = "castamere_rock_diffuse.dds"
+		texture_normal = "casterlyrock_rock_normal.dds"
+		texture_specular = "casterlyrock_rock_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "gold"
+		index = 0
+		texture_diffuse = "lannisport_lk_diffuse.dds"
+		texture_normal = "lannisport_lk_normal.dds"
+		texture_specular = "lannisport_lk_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "round_tower"
+		index = 0
+		texture_diffuse = "lannisport_lk_diffuse.dds"
+		texture_normal = "lannisport_lk_normal.dds"
+		texture_specular = "lannisport_lk_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "round_tower2"
+		index = 0
+		texture_diffuse = "lannisport_lk_diffuse.dds"
+		texture_normal = "lannisport_lk_normal.dds"
+		texture_specular = "lannisport_lk_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "square_tower"
+		index = 0
+		texture_diffuse = "lannisport_lk_diffuse.dds"
+		texture_normal = "lannisport_lk_normal.dds"
+		texture_specular = "lannisport_lk_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "dock"
+		index = 0
+		texture_diffuse = "lannisport_lp_diffuse.dds"
+		texture_normal = "lannisport_lp_normal.dds"
+		texture_specular = "lannisport_lp_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	
+	meshsettings = {
+		name = "gold_tower"
+		index = 0
+		texture_diffuse = "lannisport_dg_diffuse.dds"
+		texture_normal = "lannisport_dg_normal.dds"
+		texture_specular = "lannisport_dg_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	
+	meshsettings = {
+		name = "square_tower2"
+		index = 0
+		texture_diffuse = "casterlyrock_castle_diffuse.dds"
+		texture_normal = "casterlyrock_castle_normal.dds"
+		texture_specular = "casterlyrock_castle_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	
+	meshsettings = {
+		name = "windmill"
+		index = 0
+		texture_diffuse = "building_windmill_diffuse.dds"
+		texture_normal = "usf_castamere_neutral_normal.dds"
+		texture_specular = "usf_castamere_neutral_properties.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+		shader = "standard_atlas"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	
+	meshsettings = {
+		name = "mapitems_barrow_whole_1Shape"
+		index = 0
+		texture_diffuse = "mapitems_barrow_whole_1_diffuse.dds"
+		texture_normal = "mapitems_barrow_whole_1_normal.dds"
+		texture_specular = "mapitems_barrow_whole_1_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "castamere_restored_entity"
+	pdxmesh = "castamere_restored_mesh"
+}

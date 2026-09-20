@@ -1,0 +1,5 @@
+{
+  "ERA_SEL_SGI": "[Select_CString( GreaterThanOrEqualTo_int32( GameSetup.GetSelectedBookmark.GetDate.GetYear, '(int32)8000' ), 'З.Э. ', Select_CString( GreaterThanOrEqualTo_int32( GameSetup.GetSelectedBookmark.GetDate.GetYear, '(int32)7898' ), 'Р.В. ', 'Д.Р. ' ) )]",
+  "ERA_SEL_SR": "[Select_CString( GreaterThanOrEqualTo_int32( GameSetup.GetSelectedBookmark.GetDate.GetYear, '(int32)8000' ), 'З.Э. ', Select_CString( GreaterThanOrEqualTo_int32( GameSetup.GetSelectedBookmark.GetDate.GetYear, '(int32)7898' ), 'Р.В. ', 'Д.Р. ' ) )]",
+  "ERA_SEL_BSD": "[Select_CString( GreaterThanOrEqualTo_int32( GameSetup.GetSelectedDate.GetYear, '(int32)8000' ), 'З.Э. ', Select_CString( GreaterThanOrEqualTo_int32( GameSetup.GetSelectedDate.GetYear, '(int32)7898' ), 'Р.В. ', 'Д.Р. ' ) )]"
+}

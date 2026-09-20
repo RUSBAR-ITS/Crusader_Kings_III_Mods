@@ -1,0 +1,14 @@
+version="1.0.0"
+tags={
+	"Graphics"
+	"Gameplay"
+	"Portraits"
+	"Balance"
+	"Fixes"
+	"Submod"
+}
+name="AGOT+"
+picture="thumbnail.png"
+supported_version="1.19.0.6"
+path="E:/SteamLibrary/steamapps/workshop/content/1158310/2950245430"
+remote_file_id="2950245430"

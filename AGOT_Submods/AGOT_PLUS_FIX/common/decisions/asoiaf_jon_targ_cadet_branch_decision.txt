@@ -1,0 +1,170 @@
+﻿asoiaf_jon_targ_cadet_branch_decision = {
+	ai_check_interval = 0 # Player-only: the authored AI weight is zero.
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+
+	desc = asoiaf_jon_targ_cadet_branch_desc
+	selection_tooltip = asoiaf_jon_targ_cadet_branch_tooltip
+
+	cooldown = { years = 0 }
+	
+	sort_order = 100
+	
+	cost = {
+		prestige = 500
+	}
+	
+	is_shown = {
+		AND = {
+			root = character:Stark_7 #Jon Snow
+			character:Stark_7.dynasty = dynasty:dynn_Targaryen
+			NOT = { character:Stark_7.house = house:house_Targaryen_Jon }
+		}
+	}
+	
+	is_valid = {
+		always = yes
+	}
+	
+	#ai_goal = yes #If set, the AI will consider the decision a "goal" and consider it alongside major costs like title creation and holding construction. It will ignore ai_check_interval. Should only be used for things with such major costs that budgeting for it is important, as it is less performant than using a high ai_check_interval
+	#ai_check_frequency = 42 #How many months to go between each check of this decision. Has to be set, except if ai_goal = yes is set. An interval of 0 means the AI will never check this decision
+	#ai_potential = { #trigger whether the AI should look at it or not
+	#}
+	ai_will_do = { #Returns the % chance of executing executing the decision. 0 will never execute it, 100 will alwasy execute it
+		base = 0
+	}
+	
+	#EFFECTS OF CHOICES
+	effect = {
+		custom_tooltip = asoiaf_choosing_jon_targ_cadet_branch_tooltip
+		hidden_effect = {
+			house = { save_scope_as = asoiaf_founders_old_house }
+			set_house = house:house_Targaryen_Jon
+			trigger_event = { id = agot_coa_events.1 }
+			dynasty = {
+				every_dynasty_member = {
+					limit = {
+						any_ancestor = { this = root }
+						house = scope:asoiaf_founders_old_house
+					}
+					set_house = house:house_Targaryen_Jon
+					trigger_event = { id = agot_coa_events.1 }
+				}
+			}
+			asoiaf_house_founding_bastard_effect = yes
+			
+			save_scope_as = new_head
+			house = { save_scope_as = new_house }
+			send_interface_toast = {
+				type = msg_created_new_house
+				title = created_cadet_branch_toast_new_house_desc
+				left_icon = scope:new_head
+				desc = created_cadet_branch_toast_new_house_other_tt
+			}
+		}
+	}
+}
+
+asoiaf_aegon_II_greens_cadet_branch_decision = {
+	ai_check_interval = 0 # Player-only: the authored AI weight is zero.
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+
+	desc = asoiaf_aegon_II_greens_cadet_branch_desc
+	selection_tooltip = asoiaf_aegon_II_greens_cadet_branch_tooltip
+
+	cooldown = { years = 0 }
+	
+	sort_order = 100
+	
+	cost = {
+		prestige = 500
+	}
+	
+	is_shown = {
+		AND = {
+			root = {
+				has_inactive_trait = asoiaf_Targaryen_65_trait #is Aegon II
+				has_character_flag = has_personal_coa #has his personal sigil already (otherwise the descriptions don't make sense)
+			}
+			NOT = { root.house = house:house_Targaryen_Aegon_II }
+		}
+	}
+	
+	is_valid = {
+		always = yes
+	}
+	
+	#ai_goal = yes #If set, the AI will consider the decision a "goal" and consider it alongside major costs like title creation and holding construction. It will ignore ai_check_interval. Should only be used for things with such major costs that budgeting for it is important, as it is less performant than using a high ai_check_interval
+	#ai_check_frequency = 42 #How many months to go between each check of this decision. Has to be set, except if ai_goal = yes is set. An interval of 0 means the AI will never check this decision
+	#ai_potential = { #trigger whether the AI should look at it or not
+	#}
+	ai_will_do = { #Returns the % chance of executing executing the decision. 0 will never execute it, 100 will alwasy execute it
+		base = 0
+	}
+	
+	#EFFECTS OF CHOICES
+	effect = {
+		custom_tooltip = asoiaf_choosing_aegon_II_greens_cadet_branch_tooltip
+		custom_tooltip = asoiaf_choosing_aegon_II_greens_cadet_branch_tooltip_2
+		hidden_effect = {
+			if = {
+				limit = { has_character_flag = has_personal_coa }
+				agot_prune_personal_coa = yes
+			}
+			house = { save_scope_as = asoiaf_founders_old_house }
+			set_house = house:house_Targaryen_Aegon_II
+			house:house_Targaryen_Aegon_II = { add_house_modifier = dragonrider_house_modifier }
+			dynasty = {
+				every_dynasty_member = {
+					limit = {
+						any_ancestor = {
+							this = root
+						}
+						house = scope:asoiaf_founders_old_house
+					}
+					set_house = house:house_Targaryen_Aegon_II
+					trigger_event = { id = agot_coa_events.1 }
+				}
+			}
+			trigger_event = { id = agot_coa_events.1 }
+			asoiaf_house_founding_bastard_effect = yes
+			
+			save_scope_as = new_head
+			house = { save_scope_as = new_house }
+			send_interface_toast = {
+				type = msg_created_new_house
+				title = created_cadet_branch_toast_new_house_desc
+				left_icon = scope:new_head
+				desc = created_cadet_branch_toast_new_house_other_tt
+			}
+			every_close_family_member = {
+				if = {
+					limit = {
+						dynasty = dynasty:dynn_Targaryen
+						father = { has_inactive_trait = asoiaf_Targaryen_60_trait } #Viserys
+						mother.dynasty = dynasty:dynn_Hightower
+					}
+					set_house = house:house_Targaryen_Aegon_II
+					trigger_event = { id = agot_coa_events.1 }
+					every_child = {
+						if = {
+							limit = { dynasty = dynasty:dynn_Targaryen }
+							set_house = house:house_Targaryen_Aegon_II
+							trigger_event = { id = agot_coa_events.1 }
+						}
+						every_child = {
+							if = {
+								limit = { dynasty = dynasty:dynn_Targaryen }
+								set_house = house:house_Targaryen_Aegon_II
+								trigger_event = { id = agot_coa_events.1 }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

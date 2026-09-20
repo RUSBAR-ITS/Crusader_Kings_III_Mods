@@ -1,0 +1,18 @@
+﻿# Current scope: the spawned character. No vanilla language IDs.
+usf_learn_four_available_languages_effect = {
+    save_scope_as = usf_language_student
+    while = {
+        count = 4
+        random_culture_global = {
+            limit = {
+                scope:usf_language_student = {
+                    NOT = { knows_language_of_culture = prev }
+                }
+            }
+            save_scope_as = usf_language_culture
+            scope:usf_language_student = {
+                learn_language_of_culture = scope:usf_language_culture
+            }
+        }
+    }
+}

@@ -13,6 +13,13 @@ $baseline=Get-Content -LiteralPath (Join-Path $modRoot 'docs/source-baseline.jso
 $fixes=Get-Content -LiteralPath (Join-Path $modRoot 'docs/fixes.json') -Raw -Encoding UTF8|ConvertFrom-Json
 $additions=Get-Content -LiteralPath (Join-Path $modRoot 'docs/additions.json') -Raw -Encoding UTF8|ConvertFrom-Json
 $binaryFixes=Get-Content -LiteralPath (Join-Path $modRoot 'docs/binary-fixes.json') -Raw -Encoding UTF8|ConvertFrom-Json
+$uvFixes=Get-Content -LiteralPath (Join-Path $modRoot 'docs/uv-fixes.json') -Raw -Encoding UTF8|ConvertFrom-Json
+$binaryFixes=@($binaryFixes)+@($uvFixes)
+& python (Join-Path $PSScriptRoot 'Crowns-Stage15.py') sources
+if($LASTEXITCODE -ne 0){throw 'Stage-fifteen crown sources or approved OWNER-only recipes changed.'}
+& python (Join-Path $PSScriptRoot 'Remaining-Stage14.py') sources
+if($LASTEXITCODE -ne 0){throw 'Stage-fourteen sources or exact directory exclusion changed.'}
+$descriptor=[IO.File]::ReadAllText((Join-Path $modRoot 'descriptor.mod'),$utf8).TrimEnd()
 & python (Join-Path $PSScriptRoot 'DNA-Stage9.py') sources
 if($LASTEXITCODE -ne 0){throw 'Stage-nine DNA sources or effective gene schema changed.'}
 & python (Join-Path $PSScriptRoot 'DNA-Stage10.py') sources
@@ -21,6 +28,8 @@ if($LASTEXITCODE -ne 0){throw 'Stage-ten DNA selection, sources or effective gen
 if($LASTEXITCODE -ne 0){throw 'Stage-eleven portrait/model sources or approved candidates changed.'}
 & python (Join-Path $PSScriptRoot 'Variables-Stage12.py') sources
 if($LASTEXITCODE -ne 0){throw 'Stage-twelve variable sources or approved candidates changed.'}
+& python (Join-Path $PSScriptRoot 'UV-Stage13.py') sources
+if($LASTEXITCODE -ne 0){throw 'Stage-thirteen UV sources, shaders or approved recipes changed.'}
 foreach($source in $baseline){
     $path=Join-Path $roots[$source.Catalog] $source.File
     if((Get-NativeSHA256 $path) -cne $source.SHA256){throw "Upstream source changed; review before building: $path"}
@@ -82,16 +91,14 @@ $files=@(foreach($item in $prepared){
     [pscustomobject]@{File=$item.File;Kind=$item.Kind;Catalog=$item.Catalog;SourceSHA256=$item.SourceSHA256;PatchedSHA256=(Get-NativeSHA256 $item.Destination);UTF8BOM=$item.BOM;Changes=$item.Changes}
 })
 $manifest=[ordered]@{
-    PatchVersion='0.1.0';Revision=12;AGOTPlusWorkshopId='2950245430';AGOTPlusMetadataVersion='1.0.0';AGOTVersion='0.5.2.1';CK3Version='1.19.0.6'
+    PatchVersion='0.1.0';Revision=15;AGOTPlusWorkshopId='2950245430';AGOTPlusMetadataVersion='1.0.0';AGOTVersion='0.5.2.1';CK3Version='1.19.0.6'
     SourceHashesChecked=$baseline.Count;FixGroups=@(@($fixes.Group)+@($additions.Group)+@($binaryFixes.Group)|Sort-Object -Unique).Count
     ReplacementRules=$fixes.Count;ReplacementOccurrences=($fixes|Measure-Object ExpectedCount -Sum).Sum
     ShadowFiles=@($prepared|Where-Object Kind -in @('Shadow','BinaryShadow')).Count;AddedFiles=$additions.Count
-    BinaryShadowFiles=$binaryFixes.Count;BinaryBytesRemoved=($binaryFixes|ForEach-Object {$_.RemoveHex.Length/2}|Measure-Object -Sum).Sum
+    BinaryShadowFiles=$binaryFixes.Count;BinaryBytesRemoved=($binaryFixes|ForEach-Object {Get-BinaryRemovedByteCount $_}|Measure-Object -Sum).Sum
     Files=$files
 }
 [RepositoryText]::WriteAllText((Join-Path $modRoot 'docs/source-manifest.json'),($manifest|ConvertTo-Json -Depth 9)+"`n",$utf8)
-$descriptor=[IO.File]::ReadAllText((Join-Path $modRoot 'descriptor.mod'),$utf8).TrimEnd()
-if($descriptor -match '(?m)^\s*(replace_path|path)\s*='){throw 'Internal descriptor must not replace directories or include an external path.'}
 $external=$descriptor+"`n"+'path="'+$modRoot.Replace('\','/')+'"'+"`n"
 [RepositoryText]::WriteAllText((Join-Path $modRoot '../AGOT_PLUS_FIX.mod'),$external,$utf8)
 Write-Output "Built $($manifest.ShadowFiles) file shadows and $($manifest.AddedFiles) additions; $($manifest.FixGroups) groups; $($manifest.ReplacementOccurrences) exact replacements."

@@ -1,0 +1,1528 @@
+[
+  {
+    "Label": "crowns_effects",
+    "Source": "E:/SteamLibrary/steamapps/workshop/content/1158310/2995674648/common/scripted_effects/00_ntc_scripted_effects_crowns.txt",
+    "SHA256": "c8c1f43f4e89af3f3bd24f6114147113741214e44a6d4809f48d9dd1691d6719",
+    "Bytes": 161009,
+    "Excerpts": [
+      {
+        "Line": 4469,
+        "Text": "\t\tdescription = gardener_war_crown_description"
+      },
+      {
+        "Line": 4470,
+        "Text": "\t\ttype = helmet"
+      },
+      {
+        "Line": 4471,
+        "Text": "\t\tvisuals = gardener_war_crown_visuals"
+      },
+      {
+        "Line": 4472,
+        "Text": "\t\twealth = scope:wealth"
+      },
+      {
+        "Line": 4473,
+        "Text": "\t\tquality = scope:quality"
+      },
+      {
+        "Line": 4474,
+        "Text": "\t\ttemplate = gardener_war_crown_template"
+      },
+      {
+        "Line": 4475,
+        "Text": "\t\thistory = {"
+      },
+      {
+        "Line": 4476,
+        "Text": "\t\t\ttype = created"
+      },
+      {
+        "Line": 4477,
+        "Text": "\t\t\tdate = 7692.1.8"
+      },
+      {
+        "Line": 4478,
+        "Text": "\t\t\trecipient = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 4479,
+        "Text": "\t\t\tlocation = province:3237"
+      },
+      {
+        "Line": 4480,
+        "Text": "\t\t}"
+      },
+      {
+        "Line": 4481,
+        "Text": "\t\tmodifier = gardener_war_crown_modifier"
+      },
+      {
+        "Line": 4482,
+        "Text": "\t\tsave_scope_as = newly_created_artifact"
+      },
+      {
+        "Line": 4483,
+        "Text": "\t\tdecaying = no"
+      },
+      {
+        "Line": 4484,
+        "Text": "\t}"
+      },
+      {
+        "Line": 4485,
+        "Text": ""
+      },
+      {
+        "Line": 4486,
+        "Text": "\tscope:newly_created_artifact = {"
+      },
+      {
+        "Line": 4487,
+        "Text": "\t\tset_variable = { name = crown_gardener_war_artifact value = yes }"
+      },
+      {
+        "Line": 4518,
+        "Text": "\t\tdescription = gardener_peace_crown_description"
+      },
+      {
+        "Line": 4519,
+        "Text": "\t\ttype = helmet"
+      },
+      {
+        "Line": 4520,
+        "Text": "\t\tvisuals = gardener_peace_crown_visuals"
+      },
+      {
+        "Line": 4521,
+        "Text": "\t\twealth = scope:wealth"
+      },
+      {
+        "Line": 4522,
+        "Text": "\t\tquality = scope:quality"
+      },
+      {
+        "Line": 4523,
+        "Text": "\t\ttemplate = gardener_peace_crown_template"
+      },
+      {
+        "Line": 4524,
+        "Text": "\t\thistory = {"
+      },
+      {
+        "Line": 4525,
+        "Text": "\t\t\ttype = created"
+      },
+      {
+        "Line": 4526,
+        "Text": "\t\t\tdate = 7692.1.8"
+      },
+      {
+        "Line": 4527,
+        "Text": "\t\t\trecipient = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 4528,
+        "Text": "\t\t\tlocation = province:3237"
+      },
+      {
+        "Line": 4529,
+        "Text": "\t\t}"
+      },
+      {
+        "Line": 4530,
+        "Text": "\t\tmodifier = gardener_peace_crown_modifier"
+      },
+      {
+        "Line": 4531,
+        "Text": "\t\tsave_scope_as = newly_created_artifact"
+      },
+      {
+        "Line": 4532,
+        "Text": "\t\tdecaying = no"
+      },
+      {
+        "Line": 4533,
+        "Text": "\t}"
+      },
+      {
+        "Line": 4534,
+        "Text": ""
+      },
+      {
+        "Line": 4535,
+        "Text": "\tscope:newly_created_artifact = {"
+      },
+      {
+        "Line": 4536,
+        "Text": "\t\tset_variable = { name = crown_gardener_peace_artifact value = yes }"
+      }
+    ]
+  },
+  {
+    "Label": "crowns_localization",
+    "Source": "E:/SteamLibrary/steamapps/workshop/content/1158310/2995674648/localization/replace/english/ntc_artifacts_l_english.yml",
+    "SHA256": "10757df99ab54fbadbe25bb6c93aa5e0f4695e8fa46a9ad0877761db2c1ed523",
+    "Bytes": 61607,
+    "Excerpts": [
+      {
+        "Line": 51,
+        "Text": " garthgoldhand_crown_description:0 \"A crown said to have once been owned by Garth Goldenhand, the greatest of the Gardener Kings of the Reach. Made of gold, silver, and old green bronze, it had multicolored jewels and four golden hands. \\n \\nHISTORY - Created for the legendary Garth Greenhand during the golden age of the Reach, this unique Gardener crown is notable for the fact it breaks from the Gardener crown tradition and lacks a war counterpart, being that it was forged during the Reach’s longest and biggest age of peace and prosperity before Aegon’s Conquest. \\n \\nThe crown tragically vanished at sea, along with its last wearer, King John III Gardener, when the king’s vessel shipwrecked off the Vale's coast whilst traveling amidst the Reach's then conflict with the Vale, leading John’s own son King Meryn IV to forge his own crown, a crown which centuries later would be worn by Mern IX Gardener, the final king of the Reach. \\n \\nSeparately but no less of note, the design of Garth Goldenhand’s crown, particularly the many multi-colored emeralds it possessed, was said to have reportedly inspired King Jaehaerys I Targaryen when forging the design of his own crown.\""
+      },
+      {
+        "Line": 54,
+        "Text": " gardener_war_crown_description:0 \"A replica of the war crown worn by King Mern IX Gardener of the Reach at the time of his death in the Field of Fire. Made from bronze, iron, and surrounded by dark thorns and red-gold metal flowers, and encircled by metal thorny bronze and iron leaves, this crown was worn by the King of the Reach during times of War. \\n \\nHISTORY - Though it is today known as the Mern Gardener War crown due to the last king who wore it, it was actually forged centuries earlier during the reign of King Mern's ancestor King Meryn IV Gardener, who would go on to be the first to wear the crown following the loss of Garth Goldenhand's crown. \\n \\nWorn on King Mern's head at the battle that would end with his death, it was melted and destroyed during the Field of Fire by the flames of the dragons Balerion, Meraxes, and Vhagar.\""
+      },
+      {
+        "Line": 57,
+        "Text": " gardener_peace_crown_description:0 \"The peace crown worn by King Mern IX Gardener of the Reach at the time of his death in the Field of Fire. Made from silver and gold and surrounded by green thorns and gold, bronze, silver, and iron metal flowers, and encircled by metal green hands to symolize House Gardener, this crown was worn by the King of the Reach during times of Peace. \\n \\nHISTORY - Though it is today known as the Mern Gardener Peace crown due to the last king who wore it, it was actually forged centuries earlier during the reign of King Mern's ancestor King Meryn IV Gardener, who would go on to be the first to wear the crown following the loss of Garth Goldenhand's crown. \\n \\nThe crown would accompy King Mern to the battle that would end with his death, for he intended to wear it upon the defeat of the Targaryen invaders. Yet unlike its war counterpart, it managed to avoid being destroyed during the Field of Fire by the flames of the dragons Balerion, Meraxes, and Vhagar. After the battle it was retrieved by King Aegon I and added to the collection of Westerosi King artifacts he had collected.\""
+      }
+    ]
+  },
+  {
+    "Label": "crowns_start",
+    "Source": "E:/SteamLibrary/steamapps/workshop/content/1158310/2995674648/common/scripted_effects/00_ntc_startdate_crown_spawn.txt",
+    "SHA256": "b100bd8279155a59064ebd3fdf7225af5089cdc088a27a9c2db36e4d13e4451b",
+    "Bytes": 12000,
+    "Excerpts": [
+      {
+        "Line": 232,
+        "Text": "}"
+      },
+      {
+        "Line": 233,
+        "Text": ""
+      },
+      {
+        "Line": 234,
+        "Text": "ntc_tyrell_crown_shattered_spawn.1 = {"
+      },
+      {
+        "Line": 235,
+        "Text": "\ttitle:e_the_reach.holder = {"
+      },
+      {
+        "Line": 236,
+        "Text": "\t\tif = {"
+      },
+      {
+        "Line": 237,
+        "Text": "\t\t\tlimit = {"
+      },
+      {
+        "Line": 238,
+        "Text": "\t\t\t\thas_game_rule = show_dynamic_crowns_enabled"
+      },
+      {
+        "Line": 239,
+        "Text": "\t\t\t}"
+      },
+      {
+        "Line": 240,
+        "Text": "\t\t\tcreate_artifact_gardener_peace_crown_effect = { OWNER = this }"
+      },
+      {
+        "Line": 241,
+        "Text": "\t\t\tcreate_artifact_gardener_war_crown_effect = { OWNER = this }"
+      },
+      {
+        "Line": 242,
+        "Text": "\t\t}"
+      },
+      {
+        "Line": 243,
+        "Text": "\t\tif = {"
+      },
+      {
+        "Line": 244,
+        "Text": "\t\t\tlimit = {"
+      },
+      {
+        "Line": 245,
+        "Text": "\t\t\t\tdynasty ?= dynasty:dynn_Tyrell"
+      },
+      {
+        "Line": 246,
+        "Text": "\t\t\t}"
+      },
+      {
+        "Line": 247,
+        "Text": "\t\t\tagot_create_artifact_reach_crown_effect = { OWNER = this CREATOR = scope:owner}"
+      },
+      {
+        "Line": 248,
+        "Text": "\t\t}"
+      },
+      {
+        "Line": 249,
+        "Text": "\t}"
+      }
+    ]
+  },
+  {
+    "Label": "crowns_decisions",
+    "Source": "E:/SteamLibrary/steamapps/workshop/content/1158310/2995674648/common/decisions/agot_decisions/00_ntc_artifact_decisions.txt",
+    "SHA256": "517097ac17ad5d3700d8fe2b5c5752cf3a49ad33ee632ea8e7e91997b5eb7321",
+    "Bytes": 16900,
+    "Excerpts": [
+      {
+        "Line": 253,
+        "Text": "\t\tagot_create_artifact_westerlands2_crown_historic_effect = { OWNER = this }"
+      },
+      {
+        "Line": 254,
+        "Text": "\t\tagot_create_artifact_crown_of_winter_historic_effect = { OWNER = this }"
+      },
+      {
+        "Line": 255,
+        "Text": "\t\tagot_create_artifact_falcon_crown_historic_effect = { OWNER = this }"
+      },
+      {
+        "Line": 256,
+        "Text": "\t\tagot_create_artifact_stormlands_crown_historic_effect = { OWNER = this }"
+      },
+      {
+        "Line": 257,
+        "Text": "\t\tcreate_artifact_gardener_peace_crown_effect = { OWNER = this }"
+      },
+      {
+        "Line": 258,
+        "Text": "\t}"
+      },
+      {
+        "Line": 259,
+        "Text": ""
+      },
+      {
+        "Line": 260,
+        "Text": "\tcost = { prestige = 250 }"
+      },
+      {
+        "Line": 261,
+        "Text": ""
+      },
+      {
+        "Line": 354,
+        "Text": "\t\t# create_artifact_aenysblackfyre_crown_effect = { OWNER = this CREATOR = scope:owner}"
+      },
+      {
+        "Line": 355,
+        "Text": "\t\t# create_artifact_maelysblackfyre_crown_effect = { OWNER = this CREATOR = scope:owner}"
+      },
+      {
+        "Line": 356,
+        "Text": "\t\t# create_artifact_garlandgardener_crown_effect = { OWNER = this CREATOR = scope:owner}"
+      },
+      {
+        "Line": 357,
+        "Text": "\t\t# create_artifact_garthgoldhand_crown_effect = { OWNER = this CREATOR = scope:owner}"
+      },
+      {
+        "Line": 358,
+        "Text": "\t\t# create_artifact_gardener_war_crown_effect = { OWNER = this }"
+      },
+      {
+        "Line": 359,
+        "Text": "\t\t# create_artifact_gardener_peace_crown_effect = { OWNER = this }"
+      },
+      {
+        "Line": 360,
+        "Text": "\t\t# create_artifact_crown_of_the_iron_throne_effect = { OWNER = this CREATOR = scope:owner}"
+      },
+      {
+        "Line": 361,
+        "Text": "\t\t# create_artifact_crown_of_the_red_keep_effect = { OWNER = this CREATOR = scope:owner}"
+      },
+      {
+        "Line": 362,
+        "Text": "\t\t# create_artifact_crown_of_oldtown_tall_effect = { OWNER = this CREATOR = scope:owner}"
+      },
+      {
+        "Line": 363,
+        "Text": "\t\t# create_artifact_crown_of_oldtown_effect = { OWNER = this CREATOR = scope:owner}"
+      }
+    ]
+  },
+  {
+    "Label": "core_portraits",
+    "Source": "E:/SteamLibrary/steamapps/workshop/content/1158310/3034473189/gfx/portraits/portrait_modifiers/01_headgear_base.txt",
+    "SHA256": "ff4eaa13dc3b5fbfe2bd5d5abdcf7b195dca75e265cf685a79f78b0175493523",
+    "Bytes": 204018,
+    "Excerpts": [
+      {
+        "Line": 8873,
+        "Text": "\t\t\t\tNOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = crown_gardener_peace_artifact } }"
+      },
+      {
+        "Line": 8874,
+        "Text": "\t\t\t\tOR = {"
+      },
+      {
+        "Line": 8875,
+        "Text": "\t\t\t\t\t# AND = {"
+      },
+      {
+        "Line": 8876,
+        "Text": "\t\t\t\t\t# \texists = character:Gardener_75"
+      },
+      {
+        "Line": 8877,
+        "Text": "\t\t\t\t\t# \tthis = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 8878,
+        "Text": "\t\t\t\t\t# }"
+      },
+      {
+        "Line": 8879,
+        "Text": "\t\t\t\t\tAND = {"
+      },
+      {
+        "Line": 8880,
+        "Text": "\t\t\t\t\t\texists = character:Gardener_77"
+      },
+      {
+        "Line": 8931,
+        "Text": "\t\t\t\tNOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = crown_gardener_war_artifact }}"
+      },
+      {
+        "Line": 8932,
+        "Text": "\t\t\t\tOR = {"
+      },
+      {
+        "Line": 8933,
+        "Text": "\t\t\t\t\t# AND = {"
+      },
+      {
+        "Line": 8934,
+        "Text": "\t\t\t\t\t# \texists = character:Gardener_75"
+      },
+      {
+        "Line": 8935,
+        "Text": "\t\t\t\t\t# \tthis = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 8936,
+        "Text": "\t\t\t\t\t# }"
+      },
+      {
+        "Line": 8937,
+        "Text": "\t\t\t\t\tAND = {"
+      },
+      {
+        "Line": 8938,
+        "Text": "\t\t\t\t\t\texists = character:Gardener_77"
+      }
+    ]
+  },
+  {
+    "Label": "agot_characters",
+    "Source": "E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/history/characters/00_agot_char_reach_ancestors.txt",
+    "SHA256": "c04086c8d2c265f4cbe02db29250515986be7e9e3dcf9a88d5765e58613f8a81",
+    "Bytes": 4091035,
+    "Excerpts": [
+      {
+        "Line": 1387,
+        "Text": "\tname = Gareth # III"
+      },
+      {
+        "Line": 1388,
+        "Text": "\tdynasty = dynn_Gardener"
+      },
+      {
+        "Line": 1389,
+        "Text": ""
+      },
+      {
+        "Line": 1390,
+        "Text": "\treligion = fots_seven"
+      },
+      {
+        "Line": 1391,
+        "Text": "\tculture = reachman"
+      },
+      {
+        "Line": 1392,
+        "Text": ""
+      },
+      {
+        "Line": 1393,
+        "Text": "\tfather = Gardener_71"
+      },
+      {
+        "Line": 1394,
+        "Text": ""
+      },
+      {
+        "Line": 1395,
+        "Text": "\t7253.1.1 = { birth = yes }"
+      },
+      {
+        "Line": 1396,
+        "Text": "\t7270.1.1 = { trait = knight }"
+      },
+      {
+        "Line": 1397,
+        "Text": "\t7312.1.1 = { death = yes }"
+      },
+      {
+        "Line": 1398,
+        "Text": "}"
+      },
+      {
+        "Line": 1399,
+        "Text": "Gardener_73 = {"
+      },
+      {
+        "Line": 1400,
+        "Text": "\tname = John # III"
+      },
+      {
+        "Line": 1401,
+        "Text": "\tdynasty = dynn_Gardener"
+      },
+      {
+        "Line": 1402,
+        "Text": ""
+      },
+      {
+        "Line": 1403,
+        "Text": "\treligion = fots_seven"
+      },
+      {
+        "Line": 1404,
+        "Text": "\tculture = reachman"
+      },
+      {
+        "Line": 1405,
+        "Text": ""
+      },
+      {
+        "Line": 1406,
+        "Text": "\tfather = Gardener_72"
+      },
+      {
+        "Line": 1407,
+        "Text": ""
+      },
+      {
+        "Line": 1408,
+        "Text": "\t7282.1.1 = { birth = yes }"
+      },
+      {
+        "Line": 1409,
+        "Text": "\t7298.1.1 = { trait = knight }"
+      },
+      {
+        "Line": 1410,
+        "Text": "\t7324.1.1 = { death = yes }"
+      },
+      {
+        "Line": 1411,
+        "Text": "}"
+      },
+      {
+        "Line": 1452,
+        "Text": ""
+      },
+      {
+        "Line": 1453,
+        "Text": "\tfather = Gardener_62"
+      },
+      {
+        "Line": 1454,
+        "Text": ""
+      },
+      {
+        "Line": 1455,
+        "Text": "\t7355.1.1 = {"
+      },
+      {
+        "Line": 1456,
+        "Text": "\t\tbirth = yes"
+      },
+      {
+        "Line": 1457,
+        "Text": "\t\tadd_character_flag = canon_status_canon"
+      },
+      {
+        "Line": 1458,
+        "Text": "\t}"
+      },
+      {
+        "Line": 1459,
+        "Text": "\t7375.1.1 = { trait = knight }"
+      },
+      {
+        "Line": 1460,
+        "Text": "\t7380.1.1 = { add_spouse = Peake_18 } # Myrielle Peake, daughter of Lorimar Peake"
+      },
+      {
+        "Line": 1461,
+        "Text": "\t7399.1.1 = { death = yes }"
+      },
+      {
+        "Line": 1462,
+        "Text": "}"
+      },
+      {
+        "Line": 1463,
+        "Text": "### Main Line"
+      },
+      {
+        "Line": 1464,
+        "Text": "Gardener_28 = {"
+      },
+      {
+        "Line": 1465,
+        "Text": "\tname = Line_of_Gwayne"
+      },
+      {
+        "Line": 1466,
+        "Text": "\tdynasty = dynn_Gardener"
+      },
+      {
+        "Line": 1467,
+        "Text": ""
+      },
+      {
+        "Line": 1468,
+        "Text": "\treligion = fots_seven"
+      },
+      {
+        "Line": 1469,
+        "Text": "\tculture = reachman"
+      },
+      {
+        "Line": 1470,
+        "Text": ""
+      },
+      {
+        "Line": 1471,
+        "Text": "\tfather = Gardener_63"
+      },
+      {
+        "Line": 1472,
+        "Text": "\tmother = Peake_18"
+      },
+      {
+        "Line": 1473,
+        "Text": ""
+      },
+      {
+        "Line": 1474,
+        "Text": "\ttrait = line_of_char"
+      },
+      {
+        "Line": 1475,
+        "Text": "\tdisallow_random_traits = yes"
+      },
+      {
+        "Line": 1476,
+        "Text": ""
+      },
+      {
+        "Line": 1477,
+        "Text": "\t7399.1.1 = { birth = yes }"
+      },
+      {
+        "Line": 1478,
+        "Text": "\t7780.1.1 = { death = yes }"
+      },
+      {
+        "Line": 1479,
+        "Text": "}"
+      },
+      {
+        "Line": 1480,
+        "Text": "Gardener_77 = {"
+      },
+      {
+        "Line": 1481,
+        "Text": "\tname = Mern # VII"
+      },
+      {
+        "Line": 1482,
+        "Text": "\tdynasty = dynn_Gardener"
+      },
+      {
+        "Line": 1483,
+        "Text": ""
+      },
+      {
+        "Line": 1484,
+        "Text": "\treligion = fots_seven"
+      },
+      {
+        "Line": 1485,
+        "Text": "\tculture = reachman"
+      },
+      {
+        "Line": 1486,
+        "Text": ""
+      },
+      {
+        "Line": 1487,
+        "Text": "\tfather = Gardener_28"
+      },
+      {
+        "Line": 1488,
+        "Text": ""
+      },
+      {
+        "Line": 1489,
+        "Text": "\t7780.1.1 = { birth = yes }"
+      },
+      {
+        "Line": 1490,
+        "Text": "\t7796.1.1 = { trait = knight }"
+      },
+      {
+        "Line": 1491,
+        "Text": "\t7826.1.1 = { death = yes }"
+      },
+      {
+        "Line": 1492,
+        "Text": "}"
+      }
+    ]
+  },
+  {
+    "Label": "agot_titles",
+    "Source": "E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/history/titles/agot_e_the_reach.txt",
+    "SHA256": "b6ca99c7a5c5a789435d38ceb2abf1b5664ef5c8e35cf75cf5bc7a493aceadc5",
+    "Bytes": 207640,
+    "Excerpts": [
+      {
+        "Line": 162,
+        "Text": "\t\tholder = Gardener_72 # Gareth III"
+      },
+      {
+        "Line": 163,
+        "Text": "\t}"
+      },
+      {
+        "Line": 164,
+        "Text": "\t7312.1.1 = {"
+      },
+      {
+        "Line": 165,
+        "Text": "\t\tholder = Gardener_73 # John III"
+      },
+      {
+        "Line": 166,
+        "Text": "\t}"
+      },
+      {
+        "Line": 167,
+        "Text": "\t7324.1.1 = {"
+      },
+      {
+        "Line": 168,
+        "Text": "\t\tholder = Gardener_61 # Greydon I"
+      },
+      {
+        "Line": 169,
+        "Text": "\t}"
+      },
+      {
+        "Line": 170,
+        "Text": "\t7341.1.1 = {"
+      },
+      {
+        "Line": 171,
+        "Text": "\t\tholder = Gardener_62 # Perceon III"
+      },
+      {
+        "Line": 172,
+        "Text": "\t}"
+      },
+      {
+        "Line": 173,
+        "Text": "\t7384.1.1 = {"
+      },
+      {
+        "Line": 174,
+        "Text": "\t\tholder = Gardener_63 # Gwayne VI"
+      },
+      {
+        "Line": 175,
+        "Text": "\t}"
+      },
+      {
+        "Line": 176,
+        "Text": "\t7780.1.1 = {"
+      },
+      {
+        "Line": 177,
+        "Text": "\t\tholder = Gardener_77 # Mern VII # Pre-Conquest era"
+      },
+      {
+        "Line": 178,
+        "Text": "\t}"
+      },
+      {
+        "Line": 179,
+        "Text": "\t7826.1.1 = {"
+      },
+      {
+        "Line": 180,
+        "Text": "\t\tholder = Gardener_79 # Gareth IV"
+      },
+      {
+        "Line": 424,
+        "Text": "\t\tholder = Gardener_72 # Gareth III"
+      },
+      {
+        "Line": 425,
+        "Text": "\t}"
+      },
+      {
+        "Line": 426,
+        "Text": "\t7312.1.1 = {"
+      },
+      {
+        "Line": 427,
+        "Text": "\t\tholder = Gardener_73 # John III"
+      },
+      {
+        "Line": 428,
+        "Text": "\t}"
+      },
+      {
+        "Line": 429,
+        "Text": "\t7324.1.1 = {"
+      },
+      {
+        "Line": 430,
+        "Text": "\t\tholder = Gardener_61 # Greydon I"
+      },
+      {
+        "Line": 431,
+        "Text": "\t}"
+      },
+      {
+        "Line": 432,
+        "Text": "\t7341.1.1 = {"
+      },
+      {
+        "Line": 433,
+        "Text": "\t\tholder = Gardener_62 # Perceon III"
+      },
+      {
+        "Line": 434,
+        "Text": "\t}"
+      },
+      {
+        "Line": 435,
+        "Text": "\t7384.1.1 = {"
+      },
+      {
+        "Line": 436,
+        "Text": "\t\tholder = Gardener_63 # Gwayne VI"
+      },
+      {
+        "Line": 437,
+        "Text": "\t}"
+      },
+      {
+        "Line": 438,
+        "Text": "\t7780.1.1 = {"
+      },
+      {
+        "Line": 439,
+        "Text": "\t\tholder = Gardener_77 # Mern VII # Pre-Conquest era"
+      },
+      {
+        "Line": 440,
+        "Text": "\t}"
+      },
+      {
+        "Line": 441,
+        "Text": "\t7826.1.1 = {"
+      },
+      {
+        "Line": 442,
+        "Text": "\t\tholder = Gardener_79 # Gareth IV"
+      },
+      {
+        "Line": 664,
+        "Text": "\t\tholder = Gardener_72 # Gareth III"
+      },
+      {
+        "Line": 665,
+        "Text": "\t}"
+      },
+      {
+        "Line": 666,
+        "Text": "\t7312.1.1 = {"
+      },
+      {
+        "Line": 667,
+        "Text": "\t\tholder = Gardener_73 # John III"
+      },
+      {
+        "Line": 668,
+        "Text": "\t}"
+      },
+      {
+        "Line": 669,
+        "Text": "\t7324.1.1 = {"
+      },
+      {
+        "Line": 670,
+        "Text": "\t\tholder = Gardener_61 # Greydon I"
+      },
+      {
+        "Line": 671,
+        "Text": "\t}"
+      },
+      {
+        "Line": 672,
+        "Text": "\t7341.1.1 = {"
+      },
+      {
+        "Line": 673,
+        "Text": "\t\tholder = Gardener_62 # Perceon III"
+      },
+      {
+        "Line": 674,
+        "Text": "\t}"
+      },
+      {
+        "Line": 675,
+        "Text": "\t7384.1.1 = {"
+      },
+      {
+        "Line": 676,
+        "Text": "\t\tholder = Gardener_63 # Gwayne VI"
+      },
+      {
+        "Line": 677,
+        "Text": "\t}"
+      },
+      {
+        "Line": 678,
+        "Text": "\t7780.1.1 = {"
+      },
+      {
+        "Line": 679,
+        "Text": "\t\tholder = Gardener_77 # Mern VII # Pre-Conquest era"
+      },
+      {
+        "Line": 680,
+        "Text": "\t}"
+      },
+      {
+        "Line": 681,
+        "Text": "\t7826.1.1 = {"
+      },
+      {
+        "Line": 682,
+        "Text": "\t\tholder = Gardener_79 # Gareth IV"
+      },
+      {
+        "Line": 895,
+        "Text": "\t\tholder = Gardener_72 # Gareth III"
+      },
+      {
+        "Line": 896,
+        "Text": "\t}"
+      },
+      {
+        "Line": 897,
+        "Text": "\t7312.1.1 = {"
+      },
+      {
+        "Line": 898,
+        "Text": "\t\tholder = Gardener_73 # John III"
+      },
+      {
+        "Line": 899,
+        "Text": "\t}"
+      },
+      {
+        "Line": 900,
+        "Text": "\t7324.1.1 = {"
+      },
+      {
+        "Line": 901,
+        "Text": "\t\tholder = Gardener_61 # Greydon I"
+      },
+      {
+        "Line": 902,
+        "Text": "\t}"
+      },
+      {
+        "Line": 903,
+        "Text": "\t7341.1.1 = {"
+      },
+      {
+        "Line": 904,
+        "Text": "\t\tholder = Gardener_62 # Perceon III"
+      },
+      {
+        "Line": 905,
+        "Text": "\t}"
+      },
+      {
+        "Line": 906,
+        "Text": "\t7384.1.1 = {"
+      },
+      {
+        "Line": 907,
+        "Text": "\t\tholder = Gardener_63 # Gwayne VI"
+      },
+      {
+        "Line": 908,
+        "Text": "\t}"
+      },
+      {
+        "Line": 909,
+        "Text": "\t7780.1.1 = {"
+      },
+      {
+        "Line": 910,
+        "Text": "\t\tholder = Gardener_77 # Mern VII # Pre-Conquest era"
+      },
+      {
+        "Line": 911,
+        "Text": "\t}"
+      },
+      {
+        "Line": 912,
+        "Text": "\t7826.1.1 = {"
+      },
+      {
+        "Line": 913,
+        "Text": "\t\tholder = Gardener_79 # Gareth IV"
+      }
+    ]
+  },
+  {
+    "Label": "agot_province",
+    "Source": "E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/landed_titles/01_agot_landed_titles.txt",
+    "SHA256": "5b5cb1bece3a0e483a810d86095dca38350e7550a5b48f305c36d41bbfea30d9",
+    "Bytes": 859086,
+    "Excerpts": [
+      {
+        "Line": 13606,
+        "Text": "\t\t\t}"
+      },
+      {
+        "Line": 13607,
+        "Text": "\t\t\tc_highgarden = {"
+      },
+      {
+        "Line": 13608,
+        "Text": "\t\t\t\tcolor = { 0 70 23 }"
+      },
+      {
+        "Line": 13609,
+        "Text": "\t\t\t\tb_highgarden = {"
+      },
+      {
+        "Line": 13610,
+        "Text": "\t\t\t\t\tprovince = 3237"
+      },
+      {
+        "Line": 13611,
+        "Text": "\t\t\t\t\tcolor = { 0 70 23 }"
+      },
+      {
+        "Line": 13612,
+        "Text": "\t\t\t\t}"
+      },
+      {
+        "Line": 13613,
+        "Text": "\t\t\t\tb_lush_town = {"
+      },
+      {
+        "Line": 13614,
+        "Text": "\t\t\t\t\tprovince = 3238"
+      }
+    ]
+  },
+  {
+    "Label": "ck3_history_localization",
+    "Source": "E:/SteamLibrary/steamapps/common/Crusader Kings III/game/localization/english/inventory/inventory_l_english.yml",
+    "SHA256": "9a2cf977fea0346016b893b749c3b94663be2c87458f618bfb44fa82f0d1fc7a",
+    "Bytes": 15273,
+    "Excerpts": [
+      {
+        "Line": 6,
+        "Text": " artifact_history_created_desc:2 \"Created by [SelectLocalization( HISTORY_ENTRY.HasActor, HISTORY_ENTRY.GetActor.GetNameNoTooltip, 'UNKNOWN_BENEFACTOR' )] for [HISTORY_ENTRY.GetRecipient.GetTitledFirstNameNicknamedNoTooltipRegnal] at [HISTORY_ENTRY.GetLocation.GetNameNoTooltip]\""
+      },
+      {
+        "Line": 10,
+        "Text": " artifact_history_created_before_history_desc:0 \"The details surrounding the creation of this artifact are unknown\""
+      }
+    ]
+  },
+  {
+    "Label": "crowns_2024_06_29",
+    "Source": "https://raw.githubusercontent.com/Nerdman3000/AGOT-Crowns-of-Westeros_Public-Release/a81dd0c7b8435ea31bd0756984420affa7b9abf4/common/scripted_effects/00_ntc_scripted_effects_crowns.txt",
+    "SHA256": "a604e9d5e1ab1802a23dcb31355fb4a2af5c9dbcfc7b5c27df9e94c58f06e44c",
+    "Bytes": 108808,
+    "Excerpts": [
+      {
+        "Line": 2808,
+        "Text": "\t\tquality = scope:quality"
+      },
+      {
+        "Line": 2809,
+        "Text": "\t\ttemplate = gardener_war_crown_template"
+      },
+      {
+        "Line": 2810,
+        "Text": "\t\thistory = {"
+      },
+      {
+        "Line": 2811,
+        "Text": "\t\t\ttype = created"
+      },
+      {
+        "Line": 2812,
+        "Text": "\t\t\tdate = 7692.1.8"
+      },
+      {
+        "Line": 2813,
+        "Text": "\t\t\trecipient = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 2814,
+        "Text": "\t\t\tlocation = province:3237"
+      },
+      {
+        "Line": 2815,
+        "Text": "\t\t}"
+      },
+      {
+        "Line": 2816,
+        "Text": "\t\tmodifier = gardener_war_crown_modifier"
+      },
+      {
+        "Line": 2817,
+        "Text": "\t\tsave_scope_as = newly_created_artifact"
+      },
+      {
+        "Line": 2818,
+        "Text": "\t\tdecaying = no"
+      },
+      {
+        "Line": 2857,
+        "Text": "\t\tquality = scope:quality"
+      },
+      {
+        "Line": 2858,
+        "Text": "\t\ttemplate = gardener_peace_crown_template"
+      },
+      {
+        "Line": 2859,
+        "Text": "\t\thistory = {"
+      },
+      {
+        "Line": 2860,
+        "Text": "\t\t\ttype = created"
+      },
+      {
+        "Line": 2861,
+        "Text": "\t\t\tdate = 7692.1.8"
+      },
+      {
+        "Line": 2862,
+        "Text": "\t\t\trecipient = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 2863,
+        "Text": "\t\t\tlocation = province:3237"
+      },
+      {
+        "Line": 2864,
+        "Text": "\t\t}"
+      },
+      {
+        "Line": 2865,
+        "Text": "\t\tmodifier = gardener_peace_crown_modifier"
+      },
+      {
+        "Line": 2866,
+        "Text": "\t\tsave_scope_as = newly_created_artifact"
+      },
+      {
+        "Line": 2867,
+        "Text": "\t\tdecaying = no"
+      }
+    ],
+    "Commit": "a81dd0c7b8435ea31bd0756984420affa7b9abf4",
+    "BrowseURL": "https://github.com/Nerdman3000/AGOT-Crowns-of-Westeros_Public-Release/blob/a81dd0c7b8435ea31bd0756984420affa7b9abf4/common/scripted_effects/00_ntc_scripted_effects_crowns.txt"
+  },
+  {
+    "Label": "core_2024_03_21",
+    "Source": "https://raw.githubusercontent.com/JediNick/AGOT_Submod_Core/df354b86c52bb257e37b6db020c844aa5147bc9d/gfx/portraits/portrait_modifiers/01_headgear_base.txt",
+    "SHA256": "656b3a62edcbf8b529a76bd2a94c5e795f17f6880a9546ce3c6a98d19f576bfd",
+    "Bytes": 186254,
+    "Excerpts": [
+      {
+        "Line": 7585,
+        "Text": "\t\t\t\tis_crowns_westeros_loaded_trigger = yes"
+      },
+      {
+        "Line": 7586,
+        "Text": "\t\t\t\tNOT = { agot_has_artifact_equiped = { ARTIFACT_VARIABLE = crown_gardener_peace_artifact } }"
+      },
+      {
+        "Line": 7587,
+        "Text": "\t\t\t\tOR = {"
+      },
+      {
+        "Line": 7588,
+        "Text": "\t\t\t\t\t\tthis = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 7589,
+        "Text": "\t\t\t\t\t\tthis = character:Gardener_77 # Garland V Gardener"
+      },
+      {
+        "Line": 7590,
+        "Text": "\t\t\t\t\t\tthis = character:Gardener_78 # Gyles III Gardener"
+      },
+      {
+        "Line": 7591,
+        "Text": "\t\t\t\t\t\tthis = character:Gardener_79 # Mern VII Gardener"
+      },
+      {
+        "Line": 7621,
+        "Text": "\t\t\t\tNOT = { agot_has_artifact_equiped = { ARTIFACT_VARIABLE = crown_gardener_peace_artifact } }"
+      },
+      {
+        "Line": 7622,
+        "Text": "\t\t\t\tAND = {"
+      },
+      {
+        "Line": 7623,
+        "Text": "\t\t\t\t\tOR = {"
+      },
+      {
+        "Line": 7624,
+        "Text": "\t\t\t\t\t\t\tthis = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 7625,
+        "Text": "\t\t\t\t\t\t\tthis = character:Gardener_77 # Garland V Gardener"
+      },
+      {
+        "Line": 7626,
+        "Text": "\t\t\t\t\t\t\tthis = character:Gardener_78 # Gyles III Gardener"
+      },
+      {
+        "Line": 7627,
+        "Text": "\t\t\t\t\t\t\tthis = character:Gardener_79 # Mern VII Gardener"
+      },
+      {
+        "Line": 7659,
+        "Text": "\t\t\t\tNOT = { agot_has_artifact_equiped = { ARTIFACT_VARIABLE = crown_gardener_war_artifact }}"
+      },
+      {
+        "Line": 7660,
+        "Text": "\t\t\t\tAND = {"
+      },
+      {
+        "Line": 7661,
+        "Text": "\t\t\t\t\tOR = {"
+      },
+      {
+        "Line": 7662,
+        "Text": "\t\t\t\t\t\tthis = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 7663,
+        "Text": "\t\t\t\t\t\tthis = character:Gardener_77 # Garland V Gardener"
+      },
+      {
+        "Line": 7664,
+        "Text": "\t\t\t\t\t\tthis = character:Gardener_78 # Gyles III Gardener"
+      },
+      {
+        "Line": 7665,
+        "Text": "\t\t\t\t\t\tthis = character:Gardener_79 # Mern VII Gardener"
+      }
+    ],
+    "Commit": "df354b86c52bb257e37b6db020c844aa5147bc9d",
+    "BrowseURL": "https://github.com/JediNick/AGOT_Submod_Core/blob/df354b86c52bb257e37b6db020c844aa5147bc9d/gfx/portraits/portrait_modifiers/01_headgear_base.txt"
+  },
+  {
+    "Label": "core_2026_02_20",
+    "Source": "https://raw.githubusercontent.com/JediNick/AGOT_Submod_Core/40d536e21c3f9f0eae8860e89b6779f77c7528ad/gfx/portraits/portrait_modifiers/01_headgear_base.txt",
+    "SHA256": "5bce36d669cad9575b4e3011519f858903c8e88cbf979970c9b8e83a0feba063",
+    "Bytes": 196082,
+    "Excerpts": [
+      {
+        "Line": 8377,
+        "Text": "\t\t\t\tNOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = crown_gardener_peace_artifact } }"
+      },
+      {
+        "Line": 8378,
+        "Text": "\t\t\t\tOR = {"
+      },
+      {
+        "Line": 8379,
+        "Text": "\t\t\t\t\tAND = {"
+      },
+      {
+        "Line": 8380,
+        "Text": "\t\t\t\t\t\texists = character:Gardener_75"
+      },
+      {
+        "Line": 8381,
+        "Text": "\t\t\t\t\t\tthis = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 8382,
+        "Text": "\t\t\t\t\t}"
+      },
+      {
+        "Line": 8383,
+        "Text": "\t\t\t\t\tAND = {"
+      },
+      {
+        "Line": 8384,
+        "Text": "\t\t\t\t\t\texists = character:Gardener_77"
+      },
+      {
+        "Line": 8434,
+        "Text": "\t\t\t\tNOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = crown_gardener_peace_artifact } }"
+      },
+      {
+        "Line": 8435,
+        "Text": "\t\t\t\tOR = {"
+      },
+      {
+        "Line": 8436,
+        "Text": "\t\t\t\t\tAND = {"
+      },
+      {
+        "Line": 8437,
+        "Text": "\t\t\t\t\t\texists = character:Gardener_75"
+      },
+      {
+        "Line": 8438,
+        "Text": "\t\t\t\t\t\tthis = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 8439,
+        "Text": "\t\t\t\t\t}"
+      },
+      {
+        "Line": 8440,
+        "Text": "\t\t\t\t\tAND = {"
+      },
+      {
+        "Line": 8441,
+        "Text": "\t\t\t\t\t\texists = character:Gardener_77"
+      },
+      {
+        "Line": 8492,
+        "Text": "\t\t\t\tNOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = crown_gardener_war_artifact }}"
+      },
+      {
+        "Line": 8493,
+        "Text": "\t\t\t\tOR = {"
+      },
+      {
+        "Line": 8494,
+        "Text": "\t\t\t\t\tAND = {"
+      },
+      {
+        "Line": 8495,
+        "Text": "\t\t\t\t\t\texists = character:Gardener_75"
+      },
+      {
+        "Line": 8496,
+        "Text": "\t\t\t\t\t\tthis = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 8497,
+        "Text": "\t\t\t\t\t}"
+      },
+      {
+        "Line": 8498,
+        "Text": "\t\t\t\t\tAND = {"
+      },
+      {
+        "Line": 8499,
+        "Text": "\t\t\t\t\t\texists = character:Gardener_77"
+      }
+    ],
+    "Commit": "40d536e21c3f9f0eae8860e89b6779f77c7528ad",
+    "BrowseURL": "https://github.com/JediNick/AGOT_Submod_Core/blob/40d536e21c3f9f0eae8860e89b6779f77c7528ad/gfx/portraits/portrait_modifiers/01_headgear_base.txt"
+  },
+  {
+    "Label": "core_2026_03_07",
+    "Source": "https://raw.githubusercontent.com/JediNick/AGOT_Submod_Core/5426feff61524ca0d2815c386016345d0f4b7abd/gfx/portraits/portrait_modifiers/01_headgear_base.txt",
+    "SHA256": "2c179b8fbacb19f00e79676d7b6b84f13b05d92c66afe21168349e423e1e7304",
+    "Bytes": 191493,
+    "Excerpts": [
+      {
+        "Line": 8234,
+        "Text": "\t\t\t\tNOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = crown_gardener_peace_artifact } }"
+      },
+      {
+        "Line": 8235,
+        "Text": "\t\t\t\tOR = {"
+      },
+      {
+        "Line": 8236,
+        "Text": "\t\t\t\t\t# AND = {"
+      },
+      {
+        "Line": 8237,
+        "Text": "\t\t\t\t\t# \texists = character:Gardener_75"
+      },
+      {
+        "Line": 8238,
+        "Text": "\t\t\t\t\t# \tthis = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 8239,
+        "Text": "\t\t\t\t\t# }"
+      },
+      {
+        "Line": 8240,
+        "Text": "\t\t\t\t\tAND = {"
+      },
+      {
+        "Line": 8241,
+        "Text": "\t\t\t\t\t\texists = character:Gardener_77"
+      },
+      {
+        "Line": 8292,
+        "Text": "\t\t\t\tNOT = { agot_has_artifact_equipped = { ARTIFACT_VARIABLE = crown_gardener_war_artifact }}"
+      },
+      {
+        "Line": 8293,
+        "Text": "\t\t\t\tOR = {"
+      },
+      {
+        "Line": 8294,
+        "Text": "\t\t\t\t\t# AND = {"
+      },
+      {
+        "Line": 8295,
+        "Text": "\t\t\t\t\t# \texists = character:Gardener_75"
+      },
+      {
+        "Line": 8296,
+        "Text": "\t\t\t\t\t# \tthis = character:Gardener_75 # Meryn IV Gardener"
+      },
+      {
+        "Line": 8297,
+        "Text": "\t\t\t\t\t# }"
+      },
+      {
+        "Line": 8298,
+        "Text": "\t\t\t\t\tAND = {"
+      },
+      {
+        "Line": 8299,
+        "Text": "\t\t\t\t\t\texists = character:Gardener_77"
+      }
+    ],
+    "Commit": "5426feff61524ca0d2815c386016345d0f4b7abd",
+    "BrowseURL": "https://github.com/JediNick/AGOT_Submod_Core/blob/5426feff61524ca0d2815c386016345d0f4b7abd/gfx/portraits/portrait_modifiers/01_headgear_base.txt"
+  },
+  {
+    "Label": "bookmarked_2024_06_14",
+    "Source": "https://raw.githubusercontent.com/Troofax/AGOT_Bookmarked/fcf75c70baf2544cef1d3ba4f238cfafd86b28c1/history/titles/agot_empire_tier_titles.txt",
+    "SHA256": "cd31068dca3c8d7cb2de9c32e0024bb5d806c8e7f2f234c69b61db16ab8d52fb",
+    "Bytes": 33721,
+    "Excerpts": [
+      {
+        "Line": 846,
+        "Text": "\t7627.1.1 = {"
+      },
+      {
+        "Line": 847,
+        "Text": "\t\tholder = Gardener_72 # Loras"
+      },
+      {
+        "Line": 848,
+        "Text": "\t}"
+      },
+      {
+        "Line": 849,
+        "Text": "\t7642.1.1 = {"
+      },
+      {
+        "Line": 850,
+        "Text": "\t\tholder = Gardener_73 # Gareth"
+      },
+      {
+        "Line": 851,
+        "Text": "\t}"
+      },
+      {
+        "Line": 852,
+        "Text": "\t7664.1.1 = {"
+      },
+      {
+        "Line": 853,
+        "Text": "\t\tholder = Gardener_74 # Merlon"
+      },
+      {
+        "Line": 854,
+        "Text": "\t}"
+      },
+      {
+        "Line": 855,
+        "Text": "\t7690.1.1 = {"
+      },
+      {
+        "Line": 856,
+        "Text": "\t\tholder = Gardener_75 # Merlon"
+      },
+      {
+        "Line": 857,
+        "Text": "\t}"
+      },
+      {
+        "Line": 858,
+        "Text": "\t7712.1.1 = {"
+      },
+      {
+        "Line": 859,
+        "Text": "\t\tholder = Gardener_76 # Willam"
+      },
+      {
+        "Line": 860,
+        "Text": "\t}"
+      },
+      {
+        "Line": 861,
+        "Text": "\t7720.1.1 = {"
+      },
+      {
+        "Line": 862,
+        "Text": "\t\tholder = Gardener_77 # Garland V # Pre-Conquest era"
+      },
+      {
+        "Line": 863,
+        "Text": "\t}"
+      },
+      {
+        "Line": 864,
+        "Text": "\t7776.1.1 = {"
+      },
+      {
+        "Line": 865,
+        "Text": "\t\tholder = Gardener_78 # Gyles III"
+      },
+      {
+        "Line": 866,
+        "Text": "\t}"
+      }
+    ],
+    "Commit": "fcf75c70baf2544cef1d3ba4f238cfafd86b28c1",
+    "BrowseURL": "https://github.com/Troofax/AGOT_Bookmarked/blob/fcf75c70baf2544cef1d3ba4f238cfafd86b28c1/history/titles/agot_empire_tier_titles.txt"
+  }
+]

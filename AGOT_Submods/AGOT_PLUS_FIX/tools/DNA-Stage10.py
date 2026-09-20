@@ -24,7 +24,7 @@ LEGACY = {'gene_eye_size', 'gene_eye_shut_top', 'gene_eye_shut_bottom',
 
 
 def approved_bytes(path):
-    return Path(path).read_bytes().replace(b'# AGOT_PLUS_FIX candidate:', b'# AGOT_PLUS_FIX F33:')
+    return d.native(path).read_bytes().replace(b'# AGOT_PLUS_FIX candidate:', b'# AGOT_PLUS_FIX F33:')
 
 
 def pin(path):
@@ -140,7 +140,7 @@ def sources():
 def check():
     plan, mods = sources()
     live_manifest = d.load(DOC / 'source-manifest.json')
-    assert live_manifest['Revision'] in (10, 11, 12)
+    assert live_manifest['Revision'] in (10, 11, 12, 13, 14, 15)
     archived = {}
     manifest = live_manifest
     if live_manifest['Revision'] >= 11:
@@ -149,11 +149,11 @@ def check():
         manifest = d.load(DOC / 'stage11-before-manifest.json')
         archived = {rel: DOC / path for rel, path in d.load(DOC / 'stage11-plan.json')['Archives'].items()}
         assert all(rel.startswith('gfx/portraits/portrait_modifiers/') for rel in archived)
-    if live_manifest['Revision'] == 12:
+    if live_manifest['Revision'] >= 12:
         for rel, path in d.load(DOC / 'stage12-plan.json')['Archives'].items():
             archived.setdefault(rel, DOC / path)
     def prior_path(rel):
-        return archived.get(rel, MOD / rel)
+        return archived.get(rel, d.before_stage14_path(MOD / rel))
     assert manifest['Revision'] == 10 and len(manifest['Files']) == 69
     assert (manifest['ReplacementRules'], manifest['ReplacementOccurrences'], manifest['FixGroups']) == (702, 1389, 33)
     for row in manifest['Files']:

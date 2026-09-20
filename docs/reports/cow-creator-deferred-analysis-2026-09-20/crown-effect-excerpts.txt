@@ -1,0 +1,778 @@
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:78
+agot_create_artifact_aegon_i_crown_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	$CREATOR$ = { save_scope_as = creator }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = aegon_i_crown_name
+		description = aegon_i_crown_description
+		type = helmet
+		visuals = aegon_i_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = aegon_i_crown_template
+		modifier = aegon_i_crown_modifier
+		save_scope_as = newly_created_artifact
+		creator = scope:creator
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_aegon_i_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:2
+agot_create_artifact_aegon_i_crown_historical_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = aegon_i_crown_name
+		description = aegon_i_crown_description
+		type = helmet
+		visuals = aegon_i_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = aegon_i_crown_template
+		history = {
+			type = created
+			date = 7999.4.1
+			recipient = character:Targaryen_27 # Aegon Targaryen
+			location = province:4151
+		}
+		modifier = aegon_i_crown_modifier
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		save_scope_as = epic
+		set_variable = { name = crown_aegon_i_artifact value = yes }
+		set_variable = { name = crown_aegon_i_historical_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8037.9.9
+			RECIPIENT = character:Targaryen_30
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8042.3.1
+			RECIPIENT = character:Targaryen_31
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8048.3.7
+			RECIPIENT = character:Targaryen_35
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8103.10.3
+			RECIPIENT = character:Targaryen_60
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8129.3.3
+			RECIPIENT = character:Targaryen_65
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8131.1.14
+			RECIPIENT = character:Targaryen_78
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8157.1.13
+			RECIPIENT = character:Targaryen_81
+		}
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:228
+agot_create_artifact_aenys_crown_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	$CREATOR$ = { save_scope_as = creator }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = aenys_crown_name
+		description = aenys_crown_description
+		type = helmet
+		visuals = aenys_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = aenys_crown_template
+		modifier = aenys_crown_modifier
+		save_scope_as = newly_created_artifact
+		creator = scope:creator
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_aenys_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:106
+agot_create_artifact_aenys_crown_historical_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = aenys_crown_name
+		description = aenys_crown_description
+		type = helmet
+		visuals = aenys_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = aenys_crown_template
+		history = {
+			type = created
+			date = 8037.9.9
+			recipient = character:Targaryen_30 # Aenys Targaryen
+			location = province:4151
+		}
+		modifier = aenys_crown_modifier
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_aenys_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8042.3.1
+			RECIPIENT = character:Targaryen_31
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8048.3.7
+			RECIPIENT = character:Targaryen_35
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8103.10.3
+			RECIPIENT = character:Targaryen_60
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8129.3.3
+			RECIPIENT = character:Targaryen_65
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8131.1.14
+			RECIPIENT = character:Targaryen_78
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8157.1.13
+			RECIPIENT = character:Targaryen_81
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8161.6.9
+			RECIPIENT = character:Targaryen_82
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8171.1.20
+			RECIPIENT = character:Targaryen_79
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8172.3.28
+			RECIPIENT = character:Targaryen_88
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8184.1.1
+			RECIPIENT = character:Targaryen_91
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8209.9.1
+			RECIPIENT = character:Targaryen_108
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8221.1.1
+			RECIPIENT = character:Targaryen_110
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8233.6.1
+			RECIPIENT = character:Targaryen_122
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8259.6.1
+			RECIPIENT = character:Targaryen_127
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8262.1.1
+			RECIPIENT = character:Targaryen_1
+		}
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:314
+agot_create_artifact_jaehaerys_crown_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	$CREATOR$ = { save_scope_as = creator }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = jaehaerys_crown_name
+		description = jaehaerys_crown_description
+		type = helmet
+		visuals = jaehaerys_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = jaehaerys_crown_template
+		modifier = jaehaerys_crown_modifier
+		save_scope_as = newly_created_artifact
+		creator = scope:creator
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_jaehaerys_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:256
+agot_create_artifact_jaehaerys_crown_historical_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = jaehaerys_crown_name
+		description = jaehaerys_crown_description
+		type = helmet
+		visuals = jaehaerys_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = jaehaerys_crown_template
+		history = {
+			type = created
+			date = 8054.9.20
+			recipient = character:Targaryen_35 # Jaehaerys Targaryen
+			location = province:4151
+		}
+		modifier = jaehaerys_crown_modifier
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		save_scope_as = epic
+		set_variable = { name = crown_jaehaerys_artifact value = yes }
+		set_variable = { name = crown_jaehaerys_historical_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8103.10.3
+			RECIPIENT = character:Targaryen_60
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8129.3.3
+			RECIPIENT = character:Targaryen_65
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = stolen
+			DATE = 8129.3.15
+			RECIPIENT = character:Cargyll_12 # Erryk Cargyll
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = given
+			DATE = 8129.3.22
+			RECIPIENT = character:Targaryen_63 # Rhaenyra Targaryen
+		}
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:434
+agot_create_artifact_aegon_iii_crown_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	$CREATOR$ = { save_scope_as = creator }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = aegon_iii_crown_name
+		description = aegon_iii_crown_description
+		type = helmet
+		visuals = aegon_iii_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = aegon_iii_crown_template
+		modifier = aegon_iii_crown_modifier
+		save_scope_as = newly_created_artifact
+		creator = scope:creator
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_aegon_iii_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:342
+agot_create_artifact_aegon_iii_crown_historical_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = aegon_iii_crown_name
+		description = aegon_iii_crown_description
+		type = helmet
+		visuals = aegon_iii_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = aegon_iii_crown_template
+		history = {
+			type = created
+			date = 8131.1.14
+			recipient = character:Targaryen_78 # Aegon III Targaryen
+			location = province:4151
+		}
+		modifier = aegon_iii_crown_modifier
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_aegon_iii_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8157.1.13
+			RECIPIENT = character:Targaryen_81
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8161.6.9
+			RECIPIENT = character:Targaryen_82
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8171.1.20
+			RECIPIENT = character:Targaryen_79
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8172.3.28
+			RECIPIENT = character:Targaryen_88
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8184.1.1
+			RECIPIENT = character:Targaryen_91
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8209.9.1
+			RECIPIENT = character:Targaryen_108
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8221.1.1
+			RECIPIENT = character:Targaryen_110
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8233.6.1
+			RECIPIENT = character:Targaryen_122
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8259.6.1
+			RECIPIENT = character:Targaryen_127
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8262.1.1
+			RECIPIENT = character:Targaryen_1
+		}
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:498
+agot_create_artifact_baelors_crown_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	$CREATOR$ = { save_scope_as = creator }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = baelors_crown_name
+		description = baelors_crown_description
+		type = helmet
+		visuals = baelors_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = baelors_crown_template
+		modifier = baelors_crown_modifier
+		save_scope_as = newly_created_artifact
+		creator = scope:creator
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_baelor_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:462
+agot_create_artifact_baelors_crown_historical_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = baelors_crown_name
+		description = baelors_crown_description
+		type = helmet
+		visuals = baelors_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = baelors_crown_template
+		history = {
+			type = created
+			date = 8161.6.9
+			recipient = character:Targaryen_82 # Baelor Targaryen
+			location = province:4151
+		}
+		modifier = baelors_crown_modifier
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_baelor_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+		add_artifact_title_history = {
+			target = title:h_the_iron_throne
+			date = 8161.6.10
+		}
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:594
+agot_create_artifact_aegon_iv_crown_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	$CREATOR$ = { save_scope_as = creator }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = aegon_iv_crown_name
+		description = aegon_iv_crown_description
+		type = helmet
+		visuals = aegon_iv_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = aegon_iv_crown_template
+		modifier = aegon_iv_crown_modifier
+		save_scope_as = newly_created_artifact
+		creator = scope:creator
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_aegon_iv_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:526
+agot_create_artifact_aegon_iv_crown_historical_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = aegon_iv_crown_name
+		description = aegon_iv_crown_description
+		type = helmet
+		visuals = aegon_iv_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = aegon_iv_crown_template
+		history = {
+			type = created
+			date = 8172.3.28
+			recipient = character:Targaryen_88 # Aegon IV Targaryen
+			location = province:4151
+		}
+		modifier = aegon_iv_crown_modifier
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_aegon_iv_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8184.1.1
+			RECIPIENT = character:Targaryen_91
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8209.9.1
+			RECIPIENT = character:Targaryen_108
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8221.1.1
+			RECIPIENT = character:Targaryen_110
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8233.6.1
+			RECIPIENT = character:Targaryen_122
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8259.6.1
+			RECIPIENT = character:Targaryen_127
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8262.1.1
+			RECIPIENT = character:Targaryen_1
+		}
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:672
+agot_create_artifact_maekars_crown_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	$CREATOR$ = { save_scope_as = creator }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = maekars_crown_name
+		description = maekars_crown_description
+		type = helmet
+		visuals = maekars_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = maekars_crown_template
+		modifier = maekars_crown_modifier
+		save_scope_as = newly_created_artifact
+		creator = scope:creator
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_maekar_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:622
+agot_create_artifact_maekars_crown_historical_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = maekars_crown_name
+		description = maekars_crown_description
+		type = helmet
+		visuals = maekars_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = maekars_crown_template
+		history = {
+			type = created
+			date = 8221.1.1
+			recipient = character:Targaryen_110 # Maekar I Targaryen
+			location = province:4151
+		}
+		modifier = maekars_crown_modifier
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_maekar_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8233.6.1
+			RECIPIENT = character:Targaryen_122
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8259.6.1
+			RECIPIENT = character:Targaryen_127
+		}
+		agot_add_artifact_history = {
+			ARTIFACT = this
+			TYPE = inherited
+			DATE = 8262.1.1
+			RECIPIENT = character:Targaryen_1
+		}
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:837
+agot_create_artifact_visenya_circlet_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	$CREATOR$ = { save_scope_as = creator }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = visenya_circlet_name
+		description = visenya_circlet_description
+		type = helmet
+		visuals = visenya_circlet_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = visenya_circlet_template
+		modifier = visenya_circlet_modifier
+		save_scope_as = newly_created_artifact
+		creator = scope:creator
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = circlet_visenya_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+	}
+}
+
+# SOURCE E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/scripted_effects/00_agot_artifact_crowns_effects.txt:800
+agot_create_artifact_visenya_circlet_historical_effect = {
+
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = visenya_circlet_name
+		description = visenya_circlet_description
+		type = helmet
+		visuals = visenya_circlet_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = visenya_circlet_template
+		history = {
+			type = created
+			date = 7999.4.1
+			recipient = character:Targaryen_28 # Visenya Targaryen
+			location = province:4151
+		}
+		modifier = visenya_circlet_modifier
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = circlet_visenya_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+		set_variable = {
+			name = artifact_succession_title
+			value = title:c_kings_landing
+		}
+	}
+}

@@ -1,0 +1,225 @@
+pdxmesh = {
+	name = "farm_western_1_mesh"
+	file = "farm_western_1.mesh"
+	meshsettings = {
+		name = "farm_western"
+		index = 0
+		texture_diffuse = "building_western_atlas_diffuse.dds"
+		texture_normal = "building_western_atlas_normal.dds"
+		texture_specular = "building_western_atlas_properties.dds"
+		shader = "snap_to_terrain"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "farm_western_decal"
+		index = 0
+		texture_diffuse = "farmland_01_decal_diffuse.dds"
+		texture_normal = "farmland_01_decal_normal.dds"
+		texture_specular = "farmland_01_decal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+}
+entity = { name = farm_western_1 pdxmesh = farm_western_1_mesh }
+
+pdxmesh = {
+	name = "farm_western_1_left_side_mesh"
+	file = "farm_western_1_left_side.mesh"
+	meshsettings = {
+		name = "farm_western"
+		index = 0
+		texture_diffuse = "building_western_atlas_diffuse.dds"
+		texture_normal = "building_western_atlas_normal.dds"
+		texture_specular = "building_western_atlas_properties.dds"
+		shader = "snap_to_terrain"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "farm_western_decal"
+		index = 0
+		texture_diffuse = "farmland_01_decal_diffuse.dds"
+		texture_normal = "farmland_01_decal_normal.dds"
+		texture_specular = "farmland_01_decal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+}
+entity = { name = farm_western_1_left_side pdxmesh = farm_western_1_left_side_mesh }
+
+
+
+####################
+### ASSETS BELOW ###
+####################
+
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_5
+# 	attach = { city_center = western_walls_05_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_6
+# 	attach = { city_center = western_walls_06_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_7
+# 	attach = { city_center = western_walls_07_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_indian_05
+# 	attach = { city_center = india_walls_05_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_indian_06
+# 	attach = { city_center = india_walls_06_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_indian_07
+# 	attach = { city_center = india_walls_07_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_med_5
+# 	attach = { city_center = mediterranean_walls_05_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_med_6
+# 	attach = { city_center = mediterranean_walls_06_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_med_7
+# 	attach = { city_center = mediterranean_walls_07_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_iberia_5
+# 	attach = { city_center = fp2_building_iberian_wall_05_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_iberia_6
+# 	attach = { city_center = fp2_building_iberian_wall_06_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_iberia_7
+# 	attach = { city_center = fp2_building_iberian_wall_07_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_marra
+# 	attach = { city_center = walls_05_marrakesh_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = paris_burge_sprawl_5
+# 	attach = { city_center = western_walls_05_paris_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = london_burge_sprawl_7
+# 	attach = { city_center = western_walls_07_london_entity}
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = london_burge_sprawl_6
+# 	attach = { city_center = western_walls_06_london_entity}
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = london_burge_sprawl_5
+# 	attach = { city_center = western_walls_05_london_entity}
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_thes
+# 	attach = { city_center = mediterranean_walls_05_thes_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_mena_5
+# 	attach = { city_center = mena_walls_05_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_mena_6
+# 	attach = { city_center = mena_walls_06_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_mena_7
+# 	attach = { city_center = mena_walls_07_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = burge_sprawl_genoa
+# 	attach = { city_center = mediterranean_walls_05_genoa_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = rome_burge_sprawl
+# 	attach = { city_center = mediterranean_walls_05_rome_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+#DONE
+# USF: unused wrapper attaches unavailable walls; keep original definition for reference
+# entity = {
+# 	name = constantinople_burge_sprawl
+# 	attach = { city_center = mediterranean_walls_05_constantinople_entity }
+# 	locator = { name = city_center position = { 0 0 0 } }
+# }
+

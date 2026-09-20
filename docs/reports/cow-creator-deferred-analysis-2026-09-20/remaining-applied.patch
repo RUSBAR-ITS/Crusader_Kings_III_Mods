@@ -1,0 +1,511 @@
+--- AGOT_Submods/AGOT_SUBMODS_FIX/docs/stage2-before/events/decisions_events/rediscover_events.txt
++++ AGOT_Submods/AGOT_SUBMODS_FIX/events/decisions_events/rediscover_events.txt
+@@ -710,7 +710,7 @@
+ 				exists = var:artifact_choice
+ 				var:artifact_choice = flag:aenys_crown
+ 			}
+-			agot_create_artifact_aenys_crown_effect = { OWNER = this }
++			usf_create_artifact_aenys_crown_without_creator_effect = { OWNER = this }
+ 			add_targ_artifact_claim_effect = yes
+ 		}
+ 		else_if = {
+@@ -725,7 +725,7 @@
+ 				exists = var:artifact_choice
+ 				var:artifact_choice = flag:aegon_3_crown
+ 			}
+-			agot_create_artifact_aegon_iii_crown_effect = { OWNER = this }
++			usf_create_artifact_aegon_iii_crown_without_creator_effect = { OWNER = this }
+ 			add_targ_artifact_claim_effect = yes
+ 		}
+ 		else_if = {
+@@ -733,7 +733,7 @@
+ 				exists = var:artifact_choice
+ 				var:artifact_choice = flag:baelors_crown
+ 			}
+-			agot_create_artifact_baelors_crown_effect = { OWNER = this }
++			usf_create_artifact_baelors_crown_without_creator_effect = { OWNER = this }
+ 			add_targ_artifact_claim_effect = yes
+ 		}
+ 		else_if = {
+@@ -741,7 +741,7 @@
+ 				exists = var:artifact_choice
+ 				var:artifact_choice = flag:maekars_crown
+ 			}
+-			agot_create_artifact_maekars_crown_effect = { OWNER = this }
++			usf_create_artifact_maekars_crown_without_creator_effect = { OWNER = this }
+ 			add_targ_artifact_claim_effect = yes
+ 		}
+ 		else_if = {
+@@ -749,7 +749,7 @@
+ 				exists = var:artifact_choice
+ 				var:artifact_choice = flag:visenya_circlet
+ 			}
+-			agot_create_artifact_visenya_circlet_effect = { OWNER = this }
++			usf_create_artifact_visenya_circlet_without_creator_effect = { OWNER = this }
+ 			add_targ_artifact_claim_effect = yes
+ 		}
+ 		else = {
+--- AGOT_Submods/AGOT_SUBMODS_FIX/docs/stage2-before/common/on_action/cowagot_province_on_actions.txt
++++ AGOT_Submods/AGOT_SUBMODS_FIX/common/on_action/cowagot_province_on_actions.txt
+@@ -322,17 +322,18 @@
+ 			}
+ 			add_special_building_slot = agot_ten_towers_01
+ 		}
+-		if = {
+-			limit = {
+-				this = province:2819
+-				has_holding_type = castle_holding
+-				has_special_building_slot = no
+-				exists = scope:character.dynasty
+-				scope:character = {
+-					NOT = { dynasty = dynasty:dynn_Harlaw }
+-				}
+-			}
+-			add_special_building_slot = harlaw_mines_01
+-		}
++		# USF: unavailable legacy Harlaw mine; retain the existing Ten Towers branch
++# if = {
++# 			limit = {
++# 				this = province:2819
++# 				has_holding_type = castle_holding
++# 				has_special_building_slot = no
++# 				exists = scope:character.dynasty
++# 				scope:character = {
++# 					NOT = { dynasty = dynasty:dynn_Harlaw }
++# 				}
++# 			}
++# 			add_special_building_slot = harlaw_mines_01
++# 		}
+ 	}
+ }
+\ No newline at end of file
+--- AGOT_Submods/AGOT_SUBMODS_FIX/docs/stage2-before/common/buildings/yy_agotcities_special_buildings_westeros.txt
++++ AGOT_Submods/AGOT_SUBMODS_FIX/common/buildings/yy_agotcities_special_buildings_westeros.txt
+@@ -1757,14 +1757,14 @@
+         embarkation_cost_mult = -0.15
+         diplomatic_range_mult = 0.25
+         naval_movement_speed_mult = 0.1
+-        rhoynish_religion_opinion = 10
++        the_mother_religion_opinion = 10
+     }
+ 
+     county_holder_character_modifier = {
+         embarkation_cost_mult = -0.15
+         diplomatic_range_mult = 0.25
+         naval_movement_speed_mult = 0.1
+-        rhoynish_religion_opinion = 5
++        the_mother_religion_opinion = 5
+     }
+ 
+     type = special
+--- AGOT_Submods/AGOT_PLUS_FIX/docs/stage15-before-title-on-actions.txt
++++ AGOT_Submods/AGOT_PLUS_FIX/common/on_action/agot_on_actions/test_title_on_actions.txt
+@@ -471,7 +471,7 @@
+ 	effect = {
+ 		this = { save_scope_as = asoiaf_Targaryen_27 }
+ 		scope:asoiaf_Targaryen_27 ?= {
+-			agot_create_artifact_aegon_i_crown_effect = { OWNER = this }
++			apf_create_artifact_aegon_i_crown_without_creator_effect = { OWNER = this }
+ 			trigger_event = { id = asoiaf_equip_crown_events.1 days = 1 } #equip Aegon I's crown with delay because of overlapping effects
+ 		}
+ 	}
+@@ -498,7 +498,7 @@
+ 	effect = {
+ 		this = { save_scope_as = asoiaf_Targaryen_30 }
+ 		scope:asoiaf_Targaryen_30 ?= {
+-			agot_create_artifact_aenys_crown_effect = { OWNER = this }
++			apf_create_artifact_aenys_crown_without_creator_effect = { OWNER = this }
+ 			trigger_event = { id = asoiaf_equip_crown_events.2 days = 1 } #equip Aenys I's crown with delay because of overlapping effects
+ 		}
+ 	}
+@@ -525,7 +525,7 @@
+ 	effect = {
+ 		this = { save_scope_as = asoiaf_Targaryen_35 }
+ 		scope:asoiaf_Targaryen_35 ?= {
+-			agot_create_artifact_jaehaerys_crown_effect = { OWNER = this }
++			apf_create_artifact_jaehaerys_crown_without_creator_effect = { OWNER = this }
+ 			trigger_event = { id = asoiaf_equip_crown_events.3 days = 1 } #equip Jaehaerys I's crown with delay because of overlapping effects
+ 		}
+ 	}
+@@ -552,7 +552,7 @@
+ 	effect = {
+ 		this = { save_scope_as = asoiaf_Targaryen_78 }
+ 		scope:asoiaf_Targaryen_78 ?= {
+-			agot_create_artifact_aegon_iii_crown_effect = { OWNER = this }
++			apf_create_artifact_aegon_iii_crown_without_creator_effect = { OWNER = this }
+ 			trigger_event = { id = asoiaf_equip_crown_events.4 days = 1 } #equip Aegon III's crown with delay because of overlapping effects
+ 		}
+ 	}
+@@ -579,7 +579,7 @@
+ 	effect = {
+ 		this = { save_scope_as = asoiaf_Targaryen_82 }
+ 		scope:asoiaf_Targaryen_82 ?= {
+-			agot_create_artifact_baelors_crown_effect = { OWNER = this }
++			apf_create_artifact_baelors_crown_without_creator_effect = { OWNER = this }
+ 			trigger_event = { id = asoiaf_equip_crown_events.5 days = 1 } #equip Baelor I's crown with delay because of overlapping effects
+ 		}
+ 	}
+@@ -606,7 +606,7 @@
+ 	effect = {
+ 		this = { save_scope_as = asoiaf_Targaryen_88 }
+ 		scope:asoiaf_Targaryen_88 ?= {
+-			agot_create_artifact_aegon_iv_crown_effect = { OWNER = this }
++			apf_create_artifact_aegon_iv_crown_without_creator_effect = { OWNER = this }
+ 			trigger_event = { id = asoiaf_equip_crown_events.6 days = 1 } #equip Aegon IV's crown with delay because of overlapping effects
+ 		}
+ 	}
+@@ -633,7 +633,7 @@
+ 	effect = {
+ 		this = { save_scope_as = asoiaf_Targaryen_110 }
+ 		scope:asoiaf_Targaryen_110 ?= {
+-			agot_create_artifact_maekars_crown_effect = { OWNER = this }
++			apf_create_artifact_maekars_crown_without_creator_effect = { OWNER = this }
+ 			trigger_event = { id = asoiaf_equip_crown_events.7 days = 1 } #equip Maekar I's crown with delay because of overlapping effects
+ 		}
+ 	}
+--- /dev/null
++++ AGOT_Submods/AGOT_SUBMODS_FIX/common/scripted_effects/usf_crowns_without_creator_effects.txt
+@@ -0,0 +1,142 @@
++# Generated from current AGOT crown effects.
++# Automatic grants/finds have no known maker; preserve OWNER and all artifact properties.
++
++usf_create_artifact_aenys_crown_without_creator_effect = {
++	# Get the character the artifact is being made for.
++	$OWNER$ = { save_scope_as = owner }
++
++
++	set_artifact_rarity_illustrious = yes
++
++	# Create the artifact
++	create_artifact = {
++		name = aenys_crown_name
++		description = aenys_crown_description
++		type = helmet
++		visuals = aenys_crown_visuals
++		wealth = scope:wealth
++		quality = scope:quality
++		template = aenys_crown_template
++		modifier = aenys_crown_modifier
++		save_scope_as = newly_created_artifact
++
++		decaying = no
++	}
++
++	scope:newly_created_artifact ?= {
++		set_variable = { name = crown_aenys_artifact value = yes }
++		set_variable = { name = historical_unique_artifact value = yes }
++	}
++}
++
++usf_create_artifact_aegon_iii_crown_without_creator_effect = {
++	# Get the character the artifact is being made for.
++	$OWNER$ = { save_scope_as = owner }
++
++
++	set_artifact_rarity_illustrious = yes
++
++	# Create the artifact
++	create_artifact = {
++		name = aegon_iii_crown_name
++		description = aegon_iii_crown_description
++		type = helmet
++		visuals = aegon_iii_crown_visuals
++		wealth = scope:wealth
++		quality = scope:quality
++		template = aegon_iii_crown_template
++		modifier = aegon_iii_crown_modifier
++		save_scope_as = newly_created_artifact
++
++		decaying = no
++	}
++
++	scope:newly_created_artifact ?= {
++		set_variable = { name = crown_aegon_iii_artifact value = yes }
++		set_variable = { name = historical_unique_artifact value = yes }
++	}
++}
++
++usf_create_artifact_baelors_crown_without_creator_effect = {
++	# Get the character the artifact is being made for.
++	$OWNER$ = { save_scope_as = owner }
++
++
++	set_artifact_rarity_illustrious = yes
++
++	# Create the artifact
++	create_artifact = {
++		name = baelors_crown_name
++		description = baelors_crown_description
++		type = helmet
++		visuals = baelors_crown_visuals
++		wealth = scope:wealth
++		quality = scope:quality
++		template = baelors_crown_template
++		modifier = baelors_crown_modifier
++		save_scope_as = newly_created_artifact
++
++		decaying = no
++	}
++
++	scope:newly_created_artifact ?= {
++		set_variable = { name = crown_baelor_artifact value = yes }
++		set_variable = { name = historical_unique_artifact value = yes }
++	}
++}
++
++usf_create_artifact_maekars_crown_without_creator_effect = {
++	# Get the character the artifact is being made for.
++	$OWNER$ = { save_scope_as = owner }
++
++
++	set_artifact_rarity_illustrious = yes
++
++	# Create the artifact
++	create_artifact = {
++		name = maekars_crown_name
++		description = maekars_crown_description
++		type = helmet
++		visuals = maekars_crown_visuals
++		wealth = scope:wealth
++		quality = scope:quality
++		template = maekars_crown_template
++		modifier = maekars_crown_modifier
++		save_scope_as = newly_created_artifact
++
++		decaying = no
++	}
++
++	scope:newly_created_artifact ?= {
++		set_variable = { name = crown_maekar_artifact value = yes }
++		set_variable = { name = historical_unique_artifact value = yes }
++	}
++}
++
++usf_create_artifact_visenya_circlet_without_creator_effect = {
++	# Get the character the artifact is being made for.
++	$OWNER$ = { save_scope_as = owner }
++
++
++	set_artifact_rarity_illustrious = yes
++
++	# Create the artifact
++	create_artifact = {
++		name = visenya_circlet_name
++		description = visenya_circlet_description
++		type = helmet
++		visuals = visenya_circlet_visuals
++		wealth = scope:wealth
++		quality = scope:quality
++		template = visenya_circlet_template
++		modifier = visenya_circlet_modifier
++		save_scope_as = newly_created_artifact
++
++		decaying = no
++	}
++
++	scope:newly_created_artifact ?= {
++		set_variable = { name = circlet_visenya_artifact value = yes }
++		set_variable = { name = historical_unique_artifact value = yes }
++	}
++}
+--- /dev/null
++++ AGOT_Submods/AGOT_PLUS_FIX/common/scripted_effects/apf_crowns_without_creator_effects.txt
+@@ -0,0 +1,198 @@
++# Generated from current AGOT crown effects.
++# Automatic grants/finds have no known maker; preserve OWNER and all artifact properties.
++
++apf_create_artifact_aegon_i_crown_without_creator_effect = {
++	# Get the character the artifact is being made for.
++	$OWNER$ = { save_scope_as = owner }
++
++
++	set_artifact_rarity_illustrious = yes
++
++	# Create the artifact
++	create_artifact = {
++		name = aegon_i_crown_name
++		description = aegon_i_crown_description
++		type = helmet
++		visuals = aegon_i_crown_visuals
++		wealth = scope:wealth
++		quality = scope:quality
++		template = aegon_i_crown_template
++		modifier = aegon_i_crown_modifier
++		save_scope_as = newly_created_artifact
++
++		decaying = no
++	}
++
++	scope:newly_created_artifact ?= {
++		set_variable = { name = crown_aegon_i_artifact value = yes }
++		set_variable = { name = historical_unique_artifact value = yes }
++	}
++}
++
++apf_create_artifact_aenys_crown_without_creator_effect = {
++	# Get the character the artifact is being made for.
++	$OWNER$ = { save_scope_as = owner }
++
++
++	set_artifact_rarity_illustrious = yes
++
++	# Create the artifact
++	create_artifact = {
++		name = aenys_crown_name
++		description = aenys_crown_description
++		type = helmet
++		visuals = aenys_crown_visuals
++		wealth = scope:wealth
++		quality = scope:quality
++		template = aenys_crown_template
++		modifier = aenys_crown_modifier
++		save_scope_as = newly_created_artifact
++
++		decaying = no
++	}
++
++	scope:newly_created_artifact ?= {
++		set_variable = { name = crown_aenys_artifact value = yes }
++		set_variable = { name = historical_unique_artifact value = yes }
++	}
++}
++
++apf_create_artifact_jaehaerys_crown_without_creator_effect = {
++	# Get the character the artifact is being made for.
++	$OWNER$ = { save_scope_as = owner }
++
++
++	set_artifact_rarity_illustrious = yes
++
++	# Create the artifact
++	create_artifact = {
++		name = jaehaerys_crown_name
++		description = jaehaerys_crown_description
++		type = helmet
++		visuals = jaehaerys_crown_visuals
++		wealth = scope:wealth
++		quality = scope:quality
++		template = jaehaerys_crown_template
++		modifier = jaehaerys_crown_modifier
++		save_scope_as = newly_created_artifact
++
++		decaying = no
++	}
++
++	scope:newly_created_artifact ?= {
++		set_variable = { name = crown_jaehaerys_artifact value = yes }
++		set_variable = { name = historical_unique_artifact value = yes }
++	}
++}
++
++apf_create_artifact_aegon_iii_crown_without_creator_effect = {
++	# Get the character the artifact is being made for.
++	$OWNER$ = { save_scope_as = owner }
++
++
++	set_artifact_rarity_illustrious = yes
++
++	# Create the artifact
++	create_artifact = {
++		name = aegon_iii_crown_name
++		description = aegon_iii_crown_description
++		type = helmet
++		visuals = aegon_iii_crown_visuals
++		wealth = scope:wealth
++		quality = scope:quality
++		template = aegon_iii_crown_template
++		modifier = aegon_iii_crown_modifier
++		save_scope_as = newly_created_artifact
++
++		decaying = no
++	}
++
++	scope:newly_created_artifact ?= {
++		set_variable = { name = crown_aegon_iii_artifact value = yes }
++		set_variable = { name = historical_unique_artifact value = yes }
++	}
++}
++
++apf_create_artifact_baelors_crown_without_creator_effect = {
++	# Get the character the artifact is being made for.
++	$OWNER$ = { save_scope_as = owner }
++
++
++	set_artifact_rarity_illustrious = yes
++
++	# Create the artifact
++	create_artifact = {
++		name = baelors_crown_name
++		description = baelors_crown_description
++		type = helmet
++		visuals = baelors_crown_visuals
++		wealth = scope:wealth
++		quality = scope:quality
++		template = baelors_crown_template
++		modifier = baelors_crown_modifier
++		save_scope_as = newly_created_artifact
++
++		decaying = no
++	}
++
++	scope:newly_created_artifact ?= {
++		set_variable = { name = crown_baelor_artifact value = yes }
++		set_variable = { name = historical_unique_artifact value = yes }
++	}
++}
++
++apf_create_artifact_aegon_iv_crown_without_creator_effect = {
++	# Get the character the artifact is being made for.
++	$OWNER$ = { save_scope_as = owner }
++
++
++	set_artifact_rarity_illustrious = yes
++
++	# Create the artifact
++	create_artifact = {
++		name = aegon_iv_crown_name
++		description = aegon_iv_crown_description
++		type = helmet
++		visuals = aegon_iv_crown_visuals
++		wealth = scope:wealth
++		quality = scope:quality
++		template = aegon_iv_crown_template
++		modifier = aegon_iv_crown_modifier
++		save_scope_as = newly_created_artifact
++
++		decaying = no
++	}
++
++	scope:newly_created_artifact ?= {
++		set_variable = { name = crown_aegon_iv_artifact value = yes }
++		set_variable = { name = historical_unique_artifact value = yes }
++	}
++}
++
++apf_create_artifact_maekars_crown_without_creator_effect = {
++	# Get the character the artifact is being made for.
++	$OWNER$ = { save_scope_as = owner }
++
++
++	set_artifact_rarity_illustrious = yes
++
++	# Create the artifact
++	create_artifact = {
++		name = maekars_crown_name
++		description = maekars_crown_description
++		type = helmet
++		visuals = maekars_crown_visuals
++		wealth = scope:wealth
++		quality = scope:quality
++		template = maekars_crown_template
++		modifier = maekars_crown_modifier
++		save_scope_as = newly_created_artifact
++
++		decaying = no
++	}
++
++	scope:newly_created_artifact ?= {
++		set_variable = { name = crown_maekar_artifact value = yes }
++		set_variable = { name = historical_unique_artifact value = yes }
++	}
++}

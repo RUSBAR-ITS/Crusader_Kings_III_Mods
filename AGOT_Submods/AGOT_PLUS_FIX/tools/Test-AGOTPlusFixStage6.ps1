@@ -170,7 +170,16 @@ $null=Get-ScriptBlock $s6Culture 'westerman_main'
 if((Clear-ScriptText $s6Culture) -match '(?m)^westerman\s*='){throw 'Obsolete westerman culture returned; review the modifier migration'}
 $s6ModifierFile='common/modifiers/asoiaf_artifact_modifiers.txt'
 $s6OldModifier=[RepositoryText]::Normalize([IO.File]::ReadAllText((Join-Path $MainPath $s6ModifierFile)))
-if((Read-Plus $s6ModifierFile) -cne $s6OldModifier.Replace('westerman_opinion = 20','westerman_main_opinion = 20')){throw 'Other artifact bonuses changed'}
+$s6CurrentModifier=Read-Plus $s6ModifierFile
+if($manifest.Revision -in @(14,15)){
+ # Stage14 explicitly archives the unused Oathkeeper definition. Its validator
+ # proves the new delta; retain this older contract on the pinned prior file.
+ $s6Stage14Plan=Get-Content -LiteralPath (Join-Path $modRoot 'docs/stage14-plan.json') -Raw -Encoding UTF8 | ConvertFrom-Json
+ $s6Archive=$s6Stage14Plan.Archives.PSObject.Properties[$s6ModifierFile].Value
+ if(-not $s6Archive){throw 'Missing stage-fourteen modifier archive'}
+ $s6CurrentModifier=[IO.File]::ReadAllText((Join-Path $modRoot ('docs/'+$s6Archive)))
+}
+if($s6CurrentModifier -cne $s6OldModifier.Replace('westerman_opinion = 20','westerman_main_opinion = 20')){throw 'Other artifact bonuses changed'}
 if((Clear-ScriptText $s6Modifiers) -notmatch '\bwesterman_main_opinion\s*='){throw 'Current AGOT does not corroborate the culture opinion key'}
 $s6Targets=@(Import-Csv -LiteralPath (Join-Path $modRoot 'docs/stage6-targeted-log-messages.csv'))
 if($s6Targets.Count -ne 49 -or @($s6Targets|Where-Object IssueClass -ceq 'Artifact_templates_and_arguments').Count -ne 48){throw 'Stage-six diagnostic inventory changed'}

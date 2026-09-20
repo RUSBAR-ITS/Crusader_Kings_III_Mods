@@ -1,0 +1,37 @@
+category,kind,key,owner,issue,messages,action,log_lines
+read_not_set,Flag,monastery_holding,Divine Intervention + AGOT compatibility,di-gui-holdings,2,KEEP: GUI supplies MakeScopeFlag values,1972;2069
+read_not_set,Flag,ruin_holding,Divine Intervention + AGOT compatibility,di-gui-holdings,2,KEEP: GUI supplies MakeScopeFlag values,1973;2070
+read_not_set,Flag,highlight_special_buildings_map,COW-AGOT,cow-map-mode,2,FIX: compare actual cow_custom_map_mode value to highlight_cow_provinces_map,1974;2071
+read_not_set,Flag,blackDarkRed,Valyrian Steel,vs-egg-colors,2,"FIX: blackdarkred / icefire, as written by current egg creation",1975;2072
+read_not_set,Flag,unknown_holding,Divine Intervention + AGOT compatibility,di-gui-holdings,2,KEEP: GUI supplies MakeScopeFlag values,1976;2073
+read_not_set,Flag,settlement_holding,Divine Intervention + AGOT compatibility,di-gui-holdings,2,KEEP: GUI supplies MakeScopeFlag values,1977;2074
+read_not_set,Flag,iceFire,Valyrian Steel,vs-egg-colors,2,"FIX: blackdarkred / icefire, as written by current egg creation",1978;2075
+read_not_set,Flag,pirate_den_holding,Divine Intervention + AGOT compatibility,di-gui-holdings,2,KEEP: GUI supplies MakeScopeFlag values,1979;2076
+read_not_set,Flag,wilderness_holding,Divine Intervention + AGOT compatibility,di-gui-holdings,2,KEEP: GUI supplies MakeScopeFlag values,1980;2077
+read_not_set,Flag,roland_crown,Crowns of Westeros,crowns-roland-uniqueness,2,REWORK: real artifact existence and in-progress lifecycle; do not fake unavailable_artifacts writer,1981;2078
+read_not_set,Variable,maekars_crown,Legacy of the Dragon,lotd-maekar-selection,2,REWORK: require no crown_maekar_artifact and not unavailable; remove contradictory existence requirements,1986;2083
+read_not_set,Variable,highlight_cow_provinces_map,COW-AGOT,cow-map-mode,2,FIX: exists must test global_var:cow_custom_map_mode,1987;2084
+read_not_set,Variable,is_Durrandon_51,Crowns of Westeros,crowns-baldric,2,FIX CANDIDATE: guarded historical character:Durrandon_51 identity; no invented dynamic birth chain,1988;2085
+read_not_set,Variable,Aotk_enabled,AGOT Submod Core,core-optional-markers,2,"KEEP optional integration checks, or remove whole absent integration branches in a profile-specific build",1989;2086
+read_not_set,Variable,app_enabled,AGOT Submod Core,core-obsolete-cloak-gate,2,REVIEW: obsolete extra gate to an absent asoiaf_kingsguard_cloaks template; do not just enable it,1990;2087
+read_not_set,Variable,crown_aegon_baelor_artifact,Legacy of the Dragon,lotd-baelor-marker,2,FIX: crown_baelor_artifact,1991;2088
+read_not_set,Variable,tgc_enabled,AGOT Submod Core,core-optional-markers,2,"KEEP optional integration checks, or remove whole absent integration branches in a profile-specific build",1992;2089
+read_not_set,Variable,blackfyre,AGOT Submod Core,core-sword-recognition,2,FIX: has_artifact_modifier vs_blackfyre_modifier / vs_dark_sister_modifier / vs_seafoam_modifier,1993;2090
+read_not_set,Variable,kingsguard_choice,AGOT Submod Core,core-optional-markers,2,"KEEP optional integration checks, or remove whole absent integration branches in a profile-specific build",1994;2091
+read_not_set,Variable,darksister,AGOT Submod Core,core-sword-recognition,2,FIX: has_artifact_modifier vs_blackfyre_modifier / vs_dark_sister_modifier / vs_seafoam_modifier,1995;2092
+read_not_set,Variable,brightboar_enabled,AGOT Submod Core,core-optional-markers,2,"KEEP optional integration checks, or remove whole absent integration branches in a profile-specific build",1996;2093
+read_not_set,Variable,is_baratheon_6,Crowns of Westeros,crowns-myrcella,2,FIX: is_Baratheon_6,1997;2094
+read_not_set,Variable,swordman_armor_artifact,AGOT Submod Core,core-optional-markers,2,"KEEP optional integration checks, or remove whole absent integration branches in a profile-specific build",1998;2095
+read_not_set,Variable,seafoam,AGOT Submod Core,core-sword-recognition,2,FIX: has_artifact_modifier vs_blackfyre_modifier / vs_dark_sister_modifier / vs_seafoam_modifier,1999;2096
+read_not_set,Variable,captains_sword,AGOT Submod Core,core-optional-markers,2,"KEEP optional integration checks, or remove whole absent integration branches in a profile-specific build",2000;2097
+set_not_read,Flag,global,Divine Intervention + AGOT compatibility,di-gui-artifact-origin,2,KEEP: GUI reads or switch fallback uses the value,1982;2079
+set_not_read,Flag,highlight_cow_provinces_map,COW-AGOT,cow-map-mode,2,FIX: compare actual cow_custom_map_mode value to highlight_cow_provinces_map,1983;2080
+set_not_read,Flag,all_found,Legacy of the Dragon,lotd-empty-result,2,KEEP: overwrites artifact_choice with empty-result sentinel; fallback does nothing,1984;2081
+set_not_read,Flag,DI_subtype_throne,Divine Intervention + AGOT compatibility,di-gui-artifact-origin,2,KEEP: GUI reads or switch fallback uses the value,1985;2082
+set_not_read,Variable,seafoam_artifact,Legacy of the Dragon,lotd-unused-sword-markers,2,COMMENT obsolete assignments after Core recognition uses current artifact modifiers,2001;2098
+set_not_read,Variable,pincer_artifact,Legacy of the Dragon,lotd-unused-sword-markers,2,COMMENT obsolete assignments after Core recognition uses current artifact modifiers,2002;2099
+set_not_read,Variable,blackfyre_artifact,Legacy of the Dragon,lotd-unused-sword-markers,2,COMMENT obsolete assignments after Core recognition uses current artifact modifiers,2003;2100
+set_not_read,Variable,COWAGOT_is_loaded,COW-AGOT,cow-integration-marker,2,"KEEP: public integration marker, absence of installed consumers is expected",2004;2101
+set_not_read,Variable,DI_artifact_subtype_display,Divine Intervention + AGOT compatibility,di-gui-display,2,KEEP: GUI/localization reads display variables,2005;2102
+set_not_read,Variable,DI_artifact_quality_display,Divine Intervention + AGOT compatibility,di-gui-display,2,KEEP: GUI/localization reads display variables,2006;2103
+set_not_read,Variable,DI_artifact_category_display,Divine Intervention + AGOT compatibility,di-gui-display,2,KEEP: GUI/localization reads display variables,2007;2104

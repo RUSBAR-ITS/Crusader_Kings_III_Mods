@@ -127,12 +127,12 @@ def sources():
     mods = d.active_mods()
     later_archives = d.load(DOC / 'stage12-plan.json')['Archives'] if (DOC / 'stage12-plan.json').exists() else {}
     for path, digest in plan['Sources'].items():
-        source = Path(path)
+        source = d.repository_path(path)
         if source.is_relative_to(MOD):
             rel = source.relative_to(MOD).as_posix()
             if rel in later_archives:
                 source = DOC / later_archives[rel]
-        assert d.sha(source) == digest, ('Stage11 source changed', path)
+        assert d.sha(d.before_stage14_path(source)) == digest, ('Stage11 source changed', path)
     for row in plan['Evidence']:
         assert d.sha(DOC / row['File']) == row['SHA256'], ('Stage11 evidence changed', row['File'])
     print(f'PASS: {len(plan["Sources"])} stage-eleven sources and {len(plan["Evidence"])} evidence hashes.')
@@ -142,19 +142,19 @@ def sources():
 def check():
     plan, mods = sources()
     live_manifest = d.load(DOC / 'source-manifest.json')
-    assert live_manifest['Revision'] in (11, 12)
+    assert live_manifest['Revision'] in (11, 12, 13, 14, 15)
     manifest, archived = live_manifest, {}
-    if live_manifest['Revision'] == 12:
+    if live_manifest['Revision'] >= 12:
         # Stage 12 proves the delta from these pinned snapshots to live scripts.
         # Unchanged portraits, all DNA, models and texture repairs stay live.
         manifest = d.load(DOC / 'stage12-before-manifest.json')
         archived = {rel: DOC / path for rel, path in d.load(DOC / 'stage12-plan.json')['Archives'].items()}
     def prior_path(rel):
-        return archived.get(rel, MOD / rel)
+        return archived.get(rel, d.before_stage14_path(MOD / rel))
     assert manifest['Revision'] == 11 and len(manifest['Files']) == 82
     assert (manifest['ReplacementRules'], manifest['ReplacementOccurrences'], manifest['FixGroups']) == (745, 1595, 38)
     fixes = d.load(DOC / 'fixes.json')
-    if live_manifest['Revision'] == 12:
+    if live_manifest['Revision'] >= 12:
         previous_fixes = d.load(DOC / 'stage12-before-fixes.json')
         assert fixes[:len(previous_fixes)] == previous_fixes
         fixes = previous_fixes

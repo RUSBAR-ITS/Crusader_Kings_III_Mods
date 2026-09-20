@@ -1,0 +1,30 @@
+{
+  "Report": "../../../docs/reports/ck3-agot-submods-fix-stage1-log-2026-09-20/README.md",
+  "Started": "2026-09-20T01:56:46+07:00",
+  "ExitLines": [
+    "[02:01:07][D][frontendidlerlogic.cpp:330]: Quit: Quit from inside game",
+    "[02:01:07][D][application.cpp:1258]: Quit: Quit from inside game"
+  ],
+  "CapturedManifestSHA256": "7b7cdf3a7f4ab617f21924d7edf6f014d6e733ff40284911b5320195724a4ed6",
+  "CurrentManifestSHA256": "58e2b909a2eab4554646836d50ea378e12e09b263aa9342442e6f029e3094167",
+  "ExpectedFixedGone": 103,
+  "ExceptionsPresent": 143,
+  "DeferredPresent": 18,
+  "NewDiagnosticsAfterReview": 1,
+  "OriginalSourcePinsChecked": 223,
+  "OriginalSourcePinsChanged": 0,
+  "PostLaunchEncodingFix": {
+    "File": "common/scripted_effects/usf_language_effects.txt",
+    "Change": "Prepend exactly EF BB BF; decoded script unchanged",
+    "BeforeSHA256": "37ddb77b04e7af8663686139dda9588f1a52398b3d32c7c74f224e0e6e4da355",
+    "AfterSHA256": "9195eadce451abe5b1077e6dd3578a317287268bc47fd81ca0618e1bfc23e004",
+    "BeforeBytes": 577,
+    "AfterBytes": 580,
+    "Other25RuntimeFilesByteIdentical": true,
+    "BuildCheckPassed": true,
+    "StaticChecks": 146,
+    "LogWasNotModified": true,
+    "RuntimeRetestPending": true
+  },
+  "InCampaignBehaviorChecked": false
+}

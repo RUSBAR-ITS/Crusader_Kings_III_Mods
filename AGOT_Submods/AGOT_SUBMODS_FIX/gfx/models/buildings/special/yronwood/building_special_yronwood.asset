@@ -1,0 +1,43 @@
+pdxmesh = {
+	name = "building_special_yronwood_mesh"
+	file = "building_special_yronwood.mesh"
+
+	meshsettings = {
+		name = "iron"
+		index = 0
+		texture_diffuse = "iron_m_diffuse.dds"
+		texture_normal = "iron_m_normal.dds"
+		texture_specular = "21_shades_of_metalness_roughness.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	
+	meshsettings = {
+		name = "polySurface10Shape"
+		index = 0
+		texture_diffuse = "building_special_mines_unique_diffuse.dds"
+		texture_normal = "building_special_mines_unique_normal.dds"
+		texture_specular = "building_special_mines_unique_properties.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	# USF: meshsettings name is absent from this model; unused original retained
+# meshsettings = {
+# 		name = "fp2_building_special_alhambra_01_palm_treeShape"
+# 		index = 0
+# 		texture_diffuse = "yronwood_diffuse.dds"
+# 		texture_normal = "yronwood_normal.dds"
+# 		texture_specular = "yronwood_properties.dds"
+# 		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+# 		shader = "standard_atlas"
+# 		shader_file = "gfx/FX/pdxmesh.shader"
+# 	}
+}
+
+entity = {
+	name = "building_special_yronwood_entity"
+	pdxmesh = "building_special_yronwood_mesh"
+}

@@ -12,9 +12,9 @@
  setting_mde_buttons_standard:0 "Стандарт"
  setting_mde_buttons_all:0 "Все"
 
- setting_mde_buttons_off_desc:0 "Все кнопки MDE скрыты. Их можно включить в меню MDE, которое открывается из меню паузы."
- setting_mde_buttons_standard_desc:0 "Кнопки драконьих логов, драконов, яиц и меню MDE показаны. Королевскую гвардию и валирийскую сталь можно включить в меню MDE."
- setting_mde_buttons_all_desc:0 "Показаны все кнопки MDE: драконьи логова, драконы, яйца, Королевская гвардия, валирийская сталь и меню MDE."
+ setting_mde_buttons_off_desc:0 "Все кнопки MDE изначально скрыты. Их можно включить в меню MDE, которое открывается из меню паузы."
+ setting_mde_buttons_standard_desc:0 "Кнопки драконьих ям, драконов, яиц и меню MDE изначально показаны. Королевскую гвардию и валирийскую сталь можно включить в меню MDE."
+ setting_mde_buttons_all_desc:0 "Изначально показаны все кнопки MDE: драконьи ямы, драконы, яйца, Королевская гвардия, валирийская сталь и меню MDE."
   #Hatching 
  rule_can_hatch_multiple_dragons:0 "@mde_icon!@hatching_icon!Выведение нескольких драконов за церемонию"
  setting_can_hatch_multiple_dragons_no:0 "Невозможно"
@@ -50,13 +50,13 @@
  setting_extant_hatching_ceremonies_no_desc:0 "Церемонии недоступны, если в мире существуют драконы."
   #Egg + Dragonlore 
  rule_dragon_egg_spawn_likelihood_player:0 "@mde_icon!@iceFire_dragon_egg_icon!Находки драконьих яиц на карте — игрок"
- setting_no_spawns:0 "Без появления"
+ setting_no_spawns:0 "Без появления для игроков"
  setting_1_in_1200:0 "1/1200"
- setting_absolute_spawn:0 "Гарантировано"
+ setting_absolute_spawn:0 "Гарантировано для игроков"
   
- setting_no_spawns_desc:0 "Драконьи яйца нельзя будет найти на карте: ни в местах, связанных с драконами, ни в Винтерфелле, ни через решения вроде «Дня на Драконьем Камне», бегства в Летний замок или восстановления Летнего замка."
+ setting_no_spawns_desc:0 "Игроки не смогут получить драконьи яйца на карте: ни в местах, связанных с драконьими знаниями, ни в Винтерфелле, ни через решения вроде «Дня на Драконьем Камне», бегства в Летний замок или восстановления Летнего замка."
  setting_1_in_1200_desc:0 "Вероятность получить драконьи яйца при посещении соответствующего места или принятии решения для игрока — около 1/1200 (0,083%)."
- setting_absolute_spawn_desc:0 "Первый посетитель соответствующих локаций или первый персонаж, принявший нужные решения, гарантированно получит драконьи яйца. Отключите яйца Драконьего Камня, иначе их станет слишком много."
+ setting_absolute_spawn_desc:0 "Первый игрок, посетивший соответствующую локацию или принявший нужное решение, гарантированно получит драконье яйцо."
   
  rule_spawn_cannibal_egg:0 "@mde_icon!@wildfire_dragon_egg_icon!Яйцо Каннибала"
  setting_spawn_cannibal_egg_enabled:0 "Включено"
@@ -100,11 +100,11 @@
  setting_spawn_meraxes_egg_enabled_desc:0 "Яйцо потомка Мераксес можно найти во время путешествия в Пекло."
  setting_spawn_meraxes_egg_disabled_desc:0 "Событие о драконьих знаниях в Пекле останется, но драконье яйцо в нём больше не появится."
   
- rule_spawn_pythax_egg:0 "@mde_icon!@darkpurple_dragon_egg_icon!Яйцо Питакса"
+ rule_spawn_pythax_egg:0 "@mde_icon!@darkpurple_dragon_egg_icon!Яйцо Пифакса"
  setting_spawn_pythax_egg_enabled:0 "Включено"
  setting_spawn_pythax_egg_disabled:0 "Отключено"
   
- setting_spawn_pythax_egg_enabled_desc:0 "Яйцо потомка Питакса можно найти во время путешествия в южный Эссос."
+ setting_spawn_pythax_egg_enabled_desc:0 "Яйцо потомка Пифакса можно найти во время путешествия в южный Эссос."
  setting_spawn_pythax_egg_disabled_desc:0 "Событие о драконьих знаниях в южном Эссосе останется, но драконье яйцо в нём больше не появится."
   
  rule_spawn_vassarion_egg:0 "@mde_icon!@gold_dragon_egg_icon!Яйцо Вассариона"
@@ -126,7 +126,7 @@
  setting_spawn_dragonstone_eggs_disabled:0 "Отключено"
   
  setting_spawn_dragonstone_eggs_enabled_desc:0 "Яйца Нессариона, Мераксес, Вхагар, Ртути, Пламенной Мечты, Мелеис, Среброкрылой, Вермитора, Сиракс и Караксеса можно найти на Драконьем Камне."
- setting_spawn_dragonstone_eggs_disabled_desc:0 "Событие о драконьих знаниях на Драконьем Камне останется, но обычное посещение больше не будет создавать драконье яйцо. Событие «День на Драконьем Камне» и вдохновения авантюристов на Драконьем Камне останутся без изменений."
+ setting_spawn_dragonstone_eggs_disabled_desc:0 "Событие о драконьих знаниях на Драконьем Камне останется, но при обычном посещении драконье яйцо больше не появится. Событие «День на Драконьем Камне» и вдохновения авантюристов, направленные на Драконий Камень, останутся без изменений."
   
   
   
@@ -145,16 +145,16 @@
  setting_cradle_egg_hatch_likelihood_common:0 "Часто"
  setting_cradle_egg_hatch_likelihood_always:0 "Всегда"
 
- setting_cradle_egg_hatch_likelihood_never_desc:0 "Яйца в колыбелях игроков и их семей никогда не вылупляются."
- setting_cradle_egg_hatch_likelihood_rare_desc:0 "Яйца в колыбелях и драконьих ямах почти никогда не дают драконов."
- setting_cradle_egg_hatch_likelihood_less_likely_desc:0 "Яйца в колыбелях и драконьих ямах дают драконов реже обычного."
- setting_cradle_egg_hatch_likelihood_default_desc:0 "Яйца в колыбелях и драконьих ямах используют стандартные шансы."
- setting_cradle_egg_hatch_likelihood_more_likely_desc:0 "Яйца в колыбелях и драконьих ямах дают драконов чаще обычного."
- setting_cradle_egg_hatch_likelihood_common_desc:0 "Яйца в колыбелях и драконьих ямах имеют высокий шанс успешно дать дракона."
- setting_cradle_egg_hatch_likelihood_always_desc:0 "Яйца в колыбелях игроков и их семей никогда не станут бесплодными."
+ setting_cradle_egg_hatch_likelihood_never_desc:0 "Яйца в колыбелях игроков и членов их семей никогда не вылупятся."
+ setting_cradle_egg_hatch_likelihood_rare_desc:0 "Яйца в колыбелях игроков и членов их семей будут вылупляться крайне редко."
+ setting_cradle_egg_hatch_likelihood_less_likely_desc:0 "Яйца в колыбелях игроков и членов их семей будут вылупляться реже обычного."
+ setting_cradle_egg_hatch_likelihood_default_desc:0 "Яйца в колыбелях игроков и членов их семей будут использовать стандартную вероятность вылупления."
+ setting_cradle_egg_hatch_likelihood_more_likely_desc:0 "Яйца в колыбелях игроков и членов их семей будут вылупляться чаще обычного."
+ setting_cradle_egg_hatch_likelihood_common_desc:0 "Яйца в колыбелях игроков и членов их семей получат высокий шанс успешно вылупиться."
+ setting_cradle_egg_hatch_likelihood_always_desc:0 "Яйца в колыбелях игроков и членов их семей никогда не станут бесплодными."
 
  rule_cradle_egg_hatch_likelihood_ai:0 "@mde_icon!@white_dragon_egg_icon!Вылупление вынашиваемых яиц — ИИ"
- setting_cradle_egg_hatch_likelihood_wont_cradle_ai:0 "Не использует колыбели"
+ setting_cradle_egg_hatch_likelihood_wont_cradle_ai:0 "Не кладёт в колыбель"
  setting_cradle_egg_hatch_likelihood_never_ai:0 "Никогда"
  setting_cradle_egg_hatch_likelihood_rare_ai:0 "Редко"
  setting_cradle_egg_hatch_likelihood_less_likely_ai:0 "Менее вероятно"
@@ -164,13 +164,13 @@
  setting_cradle_egg_hatch_likelihood_always_ai:0 "Всегда"
 
  setting_cradle_egg_hatch_likelihood_wont_cradle_ai_desc:0 "ИИ не будет класть драконьи яйца в колыбели."
- setting_cradle_egg_hatch_likelihood_never_ai_desc:0 "Яйца в колыбелях ИИ никогда не вылупляются."
- setting_cradle_egg_hatch_likelihood_rare_ai_desc:0 "Яйца в колыбелях ИИ редко вылупляются."
- setting_cradle_egg_hatch_likelihood_less_likely_ai_desc:0 "Яйца в колыбелях ИИ вылупляются реже обычного."
- setting_cradle_egg_hatch_likelihood_default_ai_desc:0 "Стандартная вероятность вылупления яиц в колыбелях ИИ."
- setting_cradle_egg_hatch_likelihood_more_likely_ai_desc:0 "Яйца в колыбелях ИИ вылупляются чаще обычного."
- setting_cradle_egg_hatch_likelihood_common_ai_desc:0 "Высокий шанс вылупления яиц в колыбелях ИИ."
- setting_cradle_egg_hatch_likelihood_always_ai_desc:0 "Яйца в колыбелях ИИ никогда не станут бесплодными."
+ setting_cradle_egg_hatch_likelihood_never_ai_desc:0 "Яйца в колыбелях персонажей ИИ никогда не вылупятся."
+ setting_cradle_egg_hatch_likelihood_rare_ai_desc:0 "Яйца в колыбелях персонажей ИИ будут вылупляться крайне редко."
+ setting_cradle_egg_hatch_likelihood_less_likely_ai_desc:0 "Яйца в колыбелях персонажей ИИ будут вылупляться реже обычного."
+ setting_cradle_egg_hatch_likelihood_default_ai_desc:0 "Яйца в колыбелях персонажей ИИ будут использовать стандартную вероятность вылупления."
+ setting_cradle_egg_hatch_likelihood_more_likely_ai_desc:0 "Яйца в колыбелях персонажей ИИ будут вылупляться чаще обычного."
+ setting_cradle_egg_hatch_likelihood_common_ai_desc:0 "Яйца в колыбелях персонажей ИИ получат высокий шанс успешно вылупиться."
+ setting_cradle_egg_hatch_likelihood_always_ai_desc:0 "Яйца в колыбелях персонажей ИИ никогда не станут бесплодными."
 
  rule_pit_egg_hatch_likelihood_player:0 "@mde_icon!@white_dragon_egg_icon!Вылупление яиц в драконьих логовах — игрок"
  setting_pit_egg_hatch_likelihood_never:0 "Никогда"
@@ -181,16 +181,16 @@
  setting_pit_egg_hatch_likelihood_common:0 "Часто"
  setting_pit_egg_hatch_likelihood_always:0 "Всегда"
 
- setting_pit_egg_hatch_likelihood_never_desc:0 "Яйца в драконьем логове игрока никогда не вылупляются."
- setting_pit_egg_hatch_likelihood_rare_desc:0 "Яйца в драконьем логове игрока редко вылупляются."
- setting_pit_egg_hatch_likelihood_less_likely_desc:0 "Яйца в драконьем логове игрока вылупляются реже обычного."
- setting_pit_egg_hatch_likelihood_default_desc:0 "Стандартная вероятность вылупления яиц в драконьем логове игрока."
- setting_pit_egg_hatch_likelihood_more_likely_desc:0 "Яйца в драконьем логове игрока вылупляются чаще обычного."
- setting_pit_egg_hatch_likelihood_common_desc:0 "Высокий шанс вылупления яиц в драконьем логове игрока."
- setting_pit_egg_hatch_likelihood_always_desc:0 "Яйца в драконьем логове игрока никогда не станут бесплодными."
+ setting_pit_egg_hatch_likelihood_never_desc:0 "Яйца в драконьих ямах игроков никогда не вылупятся."
+ setting_pit_egg_hatch_likelihood_rare_desc:0 "Яйца в драконьих ямах игроков будут вылупляться крайне редко."
+ setting_pit_egg_hatch_likelihood_less_likely_desc:0 "Яйца в драконьих ямах игроков будут вылупляться реже обычного."
+ setting_pit_egg_hatch_likelihood_default_desc:0 "Яйца в драконьих ямах игроков будут использовать стандартную вероятность вылупления."
+ setting_pit_egg_hatch_likelihood_more_likely_desc:0 "Яйца в драконьих ямах игроков будут вылупляться чаще обычного."
+ setting_pit_egg_hatch_likelihood_common_desc:0 "Яйца в драконьих ямах игроков получат высокий шанс успешно вылупиться."
+ setting_pit_egg_hatch_likelihood_always_desc:0 "Яйца в драконьих ямах игроков никогда не станут бесплодными."
 
  rule_pit_egg_hatch_likelihood_ai:0 "@mde_icon!@white_dragon_egg_icon!Вылупление яиц в драконьих логовах — ИИ"
- setting_pit_egg_hatch_likelihood_wont_pit_ai:0 "Не использует логово"
+ setting_pit_egg_hatch_likelihood_wont_pit_ai:0 "Не помещает в яму"
  setting_pit_egg_hatch_likelihood_never_ai:0 "Никогда"
  setting_pit_egg_hatch_likelihood_rare_ai:0 "Редко"
  setting_pit_egg_hatch_likelihood_less_likely_ai:0 "Менее вероятно"
@@ -199,14 +199,14 @@
  setting_pit_egg_hatch_likelihood_common_ai:0 "Часто"
  setting_pit_egg_hatch_likelihood_always_ai:0 "Всегда"
 
- setting_pit_egg_hatch_likelihood_wont_pit_ai_desc:0 "ИИ не будет помещать драконьи яйца в драконье логово."
- setting_pit_egg_hatch_likelihood_never_ai_desc:0 "Яйца в драконьем логове ИИ никогда не вылупляются."
- setting_pit_egg_hatch_likelihood_rare_ai_desc:0 "Яйца в драконьем логове ИИ редко вылупляются."
- setting_pit_egg_hatch_likelihood_less_likely_ai_desc:0 "Яйца в драконьем логове ИИ вылупляются реже обычного."
- setting_pit_egg_hatch_likelihood_default_ai_desc:0 "Стандартная вероятность вылупления яиц в драконьем логове ИИ."
- setting_pit_egg_hatch_likelihood_more_likely_ai_desc:0 "Яйца в драконьем логове ИИ вылупляются чаще обычного."
- setting_pit_egg_hatch_likelihood_common_ai_desc:0 "Высокий шанс вылупления яиц в драконьем логове ИИ."
- setting_pit_egg_hatch_likelihood_always_ai_desc:0 "Яйца в драконьем логове ИИ никогда не станут бесплодными."
+ setting_pit_egg_hatch_likelihood_wont_pit_ai_desc:0 "ИИ не будет помещать драконьи яйца в драконьи ямы."
+ setting_pit_egg_hatch_likelihood_never_ai_desc:0 "Яйца в драконьих ямах персонажей ИИ никогда не вылупятся."
+ setting_pit_egg_hatch_likelihood_rare_ai_desc:0 "Яйца в драконьих ямах персонажей ИИ будут вылупляться крайне редко."
+ setting_pit_egg_hatch_likelihood_less_likely_ai_desc:0 "Яйца в драконьих ямах персонажей ИИ будут вылупляться реже обычного."
+ setting_pit_egg_hatch_likelihood_default_ai_desc:0 "Яйца в драконьих ямах персонажей ИИ будут использовать стандартную вероятность вылупления."
+ setting_pit_egg_hatch_likelihood_more_likely_ai_desc:0 "Яйца в драконьих ямах персонажей ИИ будут вылупляться чаще обычного."
+ setting_pit_egg_hatch_likelihood_common_ai_desc:0 "Яйца в драконьих ямах персонажей ИИ получат высокий шанс успешно вылупиться."
+ setting_pit_egg_hatch_likelihood_always_ai_desc:0 "Яйца в драконьих ямах персонажей ИИ никогда не станут бесплодными."
   
  rule_canon_dragon_egg_hatch_likelihood:0 "@mde_icon!@white_dragon_egg_icon!Вероятность выведения канонических драконов из яиц"
  setting_canon_dragon_egg_hatch_likelihood_never:0 "Никогда"
@@ -216,12 +216,12 @@
  setting_canon_dragon_egg_hatch_likelihood_common:0 "Часто"
  setting_canon_dragon_egg_hatch_likelihood_guaranteed:0 "Гарантировано"
 
- setting_canon_dragon_egg_hatch_likelihood_never_desc:0 "Канонические драконьи яйца никогда не вылупятся в колыбели, в драконьем логове или как дополнительные яйца на церемонии, если только эта настройка не стоит на «Всегда». Действует только при включённых канонических драконах."
- setting_canon_dragon_egg_hatch_likelihood_less_likely_desc:0 "Канонические драконьи яйца дают драконов реже обычного. Складывается с обычным правилом вероятности."
- setting_canon_dragon_egg_hatch_likelihood_default_desc:0 "Канонические драконьи яйца используют стандартные шансы. Складывается с обычным правилом вероятности."
- setting_canon_dragon_egg_hatch_likelihood_more_likely_desc:0 "Канонические драконьи яйца дают драконов чаще обычного. Складывается с обычным правилом вероятности."
- setting_canon_dragon_egg_hatch_likelihood_common_desc:0 "Канонические драконьи яйца имеют высокий шанс успешно дать дракона. Складывается с обычным правилом вероятности."
- setting_canon_dragon_egg_hatch_likelihood_guaranteed_desc:0 "Канонические драконьи яйца всегда дают драконов."
+ setting_canon_dragon_egg_hatch_likelihood_never_desc:0 "Канонические драконьи яйца никогда не вылупятся в колыбели, в драконьей яме или как дополнительные яйца на церемонии выведения, если соответствующая настройка не установлена на «Всегда». Действует только при включённых канонических драконах."
+ setting_canon_dragon_egg_hatch_likelihood_less_likely_desc:0 "Канонические драконьи яйца реже вылупляются в колыбели, в драконьей яме или как дополнительные яйца на церемонии выведения. Эффект складывается с соответствующими настройками. Действует только при включённых канонических драконах."
+ setting_canon_dragon_egg_hatch_likelihood_default_desc:0 "Канонические драконьи яйца используют те же шансы, что и остальные яйца, в колыбели, в драконьей яме и как дополнительные яйца на церемонии выведения. Действует только при включённых канонических драконах."
+ setting_canon_dragon_egg_hatch_likelihood_more_likely_desc:0 "Канонические драконьи яйца чаще вылупляются в колыбели, в драконьей яме или как дополнительные яйца на церемонии выведения. Эффект складывается с соответствующими настройками. Действует только при включённых канонических драконах."
+ setting_canon_dragon_egg_hatch_likelihood_common_desc:0 "Канонические драконьи яйца имеют высокий шанс вылупиться в колыбели, в драконьей яме или как дополнительные яйца на церемонии выведения. Эффект складывается с соответствующими настройками. Действует только при включённых канонических драконах."
+ setting_canon_dragon_egg_hatch_likelihood_guaranteed_desc:0 "Канонические драконьи яйца не станут бесплодными в колыбели или драконьей яме, если соответствующая настройка не установлена на «Никогда», и всегда вылупятся как дополнительные яйца на церемонии выведения. Действует только при включённых канонических драконах."
   
  rule_dragon_egg_clutch_size:0 "@mde_icon!@dragon_icon!@white_dragon_egg_icon!Размер кладки драконьих яиц"
  setting_dragon_egg_clutch_size_default:0 "По умолчанию"
@@ -415,8 +415,8 @@
  setting_mde_egg_notifications_on:0 "Вкл."
  setting_mde_egg_notifications_off:0 "Выкл."
 
- setting_mde_egg_notifications_on_desc:0 "Игроки получают уведомление, когда кто-то другой получает драконье яйцо: кладка, находка или иной способ."
- setting_mde_egg_notifications_off_desc:0 "Игроки не получают уведомлений, когда кто-то другой получает новое драконье яйцо."
+ setting_mde_egg_notifications_on_desc:0 "Игроки получают уведомления, когда драконье яйцо отложено или найдено."
+ setting_mde_egg_notifications_off_desc:0 "Игроки не получают уведомлений, когда драконье яйцо отложено или найдено."
   
   
   

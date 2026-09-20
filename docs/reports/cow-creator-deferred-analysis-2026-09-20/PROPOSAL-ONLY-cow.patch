@@ -1,0 +1,106 @@
+--- a/common/buildings/yy_agotcities_special_buildings_westeros.txt
++++ b/common/buildings/yy_agotcities_special_buildings_westeros.txt
+@@ -1757,14 +1757,14 @@
+         embarkation_cost_mult = -0.15
+         diplomatic_range_mult = 0.25
+         naval_movement_speed_mult = 0.1
+-        rhoynish_religion_opinion = 10
++        the_mother_religion_opinion = 10
+     }
+ 
+     county_holder_character_modifier = {
+         embarkation_cost_mult = -0.15
+         diplomatic_range_mult = 0.25
+         naval_movement_speed_mult = 0.1
+-        rhoynish_religion_opinion = 5
++        the_mother_religion_opinion = 5
+     }
+ 
+     type = special
+@@ -1822,11 +1822,12 @@
+         culture_likely_to_fortify_modifier = yes
+     }
+ 
+-    on_complete = {
+-        barony.holder = {
+-            trigger_event = agot_cities.5000
+-        }
+-    }
++    # USF: PROPOSAL ONLY: event agot_cities.5000 is absent; preserve building and working ruin restoration.
++# on_complete = {
++#         barony.holder = {
++#             trigger_event = agot_cities.5000
++#         }
++#     }
+ 
+     type = special
+ 
+@@ -1988,11 +1989,12 @@
+         culture_likely_to_fortify_modifier = yes
+     }
+ 
+-    on_complete = {
+-        barony.holder = {
+-            trigger_event = agot_cities.5000
+-        }
+-    }
++    # USF: PROPOSAL ONLY: event agot_cities.5000 is absent; preserve building and working ruin restoration.
++# on_complete = {
++#         barony.holder = {
++#             trigger_event = agot_cities.5000
++#         }
++#     }
+ 
+     type = special
+ 
+@@ -2290,11 +2292,12 @@
+         culture_likely_to_fortify_modifier = yes
+     }
+ 
+-    on_complete = {
+-        barony.holder = {
+-            trigger_event = agot_cities.5000
+-        }
+-    }
++    # USF: PROPOSAL ONLY: event agot_cities.5000 is absent; preserve building and working ruin restoration.
++# on_complete = {
++#         barony.holder = {
++#             trigger_event = agot_cities.5000
++#         }
++#     }
+ 
+     type = special
+ 
+--- a/common/on_action/cowagot_province_on_actions.txt
++++ b/common/on_action/cowagot_province_on_actions.txt
+@@ -322,17 +322,18 @@
+ 			}
+ 			add_special_building_slot = agot_ten_towers_01
+ 		}
+-		if = {
+-			limit = {
+-				this = province:2819
+-				has_holding_type = castle_holding
+-				has_special_building_slot = no
+-				exists = scope:character.dynasty
+-				scope:character = {
+-					NOT = { dynasty = dynasty:dynn_Harlaw }
+-				}
+-			}
+-			add_special_building_slot = harlaw_mines_01
+-		}
++		# USF: PROPOSAL ONLY: unavailable legacy mine; retain the Harlaw/Ten Towers branch and province history.
++# if = {
++# 			limit = {
++# 				this = province:2819
++# 				has_holding_type = castle_holding
++# 				has_special_building_slot = no
++# 				exists = scope:character.dynasty
++# 				scope:character = {
++# 					NOT = { dynasty = dynasty:dynn_Harlaw }
++# 				}
++# 			}
++# 			add_special_building_slot = harlaw_mines_01
++# 		}
+ 	}
+ }

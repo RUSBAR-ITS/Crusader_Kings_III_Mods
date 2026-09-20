@@ -1,0 +1,95 @@
+pdxmesh = {
+	name = "lordsport_mesh"
+	file = "lordsport.mesh"
+
+	meshsettings = {
+		name = "lordsport_sail"
+		index = 0
+		texture_diffuse = "western_ship_01_cog_sails_diffuse.dds"
+		texture_normal = "western_ship_01_cog_sails_normal.dds"
+		texture_specular = "western_ship_01_cog_sails_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "lannisport_lpShape"
+		index = 0
+		texture_diffuse = "lannisport_lp_diffuse.dds"
+		texture_normal = "lannisport_lp_normal.dds"
+		texture_specular = "lannisport_lp_properties.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "lordsport_ship"
+		index = 0
+		texture_diffuse = "unit_fp1_ship_01_knarr_diffuse.dds"
+		texture_normal = "unit_fp1_ship_01_knarr_normal.dds"
+		texture_specular = "unit_fp1_ship_01_knarr_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	
+
+	# USF: meshsettings name is absent from this model; unused original retained
+# meshsettings = {
+# 		name = "iron"
+# 		index = 0
+# 		texture_diffuse = "iron_m_diffuse.dds"
+# 		texture_normal = "iron_m_normal.dds"
+# 		texture_specular = "21_shades_of_metalness_roughness.dds"
+# 		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+# 		shader = "standard_winter"
+# 		shader_file = "gfx/FX/pdxmesh.shader"
+# 	}
+
+	# USF: meshsettings name is absent from this model; unused original retained
+# meshsettings = {
+# 		name = "lordsport_stone_ground"
+# 		index = 0
+# 		texture_diffuse = "stone_crag_diffuse.dds"
+# 		texture_normal = "stone_crag_properties.dds"
+# 		texture_specular = "stone_crag_normal.dds"
+# 		shader = "standard_winter"
+# 		shader_file = "gfx/FX/pdxmesh.shader"
+# 
+# 	}
+	meshsettings = {
+		name = "dock_tower_wood"
+		index = 0		
+		texture_normal = "building_mediterranean_atlas_normal.dds"
+		texture_specular = "building_mediterranean_atlas_properties.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }	
+		shader = "standard_atlas"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "dock_tower_main"
+		index = 0
+		texture_diffuse = "building_western_atlas_diffuse.dds"
+		texture_normal = "building_western_atlas_normal.dds"
+		texture_specular = "building_western_atlas_properties.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+		shader = "standard_atlas"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "ep3_maidens_tower_lower_01_aShape"
+		index = 0
+		texture_diffuse = "ep3_maidens_tower_lower_01_a_diffuse.dds"
+		texture_normal = "ep3_maidens_tower_lower_01_a_normal.dds"
+		texture_specular = "ep3_maidens_tower_lower_01_a_properties.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "lordsport_entity"
+	pdxmesh = "lordsport_mesh"
+}

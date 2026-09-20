@@ -1,0 +1,341 @@
+--- revision13/common/artifacts/visuals/asoiaf_visuals.txt
++++ revision14/common/artifacts/visuals/asoiaf_visuals.txt
+@@ -98,5 +98,6 @@
+ 
+ #ARMOURS
+ asoiaf_hound_armour_visuals = {
++	asset = m_clothes_sec_western_war_nob_01_artifact_entity
+ 	icon = "asoiaf_hound_armour.dds"
+ }
+\ No newline at end of file
+--- revision13/common/coat_of_arms/coat_of_arms/test_northern_dynasties.txt
++++ revision14/common/coat_of_arms/coat_of_arms/test_northern_dynasties.txt
+@@ -967,16 +967,39 @@
+ 	}
+ }
+ 
++# AGOT_PLUS_FIX stage14: Missing custom emblem; use the current complete AGOT house arms.
++# dynn_Wibberley = {
++# 	pattern = "temp_pattern_bendy_special.dds"
++# 	color1 = "asoiaf_black"
++# 	color2 = "asoiaf_field_green_dark"
++# 	color3 = "asoiaf_steel_white"
++# 	colored_emblem = {
++# 		texture = "north_wibberly.dds"
++# 		color1 = "asoiaf_white"
++# 		color2 = "asoiaf_steel_white"
++# 		instance = { position = { 0.48 0.5 } scale = { 0.92 0.92 }  }
++# 	}
++# }
+ dynn_Wibberley = {
+-	pattern = "temp_pattern_bendy_special.dds"
+-	color1 = "asoiaf_black"
+-	color2 = "asoiaf_field_green_dark"
+-	color3 = "asoiaf_steel_white"
+-	colored_emblem = {
+-		texture = "north_wibberly.dds"
+-		color1 = "asoiaf_white"
+-		color2 = "asoiaf_steel_white"
+-		instance = { position = { 0.48 0.5 } scale = { 0.92 0.92 }  }
++	pattern = "pattern_solid.dds"
++	color1 = "agot_crimson"
++	color2 = "agot_bronze"
++	color3 = "agot_black"
++	colored_emblem = {
++		texture = "ce_circle.dds"
++		color1 = "agot_bronze"
++		color2 = "agot_cream"
++		instance = { position = { 0.5 0.68 } scale = { 0.58 0.58 } rotation = 0 }
++		instance = { position = { 0.28 0.3 } scale = { 0.58 0.58 } rotation = 0 }
++		instance = { position = { 0.72 0.3 } scale = { 0.58 0.58 } rotation = 0 }
++	}
++	colored_emblem = {
++		texture = "ce_circle.dds"
++		color1 = "agot_crimson"
++		color2 = "agot_cream"
++		instance = { position = { 0.5 0.68 } scale = { 0.34 0.34 } rotation = 0 }
++		instance = { position = { 0.28 0.3 } scale = { 0.34 0.34 } rotation = 0 }
++		instance = { position = { 0.72 0.3 } scale = { 0.34 0.34 } rotation = 0 }
+ 	}
+ }
+ 
+--- revision13/common/coat_of_arms/coat_of_arms/test_personal_coas.txt
++++ revision14/common/coat_of_arms/coat_of_arms/test_personal_coas.txt
+@@ -2121,7 +2121,7 @@
+ 		instance = { position = { 0.5 0.45 } scale = { 0.95 0.85 } }
+ 	}
+ 	colored_emblem = {
+-		texture = "asoiaf_unicorn.dds"
++		texture = "no_frikrigg_01.dds"
+ 		color1 = rgb { 100 47 79 }
+ 		color2 = "asoiaf_black_deep"
+ 		color3 = rgb { 255 255 255 }
+--- revision13/common/coat_of_arms/coat_of_arms/test_reach_dynasties.txt
++++ revision14/common/coat_of_arms/coat_of_arms/test_reach_dynasties.txt
+@@ -1274,7 +1274,7 @@
+ 		instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } rotation = 90 }
+ 	}
+ 	colored_emblem = {
+-		texture="ce_bottom_solid.dds"
++		texture="ce_solidblock.dds"
+ 		color1 = "asoiaf_black"
+ 		instance = { position = { 0.5 0.01122 } scale = { 1.0 0.57 } }
+ 	}
+@@ -1679,7 +1679,7 @@
+ 	color2 = "asoiaf_white"
+ 	color3 = "asoiaf_black"
+ 	colored_emblem = {
+-		texture = "re_block_02.dds"
++		texture = "ce_solidblock.dds"
+ 		color1 = "asoiaf_yellow"
+ 		color2 = "asoiaf_yellow"
+ 		instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
+@@ -1761,7 +1761,7 @@
+ 	color2 = "asoiaf_yellow"
+ 	color3 = "asoiaf_brown"
+ 	colored_emblem = {
+-		texture = "re_block_02.dds"
++		texture = "ce_solidblock.dds"
+ 		color1 = "asoiaf_black"
+ 		color2 = "asoiaf_black"
+ 		instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
+--- revision13/common/coat_of_arms/coat_of_arms/test_riverland_dynasties.txt
++++ revision14/common/coat_of_arms/coat_of_arms/test_riverland_dynasties.txt
+@@ -714,10 +714,10 @@
+ 	color2 = "agot_bronze"
+ 	color3 = "asoiaf_white"
+ 	colored_emblem = {
+-		texture = "vale_seldon_rayonne.dds"
++		texture = "vale_seldon_rayonne5.dds"
+ 		color1 = "agot_silver"
+ 		color2 = "agot_bone"
+-		instance = { position = { 0.185 0.185 } scale = { 0.9 0.9 } rotation = 90 }
++		instance = { position = { 0.185 0.185 } scale = { 0.905 -0.905 } rotation = 0 }
+ 	}
+ 	colored_emblem = {
+ 		texture = "rl_byrne_bear.dds"
+--- revision13/common/decisions/asoiaf_house_branch_decisions.txt
++++ revision14/common/decisions/asoiaf_house_branch_decisions.txt
+@@ -446,6 +446,7 @@
+ }
+ 
+ asoiaf_greyjoy_cadets_decision = {
++	ai_check_interval = 0 # Player-only: the authored AI weight is zero.
+ 	picture = {
+ 		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+ 	}
+@@ -551,6 +552,7 @@
+ }
+ 
+ asoiaf_baelish_cadets_decision = {
++	ai_check_interval = 0 # Player-only: the authored AI weight is zero.
+ 	picture = {
+ 		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+ 	}
+@@ -659,6 +661,7 @@
+ }
+ 
+ asoiaf_harlaw_cadets_decision = {
++	ai_check_interval = 0 # Player-only: the authored AI weight is zero.
+ 	picture = {
+ 		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+ 	}
+--- revision13/common/decisions/asoiaf_jon_targ_cadet_branch_decision.txt
++++ revision14/common/decisions/asoiaf_jon_targ_cadet_branch_decision.txt
+@@ -1,4 +1,5 @@
+ asoiaf_jon_targ_cadet_branch_decision = {
++	ai_check_interval = 0 # Player-only: the authored AI weight is zero.
+ 	picture = {
+ 		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+ 	}
+@@ -66,6 +67,7 @@
+ }
+ 
+ asoiaf_aegon_II_greens_cadet_branch_decision = {
++	ai_check_interval = 0 # Player-only: the authored AI weight is zero.
+ 	picture = {
+ 		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+ 	}
+--- revision13/common/modifiers/asoiaf_artifact_modifiers.txt
++++ revision14/common/modifiers/asoiaf_artifact_modifiers.txt
+@@ -1,10 +1,11 @@
+-asoiaf_oathkeeper_modifier = { #DELETE WHEN AGOT TEAM ADDS THEIRS!
+-	prowess_no_portrait = 9
+-	monthly_dynasty_prestige_mult = 0.05
+-	monthly_prestige = 0.2
+-	#general_opinion = -25
+-	westerman_main_opinion = 20
+-}
++# AGOT_PLUS_FIX stage14: Retired by the author after AGOT added its own modifier.
++# asoiaf_oathkeeper_modifier = { #DELETE WHEN AGOT TEAM ADDS THEIRS!
++# 	prowess_no_portrait = 9
++# 	monthly_dynasty_prestige_mult = 0.05
++# 	monthly_prestige = 0.2
++# 	#general_opinion = -25
++# 	westerman_main_opinion = 20
++# }
+ 
+ asoiaf_jaimes_sword_modifier = { #re-balance after the AGOT team decides how they want to balance VS swords
+ 	icon = grandeur_positive
+--- revision13/common/modifiers/asoiaf_canon_children_modifiers.txt
++++ revision14/common/modifiers/asoiaf_canon_children_modifiers.txt
+@@ -984,13 +984,14 @@
+ 	travel_danger = -15
+ 	hide_effects = yes
+ }
+-asoiaf_Karstark_4_modifier = {
+-	icon = asoiaf_canon_children_modifier
+-	negate_health_penalty_add = 1.5
+-	fertility = 0.3
+-	travel_danger = -15
+-	hide_effects = yes
+-}
++# AGOT_PLUS_FIX stage14: Unused placeholder; its only assignment was already commented out.
++# asoiaf_Karstark_4_modifier = {
++# 	icon = asoiaf_canon_children_modifier
++# 	negate_health_penalty_add = 1.5
++# 	fertility = 0.3
++# 	travel_danger = -15
++# 	hide_effects = yes
++# }
+ asoiaf_Reed_1_modifier = {
+ 	icon = asoiaf_canon_children_modifier
+ 	negate_health_penalty_add = 1.5
+--- revision13/common/scripted_effects/asoiaf_assign_inactive_traits_effects.txt
++++ revision14/common/scripted_effects/asoiaf_assign_inactive_traits_effects.txt
+@@ -519,7 +519,7 @@
+ 		}
+ 		set_global_variable = asoiaf_canon_children_Targaryen_70_born_variable
+ 	}
+-	character:asoiaf_Targaryen_61_1 ?= { #Aerion Targaryen (son of Daemon)
++	character:Targaryen_70_B ?= { #Aerion Targaryen (son of Daemon)
+ 		make_trait_inactive = asoiaf_Targaryen_61_1_trait
+ 		if = {
+ 			limit = {
+--- revision13/common/scripted_effects/asoiaf_canon_children_effects.txt
++++ revision14/common/scripted_effects/asoiaf_canon_children_effects.txt
+@@ -2861,9 +2861,9 @@
+ 					save_scope_as = asoiaf_cersei
+ 				}
+ 			}
+-			set_relation_crush = { reason = test_crush_desc target = scope:asoiaf_cersei }
++			set_relation_crush = scope:asoiaf_cersei
+ 			scope:asoiaf_cersei = {
+-				set_relation_crush = { reason = test_crush_desc target = scope:child_2 }
++				set_relation_crush = scope:child_2
+ 			}
+ 		}
+ 		scope:mother = { trigger_event = birth.1001 } #regular
+@@ -9345,9 +9345,9 @@
+ 				limit = {
+ 					scope:asoiaf_daemon_I = { age < 16 } #crush mechanic only works with children
+ 				}
+-				set_relation_crush = { reason = test_crush_desc target = scope:asoiaf_daemon_I }
++				set_relation_crush = scope:asoiaf_daemon_I
+ 				scope:asoiaf_daemon_I = {
+-					set_relation_crush = { reason = test_crush_desc target = scope:child }
++					set_relation_crush = scope:child
+ 				}
+ 			}
+ 		}
+@@ -9540,9 +9540,9 @@
+ 				limit = {
+ 					scope:asoiaf_daenerys = { age < 16 } #crush mechanic only works with children
+ 				}
+-				set_relation_crush = { reason = test_crush_desc target = scope:asoiaf_daenerys }
++				set_relation_crush = scope:asoiaf_daenerys
+ 				scope:asoiaf_daenerys = {
+-					set_relation_crush = { reason = test_crush_desc target = scope:child }
++					set_relation_crush = scope:child
+ 				}
+ 			}
+ 		}
+@@ -13929,11 +13929,11 @@
+ 	}
+ 	if = {
+ 		limit = {
+-			character:Targaryen_61_1 = { exists = yes }
+-			character:Targaryen_61_1.mother ?= { is_alive = yes }
+-			character:Targaryen_61_1.mother ?= { is_spouse_of = character:Targaryen_61_1.father }
+-		}
+-		character:Targaryen_31.mother = { add_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
++			character:Targaryen_70_B = { exists = yes }
++			character:Targaryen_70_B.mother ?= { is_alive = yes }
++			character:Targaryen_70_B.mother ?= { is_spouse_of = character:Targaryen_70_B.father }
++		}
++		character:Targaryen_70_B.mother = { add_character_modifier = asoiaf_canon_children_pregnancy_negation_modifier }
+ 	}
+ 	if = {
+ 		limit = {
+--- revision13/common/scripted_effects/asoiaf_setup_effects.txt
++++ revision14/common/scripted_effects/asoiaf_setup_effects.txt
+@@ -2656,7 +2656,7 @@
+ }
+ 
+ asoiaf_got_names_effect = {
+-	character:Dormund_1 ?= { #Artys Dormand
++	character:Dormand_10 ?= { #Artys Dormand
+ 		change_first_name = Artys
+ 	}
+ 	character:Greyjoy_13 ?= { #Yara Greyjoy (daughter of Balon)
+@@ -5762,8 +5762,16 @@
+ 			limit = { age < 16 }
+ 			set_focus = education_martial
+ 		}
+-		set_father = character:Broome_54 #Morrec broome (son of Briony)
+-		set_mother = character:Broome_rs_54
++		# AGOT_PLUS_FIX: younger Alfred variant only; keep base parents when ages are unchanged.
++		if = {
++			limit = {
++				has_game_rule = asoiaf_alternative_ages_rule_on
++				exists = character:Broome_54
++				exists = character:Brax_67
++			}
++			set_father = character:Broome_54 # Morrec
++			set_mother = character:Brax_67 # Landra, Morrec's wife
++		}
+ 	}
+ 	character:Swyft_1 ?= { #Harys Swyft (son of Sheldon)
+ 		asoiaf_clear_personality_traits_effect = yes
+@@ -11252,7 +11260,7 @@
+ 			add_trait = pensive
+ 		}
+ 	}
+-	character:Dormund_1 ?= { #Jon Dormund -> Artys Dormand
++	character:Dormand_10 ?= { #Jon Dormund -> Artys Dormand
+ 		add_trait = knight
+ 	}
+ 	character:Stark_7 ?= { #Jon Snow
+@@ -12172,7 +12180,7 @@
+ 		character:Mopatis_1 ?= { copy_inheritable_appearance_from = character:Mopatis_asoiaf_1 }
+ 		character:Stormcrows_1 ?= { copy_inheritable_appearance_from = character:Stormcrows_asoiaf_1 }
+ 		character:Hotah_1_B ?= { copy_inheritable_appearance_from = character:Hotah_asoiaf_1 }
+-		character:Hotah_rs_2 ?= { #Areo Hotah's mother turns Summer Islander
++		character:Hotah_1_B.mother ?= { #Areo Hotah's mother turns Summer Islander
+ 			copy_inheritable_appearance_from = character:Hotah_asoiaf_1
+ 			set_character_faith = faith:summer_gods_pan
+ 			set_culture = culture:jhalai
+--- revision13/events/asoiaf_mega_war_events.txt
++++ revision14/events/asoiaf_mega_war_events.txt
+@@ -1,10 +1,11 @@
+ namespace = asoiaf_mega_war_events
+ 
+-asoiaf_mega_war_events.0001 = {
+-	type = character_event
+-	hidden = yes
+-	
+-	immediate = {
+-		# AGOT_PLUS_FIX: unavailable unfinished effect; retained inert event ID.
+-	}
+-}
+\ No newline at end of file
++# AGOT_PLUS_FIX stage14: Archive the empty, uncalled event; missing effect was already disabled.
++# asoiaf_mega_war_events.0001 = {
++# 	type = character_event
++# 	hidden = yes
++#
++# 	immediate = {
++# 		# AGOT_PLUS_FIX: unavailable unfinished effect; retained inert event ID.
++# 	}
++# }
+\ No newline at end of file

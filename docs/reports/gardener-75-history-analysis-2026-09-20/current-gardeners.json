@@ -1,0 +1,632 @@
+[
+  {
+    "ID": "Gardener_1",
+    "Name": "Garth",
+    "Line": 8,
+    "Body": "Gardener_1 = {\n\tname = Garth # Canon, AKA: Greenhand\n\tdynasty = dynn_Gardener\n\tdna = Gardener_1\n\n\tlearning = 9\n\n\treligion = fg_pan_garth\n\tculture = first_man\n\n\ttrait = education_stewardship_4\n\ttrait = greensight\n\ttrait = patient\n\ttrait = zealous\n\ttrait = diligent\n\ttrait = charming\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_greenhand\n\n\t2.1.1 = {\n\t\tbirth = yes\n\t\tmake_trait_inactive = scripted_appearance # changed from 1.1.1 to 2.1.1 because the game doesn't like 1.1.1\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t15.1.1 = {\n\t\ttrait = lustful\n\t\ttrait = lifestyle_gardener\n\t\tagot_safe_buy_family_man_perk_history_effect = yes\n\t\ttrait = family_first\n\t}\n\t1999.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_4",
+    "Name": "Garth",
+    "Line": 43,
+    "Body": "Gardener_4 = {\n\tname = Garth # Canon, Garth II the Gardener, founder, firstborn of Garth the Green\n\tdynasty = dynn_Gardener\n\n\tdna = Gardener_4\n\n\tlearning = 8\n\tdiplomacy = 13\n\tmartial = 7\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_1\n\n\ttrait = education_stewardship_4\n\ttrait = greensight\n\ttrait = intellect_good_1\n\ttrait = just\n\ttrait = diligent\n\ttrait = zealous\n\ttrait = authoritative\n\ttrait = bossy\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_the_gardener\n\n\t1980.1.1 = {\n\t\tbirth = yes\n\t\tmake_trait_inactive = scripted_appearance\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t1996.1.1 = { trait = lifestyle_gardener }\n\t2055.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_2",
+    "Name": "Florys",
+    "Line": 79,
+    "Body": "Gardener_2 = {\n\tname = Florys # Canon, AKA: the Fox, Florent, Peake and Ball founder\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\tdna = Gardener_2\n\n\tdiplomacy = 15\n\tintrigue = 12\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_1 # Garth Greenhand\n\n\ttrait = education_intrigue_4\n\ttrait = intellect_good_3\n\ttrait = deceitful\n\ttrait = arbitrary\n\ttrait = ambitious\n\ttrait = charming\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_the_fox\n\n\t1983.1.1 = {\n\t\tbirth = yes\n\t\tmake_trait_inactive = scripted_appearance\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t1999.1.1 = { trait = lustful }\n\t2001.1.1 = { add_spouse = Florent_17 } # Reynard Florent\n\t2001.4.1 = { add_spouse = Peake_6 } # Meryn Peake\n\t2002.3.1 = { add_spouse = Ball_4 } # Herman Ball\n\t2040.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_3",
+    "Name": "Brandon",
+    "Line": 115,
+    "Body": "Gardener_3 = {\n\tname = Brandon # Canon, Of the Bloody Blade, allegedly Stark founder\n\tdynasty = dynn_Gardener\n\tdna = Gardener_3\n\n\tlearning = 8\n\tdiplomacy = 13\n\tmartial = 7\n\tprowess = 24\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_1 # Garth Greenhand\n\n\ttrait = education_martial_2\n\ttrait = education_martial_prowess_5\n\ttrait = greensight\n\ttrait = intellect_good_1\n\t#trait = direwolf # AGOT TODO trait\n\ttrait = rowdy\n\n\tdisallow_random_traits = yes\n\n\t1986.1.1 = {\n\t\tbirth = yes\n\t\tmake_trait_inactive = scripted_appearance\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t2002.1.1 = {\n\t\tgive_nickname = nick_agot_historical_of_the_bloody_blade\n\t\tagot_safe_buy_torturer_perk_history_effect = yes\n\t\ttrait = torturer\n\t\ttrait = diligent\n\t\ttrait = zealous\n\t\ttrait = authoritative\n\t\ttrait = wrathful\n\t\ttrait = lifestyle_blademaster\n\t\tadd_trait_xp = {\n\t\t\ttrait = lifestyle_blademaster\n\t\t\tvalue = trait_third_level\n\t\t}\n\t}\n\t2058.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_5",
+    "Name": "Maris",
+    "Line": 160,
+    "Body": "Gardener_5 = {\n\tname = Maris # Canon, Maris the Maid, married Uthor Hightower\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\tdna = Gardener_5\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_1\n\n\ttrait = education_diplomacy_3\n\ttrait = chaste\n\ttrait = temperate\n\ttrait = compassionate\n\ttrait = beauty_good_2\n\ttrait = deceitful\n\ttrait = charming\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_the_maid_Gardener_5\n\n\t1984.1.1 = {\n\t\tbirth = yes\n\t\tmake_trait_inactive = scripted_appearance\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t2050.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_6",
+    "Name": "Gwayne",
+    "Line": 191,
+    "Body": "Gardener_6 = {\n\tname = Gwayne # Canon, Gwayne I the Gallant\n\tdynasty = dynn_Gardener\n\n\tdiplomacy = 13\n\tmartial = 7\n\tprowess = 10\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_4 # Garth the Gardener\n\n\ttrait = education_martial_3\n\ttrait = brave\n\ttrait = arrogant\n\ttrait = just\n\ttrait = rowdy\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_the_gallant_Gardener_6\n\n\t2010.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t2026.1.1 = {\n\t\tagot_safe_buy_gallant_perk_history_effect = yes\n\t\ttrait = gallant\n\t}\n\t2070.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_7",
+    "Name": "Gareth",
+    "Line": 224,
+    "Body": "Gardener_7 = {\n\tname = Gareth # I\n\tdynasty = dynn_Gardener\n\n\tdiplomacy = 13\n\tmartial = 7\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_6\n\n\t2034.1.1 = { birth = yes }\n\t2083.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_8",
+    "Name": "Gordan",
+    "Line": 239,
+    "Body": "Gardener_8 = {\n\tname = Gordan # Canon, Gordan I Grey-Eyes\n\tdynasty = dynn_Gardener\n\n\tdiplomacy = 13\n\tmartial = 7\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_7\n\n\tgive_nickname = nick_agot_historical_grey_eyes\n\n\t2061.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t2127.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_9",
+    "Name": "Meryn",
+    "Line": 259,
+    "Body": "Gardener_9 = {\n\tname = Meryn # I\n\tdynasty = dynn_Gardener\n\n\tdiplomacy = 10\n\tmartial = 7\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_8\n\n\t2081.1.1 = { birth = yes }\n\t2140.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_11",
+    "Name": "Garth",
+    "Line": 275,
+    "Body": "Gardener_11 = {\n\tname = Garth # Canon, Garth III the Great, persuaded Oakheart, Crane and Rowan to swear fealty to him\n\tdynasty = dynn_Gardener\n\n\tdiplomacy = 10\n\tmartial = 14\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_9\n\n\ttrait = education_diplomacy_4\n\ttrait = just\n\ttrait = authoritative\n\ttrait = organizer\n\ttrait = compassionate\n\ttrait = ambitious\n\ttrait = bossy\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_the_great_Gardener_11\n\n\t2110.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t2172.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_57",
+    "Name": "Garland",
+    "Line": 305,
+    "Body": "Gardener_57 = {\n\tname = Garland # I\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_11\n\n\t2130.1.1 = { birth = yes }\n\t2184.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_12",
+    "Name": "Garth",
+    "Line": 317,
+    "Body": "Gardener_12 = {\n\tname = Garth # IV\n\tdynasty = dynn_Gardener\n\n\tdiplomacy = 10\n\tmartial = 7\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_57\n\n\t2158.1.1 = { birth = yes }\n\t2195.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_14",
+    "Name": "Meryn",
+    "Line": 332,
+    "Body": "Gardener_14 = {\n\tname = Meryn # II\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_12\n\n\t2184.1.1 = { birth = yes }\n\t2250.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_15",
+    "Name": "Gwayne",
+    "Line": 344,
+    "Body": "Gardener_15 = {\n\tname = Gwayne # II\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_14\n\n\t2208.1.1 = { birth = yes }\n\t2260.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_16",
+    "Name": "John",
+    "Line": 356,
+    "Body": "Gardener_16 = {\n\tname = John # I\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_15\n\n\t2230.1.1 = { birth = yes }\n\t2280.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_20",
+    "Name": "Gwayne",
+    "Line": 368,
+    "Body": "Gardener_20 = {\n\tname = Gwayne # Canon, Gwayne III the Fat, persuaded Peake and Manderly to swear fealty to him\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_16\n\n\ttrait = education_diplomacy_3\n\ttrait = gluttonous\n\ttrait = patient\n\ttrait = just\n\ttrait = curious\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_the_fat_Gardener_20\n\n\t2250.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t\teffect = { change_current_weight = 100 }\n\t}\n\t2300.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_21",
+    "Name": "John",
+    "Line": 394,
+    "Body": "Gardener_21 = {\n\tname = John # Canon, John II the Tall, sailed to the Mander headwaters and made all the Lords on it swear fealty to him.\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_20\n\n\ttrait = education_martial_3\n\ttrait = patient\n\ttrait = just\n\ttrait = giant\n\ttrait = authoritative\n\ttrait = honest\n\ttrait = rowdy\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_the_tall_Gardener_21\n\n\t2270.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t2320.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_23",
+    "Name": "Garth",
+    "Line": 421,
+    "Body": "Gardener_23 = {\n\tname = Garth # Canon, Garth V the Hammer of the Dornish, fought against Dornish\n\tdynasty = dynn_Gardener\n\n\tprowess = 10\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_21\n\n\ttrait = education_martial_4\n\ttrait = brave\n\ttrait = strong\n\n\tgive_nickname = nick_agot_historical_the_hammer_Gardener_23\n\n\t2290.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t2348.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_10",
+    "Name": "Line_of_Garth",
+    "Line": 444,
+    "Body": "Gardener_10 = {\n\tname = Line_of_Garth\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_23\n\n\tgive_nickname = nick_agot_historical_the_hammer_Gardener_23\n\n\ttrait = line_of_char\n\tdisallow_random_traits = yes\n\n\t2348.1.1 = { birth = yes }\n\t6188.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_13",
+    "Name": "Gyles",
+    "Line": 461,
+    "Body": "Gardener_13 = {\n\tname = Gyles # Canon, Gyles I the Woe, brutally sacked Oldtown and sold it's population to slavery\n\tdynasty = dynn_Gardener\n\n\tdiplomacy = 10\n\tmartial = 7\n\tprowess = 9\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_10\n\n\ttrait = education_martial_2\n\ttrait = wrathful\n\ttrait = brave\n\ttrait = diligent\n\ttrait = sadistic\n\ttrait = rowdy\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_the_woe_gyles\n\n\t6188.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t6218.1.1 = { add_spouse = Redwyne_76 } # Bethany Redwyne\n\t6252.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_45",
+    "Name": "Meryn",
+    "Line": 492,
+    "Body": "Gardener_45 = {\n\tname = Meryn # Canon, Meryn III, brought the Arbor into the realm\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_13\n\tmother = Redwyne_76\n\n\ttrait = education_diplomacy_4\n\n\t6220.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t6289.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_17",
+    "Name": "Garland",
+    "Line": 510,
+    "Body": "Gardener_17 = {\n\tname = Garland # Canon, Garland II the Bridegroom, brought Oldtown into the Reach through marriage. A generation after Meryn III\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_45\n\n\ttrait = education_diplomacy_4\n\n\tgive_nickname = nick_agot_historical_the_bridegroom_garland\n\n\t6250.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t6300.1.1 = { add_spouse = Hightower_26 } # Maris Hightower, daughter of the Lymond the Sea Lion\n\t6305.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_18",
+    "Name": "Garse",
+    "Line": 531,
+    "Body": "Gardener_18 = {\n\tname = Garse # I\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_17\n\n\t6280.1.1 = { birth = yes }\n\t6340.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_19",
+    "Name": "Malora",
+    "Line": 543,
+    "Body": "Gardener_19 = {\n\tname = Malora # Mentioned, married Lymond \"the Sea Lion\" Hightower\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_17\n\n\t6282.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t6320.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_22",
+    "Name": "Mern",
+    "Line": 560,
+    "Body": "Gardener_22 = {\n\tname = Mern # I\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_18\n\n\t6310.1.1 = { birth = yes }\n\t6360.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_29",
+    "Name": "Gareth",
+    "Line": 572,
+    "Body": "Gardener_29 = {\n\tname = Gareth # Canon, Gareth II, AKA: Gareth the Grim\n\tdynasty = dynn_Gardener\n\n\tdiplomacy = 10\n\tmartial = 7\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_22\n\n\ttrait = education_martial_2\n\ttrait = depressed_1\n\ttrait = brave\n\ttrait = callous\n\ttrait = paranoid\n\ttrait = scarred\n\ttrait = pensive\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_the_grim_Gardener_29\n\n\t6340.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t6400.1.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle # Battle of Oldtown\n\t\t\tkiller = Harlaw_31 # Harron Harlaw\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_27",
+    "Name": "Garth",
+    "Line": 607,
+    "Body": "Gardener_27 = {\n\tname = Garth # Canon, VI the Morningstar\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_29\n\n\ttrait = education_martial_3\n\n\t6360.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t6376.1.1 = {\n\t\ttrait = brave\n\t\ttrait = callous\n\t\tgive_nickname = nick_agot_historical_the_morningstar\n\t\ttrait = lifestyle_blademaster\n\t\tadd_trait_xp = {\n\t\t\ttrait = lifestyle_blademaster\n\t\t\tvalue = trait_third_level\n\t\t}\n\t}\n\t6404.1.1 = {\n\t\tdeath = { death_reason = death_battle } # Died in battle against Ironborn\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_24",
+    "Name": "Garse",
+    "Line": 636,
+    "Body": "Gardener_24 = {\n\tname = Garse # II\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_27\n\n\t6386.1.1 = { birth = yes }\n\t6440.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_30",
+    "Name": "Gyles",
+    "Line": 648,
+    "Body": "Gardener_30 = {\n\tname = Gyles # Canon, Gyles II\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_24\n\n\t6420.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t6460.1.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_chopped_to_pieces # Died tortured and made into fishbait by Ironborn\n\t\t\tkiller = Blacktyde_8 # Joron Blacktyde\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_25",
+    "Name": "Garse",
+    "Line": 668,
+    "Body": "Gardener_25 = {\n\tname = Garse # III\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_30\n\n\t6450.1.1 = { birth = yes }\n\t6508.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_26",
+    "Name": "Perceon",
+    "Line": 680,
+    "Body": "Gardener_26 = {\n\tname = Perceon # I\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_25\n\n\t6470.1.1 = { birth = yes }\n\t6519.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_66",
+    "Name": "Garse",
+    "Line": 692,
+    "Body": "Gardener_66 = {\n\tname = Garse # IV\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_26\n\n\t6498.1.1 = { birth = yes }\n\t6550.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_44",
+    "Name": "Perceon",
+    "Line": 704,
+    "Body": "Gardener_44 = {\n\tname = Perceon # II\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_66\n\n\t6515.1.1 = { birth = yes }\n\t6584.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_46",
+    "Name": "Garse",
+    "Line": 716,
+    "Body": "Gardener_46 = {\n\tname = Garse # V\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_44\n\n\t6540.1.1 = { birth = yes }\n\t6597.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_32",
+    "Name": "Garth",
+    "Line": 728,
+    "Body": "Gardener_32 = {\n\tname = Garth # Canon, Garth VII Goldenhand, his reign considered a golden age of the Reach\n\tdynasty = dynn_Gardener\n\n\tdiplomacy = 10\n\tmartial = 8\n\tstewardship = 10\n\tintrigue = 7\n\tlearning = 9\n\tprowess = 8\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_46\n\n\ttrait = education_diplomacy_4\n\ttrait = education_martial_prowess_4\n\ttrait = just\n\ttrait = intellect_good_1\n\ttrait = compassionate\n\ttrait = brave\n\ttrait = diligent\n\ttrait = curious\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_the_goldenhand\n\n\t6585.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t6678.1.1 = { death = { death_reason = death_old_age } }\n}"
+  },
+  {
+    "ID": "Gardener_109",
+    "Name": "Alerie",
+    "Line": 764,
+    "Body": "Gardener_109 = {\n\tname = Alerie # Mentioned, married Monfryd IV Durrandon\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_32\n\n\t6602.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t6662.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_110",
+    "Name": "Rhea",
+    "Line": 780,
+    "Body": "Gardener_110 = {\n\tname = Rhea # Mentioned, married Lancel III Lannister\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_32\n\n\t6604.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t6671.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_33",
+    "Name": "Gyles",
+    "Line": 796,
+    "Body": "Gardener_33 = {\n\tname = Gyles # Mentioned\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_32\n\n\t6608.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t6660.1.1 = { death = yes } # Died before his father\n}"
+  },
+  {
+    "ID": "Gardener_34",
+    "Name": "Garth",
+    "Line": 812,
+    "Body": "Gardener_34 = {\n\tname = Garth # Mentioned\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_33 # Gyles Gardener\n\n\t6630.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t6679.1.1 = { death = yes } # Died before his grandfather\n}"
+  },
+  {
+    "ID": "Gardener_35",
+    "Name": "Garse",
+    "Line": 827,
+    "Body": "Gardener_35 = {\n\tname = Garse # Mentioned, Garse VI, great-grandson of the Goldenhand\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_34\n\n\t6648.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t6700.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_36",
+    "Name": "Garland",
+    "Line": 843,
+    "Body": "Gardener_36 = {\n\tname = Garland # Mentioned, Garland III\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_35\n\n\t6668.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t6703.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_37",
+    "Name": "Garth",
+    "Line": 858,
+    "Body": "Gardener_37 = {\n\tname = Garth # Mentioned, Garth VIII\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_35\n\n\t6670.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t6706.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_38",
+    "Name": "Gwayne",
+    "Line": 874,
+    "Body": "Gardener_38 = {\n\tname = Gwayne # Canon, Gwayne IV the Gods-fearing, Andals arrived in the Reach his reign\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_37 # Garth VIII Gardener\n\n\ttrait = education_learning_1\n\ttrait = paranoid\n\ttrait = zealous # Sought out Children of the Forest to get their help in fighting Andals\n\ttrait = just\n\ttrait = honest\n\ttrait = holy_warrior\n\ttrait = bossy\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_the_gods_fearing\n\n\t6698.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t6730.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_39",
+    "Name": "Mern",
+    "Line": 901,
+    "Body": "Gardener_39 = {\n\tname = Mern # Canon, Mern II the Mason, built a curtain wall around Highgarden\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_38\n\n\ttrait = education_stewardship_3\n\n\tgive_nickname = nick_agot_historical_the_mason\n\n\t6718.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t6735.1.1 = {\n\t\tagot_safe_buy_architect_perk_history_effect = yes\n\t\ttrait = architect\n\t}\n\t6780.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_40",
+    "Name": "Mern",
+    "Line": 924,
+    "Body": "Gardener_40 = {\n\tname = Mern # Canon, Mern III the Madling, wasted tons of gold on a hoaxter who claimed she'll give him an army of dead to fight Andals\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = first_man\n\n\tfather = Gardener_39\n\n\ttrait = education_stewardship_1 # The army didn't arrived did it?\n\ttrait = generous\n\ttrait = intellect_bad_1\n\ttrait = zealous\n\n\tgive_nickname = nick_agot_historical_the_madling\n\n\t6736.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t6790.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_41",
+    "Name": "Garth",
+    "Line": 946,
+    "Body": "Gardener_41 = {\n\tname = Garth # Canon, Garth IX, first of the Three Sage Kings\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = reachman\n\n\tfather = Gardener_40\n\n\ttrait = intellect_good_1\n\n\t6755.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t6771.1.1 = {\n\t\tagot_safe_buy_scholar_perk_history_effect = yes\n\t\ttrait = scholar\n\t}\n\t6804.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_42",
+    "Name": "Merle",
+    "Line": 967,
+    "Body": "Gardener_42 = {\n\tname = Merle # Canon, Merle I the Meek, second of the Three Sage Kings\n\tdynasty = dynn_Gardener\n\n\treligion = old_gods_wnw\n\tculture = reachman\n\n\tfather = Gardener_41\n\n\ttrait = education_diplomacy_3\n\ttrait = intellect_good_1\n\ttrait = honest\n\ttrait = trusting\n\ttrait = patient\n\ttrait = pensive\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_the_meek\n\n\t6784.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t6800.1.1 = {\n\t\tagot_safe_buy_scholar_perk_history_effect = yes\n\t\ttrait = scholar\n\t}\n\t6804.1.1 = {\n\t\treligion = fots_seven  # converted to the Faith\n\t\tadd_spouse = Uffering_97 # Helicent Uffering\n\t}\n\t6822.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_43",
+    "Name": "Gwayne",
+    "Line": 1001,
+    "Body": "Gardener_43 = {\n\tname = Gwayne # Canon, Gwayne V, the first Gardener who was born under the light of the seven, Half-Andal, the Tyrells arrived in this period\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_42\n\tmother = Uffering_97\n\n\ttrait = education_diplomacy_3\n\ttrait = intellect_good_1\n\ttrait = zealous\n\ttrait = trusting\n\ttrait = just\n\ttrait = bossy\n\n\tdisallow_random_traits = yes\n\n\t6806.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t6822.1.1 = { trait = knight }\n\t6823.1.1 = {\n\t\tagot_safe_buy_scholar_perk_history_effect = yes\n\t\ttrait = scholar\n\t}\n\t6824.1.1 = { add_spouse = Leygood_58 } # Alla Leygood\n\t6855.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_47",
+    "Name": "Mern",
+    "Line": 1033,
+    "Body": "Gardener_47 = {\n\tname = Mern # IV\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_43\n\tmother = Leygood_58\n\n\t6830.1.1 = { birth = yes }\n\t6846.1.1 = { trait = knight }\n\t6881.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_48",
+    "Name": "Margaery",
+    "Line": 1047,
+    "Body": "Gardener_48 = {\n\tname =  Margaery # Mentioned, ruling Queen of House Gardener\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_47\n\n\t6860.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t6922.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_49",
+    "Name": "Garland",
+    "Line": 1063,
+    "Body": "Gardener_49 = {\n\tname = Garland # IV\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tmother = Gardener_48\n\n\t6878.1.1 = { birth = yes }\n\t6896.1.1 = { trait = knight }\n\t6945.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_50",
+    "Name": "Mern",
+    "Line": 1076,
+    "Body": "Gardener_50 = {\n\tname = Mern # V\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_49\n\n\t6914.1.1 = { birth = yes }\n\t6932.1.1 = { trait = knight }\n\t6962.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_64",
+    "Name": "Garland",
+    "Line": 1089,
+    "Body": "Gardener_64 = {\n\tname = Garland # V\n\tdynasty = dynn_Gardener\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_50\n\n\t6946.1.1 = { birth = yes }\n\t6962.1.1 = { trait = knight }\n\t7011.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_78",
+    "Name": "Gyles",
+    "Line": 1101,
+    "Body": "Gardener_78 = {\n\tname = Gyles # Canon, Gyles III, briefly conquered northern Stormlands, besieged Storm's End\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_64\n\n\ttrait = education_martial_4\n\ttrait = diligent\n\ttrait = arrogant\n\ttrait = ambitious\n\ttrait = brave\n\ttrait = rowdy\n\n\tdisallow_random_traits = yes\n\n\t6990.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t7006.1.1 = { trait = knight }\n\t7053.1.1 = { death = { death_reason = death_bloody_flux } }\n}"
+  },
+  {
+    "ID": "Gardener_65",
+    "Name": "Gordan",
+    "Line": 1127,
+    "Body": "Gardener_65 = {\n\tname = Gordan # II\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_78\n\n\t7009.1.1 = { birth = yes }\n\t7025.1.1 = { trait = knight }\n\t7058.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_55",
+    "Name": "Merle",
+    "Line": 1140,
+    "Body": "Gardener_55 = {\n\tname = Merle # great-uncle of Greybeard, grandfather of Mern VI\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_78\n\n\t7020.1.1 = { birth = yes }\n\t7065.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_51",
+    "Name": "Merle",
+    "Line": 1153,
+    "Body": "Gardener_51 = {\n\tname = Merle # II\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_65\n\n\t7030.1.1 = { birth = yes }\n\t7046.1.1 = { trait = knight }\n\t7059.1.1 = { death = yes } # Son came to the throne at seven\n}"
+  },
+  {
+    "ID": "Gardener_52",
+    "Name": "Garth",
+    "Line": 1166,
+    "Body": "Gardener_52 = {\n\tname = Garth # Canon, Garth X Greybeard, king at the time of the succession war between Manderly and Peake\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_51\n\n\ttrait = education_diplomacy_1\n\ttrait = arrogant # vain\n\ttrait = arbitrary  # frivolous\n\ttrait = trusting\n\ttrait = fickle\n\ttrait = ill\n\ttrait = rowdy\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_greybeard_Gardener_52\n\n\t7052.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t\teffect = { add_trait = incapable }\n\t}\n\t7070.1.1 = { trait = knight }\n\t7148.1.1 = { # Died at ninety six\n\t\ttrait = incapable\n\t\tdeath = {\n\t\t\tdeath_reason = death_murder_known\n\t\t\tkiller = Fowler_110 # Dornishmen found him tied to his bed and dying when they sacked Highgarden\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_53",
+    "Name": "Olenna",
+    "Line": 1202,
+    "Body": "Gardener_53 = {\n\tname = Olenna # married Marlon Manderly\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_52\n\n\t7090.1.1 = { birth = yes }\n\t7169.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_54",
+    "Name": "Margaery",
+    "Line": 1215,
+    "Body": "Gardener_54 = {\n\tname = Margaery # married Eddison Peake\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_52\n\n\t7092.1.1 = { birth = yes }\n\t7167.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_56",
+    "Name": "Greydon",
+    "Line": 1229,
+    "Body": "Gardener_56 = {\n\tname = Greydon\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_55\n\n\t7057.1.1 = { birth = yes }\n\t7075.1.1 = { trait = knight }\n\t7088.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_58",
+    "Name": "Mern",
+    "Line": 1242,
+    "Body": "Gardener_58 = {\n\tname = Mern # Canon, Mern VI, second cousin of Garth Greybeard, youngest daughter married Robert Tyrell giving them Gardener blood\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_56\n\n\ttrait = education_stewardship_1 # man of modest gifts\n\ttrait = humble\n\ttrait = trusting\n\ttrait = honest\n\ttrait = just\n\ttrait = pensive\n\n\tdisallow_random_traits = yes\n\n\t7094.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t7112.1.1 = { trait = knight }\n\t7180.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_107",
+    "Name": "Helicent",
+    "Line": 1268,
+    "Body": "Gardener_107 = {\n\tname = Helicent # Mentioned\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_58\n\n\t7135.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7207.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_108",
+    "Name": "Talla",
+    "Line": 1284,
+    "Body": "Gardener_108 = {\n\tname = Talla # Mentioned\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_58\n\n\t7137.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7204.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_59",
+    "Name": "Garth",
+    "Line": 1300,
+    "Body": "Gardener_59 = {\n\tname = Garth # Canon, Garth XI the Painter, revenged his kinsman Greybeard\n\tdynasty = dynn_Gardener\n\n\tprowess = 12\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_58\n\n\ttrait = education_martial_4\n\ttrait = wrathful\n\ttrait = callous\n\ttrait = intellect_good_1\n\ttrait = arrogant\n\ttrait = ambitious\n\ttrait = rowdy\n\n\tdisallow_random_traits = yes\n\n\tgive_nickname = nick_agot_historical_the_painter\n\n\t7140.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t7158.1.1 = { trait = knight }\n\t7210.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_60",
+    "Name": "Ellyn",
+    "Line": 1330,
+    "Body": "Gardener_60 = {\n\tname = Ellyn # Mentioned, married Robert Tyrell\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_58\n\n\t7143.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7210.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_69",
+    "Name": "Garmon",
+    "Line": 1347,
+    "Body": "Gardener_69 = {\n\tname = Garmon # I\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_59\n\n\t7168.1.1 = { birth = yes }\n\t7184.1.1 = { trait = knight }\n\t7212.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_70",
+    "Name": "Gunthor",
+    "Line": 1360,
+    "Body": "Gardener_70 = {\n\tname = Gunthor # I\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_69\n\n\t7196.1.1 = { birth = yes }\n\t7212.1.1 = { trait = knight }\n\t7263.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_71",
+    "Name": "Mattheus",
+    "Line": 1373,
+    "Body": "Gardener_71 = {\n\tname = Mattheus # I\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_70\n\n\t7225.1.1 = { birth = yes }\n\t7241.1.1 = { trait = knight }\n\t7287.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_72",
+    "Name": "Gareth",
+    "Line": 1386,
+    "Body": "Gardener_72 = {\n\tname = Gareth # III\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_71\n\n\t7253.1.1 = { birth = yes }\n\t7270.1.1 = { trait = knight }\n\t7312.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_73",
+    "Name": "John",
+    "Line": 1399,
+    "Body": "Gardener_73 = {\n\tname = John # III\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_72\n\n\t7282.1.1 = { birth = yes }\n\t7298.1.1 = { trait = knight }\n\t7324.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_61",
+    "Name": "Greydon",
+    "Line": 1412,
+    "Body": "Gardener_61 = {\n\tname = Greydon # Canon, Greydon I, who was defeated by Nymeria\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_73\n\n\t7304.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t7320.1.1 = { trait = knight }\n\t7341.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_62",
+    "Name": "Perceon",
+    "Line": 1428,
+    "Body": "Gardener_62 = {\n\tname = Perceon # Canon, Perceon III, exiled the Manderlys from the Reach\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_61 # Greydon I\n\n\ttrait = paranoid\n\n\t7328.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t7344.1.1 = { trait = knight }\n\t7384.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_63",
+    "Name": "Gwayne",
+    "Line": 1446,
+    "Body": "Gardener_63 = {\n\tname = Gwayne # Canon, Gwayne VI\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_62\n\n\t7355.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t7375.1.1 = { trait = knight }\n\t7380.1.1 = { add_spouse = Peake_18 } # Myrielle Peake, daughter of Lorimar Peake\n\t7399.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_28",
+    "Name": "Line_of_Gwayne",
+    "Line": 1464,
+    "Body": "Gardener_28 = {\n\tname = Line_of_Gwayne\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_63\n\tmother = Peake_18\n\n\ttrait = line_of_char\n\tdisallow_random_traits = yes\n\n\t7399.1.1 = { birth = yes }\n\t7780.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_77",
+    "Name": "Mern",
+    "Line": 1480,
+    "Body": "Gardener_77 = {\n\tname = Mern # VII\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_28\n\n\t7780.1.1 = { birth = yes }\n\t7796.1.1 = { trait = knight }\n\t7826.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_79",
+    "Name": "Gareth",
+    "Line": 1494,
+    "Body": "Gardener_79 = {\n\tname = Gareth # IV\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\tsexuality = heterosexual\n\n\tfather = Gardener_77\n\n\t7807.1.1 = { \n\t\tbirth = yes\n\t\tadd_character_flag = sexuality_ensure_not_asexual\n\t\tadd_character_flag = sexuality_ensure_not_homosexual  \n\t}\n\t7823.1.1 = { trait = knight }\n\t7841.1.1 = { trait = fornicator }\n\t7864.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_80",
+    "Name": "Megga",
+    "Line": 1513,
+    "Body": "Gardener_80 = {\n\tname = Megga # married Alester Tyrell, second of the ten Gardener-Tyrell marriages\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\tfather = Gardener_77\n\n\treligion = fots_seven\n\tculture = reachman\n\n\t7809.1.1 = { birth = yes }\n\t7867.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_81",
+    "Name": "Mern",
+    "Line": 1527,
+    "Body": "Gardener_81 = {\n\tname = Mern # VIII\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_79\n\n\t7840.1.1 = { birth = yes }\n\t7856.1.1 = { trait = knight }\n\t7864.1.1 = { add_spouse = Hightower_48 } # Alicent Hightower\n\t7881.1.1 = { add_spouse = Florent_22 } # Elissa Florent\n\t7898.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_82",
+    "Name": "Alla",
+    "Line": 1543,
+    "Body": "Gardener_82 = {\n\tname = Alla # married Perceon Rowan to simulate closer blood ties than Tyrells\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\tdna = Gardener_82\n\n\tfather = Gardener_81\n\tmother = Hightower_48\n\n\treligion = fots_seven\n\tculture = reachman\n\n\t7871.1.1 = {\n\t\tbirth = yes\n\t\tmake_trait_inactive = scripted_appearance\n\t}\n\t7909.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_85",
+    "Name": "Meryn",
+    "Line": 1561,
+    "Body": "Gardener_85 = {\n\tname = Meryn # eldest son of Mern VIII, died in accident\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_81\n\tmother = Hightower_48\n\n\t7873.1.1 = { birth = yes }\n\t7887.7.1 = {\n\t\ttrait = squire\n\t\tdeath = { death_reason = death_accident }\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_84",
+    "Name": "Mina",
+    "Line": 1577,
+    "Body": "Gardener_84 = {\n\tname = Mina # married Garth Hightower to simulate closer blood ties than Tyrells\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_81\n\tmother = Florent_22\n\n\t7882.1.7 = { birth = yes }\n\t7949.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_83",
+    "Name": "Garland",
+    "Line": 1591,
+    "Body": "Gardener_83 = {\n\tname = Garland # Canon, Garland VI, a Tyrell was regent during his minority\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_81\n\tmother = Florent_22\n\n\t7888.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t7904.1.1 = { trait = knight }\n\t7909.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_87",
+    "Name": "Garth",
+    "Line": 1608,
+    "Body": "Gardener_87 = {\n\tname = Garth # Canon, Garth XII\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_81\n\tmother = Florent_22\n\n\t7893.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t7911.1.1 = { trait = knight }\n\t7918.1.1 = { add_spouse = Redwyne_14 } # Bethany Redwyne\n\t7949.1.1 = { death = yes }\n}"
+  },
+  {
+    "ID": "Gardener_86",
+    "Name": "Janna",
+    "Line": 1626,
+    "Body": "Gardener_86 = {\n\tname = Janna # married Ryam Redwyne to simulate closer blood ties than Tyrells\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_81\n\tmother = Florent_22\n\n\t7896.1.1 = { birth = yes }\n\t7940.1.1 = { death = { death_reason = death_childbirth } }\n}"
+  },
+  {
+    "ID": "Gardener_88",
+    "Name": "Alla",
+    "Line": 1641,
+    "Body": "Gardener_88 = {\n\tname = Alla # married Alester Oakheart to simulate recent Gardener blood ties\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_87\n\tmother = Redwyne_14\n\n\t7920.1.1 = { birth = yes }\n\t7957.7.1 = { death = { death_reason = death_childbirth } }\n}"
+  },
+  {
+    "ID": "Gardener_89",
+    "Name": "Leona",
+    "Line": 1655,
+    "Body": "Gardener_89 = {\n\tname = Leona # married Theo Rowan to simulate recent Gardener blood ties\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_87\n\tmother = Redwyne_14\n\n\t7923.1.1 = { birth = yes }\n\t7988.7.1 = {\n\t\tdeath = { death_reason = death_accident }\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_90",
+    "Name": "Garse",
+    "Line": 1671,
+    "Body": "Gardener_90 = {\n\tname = Garse # Canon, Garse VII\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_87\n\tmother = Redwyne_14\n\n\t7924.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t7947.1.1 = { trait = knight }\n\t7948.1.1 = { add_spouse = Fossoway_17 } # Florence Fossoway\n\t7980.5.8 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle # Battle of Summerfield\n\t\t\tkiller = Durrandon_87 # Argilac Durrandon\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_91",
+    "Name": "Garth",
+    "Line": 1694,
+    "Body": "Gardener_91 = {\n\tname = Garth # Mentioned, uncle of Mern IX\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_87\n\tmother = Redwyne_14\n\n\t7930.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7946.1.1 = { trait = knight }\n\t7950.1.1 = {\n\t\tadd_spouse = Tarly_47 # Rosalei Tarly\n\t}\n\t8000.5.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_92",
+    "Name": "Elinor",
+    "Line": 1719,
+    "Body": "Gardener_92 = {\n\tname = Elinor # married Gareth Peake to simulate their closer blood ties to Gardeners than the Tyrells\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\tdna = Gardener_92\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_87\n\tmother = Redwyne_14\n\n\t7933.1.1 = {\n\t\tbirth = yes\n\t\tmake_trait_inactive = scripted_appearance\n\t}\n\t7967.1.1 = { death = { death_reason = death_childbirth } }\n}"
+  },
+  {
+    "ID": "Gardener_111",
+    "Name": "Garmund",
+    "Line": 1738,
+    "Body": "Gardener_111 = {\n\tname = Garmund # Mentioned, uncle of Mern IX\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_87\n\tmother = Redwyne_14\n\n\t7936.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7952.1.1 = { trait = knight }\n\t7954.1.1 = {\n\t\tadd_spouse = Tyrell_57 # Megga Tyrell\n\t}\n\t8000.5.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_93",
+    "Name": "Gunthor",
+    "Line": 1764,
+    "Body": "Gardener_93 = {\n\tname = Gunthor # Mentioned\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_91\n\tmother = Tarly_47\n\n\t7953.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7969.1.1 = { trait = knight }\n\t7980.5.8 = { employer = Gardener_95 } # Mern IX Gardener\n\t8000.5.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_94",
+    "Name": "Mattheus",
+    "Line": 1788,
+    "Body": "Gardener_94 = {\n\tname = Mattheus # Mentioned\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_111\n\tmother = Tyrell_57\n\n\t7955.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7971.1.1 = { trait = knight }\n\t7980.5.8 = { employer = Gardener_95 } # Mern IX Gardener\n\t8000.5.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_95",
+    "Name": "Mern",
+    "Line": 1812,
+    "Body": "Gardener_95 = {\n\tname = Mern # Canon, Mern IX, died on the Field of Fire\n\tdynasty = dynn_Gardener\n\n\tmartial = 5\n\tprowess = 6\n\n\tdna = Gardener_95\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_90\n\tmother = Fossoway_17\n\n\ttrait = education_martial_2\n\ttrait = arrogant\n\ttrait = brave\n\n\t7949.1.1 = {\n\t\tbirth = yes\n\t\tmake_trait_inactive = scripted_appearance\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t7965.1.1 = {\n\t\ttrait = knight\n\t\tadd_spouse = Oakheart_13 # Arwyn Oakheart\n\t}\n\t7999.3.11 = {\n\t\teffect = {\n\t\t\tif = {\n\t\t\t\tlimit = { character:Lannister_79 = { is_alive = yes } }\n\t\t\t\tcreate_alliance = character:Lannister_79 # King Loren Lannister\n\t\t\t\treverse_add_opinion = {\n\t\t\t\t\ttarget = character:Lannister_79 # King Loren Lannister\n\t\t\t\t\tmodifier = event_negotiated_alliance_opinion\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\t8000.5.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_96",
+    "Name": "Olene",
+    "Line": 1859,
+    "Body": "Gardener_96 = {\n\tname = Olene # married Jon Florent, to further solidify their rightful claim to the reach\n\tdynasty = dynn_Gardener\n\tfemale = yes\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_90\n\tmother = Fossoway_17\n\n\t7951.1.1 = { birth = yes }\n\t7995.2.8 = {\n\t\tdeath = { death_reason = death_accident }\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_97",
+    "Name": "Garth",
+    "Line": 1875,
+    "Body": "Gardener_97 = {\n\tname = Garth # Mentioned\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_90\n\tmother = Fossoway_17\n\n\t7952.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7968.1.1 = {\n\t\ttrait = knight\n\t\tadd_spouse = Peake_27 # Margaery Peake\n\t}\n\t8000.5.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_98",
+    "Name": "Gwayne",
+    "Line": 1900,
+    "Body": "Gardener_98 = {\n\tname = Gwayne # Mentioned\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_90\n\tmother = Fossoway_17\n\n\t7956.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7970.1.1 = { add_spouse = Redwyne_21 } # Olenna Redwyne\n\t7972.1.1 = { trait = knight }\n\t8000.5.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_99",
+    "Name": "Edmund",
+    "Line": 1924,
+    "Body": "Gardener_99 = {\n\tname = Edmund # Canon\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_95\n\tmother = Oakheart_13\n\n\t7967.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t7983.1.1 = { trait = knight }\n\t7984.1.1 = { add_spouse = Rowan_16 } # Rhea Rowan\n\t8000.5.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_100",
+    "Name": "Gawen",
+    "Line": 1947,
+    "Body": "Gardener_100 = {\n\tname = Gawen # Canon\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_95\n\tmother = Oakheart_13\n\n\t7969.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_canon\n\t}\n\t7985.1.1 = {\n\t\ttrait = knight\n\t\tadd_spouse = Florent_30 # Selyse Florent\n\t}\n\t8000.5.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_101",
+    "Name": "Gareth",
+    "Line": 1972,
+    "Body": "Gardener_101 = {\n\tname = Gareth # Mentioned\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_95\n\tmother = Oakheart_13\n\n\ttrait = education_martial_1 ### Non Canon traits\n\ttrait = education_martial_prowess_1\n\ttrait = eccentric\n\ttrait = lazy\n\ttrait = compassionate\n\ttrait = shy\n\ttrait = pensive\n\n\tdisallow_random_traits = yes\n\n\t7973.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7989.1.1 = { trait = knight }\n\t7990.1.1 = { trait = lifestyle_gardener }\n\t7998.1.1 = { add_spouse = Hightower_55 } # Alerie Hightower\n\t8000.5.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_102",
+    "Name": "Gyles",
+    "Line": 2006,
+    "Body": "Gardener_102 = {\n\tname = Gyles # Mentioned\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_95\n\tmother = Oakheart_13\n\n\ttrait = education_martial_3 ### Non Canon traits\n\ttrait = education_martial_prowess_3\n\ttrait = beauty_good_2\n\ttrait = gregarious\n\ttrait = forgiving\n\ttrait = inquisitive\n\ttrait = brave\n\ttrait = charming\n\n\tdisallow_random_traits = yes\n\n\t7975.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7991.1.1 = { trait = knight }\n\t8000.5.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_103",
+    "Name": "Garse",
+    "Line": 2040,
+    "Body": "Gardener_103 = {\n\tname = Garse # Mentioned\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_99\n\tmother = Rowan_16\n\n\t7985.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7996.1.1 = {\n\t\teffect = {\n\t\t\tagot_set_as_ward_and_squire_history_effect = { KNIGHT = character:Gardener_95 } # Mern Gardener\n\t\t}\n\t}\n\t8000.5.1 = {\n\t\ttrait = squire\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_104",
+    "Name": "Meryn",
+    "Line": 2068,
+    "Body": "Gardener_104 = {\n\tname = Meryn # Mentioned\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_100\n\tmother = Florent_30\n\n\t7986.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7996.1.1 = {\n\t\teffect = {\n\t\t\tagot_set_as_ward_and_squire_history_effect = { KNIGHT = character:Gardener_95 } # Mern Gardener\n\t\t}\n\t}\n\t8000.5.1 = {\n\t\ttrait = squire\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_105",
+    "Name": "Garmon",
+    "Line": 2096,
+    "Body": "Gardener_105 = {\n\tname = Garmon # Mentioned\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_97\n\tmother = Peake_27\n\n\t7970.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7996.1.1 = { trait = knight }\n\t8000.5.1 = {\n\t\ttrait = burned\n\t\tadd_trait_xp = {\n\t\t\ttrait = burned\n\t\t\tvalue = trait_third_level\n\t\t}\n\t\ttrait = wounded_3\n\t}\n\t8000.5.3 = {\n\t\tdeath = { death_reason = death_wounded_3 } # Field of Fire\n\t}\n}"
+  },
+  {
+    "ID": "Gardener_106",
+    "Name": "Mern",
+    "Line": 2124,
+    "Body": "Gardener_106 = {\n\tname = Mern # Mentioned\n\tdynasty = dynn_Gardener\n\n\treligion = fots_seven\n\tculture = reachman\n\n\tfather = Gardener_98\n\tmother = Redwyne_21\n\n\t7971.1.1 = {\n\t\tbirth = yes\n\t\tadd_character_flag = canon_status_mentioned\n\t}\n\t7997.1.1 = { trait = knight }\n\t8000.5.1 = {\n\t\tdeath = {\n\t\t\tdeath_reason = death_battle_dragon_fire # Field of Fire\n\t\t\tkiller = Targaryen_27 # Aegon I Targaryen\n\t\t}\n\t}\n}"
+  }
+]

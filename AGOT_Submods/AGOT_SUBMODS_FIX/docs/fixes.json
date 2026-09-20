@@ -1,0 +1,437 @@
+[
+  {
+    "file": "common/scripted_triggers/core_artifact_triggers.txt",
+    "source": "core/common/scripted_triggers/core_artifact_triggers.txt",
+    "reason": "Recognize current AGOT/LOTD sword modifiers; preserve optional integrations."
+  },
+  {
+    "file": "common/scripted_effects/DI_court_position_spawner_overrides.txt",
+    "source": "di/common/scripted_effects/DI_court_position_spawner_overrides.txt",
+    "reason": "Preserve polyglot roles using existing cultures and distinct unknown languages."
+  },
+  {
+    "file": "common/scripted_effects/usf_language_effects.txt",
+    "source": null,
+    "reason": "At most four new languages; cultures sharing a language cannot duplicate it."
+  },
+  {
+    "file": "common/scripted_effects/DI_present_effects.txt",
+    "source": "di/common/scripted_effects/DI_present_effects.txt",
+    "reason": "Comment four obsolete trait choices/checks; preserve all other personalities and weights."
+  },
+  {
+    "file": "common/scripted_guis/DI_cultural_editor_pillars_sgui.txt",
+    "source": "di/common/scripted_guis/DI_cultural_editor_pillars_sgui.txt",
+    "reason": "Correct the existing AGOT language ID."
+  },
+  {
+    "file": "common/scripted_effects/00_agot_artifact_vs_sword_effects_override.txt",
+    "source": "lotd/common/scripted_effects/00_agot_artifact_vs_sword_effects_override.txt",
+    "reason": "Use modern templates; comment three unused markers without altering visuals, modifiers or history."
+  },
+  {
+    "file": "common/scripted_effects/00_lotd_artifact_creation_effects.txt",
+    "source": "lotd/common/scripted_effects/00_lotd_artifact_creation_effects.txt",
+    "reason": "Keep remaining Subterfuge bonuses; do not duplicate its existing +5 bonus."
+  },
+  {
+    "file": "events/decisions_events/buy_ruby_crown_events.txt",
+    "source": "lotd/events/decisions_events/buy_ruby_crown_events.txt",
+    "reason": "Prevent an invalid second AI charge; preserve decision cost."
+  },
+  {
+    "file": "common/scripted_triggers/00_lotd_artifact_triggers.txt",
+    "source": "lotd/common/scripted_triggers/00_lotd_artifact_triggers.txt",
+    "reason": "Recognize the existing Baelor crown marker."
+  },
+  {
+    "file": "events/decisions_events/rediscover_events.txt",
+    "source": "lotd/events/decisions_events/rediscover_events.txt",
+    "reason": "Restore Maekar search eligibility; five crown finds use current properties without an invented maker."
+  },
+  {
+    "file": "common/scripted_effects/usf_crowns_without_creator_effects.txt",
+    "source": null,
+    "reason": "Five separately named AGOT crown helpers; only the creator binding and creator field are omitted."
+  },
+  {
+    "file": "common/scripted_triggers/cowagot_building_requirement_triggers.txt",
+    "source": "cow/common/scripted_triggers/cowagot_building_requirement_triggers.txt",
+    "reason": "Modern quarry terrain requirement, including Iron Islands restriction, with four COW Tarth exceptions."
+  },
+  {
+    "file": "common/scripted_guis/cow_custom_mapmodes_gui.txt",
+    "source": "cow/common/scripted_guis/cow_custom_mapmodes_gui.txt",
+    "reason": "Match the actual map mode variable and its existing flag value."
+  },
+  {
+    "file": "common/modifiers/ntc_artifact_modifiers.txt",
+    "source": "crowns/common/modifiers/ntc_artifact_modifiers.txt",
+    "reason": "Use current Vale culture without changing bonus amounts."
+  },
+  {
+    "file": "common/on_action/ntc_artifacts_startdate.txt",
+    "source": "crowns/common/on_action/ntc_artifacts_startdate.txt",
+    "reason": "Preserve intended dissolution of empires into kingdoms."
+  },
+  {
+    "file": "common/artifacts/templates/ntc_artifacts_templates.txt",
+    "source": "crowns/common/artifacts/templates/ntc_artifacts_templates.txt",
+    "reason": "Correct Myrcella identity flag case."
+  },
+  {
+    "file": "common/scripted_effects/00_ntc_scripted_effects_crowns.txt",
+    "source": "crowns/common/scripted_effects/00_ntc_scripted_effects_crowns.txt",
+    "reason": "Comment only two creation-history entries for missing Gardener_75; keep descriptions, campaign owners, artifact properties and later history."
+  },
+  {
+    "file": "common/scripted_triggers/00_ntc_crown_commission_triggers.txt",
+    "source": "crowns/common/scripted_triggers/00_ntc_crown_commission_triggers.txt",
+    "reason": "Recognize the exact existing historical Baldric; do not invent a birth chain."
+  },
+  {
+    "file": "events/activities/agot_coronation_activity/agot_coronation_crown_commission_events.txt",
+    "source": "crowns/events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
+    "reason": "Verified exact AGOT baseline plus eight additive Crowns blocks; use current canonical filename."
+  },
+  {
+    "file": "events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
+    "source": "crowns/events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
+    "reason": "Suppress duplicate old filename without dropping any crown choices."
+  },
+  {
+    "file": "events/ntc_find_lost_crown_events.txt",
+    "source": "crowns/events/ntc_find_lost_crown_events.txt",
+    "reason": "Use actual crown existence and a live-participant lock; release on success, failure, refusal and scripted death."
+  },
+  {
+    "file": "common/scripted_effects/usf_bookmarked_april_scenario.txt",
+    "source": "agot/common/scripted_effects/00_agot_scenario_clash_of_kings_effects.txt",
+    "reason": "Copy exact AGOT April effect under a unique path; preserve Bookmarked June scenario."
+  },
+  {
+    "file": "common/scripted_triggers/00_valyrian_artifact_triggers.txt",
+    "source": "vs/common/scripted_triggers/00_valyrian_artifact_triggers.txt",
+    "reason": "Match current case-sensitive egg color values; no model or texture changes."
+  },
+  {
+    "file": "common/modifier_definition_formats/agot_scheme_definitions.txt",
+    "source": "vs/common/modifier_definition_formats/agot_scheme_definitions.txt",
+    "reason": "Comment two unavailable display formats only."
+  },
+  {
+    "file": "localization/replace/russian/game_concepts_l_russian.yml",
+    "source": "agot_ru/localization/replace/russian/game_concepts_l_russian.yml",
+    "reason": "Match current AGOT English description, which has no obsolete family restriction."
+  },
+  {
+    "file": "localization/replace/russian/dlc/tgp/dlc_tgp_china_game_concepts_l_russian.yml",
+    "source": "repo/AGOT_Submods/AGOT_RUS_CORRECT/localization/replace/russian/dlc/tgp/dlc_tgp_china_game_concepts_l_russian.yml",
+    "reason": "Use existing localized decision name without looking up an unavailable decision object."
+  },
+  {
+    "file": "gfx/models/buildings/special/castamere/usf_castamere_neutral_normal.dds",
+    "source": "game/gfx/models/debug/no_normal.dds",
+    "reason": "Byte-identical neutral game map under a unique local model texture name."
+  },
+  {
+    "file": "gfx/models/buildings/special/castamere/usf_castamere_neutral_properties.dds",
+    "source": "game/gfx/models/debug/no_properties.dds",
+    "reason": "Byte-identical neutral game map under a unique local model texture name."
+  },
+  {
+    "file": "gfx/models/buildings/special/Evenfall/building_special_evenfall.mesh",
+    "source": "cow/gfx/models/buildings/special/Evenfall/building_special_evenfall.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/Ten Towers/cow_building_special_ten_towers.mesh",
+    "source": "cow/gfx/models/buildings/special/Ten Towers/cow_building_special_ten_towers.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/ashemark/ashemark.mesh",
+    "source": "cow/gfx/models/buildings/special/ashemark/ashemark.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/castamere/24castamere_2.mesh",
+    "source": "cow/gfx/models/buildings/special/castamere/24castamere_2.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/castamere/24castamere_3.mesh",
+    "source": "cow/gfx/models/buildings/special/castamere/24castamere_3.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/castamere/castamere_restored.mesh",
+    "source": "cow/gfx/models/buildings/special/castamere/castamere_restored.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/cow_blackhaven/cow_blackhaven.mesh",
+    "source": "cow/gfx/models/buildings/special/cow_blackhaven/cow_blackhaven.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/crag/crag.mesh",
+    "source": "cow/gfx/models/buildings/special/crag/crag.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/crag/crag_level_1.mesh",
+    "source": "cow/gfx/models/buildings/special/crag/crag_level_1.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/crag/crag_level_2.mesh",
+    "source": "cow/gfx/models/buildings/special/crag/crag_level_2.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/deepwood_motte/deepwood_motte.mesh",
+    "source": "cow/gfx/models/buildings/special/deepwood_motte/deepwood_motte.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/dunstonbury/dunstonbury.mesh",
+    "source": "cow/gfx/models/buildings/special/dunstonbury/dunstonbury.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/fanghill/fanghill.mesh",
+    "source": "cow/gfx/models/buildings/special/fanghill/fanghill.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/griffins roost/building_special_griffins_roost.mesh",
+    "source": "cow/gfx/models/buildings/special/griffins roost/building_special_griffins_roost.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/planky town/planky_town.mesh",
+    "source": "cow/gfx/models/buildings/special/planky town/planky_town.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/rooksrest/rooksrest.mesh",
+    "source": "cow/gfx/models/buildings/special/rooksrest/rooksrest.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/rooksrest/rooksrest2.mesh",
+    "source": "cow/gfx/models/buildings/special/rooksrest/rooksrest2.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/seagaurd/building_seagard_01.mesh",
+    "source": "cow/gfx/models/buildings/special/seagaurd/building_seagard_01.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/the_arbor/the_arbor.mesh",
+    "source": "cow/gfx/models/buildings/special/the_arbor/the_arbor.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/whitegrove/whitegrove.mesh",
+    "source": "cow/gfx/models/buildings/special/whitegrove/whitegrove.mesh",
+    "reason": "Approved UV channel edits only; geometry, topology, materials and all other PDX tokens preserved."
+  },
+  {
+    "file": "gfx/models/buildings/special/high_hermitage/high_hermitage.mesh",
+    "source": "cow/gfx/models/buildings/special/high_hermitage/high_hermitage.mesh",
+    "reason": "Preserve full folder contents under narrow replace_path; bytes unchanged."
+  },
+  {
+    "file": "gfx/models/buildings/special/Karhold/khotyn_fortress_hill_properties.dds",
+    "source": "cow/gfx/models/buildings/special/Karhold/khotyn_fortress_hill_properties.dds",
+    "reason": "Preserve full folder contents under narrow replace_path; bytes unchanged."
+  },
+  {
+    "file": "gfx/models/buildings/special/Karhold/khotyn_fortress_hill_normal.dds",
+    "source": "cow/gfx/models/buildings/special/Karhold/khotyn_fortress_hill_normal.dds",
+    "reason": "Preserve full folder contents under narrow replace_path; bytes unchanged."
+  },
+  {
+    "file": "gfx/models/buildings/special/Karhold/khotyn_fortress_hill_diffuse.dds",
+    "source": "cow/gfx/models/buildings/special/Karhold/khotyn_fortress_hill_diffuse.dds",
+    "reason": "Preserve full folder contents under narrow replace_path; bytes unchanged."
+  },
+  {
+    "file": "gfx/models/buildings/special/Karhold/karhold.mesh",
+    "source": "cow/gfx/models/buildings/special/Karhold/karhold.mesh",
+    "reason": "Preserve full folder contents under narrow replace_path; bytes unchanged."
+  },
+  {
+    "file": "gfx/models/buildings/special/Karhold/ethiopian_atlas_diffuse.dds",
+    "source": "cow/gfx/models/buildings/special/Karhold/ethiopian_atlas_diffuse.dds",
+    "reason": "Preserve full folder contents under narrow replace_path; bytes unchanged."
+  },
+  {
+    "file": "gfx/models/buildings/special/Runestone/runestone.mesh",
+    "source": "cow/gfx/models/buildings/special/Runestone/runestone.mesh",
+    "reason": "Preserve full folder contents under narrow replace_path; bytes unchanged."
+  },
+  {
+    "file": "gfx/models/buildings/special/Runestone/ethiopian_atlas_diffuse.dds",
+    "source": "cow/gfx/models/buildings/special/Runestone/ethiopian_atlas_diffuse.dds",
+    "reason": "Preserve full folder contents under narrow replace_path; bytes unchanged."
+  },
+  {
+    "file": "localization/english/usf_missing_resources_l_english.yml",
+    "source": null,
+    "reason": "Four missing localization keys; no existing strings overridden."
+  },
+  {
+    "file": "localization/russian/usf_missing_resources_l_russian.yml",
+    "source": null,
+    "reason": "Four missing localization keys; no existing strings overridden."
+  },
+  {
+    "file": "common/bookmark_portraits/bookmark_299_asha_greyjoy.txt",
+    "source": "bookmarked/common/bookmark_portraits/bookmark_299_asha_greyjoy.txt",
+    "reason": "Keep later props_right only; all other DNA fields unchanged."
+  },
+  {
+    "file": "common/bookmark_portraits/bookmark_99_aurion_varezys.txt",
+    "source": "bookmarked/common/bookmark_portraits/bookmark_99_aurion_varezys.txt",
+    "reason": "Keep later props_right only; all other DNA fields unchanged."
+  },
+  {
+    "file": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+    "source": "cow/common/buildings/yy_agotcities_special_buildings_westeros.txt",
+    "reason": "Repair scope and avoid downgrade; comment three unavailable agot_cities.5000 callbacks; use modern Mother religion opinion with original +10/+5. Four missing building icons use the corresponding existing structure icons."
+  },
+  {
+    "file": "common/modifiers/00_custom_artifact_modifiers.txt",
+    "source": "vs/common/modifiers/00_custom_artifact_modifiers.txt",
+    "reason": "Comment two unused legacy penalties; retain all other artifact modifiers."
+  },
+  {
+    "file": "common/on_action/cowagot_province_on_actions.txt",
+    "source": "cow/common/on_action/cowagot_province_on_actions.txt",
+    "reason": "Known port/Bear Island IDs; comment obsolete removals and missing Harlaw mine branch; retain Ten Towers. Correct Cheesemonger title; comment only unavailable Graced Castle placement; retain prior repairs."
+  },
+  {
+    "file": "common/opinion_modifiers/valyrian_opinion_modifiers.txt",
+    "source": "vs/common/opinion_modifiers/valyrian_opinion_modifiers.txt",
+    "reason": "Keep original opinion values, 15/20-year durations and decaying; comment monthly rates."
+  },
+  {
+    "file": "gfx/models/buildings/holdings/cow3_sprawl/cow3_sprawl_main_assets.asset",
+    "source": "cow/gfx/models/buildings/holdings/cow3_sprawl/cow3_sprawl_main_assets.asset",
+    "reason": "Comment 24 unused wall wrappers; keep both farm models and their entities."
+  },
+  {
+    "file": "gfx/models/buildings/special/Evenfall/building_special_evenfall.asset",
+    "source": "cow/gfx/models/buildings/special/Evenfall/building_special_evenfall.asset",
+    "reason": "Comment 3 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/models/buildings/special/Karhold/karhold.asset",
+    "source": "cow/gfx/models/buildings/special/Karhold/karhold.asset",
+    "reason": "Use canonical byte-identical textures; preserve distinct Ethiopian diffuse references."
+  },
+  {
+    "file": "gfx/models/buildings/special/Lonely Light/building_special_lonely_light.asset",
+    "source": "cow/gfx/models/buildings/special/Lonely Light/building_special_lonely_light.asset",
+    "reason": "Comment 1 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/models/buildings/special/Runestone/runestone.asset",
+    "source": "cow/gfx/models/buildings/special/Runestone/runestone.asset",
+    "reason": "Use canonical byte-identical textures; preserve distinct Ethiopian diffuse references."
+  },
+  {
+    "file": "gfx/models/buildings/special/castamere/24castamere_2.asset",
+    "source": "cow/gfx/models/buildings/special/castamere/24castamere_2.asset",
+    "reason": "Neutral maps replace unavailable Castamere normal/properties; preserve diffuse and AO."
+  },
+  {
+    "file": "gfx/models/buildings/special/castamere/24castamere_3.asset",
+    "source": "cow/gfx/models/buildings/special/castamere/24castamere_3.asset",
+    "reason": "Neutral maps replace unavailable Castamere normal/properties; preserve diffuse and AO."
+  },
+  {
+    "file": "gfx/models/buildings/special/castamere/castamere_restored.asset",
+    "source": "cow/gfx/models/buildings/special/castamere/castamere_restored.asset",
+    "reason": "Neutral maps replace unavailable Castamere normal/properties; preserve diffuse and AO."
+  },
+  {
+    "file": "gfx/models/buildings/special/cow_blackhaven/cow_blackhaven.asset",
+    "source": "cow/gfx/models/buildings/special/cow_blackhaven/cow_blackhaven.asset",
+    "reason": "Comment 1 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/models/buildings/special/crag/crag.asset",
+    "source": "cow/gfx/models/buildings/special/crag/crag.asset",
+    "reason": "Comment 3 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/models/buildings/special/crag/crag_level_1.asset",
+    "source": "cow/gfx/models/buildings/special/crag/crag_level_1.asset",
+    "reason": "Comment 3 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/models/buildings/special/crag/crag_level_2.asset",
+    "source": "cow/gfx/models/buildings/special/crag/crag_level_2.asset",
+    "reason": "Comment 3 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/models/buildings/special/duskendale/building_special_duskendale.asset",
+    "source": "cow/gfx/models/buildings/special/duskendale/building_special_duskendale.asset",
+    "reason": "Comment 4 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/models/buildings/special/high_hermitage/high_hermitage.asset",
+    "source": "cow/gfx/models/buildings/special/high_hermitage/high_hermitage.asset",
+    "reason": "Comment 1 settings for absent geometry; all actual mesh settings retained. Use canonical byte-identical textures; preserve distinct Ethiopian diffuse references."
+  },
+  {
+    "file": "gfx/models/buildings/special/lordsport/lordsport.asset",
+    "source": "cow/gfx/models/buildings/special/lordsport/lordsport.asset",
+    "reason": "Comment 2 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/models/buildings/special/palestone_sword/building_palestone_sword.asset",
+    "source": "cow/gfx/models/buildings/special/palestone_sword/building_palestone_sword.asset",
+    "reason": "Comment 1 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/models/buildings/special/seagaurd/building_seagard_01.asset",
+    "source": "cow/gfx/models/buildings/special/seagaurd/building_seagard_01.asset",
+    "reason": "Comment 10 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/models/buildings/special/sisterton/building_special_sisterton.asset",
+    "source": "cow/gfx/models/buildings/special/sisterton/building_special_sisterton.asset",
+    "reason": "Comment 1 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/models/buildings/special/starpike/starpike.asset",
+    "source": "cow/gfx/models/buildings/special/starpike/starpike.asset",
+    "reason": "Comment 2 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/models/buildings/special/whitegrove/whitegrove.asset",
+    "source": "cow/gfx/models/buildings/special/whitegrove/whitegrove.asset",
+    "reason": "Comment 4 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/models/buildings/special/yronwood/building_special_yronwood.asset",
+    "source": "cow/gfx/models/buildings/special/yronwood/building_special_yronwood.asset",
+    "reason": "Comment 1 settings for absent geometry; all actual mesh settings retained."
+  },
+  {
+    "file": "gfx/portraits/accessories/smc_clothing.txt",
+    "source": "core/gfx/portraits/accessories/smc_clothing.txt",
+    "reason": "Comment two unimplemented Alicent accessories; retain dresses 01/02."
+  },
+  {
+    "file": "gfx/portraits/portrait_animations/99_valyrian_invasion_weapons_animations.txt",
+    "source": "vs/gfx/portraits/portrait_animations/99_valyrian_invasion_weapons_animations.txt",
+    "reason": "12 torso states causing 48 messages use the existing AGOT two-handed pose; all selectors and weapons retained."
+  }
+]

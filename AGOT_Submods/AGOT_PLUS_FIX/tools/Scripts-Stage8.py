@@ -1,6 +1,7 @@
 """Prepare exact, hash-pinned stage-eight repairs. No Workshop/profile writes."""
 import argparse
 import hashlib
+import importlib.util
 import json
 import re
 import sys
@@ -10,7 +11,26 @@ MOD = Path(__file__).resolve().parents[1]
 DOC = MOD / 'docs'
 REPO = MOD.parents[1]
 sys.path.insert(0, str(REPO / 'docs/reports/agot-plus-script-on-action-analysis-2026-09-19'))
-from analyze_scripts import blocks, clean, vfs
+from analyze_scripts import blocks, clean
+
+
+def vfs():
+    # Keep the historical audit unchanged; validate the same descriptors/order
+    # through the shared resolver for the relocated repository.
+    spec = importlib.util.spec_from_file_location('stage8_paths', Path(__file__).with_name('DNA-Stage9.py'))
+    paths = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(paths)
+    mods = paths.active_mods()
+    files = {}
+    for mod in mods:
+        for prefix in mod['Replace']:
+            files = {k: v for k, v in files.items() if not (k == prefix or k.startswith(prefix.rstrip('/') + '/'))}
+        root = Path(mod['Path'])
+        for category in ('common', 'events', 'history', 'gui', 'localization/english'):
+            for p in (root / category).rglob('*'):
+                if p.is_file() and p.suffix in ('.txt', '.gui', '.info', '.yml'):
+                    files[p.relative_to(root).as_posix()] = {'Path': p, 'Mod': mod['Name']}
+    return mods[1:], files
 
 PLUS = Path('E:/SteamLibrary/steamapps/workshop/content/1158310/2950245430')
 AGOT = Path('E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032')

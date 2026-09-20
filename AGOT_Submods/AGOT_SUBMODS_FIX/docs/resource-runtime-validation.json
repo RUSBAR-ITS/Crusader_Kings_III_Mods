@@ -1,0 +1,321 @@
+{
+  "Report": "../../../docs/reports/ck3-agot-submods-resource-log-2026-09-20/README.md",
+  "SnapshotResult": {
+    "Started": "2026-09-20T06:11:07+07:00",
+    "ExitLines": [
+      "[06:24:01][D][frontendidlerlogic.cpp:330]: Quit: Quit from inside game",
+      "[06:24:01][D][application.cpp:1258]: Quit: Quit from inside game"
+    ],
+    "PreviousEntries": 1607,
+    "CurrentEntries": 1421,
+    "Removed": 226,
+    "Added": 40,
+    "ResourceTargetsGone": 207,
+    "ResourceTargetsStillPresent": 0,
+    "ResourceExceptionsPresent": 41,
+    "ResourceExceptionsAbsent": 0,
+    "EarlierScriptTargetsStillAbsent": 103,
+    "EarlierScriptTargetsReappeared": 0,
+    "DeferredCowCreatorGone": 18,
+    "DeferredCowCreatorStillPresent": 0,
+    "ScriptVariableExceptionsPresent": 143,
+    "ScriptVariableExceptionsAbsent": 0,
+    "EncodingErrors": 0,
+    "OtherDiagnostics": 231,
+    "LocalizationDuplicates": 1190,
+    "PriorFixRegressions": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "stage8": 0,
+      "stage9": 0,
+      "stage10": 0,
+      "stage13": 0,
+      "stage14": 0,
+      "stage12_variables": 0,
+      "mde": 0,
+      "plus_localization": 0
+    },
+    "ActiveMods": 33,
+    "VerifiedRuntimeFiles": 253,
+    "Categories": [
+      {
+        "Category": "scripts",
+        "Label": "Скрипты, параметры и проверка данных",
+        "Before": 121,
+        "After": 103,
+        "Change": -18,
+        "DistinctMessages": 38
+      },
+      {
+        "Category": "read_not_set",
+        "Label": "Переменные/флаги используются, установка не найдена",
+        "Before": 26,
+        "After": 26,
+        "Change": 0,
+        "DistinctMessages": 13
+      },
+      {
+        "Category": "set_not_read",
+        "Label": "Переменные/флаги устанавливаются, использование не найдено",
+        "Before": 14,
+        "After": 14,
+        "Change": 0,
+        "DistinctMessages": 7
+      },
+      {
+        "Category": "animations",
+        "Label": "Неизвестные состояния портретных анимаций",
+        "Before": 48,
+        "After": 0,
+        "Change": -48,
+        "DistinctMessages": 0
+      },
+      {
+        "Category": "accessories",
+        "Label": "Недоступные аксессуары в группах генов",
+        "Before": 32,
+        "After": 32,
+        "Change": 0,
+        "DistinctMessages": 16
+      },
+      {
+        "Category": "entities",
+        "Label": "Отсутствующие сущности моделей",
+        "Before": 26,
+        "After": 0,
+        "Change": -26,
+        "DistinctMessages": 0
+      },
+      {
+        "Category": "mesh_settings",
+        "Label": "Несогласованные настройки моделей",
+        "Before": 40,
+        "After": 0,
+        "Change": -40,
+        "DistinctMessages": 0
+      },
+      {
+        "Category": "mesh_uv",
+        "Label": "UV-развёртки моделей",
+        "Before": 39,
+        "After": 0,
+        "Change": -39,
+        "DistinctMessages": 0
+      },
+      {
+        "Category": "textures",
+        "Label": "Отсутствующие текстуры и иконки",
+        "Before": 32,
+        "After": 40,
+        "Change": 8,
+        "DistinctMessages": 16
+      },
+      {
+        "Category": "texture_duplicates",
+        "Label": "Дубли текстур",
+        "Before": 10,
+        "After": 2,
+        "Change": -8,
+        "DistinctMessages": 2
+      },
+      {
+        "Category": "history",
+        "Label": "Ссылки на персонажей и титулы",
+        "Before": 9,
+        "After": 5,
+        "Change": -4,
+        "DistinctMessages": 2
+      },
+      {
+        "Category": "dna",
+        "Label": "Повторное поле в DNA закладок",
+        "Before": 2,
+        "After": 0,
+        "Change": -2,
+        "DistinctMessages": 0
+      },
+      {
+        "Category": "localization",
+        "Label": "Отсутствующие ключи локализации",
+        "Before": 4,
+        "After": 0,
+        "Change": -4,
+        "DistinctMessages": 0
+      },
+      {
+        "Category": "modifiers",
+        "Label": "Неиспользуемые/некорректные модификаторы",
+        "Before": 6,
+        "After": 2,
+        "Change": -4,
+        "DistinctMessages": 2
+      },
+      {
+        "Category": "orphan_events",
+        "Label": "События без найденного вызова",
+        "Before": 2,
+        "After": 2,
+        "Change": 0,
+        "DistinctMessages": 2
+      },
+      {
+        "Category": "ai_decision",
+        "Label": "Период проверки решения ИИ",
+        "Before": 1,
+        "After": 1,
+        "Change": 0,
+        "DistinctMessages": 1
+      },
+      {
+        "Category": "descriptor",
+        "Label": "Некорректная версия в дескрипторе",
+        "Before": 1,
+        "After": 1,
+        "Change": 0,
+        "DistinctMessages": 1
+      },
+      {
+        "Category": "rule_references",
+        "Label": "Неизвестные ссылки на игровые правила",
+        "Before": 2,
+        "After": 2,
+        "Change": 0,
+        "DistinctMessages": 1
+      },
+      {
+        "Category": "achievement_assert",
+        "Label": "Сообщение проверки загрузки достижений",
+        "Before": 1,
+        "After": 1,
+        "Change": 0,
+        "DistinctMessages": 1
+      },
+      {
+        "Category": "encoding",
+        "Label": "Кодировка скрипта: UTF-8 BOM",
+        "Before": 1,
+        "After": 0,
+        "Change": -1,
+        "DistinctMessages": 0
+      },
+      {
+        "Category": "unclassified",
+        "Label": "Новые типы сообщений",
+        "Before": 0,
+        "After": 0,
+        "Change": 0,
+        "DistinctMessages": 0
+      }
+    ],
+    "InCampaignBehaviorChecked": false,
+    "VisualEquivalenceChecked": false,
+    "Limitation": "This snapshot precedes the texture-reference hotfix; new texture diagnostics remain in this run."
+  },
+  "PostLaunchTextureFix": {
+    "Status": "APPLIED_STATICALLY_VERIFIED_AWAITING_GAME_RUN",
+    "ChangedFiles": [
+      "gfx/models/buildings/special/Karhold/karhold.asset",
+      "gfx/models/buildings/special/castamere/24castamere_2.asset",
+      "gfx/models/buildings/special/castamere/24castamere_3.asset",
+      "gfx/models/buildings/special/castamere/castamere_restored.asset",
+      "gfx/models/buildings/special/high_hermitage/high_hermitage.asset"
+    ],
+    "ChangedTextureFields": 20,
+    "AddedFiles": [
+      "gfx/models/buildings/special/castamere/usf_castamere_neutral_normal.dds",
+      "gfx/models/buildings/special/castamere/usf_castamere_neutral_properties.dds"
+    ],
+    "AddedTextureBytes": 352,
+    "Other80RuntimeFilesByteIdentical": 80,
+    "AllExistingMeshAndDDSBytesUnchanged": true,
+    "Replacements": [
+      {
+        "File": "gfx/models/buildings/special/Karhold/karhold.asset",
+        "Before": "gfx/models/buildings/holdings/atlas/ethiopian/ethiopian_atlas_normal.dds",
+        "After": "ethiopian_atlas_normal.dds",
+        "Fields": 1
+      },
+      {
+        "File": "gfx/models/buildings/special/Karhold/karhold.asset",
+        "Before": "gfx/models/buildings/holdings/atlas/ethiopian/ethiopian_atlas_properties.dds",
+        "After": "ethiopian_atlas_properties.dds",
+        "Fields": 1
+      },
+      {
+        "File": "gfx/models/buildings/special/castamere/24castamere_2.asset",
+        "Before": "gfx/models/debug/no_normal.dds",
+        "After": "usf_castamere_neutral_normal.dds",
+        "Fields": 2
+      },
+      {
+        "File": "gfx/models/buildings/special/castamere/24castamere_2.asset",
+        "Before": "gfx/models/debug/no_properties.dds",
+        "After": "usf_castamere_neutral_properties.dds",
+        "Fields": 2
+      },
+      {
+        "File": "gfx/models/buildings/special/castamere/24castamere_3.asset",
+        "Before": "gfx/models/debug/no_normal.dds",
+        "After": "usf_castamere_neutral_normal.dds",
+        "Fields": 2
+      },
+      {
+        "File": "gfx/models/buildings/special/castamere/24castamere_3.asset",
+        "Before": "gfx/models/debug/no_properties.dds",
+        "After": "usf_castamere_neutral_properties.dds",
+        "Fields": 2
+      },
+      {
+        "File": "gfx/models/buildings/special/castamere/castamere_restored.asset",
+        "Before": "gfx/models/debug/no_normal.dds",
+        "After": "usf_castamere_neutral_normal.dds",
+        "Fields": 3
+      },
+      {
+        "File": "gfx/models/buildings/special/castamere/castamere_restored.asset",
+        "Before": "gfx/models/debug/no_properties.dds",
+        "After": "usf_castamere_neutral_properties.dds",
+        "Fields": 3
+      },
+      {
+        "File": "gfx/models/buildings/special/high_hermitage/high_hermitage.asset",
+        "Before": "gfx/models/buildings/special/ep3_patras_castle_01_a/ep3_patras_castle_01_a_unique.dds",
+        "After": "ep3_patras_castle_01_a_unique.dds",
+        "Fields": 1
+      },
+      {
+        "File": "gfx/models/buildings/special/high_hermitage/high_hermitage.asset",
+        "Before": "gfx/models/buildings/special/ep3_patras_castle_01_a/ep3_patras_castle_ground_diffuse.dds",
+        "After": "ep3_patras_castle_ground_diffuse.dds",
+        "Fields": 1
+      },
+      {
+        "File": "gfx/models/buildings/special/high_hermitage/high_hermitage.asset",
+        "Before": "gfx/models/buildings/special/ep3_patras_castle_01_a/ep3_patras_castle_ground_normal.dds",
+        "After": "ep3_patras_castle_ground_normal.dds",
+        "Fields": 1
+      },
+      {
+        "File": "gfx/models/buildings/special/high_hermitage/high_hermitage.asset",
+        "Before": "gfx/models/buildings/special/ep3_patras_castle_01_a/ep3_patras_castle_ground_properties.dds",
+        "After": "ep3_patras_castle_ground_properties.dds",
+        "Fields": 1
+      }
+    ],
+    "DistinctEthiopianDiffusePreserved": true,
+    "SourcePinsUnchanged": true,
+    "DescriptorsAndPlaysetUnchanged": true,
+    "LogsUnchanged": true,
+    "CapturedManifestSHA256": "54646e7e4ec0bd48da29912e296945a2430caf3c7dbb4778f0b9c16755023eea",
+    "CurrentManifestSHA256": "b9cf34f8f2557ee52d42f80da19423ae6dccae93a00746ef75ae1a974687aac8",
+    "ResourceChecks": 391,
+    "PredictedTextureMessagesRemoved": 40,
+    "PredictedOtherMessagesRemaining": 191,
+    "RuntimeRetestPending": true,
+    "VisualEquivalenceChecked": false
+  }
+}

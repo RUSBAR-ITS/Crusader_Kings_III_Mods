@@ -1,0 +1,91 @@
+pdxmesh = {
+	name = "cow_blackhaven_mesh"
+	file = "cow_blackhaven.mesh"
+	
+	# USF: meshsettings name is absent from this model; unused original retained
+# meshsettings = {
+# 		name = "blackhaven_rockShape"
+# 		index = 0
+# 		texture_diffuse = "casterlyrock_rock_diffuse.dds"
+# 		texture_normal = "casterlyrock_rock_normal.dds"
+# 		texture_specular = "casterlyrock_rock_properties.dds"
+# 		shader = "standard_winter"
+# 		shader_file = "gfx/FX/pdxmesh.shader"
+# 	}
+
+	meshsettings = {
+		name = "iron"
+		index = 0
+		texture_diffuse = "iron_m_diffuse.dds"
+		texture_normal = "iron_m_normal.dds"
+		texture_specular = "21_shades_of_metalness_roughness.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "crag_stone_ground"
+		index = 0
+		texture_diffuse = "stone_crag_diffuse.dds"
+		texture_normal = "stone_crag_properties.dds"
+		texture_specular = "stone_crag_normal.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+
+	}
+
+	meshsettings = {
+		name = "blackhaven_waddledob"
+		index = 0
+		texture_diffuse = "building_western_atlas_diffuse.dds"
+		texture_normal = "building_western_atlas_normal.dds"
+		texture_specular = "building_western_atlas_properties.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+		shader = "standard_atlas"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "building_blackhaven_roof"
+		index = 0
+		texture_diffuse = "building_med_roof_atlas_diffuse.dds"
+		texture_normal = "building_med_roof_atlas_normal.dds"
+		texture_specular = "building_med_roof_atlas_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "blackhaven_stone"
+		index = 0
+		texture_diffuse = "basalt_diffuse.dds"
+		texture_normal = "basalt_normal.dds"
+		texture_specular = "basalt_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "gold_ball"
+		index = 0
+		texture_diffuse = "lannisport_dg_diffuse.dds"
+		texture_normal = "lannisport_dg_normal.dds"
+		texture_specular = "lannisport_dg_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "blackhaven_wood"
+		index = 0
+		texture_diffuse = "building_celtic_02_diffuse.dds"
+		texture_normal = "building_celtic_02_normal.dds"
+		texture_specular = "building_celtic_02_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "cow_blackhaven_entity"
+	pdxmesh = "cow_blackhaven_mesh"
+}

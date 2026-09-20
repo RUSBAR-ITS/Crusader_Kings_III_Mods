@@ -1,0 +1,120 @@
+pdxmesh = {
+	name = "crag_level_1_mesh"
+	file = "crag_level_1.mesh"
+
+	
+
+	meshsettings = {
+		name = "crag_roof"
+		index = 0
+		texture_diffuse = "building_med_roof_atlas_diffuse.dds"
+		texture_normal = "building_med_roof_atlas_normal.dds"
+		texture_specular = "building_med_roof_atlas_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "crag_ground"
+		index = 0
+		texture_diffuse = "ep3_athos_monasteries_01_b_diffuse.dds"
+		texture_normal = "ep3_athos_monasteries_01_b_normal.dds"
+		texture_specular = "ep3_athos_monasteries_01_b_properties.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "iron"
+		index = 0
+		texture_diffuse = "iron_m_diffuse.dds"
+		texture_normal = "iron_m_normal.dds"
+		texture_specular = "21_shades_of_metalness_roughness.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	# USF: meshsettings name is absent from this model; unused original retained
+# meshsettings = {
+# 		name = "lannisport_dgShape"
+# 		index = 0
+# 		texture_diffuse = "lannisport_dg_diffuse.dds"
+# 		texture_normal = "lannisport_dg_normal.dds"
+# 		texture_specular = "lannisport_dg_properties.dds"
+# 		shader = "standard_winter"
+# 		shader_file = "gfx/FX/pdxmesh.shader"
+# 	}
+
+	# USF: meshsettings name is absent from this model; unused original retained
+# meshsettings = {
+# 		name = "lannisport_lkShape"
+# 		index = 0
+# 		texture_diffuse = "lannisport_lk_diffuse.dds"
+# 		texture_normal = "lannisport_lk_normal.dds"
+# 		texture_specular = "lannisport_lk_properties.dds"
+# 		shader = "standard_winter"
+# 		shader_file = "gfx/FX/pdxmesh.shader"
+# 	}
+
+	# USF: meshsettings name is absent from this model; unused original retained
+# meshsettings = {
+# 		name = "lannisport_lpShape"
+# 		index = 0
+# 		texture_diffuse = "lannisport_lp_diffuse.dds"
+# 		texture_normal = "lannisport_lp_normal.dds"
+# 		texture_specular = "lannisport_lp_properties.dds"
+# 		shader = "standard_winter"
+# 		shader_file = "gfx/FX/pdxmesh.shader"
+# 	}
+
+	meshsettings = {
+		name = "crag_upper"
+		index = 0
+		texture_diffuse = "crag_diffuse.dds"
+		texture_normal = "crag_properties.dds"
+		texture_specular = "crag_normal.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+
+	}
+
+	meshsettings = {
+		name = "crag_lower"
+		index = 0
+		texture_diffuse = "l_crag_diffuse.dds"
+		texture_normal = "l_crag_properties.dds"
+		texture_specular = "l_crag_normal.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+
+	}
+
+	meshsettings = {
+		name = "crag_stone_ground"
+		index = 0
+		texture_diffuse = "stone_crag_diffuse.dds"
+		texture_normal = "stone_crag_properties.dds"
+		texture_specular = "stone_crag_normal.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+
+	}
+
+	meshsettings = {
+		name = "crag_crenelation"
+		index = 0
+		texture_diffuse = "gold_crag_diffuse.dds"
+		texture_normal = "gold_crag_properties.dds"
+		texture_specular = "gold_crag_normal.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+
+	}
+}
+
+entity = {
+	name = "crag_level_1_entity"
+	pdxmesh = "crag_level_1_mesh"
+}

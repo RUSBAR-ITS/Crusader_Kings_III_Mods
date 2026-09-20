@@ -15,31 +15,51 @@ function Get-MDETokens([string]$Value,[string]$Pattern){
 function Test-MDEContracts($Outputs,$SourceTexts,$EN,$RU,$Builtin,$Russian,$ScriptChanges,$Roots,$GenderFixes){
     $effectiveEN=New-Map;$effectiveRU=New-Map
     $enPatch=New-Map;$ruPatch=New-Map
+    $normalRU=New-Map;$replaceRU=New-Map
     foreach($file in $Outputs.Keys | Where-Object {$_ -like 'localization/*'}){
         $lang=if($file -like '*_l_russian.yml'){'russian'}else{'english'}
         if($Outputs[$file] -cnotmatch ('\Al_'+$lang+':\r?\n')){throw "Invalid language header: $file"}
         $entries=Read-Entries $Outputs[$file]
         foreach($key in $entries.Keys){
             Assert-MDEValue $key $entries[$key]
-            $map=if($lang -eq 'russian'){$ruPatch}else{$enPatch}
+            $map=if($lang -eq 'english'){$enPatch}elseif($file -like 'localization/replace/*'){$replaceRU}else{$normalRU}
             if($map.ContainsKey($key) -and $map[$key] -cne $entries[$key]){throw "Conflicting patch definitions: $key"}
             $map[$key]=$entries[$key]
         }
     }
+    # Normal-path shadows suppress upstream declarations. Reviewed replace
+    # definitions still take priority over retained normal-path definitions.
+    foreach($map in @($normalRU,$replaceRU)){foreach($key in $map.Keys){$ruPatch[$key]=$map[$key]}}
     # Test both potential orders of the external and builtin Russian catalogs.
     # Original files shadowed at identical paths must parse without malformed quotes.
+    $loadedRU=New-Map
     foreach($sourceKey in $SourceTexts.Keys){
         $file=$sourceKey.Substring($sourceKey.IndexOf(':')+1)
-        $text=if($sourceKey.StartsWith('Main:') -and $Outputs.ContainsKey($file)){$Outputs[$file]}else{$SourceTexts[$sourceKey]}
+        $text=if($Outputs.ContainsKey($file)){$Outputs[$file]}else{$SourceTexts[$sourceKey]}
         $entries=Read-Entries $text
+        if($entries.ContainsKey('nagga_desc')){throw "Conflicting MDE travel-key declaration remains: $sourceKey"}
         foreach($key in $entries.Keys){
             if($entries[$key] -match '(?<!\\)"'){throw "Malformed physical localization value remains: $sourceKey / $key"}
+            if($sourceKey.StartsWith('Translation:')){
+                if($loadedRU.ContainsKey($key)){throw "Duplicate external Russian declaration remains: $key"}
+                $loadedRU.Add($key,$entries[$key])
+            }
         }
+    }
+    if($loadedRU.Count -ne 1044){throw 'Expected 1044 unique external Russian definitions after namespacing.'}
+    foreach($key in @('mde_dragon_egg_gen_parent','mde_dragon_egg_gen_parents')){
+        if(-not $loadedRU.ContainsKey($key) -or $loadedRU[$key] -cne $RU[$key]){throw "Unique artifact parent label lost: $key"}
+    }
+    # These two shadows may only comment definitions. Reversing those comments
+    # must recover the complete upstream text, including the two parent labels.
+    foreach($file in @('localization/russian/dp_artifacts_l_russian.yml','localization/russian/mde_artifacts_l_russian.yml')){
+        $reversed=$Outputs[$file] -creplace '(?m)^# MDE compatibility: ',''
+        if($reversed -cne $SourceTexts['Translation:'+$file]){throw "Unreviewed translation shadow edit: $file"}
     }
     foreach($key in $EN.Keys){if($key -cne 'nagga_desc'){$effectiveEN[$key]=$EN[$key]}}
     foreach($key in $enPatch.Keys){$effectiveEN[$key]=$enPatch[$key]}
     $required=@($EN.Keys|Where-Object {$_ -cne 'nagga_desc'})+@('MDE_nagga_desc','MDE_gui_exit','MDE_gui_move_outside','NEEDS_ABSOLUTE_CROWN_AUTHORITY','stop_cradling_egg')
-    foreach($order in @(@($Builtin,$RU),@($RU,$Builtin))){
+    foreach($order in @(@($Builtin,$loadedRU),@($loadedRU,$Builtin))){
         $effectiveRU=New-Map
         foreach($map in $order){foreach($key in $map.Keys){$effectiveRU[$key]=$map[$key]}}
         foreach($key in $ruPatch.Keys){$effectiveRU[$key]=$ruPatch[$key]}
@@ -47,7 +67,7 @@ function Test-MDEContracts($Outputs,$SourceTexts,$EN,$RU,$Builtin,$Russian,$Scri
             if(-not $effectiveRU.ContainsKey($key)){throw "Untranslated runtime key: $key"}
             Assert-MDEValue $key $effectiveRU[$key]
         }
-        foreach($key in $RU.Keys){
+        foreach($key in $loadedRU.Keys){
             $expected=if($Russian.ContainsKey($key)){$Russian[$key]}else{$RU[$key]}
             if($effectiveRU[$key] -cne $expected){throw "External Russian translation lost to builtin value: $key"}
         }
@@ -80,6 +100,9 @@ function Test-MDEContracts($Outputs,$SourceTexts,$EN,$RU,$Builtin,$Russian,$Scri
     if($enPatch['MDE_nagga_desc'] -cne 'Nagga' -or $ruPatch['MDE_nagga_desc'] -cne 'Нагга'){throw 'Prefixed dragon name is missing.'}
     $artifactText=$Outputs['localization/replace/english/agot/agot_artifacts/mde_artifacts_l_english.yml']
     if($artifactText -cmatch '(?m)^\s*nagga_desc:'){throw 'Original conflicting MDE declaration remains.'}
+    $nameSelector=$Outputs['common/customizable_localization/00_more_dragon_eggs_loc.txt']
+    if($nameSelector -cmatch '(?m)^\s*localization_key\s*=\s*nagga_desc\b' -or
+        [regex]::Matches($nameSelector,'(?m)^\s*localization_key\s*=\s*MDE_nagga_desc\b').Count -ne 1){throw 'Nagga artifact selector does not use the prefixed key.'}
     foreach($case in @(@('AGOT','english'),@('AGOT_RU','russian'))){
         $path=Join-Path $Roots[$case[0]] ('localization/'+$case[1]+'/agot/gui/agot_travel_planner_window_l_'+$case[1]+'.yml')
         $travel=Read-Entries ([IO.File]::ReadAllText($path))
@@ -120,5 +143,5 @@ function Test-MDEContracts($Outputs,$SourceTexts,$EN,$RU,$Builtin,$Russian,$Scri
     $names=Read-Entries ([IO.File]::ReadAllText((Join-Path $Roots.AGOT_RU 'localization/replace/russian/agot/names/agot_dragon_names_l_russian.yml')))
     $traits=Read-Entries ([IO.File]::ReadAllText((Join-Path $Roots.AGOT_RU 'localization/russian/agot/agot_traits_l_russian.yml')))
     if($names['Greyscale'] -cne '$trait_greyscale$' -or $traits['trait_greyscale'] -cne 'Серая хворь'){throw 'Greyscale name reference changed.'}
-    return [ordered]@{RequiredMDEKeysPerLanguage=$required.Count;RussianMissing=0;FormattingErrors=0;QuoteErrors=0;GuiLocalizedOccurrences=11;ScriptFiles=11;RussianCatalogOrdersChecked=2;AllSourceEditsReversible=$true;NaggaTravelKeyPreserved=$true;CrownAuthorityConditionPreserved=$true;GameLaunched=$false}
+    return [ordered]@{RequiredMDEKeysPerLanguage=$required.Count;RussianMissing=0;FormattingErrors=0;QuoteErrors=0;GuiLocalizedOccurrences=11;ScriptFiles=11;RussianCatalogOrdersChecked=2;AllSourceEditsReversible=$true;NaggaTravelKeyPreserved=$true;NaggaPhysicalCatalogsChecked=2;ExternalRussianDuplicateKeys=0;ExternalRussianKeysAfterNamespacing=$loadedRU.Count;UniqueArtifactParentLabelsPreserved=2;TranslationShadowsReversible=$true;CrownAuthorityConditionPreserved=$true;GameLaunched=$false}
 }

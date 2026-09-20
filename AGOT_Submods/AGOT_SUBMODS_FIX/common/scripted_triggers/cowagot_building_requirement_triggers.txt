@@ -1,0 +1,52 @@
+﻿# USF: replaced by current AGOT terrain requirement plus original Tarth exceptions
+# building_quarries_requirement_terrain = {
+# 	OR = {
+# 		#AGOT Modified, terrain type triggers
+# 		# terrain = mountains
+# 		# terrain = desert_mountains
+# 		agot_is_mountains_terrain = yes
+# 		agot_is_desert_mountains_terrain = yes
+# 		AND = {
+# 			#AGOT Modified
+# 			#terrain = hills
+# 			agot_is_hills_terrain = yes
+# 			culture = { has_cultural_parameter = can_build_quarries_in_hills }
+# 		}		
+# 		culture = { has_cultural_parameter = can_build_quarries_everywhere }
+# 
+# 		#AGOT Added Terrains
+# 		agot_is_glacier_terrain = yes
+# 		agot_is_canyon_terrain = yes
+# 
+# 		#Tarth
+# 		this.barony = title:b_castlestar
+# 		this.barony = title:b_sundown
+# 		this.barony = title:b_bright_tree
+# 		this.barony = title:b_spur
+# 	}
+# }
+
+building_quarries_requirement_terrain = {
+	OR = {
+		#AGOT Modified, terrain type triggers
+		# terrain = mountains
+		# terrain = desert_mountains
+		agot_is_mountains_terrain = yes
+		agot_is_desert_mountains_terrain = yes
+		culture = { has_cultural_parameter = can_build_quarries_everywhere }
+
+		#AGOT Added Terrains
+		agot_is_glacier_terrain = yes
+		agot_is_canyon_terrain = yes
+	
+        # USF: preserve COW exceptions on Tarth.
+        this.barony = title:b_castlestar
+        this.barony = title:b_sundown
+        this.barony = title:b_bright_tree
+        this.barony = title:b_spur
+    }
+	#AGOT Added
+	NOT = {
+		geographical_region = world_westeros_the_iron_islands
+	}
+}

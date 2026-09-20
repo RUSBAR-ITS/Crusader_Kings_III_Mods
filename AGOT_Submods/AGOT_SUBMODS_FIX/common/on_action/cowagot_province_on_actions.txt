@@ -1,0 +1,340 @@
+﻿on_game_start = {
+	on_actions = {
+		set_provinces_on_actions
+	}
+}
+
+set_provinces_on_actions = {
+	effect = {
+
+		set_global_variable = {
+			name = COWAGOT_is_loaded
+			value = yes
+		}
+
+
+		every_province = {
+			limit = {
+				is_county_capital = yes
+				has_holding_type = city_holding
+				has_building = city_02
+				NOT = { has_building_or_higher = city_walls_01 }
+			}
+			add_building = city_walls_01
+		}
+
+		every_province = {
+			limit = {
+				is_county_capital = yes
+				has_holding_type = city_holding
+				has_building = city_03
+				NOT = { has_building_or_higher = city_walls_02 }
+			}
+			add_building = city_walls_02
+		}
+
+		every_province = {
+			limit = {
+				is_county_capital = yes
+				has_holding_type = city_holding
+				has_building = city_04
+				NOT = { has_building_or_higher = city_walls_03 }
+			}
+			add_building = city_walls_03
+		}
+
+		every_province = {
+			limit = {
+				is_county_capital = yes
+				has_holding_type = city_holding
+				has_building = city_05
+				NOT = { has_building_or_higher = city_walls_04 }
+			}
+			add_building = city_walls_04
+		}
+
+		
+
+		if = {
+			limit = { 
+				NOT = { 
+					is_target_in_global_variable_list = {
+						name = unavailable_unique_decisions
+						target = flag:populated_provinces_new
+					}
+				}
+			}
+			
+			
+			# title:b_high_tide.title_province = { add_special_building_slot = hightide_01 }
+
+			# title:b_ten_towers.title_province = {
+			# 	if = {
+			# 		limit = {
+			# 			has_holding = yes
+			# 		}
+			# 		if = {
+			# 			limit = {
+			# 				has_building = harlaw_mines_01
+			# 			}
+			# 			remove_building = harlaw_mines_01						
+			# 			add_special_building_slot = ten_towers_01
+			# 			add_special_building = ten_towers_01
+			# 		}
+			# 		else_if = {
+			# 			limit = {
+			# 				has_building = harlaw_mines_02
+			# 			}
+			# 			remove_building = harlaw_mines_02						
+			# 			add_special_building_slot = ten_towers_01
+			# 			add_special_building = ten_towers_01
+			# 		}
+			# 		else_if = {
+			# 			limit = {
+			# 				has_building = harlaw_mines_03
+			# 			}
+			# 			remove_building = harlaw_mines_03						
+			# 			add_special_building_slot = ten_towers_01
+			# 			add_special_building = ten_towers_01
+			# 		}
+			# 		else_if = {
+			# 			limit = {
+			# 				has_building = harlaw_mines_04
+			# 			}
+			# 			remove_building = harlaw_mines_04						
+			# 			add_special_building_slot = ten_towers_01
+			# 			add_special_building = ten_towers_01
+			# 		}
+			# 	}				
+			# 	if = {
+			# 		limit = {
+			# 			has_holding = no
+			# 		}
+			# 		add_special_building_slot = harlaw_mines_01
+			# 	}
+			# }
+
+			# title:b_yronwood.title_province = {
+			# 	remove_building = yronwood_mines_01
+			# 	remove_building = yronwood_mines_02
+			# 	remove_building = yronwood_mines_03
+			# 	add_special_building_slot = yronwood_01
+			# 	add_special_building = yronwood_01
+			# }
+
+			if = {
+				limit = {
+					has_game_rule = yes_use_rebuilt_crag
+				}
+				title:b_the_crag.title_province = {
+					add_special_building_slot = crag_full
+					add_special_building = crag_full
+				}
+			}
+
+			if = {
+				limit = {
+					NOT = { has_game_rule = yes_use_rebuilt_crag }
+				}
+				title:b_the_crag.title_province = {
+					add_special_building_slot = crag_01
+					add_special_building = crag_01
+				}
+			}
+
+			title:b_breakwater_castle.title_province = {
+				add_special_building_slot = agot_breakwater_01
+				add_special_building = agot_breakwater_01
+			}
+			
+			title:b_broad_arch.title_province = {
+				add_special_building_slot = broadarch_01
+				add_special_building = broadarch_01
+			}
+			
+			title:b_dunstonbury.title_province = {
+				add_special_building_slot = agot_dunstonbury_01
+				add_special_building = agot_dunstonbury_01
+			}
+
+			title:b_rooks_rest.title_province = {
+				add_special_building_slot = cow_rooks_rest_01
+				add_special_building = cow_rooks_rest_01
+			}
+
+			title:b_dun_fort.title_province = {
+				add_special_building_slot = cow_duskendale_01
+				add_special_building = cow_duskendale_01
+			}
+
+			title:b_lordsport.title_province = {
+				set_holding_type = castle_holding
+				add_building = castle_02
+				add_building = smiths_04
+				add_building = common_tradeport_03
+			}
+
+			title:c_lordsport.holder = {
+				save_scope_as = lordsport_holder
+			}
+
+			# create_title_and_vassal_change = {
+			# 	type = granted
+			# 	save_scope_as = change
+			# }
+			title:b_lordsport = {
+				change_title_holder = {
+				  holder = scope:lordsport_holder
+				  change = scope:change
+			  }
+			}
+		 	# resolve_title_and_vassal_change = scope:change
+
+			title:b_deepwood_motte.title_province = {
+				add_special_building_slot = deepwood_motte_01
+				add_special_building = deepwood_motte_01
+			}
+
+			title:b_ashemark.title_province = {
+				add_special_building_slot = ashemark_01
+				add_special_building = ashemark_01
+			}
+
+			title:b_rooks_rest.title_province = {
+				add_special_building_slot = agot_rooks_rest_01
+				add_special_building = agot_rooks_rest_01
+			}
+
+			title:b_whitegrove.title_province = {
+				add_special_building_slot = agot_whitegrove_01
+				add_special_building = agot_whitegrove_01
+			}
+
+			title:b_ironrath.title_province = {
+				# USF: absent obsolete building; remove_building = ironwood_01
+				add_special_building_slot = ironwrath_01
+				add_special_building = ironwrath_01
+			}
+
+			title:b_wynegarde.title_province = {
+				add_building = castle_04
+				add_special_building_slot = the_arbor_01
+				add_special_building = the_arbor_01
+			}
+
+			title:b_the_hightower.title_province = {
+				add_building = castle_05
+			}
+
+			title:b_the_red_keep.title_province = {
+				add_building = castle_05
+			}
+
+			title:b_zobri_bastion.title_province = {
+				add_building = castle_05
+			}
+
+			title:b_myr.title_province = {
+				add_building = castle_05
+			}
+			
+
+			# USF: unavailable b_graced_castle; no verified current title equivalent
+# title:b_graced_castle.title_province = {
+# 				add_building = castle_05
+# 			}
+
+			title:b_cheesemongers_manse.title_province = {
+				add_building = castle_05
+			}
+			
+			title:b_plankytown.title_province = {
+				add_special_building_slot = planky_town_special
+				add_special_building = planky_town_special
+			}
+			
+
+			title:b_horn_hill.title_province = {
+				remove_building = agot_witchs_wood_01
+				add_special_building_slot = hornhill_01
+				add_special_building = hornhill_01
+			}
+
+			title:b_castle_russeting.title_province = {
+				add_special_building_slot = agot_witchs_wood_01
+				add_special_building = agot_witchs_wood_01
+			}
+
+			title:b_cleganes_keep.title_province = {
+				add_special_building_slot = fanghill_01
+				add_special_building = fanghill_01
+			}
+			
+			title:b_mormont_keep.title_province = {
+				add_special_building_slot = agot_rodriks_gift_01
+				add_special_building = agot_rodriks_gift_01
+			}
+			
+			title:b_high_hermitage.title_province = {
+				add_special_building_slot = high_hermitage_01
+				add_special_building = high_hermitage_01
+			}
+			
+			title:b_midlors_fort.title_province = {
+				add_special_building_slot = flint_tower_01
+				add_special_building = flint_tower_01
+			}
+
+			
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:populated_provinces_new
+			}
+		}
+	}
+}
+
+on_building_completed = {
+	on_actions = {
+		harlaw_building_check_on_actions
+	}
+}
+
+harlaw_building_check_on_actions = {
+	effect = {
+		#save the county holder as the character in case the construction wasn't started through GUI or by the AI 
+		if = {
+			limit = {
+				NOT = { exists = scope:character }
+			}
+			root.county.holder = {
+				save_scope_as = character
+			}
+		}
+		if = {
+			limit = {
+				this = province:2819
+				has_holding_type = castle_holding
+				has_special_building_slot = no
+				exists = scope:character.dynasty
+				scope:character = {
+					dynasty = dynasty:dynn_Harlaw
+				}
+			}
+			add_special_building_slot = agot_ten_towers_01
+		}
+		# USF: unavailable legacy Harlaw mine; retain the existing Ten Towers branch
+# if = {
+# 			limit = {
+# 				this = province:2819
+# 				has_holding_type = castle_holding
+# 				has_special_building_slot = no
+# 				exists = scope:character.dynasty
+# 				scope:character = {
+# 					NOT = { dynasty = dynasty:dynn_Harlaw }
+# 				}
+# 			}
+# 			add_special_building_slot = harlaw_mines_01
+# 		}
+	}
+}

@@ -1,0 +1,321 @@
+pdxmesh = {
+	name = "building_special_lonely_light"
+	file = "building_special_lonely_light.mesh"
+
+	meshsettings = {
+		name = "building_special_lonely_lightShape"
+		index = 0
+		texture_diffuse = "building_special_lonely_light_diffuse.dds"
+		texture_normal = "building_special_lonely_light_normal.dds"
+		texture_specular = "building_special_lonely_light_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "building_special_stormsend_castle_cliffsShape"
+		index = 0
+		texture_diffuse = "building_special_stormsend_castle_cliffs_diffuse.dds"
+		texture_normal = "building_special_stormsend_castle_cliffs_normal.dds"
+		texture_specular = "building_special_stormsend_castle_cliffs_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "lordsport_sail"
+		index = 0
+		texture_diffuse = "western_ship_01_cog_sails_diffuse.dds"
+		texture_normal = "western_ship_01_cog_sails_normal.dds"
+		texture_specular = "western_ship_01_cog_sails_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "lordsport_ship"
+		index = 0
+		texture_diffuse = "unit_fp1_ship_01_knarr_diffuse.dds"
+		texture_normal = "unit_fp1_ship_01_knarr_normal.dds"
+		texture_specular = "unit_fp1_ship_01_knarr_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "building_special_lonely_light_entity"
+	pdxmesh = "building_special_lonely_light"
+}
+
+
+pdxmesh = {
+	name = "building_special_lonely_light_02"
+	file = "building_special_lonely_light_02.mesh"
+
+	meshsettings = {
+		name = "building_special_lonely_lightShape"
+		index = 0
+		texture_diffuse = "building_special_lonely_light_diffuse.dds"
+		texture_normal = "building_special_lonely_light_normal.dds"
+		texture_specular = "building_special_lonely_light_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "building_special_stormsend_castle_cliffsShape"
+		index = 0
+		texture_diffuse = "building_special_stormsend_castle_cliffs_diffuse.dds"
+		texture_normal = "building_special_stormsend_castle_cliffs_normal.dds"
+		texture_specular = "building_special_stormsend_castle_cliffs_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "Pyke_building_special_Pyke3Shape"
+		index = 0
+		texture_diffuse = "building_special_pyke03_diffuse.dds"
+		texture_normal = "building_special_pyke03_normal.dds"
+		texture_specular = "building_special_pyke03_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "lordsport_sail"
+		index = 0
+		texture_diffuse = "western_ship_01_cog_sails_diffuse.dds"
+		texture_normal = "western_ship_01_cog_sails_normal.dds"
+		texture_specular = "western_ship_01_cog_sails_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "lordsport_ship"
+		index = 0
+		texture_diffuse = "unit_fp1_ship_01_knarr_diffuse.dds"
+		texture_normal = "unit_fp1_ship_01_knarr_normal.dds"
+		texture_specular = "unit_fp1_ship_01_knarr_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "building_special_lonely_light_02_entity"
+	pdxmesh = "building_special_lonely_light_02"
+	default_state = "idle"
+	state = {
+		name = "idle"
+		state_time = 5
+		event = { time = 0 node = "brazier" particle = "cowek2_fire" trigger_once = yes keep_particle = yes }		
+	}
+}
+
+
+pdxmesh = {
+	name = "building_special_lonely_light_03"
+	file = "building_special_lonely_light_03.mesh"
+
+	meshsettings = {
+		name = "building_special_lonely_lightShape"
+		index = 0
+		texture_diffuse = "building_special_lonely_light_diffuse.dds"
+		texture_normal = "building_special_lonely_light_normal.dds"
+		texture_specular = "building_special_lonely_light_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "building_special_stormsend_castle_cliffsShape"
+		index = 0
+		texture_diffuse = "building_special_stormsend_castle_cliffs_diffuse.dds"
+		texture_normal = "building_special_stormsend_castle_cliffs_normal.dds"
+		texture_specular = "building_special_stormsend_castle_cliffs_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "Pyke_building_special_Pyke3Shape"
+		index = 0
+		texture_diffuse = "building_special_pyke03_diffuse.dds"
+		texture_normal = "building_special_pyke03_normal.dds"
+		texture_specular = "building_special_pyke03_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "lordsport_sail"
+		index = 0
+		texture_diffuse = "western_ship_01_cog_sails_diffuse.dds"
+		texture_normal = "western_ship_01_cog_sails_normal.dds"
+		texture_specular = "western_ship_01_cog_sails_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "lordsport_ship"
+		index = 0
+		texture_diffuse = "unit_fp1_ship_01_knarr_diffuse.dds"
+		texture_normal = "unit_fp1_ship_01_knarr_normal.dds"
+		texture_specular = "unit_fp1_ship_01_knarr_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "building_special_lonely_light_03_entity"
+	pdxmesh = "building_special_lonely_light_03"
+	default_state = "idle"
+	state = {
+		name = "idle"
+		state_time = 5
+		event = { time = 0 node = "brazier" particle = "cowek2_fire" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "brazier2" particle = "cowek2_fire" trigger_once = yes keep_particle = yes }
+	}
+}
+
+
+pdxmesh = {
+	name = "building_special_lonely_light_04"
+	file = "building_special_lonely_light_04.mesh"
+
+	meshsettings = {
+		name = "building_special_lonely_lightShape"
+		index = 0
+		texture_diffuse = "building_special_lonely_light_diffuse.dds"
+		texture_normal = "building_special_lonely_light_normal.dds"
+		texture_specular = "building_special_lonely_light_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "building_special_stormsend_castle_cliffsShape"
+		index = 0
+		texture_diffuse = "building_special_stormsend_castle_cliffs_diffuse.dds"
+		texture_normal = "building_special_stormsend_castle_cliffs_normal.dds"
+		texture_specular = "building_special_stormsend_castle_cliffs_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "Pyke_building_special_Pyke3Shape"
+		index = 0
+		texture_diffuse = "building_special_pyke03_diffuse.dds"
+		texture_normal = "building_special_pyke03_normal.dds"
+		texture_specular = "building_special_pyke03_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	# USF: meshsettings name is absent from this model; unused original retained
+# meshsettings = {
+# 		name = "dock_tower_wood"
+# 		index = 0		
+# 		texture_normal = "building_mediterranean_atlas_normal.dds"
+# 		texture_specular = "building_mediterranean_atlas_properties.dds"
+# 		texture = { file = "building_x_AO_placeholder.dds" index = 5 }	
+# 		shader = "standard_atlas"
+# 		shader_file = "gfx/FX/pdxmesh.shader"
+# 	}
+	meshsettings = {
+		name = "lordsport_sail"
+		index = 0
+		texture_diffuse = "western_ship_01_cog_sails_diffuse.dds"
+		texture_normal = "western_ship_01_cog_sails_normal.dds"
+		texture_specular = "western_ship_01_cog_sails_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "lordsport_ship"
+		index = 0
+		texture_diffuse = "unit_fp1_ship_01_knarr_diffuse.dds"
+		texture_normal = "unit_fp1_ship_01_knarr_normal.dds"
+		texture_specular = "unit_fp1_ship_01_knarr_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "building_special_lonely_light_04_entity"
+	pdxmesh = "building_special_lonely_light_04"
+	default_state = "idle"
+	state = {
+		name = "idle"
+		state_time = 5
+		event = { time = 0 node = "brazier" particle = "cowek2_fire" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "brazier2" particle = "cowek2_fire" trigger_once = yes keep_particle = yes }
+	}
+}
+
+
+pdxmesh = {
+	name = "building_special_lonely_light_05"
+	file = "building_special_lonely_light_05.mesh"
+
+	meshsettings = {
+		name = "building_special_lonely_lightShape"
+		index = 0
+		texture_diffuse = "building_special_lonely_light_diffuse.dds"
+		texture_normal = "building_special_lonely_light_normal.dds"
+		texture_specular = "building_special_lonely_light_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "building_special_stormsend_castle_cliffsShape"
+		index = 0
+		texture_diffuse = "building_special_stormsend_castle_cliffs_diffuse.dds"
+		texture_normal = "building_special_stormsend_castle_cliffs_normal.dds"
+		texture_specular = "building_special_stormsend_castle_cliffs_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "Pyke_building_special_Pyke3Shape"
+		index = 0
+		texture_diffuse = "building_special_pyke03_diffuse.dds"
+		texture_normal = "building_special_pyke03_normal.dds"
+		texture_specular = "building_special_pyke03_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "dock_tower_wood"
+		index = 0		
+		texture_normal = "building_mediterranean_atlas_normal.dds"
+		texture_specular = "building_mediterranean_atlas_properties.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }	
+		shader = "standard_atlas"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "lordsport_sail"
+		index = 0
+		texture_diffuse = "western_ship_01_cog_sails_diffuse.dds"
+		texture_normal = "western_ship_01_cog_sails_normal.dds"
+		texture_specular = "western_ship_01_cog_sails_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "lordsport_ship"
+		index = 0
+		texture_diffuse = "unit_fp1_ship_01_knarr_diffuse.dds"
+		texture_normal = "unit_fp1_ship_01_knarr_normal.dds"
+		texture_specular = "unit_fp1_ship_01_knarr_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "building_special_lonely_light_05_entity"
+	pdxmesh = "building_special_lonely_light_05"
+	default_state = "idle"
+	state = {
+		name = "idle"
+		state_time = 5
+		event = { time = 0 node = "brazier" particle = "cowek2_fire" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "brazier2" particle = "cowek2_fire" trigger_once = yes keep_particle = yes }
+	}
+}
+

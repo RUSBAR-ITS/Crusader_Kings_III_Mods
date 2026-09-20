@@ -25,6 +25,31 @@ function ConvertFrom-HexBytes([string]$Hex){
 function Get-RepairedBinary([string]$Source,$Recipe){
     [byte[]]$original=[IO.File]::ReadAllBytes((Get-NativePath $Source))
     if((Get-BytesSHA256 $original) -cne $Recipe.SourceSHA256){throw "Binary source changed: $Source"}
+    if($Recipe.RemoveSpans){
+        $spans=@($Recipe.RemoveSpans|Sort-Object Offset)
+        [int]$previousEnd=0
+        [int]$removed=0
+        $algorithm=[Security.Cryptography.SHA256]::Create()
+        try{
+            foreach($span in $spans){
+                [int]$start=$span.Offset;[int]$length=$span.Length
+                if($start -lt $previousEnd -or $length -le 0 -or $start+$length -gt $original.Length){throw 'Invalid or overlapping UV removal span.'}
+                $hash=[BitConverter]::ToString($algorithm.ComputeHash($original,$start,$length)).Replace('-','')
+                if($hash -cne $span.SHA256){throw 'UV property bytes differ from approved source.'}
+                $previousEnd=$start+$length;$removed+=$length
+            }
+        }finally{$algorithm.Dispose()}
+        [byte[]]$result=New-Object byte[] ($original.Length-$removed)
+        [int]$sourceOffset=0;[int]$targetOffset=0
+        foreach($span in $spans){
+            [int]$length=$span.Offset-$sourceOffset
+            [Array]::Copy($original,$sourceOffset,$result,$targetOffset,$length)
+            $sourceOffset=$span.Offset+$span.Length;$targetOffset+=$length
+        }
+        [Array]::Copy($original,$sourceOffset,$result,$targetOffset,$original.Length-$sourceOffset)
+        if((Get-BytesSHA256 $result) -cne $Recipe.PatchedSHA256){throw 'UV output differs from approved model.'}
+        return ,$result
+    }
     [byte[]]$remove=ConvertFrom-HexBytes $Recipe.RemoveHex
     [byte[]]$following=ConvertFrom-HexBytes $Recipe.FollowingHex
     [int]$offset=$Recipe.Offset
@@ -36,4 +61,8 @@ function Get-RepairedBinary([string]$Source,$Recipe){
     [Array]::Copy($original,$offset+$remove.Length,$result,$offset,$original.Length-$offset-$remove.Length)
     if((Get-BytesSHA256 $result) -cne $Recipe.PatchedSHA256){throw 'Binary output differs from approved model.'}
     return ,$result
+}
+function Get-BinaryRemovedByteCount($Recipe){
+    if($Recipe.RemoveSpans){return ($Recipe.RemoveSpans|Measure-Object Length -Sum).Sum}
+    return $Recipe.RemoveHex.Length/2
 }

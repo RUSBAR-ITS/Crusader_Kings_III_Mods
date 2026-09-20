@@ -24,10 +24,22 @@ PROFILE = Path('C:/Users/RUSBAR/Documents/Paradox Interactive/Crusader Kings III
 GAME = Path('E:/SteamLibrary/steamapps/common/Crusader Kings III/game')
 PLUS = Path('E:/SteamLibrary/steamapps/workshop/content/1158310/2950245430')
 AGOT = Path('E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032')
+PREVIOUS_REPO = Path('D:/RUSBAR/YandexDisk/PC RUSBAR-PC/Yandex Drive/Work/Rusbar IT Services/Repositories/Crusader_Kings_III_Mods')
+
+
+def repository_path(path):
+    """Resolve archived local paths after relocation, without rewriting evidence.
+
+    Only the exact former repository prefix is mapped. External sources keep
+    their original paths, and callers still verify every pinned file hash.
+    """
+    path = Path(path)
+    ordinary = Path(str(path).removeprefix('\\\\?\\'))
+    return REPO / ordinary.relative_to(PREVIOUS_REPO) if ordinary.is_relative_to(PREVIOUS_REPO) else path
 
 
 def native(path):
-    path = Path(path).absolute()
+    path = repository_path(path).absolute()
     text = str(path)
     if sys.platform == 'win32' and not text.startswith('\\\\?\\'):
         text = '\\\\?\\UNC\\' + text[2:] if text.startswith('\\\\') else '\\\\?\\' + text
@@ -53,6 +65,51 @@ def rows(path):
 
 def save(name, value):
     (DOC / name).write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
+
+
+def before_stage15_path(path):
+    """Keep earlier contracts on the pinned title script; stage15 checks its live delta."""
+    path = Path(str(repository_path(path)).removeprefix('\\\\?\\'))
+    if not (DOC / 'stage15-plan.json').exists(): return path
+    plan = load(DOC / 'stage15-plan.json')
+    if path == DOC / 'fixes.json':
+        assert load(path) == load(DOC / 'stage15-before-fixes.json') + plan['Actions']
+        return DOC / 'stage15-before-fixes.json'
+    if path == DOC / 'additions.json':
+        assert load(path) == load(DOC / 'stage15-before-additions.json') + [plan['Addition']]
+        return DOC / 'stage15-before-additions.json'
+    if path == MOD / plan['TitleFile']:
+        archive = DOC / plan['TitleArchive']
+        assert sha(archive) == plan['TitleBeforeSHA256']
+        assert sha(path) in (plan['TitleBeforeSHA256'], plan['TitleAfterSHA256'])
+        return archive
+    return path
+
+
+def before_stage14_path(path):
+    """Revalidate older contracts on pinned snapshots of six superseded scripts.
+
+    Accept only the exact pre-build or approved post-build bytes in the live
+    file. Stage14 and the aggregate validator verify the complete final output.
+    Recipe/baseline snapshots additionally require an unchanged live prefix.
+    """
+    path = Path(str(repository_path(path)).removeprefix('\\\\?\\'))
+    if not (DOC / 'stage14-plan.json').exists():
+        return path
+    plan = load(DOC / 'stage14-plan.json')
+    for name, archive in [('fixes.json', 'stage14-before-fixes.json'), ('source-baseline.json', 'stage14-before-baseline.json')]:
+        if path == DOC / name:
+            old = load(DOC / archive)
+            assert load(path)[:len(old)] == old, ('Earlier recipe/source prefix changed', name)
+            return DOC / archive
+    if path.is_relative_to(MOD):
+        rel = path.relative_to(MOD).as_posix()
+        if rel in plan['Archives']:
+            archive = DOC / plan['Archives'][rel]
+            expected = next(r['OutputSHA256'] for r in plan['Files'] if r['File'] == rel)
+            assert sha(path) in (sha(archive), expected), ('Unreviewed later edit', rel)
+            return archive
+    return before_stage15_path(path)
 
 
 class Block:
@@ -115,12 +172,28 @@ def state(genes, text):
 def active_mods():
     recorded = rows(RUN / 'active-mods.csv')
     enabled = load(PROFILE / 'dlc_load.json')['enabled_mods']
+    if enabled != [m['Descriptor'] for m in recorded] and (DOC/'stage15-load-order.json').exists():
+        audit = load(DOC/'stage15-load-order.json')
+        added = audit['AddedMod']; root = Path(added['Path'])
+        assert audit['HistoricalDescriptors'] == [m['Descriptor'] for m in recorded]
+        assert enabled == audit['HistoricalDescriptors']+[added['Descriptor']], 'Unreviewed mod order change.'
+        assert root == REPO/'AGOT_Submods/AGOT_SUBMODS_FIX'
+        assert sha(PROFILE/added['Descriptor']) == audit['DescriptorSHA256']
+        assert sha(root/'docs/source-manifest.json') == audit['ManifestSHA256']
+        files = load(root/'docs/source-manifest.json')
+        runtime = {p.relative_to(root).as_posix() for part in ('common','events','gfx','history','localization') for p in (root/part).rglob('*') if p.is_file()}
+        assert runtime == set(files)
+        assert not runtime & {r['File'] for r in load(DOC/'source-manifest.json')['Files']}
+        assert not any(p.startswith(('gfx/','history/','common/genes/','common/dna_data/')) for p in runtime)
+        for p,row in files.items(): assert sha(root/p) == row['sha256'].upper()
+        recorded.append(added)
     assert enabled == [m['Descriptor'] for m in recorded], 'Active mod order changed; re-analyse providers.'
     result = [dict(Name='CK3', Path=str(GAME), Replace=[])]
     for mod in recorded:
         descriptor = read(PROFILE / mod['Descriptor'])
         path = re.search(r'(?m)^\s*path\s*=\s*"([^"]+)"', descriptor)
-        assert path and Path(path[1]).resolve() == Path(mod['Path']).resolve(), mod['Descriptor']
+        assert path and Path(path[1]).resolve() == repository_path(mod['Path']).resolve(), mod['Descriptor']
+        mod['Path'] = str(Path(path[1]).resolve())
         mod['Replace'] = re.findall(r'(?m)^\s*replace_path\s*=\s*"([^"]+)"', descriptor)
         result.append(mod)
     return result
@@ -288,11 +361,11 @@ def check(before_stage10=False):
         for rel, path in load(DOC / 'stage11-plan.json')['Archives'].items():
             # The older stage-ten archive takes precedence for any overlap.
             archived.setdefault(rel, DOC / path)
-    if before_stage10 and load(DOC / 'source-manifest.json')['Revision'] == 12:
+    if before_stage10 and load(DOC / 'source-manifest.json')['Revision'] >= 12:
         for rel, path in load(DOC / 'stage12-plan.json')['Archives'].items():
             archived.setdefault(rel, DOC / path)
     def runtime_path(rel):
-        return archived.get(rel, MOD / rel)
+        return archived.get(rel, before_stage14_path(MOD / rel))
     assert manifest['Revision'] == 9 and len(manifest['Files']) == 64
     for row in plan['PreviousFiles']:
         assert sha(runtime_path(row['File'])) == row['PatchedSHA256'], ('Previous fix changed', row['File'])

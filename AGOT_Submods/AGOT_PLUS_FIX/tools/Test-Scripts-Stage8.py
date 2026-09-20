@@ -38,8 +38,8 @@ def parse(text):
 def main():
     manifest = s.load(s.DOC/'source-manifest.json')
     plan = s.load(s.DOC/'stage8-plan.json')
-    assert manifest['Revision'] in (8, 9, 10, 11, 12)
-    assert len(manifest['Files']) == {8: 45, 9: 64, 10: 69, 11: 82, 12: 84}[manifest['Revision']]
+    assert manifest['Revision'] in (8, 9, 10, 11, 12, 13, 14, 15)
+    assert len(manifest['Files']) == {8: 45, 9: 64, 10: 69, 11: 82, 12: 84, 13: 132, 14: 139, 15: 140}[manifest['Revision']]
     for row in manifest['Files']:
         assert s.sha(s.MOD/row['File']) == row['PatchedSHA256']
     active, files = s.vfs()

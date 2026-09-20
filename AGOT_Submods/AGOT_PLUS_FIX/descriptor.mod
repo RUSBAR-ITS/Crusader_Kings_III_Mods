@@ -9,3 +9,4 @@ dependencies={
 	"A Game of Thrones"
 	"AGOT+"
 }
+replace_path="gfx/models/portraits/m_cloaks/asoiaf/asoiaf_westerlands/asoiaf_lannister_cloaks/asoiaf_lannister_cloak_royal"

@@ -1,0 +1,100 @@
+pdxmesh = {
+	name = "starpike_mesh"
+	file = "starpike.mesh"
+
+	
+
+	meshsettings = {
+		name = "starpike_roof"
+		index = 0
+		texture_diffuse = "agot_city_reach_diffuse.dds"
+		texture_normal = "agot_city_reach_normal.dds"
+		texture_specular = "agot_city_reach_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	# USF: meshsettings name is absent from this model; unused original retained
+# meshsettings = {
+# 		name = "starpike_ground"
+# 		index = 0
+# 		texture_diffuse = "ep3_athos_monasteries_01_b_diffuse.dds"
+# 		texture_normal = "ep3_athos_monasteries_01_b_normal.dds"
+# 		texture_specular = "ep3_athos_monasteries_01_b_properties.dds"
+# 		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+# 		shader = "standard"
+# 		shader_file = "gfx/FX/pdxmesh.shader"
+# 	}
+
+	meshsettings = {
+		name = "iron"
+		index = 0
+		texture_diffuse = "iron_m_diffuse.dds"
+		texture_normal = "iron_m_normal.dds"
+		texture_specular = "21_shades_of_metalness_roughness.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "gold"
+		index = 0
+		texture_diffuse = "gold_m_diffuse.dds"
+		texture_normal = "gold_m_normal.dds"
+		texture_specular = "gold_m_gloss.dds"
+		texture = { file = "building_x_AO_placeholder.dds" index = 5 }
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+
+	meshsettings = {
+		name = "starpike_upper"
+		index = 0
+		texture_diffuse = "crag_diffuse.dds"
+		texture_normal = "crag_properties.dds"
+		texture_specular = "crag_normal.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+
+	}
+
+	# USF: meshsettings name is absent from this model; unused original retained
+# meshsettings = {
+# 		name = "starpike_lower"
+# 		index = 0
+# 		texture_diffuse = "l_crag_diffuse.dds"
+# 		texture_normal = "l_crag_properties.dds"
+# 		texture_specular = "l_crag_normal.dds"
+# 		shader = "standard_winter"
+# 		shader_file = "gfx/FX/pdxmesh.shader"
+# 
+# 	}
+
+	meshsettings = {
+		name = "starpike_stone_ground"
+		index = 0
+		texture_diffuse = "stone_crag_diffuse.dds"
+		texture_normal = "stone_crag_properties.dds"
+		texture_specular = "stone_crag_normal.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+
+	}
+
+	meshsettings = {
+		name = "starpike_windows"
+		index = 0
+		texture_diffuse = "building_western_atlas_diffuse.dds"
+		texture_normal = "building_western_atlas_normal.dds"
+		texture_specular = "building_western_atlas_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "starpike_entity"
+	pdxmesh = "starpike_mesh"
+}

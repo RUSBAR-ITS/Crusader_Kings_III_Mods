@@ -1,0 +1,11 @@
+version="1.0.0"
+tags={
+	"Translation"
+}
+name="AGOT Submod Core | Русификатор"
+dependencies={
+	"A Game of Thrones"
+	"AGOT Submod Core"
+}
+supported_version="1.19.*"
+path="D:/Repos/Crusader_Kings_III_Mods/AGOT_Submods/AGOT_SUBMOD_CORE_RUS"

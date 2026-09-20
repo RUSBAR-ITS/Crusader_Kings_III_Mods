@@ -1,0 +1,131 @@
+pdxmesh = {
+	name = "building_special_evenfall_mesh"
+	file = "building_special_evenfall.mesh"
+
+	meshsettings = {
+		name = "building_special_evenfall_1Shape"
+		index = 0
+		texture_diffuse = "building_special_the_eyrie_1_diffuse.dds"
+		texture_normal = "building_special_the_eyrie_1_normal.dds"
+		texture_specular = "building_special_the_eyrie_1_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "building_special_evenfall_2Shape"
+		index = 0
+		texture_diffuse = "building_special_the_eyrie_2_diffuse.dds"
+		texture_normal = "building_special_the_eyrie_2_normal.dds"
+		texture_specular = "building_special_the_eyrie_2_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "building_special_evenfall_3Shape"
+		index = 0
+		texture_diffuse = "building_special_the_eyrie_3_diffuse.dds"
+		texture_normal = "building_special_the_eyrie_3_normal.dds"
+		texture_specular = "building_special_the_eyrie_3_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	# USF: meshsettings name is absent from this model; unused original retained
+# meshsettings = {
+# 		name = "building_special_evenfall_4Shape"
+# 		index = 0
+# 		texture_diffuse = "building_special_the_eyrie_4_diffuse.dds"
+# 		texture_normal = "building_special_the_eyrie_4_normal.dds"
+# 		texture_specular = "building_special_the_eyrie_4_properties.dds"
+# 		shader = "standard_winter"
+# 		shader_file = "gfx/FX/pdxmesh.shader"
+# 	}
+	# USF: meshsettings name is absent from this model; unused original retained
+# meshsettings = {
+# 		name = "building_special_evenfall_cellsShape"
+# 		index = 0
+# 		texture_diffuse = "building_special_the_eyrie_sky_cells_diffuse.dds"
+# 		texture_normal = "building_special_the_eyrie_sky_cells_normal.dds"
+# 		texture_specular = "building_special_the_eyrie_sky_cells_properties.dds"
+# 		shader = "standard_winter"
+# 		shader_file = "gfx/FX/pdxmesh.shader"
+# 	}
+
+	meshsettings = {
+		name = "fp4_legendary_western_palace_upperground_01_aShape"
+		index = 0
+		texture_diffuse = "fp4_legendary_western_palace_upperground_01_a_diffuse.dds"
+		texture_normal = "fp4_legendary_western_palace_upperground_01_a_normal.dds"
+		texture_specular = "fp4_legendary_western_palace_upperground_01_a_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "fp4_legendary_western_palace_mountain_01_aShape"
+		index = 0
+		texture_diffuse = "fp4_legendary_western_palace_mountain_01_a_diffuse.dds"
+		texture_normal = "fp4_legendary_western_palace_mountain_01_a_normal.dds"
+		texture_specular = "fp4_legendary_western_palace_mountain_01_a_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	# USF: meshsettings name is absent from this model; unused original retained
+# meshsettings = {
+# 		name = "fp4_legendary_western_palace_01_aShape"
+# 		index = 0
+# 		texture_diffuse = "building_western_atlas_2.dds"
+# 		texture_normal = "building_western_atlas_normal.dds"
+# 		texture_specular = "building_western_atlas_properties.dds"
+# 		texture = { file = "fp4_legendary_western_palace_01_a_unique.dds" index = 5 }
+# 		shader = "standard_atlas"
+# 		shader_file = "gfx/FX/pdxmesh.shader"
+# 	}
+	meshsettings = {
+		name = "lannisport_dgShape"
+		index = 0
+		texture_diffuse = "lannisport_dg_diffuse.dds"
+		texture_normal = "lannisport_dg_normal.dds"
+		texture_specular = "lannisport_dg_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "lannisport_lpShape"
+		index = 0
+		texture_diffuse = "lannisport_lp_diffuse.dds"
+		texture_normal = "lannisport_lp_normal.dds"
+		texture_specular = "lannisport_lp_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "houses_shape"
+		index = 0
+		texture_diffuse = "building_western_atlas_diffuse.dds"
+		texture_normal = "building_western_atlas_normal.dds"
+		texture_specular = "building_western_atlas_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "building_special_lonely_lightShape"
+		index = 0
+		texture_diffuse = "building_special_lonely_light_diffuse.dds"
+		texture_normal = "building_special_lonely_light_normal.dds"
+		texture_specular = "building_special_lonely_light_properties.dds"
+		shader = "standard_winter"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "building_special_evenfall_entity"
+	pdxmesh = "building_special_evenfall_mesh"
+	default_state = "idle"
+	state = {
+		name = "idle"
+		state_time = 5
+		event = { time = 0 node = "brazier" particle = "agotsistetonfire" trigger_once = yes keep_particle = yes }		
+	}
+}

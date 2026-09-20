@@ -3,6 +3,7 @@ import argparse
 import bisect
 import csv
 import hashlib
+import importlib.util
 import json
 import re
 from collections import defaultdict, Counter
@@ -321,7 +322,15 @@ if args.mode == 'register':
     print('Registered: 97 unavailable DNA comments, Thorren base DNA, 61 birth restorations, 19 birth fallbacks, 3 history repairs.')
 else:
     plan = load(DOC / 'stage7-appearance-plan.json')
-    assert active == plan['ActiveMods'], 'Active mods changed; review appearance providers'
+    if active != plan['ActiveMods']:
+        # Stage15 pins the one approved added mod and proves it has no history,
+        # DNA, genes, graphics or overlapping FIX files. Keep all live providers.
+        audit = load(DOC / 'stage15-load-order.json')
+        assert active == plan['ActiveMods'] + [audit['AddedMod']['Descriptor']]
+        spec = importlib.util.spec_from_file_location('stage7_load_order', MOD / 'tools/DNA-Stage9.py')
+        guard = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(guard)
+        guard.active_mods()
     xp = plan['MysticValueSource']
     assert sha(xp['Path']) == xp['SHA256']
     assert re.search(r'(?m)^trait_third_level\s*=\s*100\b', read(xp['Path']))

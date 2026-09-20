@@ -47,7 +47,7 @@ foreach($source in $baseline | Where-Object {$_.File -like 'localization/*' -and
     $entries=Read-Entries $content -AllowMalformed
     foreach($key in $entries.Keys){if(-not $map.ContainsKey($key)){$map.Add($key,$entries[$key])}}
 }
-if($en.Count -ne 1043 -or $ru.Count -ne 895 -or $builtin.Count -ne 711){throw 'Source catalog counts changed.'}
+if($en.Count -ne 1043 -or $ru.Count -ne 1045 -or $builtin.Count -ne 711){throw 'Source catalog counts changed.'}
 $reviewed=Read-Entries ([IO.File]::ReadAllText((Join-Path $modRoot 'docs/russian-reviewed.yml'),$utf8))
 $russian=New-Map; $english=New-Map
 $reasons=New-Map
@@ -163,8 +163,36 @@ foreach($file in $shadows){
 }
 if($syntaxRepairs.Count -ne 11){throw 'Expected eleven missing-quote repairs.'}
 
-# The original EN nagga_desc declaration is gone at its physical file path.
-# AGOT's original travel description remains free to load in both languages.
+# Translation 1.2 added a second artifact catalog. Shadow both physical paths:
+# retain the two unique parent labels in the old file and keep the dragon name
+# only under MDE_nagga_desc, already supplied by our reviewed RU overlay.
+$duplicateFile='localization/russian/dp_artifacts_l_russian.yml'
+$artifactFile='localization/russian/mde_artifacts_l_russian.yml'
+$oldArtifacts=Read-Entries $sourceTexts['Translation:'+$duplicateFile]
+$newArtifacts=Read-Entries $sourceTexts['Translation:'+$artifactFile]
+$duplicateKeys=@($oldArtifacts.Keys | Where-Object {$newArtifacts.ContainsKey($_)})
+if($duplicateKeys.Count -ne 140 -or $oldArtifacts.Count -ne 142){throw 'Artifact duplicate inventory changed.'}
+foreach($key in $duplicateKeys){
+    if($oldArtifacts[$key] -cne $newArtifacts[$key]){throw "Artifact duplicate values differ: $key"}
+}
+if($newArtifacts['nagga_desc'] -cne 'Нагга'){throw 'Conflicting Russian Nagga source changed.'}
+$commentedDefinitions=[Collections.Generic.List[object]]::new()
+foreach($file in @($duplicateFile,$artifactFile)){
+    $keys=if($file -ceq $duplicateFile){$duplicateKeys}else{@('nagga_desc')}
+    $lines=foreach($line in $sourceTexts['Translation:'+$file] -split "`n"){
+        if($line -match '^\s*(?<key>[^\s#":]+):\s*(?:\d+\s*)?"' -and $Matches.key -cin $keys){
+            $key=$Matches.key
+            $reason=if($file -ceq $duplicateFile){'Identical definition retained in mde_artifacts_l_russian.yml'}else{'Dragon uses MDE_nagga_desc; nagga_desc belongs to AGOT travel'}
+            $commentedDefinitions.Add([pscustomobject]@{Catalog='Translation';File=$file;Key=$key;Reason=$reason})
+            '# MDE compatibility: '+$line
+        }else{$line}
+    }
+    $outputs[$file]=$lines -join "`n"
+}
+if($commentedDefinitions.Count -ne 141){throw 'Expected 141 commented definitions.'}
+
+# Both EN and RU conflicting declarations are now absent at their physical paths.
+# Keep the artifact-name selector separate from AGOT's travel description.
 $scriptChanges=[Collections.Generic.List[object]]::new()
 function Patch-Script([string]$File,[string]$Before,[string]$After,[int]$Count){
     $original=[IO.File]::ReadAllText((Join-Path $MainModPath $File),$utf8)
@@ -224,10 +252,13 @@ $changes=@(foreach($key in $russian.Keys | Sort-Object -CaseSensitive){
     [ordered]@{Key=$key;Reason=$reasons[$key];English=$en[$key];ExternalRussian=$ru[$key];BuiltinRussian=$builtin[$key];After=$russian[$key]}
 })
 $manifest=[ordered]@{
-    MainWorkshopId='3388366564';MainVersion='56';TranslationWorkshopId='3736931686';TranslationVersion='1.1'
+    MainWorkshopId='3388366564';MainVersion='56';TranslationWorkshopId='3736931686';TranslationVersion='1.2'
     SourceHashesChecked=$baseline.Count;RussianOverlayKeys=$ruOverlay.Count;RussianShadowKeys=$shadowRussian.Count
-    EnglishOverlayKeys=$english.Count;LocalizationShadowFiles=$shadows.Count;ScriptOverrideFiles=@($scriptChanges.File|Sort-Object -Unique).Count
-    MissingExternalKeysProvided=331;MissingRussianKeysTranslated=257;RenamedKey='MDE_nagga_desc';SyntaxRepairs=@($syntaxRepairs.ToArray())
+    RussianCompatibilityShadowKeys=((Read-Entries $outputs[$duplicateFile]).Count+(Read-Entries $outputs[$artifactFile]).Count)
+    EnglishOverlayKeys=$english.Count;LocalizationShadowFiles=($shadows.Count+2);ScriptOverrideFiles=@($scriptChanges.File|Sort-Object -Unique).Count
+    MissingExternalKeysProvided=@($en.Keys|Where-Object {-not $ru.ContainsKey($_)}).Count
+    MissingRussianKeysTranslated=@($en.Keys|Where-Object {-not $ru.ContainsKey($_) -and -not $builtin.ContainsKey($_)}).Count
+    RenamedKey='MDE_nagga_desc';SyntaxRepairs=@($syntaxRepairs.ToArray());CommentedDefinitions=@($commentedDefinitions.ToArray())
     CoveredAuditIssues=@('MDE-01','MDE-02','MDE-03','MDE-04','MDE-05','MDE-06','MDE-07','MDE-08','MDE-09','MDE-10')
     Verification=$verification;RussianChanges=$changes;EnglishChanges=$english;ScriptChanges=@($scriptChanges.ToArray());Outputs=$outputHashes
     ExternalDescriptorSHA256=(Get-FileHash -LiteralPath $externalPath -Algorithm SHA256).Hash

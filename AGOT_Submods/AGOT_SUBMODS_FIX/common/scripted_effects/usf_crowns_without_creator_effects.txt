@@ -1,0 +1,142 @@
+﻿# Generated from current AGOT crown effects.
+# Automatic grants/finds have no known maker; preserve OWNER and all artifact properties.
+
+usf_create_artifact_aenys_crown_without_creator_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = aenys_crown_name
+		description = aenys_crown_description
+		type = helmet
+		visuals = aenys_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = aenys_crown_template
+		modifier = aenys_crown_modifier
+		save_scope_as = newly_created_artifact
+
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_aenys_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+	}
+}
+
+usf_create_artifact_aegon_iii_crown_without_creator_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = aegon_iii_crown_name
+		description = aegon_iii_crown_description
+		type = helmet
+		visuals = aegon_iii_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = aegon_iii_crown_template
+		modifier = aegon_iii_crown_modifier
+		save_scope_as = newly_created_artifact
+
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_aegon_iii_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+	}
+}
+
+usf_create_artifact_baelors_crown_without_creator_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = baelors_crown_name
+		description = baelors_crown_description
+		type = helmet
+		visuals = baelors_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = baelors_crown_template
+		modifier = baelors_crown_modifier
+		save_scope_as = newly_created_artifact
+
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_baelor_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+	}
+}
+
+usf_create_artifact_maekars_crown_without_creator_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = maekars_crown_name
+		description = maekars_crown_description
+		type = helmet
+		visuals = maekars_crown_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = maekars_crown_template
+		modifier = maekars_crown_modifier
+		save_scope_as = newly_created_artifact
+
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = crown_maekar_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+	}
+}
+
+usf_create_artifact_visenya_circlet_without_creator_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = visenya_circlet_name
+		description = visenya_circlet_description
+		type = helmet
+		visuals = visenya_circlet_visuals
+		wealth = scope:wealth
+		quality = scope:quality
+		template = visenya_circlet_template
+		modifier = visenya_circlet_modifier
+		save_scope_as = newly_created_artifact
+
+		decaying = no
+	}
+
+	scope:newly_created_artifact ?= {
+		set_variable = { name = circlet_visenya_artifact value = yes }
+		set_variable = { name = historical_unique_artifact value = yes }
+	}
+}

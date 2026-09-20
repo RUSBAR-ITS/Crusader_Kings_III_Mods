@@ -1,0 +1,96 @@
+﻿Before,After,Difference,Component,Message
+1,0,-1,character_currency_effects_impl.cpp:227,Negative value in remove_short_term_gold: -450. file: events/decisions_events/buy_ruby_crown_events.txt line: 54 (buy_ruby_crown.0999:immediate)
+1,0,-1,databases.h:36,Key rf_valyrian not found at Database: common/religion/religion_family_types
+1,0,-1,databases.h:36,Key tgp_minister_recruit_courtiers_decision not found at Database: common/decisions
+2,0,-2,jomini_effect.cpp:1145,Flag 'highlight_cow_provinces_map' is set but is never used. Note that use in localization doesn't count due to technical limitations. Use in unused scripted triggers and effects also does not count
+2,0,-2,jomini_effect.cpp:1145,Variable 'blackfyre_artifact' is set but is never used. Note that use in localization doesn't count due to technical limitations. Use in unused scripted triggers and effects also does not count
+2,0,-2,jomini_effect.cpp:1145,Variable 'pincer_artifact' is set but is never used. Note that use in localization doesn't count due to technical limitations. Use in unused scripted triggers and effects also does not count
+2,0,-2,jomini_effect.cpp:1145,Variable 'seafoam_artifact' is set but is never used. Note that use in localization doesn't count due to technical limitations. Use in unused scripted triggers and effects also does not count
+2,0,-2,jomini_effect.cpp:1161,Flag 'blackDarkRed' is used but is never set. Setting it in an unused scripted trigger or effect does not count
+2,0,-2,jomini_effect.cpp:1161,Flag 'highlight_special_buildings_map' is used but is never set. Setting it in an unused scripted trigger or effect does not count
+2,0,-2,jomini_effect.cpp:1161,Flag 'iceFire' is used but is never set. Setting it in an unused scripted trigger or effect does not count
+2,0,-2,jomini_effect.cpp:1161,Flag 'roland_crown' is used but is never set. Setting it in an unused scripted trigger or effect does not count
+2,0,-2,jomini_effect.cpp:1161,Variable 'blackfyre' is used but is never set. Setting it in an unused scripted trigger or effect does not count
+2,0,-2,jomini_effect.cpp:1161,Variable 'crown_aegon_baelor_artifact' is used but is never set. Setting it in an unused scripted trigger or effect does not count
+2,0,-2,jomini_effect.cpp:1161,Variable 'darksister' is used but is never set. Setting it in an unused scripted trigger or effect does not count
+2,0,-2,jomini_effect.cpp:1161,Variable 'highlight_cow_provinces_map' is used but is never set. Setting it in an unused scripted trigger or effect does not count
+2,0,-2,jomini_effect.cpp:1161,Variable 'is_Durrandon_51' is used but is never set. Setting it in an unused scripted trigger or effect does not count
+2,0,-2,jomini_effect.cpp:1161,Variable 'is_baratheon_6' is used but is never set. Setting it in an unused scripted trigger or effect does not count
+2,0,-2,jomini_effect.cpp:1161,Variable 'maekars_crown' is used but is never set. Setting it in an unused scripted trigger or effect does not count
+2,0,-2,jomini_effect.cpp:1161,Variable 'seafoam' is used but is never set. Setting it in an unused scripted trigger or effect does not count
+1,0,-1,jomini_effect.cpp:139,PostValidate of effect 'add_building' returned false at file: common/on_action/cowagot_province_on_actions.txt line: 174 (set_provinces_on_actions)
+1,0,-1,jomini_effect.cpp:139,PostValidate of effect 'add_special_building' returned false at file: common/on_action/cowagot_province_on_actions.txt line: 274 (set_provinces_on_actions)
+1,0,-1,jomini_effect.cpp:139,PostValidate of effect 'add_special_building_slot' returned false at file: common/on_action/cowagot_province_on_actions.txt line: 273 (set_provinces_on_actions)
+2,0,-2,jomini_effect.cpp:139,PostValidate of effect 'add_trait' returned false at file: common/scripted_effects/DI_present_effects.txt line: 21 (DI_personality_trait_randomizer_effect)
+8,0,-8,jomini_effect.cpp:139,PostValidate of effect 'learn_language' returned false at file: common/scripted_effects/DI_court_position_spawner_overrides.txt line: 29 (DI_court_position_post_spawn_effect[args#2101251318])
+1,0,-1,jomini_effect.cpp:139,PostValidate of effect 'remove_building' returned false at file: common/on_action/cowagot_province_on_actions.txt line: 214 (set_provinces_on_actions)
+2,0,-2,jomini_effect.cpp:139,PostValidate of effect 'remove_trait' returned false at file: common/scripted_effects/DI_present_effects.txt line: 86 (DI_clear_personality_traits_effect)
+1,0,-1,jomini_effect.cpp:139,PostValidate of effect 'set_culture_pillar' returned false at file: common/scripted_guis/DI_cultural_editor_pillars_sgui.txt line: 620 (DI_language_agot_lhazaar_sgui:effect)
+1,0,-1,jomini_eventmanager.cpp:428,"Duplicated event ID 'agot_activity_commission_crown.0001' found. New Location: 'file: events/activities/agot_coronation_activity/agot_coronation_crown_commission_events.txt line: 3 (agot_activity_commission_crown.0001)', Previous Location: 'file: events/activities/agot_coronation_activity/agot_coronation_crown_commission_events.txt line: 3 (agot_activity_commission_crown.0001)'"
+1,0,-1,jomini_script_system.cpp:303,"Script system error!
+  Error: add_building effect [ Invalid database object 'common_trade_03' ]
+  Script location: file: common/on_action/cowagot_province_on_actions.txt line: 174 (set_provinces_on_actions)"
+1,0,-1,jomini_script_system.cpp:303,"Script system error!
+  Error: add_special_building effect [ Invalid database object 'bearisland_01' ]
+  Script location: file: common/on_action/cowagot_province_on_actions.txt line: 274 (set_provinces_on_actions)"
+1,0,-1,jomini_script_system.cpp:303,"Script system error!
+  Error: add_special_building_slot effect [ Invalid database object 'bearisland_01' ]
+  Script location: file: common/on_action/cowagot_province_on_actions.txt line: 273 (set_provinces_on_actions)"
+2,0,-2,jomini_script_system.cpp:303,"Script system error!
+  Error: add_trait effect [ target: Not found in database class CTraitDatabase ]
+  Script location: file: common/scripted_effects/DI_present_effects.txt line: 21 (DI_personality_trait_randomizer_effect)"
+8,0,-8,jomini_script_system.cpp:303,"Script system error!
+  Error: create_artifact effect [ Invalid artifact template 'vs_blackfyre_template' ]
+  Script location: file: common/scripted_effects/00_agot_artifact_vs_sword_effects_override.txt line: 31 (agot_create_artifact_vs_blackfyre_effect[args#2425720076])"
+6,0,-6,jomini_script_system.cpp:303,"Script system error!
+  Error: create_artifact effect [ Invalid artifact template 'vs_pincer_template' ]
+  Script location: file: common/scripted_effects/00_agot_artifact_vs_sword_effects_override.txt line: 630 (agot_create_artifact_vs_pincer_effect[args#2425720076])"
+6,0,-6,jomini_script_system.cpp:303,"Script system error!
+  Error: create_artifact effect [ Invalid artifact template 'vs_seafoam_template' ]
+  Script location: file: common/scripted_effects/00_agot_artifact_vs_sword_effects_override.txt line: 475 (agot_create_artifact_vs_seafoam_effect[args#2425720076])"
+1,0,-1,jomini_script_system.cpp:303,"Script system error!
+  Error: create_artifact effect [ Invalid static modifier 'artifact_personal_scheme_power_add_5_modifier' ]
+  Script location: file: common/scripted_effects/00_lotd_artifact_creation_effects.txt line: 8 (create_artifact_subterfuge_effect[args#141906969])"
+1,0,-1,jomini_script_system.cpp:303,"Script system error!
+  Error: has_cultural_parameter trigger [ Bool culture parameter 'can_build_quarries_in_hills' does not exist ]
+  Script location: file: common/scripted_triggers/cowagot_building_requirement_triggers.txt line: 12 (building_quarries_requirement_terrain)"
+1,0,-1,jomini_script_system.cpp:303,"Script system error!
+  Error: has_game_rule trigger [ Invalid database object 'agot_shatter_empires' ]
+  Script location: file: common/on_action/ntc_artifacts_startdate.txt line: 128 (ntc_artifact_shattered_kingdoms)"
+1,0,-1,jomini_script_system.cpp:303,"Script system error!
+  Error: has_trait trigger [ Cannot find honorable in trait database ]
+  Script location: file: common/scripted_effects/DI_present_effects.txt line: 85 (DI_clear_personality_traits_effect)"
+1,0,-1,jomini_script_system.cpp:303,"Script system error!
+  Error: has_trait trigger [ Cannot find ruthless in trait database ]
+  Script location: file: common/scripted_effects/DI_present_effects.txt line: 86 (DI_clear_personality_traits_effect)"
+2,0,-2,jomini_script_system.cpp:303,"Script system error!
+  Error: learn_language effect [ Invalid database object 'language_arabic' ]
+  Script location: file: common/scripted_effects/DI_court_position_spawner_overrides.txt line: 26 (DI_court_position_post_spawn_effect[args#2101251318])"
+2,0,-2,jomini_script_system.cpp:303,"Script system error!
+  Error: learn_language effect [ Invalid database object 'language_greek' ]
+  Script location: file: common/scripted_effects/DI_court_position_spawner_overrides.txt line: 27 (DI_court_position_post_spawn_effect[args#2101251318])"
+2,0,-2,jomini_script_system.cpp:303,"Script system error!
+  Error: learn_language effect [ Invalid database object 'language_latin' ]
+  Script location: file: common/scripted_effects/DI_court_position_spawner_overrides.txt line: 28 (DI_court_position_post_spawn_effect[args#2101251318])"
+2,0,-2,jomini_script_system.cpp:303,"Script system error!
+  Error: learn_language effect [ Invalid database object 'language_norse' ]
+  Script location: file: common/scripted_effects/DI_court_position_spawner_overrides.txt line: 29 (DI_court_position_post_spawn_effect[args#2101251318])"
+1,0,-1,jomini_script_system.cpp:303,"Script system error!
+  Error: remove_building effect [ Invalid database object 'ironwood_01' ]
+  Script location: file: common/on_action/cowagot_province_on_actions.txt line: 214 (set_provinces_on_actions)"
+2,0,-2,jomini_script_system.cpp:303,"Script system error!
+  Error: remove_trait effect [ target: Not found in database class CTraitDatabase ]
+  Script location: file: common/scripted_effects/DI_present_effects.txt line: 86 (DI_clear_personality_traits_effect)"
+1,0,-1,jomini_script_system.cpp:303,"Script system error!
+  Error: set_culture_pillar effect [ Invalid database object 'language_agot_lhazaar' ]
+  Script location: file: common/scripted_guis/DI_cultural_editor_pillars_sgui.txt line: 620 (DI_language_agot_lhazaar_sgui:effect)"
+1,0,-1,jomini_trigger.cpp:243,PostValidate of trigger 'has_cultural_parameter' returned false at file: common/scripted_triggers/cowagot_building_requirement_triggers.txt line: 12 (building_quarries_requirement_terrain)
+1,0,-1,jomini_trigger.cpp:243,PostValidate of trigger 'has_game_rule' returned false at file: common/on_action/ntc_artifacts_startdate.txt line: 128 (ntc_artifact_shattered_kingdoms)
+0,1,1,lexer.cpp:306,File 'common/scripted_effects/usf_language_effects.txt' should be in utf8-bom encoding (will try to use it anyways)
+0,2,2,pdx_persistent_reader.cpp:216,"Error: ""Unexpected token: rhoynish_religion_opinion, near line: 1766 (expanded from file: common/buildings/yy_agotcities_special_buildings_westeros.txt line: 1767)"" in file: ""common/buildings/yy_agotcities_special_buildings_westeros.txt"" near line: 1766"
+2,0,-2,pdx_persistent_reader.cpp:216,"Error: ""Unexpected token: rhoynish_religion_opinion, near line: 1767"" in file: ""common/buildings/yy_agotcities_special_buildings_westeros.txt"" near line: 1767"
+3,0,-3,pdx_persistent_reader.cpp:216,"Error: ""Unexpected token: valeman_opinion, near line: 605"" in file: ""common/modifiers/ntc_artifact_modifiers.txt"" near line: 605"
+1,0,-1,pdx_persistent_reader.cpp:216,"Error: ""Unknown effect: agot_8299_4_1_acok_scenario_setup, near line: 89"" in file: ""common/scripted_effects/00_agot_scenario_setup_effects.txt"" near line: 90"
+1,0,-1,pdx_persistent_reader.cpp:216,"Error: ""Unknown modifier type: bond_with_dragon_scheme_success_chance_add, near line: 17
+Unknown modifier type: bond_with_dragon_scheme_scheme_success_chance_add, near line: 24"" in file: ""common/modifier_definition_formats/agot_scheme_definitions.txt"" near line: 29"
+1,0,-1,pdx_persistent_reader.cpp:216,"Error: ""Unknown trigger: holding, near line: 2364"" in file: ""common/buildings/yy_agotcities_special_buildings_westeros.txt"" near line: 2369"

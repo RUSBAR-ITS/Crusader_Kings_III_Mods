@@ -1,0 +1,132 @@
+[
+  {
+    "file": "common/scripted_triggers/core_artifact_triggers.txt",
+    "source": "core/common/scripted_triggers/core_artifact_triggers.txt",
+    "reason": "Recognize current AGOT/LOTD sword modifiers; preserve optional integrations."
+  },
+  {
+    "file": "common/scripted_effects/DI_court_position_spawner_overrides.txt",
+    "source": "di/common/scripted_effects/DI_court_position_spawner_overrides.txt",
+    "reason": "Preserve polyglot roles using existing cultures and distinct unknown languages."
+  },
+  {
+    "file": "common/scripted_effects/usf_language_effects.txt",
+    "source": null,
+    "reason": "At most four new languages; cultures sharing a language cannot duplicate it."
+  },
+  {
+    "file": "common/scripted_effects/DI_present_effects.txt",
+    "source": "di/common/scripted_effects/DI_present_effects.txt",
+    "reason": "Comment four obsolete trait choices/checks; preserve all other personalities and weights."
+  },
+  {
+    "file": "common/scripted_guis/DI_cultural_editor_pillars_sgui.txt",
+    "source": "di/common/scripted_guis/DI_cultural_editor_pillars_sgui.txt",
+    "reason": "Correct the existing AGOT language ID."
+  },
+  {
+    "file": "common/scripted_effects/00_agot_artifact_vs_sword_effects_override.txt",
+    "source": "lotd/common/scripted_effects/00_agot_artifact_vs_sword_effects_override.txt",
+    "reason": "Use modern templates; comment three unused markers without altering visuals, modifiers or history."
+  },
+  {
+    "file": "common/scripted_effects/00_lotd_artifact_creation_effects.txt",
+    "source": "lotd/common/scripted_effects/00_lotd_artifact_creation_effects.txt",
+    "reason": "Keep remaining Subterfuge bonuses; do not duplicate its existing +5 bonus."
+  },
+  {
+    "file": "events/decisions_events/buy_ruby_crown_events.txt",
+    "source": "lotd/events/decisions_events/buy_ruby_crown_events.txt",
+    "reason": "Prevent an invalid second AI charge; preserve decision cost."
+  },
+  {
+    "file": "common/scripted_triggers/00_lotd_artifact_triggers.txt",
+    "source": "lotd/common/scripted_triggers/00_lotd_artifact_triggers.txt",
+    "reason": "Recognize the existing Baelor crown marker."
+  },
+  {
+    "file": "events/decisions_events/rediscover_events.txt",
+    "source": "lotd/events/decisions_events/rediscover_events.txt",
+    "reason": "Restore Maekar search eligibility. All five missing-CREATOR calls deliberately unchanged."
+  },
+  {
+    "file": "common/on_action/cowagot_province_on_actions.txt",
+    "source": "cow/common/on_action/cowagot_province_on_actions.txt",
+    "reason": "Known port/Bear Island IDs and obsolete no-op removal only; preserve Harlaw branch."
+  },
+  {
+    "file": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+    "source": "cow/common/buildings/yy_agotcities_special_buildings_westeros.txt",
+    "reason": "Repair scope and avoid downgrade; comment three unavailable agot_cities.5000 callbacks; religion bonuses unchanged."
+  },
+  {
+    "file": "common/scripted_triggers/cowagot_building_requirement_triggers.txt",
+    "source": "cow/common/scripted_triggers/cowagot_building_requirement_triggers.txt",
+    "reason": "Modern quarry terrain requirement, including Iron Islands restriction, with four COW Tarth exceptions."
+  },
+  {
+    "file": "common/scripted_guis/cow_custom_mapmodes_gui.txt",
+    "source": "cow/common/scripted_guis/cow_custom_mapmodes_gui.txt",
+    "reason": "Match the actual map mode variable and its existing flag value."
+  },
+  {
+    "file": "common/modifiers/ntc_artifact_modifiers.txt",
+    "source": "crowns/common/modifiers/ntc_artifact_modifiers.txt",
+    "reason": "Use current Vale culture without changing bonus amounts."
+  },
+  {
+    "file": "common/on_action/ntc_artifacts_startdate.txt",
+    "source": "crowns/common/on_action/ntc_artifacts_startdate.txt",
+    "reason": "Preserve intended dissolution of empires into kingdoms."
+  },
+  {
+    "file": "common/artifacts/templates/ntc_artifacts_templates.txt",
+    "source": "crowns/common/artifacts/templates/ntc_artifacts_templates.txt",
+    "reason": "Correct Myrcella identity flag case."
+  },
+  {
+    "file": "common/scripted_triggers/00_ntc_crown_commission_triggers.txt",
+    "source": "crowns/common/scripted_triggers/00_ntc_crown_commission_triggers.txt",
+    "reason": "Recognize the exact existing historical Baldric; do not invent a birth chain."
+  },
+  {
+    "file": "events/activities/agot_coronation_activity/agot_coronation_crown_commission_events.txt",
+    "source": "crowns/events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
+    "reason": "Verified exact AGOT baseline plus eight additive Crowns blocks; use current canonical filename."
+  },
+  {
+    "file": "events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
+    "source": "crowns/events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
+    "reason": "Suppress duplicate old filename without dropping any crown choices."
+  },
+  {
+    "file": "events/ntc_find_lost_crown_events.txt",
+    "source": "crowns/events/ntc_find_lost_crown_events.txt",
+    "reason": "Use actual crown existence and a live-participant lock; release on success, failure, refusal and scripted death."
+  },
+  {
+    "file": "common/scripted_effects/usf_bookmarked_april_scenario.txt",
+    "source": "agot/common/scripted_effects/00_agot_scenario_clash_of_kings_effects.txt",
+    "reason": "Copy exact AGOT April effect under a unique path; preserve Bookmarked June scenario."
+  },
+  {
+    "file": "common/scripted_triggers/00_valyrian_artifact_triggers.txt",
+    "source": "vs/common/scripted_triggers/00_valyrian_artifact_triggers.txt",
+    "reason": "Match current case-sensitive egg color values; no model or texture changes."
+  },
+  {
+    "file": "common/modifier_definition_formats/agot_scheme_definitions.txt",
+    "source": "vs/common/modifier_definition_formats/agot_scheme_definitions.txt",
+    "reason": "Comment two unavailable display formats only."
+  },
+  {
+    "file": "localization/replace/russian/game_concepts_l_russian.yml",
+    "source": "agot_ru/localization/replace/russian/game_concepts_l_russian.yml",
+    "reason": "Match current AGOT English description, which has no obsolete family restriction."
+  },
+  {
+    "file": "localization/replace/russian/dlc/tgp/dlc_tgp_china_game_concepts_l_russian.yml",
+    "source": "repo/AGOT_Submods/AGOT_RUS_CORRECT/localization/replace/russian/dlc/tgp/dlc_tgp_china_game_concepts_l_russian.yml",
+    "reason": "Use existing localized decision name without looking up an unavailable decision object."
+  }
+]

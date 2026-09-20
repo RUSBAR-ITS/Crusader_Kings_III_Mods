@@ -1,0 +1,70 @@
+﻿highlight_cow_provinces_map = {
+	effect = {
+		if = {
+			# limit = { NOT = { global_var:cow_custom_map_mode = flag:highlight_cow_provinces_map } }
+			set_global_variable = {
+				name = cow_custom_map_mode_changing
+				value = 1
+			}
+			set_global_variable = {
+				name = cow_custom_map_mode
+				value = flag:highlight_cow_provinces_map
+			}
+			every_barony = {
+				if = {
+					limit = {
+						title_province = {  
+							OR = {
+								this = province:5303
+								this = province:3161
+								this = province:2715
+								this = province:4772
+								this = province:3823
+								this = province:4268
+								this = province:4241
+								this = province:2729
+								this = province:940
+								this = province:3092
+								this = province:3289
+								this = province:1027
+								this = province:4124
+								this = province:4945
+								this = province:3354
+								this = province:2867
+								this = province:1636
+								this = province:4424
+								this = province:5264
+								this = province:2626
+								this = province:3180
+								this = province:4673
+								this = province:4917
+								this = province:4468
+								this = province:247
+								this = province:2854
+								this = province:1737
+								this = province:5257
+								this = province:1686
+								this = province:2455
+								this = province:1729
+								this = province:3320
+								this = province:2819
+							}
+						}
+					}
+					set_color_from_title = title:d_map_color_green # Green where a slot exists
+				}
+				else = {
+					set_color_from_title = title:d_map_color_red # Red where it does not
+				}
+			}
+			remove_global_variable = cow_custom_map_mode_changing
+		}
+	}
+	is_shown = {
+		exists = global_var:cow_custom_map_mode
+		global_var:cow_custom_map_mode = flag:highlight_cow_provinces_map
+	}
+	is_valid = {
+		NOT = { exists = global_var:cow_custom_map_mode_changing }
+	}
+}
