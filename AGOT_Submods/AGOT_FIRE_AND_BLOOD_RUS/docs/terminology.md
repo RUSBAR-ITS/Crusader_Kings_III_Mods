@@ -13,19 +13,31 @@
 | Balerion / Vhagar / Meraxes | Балерион / Вхагар / Мераксес |
 | Quicksilver / Dreamfyre / Silverwing | Ртуть / Пламенная Мечта / Среброкрылая |
 | Bloodfyre / Moonfyre | Кровавое Пламя / Лунный Огонь |
+| Brandon / Ronnel | Брандон / Роннел |
+| Dark Sister | Тёмная Сестра |
+| Durran Godsgrief / Argilac the Arrogant | Дюрран Богоборец / Аргилак Надменный |
+| Darkrobin / the Mummer | Чёрный Дрозд / Лицедей |
+| the Valiant (Kingsguard) | Доблестный |
 | Celtigar / Qoherys / Gardener | Селтигар / Квохерис / Гарденер |
 | Oldtown / Casterly Rock | Старомест / Утёс Кастерли |
 | Maidenpool / Duskendale | Девичий Пруд / Сумеречный Дол |
 | Stonedance / Sharp Point | Камнепляс / Острый Мыс |
 | Hellholt / Skyreach / Yronwood | Пекло / Поднебесье / Айронвуд |
+| Spottswood / Stinkwater / Brimstone | Спотсвуд / Стоячий Пруд / Серноводная |
+| Wyl / Oakheart | Виль / Окхарт |
+| Moles Town / Queenscrown / Brandon’s Gift | Кротовый городок / Корона Королевы / Брандонов Дар |
+| Field of Fire | Пламенное поле |
+| Massey’s Hook / Wendwater (river) | Крюк Масси / Путеводная |
 | Rimegate / Sable Hall / Greywater Watch | Инистые Врата / Соболий замок / Сероводье |
 | Reach / Neck / Kingswood | Простор / Перешеек / Королевский лес |
 | Blackfyre | Чёрное Пламя — меч, не название династии |
 | Hand of the King | десница короля |
 | master of coin | мастер над монетой |
 | royal progress | королевский объезд |
-| Shivers | Дрожь |
+| Shivers | Трясучка |
 
 Контекстные различия: `host` — войско; `treat` в переговорах — вести переговоры; `match` при выборе супруга — брак; `childbed` — роды; `lists` на турнире — ристалище; `arms` на гербе — герб, а не руки.
 
 Файлы словаря с SHA-256 перечислены в `source-manifest.json`, раздел `terminology_reference`. Это фиксация использованного издания, а не автоматическое заимствование всего каталога AGOT.
+
+`Sunchaser` передано как «Летящий за солнцем»; в установленном словаре AGOT отдельной записи не найдено. Название дополнительно сверено с [русским изложением истории Элиссы Фарман](https://dtf.ru/cinema/51372-nazad-v-proshloe-o-chem-mogut-byt-spin-offy-igry-prestolov); это дополнительный, а не основной источник терминологии.

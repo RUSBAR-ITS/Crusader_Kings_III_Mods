@@ -1,6 +1,8 @@
 """Optional draft generator. Sends only public source localization to Google Translate.
 
-Not used by Build.py. Cached outputs are drafts, never marked as manual review.
+Legacy initial-fill tool; not part of translation maintenance.
+Cached outputs are drafts, never marked as manual review.
+Do not run for ordinary edits: this also rewrites initial source manifests.
 Workshop files and playset are never modified.
 """
 from Localization import *
