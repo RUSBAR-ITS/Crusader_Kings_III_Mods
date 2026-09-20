@@ -1,0 +1,121 @@
+agot_di_rusbar_valyrian_gods_interaction = {
+	interface_priority = 249
+	category = interaction_category_cheat_menu
+	icon = religious
+	desc = agot_di_rusbar_valyrian_gods_interaction_desc
+	common_interaction = no
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+	options_heading = agot_di_rusbar_valyrian_gods_options
+	send_options_exclusive = yes
+
+	is_available = { is_ai = no }
+	ai_will_do = { base = 0 }
+	is_shown = { agot_di_rusbar_valyrian_gods_context_trigger = yes }
+
+	can_send = {
+		custom_tooltip = {
+			text = agot_di_rusbar_valyrian_gods_valid_option_tt
+			agot_di_rusbar_valyrian_gods_context_trigger = yes
+			agot_di_rusbar_valyrian_gods_valid_option_trigger = yes
+		}
+	}
+
+	send_option = {
+		flag = agot_di_rusbar_gods_grant_great
+		localization = agot_di_rusbar_gods_grant_great
+		is_shown = {
+			scope:recipient = { agot_di_rusbar_has_valyrian_gift_trigger = no }
+		}
+	}
+	send_option = {
+		flag = agot_di_rusbar_gods_grant_blessing
+		localization = agot_di_rusbar_gods_grant_blessing
+		is_shown = {
+			scope:recipient = { agot_di_rusbar_has_valyrian_gift_trigger = no }
+		}
+	}
+	send_option = {
+		flag = agot_di_rusbar_gods_grant_slave
+		localization = agot_di_rusbar_gods_grant_slave
+		is_shown = {
+			scope:recipient = { agot_di_rusbar_has_valyrian_gift_trigger = no }
+		}
+	}
+	send_option = {
+		flag = agot_di_rusbar_gods_remove_great
+		localization = agot_di_rusbar_gods_remove_great
+		is_shown = {
+			scope:recipient = { has_character_modifier = agot_di_rusbar_great_valyrian_blessing }
+		}
+	}
+	send_option = {
+		flag = agot_di_rusbar_gods_remove_blessing
+		localization = agot_di_rusbar_gods_remove_blessing
+		is_shown = {
+			scope:recipient = { has_character_modifier = agot_di_rusbar_valyrian_blessing }
+		}
+	}
+	send_option = {
+		flag = agot_di_rusbar_gods_remove_slave
+		localization = agot_di_rusbar_gods_remove_slave
+		is_shown = {
+			scope:recipient = { has_character_modifier = agot_di_rusbar_valyrian_slave }
+		}
+	}
+
+	# Revalidate after the dialog; no grant can stack with any of the three modifiers.
+	on_accept = {
+		if = {
+			limit = {
+				agot_di_rusbar_valyrian_gods_context_trigger = yes
+				agot_di_rusbar_valyrian_gods_valid_option_trigger = yes
+			}
+			scope:recipient = {
+				if = {
+					limit = {
+						scope:agot_di_rusbar_gods_grant_great = yes
+						agot_di_rusbar_has_valyrian_gift_trigger = no
+					}
+					add_character_modifier = { modifier = agot_di_rusbar_great_valyrian_blessing }
+				}
+				else_if = {
+					limit = {
+						scope:agot_di_rusbar_gods_grant_blessing = yes
+						agot_di_rusbar_has_valyrian_gift_trigger = no
+					}
+					add_character_modifier = { modifier = agot_di_rusbar_valyrian_blessing }
+				}
+				else_if = {
+					limit = {
+						scope:agot_di_rusbar_gods_grant_slave = yes
+						agot_di_rusbar_has_valyrian_gift_trigger = no
+					}
+					add_character_modifier = { modifier = agot_di_rusbar_valyrian_slave }
+				}
+				else_if = {
+					limit = {
+						scope:agot_di_rusbar_gods_remove_great = yes
+						has_character_modifier = agot_di_rusbar_great_valyrian_blessing
+					}
+					remove_character_modifier = agot_di_rusbar_great_valyrian_blessing
+				}
+				else_if = {
+					limit = {
+						scope:agot_di_rusbar_gods_remove_blessing = yes
+						has_character_modifier = agot_di_rusbar_valyrian_blessing
+					}
+					remove_character_modifier = agot_di_rusbar_valyrian_blessing
+				}
+				else_if = {
+					limit = {
+						scope:agot_di_rusbar_gods_remove_slave = yes
+						has_character_modifier = agot_di_rusbar_valyrian_slave
+					}
+					remove_character_modifier = agot_di_rusbar_valyrian_slave
+				}
+			}
+		}
+	}
+}

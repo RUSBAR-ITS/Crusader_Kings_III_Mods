@@ -1,0 +1,1911 @@
+agot_di_rusbar_eye_close = {
+	scope = character
+	effect = {
+		agot_di_rusbar_eye_close_effect = yes
+	}
+}
+agot_di_rusbar_eye_age_less = {
+	scope = character
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes var:agot_di_rusbar_eye_age > 16 }
+	effect = {
+		if = {
+			limit = { agot_di_rusbar_eye_context_trigger = yes var:agot_di_rusbar_eye_age > 16 }
+			change_variable = { name = agot_di_rusbar_eye_age add = -1 }
+		}
+	}
+}
+agot_di_rusbar_eye_age_more = {
+	scope = character
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes var:agot_di_rusbar_eye_age < 80 }
+	effect = {
+		if = {
+			limit = { agot_di_rusbar_eye_context_trigger = yes var:agot_di_rusbar_eye_age < 80 }
+			change_variable = { name = agot_di_rusbar_eye_age add = 1 }
+		}
+	}
+}
+agot_di_rusbar_eye_gender_random = {
+	scope = character
+	effect = {
+		if = {
+			limit = { agot_di_rusbar_eye_context_trigger = yes }
+			set_variable = { name = agot_di_rusbar_eye_gender value = 50 }
+		}
+	}
+}
+agot_di_rusbar_eye_gender_male = {
+	scope = character
+	effect = {
+		if = {
+			limit = { agot_di_rusbar_eye_context_trigger = yes }
+			set_variable = { name = agot_di_rusbar_eye_gender value = 0 }
+		}
+	}
+}
+agot_di_rusbar_eye_gender_female = {
+	scope = character
+	effect = {
+		if = {
+			limit = { agot_di_rusbar_eye_context_trigger = yes }
+			set_variable = { name = agot_di_rusbar_eye_gender value = 100 }
+		}
+	}
+}
+agot_di_rusbar_eye_select_culture = {
+	scope = character
+	saved_scopes = { agot_di_rusbar_selection }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes exists = scope:agot_di_rusbar_selection }
+	effect = {
+		if = {
+			limit = { agot_di_rusbar_eye_context_trigger = yes exists = scope:agot_di_rusbar_selection }
+			set_variable = { name = agot_di_rusbar_eye_culture value = scope:agot_di_rusbar_selection }
+		}
+	}
+}
+agot_di_rusbar_eye_select_faith = {
+	scope = character
+	saved_scopes = { agot_di_rusbar_selection }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes exists = scope:agot_di_rusbar_selection }
+	effect = {
+		if = {
+			limit = { agot_di_rusbar_eye_context_trigger = yes exists = scope:agot_di_rusbar_selection }
+			set_variable = { name = agot_di_rusbar_eye_faith value = scope:agot_di_rusbar_selection }
+		}
+	}
+}
+agot_di_rusbar_eye_reset_origin = {
+	scope = character
+	effect = {
+		if = {
+			limit = { agot_di_rusbar_eye_context_trigger = yes }
+			set_variable = { name = agot_di_rusbar_eye_culture value = var:agot_di_rusbar_eye_target.culture }
+			set_variable = { name = agot_di_rusbar_eye_faith value = var:agot_di_rusbar_eye_target.faith }
+		}
+	}
+}
+agot_di_rusbar_eye_create_admiral_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_admiral_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_admiral_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_admiral_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_admiral_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_antiquarian_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_antiquarian_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_antiquarian_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_antiquarian_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_antiquarian_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_archer_captain_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_archer_captain_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_archer_captain_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_archer_captain_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_archer_captain_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_armorer_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_armorer_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_armorer_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_armorer_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_armorer_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_bloodrider_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_bloodrider_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_bloodrider_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_bloodrider_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_bloodrider_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_bodyguard_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_bodyguard_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_bodyguard_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_bodyguard_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_bodyguard_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_boyan_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_boyan_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_boyan_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_boyan_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_boyan_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_camelry_captain_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_camelry_captain_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_camelry_captain_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_camelry_captain_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_camelry_captain_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_camp_cook_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_camp_cook_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_camp_cook_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_camp_cook_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_camp_cook_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_camp_priest_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_camp_priest_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_camp_priest_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_camp_priest_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_camp_priest_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_cave_hermit_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cave_hermit_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cave_hermit_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cave_hermit_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_cave_hermit_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_champion_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_champion_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_champion_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_champion_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_champion_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_cherbi_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cherbi_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cherbi_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cherbi_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_cherbi_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_chief_engineer_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chief_engineer_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chief_engineer_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chief_engineer_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_chief_engineer_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_chief_eunuch_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chief_eunuch_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chief_eunuch_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chief_eunuch_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_chief_eunuch_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_chief_forager_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chief_forager_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chief_forager_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chief_forager_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_chief_forager_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_chronicler_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chronicler_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chronicler_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chronicler_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_chronicler_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_court_artificer_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_artificer_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_artificer_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_artificer_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_court_artificer_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_court_astrologer_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_astrologer_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_astrologer_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_astrologer_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_court_astrologer_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_court_brewmaster_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_brewmaster_court_position_trigger = yes }
+	NOT = { var:agot_di_rusbar_eye_faith = faith:fots_blessed }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_brewmaster_court_position_trigger = yes }
+	NOT = { var:agot_di_rusbar_eye_faith = faith:fots_blessed }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_brewmaster_court_position_trigger = yes }
+				NOT = { var:agot_di_rusbar_eye_faith = faith:fots_blessed }
+			}
+			agot_di_rusbar_spawn_court_brewmaster_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_court_gardener_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_gardener_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_gardener_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_gardener_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_court_gardener_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_court_jester_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_jester_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_jester_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_jester_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_court_jester_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_court_musician_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_musician_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_musician_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_musician_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_court_musician_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_court_physician_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_physician_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_physician_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_physician_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_court_physician_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_court_poet_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_poet_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_poet_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_poet_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_court_poet_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_court_scholar_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_scholar_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_scholar_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_scholar_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_court_scholar_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_court_smith_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_smith_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_smith_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_smith_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_court_smith_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_court_tutor_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_tutor_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_tutor_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_tutor_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_court_tutor_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_crimson_cloaks_commander_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_crimson_cloaks_commander_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_crimson_cloaks_commander_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_crimson_cloaks_commander_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_crimson_cloaks_commander_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_cultural_emissary_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cultural_emissary_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cultural_emissary_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cultural_emissary_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_cultural_emissary_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_cupbearer_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cupbearer_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cupbearer_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cupbearer_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_cupbearer_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_elephantry_captain_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_elephantry_captain_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_elephantry_captain_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_elephantry_captain_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_elephantry_captain_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_eparch_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_eparch_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_eparch_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_eparch_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_eparch_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_executioner_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_executioner_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_executioner_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_executioner_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_executioner_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_first_sword_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_first_sword_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_first_sword_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_first_sword_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_first_sword_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_food_taster_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_food_taster_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_food_taster_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_food_taster_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_food_taster_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_foreign_emissary_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_foreign_emissary_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_foreign_emissary_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_foreign_emissary_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_foreign_emissary_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_gaoler_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_gaoler_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_gaoler_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_gaoler_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_gaoler_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_grand_guardian_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grand_guardian_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grand_guardian_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grand_guardian_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_grand_guardian_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_grand_mentor_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grand_mentor_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grand_mentor_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grand_mentor_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_grand_mentor_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_grand_preceptor_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grand_preceptor_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grand_preceptor_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grand_preceptor_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_grand_preceptor_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_grey_cloaks_commander_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grey_cloaks_commander_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grey_cloaks_commander_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grey_cloaks_commander_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_grey_cloaks_commander_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_harbormaster_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_harbormaster_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_harbormaster_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_harbormaster_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_harbormaster_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_head_dragonkeeper_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_head_dragonkeeper_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_head_dragonkeeper_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_head_dragonkeeper_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_head_dragonkeeper_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_head_groom_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_head_groom_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_head_groom_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_head_groom_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_head_groom_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_head_porter_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_head_porter_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_head_porter_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_head_porter_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_head_porter_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_heavy_cavalry_captain_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_heavy_cavalry_captain_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_heavy_cavalry_captain_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_heavy_cavalry_captain_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_heavy_cavalry_captain_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_heavy_infantry_captain_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_heavy_infantry_captain_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_heavy_infantry_captain_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_heavy_infantry_captain_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_heavy_infantry_captain_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_high_almoner_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_high_almoner_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_high_almoner_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_high_almoner_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_high_almoner_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_high_reeve_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_high_reeve_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_high_reeve_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_high_reeve_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_high_reeve_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_horse_archer_captain_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_horse_archer_captain_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_horse_archer_captain_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_horse_archer_captain_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_horse_archer_captain_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_household_guard_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_household_guard_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_household_guard_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_household_guard_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_household_guard_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_huntperson_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_huntperson_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_huntperson_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_huntperson_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_huntperson_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_justiciar_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_justiciar_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_justiciar_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_justiciar_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_justiciar_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_keeper_of_keys_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_keys_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_keys_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_keys_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_keeper_of_keys_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_keeper_of_swans_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_swans_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_swans_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_swans_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_keeper_of_swans_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_keeper_of_the_harem_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_the_harem_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_the_harem_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_the_harem_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_keeper_of_the_harem_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_keeper_of_the_horses_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_the_horses_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_the_horses_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_the_horses_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_keeper_of_the_horses_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_kennelperson_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_kennelperson_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_kennelperson_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_kennelperson_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_kennelperson_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_khlon_glan_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_khlon_glan_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_khlon_glan_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_khlon_glan_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_khlon_glan_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_lady_in_waiting_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_lady_in_waiting_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_lady_in_waiting_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_lady_in_waiting_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_lady_in_waiting_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_laureate_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_laureate_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_laureate_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_laureate_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_laureate_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_light_cavalry_captain_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_light_cavalry_captain_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_light_cavalry_captain_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_light_cavalry_captain_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_light_cavalry_captain_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_light_infantry_captain_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_light_infantry_captain_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_light_infantry_captain_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_light_infantry_captain_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_light_infantry_captain_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_maester_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_maester_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_maester_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_maester_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_maester_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_master_assassin_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_assassin_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_assassin_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_assassin_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_master_assassin_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_master_at_arms_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_at_arms_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_at_arms_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_at_arms_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_master_at_arms_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_master_bard_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_bard_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_bard_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_bard_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_master_bard_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_master_of_arms_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_arms_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_arms_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_arms_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_master_of_arms_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_master_of_horse_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_horse_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_horse_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_horse_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_master_of_horse_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_master_of_hunt_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_hunt_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_hunt_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_hunt_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_master_of_hunt_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_master_of_spoils_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_spoils_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_spoils_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_spoils_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_master_of_spoils_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_master_thief_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_thief_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_thief_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_thief_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_master_thief_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_nw_septon = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_nw_septon_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_nw_septon_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_nw_septon_trigger = yes }
+			}
+			agot_di_rusbar_spawn_nw_septon_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_person_haggler_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_person_haggler_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_person_haggler_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_person_haggler_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_person_haggler_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_pike_captain_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_pike_captain_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_pike_captain_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_pike_captain_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_pike_captain_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_quartermaster_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_quartermaster_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_quartermaster_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_quartermaster_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_quartermaster_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_royal_architect_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_architect_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_architect_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_architect_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_royal_architect_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_royal_counter_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_counter_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_counter_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_counter_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_royal_counter_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_royal_mint_officer_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_mint_officer_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_mint_officer_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_mint_officer_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_royal_mint_officer_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_royal_scales_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_scales_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_scales_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_scales_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_royal_scales_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_sea_watch_commander_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_sea_watch_commander_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_sea_watch_commander_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_sea_watch_commander_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_sea_watch_commander_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_second_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_second_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_second_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_second_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_second_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_seneschal_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_seneschal_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_seneschal_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_seneschal_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_seneschal_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_septa_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_septa_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_septa_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_septa_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_septa_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_septon_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_septon_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_septon_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_septon_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_septon_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_siege_engineer_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_siege_engineer_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_siege_engineer_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_siege_engineer_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_siege_engineer_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_stooge_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_stooge_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_stooge_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_stooge_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_stooge_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_travel_leader_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_travel_leader_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_travel_leader_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_travel_leader_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_travel_leader_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_wet_nurse_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_wet_nurse_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_wet_nurse_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_wet_nurse_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_wet_nurse_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_witness_camp_officer = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_witness_camp_officer_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_witness_camp_officer_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_witness_camp_officer_trigger = yes }
+			}
+			agot_di_rusbar_spawn_witness_camp_officer_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_yeke_jarquchi_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_yeke_jarquchi_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_yeke_jarquchi_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_yeke_jarquchi_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_yeke_jarquchi_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_create_yurtchi_court_position = {
+	scope = character
+	is_shown = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_yurtchi_court_position_trigger = yes }
+	 }
+	is_valid = { agot_di_rusbar_eye_context_trigger = yes
+	var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_yurtchi_court_position_trigger = yes }
+	 }
+	effect = {
+		if = {
+			limit = {
+				agot_di_rusbar_eye_context_trigger = yes
+				var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_yurtchi_court_position_trigger = yes }
+			}
+			agot_di_rusbar_spawn_yurtchi_court_position_effect = yes
+		}
+	}
+}
+agot_di_rusbar_eye_tab_base_available = {
+	scope = character
+	is_valid = {
+		agot_di_rusbar_eye_context_trigger = yes
+		OR = {
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_antiquarian_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_bodyguard_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_boyan_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cave_hermit_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_champion_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cherbi_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chief_eunuch_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chronicler_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_artificer_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_astrologer_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_brewmaster_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_gardener_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_jester_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_musician_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_physician_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_poet_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_scholar_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_tutor_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cultural_emissary_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_cupbearer_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_eparch_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_executioner_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_food_taster_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_foreign_emissary_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grand_guardian_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grand_mentor_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grand_preceptor_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_high_almoner_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_swans_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_the_harem_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_the_horses_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_khlon_glan_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_lady_in_waiting_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_assassin_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_horse_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_hunt_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_architect_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_seneschal_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_siege_engineer_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_travel_leader_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_wet_nurse_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_yeke_jarquchi_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_yurtchi_court_position_trigger = yes }
+		}
+	}
+}
+agot_di_rusbar_eye_tab_general_available = {
+	scope = character
+	is_valid = {
+		agot_di_rusbar_eye_context_trigger = yes
+		OR = {
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_admiral_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_court_smith_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_gaoler_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_harbormaster_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_head_dragonkeeper_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_household_guard_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_maester_court_position_trigger = yes }
+		}
+	}
+}
+agot_di_rusbar_eye_tab_cultural_available = {
+	scope = character
+	is_valid = {
+		agot_di_rusbar_eye_context_trigger = yes
+		OR = {
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_bloodrider_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_at_arms_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_septa_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_septon_court_position_trigger = yes }
+		}
+	}
+}
+agot_di_rusbar_eye_tab_titular_available = {
+	scope = character
+	is_valid = {
+		agot_di_rusbar_eye_context_trigger = yes
+		OR = {
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_crimson_cloaks_commander_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_first_sword_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_grey_cloaks_commander_court_position_trigger = yes }
+		}
+	}
+}
+agot_di_rusbar_eye_tab_crownlands_available = {
+	scope = character
+	is_valid = {
+		agot_di_rusbar_eye_context_trigger = yes
+		OR = {
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_high_reeve_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_justiciar_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_keeper_of_keys_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_counter_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_mint_officer_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_royal_scales_court_position_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_sea_watch_commander_court_position_trigger = yes }
+		}
+	}
+}
+agot_di_rusbar_eye_tab_watch_available = {
+	scope = character
+	is_valid = {
+		agot_di_rusbar_eye_context_trigger = yes
+		OR = {
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_nw_septon_trigger = yes }
+		}
+	}
+}
+agot_di_rusbar_eye_tab_camp_available = {
+	scope = character
+	is_valid = {
+		agot_di_rusbar_eye_context_trigger = yes
+		OR = {
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_archer_captain_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_armorer_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_camelry_captain_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_camp_cook_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_camp_priest_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chief_engineer_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_chief_forager_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_elephantry_captain_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_head_groom_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_head_porter_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_heavy_cavalry_captain_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_heavy_infantry_captain_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_horse_archer_captain_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_huntperson_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_kennelperson_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_laureate_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_light_cavalry_captain_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_light_infantry_captain_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_bard_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_arms_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_of_spoils_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_master_thief_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_person_haggler_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_pike_captain_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_quartermaster_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_second_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_stooge_camp_officer_trigger = yes }
+			var:agot_di_rusbar_eye_target = { agot_di_rusbar_vacancy_witness_camp_officer_trigger = yes }
+		}
+	}
+}

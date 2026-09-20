@@ -1,0 +1,49 @@
+# Character scope. Also includes the slave modifier so all three are exclusive.
+agot_di_rusbar_has_valyrian_gift_trigger = {
+	OR = {
+		has_character_modifier = agot_di_rusbar_great_valyrian_blessing
+		has_character_modifier = agot_di_rusbar_valyrian_blessing
+		has_character_modifier = agot_di_rusbar_valyrian_slave
+	}
+}
+
+# Interaction context: the player has enabled DI, and the target is a living human.
+agot_di_rusbar_valyrian_gods_context_trigger = {
+	scope:actor = {
+		is_ai = no
+		any_owned_story = {
+			story_type = DI_misc_variables_story
+			has_variable = DI_cheat_menu
+		}
+	}
+	scope:recipient = {
+		is_alive = yes
+		is_human = yes
+	}
+}
+
+# Interaction context. Recheck the selected operation against the current state.
+agot_di_rusbar_valyrian_gods_valid_option_trigger = {
+	OR = {
+		AND = {
+			scope:recipient = { agot_di_rusbar_has_valyrian_gift_trigger = no }
+			OR = {
+				scope:agot_di_rusbar_gods_grant_great = yes
+				scope:agot_di_rusbar_gods_grant_blessing = yes
+				scope:agot_di_rusbar_gods_grant_slave = yes
+			}
+		}
+		AND = {
+			scope:agot_di_rusbar_gods_remove_great = yes
+			scope:recipient = { has_character_modifier = agot_di_rusbar_great_valyrian_blessing }
+		}
+		AND = {
+			scope:agot_di_rusbar_gods_remove_blessing = yes
+			scope:recipient = { has_character_modifier = agot_di_rusbar_valyrian_blessing }
+		}
+		AND = {
+			scope:agot_di_rusbar_gods_remove_slave = yes
+			scope:recipient = { has_character_modifier = agot_di_rusbar_valyrian_slave }
+		}
+	}
+}

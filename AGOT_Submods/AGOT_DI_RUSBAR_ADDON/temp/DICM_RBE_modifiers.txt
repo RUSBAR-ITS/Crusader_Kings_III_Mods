@@ -1,0 +1,370 @@
+﻿DICM_RBE_Ceasar = {
+	icon = DICM_RBE_ceasar
+	# AGOT adaptation: see ../docs/ceasar-agot-adaptation-2026-09-20.md.
+
+	# Personal resilience and longevity
+	# Values use a single order-of-magnitude safety margin against stacked vanilla penalties.
+	health = 10
+	fertility = 1000
+	negate_health_penalty_add = 5
+	negate_fertility_penalty_add = 10
+	stress_gain_mult = -30
+
+	# Heredity and inbreeding
+	# These modifiers affect the genetic outcome of this character's children.
+	# A full inbreeding reduction on either prospective parent suppresses the risk.
+	positive_inactive_inheritance_chance = 3
+	negative_inactive_inheritance_chance = -1
+	negative_random_genetic_chance = -1
+	genetic_trait_strengthen_chance = 1
+	inbreeding_chance = -1
+
+	# Construction time
+	build_speed = -10000
+	holding_build_speed = -10000
+	domicile_build_speed = -10000
+	great_project_build_speed = -10000
+
+	# Construction cost
+	build_gold_cost = -10
+	build_piety_cost = -10
+	build_prestige_cost = -10
+	build_herd_cost = -10
+	holding_build_gold_cost = -10
+	holding_build_piety_cost = -10
+	holding_build_prestige_cost = -10
+	domicile_build_gold_cost = -10
+
+	# Domain growth
+	development_growth = 10
+	monthly_county_control_growth_add = 10
+
+	# Realm capacity
+	domain_limit = 20
+	vassal_limit = 20
+
+	# Cultural innovation
+	cultural_head_fascination_add = 500
+	character_innovation_progress_chance_from_fascination_add = 100
+
+	# Monthly resources
+	monthly_prestige = 1000
+	monthly_piety = 1000
+	monthly_income = 1000
+	monthly_dynasty_prestige = 1000
+
+	# Diplomatic range
+	diplomatic_range_mult = 5
+
+	# Camp provisions
+	provisions_loss_mult = -10
+	provisions_use_mult = -10
+	provisions_gain_mult = 10
+	provisions_capacity_add = 2500
+
+	# Schemes and intrigue
+	# Scheme slots mirror the vanilla infinite-schemes debug modifiers.
+	# Success and secrecy values include safety margins against stacked opposing modifiers.
+
+	# Scheme category capacity
+	max_personal_schemes_add = 1000
+	max_hostile_schemes_add = 1000
+	max_political_schemes_add = 1000
+	max_contract_schemes_add = 1000
+
+	# Scheme type capacity
+	max_murder_schemes_add = 100
+	max_abduct_schemes_add = 100
+	max_befriend_schemes_add = 100
+	max_seduce_schemes_add = 100
+	max_sway_schemes_add = 100
+	max_fabricate_hook_schemes_add = 100
+	max_claim_throne_schemes_add = 100
+	max_convert_to_witchcraft_schemes_add = 100
+	max_courting_schemes_add = 100
+	max_elope_schemes_add = 100
+	max_learn_language_schemes_add = 100
+	max_steal_back_artifact_schemes_add = 100
+
+	# Scheme phase duration
+	personal_scheme_phase_duration_add = -1000
+	hostile_scheme_phase_duration_add = -1000
+	political_scheme_phase_duration_add = -1000
+	contract_scheme_phase_duration_add = -1000
+	enemy_personal_scheme_phase_duration_add = 1000
+	enemy_hostile_scheme_phase_duration_add = 1000
+	enemy_political_scheme_phase_duration_add = 1000
+	enemy_contract_scheme_phase_duration_add = 1000
+
+	# Owned scheme success
+	owned_personal_scheme_success_chance_add = 5000
+	owned_personal_scheme_success_chance_growth_add = 100
+	owned_personal_scheme_success_chance_max_add = 100
+	owned_hostile_scheme_success_chance_add = 5000
+	owned_hostile_scheme_success_chance_growth_add = 100
+	owned_hostile_scheme_success_chance_max_add = 100
+	owned_political_scheme_success_chance_add = 5000
+	owned_political_scheme_success_chance_growth_add = 100
+	owned_political_scheme_success_chance_max_add = 100
+	owned_contract_scheme_success_chance_add = 5000
+	owned_contract_scheme_success_chance_growth_add = 100
+	owned_contract_scheme_success_chance_max_add = 100
+
+	# Enemy scheme success
+	enemy_hostile_scheme_success_chance_add = -1000
+	enemy_hostile_scheme_success_chance_growth_add = -1000
+	enemy_hostile_scheme_success_chance_max_add = -1000
+	enemy_personal_scheme_success_chance_add = -1000
+	enemy_personal_scheme_success_chance_growth_add = -1000
+	enemy_personal_scheme_success_chance_max_add = -1000
+	enemy_political_scheme_success_chance_add = -1000
+	enemy_political_scheme_success_chance_growth_add = -1000
+	enemy_political_scheme_success_chance_max_add = -1000
+	enemy_contract_scheme_success_chance_add = -1000
+	enemy_contract_scheme_success_chance_growth_add = -1000
+	enemy_contract_scheme_success_chance_max_add = -1000
+
+	# Scheme secrecy and discovery
+	owned_scheme_secrecy_add = 1000
+	enemy_scheme_secrecy_add = -1000
+	scheme_discovery_chance_mult = 1000
+
+	# Military capacity and combat
+	men_at_arms_limit = 10
+	men_at_arms_cap = 10
+	knight_limit = 10
+	maa_damage_add = 100
+	maa_toughness_add = 100
+	maa_pursuit_add = 100
+	maa_screen_add = 100
+	maa_siege_value_add = 100
+	men_at_arms_maintenance = -10
+	men_at_arms_recruitment_cost = -10
+	movement_speed = 100
+	naval_movement_speed_mult = 100
+	raid_speed = 100
+	retreat_losses = -100
+	supply_limit = 10000
+	supply_limit_mult = 100
+	knight_effectiveness_mult = 100
+	supply_duration = 100
+	hostile_county_attrition = -100
+
+	# Experience modifiers
+	# General and track-specific modifiers stack; paired values preserve the requested total multiplier.
+	monthly_lifestyle_xp_gain_mult = 999
+
+	# Lifestyles, crafts, and spiritual experience
+	lifestyle_reveler_xp_gain_mult = 999
+	lifestyle_blademaster_xp_gain_mult = 499.5
+	trait_track_lifestyle_blademaster_xp_gain_mult = 499.5
+	lifestyle_hunter_xp_gain_mult = 499.5
+	trait_track_hunter_xp_gain_mult = 499.5
+	trait_track_falconer_xp_gain_mult = 499.5
+	lifestyle_mystic_xp_gain_mult = 999
+	lifestyle_physician_xp_gain_mult = 999
+	lifestyle_poet_xp_gain_mult = 499.5
+	trait_track_lifestyle_poet_xp_gain_mult = 499.5
+	pilgrim_xp_gain_mult = 999
+	lifestyle_traveler_xp_gain_mult = 499.5
+	trait_track_travel_xp_gain_mult = 499.5
+	trait_track_danger_xp_gain_mult = 499.5
+
+	# Military experience and command
+	trait_track_peasant_leader_xp_gain_mult = 999
+	logistician_xp_gain_mult = 999
+	military_engineer_xp_gain_mult = 999
+	aggressive_attacker_xp_gain_mult = 999
+	unyielding_defender_xp_gain_mult = 999
+	forder_xp_gain_mult = 999
+	flexible_leader_xp_gain_mult = 999
+	desert_warrior_xp_gain_mult = 999
+	jungle_stalker_xp_gain_mult = 999
+	reaver_xp_gain_mult = 999
+	reckless_xp_gain_mult = 999
+	holy_warrior_xp_gain_mult = 999
+	open_terrain_expert_xp_gain_mult = 999
+	rough_terrain_expert_xp_gain_mult = 999
+	forest_fighter_xp_gain_mult = 999
+	cautious_leader_xp_gain_mult = 999
+	organizer_xp_gain_mult = 999
+	winter_soldier_xp_gain_mult = 999
+
+	# Health, ageing, and injury consequences
+	infirm_xp_gain_mult = -0.4995
+	trait_track_infirm_xp_gain_mult = -0.4995
+	withering_mind_xp_gain_mult = -0.4995
+	trait_track_withering_mind_xp_gain_mult = -0.4995
+	clouded_eyes_xp_gain_mult = -0.4995
+	trait_track_clouded_eyes_xp_gain_mult = -0.4995
+	faltering_heart_xp_gain_mult = -0.4995
+	trait_track_faltering_heart_xp_gain_mult = -0.4995
+	fragile_bones_xp_gain_mult = -0.4995
+	trait_track_fragile_bones_xp_gain_mult = -0.4995
+
+	# Tournaments (AGOT disables the normal chariot-racing unlock)
+	tourney_participant_xp_gain_mult = 499.5
+	trait_track_foot_xp_gain_mult = 499.5
+	trait_track_bow_xp_gain_mult = 499.5
+	trait_track_horse_xp_gain_mult = 499.5
+	trait_track_wit_xp_gain_mult = 499.5
+
+	# AGOT: beneficial trait experience; one trait-wide modifier covers all its tracks.
+	# Keep the original +999 multiplier without also boosting individual tracks.
+	dragonrider_xp_gain_mult = 999
+	squire_xp_gain_mult = 999
+	maester_xp_gain_mult = 999
+	nightswatch_xp_gain_mult = 999
+	lifestyle_nw_builder_xp_gain_mult = 999
+	lifestyle_nw_ranger_xp_gain_mult = 999
+	lifestyle_nw_steward_xp_gain_mult = 999
+	lifestyle_mariner_xp_gain_mult = 999
+	# esr_social_standing (all four tracks) is excluded by design.
+	# burned is an injury, so its progression is not accelerated.
+
+	# Criminal experience
+	gallowsbait_xp_gain_mult = -0.4995
+	trait_track_bandit_xp_gain_mult = -0.4995
+	trait_track_trickster_xp_gain_mult = -0.4995
+	trait_track_thief_xp_gain_mult = -0.4995
+	trait_track_poacher_xp_gain_mult = -0.4995
+	trait_track_marauder_xp_gain_mult = -0.4995
+
+	# Knight-errant remains supported by AGOT; confucian_education is absent.
+	knight_errant_xp_gain_mult = 999
+}
+
+DICM_RBE_Ceasar_Wife = {
+	icon = DICM_RBE_ceasar_wife
+
+	# Personal resilience and longevity
+	health = 10
+	fertility = 1000
+	negate_health_penalty_add = 5
+	negate_fertility_penalty_add = 10
+	stress_gain_mult = -30
+
+	# Heredity and inbreeding
+	positive_inactive_inheritance_chance = 3
+	negative_inactive_inheritance_chance = -1
+	inbreeding_chance = -1
+}
+
+DICM_RBE_Ceasar_Child = {
+	icon = DICM_RBE_ceasar_child
+	# Also grants 1% income upkeep for the top Caesar liege's legend.
+	# Eligibility and costs are implemented by DICM_RBE_legend_support_* scripts.
+
+	# Personal resilience
+	health = 10
+	fertility = 1000
+	negate_health_penalty_add = 5
+	negate_fertility_penalty_add = 10
+	stress_gain_mult = -30
+
+	# Heredity and inbreeding
+	positive_inactive_inheritance_chance = 3
+	negative_inactive_inheritance_chance = -1
+	inbreeding_chance = -1
+}
+
+DICM_RBE_Ceasar_Squad = {
+	icon = DICM_RBE_ceasar_squad
+
+	# Personal resilience and suppressed fertility
+	health = 10
+	fertility = -10000
+	negate_health_penalty_add = 5
+	stress_gain_mult = -30
+}
+
+DICM_RBE_Ceasar_Master = {
+	icon = DICM_RBE_ceasar_master
+
+	# Personal resilience and suppressed fertility
+	health = 10
+	fertility = -10000
+	negate_health_penalty_add = 5
+	stress_gain_mult = -30
+}
+
+DICM_RBE_Ceasar_Official = {
+	icon = DICM_RBE_ceasar_official
+	# Also grants 1% income upkeep for the top Caesar liege's legend.
+	# Eligibility and costs are implemented by DICM_RBE_legend_support_* scripts.
+
+	# Personal resilience and suppressed fertility
+	health = 10
+	fertility = -10000
+	negate_health_penalty_add = 5
+	stress_gain_mult = -30
+}
+
+DICM_RBE_Ceasar_Wet_Nurse = {
+	icon = DICM_RBE_ceasar_wet_nurse
+
+	# Personal resilience and suppressed fertility
+	health = 10
+	fertility = -10000
+	negate_health_penalty_add = 5
+	stress_gain_mult = -30
+}
+
+DICM_RBE_Ceasar_Scout = {
+	icon = DICM_RBE_ceasar_scout
+	character_travel_speed = 100
+	character_travel_safety = 100
+}
+
+DICM_RBE_Ideal_Stooge = {
+	icon = DICM_RBE_ideal_stooge
+	fertility = -10000
+	diplomacy = -100
+	martial = -100
+	stewardship = -100
+	intrigue = -100
+	learning = -100
+	prowess = -100
+}
+
+# Prevents further Diplomacy lifestyle experience after complete mastery.
+DICM_RBE_Greatest_Diplomat = {
+	icon = DICM_RBE_greatest_diplomat
+	monthly_diplomacy_lifestyle_xp_gain_mult = -100000
+	diplomacy_lifestyle_xp_gain_mult = -100000
+}
+
+# Prevents further Martial lifestyle experience after complete mastery.
+DICM_RBE_Archstrategos = {
+	icon = DICM_RBE_archstrategos
+	monthly_martial_lifestyle_xp_gain_mult = -100000
+	martial_lifestyle_xp_gain_mult = -100000
+}
+
+# Prevents further Stewardship lifestyle experience after complete mastery.
+DICM_RBE_Progressive_Steward = {
+	icon = DICM_RBE_progressive_steward
+	monthly_stewardship_lifestyle_xp_gain_mult = -100000
+	stewardship_lifestyle_xp_gain_mult = -100000
+}
+
+# Prevents further Intrigue lifestyle experience after complete mastery.
+DICM_RBE_Cunning_Courtier = {
+	icon = DICM_RBE_cunning_courtier
+	monthly_intrigue_lifestyle_xp_gain_mult = -100000
+	intrigue_lifestyle_xp_gain_mult = -100000
+}
+
+# Prevents further Learning lifestyle experience after complete mastery.
+DICM_RBE_Wisest_Philosopher = {
+	icon = DICM_RBE_wisest_philosopher
+	monthly_learning_lifestyle_xp_gain_mult = -100000
+	learning_lifestyle_xp_gain_mult = -100000
+}
+
+# Prevents further Wanderer lifestyle experience after complete mastery.
+DICM_RBE_Legendary_Traveler = {
+	icon = DICM_RBE_legendary_traveler
+	monthly_wanderer_lifestyle_xp_gain_mult = -100000
+	wanderer_lifestyle_xp_gain_mult = -100000
+}

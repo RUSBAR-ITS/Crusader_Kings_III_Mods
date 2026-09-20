@@ -1,0 +1,5615 @@
+# Source excerpts: installed files, 2026-09-20. No game changes.
+
+# maester_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:34
+# Original line: 46
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 49
+aptitude = {
+		value = 1
+		add = {
+			value = learning
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_learning
+		}
+		if = {
+			limit = {
+				diplomacy >= high_skill_rating
+				martial >= high_skill_rating
+				stewardship >= high_skill_rating
+				intrigue >= high_skill_rating
+				learning >= high_skill_rating
+			}
+			add = {
+				value = 20
+				desc = court_position_high_skills_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = lifestyle_physician
+				has_trait_xp = {
+					trait = lifestyle_physician
+					value >= 100
+				}
+			}
+			add = {
+				value = 40
+				desc = court_position_physician_3_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = lifestyle_physician
+				has_trait_xp = {
+					trait = lifestyle_physician
+					value >= 50
+				}
+			}
+			add = {
+				value = 20
+				desc = court_position_physician_2_trait
+			}
+		}
+		else_if = {
+			limit = { has_trait = lifestyle_physician }
+			add = {
+				value = 10
+				desc = court_position_physician_1_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = lifestyle_mystic
+				has_trait_xp = {
+					trait = lifestyle_mystic
+					value >= 100
+				}
+			}
+			add = {
+				value = 20
+				desc = court_position_mystic_3_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = lifestyle_mystic
+				has_trait_xp = {
+					trait = lifestyle_mystic
+					value >= 50
+				}
+			}
+			add = {
+				value = 10
+				desc = court_position_mystic_2_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = lifestyle_mystic
+			}
+			add = {
+				value = 5
+				desc = court_position_mystic_1_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = lifestyle_herbalist
+			}
+			add = {
+				value = 10
+				desc = court_position_herbalist_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = torturer #qyburny
+			}
+			add = {
+				value = 20
+				desc = court_position_torturer_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = blind
+			}
+			add = {
+				value = -30
+				desc = court_position_blind_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = inquisitive
+			}
+			add = {
+				value = 10
+				desc = court_position_inquisitive_trait
+			}
+		}
+		add = court_position_aptitude_low_penalty_value
+		add = general_aptitude_bonus
+
+		# Bonus from court.8311
+		if = {
+			limit = { var:bonus_aptitude_role ?= flag:maester }
+			add = {
+				value = cp_bonus_aptitude_value
+				desc = cp_bonus_aptitude
+			}
+		}
+
+		# Domicile bonuses from vanilla
+		# Camp has different way
+		if = {
+			limit = {
+				employer.domicile ?= { has_domicile_parameter = camp_improved_court_physician_aptitude }
+			}
+			add = {
+				value = camp_improved_court_physician_aptitude_value
+				desc = camp_improved_court_physician_aptitude_desc
+			}
+		}
+		# All others are level-scaled
+		if = {
+			limit = {
+				liege.domicile ?= { has_domicile_parameter = estate_increase_physician_aptitude_1 }
+			}
+			add = {
+				value = estate_increase_physician_aptitude_1_value
+				desc = estate_increase_physician_aptitude_desc
+			}
+		}
+		else_if = {
+			limit = {
+				liege.domicile ?= { has_domicile_parameter = estate_increase_physician_aptitude_2 }
+			}
+			add = {
+				value = estate_increase_physician_aptitude_2_value
+				desc = estate_increase_physician_aptitude_desc
+			}
+		}
+		else_if = {
+			limit = {
+				liege.domicile ?= { has_domicile_parameter = estate_increase_physician_aptitude_3 }
+			}
+			add = {
+				value = estate_increase_physician_aptitude_3_value
+				desc = estate_increase_physician_aptitude_desc
+			}
+		}
+		else_if = {
+			limit = {
+				liege.domicile ?= { has_domicile_parameter = estate_increase_physician_aptitude_4 }
+			}
+			add = {
+				value = estate_increase_physician_aptitude_4_value
+				desc = estate_increase_physician_aptitude_desc
+			}
+		}
+		else_if = {
+			limit = {
+				liege.domicile ?= { has_domicile_parameter = estate_increase_physician_aptitude_5 }
+			}
+			add = {
+				value = estate_increase_physician_aptitude_5_value
+				desc = estate_increase_physician_aptitude_desc
+			}
+		}
+		else_if = {
+			limit = {
+				liege.domicile ?= { has_domicile_parameter = estate_increase_physician_aptitude_6 }
+			}
+			add = {
+				value = estate_increase_physician_aptitude_6_value
+				desc = estate_increase_physician_aptitude_desc
+			}
+		}
+	}
+# Original line: 254
+is_shown = {
+		OR = {
+			culture = {
+				has_innovation = innovation_maesters
+			}
+			has_title = title:h_the_iron_throne # grand maester
+		}
+		agot_is_landless_nw_character = no
+	}
+# Original line: 265
+valid_position = {
+		OR = {
+			culture = {
+				has_innovation = innovation_maesters
+			}
+			has_title = title:h_the_iron_throne # grand maester
+		}
+	}
+# Original line: 274
+is_shown_character = {
+		scope:employee = {
+			is_courtier_of = scope:liege
+		}
+	}
+# Original line: 280
+valid_character = {
+		scope:employee = {
+			is_imprisoned = no
+			OR = {
+				has_trait_xp = {
+					trait = maester
+					value = 100
+				}
+				has_trait = disgraced_maester
+				has_character_flag = former_acolyte
+			}
+		}
+		scope:liege = {
+			trigger_if = {
+				limit = {
+					has_title = title:h_the_iron_throne
+				}
+				scope:employee = {
+					has_inactive_trait = grandmaester
+				}
+			}
+		}
+	}
+
+# household_guard_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:498
+# Original line: 510
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 513
+aptitude = {
+		value = 1
+		add = {
+			value = martial
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_martial
+		}
+		add = {
+			value = prowess
+			multiply = 2
+			max = 50
+			desc = court_position_skill_prowess
+		}
+		if = {
+			limit = {
+				has_trait = authoritative
+			}
+			add = {
+				value = 15
+				desc = court_position_authoritative_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = lifestyle_blademaster
+				has_trait_xp = {
+					trait = lifestyle_blademaster
+					value >= 100
+				}
+			}
+			add = {
+				value = 15
+				desc = court_position_blademaster_3_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = lifestyle_blademaster
+				has_trait_xp = {
+					trait = lifestyle_blademaster
+					value >= 50
+				}
+			}
+			add = {
+				value = 10
+				desc = court_position_blademaster_2_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = lifestyle_blademaster
+			}
+			add = {
+				value = 5
+				desc = court_position_blademaster_1_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = paranoid
+			}
+			add = {
+				value = 10
+				desc = court_position_paranoid_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = craven
+			}
+			add = {
+				value = -15
+				desc = court_position_craven_trait
+			}
+		}
+		if = {
+			limit = {
+				employer ?= {
+					agot_is_landless_pirate_character = yes
+					has_perk = toe_the_line_perk
+				}
+			}
+			add = {
+				value = 10
+				desc = court_position_positions_of_landless_pirate_toe_the_line_perk_bonus
+			}
+		}
+		add = court_position_aptitude_high_penalty_value
+		add = general_aptitude_bonus
+	}
+# Original line: 605
+is_shown = {
+		NOT = { government_has_flag = government_is_landless_adventurer }
+		NOT = { government_has_flag = government_is_custom_landless }
+		has_ep1_court_positions_dlc_trigger = yes
+	}
+# Original line: 611
+is_shown_character = {
+		scope:employee = {
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege }
+			is_courtier_of = scope:liege
+		}
+	}
+# Original line: 618
+valid_position = {}
+# Original line: 620
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			custom_tooltip = {
+				text = none_does_not_have_a_full_time_job
+				trigger_if = {
+					limit = { NOT = { has_court_position = household_guard_court_position } }
+					court_position_does_not_already_have_a_job_trigger = yes # This positions is considered a job, and cannot be held at the same time as another similar position
+				}
+			}
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege }
+		}
+	}
+
+# admiral_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:757
+# Original line: 769
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 772
+aptitude = {
+		value = 1
+		add = {
+			value = martial
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_martial
+		}
+		add = {
+			value = stewardship
+			multiply = 2
+			max = 50
+			desc = court_position_skill_prowess
+		}
+		if = {
+			limit = {
+				has_trait = authoritative
+			}
+			add = {
+				value = 15
+				desc = court_position_authoritative_trait
+			}
+		}
+		add = court_position_aptitude_high_penalty_value
+		add = general_aptitude_bonus
+	}
+# Original line: 799
+is_shown = {
+		NOT = { government_has_flag = government_is_landless_adventurer }
+		NOT = { government_has_flag = government_is_custom_landless }
+		NOR = {
+			highest_held_title_tier >= tier_empire
+			any_held_county = {
+				is_coastal_county = yes
+			}
+		}
+	}
+# Original line: 810
+is_shown_character = {
+		scope:employee = {
+			court_position_employee_shown_trigger = yes
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege }
+		}
+	}
+# Original line: 817
+valid_position = {
+		any_sub_realm_county = {
+			is_coastal_county = yes
+		}
+	}
+# Original line: 823
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			custom_tooltip = {
+				text = none_does_not_have_a_full_time_job
+				trigger_if = {
+					limit = { NOT = { has_court_position = admiral_court_position } }
+					court_position_does_not_already_have_a_job_trigger = yes # This positions is considered a job, and cannot be held at the same time as another similar position
+				}
+			}
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege }
+		}
+	}
+
+# septon_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:927
+# Original line: 939
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 942
+aptitude = {
+		value = 1
+		add = {
+			value = learning
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_learning
+		}
+		if = {
+			limit = {
+				is_clergy = yes
+			}
+			add = {
+				value = 20
+				desc = court_position_clergy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = generous
+			}
+			add = {
+				value = 20
+				desc = court_position_generous_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = compassionate
+			}
+			add = {
+				value = 20
+				desc = court_position_compassionate_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = greedy
+			}
+			add = {
+				value = -10
+				desc = court_position_greedy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = profligate
+			}
+			add = {
+				value = -10
+				desc = court_position_profligate_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = avaricious
+			}
+			add = {
+				value = -10
+				desc = court_position_avaricious_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = devoted
+				culture = { has_cultural_parameter = devoted_trait_bonuses }
+			}
+			add = {
+				value = 20
+				desc = tradition_monastic_communities_name
+			}
+		}
+		add = court_position_aptitude_low_penalty_value
+		add = general_aptitude_bonus
+	}
+# Original line: 1018
+is_shown = {
+		NOT = {
+			faith = { religion_tag = the_seven_religion }
+		}
+		NOT = { government_has_flag = government_is_landless_adventurer }
+		NOT = { government_has_flag = government_is_custom_landless }
+	}
+# Original line: 1027
+valid_position = { # Septons for people who aren't FOTS, but have FOTS mfs at court
+		any_courtier_or_guest = {
+			faith = { religion_tag = the_seven_religion }
+		}
+		NOT = {
+			faith = { religion_tag = the_seven_religion }
+		}
+	}
+# Original line: 1038
+is_shown_character = {
+		scope:employee = {
+			is_courtier_of = scope:liege
+			has_trait = septon
+			is_male = yes
+		}
+	}
+# Original line: 1046
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+		}
+	}
+
+# septa_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:1198
+# Original line: 1210
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 1213
+aptitude = {
+		value = 1
+		add = {
+			value = learning
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_learning
+		}
+		if = {
+			limit = {
+				is_clergy = yes
+			}
+			add = {
+				value = 20
+				desc = court_position_clergy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = compassionate
+			}
+			add = {
+				value = 20
+				desc = court_position_compassionate_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = {
+				value = 20
+				desc = court_position_diligent_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = zealous
+			}
+			add = {
+				value = 20
+				desc = court_position_zealous_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = patient
+			}
+			add = {
+				value = 10
+				desc = court_position_patient_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = shy
+			}
+			add = {
+				value = -10
+				desc = court_position_shy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = intellect_good_3
+			}
+			add = {
+				value = 40
+				desc = court_position_intellect_good_3_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = intellect_good_2
+			}
+			add = {
+				value = 20
+				desc = court_position_intellect_good_2_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = intellect_good_1
+			}
+			add = {
+				value = 10
+				desc = court_position_intellect_good_1_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = shrewd
+			}
+			add = {
+				value = 10
+				desc = court_position_shrewd_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = reclusive
+			}
+			add = {
+				value = -10
+				desc = court_position_reclusive_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = inquisitive
+			}
+			add = {
+				value = 10
+				desc = court_position_inquisitive_trait
+			}
+		}
+		if = {
+			limit = {
+				diplomacy >= high_skill_rating
+				martial >= high_skill_rating
+				stewardship >= high_skill_rating
+				intrigue >= high_skill_rating
+				learning >= high_skill_rating
+			}
+			add = {
+				value = 20
+				desc = court_position_high_skills_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = devoted
+				culture = { has_cultural_parameter = devoted_trait_bonuses }
+			}
+			add = {
+				value = 20
+				desc = tradition_monastic_communities_name
+			}
+		}
+		add = court_position_aptitude_low_penalty_value
+		add = general_aptitude_bonus
+	}
+# Original line: 1356
+is_shown = {
+		NOT = { government_has_flag = government_is_nw }
+		NOT = { government_has_flag = government_is_landless_adventurer }
+		NOT = { government_has_flag = government_is_custom_landless }
+		NOT = { government_has_flag = government_is_pirate }
+	}
+# Original line: 1364
+valid_position = { # Septas for all westerosi
+		NOT = { government_has_flag = government_is_nw }
+		OR = {
+			faith = { religion_tag = the_seven_religion }
+			capital_county ?= {
+				title_province = { geographical_region = world_westeros_seven_kingdoms }
+			}
+		}
+	}
+# Original line: 1374
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			is_courtier_of = scope:liege
+			has_trait = septon
+			is_male = no
+		}
+	}
+
+# gaoler_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:1528
+# Original line: 1539
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 1542
+aptitude = {
+		value = 1
+		add = {
+			value = intrigue
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_intrigue
+		}
+		if = {
+			limit = {
+				has_trait = torturer
+			}
+			add = {
+				value = 40
+				desc = court_position_torturer_trait
+			}
+		}
+		if = {
+			limit = {
+					has_trait = sadistic
+				}
+			add = {
+				value = 20
+				desc = court_position_sadistic_trait
+			}
+		}
+		if = {
+			limit = {
+					has_trait = arbitrary
+				}
+			add = {
+				value = 20
+				desc = court_position_arbitrary_trait
+			}
+		}
+		if = {
+			limit = {
+					has_trait = callous
+				}
+			add = {
+				value = 20
+				desc = court_position_arbitrary_trait
+			}
+		}
+		if = {
+			limit = {
+					has_trait = shy #fine spending long periods alone
+				}
+			add = {
+				value = 20
+				desc = court_position_shy_trait
+			}
+		}
+		add = court_position_aptitude_high_penalty_value
+		add = general_aptitude_bonus
+	}
+# Original line: 1599
+is_shown = {
+		NOT = { government_has_flag = government_is_landless_adventurer }
+		NOT = { government_has_flag = government_is_custom_landless }
+		has_ep1_court_positions_dlc_trigger = yes
+	}
+# Original line: 1605
+valid_position = {
+		any_held_title = {
+			tier = tier_county
+			any_county_province = {
+				has_holding_type = castle_holding
+				OR = {
+					has_building = castle_05
+					has_building = castle_04
+				}
+			}
+		}
+	}
+# Original line: 1618
+is_shown_character = {
+		scope:employee = {
+			is_courtier_of = scope:liege
+		}
+	}
+# Original line: 1624
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { is_spouse_of = scope:liege }
+			is_ruler = no
+			custom_tooltip = {
+				text = none_does_not_have_a_full_time_job
+				trigger_if = {
+					limit = { NOT = { has_court_position = gaoler_court_position } }
+					court_position_does_not_already_have_a_job_trigger = yes # This positions is considered a job, and cannot be held at the same time as another similar position
+				}
+			}
+		}
+	}
+
+# harbormaster_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:1797
+# Original line: 1808
+is_shown = {
+		NOT = { government_has_flag = government_is_landless_adventurer }
+		NOT = { government_has_flag = government_is_custom_landless }
+	}
+# Original line: 1813
+valid_position = {
+		OR = {
+			has_title = title:c_kings_landing
+			any_held_county = {
+				any_county_province = {
+					has_holding_type = city_holding
+					OR = {
+						has_building = city_05
+						has_building = city_04
+					}
+					has_building_or_higher = common_tradeport_01
+				}
+			}
+		}
+	}
+# Original line: 1829
+is_shown_character = {
+		scope:employee ?= {
+			is_courtier_of = scope:liege
+		}
+	}
+# Original line: 1835
+valid_character = {
+		scope:employee ?= {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			custom_tooltip = {
+				text = employee_is_not_your_spouse
+				NOT = { is_spouse_of = scope:liege }
+			}
+			custom_tooltip = {
+				text = none_does_not_have_a_full_time_job
+				trigger_if = {
+					limit = { NOT = { has_court_position = harbormaster_court_position } }
+					court_position_does_not_already_have_a_job_trigger = yes # This positions is considered a job, and cannot be held at the same time as another similar position
+				}
+			}
+		}
+	}
+# Original line: 1950
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 1952
+aptitude = {
+		value = 5
+		add = {
+			value = stewardship
+			multiply = 1.5
+			max = 30
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = learning
+			multiply = 1.5
+			max = 15
+			desc = court_position_skill_learning
+		}
+		#The job is to Overseer the Harbour, so while an administrator will manage, an overseer will be better, being a diplomat will help a bit
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 10
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+		#Greedy will help a bit extort more tolls
+		if = {
+			limit = {
+				has_trait = greedy
+			}
+			add = {
+				value = 15
+				desc = court_position_greedy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = arbitrary
+			}
+			add = {
+				value = -10
+				desc = court_position_arbitrary_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = just
+			}
+			add = {
+				value = 5
+				desc = court_position_just_trait
+			}
+		}
+		#Paranoid will search more ships, slowing down, Trusting will unwittingly help smugglers
+		if = {
+			limit = {
+				has_trait = paranoid
+			}
+			add = {
+				value = -5
+				desc = court_position_paranoid_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = trusting
+			}
+			add = {
+				value = -10
+				desc = court_position_trusting_trait
+			}
+		}
+		#Sailors understand what a harbor requires
+		if = {
+			limit = { has_trait = lifestyle_mariner }
+			if = {
+				limit = {
+					has_trait_xp = {
+						trait = lifestyle_mariner
+						value <= 50
+					}
+				}
+				add = {
+					value = 10
+					desc = court_position_lifestyle_mariner
+				}
+			}
+			else = {
+				add = {
+					value = 20
+					desc = court_position_lifestyle_mariner
+				}
+			}
+		}
+	}
+
+# warden_of_the_north_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:2077
+# Original line: 2089
+is_shown = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 2093
+valid_position = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 2097
+is_shown_character = {
+		scope:employee ?= {
+			is_imprisoned = no
+		}
+	}
+# Original line: 2103
+valid_character = {
+		scope:employee ?= {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			OR = {
+				is_vassal_of = scope:liege
+				is_courtier_of = scope:liege
+			}
+		}
+	}
+# Original line: 2208
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 2210
+aptitude = {
+		value = 5
+		if = {
+			limit = {
+				liege ?= title:h_the_iron_throne.holder
+				primary_title = title:e_the_north
+			}
+			add = {
+				value = 60
+				desc = court_position_historic_title_holder
+			}
+			add = {
+				value = martial
+				multiply = 2.5
+				max = 50
+				desc = court_position_skill_martial
+			}
+			if = {
+				limit = {
+					has_trait = overseer
+				}
+				add = {
+					value = 25
+					desc = court_position_overseer_trait
+				}
+			}
+			if = {
+				limit = {
+					has_trait = just
+				}
+				add = {
+					value = 10
+					desc = court_position_just_trait
+				}
+			}
+		}
+		else = {
+			add = {
+				value = martial
+				multiply = 1.5
+				max = 40
+				desc = court_position_skill_martial
+			}
+		}
+		add = general_aptitude_bonus
+	}
+
+# warden_of_the_east_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:2299
+# Original line: 2311
+is_shown = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 2315
+valid_position = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 2319
+is_shown_character = {
+		scope:employee ?= {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+		}
+	}
+# Original line: 2325
+valid_character = {
+		scope:employee ?= {
+			OR = {
+				is_vassal_of = scope:liege
+				is_courtier_of = scope:liege
+			}
+		}
+	}
+# Original line: 2429
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 2431
+aptitude = {
+		value = 5
+		if = {
+			limit = {
+				liege ?= title:h_the_iron_throne.holder
+				primary_title = title:e_the_vale
+			}
+			add = {
+				value = 60
+				desc = court_position_historic_title_holder
+			}
+			add = {
+				value = martial
+				multiply = 2.5
+				max = 50
+				desc = court_position_skill_martial
+			}
+			if = {
+				limit = {
+					has_trait = overseer
+				}
+				add = {
+					value = 25
+					desc = court_position_overseer_trait
+				}
+			}
+			if = {
+				limit = {
+					has_trait = just
+				}
+				add = {
+					value = 10
+					desc = court_position_just_trait
+				}
+			}
+		}
+		else = {
+			add = {
+				value = martial
+				multiply = 1.5
+				max = 40
+				desc = court_position_skill_martial
+			}
+		}
+		add = general_aptitude_bonus
+	}
+
+# warden_of_the_west_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:2521
+# Original line: 2533
+is_shown = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 2537
+valid_position = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 2541
+is_shown_character = {
+		scope:employee ?= {
+			is_imprisoned = no
+		}
+	}
+# Original line: 2548
+valid_character = {
+		scope:employee ?= {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			OR = {
+				is_vassal_of = scope:liege
+				is_courtier_of = scope:liege
+			}
+		}
+	}
+# Original line: 2653
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 2655
+aptitude = {
+		value = 5
+		if = {
+			limit = {
+				liege ?= title:h_the_iron_throne.holder
+				primary_title = title:e_the_westerlands
+			}
+			add = {
+				value = 60
+				desc = court_position_historic_title_holder
+			}
+			add = {
+				value = martial
+				multiply = 2.5
+				max = 50
+				desc = court_position_skill_martial
+			}
+			if = {
+				limit = {
+					has_trait = overseer
+				}
+				add = {
+					value = 25
+					desc = court_position_overseer_trait
+				}
+			}
+			if = {
+				limit = {
+					has_trait = just
+				}
+				add = {
+					value = 10
+					desc = court_position_just_trait
+				}
+			}
+		}
+		else = {
+			add = {
+				value = martial
+				multiply = 1.5
+				max = 40
+				desc = court_position_skill_martial
+			}
+		}
+		add = general_aptitude_bonus
+	}
+
+# warden_of_the_south_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:2745
+# Original line: 2757
+is_shown = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 2761
+valid_position = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 2765
+is_shown_character = {
+		scope:employee ?= {
+			is_imprisoned = no
+		}
+	}
+# Original line: 2771
+valid_character = {
+		scope:employee ?= {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			OR = {
+				is_vassal_of = scope:liege
+				is_courtier_of = scope:liege
+			}
+		}
+	}
+# Original line: 2876
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 2878
+aptitude = {
+		value = 5
+		if = {
+			limit = {
+				liege ?= title:h_the_iron_throne.holder
+				primary_title = title:e_the_reach
+			}
+			add = {
+				value = 60
+				desc = court_position_historic_title_holder
+			}
+			add = {
+				value = martial
+				multiply = 2.5
+				max = 50
+				desc = court_position_skill_martial
+			}
+			if = {
+				limit = {
+					has_trait = overseer
+				}
+				add = {
+					value = 25
+					desc = court_position_overseer_trait
+				}
+			}
+			if = {
+				limit = {
+					has_trait = just
+				}
+				add = {
+					value = 10
+					desc = court_position_just_trait
+				}
+			}
+		}
+		else = {
+			add = {
+				value = martial
+				multiply = 1.5
+				max = 40
+				desc = court_position_skill_martial
+			}
+		}
+		add = general_aptitude_bonus
+	}
+
+# master_at_arms_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:2968
+# Original line: 2980
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 2983
+aptitude = {
+		value = 40
+		add = {
+			value = stewardship
+			multiply = 4
+			max = 50
+			desc = court_position_skill_stewardship
+		}
+		if = {
+			limit = {
+				hunt_lifestyle_track_greater_equal_trigger = { TRACK = hunter GREATER_EQUAL = 100 }
+			}
+			add = {
+				value = 20
+				desc = court_position_hunter_3_trait
+			}
+		}
+		else_if = {
+			limit = {
+				hunt_lifestyle_track_greater_equal_trigger = { TRACK = hunter GREATER_EQUAL = 50 }
+			}
+			add = {
+				value = 10
+				desc = court_position_hunter_2_trait
+			}
+		}
+		else_if = {
+			limit = { has_trait = lifestyle_hunter }
+			add = {
+				value = 5
+				desc = court_position_hunter_1_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = blind # Can't see the damn birds
+			}
+			add = {
+				value = -20
+				desc = court_position_blind_trait
+			}
+		}
+		add = court_position_aptitude_low_penalty_value
+		add = general_aptitude_bonus
+	}
+# Original line: 3029
+is_shown = {
+		NOT = { government_has_flag = government_is_landless_adventurer }
+		NOT = { government_has_flag = government_is_custom_landless }
+		culture = {
+			has_innovation = innovation_agot_sword_bound
+		}
+	}
+# Original line: 3037
+valid_position = {
+		culture = {
+			has_innovation = innovation_agot_sword_bound
+		}
+	}
+# Original line: 3043
+is_shown_character = {
+		scope:employee = {
+			is_imprisoned = no
+		}
+	}
+# Original line: 3050
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+		}
+	}
+
+# court_smith_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:3227
+# Original line: 3239
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 3242
+aptitude = {
+		value = 1
+		add = {
+			value = stewardship
+			multiply = 1.5
+			max = 60
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = prowess
+			multiply = 1.5
+			max = 60
+			desc = court_position_skill_prowess
+		}
+		if = { #Qohorik Blacksmith, auto 'Excellent' aptitude
+			limit = {
+				has_character_flag = can_reforge_valyrian_steel
+			}
+			add = {
+				value = 100
+				desc = court_position_reforge_vs
+			}
+		}
+		if = { # Characters with a completed inspiration are very good court smiths
+			limit = {
+				has_completed_inspiration = yes
+			}
+			add = {
+				value = 30
+				desc = court_position_completed_inspiration
+			}
+		}
+		if = {   #smiths buff - write event that gives this guy STRONG
+			limit = {
+				has_trait = strong
+			}
+			add = {
+				value = 20
+				desc = court_position_strong_trait
+			}
+		}
+		if = {   #smiths buff - write event that gives this guy STRONG
+			limit = {
+				has_trait = athletic
+			}
+			add = {
+				value = 20
+				desc = court_position_athletic_trait
+			}
+		}
+		if = { # Shy characters are likely to spend more time with the artifacts than other people
+			limit = {
+				has_trait = shy
+			}
+			add = {
+				value = 10
+				desc = court_position_shy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = {
+				value = 15
+				desc = court_position_diligent_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 10
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = physique_good_3
+			}
+			add = {
+				value = 20
+				desc = court_position_physique_good_3_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = physique_good_2
+			}
+			add = {
+				value = 20
+				desc = court_position_physique_good_2_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = physique_good_1
+			}
+			add = {
+				value = 10
+				desc = court_position_physique_good_1_trait
+			}
+		}
+		if = {
+			limit = {
+				has_variable = fund_inspiration_6508_architect_improvement
+			}
+			add = {
+				value = 5
+				desc = court_position_architect_study_experience
+			}
+		}
+		add = court_position_aptitude_low_penalty_value
+		add = general_aptitude_bonus
+	}
+# Original line: 3360
+valid_position = { }
+# Original line: 3362
+is_shown = {
+		NOT = { government_has_flag = government_is_landless_adventurer }
+	}
+# Original line: 3366
+is_shown_character = {
+		scope:employee = {
+			is_courtier_of = scope:liege
+			is_imprisoned = no
+		}
+	}
+# Original line: 3373
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			custom_tooltip = {
+				text = IS_NOT_THE_SPOUSE_OF_CHARACTER_COURT_POSITION
+				NOT = { is_spouse_of = scope:liege }
+			}
+			custom_tooltip = {
+				text = none_does_not_have_a_full_time_job
+				trigger_if = {
+					limit = { NOT = { has_court_position = court_smith_court_position } }
+					court_position_does_not_already_have_a_job_trigger = yes # This positions is considered a job, and cannot be held at the same time as another similar position
+				}
+			}
+		}
+	}
+
+# head_dragonkeeper_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/3388366564/common/court_positions/types/00_mde_court_position_override.txt:1
+# Original line: 15
+aptitude_level_breakpoints = { 30 50 70 90 }
+# Original line: 23
+aptitude = {
+		value = 1
+		add = {
+			value = learning
+			multiply = 1.15
+			max = 50
+			desc = court_position_skill_learning
+		}
+		add = {
+			value = stewardship
+			multiply = 1.15
+			max = 50
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = prowess
+			multiply = 1.25
+			max = 50
+			desc = court_position_skill_prowess
+		}
+		if = {
+			limit = {
+				dynasty ?= {
+					has_dynasty_modifier = valyrian_heritage_dynasty_modifier
+				}
+			}
+			add = {
+				value = 10
+				desc = court_position_blood_of_old_valyria
+			}
+		}
+		if = {
+			limit = {
+				liege ?= {
+					has_royal_court = yes
+					amenity_level = { target = agot_dragonpit_amenities value >= 4 }
+				}
+			}
+			add = {
+				value = 10
+				desc = court_position_professional_dragonkeeper_training
+			}
+		}
+		if = {
+			limit = {
+				liege ?= {
+					has_royal_court = yes
+					amenity_level = { target = agot_dragonpit_amenities value = 3 }
+				}
+			}
+			add = {
+				value = 5
+				desc = court_position_standardized_dragonkeeper_training
+			}
+		}
+		if = {
+			limit = {
+				knows_language = language_agot_valyrian # Valyrian Speaker
+			}
+			add = {
+				value = 5
+				desc = court_position_knows_valyrian_language
+			}
+		}
+		add = court_position_aptitude_family_business_value
+		add = court_position_aptitude_low_penalty_value
+	}
+# Original line: 92
+is_shown = {
+		OR = {
+            domicile ?= { 
+				has_domicile_building_or_higher = dragon_coop_01
+				has_domicile_parameter = camp_unlocks_dragonkeeper
+			}
+            any_held_title = {
+                agot_title_is_an_active_dragonpit = yes
+            }
+        }
+	}
+# Original line: 103
+is_shown_character = {
+		scope:employee = {
+			is_courtier_of = scope:liege
+		}
+	}
+# Original line: 109
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOR = {
+				is_imprisoned = yes
+				is_landed = yes
+			}
+			trigger_if = {
+				limit = { NOT = { has_court_position = head_dragonkeeper_court_position } }
+				court_position_does_not_already_have_a_job_trigger = yes # This positions is considered a job, and cannot be held at the same tims as another similar position
+			}
+		}
+	}
+
+# bloodrider_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:3880
+# Original line: 3892
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 3895
+aptitude = {
+		value = 1
+		add = court_position_aptitude_boon_voyager_trait
+		add = {
+			value = prowess
+			multiply = 4
+			max = 50
+			desc = court_position_skill_prowess
+		}
+		if = {
+			limit = {
+				has_trait = lifestyle_blademaster
+				has_trait_xp = {
+					trait = lifestyle_blademaster
+					value >= 100
+				}
+			}
+			add = {
+				value = 15
+				desc = court_position_blademaster_3_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = lifestyle_blademaster
+				has_trait_xp = {
+					trait = lifestyle_blademaster
+					value >= 50
+				}
+			}
+			add = {
+				value = 10
+				desc = court_position_blademaster_2_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = lifestyle_blademaster
+			}
+			add = {
+				value = 5
+				desc = court_position_blademaster_1_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = gallant
+			}
+			add = {
+				value = 5
+				desc = court_position_gallant_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = brave
+			}
+			add = {
+				value = 20
+				desc = court_position_brave_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = paranoid
+			}
+			add = {
+				value = 10
+				desc = court_position_paranoid_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = craven
+			}
+			add = {
+				value = -100
+				desc = court_position_craven_trait
+			}
+		}
+		if = {
+			limit = {
+				employer ?= { has_relation_best_friend = prev } #The considered character
+			}
+			add = {
+				value = 30
+				desc = court_position_best_friend
+			}
+		}
+		else_if = {
+			limit = {
+				employer ?= { has_relation_friend = prev } #The considered character
+			}
+			add = {
+				value = 15
+				desc = court_position_friend
+			}
+		}
+		if = {
+			limit = {
+				has_character_flag = best_knight_position
+			}
+			add = {
+				value = 20
+				desc = best_knight_position_desc
+			}
+		}
+		if = {
+			limit = {
+				has_character_flag = competing_knight_position
+			}
+			add = 30
+			desc = competing_knight_position_desc
+		}
+		add = general_aptitude_bonus
+		if = {
+			limit = {
+				has_trait = disloyal
+			}
+			add = {
+				value = -100
+				desc = court_position_disloyal_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = maimed
+			}
+			add = {
+				value = -50
+				desc = court_position_maimed_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = wounded_3
+			}
+			add = {
+				value = -50
+				desc = court_position_wounded_3_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = wounded_2
+			}
+			add = {
+				value = -25
+				desc = court_position_wounded_2_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = blind
+			}
+			add = {
+				value = -100
+				desc = court_position_blind_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = infirm
+			}
+			add = {
+				value = -100
+				desc = court_position_infirm_trait
+			}
+		}
+		if = {
+			limit = { var:bonus_aptitude_role ?= flag:champion }
+			add = {
+				value = cp_bonus_aptitude_value
+				desc = cp_bonus_aptitude
+			}
+		}
+		add = court_position_aptitude_high_penalty_value
+		add = general_aptitude_bonus
+	}
+# Original line: 4075
+is_shown = {
+		NOT = { government_has_flag = government_is_landless_adventurer }
+		faith = { has_doctrine_parameter = can_make_bloodriders }
+		NOT = {
+			ruler_primary_title_has_kingsguard_trigger = yes
+		}
+		has_ep1_court_positions_dlc_trigger = yes
+		agot_is_landless_nw_character = no
+	}
+# Original line: 4084
+is_shown_character = {
+		scope:employee = {
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege }
+			is_courtier_of = scope:liege
+			NOT = {
+				any_heir_title = {}
+				any_pretender_title = {
+					place_in_line_of_succession = {
+						target = prev
+						value <= 2
+					}
+				}
+			}
+		}
+	}
+# Original line: 4099
+valid_character = {
+		scope:employee = {
+			bloodrider_validity_trigger = { EMPLOYER = scope:liege }
+			faith = { has_doctrine_parameter = can_make_bloodriders }
+		}
+	}
+# Original line: 4119
+valid_position = {
+		faith = { has_doctrine_parameter = can_make_bloodriders }
+	}
+
+# first_sword_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:4224
+# Original line: 4235
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 4236
+aptitude = { # Taken and tweaked from guard court pos
+		value = 1
+		add = court_position_aptitude_boon_voyager_trait
+		add = {
+			value = prowess
+			multiply = 5
+			max = 50
+			desc = court_position_skill_prowess
+		}
+		if = {
+			limit = {
+				has_trait = shieldmaiden
+			}
+			add = {
+				value = 20
+				desc = court_position_shieldmaiden_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = lifestyle_blademaster
+				has_trait_xp = {
+					trait = lifestyle_blademaster
+					value >= 100
+				}
+			}
+			add = {
+				value = 15
+				desc = court_position_blademaster_3_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = lifestyle_blademaster
+				has_trait_xp = {
+					trait = lifestyle_blademaster
+					value >= 50
+				}
+			}
+			add = {
+				value = 10
+				desc = court_position_blademaster_2_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = lifestyle_blademaster
+			}
+			add = {
+				value = 5
+				desc = court_position_blademaster_1_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = brave
+			}
+			add = {
+				value = 20
+				desc = court_position_brave_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = paranoid
+			}
+			add = {
+				value = 10
+				desc = court_position_paranoid_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = craven
+			}
+			add = {
+				value = -15
+				desc = court_position_craven_trait
+			}
+		}
+		if = {
+			limit = {
+				employer ?= {
+					culture = {
+						has_cultural_parameter = reduced_bodyguard_aptitude
+					}
+				}
+			}
+			add = {
+				value = -10
+				desc = court_position_palace_politics
+			}
+		}
+		if = {
+			limit = {
+				has_character_flag = best_knight_position
+			}
+			add = {
+				value = 20
+				desc = best_knight_position_desc
+			}
+		}
+		# Estate bonus
+		if = {
+			limit = {
+				liege ?= {
+					domicile ?= { has_domicile_parameter = estate_increase_bodyguard_aptitude_1 }
+				}
+			}
+			add = {
+				value = estate_increase_bodyguard_aptitude_1_value
+				desc = estate_increase_bodyguard_aptitude_desc
+			}
+		}
+		if = {
+			limit = {
+				liege ?= {
+					domicile ?= { has_domicile_parameter = estate_increase_bodyguard_aptitude_2 }
+				}
+			}
+			add = {
+				value = estate_increase_bodyguard_aptitude_2_value
+				desc = estate_increase_bodyguard_aptitude_desc
+			}
+		}
+		if = {
+			limit = {
+				has_perk = praetorian_guard_perk
+			}
+			add = {
+				value = 15
+				desc = court_position_bodyguard_modifier
+			}
+		}
+		if = {
+			limit = {
+				liege ?= { has_perk = praetorian_guard_perk }
+			}
+			add = {
+				value = 15
+				desc = court_position_bodyguard_liege_modifier
+			}
+		}
+		# Bonus from court.8311
+		if = {
+			limit = { var:bonus_aptitude_role ?= flag:bodyguard }
+			add = {
+				value = cp_bonus_aptitude_value
+				desc = cp_bonus_aptitude
+			}
+		}
+		add = court_position_aptitude_high_penalty_value
+		add = general_aptitude_bonus
+	}
+# Original line: 4390
+is_shown = {
+		primary_title = title:k_braavos
+	}
+# Original line: 4393
+is_shown_character = {
+		scope:employee = {
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege }
+			is_courtier_of = scope:liege
+		}
+	}
+# Original line: 4399
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			custom_tooltip = {
+				text = none_does_not_have_a_full_time_job
+				trigger_if = {
+					limit = { NOT = { has_court_position = first_sword_court_position } }
+					court_position_does_not_already_have_a_job_trigger = yes # This positions is considered a job, and cannot be held at the same time as another similar position
+				}
+			}
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege }
+		}
+	}
+
+# grey_cloaks_commander_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:4559
+# Original line: 4570
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 4576
+aptitude = {
+		value = 25
+		add = {
+			value = martial
+			multiply = 1.5
+			max = 25
+			desc = court_position_skill_martial
+		}
+		add = {
+			value = diplomacy
+			multiply = 1.5
+			max = 25
+			desc = court_position_skill_diplomacy
+		}
+		if = {
+			limit = {
+				has_trait = loyal
+			}
+			add = {
+				value = 15
+				desc = court_position_loyal_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 10
+				desc = court_position_overseer_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = brave
+			}
+			add = {
+				value = 5
+				desc = court_position_brave_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = {
+				value = 5
+				desc = court_position_diligent_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = just
+			}
+			add = {
+				value = 5
+				desc = court_position_just_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = greedy
+			}
+			add = {
+				value = -5
+				desc = court_position_greedy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = trusting
+			}
+			add = {
+				value = -5
+				desc = court_position_trusting_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = craven
+			}
+			add = {
+				value = -10
+				desc = court_position_craven_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = deceitful
+			}
+			add = {
+				value = -10
+				desc = court_position_deceitful_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = disloyal
+			}
+			add = {
+				value = -15
+				desc = court_position_disloyal_trait
+			}
+		}
+		add = general_aptitude_bonus
+	}
+# Original line: 4682
+is_shown = {
+		has_title = title:c_oldtown
+	}
+# Original line: 4685
+valid_position = {
+		has_title = title:c_oldtown
+	}
+# Original line: 4688
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOR = {
+				has_trait = kingsguard
+				has_trait = maester
+				has_trait = septon
+			}
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege }
+			is_courtier_of = scope:liege
+		}
+	}
+
+# crimson_cloaks_commander_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:4844
+# Original line: 4855
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 4861
+aptitude = {
+		value = 25
+		add = {
+			value = martial
+			multiply = 1.5
+			max = 25
+			desc = court_position_skill_martial
+		}
+		add = {
+			value = diplomacy
+			multiply = 1.5
+			max = 25
+			desc = court_position_skill_diplomacy
+		}
+		if = {
+			limit = {
+				has_trait = loyal
+			}
+			add = {
+				value = 15
+				desc = court_position_loyal_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 10
+				desc = court_position_overseer_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = brave
+			}
+			add = {
+				value = 5
+				desc = court_position_brave_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = {
+				value = 5
+				desc = court_position_diligent_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = just
+			}
+			add = {
+				value = 5
+				desc = court_position_just_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = greedy
+			}
+			add = {
+				value = -5
+				desc = court_position_greedy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = trusting
+			}
+			add = {
+				value = -5
+				desc = court_position_trusting_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = craven
+			}
+			add = {
+				value = -10
+				desc = court_position_craven_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = deceitful
+			}
+			add = {
+				value = -10
+				desc = court_position_deceitful_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = disloyal
+			}
+			add = {
+				value = -15
+				desc = court_position_disloyal_trait
+			}
+		}
+		add = general_aptitude_bonus
+	}
+# Original line: 4967
+is_shown = {
+		has_title = title:c_lannisport
+	}
+# Original line: 4970
+valid_position = {
+		has_title = title:c_lannisport
+	}
+# Original line: 4973
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOR = {
+				has_trait = kingsguard
+				has_trait = maester
+				# has_trait = archmaester
+				has_trait = septon
+			}
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege }
+			is_courtier_of = scope:liege
+		}
+	}
+
+# white_knife_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:5129
+# Original line: 5141
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 5144
+aptitude = {
+		value = 5
+		if = {
+			limit = {
+				OR = {
+					liege ?= title:e_the_north.holder
+					liege ?= title:k_winterfell.holder
+				}
+				has_title = title:d_white_harbor
+			}
+			add = {
+				value = 30
+				desc = court_position_historic_title_holder
+			}
+			add = {
+				value = martial
+				multiply = 2.5
+				max = 50
+				desc = court_position_skill_martial
+			}
+			if = {
+				limit = {
+					has_trait = overseer
+				}
+				add = {
+					value = 25
+					desc = court_position_overseer_trait
+				}
+			}
+			if = {
+				limit = {
+					has_trait = just
+				}
+				add = {
+					value = 10
+					desc = court_position_just_trait
+				}
+			}
+		}
+		add = general_aptitude_bonus
+	}
+# Original line: 5186
+is_shown = {
+		has_title = title:e_the_north
+		any_vassal_or_below = {
+			OR = {
+				has_title = title:k_the_white_knife
+				has_title = title:d_white_harbor
+				has_title = title:d_keystone
+			}
+		}
+	}
+# Original line: 5197
+valid_position = {
+		has_title = title:e_the_north
+		any_vassal_or_below = {
+			OR = {
+				has_title = title:k_the_white_knife
+				has_title = title:d_white_harbor
+				has_title = title:d_keystone
+			}
+		}
+	}
+# Original line: 5208
+is_shown_character = {
+		scope:employee = {
+			is_imprisoned = no
+			OR = {
+				has_title = title:k_the_white_knife
+				has_title = title:d_white_harbor
+				has_title = title:d_keystone
+			}
+		}
+	}
+# Original line: 5219
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			OR = {
+				has_title = title:k_the_white_knife
+				has_title = title:d_white_harbor
+				has_title = title:d_keystone
+			}
+		}
+	}
+
+# stone_way_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:5407
+# Original line: 5419
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 5422
+aptitude = {
+		value = 15
+		if = {
+			limit = {
+				OR = {
+					liege ?= title:e_dorne.holder
+					liege ?= title:k_the_greenblood.holder
+				}
+				primary_title = title:k_yronwood
+			}
+			add = {
+				value = 30
+				desc = court_position_historic_title_holder
+			}
+		}
+		add = {
+			value = martial
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 25
+				desc = court_position_overseer_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = brave
+			}
+			add = {
+				value = 15
+				desc = court_position_brave_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = {
+				value = 10
+				desc = court_position_diligent_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = stubborn
+			}
+			add = {
+				value = 10
+				desc = court_position_stubborn_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = patient
+			}
+			add = {
+				value = 10
+				desc = court_position_patient_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = just
+			}
+			add = {
+				value = 10
+				desc = court_position_just_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = craven
+			}
+			add = {
+				value = -20
+				desc = court_position_craven_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = trusting
+			}
+			add = {
+				value = -10
+				desc = court_position_trusting_trait
+			}
+		}
+		add = general_aptitude_bonus
+	}
+# Original line: 5518
+is_shown = {
+		has_title = title:e_dorne
+		any_vassal_or_below = {
+			OR = {
+				has_title = title:k_yronwood
+				has_title = title:d_the_stoneway
+				has_title = title:d_greenbelt
+			}
+		}
+	}
+# Original line: 5529
+valid_position = {
+		has_title = title:e_dorne
+		any_vassal_or_below = {
+			OR = {
+				has_title = title:k_yronwood
+				has_title = title:d_the_stoneway
+				has_title = title:d_greenbelt
+			}
+		}
+	}
+# Original line: 5540
+is_shown_character = {
+		scope:employee = {
+			is_imprisoned = no
+			OR = {
+				has_title = title:k_yronwood
+				has_title = title:d_the_stoneway
+				has_title = title:d_greenbelt
+			}
+		}
+	}
+# Original line: 5551
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			OR = {
+				has_title = title:k_yronwood
+				has_title = title:d_the_stoneway
+				has_title = title:d_greenbelt
+			}
+		}
+	}
+
+# princes_pass_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:5739
+# Original line: 5751
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 5754
+aptitude = {
+		value = 15
+		if = {
+			limit = {
+				OR = {
+					liege ?= title:e_dorne.holder
+					liege ?= title:k_the_greenblood.holder
+				}
+				primary_title = title:d_the_princes_pass
+			}
+			add = {
+				value = 30
+				desc = court_position_historic_title_holder
+			}
+		}
+		add = {
+			value = martial
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 25
+				desc = court_position_overseer_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = brave
+			}
+			add = {
+				value = 15
+				desc = court_position_brave_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = {
+				value = 10
+				desc = court_position_diligent_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = stubborn
+			}
+			add = {
+				value = 10
+				desc = court_position_stubborn_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = patient
+			}
+			add = {
+				value = 10
+				desc = court_position_patient_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = just
+			}
+			add = {
+				value = 10
+				desc = court_position_just_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = craven
+			}
+			add = {
+				value = -20
+				desc = court_position_craven_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = trusting
+			}
+			add = {
+				value = -10
+				desc = court_position_trusting_trait
+			}
+		}
+		add = general_aptitude_bonus
+	}
+# Original line: 5850
+is_shown = {
+		has_title = title:e_dorne
+		any_vassal_or_below = {
+			OR = {
+				has_title = title:k_the_red_mountains
+				has_title = title:d_the_princes_pass
+				has_title = title:d_redmarch
+			}
+		}
+	}
+# Original line: 5861
+valid_position = {
+		has_title = title:e_dorne
+		any_vassal_or_below = {
+			OR = {
+				has_title = title:k_the_red_mountains
+				has_title = title:d_the_princes_pass
+				has_title = title:d_redmarch
+			}
+		}
+	}
+# Original line: 5872
+is_shown_character = {
+		scope:employee = {
+			is_imprisoned = no
+			OR = {
+				has_title = title:k_the_red_mountains
+				has_title = title:d_the_princes_pass
+				has_title = title:d_redmarch
+			}
+		}
+	}
+# Original line: 5883
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			OR = {
+				has_title = title:k_the_red_mountains
+				has_title = title:d_the_princes_pass
+				has_title = title:d_redmarch
+			}
+		}
+	}
+
+# lorath_harvest_prince_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:6071
+# Original line: 6084
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 6087
+aptitude = {
+		value = 40
+	}
+# Original line: 6091
+is_shown = {
+		has_title = title:k_lorath
+	}
+# Original line: 6095
+valid_position = {
+		has_title = title:k_lorath
+	}
+# Original line: 6099
+is_shown_character = {
+		scope:employee = {
+			has_title = title:d_harvest_principality
+		}
+	}
+# Original line: 6105
+valid_character = {
+		scope:employee = {
+			domain_size < 1
+		}
+	}
+
+# lorath_fisher_prince_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:6158
+# Original line: 6171
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 6174
+aptitude = {
+		value = 40
+	}
+# Original line: 6178
+is_shown = {
+		has_title = title:k_lorath
+	}
+# Original line: 6182
+valid_position = {
+		has_title = title:k_lorath
+	}
+# Original line: 6186
+is_shown_character = {
+		scope:employee = {
+			has_title = title:d_fisher_principality
+		}
+	}
+# Original line: 6192
+valid_character = {
+		scope:employee = {
+			has_title = title:d_fisher_principality
+		}
+	}
+
+# lorath_prince_of_streets_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions.txt:6245
+# Original line: 6258
+aptitude_level_breakpoints = { 20 40 60 80 }
+# Original line: 6261
+aptitude = {
+		value = 40
+	}
+# Original line: 6265
+is_shown = {
+		has_title = title:k_lorath
+	}
+# Original line: 6269
+valid_position = {
+		has_title = title:k_lorath
+	}
+# Original line: 6273
+is_shown_character = {
+		scope:employee = {
+			has_title = title:d_principality_of_the_streets
+		}
+	}
+# Original line: 6279
+valid_character = {
+		scope:employee = {
+			has_title = title:d_principality_of_the_streets
+		}
+	}
+
+# goldcloaks_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions_crownlands.txt:23
+# Original line: 33
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 39
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+		add = general_aptitude_bonus
+	}
+# Original line: 73
+is_shown = {
+		has_title = title:c_kings_landing
+		OR = {
+			any_vassal_or_below = {
+				has_title = title:b_goldguard_heights
+			}
+			has_title = title:b_goldguard_heights
+		}
+	}
+# Original line: 82
+valid_position = {
+		has_title = title:c_kings_landing
+	}
+# Original line: 85
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			OR = {
+				AND = {
+					any_liege_or_above = {
+						has_title = title:b_goldguard_heights
+					}
+					is_landed = no
+				}
+				has_title = title:b_goldguard_heights
+			}
+			NOR = {
+				has_trait = kingsguard
+				has_trait = maester
+				# has_trait = archmaester
+				has_trait = septon
+			}
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege }
+		}
+	}
+
+# sea_watch_commander_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions_crownlands.txt:195
+# Original line: 206
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 212
+aptitude = {
+		value = 25
+		add = {
+			value = martial
+			multiply = 1.5
+			max = 25
+			desc = court_position_skill_martial
+		}
+		add = {
+			value = diplomacy
+			multiply = 1.5
+			max = 25
+			desc = court_position_skill_diplomacy
+		}
+		if = {
+			limit = {
+				has_trait = loyal
+			}
+			add = {
+				value = 15
+				desc = court_position_loyal_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 10
+				desc = court_position_overseer_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = brave
+			}
+			add = {
+				value = 5
+				desc = court_position_brave_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = {
+				value = 5
+				desc = court_position_diligent_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = just
+			}
+			add = {
+				value = 5
+				desc = court_position_just_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = greedy
+			}
+			add = {
+				value = -5
+				desc = court_position_greedy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = trusting
+			}
+			add = {
+				value = -5
+				desc = court_position_trusting_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = craven
+			}
+			add = {
+				value = -10
+				desc = court_position_craven_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = deceitful
+			}
+			add = {
+				value = -10
+				desc = court_position_deceitful_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = disloyal
+			}
+			add = {
+				value = -15
+				desc = court_position_disloyal_trait
+			}
+		}
+		#Sailors understand what a harbor requires
+		if = {
+			limit = { has_trait = lifestyle_mariner }
+			if = {
+				limit = {
+					has_trait_xp = {
+						trait = lifestyle_mariner
+						value <= 50
+					}
+				}
+				add = {
+					value = 10
+					desc = court_position_lifestyle_mariner
+				}
+			}
+			else = {
+				add = {
+					value = 20
+					desc = court_position_lifestyle_mariner
+				}
+			}
+		}
+	}
+# Original line: 339
+is_shown = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 342
+valid_position = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 345
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOR = {
+				has_trait = kingsguard
+				has_trait = maester
+				# has_trait = archmaester
+				has_trait = septon
+			}
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege }
+			is_courtier_of = scope:liege
+		}
+	}
+
+# royal_counter_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions_crownlands.txt:502
+# Original line: 513
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 519
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 2
+			max = 50
+			desc = court_position_skill_stewardship
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 15
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = avaricious
+			}
+			add = {
+				value = 10
+				desc = court_position_avaricious_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 10
+				desc = court_position_overseer_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = {
+				value = 5
+				desc = court_position_diligent_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = honest
+			}
+			add = {
+				value = 5
+				desc = court_position_honest_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = greedy
+			}
+			add = {
+				value = 10
+				desc = court_position_greedy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = temperate
+			}
+			add = {
+				value = -5
+				desc = court_position_temperate_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = generous
+			}
+			add = {
+				value = -10
+				desc = court_position_generous_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = lazy
+			}
+			add = {
+				value = -10
+				desc = court_position_lazy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = deceitful
+			}
+			add = {
+				value = -5
+				desc = court_position_deceitful_trait
+			}
+		}
+		add = general_aptitude_bonus
+	}
+# Original line: 619
+is_shown = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 622
+valid_position = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 625
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOR = {
+				has_trait = kingsguard
+				has_trait = maester
+				# has_trait = archmaester
+				has_trait = septon
+			}
+			is_courtier_of = scope:liege
+		}
+	}
+
+# royal_scales_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions_crownlands.txt:772
+# Original line: 783
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 789
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.75
+			max = 50
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = diplomacy
+			multiply = 1.5
+			max = 25
+			desc = court_position_skill_diplomacy
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = {
+				value = 10
+				desc = court_position_diligent_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = lazy
+			}
+			add = {
+				value = -10
+				desc = court_position_lazy_trait
+			}
+		}
+		add = general_aptitude_bonus
+	}
+# Original line: 841
+is_shown = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 844
+valid_position = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 847
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOR = {
+				has_trait = kingsguard
+				has_trait = maester
+				# has_trait = archmaester
+				has_trait = septon
+			}
+			is_courtier_of = scope:liege
+		}
+	}
+
+# royal_mint_officer_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions_crownlands.txt:999
+# Original line: 1010
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 1016
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 2
+			max = 50
+			desc = court_position_skill_stewardship
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = {
+				value = 10
+				desc = court_position_diligent_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = lazy
+			}
+			add = {
+				value = -10
+				desc = court_position_lazy_trait
+			}
+		}
+		add = general_aptitude_bonus
+	}
+# Original line: 1062
+is_shown = {
+		title:h_the_iron_throne = {
+			exists = yes
+		}
+		top_liege ?= title:h_the_iron_throne.holder
+		OR = {
+			has_title = title:c_kings_landing
+			has_title = title:c_oldtown
+			has_title = title:c_lannisport
+		}
+	}
+# Original line: 1073
+valid_position = {
+		title:h_the_iron_throne = {
+			exists = yes
+		}
+		top_liege ?= title:h_the_iron_throne.holder
+		OR = {
+			has_title = title:c_kings_landing
+			has_title = title:c_oldtown
+			has_title = title:c_lannisport
+		}
+	}
+# Original line: 1084
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOR = {
+				has_trait = kingsguard
+				has_trait = maester
+				# has_trait = archmaester
+				has_trait = septon
+			}
+			is_courtier_of = scope:liege
+		}
+	}
+
+# keeper_of_keys_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions_crownlands.txt:1236
+# Original line: 1247
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 1253
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_stewardship
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 30
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = loyal
+			}
+			add = {
+				value = 20
+				desc = court_position_loyal_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = family_first
+			}
+			add = {
+				value = 20
+				desc = court_position_family_first_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 15
+				desc = court_position_overseer_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = {
+				value = 15
+				desc = court_position_diligent_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = lazy
+			}
+			add = {
+				value = -10
+				desc = court_position_lazy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = deceitful
+			}
+			add = {
+				value = -10
+				desc = court_position_deceitful_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = eccentric
+			}
+			add = {
+				value = -10
+				desc = court_position_eccentric_trait
+			}
+		}
+		add = general_aptitude_bonus
+	}
+# Original line: 1335
+is_shown = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 1338
+valid_position = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 1341
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOR = {
+				has_trait = kingsguard
+				has_trait = maester
+				# has_trait = archmaester
+				has_trait = septon
+			}
+			is_courtier_of = scope:liege
+		}
+	}
+
+# high_reeve_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions_crownlands.txt:1502
+# Original line: 1513
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 1519
+aptitude = {
+		value = 25
+		add = {
+			value = diplomacy
+			multiply = 1.75
+			max = 25
+			desc = court_position_skill_diplomacy
+		}
+		add = {
+			value = learning
+			multiply = 1.75
+			max = 25
+			desc = court_position_skill_learning
+		}
+		if = {
+			limit = {
+				has_trait = diplomat
+			}
+			add = {
+				value = 20
+				desc = court_position_diplomat_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = {
+				value = 10
+				desc = court_position_diligent_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = scholar
+			}
+			add = {
+				value = 10
+				desc = court_position_scholar_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = just
+			}
+			add = {
+				value = 15
+				desc = court_position_just_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = patient
+			}
+			add = {
+				value = 5
+				desc = court_position_patient_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = greedy
+			}
+			add = {
+				value = -5
+				desc = court_position_greedy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = sadistic
+			}
+			add = {
+				value = -5
+				desc = court_position_sadistic_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = trusting
+			}
+			add = {
+				value = -5
+				desc = court_position_trusting_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = lazy
+			}
+			add = {
+				value = -10
+				desc = court_position_lazy_trait
+			}
+		}
+		add = general_aptitude_bonus
+	}
+# Original line: 1625
+is_shown = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 1628
+valid_position = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 1631
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOR = {
+				has_trait = kingsguard
+				has_trait = maester
+				# has_trait = archmaester
+				has_trait = septon
+			}
+			is_courtier_of = scope:liege
+		}
+	}
+
+# justiciar_court_position
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/00_agot_court_positions_crownlands.txt:1782
+# Original line: 1793
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 1799
+aptitude = {
+		value = 25
+		add = {
+			value = diplomacy
+			multiply = 1.5
+			max = 25
+			desc = court_position_skill_diplomacy
+		}
+		add = {
+			value = prowess
+			multiply = 1.5
+			max = 25
+			desc = court_position_skill_prowess
+		}
+		if = {
+			limit = {
+				has_trait = diplomat
+			}
+			add = {
+				value = 20
+				desc = court_position_diplomat_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = brave
+			}
+			add = {
+				value = 15
+				desc = court_position_overseer_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = {
+				value = 10
+				desc = court_position_diligent_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = just
+			}
+			add = {
+				value = 15
+				desc = court_position_just_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = patient
+			}
+			add = {
+				value = 5
+				desc = court_position_patient_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = greedy
+			}
+			add = {
+				value = -5
+				desc = court_position_greedy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = sadistic
+			}
+			add = {
+				value = -5
+				desc = court_position_sadistic_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = trusting
+			}
+			add = {
+				value = -5
+				desc = court_position_trusting_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = lazy
+			}
+			add = {
+				value = -10
+				desc = court_position_lazy_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = disloyal
+			}
+			add = {
+				value = -10
+				desc = court_position_disloyal_trait
+			}
+		}
+		add = general_aptitude_bonus
+	}
+# Original line: 1905
+is_shown = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 1908
+valid_position = {
+		has_title = title:h_the_iron_throne
+	}
+# Original line: 1911
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOR = {
+				has_trait = kingsguard
+				has_trait = maester
+				# has_trait = archmaester
+				has_trait = septon
+			}
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:liege }
+			OR = {
+				AND = {
+					is_vassal_of = title:c_kings_landing.holder
+					highest_held_title_tier <= tier_duchy
+					highest_held_title_tier > tier_barony
+				}
+				is_courtier_of = scope:liege
+			}
+		}
+	}
+
+# nw_septon
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:3
+# Original line: 12
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 18
+aptitude = {
+		value = 25
+		add = {
+			value = learning
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_learning
+		}
+		if = {
+			limit = {
+				has_trait = zealous
+			}
+			add = {
+				value = 20
+				desc = court_position_zealous_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = compassionate
+			}
+			add = {
+				value = 20
+				desc = court_position_compassionate_trait
+			}
+		}
+	}
+# Original line: 45
+is_shown = {
+		government_has_flag = government_is_nw
+		agot_is_landless_nw_character = no
+	}
+# Original line: 49
+valid_position = {
+		government_has_flag = government_is_nw
+		agot_is_landless_nw_character = no
+	}
+# Original line: 53
+valid_character = {
+		scope:employee = {
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			has_trait = septon
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+		}
+	}
+
+# b_the_shadow_tower_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:130
+# Original line: 139
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 145
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 178
+is_shown = {
+		government_has_flag = government_is_nw
+		OR = {
+			any_vassal = {
+				has_title = title:c_the_shadow_tower
+			}
+			has_title = title:c_the_shadow_tower
+		}
+		NOT = { primary_title = title:c_the_shadow_tower }
+	}
+# Original line: 188
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 191
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:c_the_shadow_tower
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_eastwatch_by_the_sea_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:318
+# Original line: 327
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 333
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 366
+is_shown = {
+		government_has_flag = government_is_nw
+		OR = {
+			any_vassal = {
+				has_title = title:c_eastwatch
+			}
+			has_title = title:c_eastwatch
+		}
+		NOT = { primary_title = title:c_eastwatch }
+	}
+# Original line: 376
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 379
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:c_eastwatch
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_the_nightfort_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:506
+# Original line: 515
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 521
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 554
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_the_nightfort
+		OR = {
+			any_vassal = {
+				has_title = title:b_the_nightfort
+			}
+			has_title = title:b_the_nightfort
+		}
+		has_title = title:c_castle_black
+	}
+# Original line: 565
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 568
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:b_the_nightfort
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_icemark_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:695
+# Original line: 704
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 710
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 743
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_icemark
+		OR = {
+			any_vassal = {
+				has_title = title:b_icemark
+			}
+			has_title = title:b_icemark
+		}
+		has_title = title:c_castle_black
+	}
+# Original line: 754
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 757
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:b_icemark
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_deep_lake_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:884
+# Original line: 893
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 899
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 932
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_deep_lake
+		OR = {
+			any_vassal = {
+				has_title = title:b_deep_lake
+			}
+			has_title = title:b_deep_lake
+		}
+		has_title = title:c_castle_black
+	}
+# Original line: 943
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 946
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:b_deep_lake
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_queensgate_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:1073
+# Original line: 1082
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 1088
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 1121
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_queensgate
+		OR = {
+			any_vassal = {
+				has_title = title:b_queensgate
+			}
+			has_title = title:b_queensgate
+		}
+		has_title = title:c_castle_black
+	}
+# Original line: 1132
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 1135
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:b_queensgate
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_oakenshield_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:1262
+# Original line: 1271
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 1277
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 1310
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_oakenshield
+		OR = {
+			any_vassal = {
+				has_title = title:b_oakenshield
+			}
+			has_title = title:b_oakenshield
+		}
+		has_title = title:c_castle_black
+	}
+# Original line: 1321
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 1324
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:b_oakenshield
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_woodswatch_by_the_pool_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:1451
+# Original line: 1460
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 1466
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 1499
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_woodswatch_by_the_pool
+		OR = {
+			any_vassal = {
+				has_title = title:b_woodswatch_by_the_pool
+			}
+			has_title = title:b_woodswatch_by_the_pool
+		}
+		has_title = title:c_castle_black
+	}
+# Original line: 1510
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 1513
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:b_woodswatch_by_the_pool
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_westwatch_by_the_bridge_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:1640
+# Original line: 1649
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 1655
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 1688
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_westwatch_by_the_bridge
+		OR = {
+			any_vassal = {
+				has_title = title:b_westwatch_by_the_bridge
+			}
+			has_title = title:b_westwatch_by_the_bridge
+		}
+		has_title = title:c_the_shadow_tower
+	}
+# Original line: 1699
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 1702
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:b_westwatch_by_the_bridge
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_sentinel_stand_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:1829
+# Original line: 1838
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 1844
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 1877
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_sentinel_stand
+		OR = {
+			any_vassal = {
+				has_title = title:b_sentinel_stand
+			}
+			has_title = title:b_sentinel_stand
+		}
+		has_title = title:c_the_shadow_tower
+	}
+# Original line: 1888
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 1891
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:b_sentinel_stand
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_greyguard_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:2018
+# Original line: 2027
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 2033
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 2066
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_greyguard
+		OR = {
+			any_vassal = {
+				has_title = title:b_greyguard
+			}
+			has_title = title:b_greyguard
+		}
+		has_title = title:c_the_shadow_tower
+	}
+# Original line: 2077
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 2080
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:b_greyguard
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_stonedoor_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:2207
+# Original line: 2216
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 2222
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 2255
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_stonedoor
+		OR = {
+			any_vassal = {
+				has_title = title:b_stonedoor
+			}
+			has_title = title:b_stonedoor
+		}
+		has_title = title:c_the_nightfort
+	}
+# Original line: 2266
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 2269
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:b_stonedoor
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_hoarfrost_hill_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:2396
+# Original line: 2405
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 2411
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 2444
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_hoarfrost_hill
+		OR = {
+			any_vassal = {
+				has_title = title:b_hoarfrost_hill
+			}
+			has_title = title:b_hoarfrost_hill
+		}
+		has_title = title:c_the_nightfort
+	}
+# Original line: 2455
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 2458
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:b_hoarfrost_hill
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_sable_hall_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:2585
+# Original line: 2594
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 2600
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 2633
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_sable_hall
+		OR = {
+			any_vassal = {
+				has_title = title:b_sable_hall
+			}
+			has_title = title:b_sable_hall
+		}
+		has_title = title:c_castle_black
+	}
+# Original line: 2644
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 2647
+valid_character = {
+		scope:employee = {
+			OR = {
+				is_landed = no
+				has_title = title:b_sable_hall
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_rimegate_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:2774
+# Original line: 2783
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 2789
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 2822
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_rimegate
+		OR = {
+			any_vassal = {
+				has_title = title:b_rimegate
+			}
+			has_title = title:b_rimegate
+		}
+		has_title = title:c_castle_black
+	}
+# Original line: 2833
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 2836
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			OR = {
+				is_landed = no
+				has_title = title:b_rimegate
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_long_barrow_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:2963
+# Original line: 2972
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 2978
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 3011
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_long_barrow
+		OR = {
+			any_vassal = {
+				has_title = title:b_long_barrow
+			}
+			has_title = title:b_long_barrow
+		}
+		has_title = title:c_eastwatch
+	}
+# Original line: 3022
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 3025
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			OR = {
+				is_landed = no
+				has_title = title:b_long_barrow
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_the_torches_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:3152
+# Original line: 3161
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 3167
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 3200
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_the_torches
+		OR = {
+			any_vassal = {
+				has_title = title:b_the_torches
+			}
+			has_title = title:b_the_torches
+		}
+		has_title = title:c_eastwatch
+	}
+# Original line: 3211
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 3214
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			OR = {
+				is_landed = no
+				has_title = title:b_the_torches
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# b_greenguard_keeper
+# E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/common/court_positions/types/01_agot_nights_watch_positions.txt:3341
+# Original line: 3350
+aptitude_level_breakpoints = {
+		20
+		40
+		60
+		80
+	}
+# Original line: 3356
+aptitude = {
+		value = 25
+		add = {
+			value = stewardship
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = martial
+			multiply = 1.25
+			max = 25
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = {
+				value = 20
+				desc = court_position_administrator_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = {
+				value = 20
+				desc = court_position_overseer_trait
+			}
+		}
+	}
+# Original line: 3389
+is_shown = {
+		government_has_flag = government_is_nw
+		# has_character_flag = rebuilt_greenguard
+		OR = {
+			any_vassal = {
+				has_title = title:b_greenguard
+			}
+			has_title = title:b_greenguard
+		}
+		has_title = title:c_eastwatch
+	}
+# Original line: 3400
+valid_position = {
+		government_has_flag = government_is_nw
+	}
+# Original line: 3403
+valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			OR = {
+				is_landed = no
+				has_title = title:b_greenguard
+			}
+			is_male = yes
+			is_adult = yes
+			has_trait = nightswatch
+			NOR = {
+				has_trait = maester
+				has_trait = septon
+			}
+			NOT = { scope:employee = title:d_nw_landless_first_ranger.holder }
+		}
+	}
+
+# E:\SteamLibrary\steamapps\common\Crusader Kings III\game\common\script_values\00_ep1_script_values.txt:324
+court_position_aptitude_low_penalty_value = {
+    if = {
+        limit = {
+            is_ruler = yes
+        }
+        add = {
+            value = -20
+            desc = court_position_landed_penalty
+        }
+    }
+    if = {
+        limit = {
+            has_trait = maimed
+        }
+        add = {
+            value = -15
+            desc = court_position_maimed_trait
+        }
+    }
+    #Wounded_1 is ok since it's not a serious injury... yet
+    if = {
+        limit = {
+            has_trait = infirm
+        }
+        add = {
+            value = -75
+            desc = court_position_infirm_trait
+		}
+	}
+}
+
+# E:\SteamLibrary\steamapps\common\Crusader Kings III\game\common\script_values\00_ep1_script_values.txt:285
+court_position_aptitude_high_penalty_value = {
+	if = {
+        limit = {
+            is_ruler = yes
+        }
+        add = {
+            value = -20
+            desc = court_position_landed_penalty
+        }
+    }
+    if = {
+        limit = {
+            has_trait = maimed
+        }
+        add = {
+            value = -25
+            desc = court_position_maimed_trait
+        }
+    }
+    if = {
+        limit = {
+            has_trait = blind
+        }
+        add = {
+            value = -50
+            desc = court_position_blind_trait
+        }
+    }
+    if = {
+        limit = {
+            has_trait = infirm
+        }
+        add = {
+            value = -75
+            desc = court_position_infirm_trait
+        }
+    }
+}
+
+# E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032\common\script_values\00_court_position_values.txt:78
+general_aptitude_bonus = {
+	if = {
+		limit = {
+			exists = employer  # don't know why but employer ?= not work in this case.
+		}
+		add = general_aptitude_bonus_exclude_other_court_position
+		# so they can not bonus on themselves recursively
+		# Seneschal
+		if = {
+			limit = {
+				liege.court_position:seneschal_court_position ?= {
+					has_variable = performing_improve_court
+				}
+			}
+			add = {
+				value = liege.court_position:seneschal_court_position.seneschal_improve_court_value
+				desc = seneschal_improve_court_aptitude_desc
+			}
+		}
+		# Yeke Jarquchi
+		if = {
+			limit = {
+				liege.court_position:yeke_jarquchi_court_position ?= {
+					has_variable = performing_improve_court
+				}
+			}
+			add = {
+				value = liege.court_position:yeke_jarquchi_court_position.yeke_jarquchi_improve_court_value
+				desc = yeke_jarquchi_improve_court_aptitude_desc
+			}
+		}
+	}
+}
+
+# E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032\common\script_values\00_court_position_values.txt:1
+general_aptitude_bonus_exclude_other_court_position = {
+	if = {
+		limit = {
+			exists = employer  # don't know why but employer ?= not work in this case.
+		}
+		# to reduce scoping
+		employer = {
+			if = {
+				limit = {
+					government_has_flag = government_is_landless_adventurer
+				}
+				if = {
+					limit = { has_perk = soon_forgiven_perk }
+					add = {
+						value = 10
+						desc = court_position_soon_forgiven_perk
+					}
+				}
+				if = {
+					limit = {
+						has_perk = positions_of_power_perk
+						prev = { any_relation = { type = friend } }
+					}
+					add = {
+						value = 5
+						desc = court_position_positions_of_power_perk_friend
+					}
+				}
+				if = {
+					limit = {
+						has_perk = positions_of_power_perk
+						prev = { any_relation = { type = lover } }
+					}
+					add = {
+						value = 5
+						desc = court_position_positions_of_power_perk_lover
+					}
+				}
+				if = {
+					limit = {
+						has_perk = positions_of_power_perk
+						prev = { is_married = yes }
+					}
+					add = {
+						value = 10
+						desc = court_position_positions_of_power_perk_marriage
+					}
+				}
+				if = {
+					limit = {
+						has_perk = likable_perk
+						has_relation_best_friend = prev
+					}
+					add = {
+						value = 30
+						desc = court_position_best_friend
+					}
+				}
+				else_if = {
+					limit = {
+						has_perk = likable_perk
+						has_relation_friend = prev
+					}
+					add = {
+						value = 15
+						desc = court_position_friend
+					}
+				}
+			}
+		}
+		add = court_position_aptitude_boon_voyager_trait
+		add = court_position_aptitude_traveling_friends_value
+		add = court_position_aptitude_eunuch_tradition_value
+		add = court_position_aptitude_family_business_value
+	}
+}
+
+# E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032\common\script_values\00_culture_values.txt:984
+court_position_aptitude_eunuch_tradition_value = {
+	if = {
+		limit = {
+			liege.culture ?= {
+				OR = {
+					has_cultural_parameter = eunuch_trait_bonuses
+					has_cultural_parameter = court_machinations_eunuch_trait_bonuses
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_trait = eunuch_1
+			}
+			add = {
+				value = 30
+				desc = court_position_eunuch_trait
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = beardless_eunuch
+			}
+			add = {
+				value = 30
+				desc = court_position_beardless_eunuch_trait
+			}
+		}
+	}
+}
+
+# E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032\common\script_values\00_culture_values.txt:627
+court_position_aptitude_family_business_value = {
+	if = {
+		limit = {
+			liege.culture ?= { has_cultural_parameter = close_family_better_court_positions }
+			is_close_family_of = liege
+		}
+		add = {
+			value = 20
+			desc = tradition_family_entrepreneurship_name
+		}
+	}
+}
+
+# E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032\common\script_values\00_culture_values.txt:1015
+court_position_aptitude_boon_voyager_trait = {
+	if = {
+		limit = {
+			employer ?= { 
+				is_landless_adventurer = no
+				has_perk = gracious_host_impeccable_guest_perk 
+			}
+		}
+		add = {
+			value = {
+				value = 3
+				multiply = employer.num_of_known_languages
+			}
+			desc = gracious_host_impeccable_guest_perk_bonus
+		}
+	}
+}
+
+# E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032\common\script_values\07_ep3_values.txt:4331
+court_position_aptitude_traveling_friends_value = {
+	if = {
+		limit = {
+			has_character_flag = travelling_friend
+			liege ?= {
+				any_court_position_holder = {
+					OR = {
+						has_relation_best_friend = root
+						has_relation_friend = root
+					}
+					has_character_flag = travelling_friend
+				}
+			}
+		}
+		add = {
+			value = 20
+			desc = court_position_traveling_friend
+		}
+	}
+}
+
+# E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032\common\script_values\00_basic_values.txt:488
+high_skill_rating = 15
+
+# E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032\common\scripted_triggers\00_court_position_triggers.txt:375
+base_court_position_validity_trigger = { # would_be_valid_for_court_position ultimately traces back to this, so touch with caution
+	is_imprisoned = no
+	NOT = {
+		is_at_war_with = $EMPLOYER$
+	}
+	custom_tooltip = {
+		text = not_travel_option_character
+		NOT = { has_character_flag = travel_option_added_character }
+	}
+	custom_tooltip = {
+		text = is_not_a_ceremonial_liege_trigger
+		tgp_is_ceremonial_liege_trigger = no
+	}
+
+	#AGOT Added
+	is_human = yes
+}
+
+# E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032\common\scripted_triggers\00_agot_court_position_triggers.txt:110
+bloodrider_validity_trigger = {
+	base_court_position_validity_trigger = { EMPLOYER = $EMPLOYER$ }
+	is_landed = no
+	is_male = yes
+	is_courtier_of = $EMPLOYER$
+	NOR = {
+		has_trait = blind
+		has_trait = infirm
+		has_trait = disloyal
+	}
+	custom_tooltip = {
+		text = IS_NOT_THE_SPOUSE_OF_CHARACTER_COURT_POSITION
+		NOT = { is_spouse_of = $EMPLOYER$ }
+	}
+	custom_tooltip = {
+		text = IS_NOT_A_HEIR_TO_A_TITLE
+		NOT = { any_heir_title = {} }
+	}
+	custom_tooltip = {
+		text = PLACE_IN_LINE_OF_SUCCESSION
+		NOT = {
+			any_pretender_title = {
+				place_in_line_of_succession = {
+					target = prev
+					value <= 2
+				}
+			}
+		}
+	}
+	can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = $EMPLOYER$ }
+	trigger_if = {
+		limit = { NOT = { has_court_position = bloodrider_court_position } }
+		court_position_does_not_already_have_a_job_trigger = yes # This positions is considered a job, and cannot be held at the same tims as another similar position
+	}
+}
+
+# E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032\common\scripted_triggers\00_court_position_triggers.txt:129
+court_position_does_not_already_have_a_job_trigger = {
+	custom_tooltip = {
+		text = does_not_have_a_full_time_job
+		NOR = {
+			has_court_position = court_tutor_court_position
+			has_court_position = court_guru_court_position
+			has_court_position = food_taster_court_position
+			has_court_position = seneschal_court_position
+			has_court_position = cupbearer_court_position
+			has_court_position = antiquarian_court_position
+			has_court_position = lady_in_waiting_court_position
+			has_court_position = court_jester_court_position
+			has_court_position = court_poet_court_position
+			has_court_position = court_musician_court_position
+			has_court_position = bodyguard_court_position
+			has_court_position = executioner_court_position
+			has_court_position = court_gardener_court_position
+			has_court_position = travel_leader_court_position
+			has_court_position = wet_nurse_court_position
+			has_court_position = akolouthos_court_position
+			has_court_position = grand_preceptor_court_position
+			has_court_position = grand_guardian_court_position
+			has_court_position = grand_mentor_court_position
+			has_court_position = fire_dragon_engineer_court_position
+			has_court_position = keeper_of_the_harem_court_position
+			is_councillor = yes
+
+			#AGOT Added Add missing court positions (Unop)
+			has_court_position = court_artificer_court_position
+			has_court_position = cave_hermit_court_position
+			has_court_position = master_assassin_court_position
+			has_court_position = court_scholar_court_position
+			has_court_position = charioteer_court_position
+			has_court_position = bookmaker_court_position
+			has_court_position = court_brewmaster_court_position
+
+			#AGOT Added Add missing camp officer positions (Unop)
+			has_court_position = second_camp_officer
+			has_court_position = quartermaster_camp_officer
+			has_court_position = armorer_camp_officer
+			has_court_position = chief_forager_camp_officer
+			has_court_position = master_thief_camp_officer
+			has_court_position = head_porter_camp_officer
+			has_court_position = head_groom_camp_officer
+			has_court_position = huntperson_camp_officer
+			has_court_position = kennelperson_camp_officer
+			has_court_position = chief_engineer_camp_officer
+			has_court_position = witness_camp_officer
+			has_court_position = person_haggler_camp_officer
+			has_court_position = camp_cook_camp_officer
+			has_court_position = master_bard_camp_officer
+			has_court_position = stooge_camp_officer
+			has_court_position = master_of_arms_camp_officer
+			has_court_position = light_cavalry_captain_camp_officer
+			has_court_position = camelry_captain_camp_officer
+			has_court_position = elephantry_captain_camp_officer
+			has_court_position = heavy_cavalry_captain_camp_officer
+			has_court_position = horse_archer_captain_camp_officer
+			has_court_position = archer_captain_camp_officer
+			has_court_position = heavy_infantry_captain_camp_officer
+			has_court_position = light_infantry_captain_camp_officer
+			has_court_position = pike_captain_camp_officer
+			has_court_position = master_of_spoils_camp_officer
+			has_court_position = camp_priest_camp_officer
+			has_court_position = laureate_camp_officer
+
+			#AGOT Added
+			has_court_position = household_guard_court_position
+			has_court_position = bloodrider_court_position
+			has_court_position = gaoler_court_position
+			has_court_position = harbormaster_court_position
+			has_court_position = court_smith_court_position
+			has_court_position = head_dragonkeeper_court_position
+			has_court_position = first_sword_court_position
+		}
+	}
+}
+
+# E:\SteamLibrary\steamapps\workshop\content\1158310\2962333032\common\scripted_triggers\00_hunt_triggers.txt:747
+hunt_lifestyle_track_greater_equal_trigger = {
+	has_trait = lifestyle_hunter
+	has_trait_xp = {
+		trait = lifestyle_hunter
+		track = $TRACK$
+		value >= $GREATER_EQUAL$
+	}
+}

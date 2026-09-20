@@ -1,0 +1,47 @@
+agot_di_rusbar_menu_enabled_trigger = {
+	is_ai = no
+	any_owned_story = { story_type = DI_misc_variables_story has_variable = DI_cheat_menu }
+}
+agot_di_rusbar_human_context_trigger = {
+	scope:actor = { agot_di_rusbar_menu_enabled_trigger = yes }
+	scope:recipient = { is_alive = yes is_human = yes }
+}
+agot_di_rusbar_dragon_context_trigger = {
+	scope:actor = { agot_di_rusbar_menu_enabled_trigger = yes }
+	scope:recipient = { is_alive = yes has_trait = dragon }
+}
+agot_di_rusbar_lower_education_trigger = {
+	OR = {
+		has_trait = education_diplomacy_1
+		has_trait = education_diplomacy_2
+		has_trait = education_diplomacy_3
+		has_trait = education_diplomacy_4
+		has_trait = education_martial_1
+		has_trait = education_martial_2
+		has_trait = education_martial_3
+		has_trait = education_martial_4
+		has_trait = education_stewardship_1
+		has_trait = education_stewardship_2
+		has_trait = education_stewardship_3
+		has_trait = education_stewardship_4
+		has_trait = education_intrigue_1
+		has_trait = education_intrigue_2
+		has_trait = education_intrigue_3
+		has_trait = education_intrigue_4
+		has_trait = education_learning_1
+		has_trait = education_learning_2
+		has_trait = education_learning_3
+		has_trait = education_learning_4
+		has_trait = education_martial_prowess_1
+		has_trait = education_martial_prowess_2
+		has_trait = education_martial_prowess_3
+		has_trait = education_martial_prowess_4
+		has_trait = education_republican_knowledge_1
+		has_trait = education_republican_knowledge_2
+		has_trait = education_republican_knowledge_3
+		has_trait = education_republican_knowledge_4
+		has_trait = education_heir_training_1
+		has_trait = education_heir_training_2
+		has_trait = education_heir_training_3
+	}
+}

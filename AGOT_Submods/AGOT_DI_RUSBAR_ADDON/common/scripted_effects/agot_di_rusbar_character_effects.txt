@@ -1,0 +1,235 @@
+agot_di_rusbar_education_effect = {
+	if = {
+		limit = {
+			OR = {
+				has_trait = education_diplomacy_1
+				has_trait = education_diplomacy_2
+				has_trait = education_diplomacy_3
+				has_trait = education_diplomacy_4
+			}
+		}
+		if = { limit = { has_trait = education_diplomacy_1 } remove_trait = education_diplomacy_1 }
+		if = { limit = { has_trait = education_diplomacy_2 } remove_trait = education_diplomacy_2 }
+		if = { limit = { has_trait = education_diplomacy_3 } remove_trait = education_diplomacy_3 }
+		if = { limit = { has_trait = education_diplomacy_4 } remove_trait = education_diplomacy_4 }
+		if = { limit = { NOT = { has_trait = education_diplomacy_5 } } add_trait = education_diplomacy_5 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_trait = education_martial_1
+				has_trait = education_martial_2
+				has_trait = education_martial_3
+				has_trait = education_martial_4
+			}
+		}
+		if = { limit = { has_trait = education_martial_1 } remove_trait = education_martial_1 }
+		if = { limit = { has_trait = education_martial_2 } remove_trait = education_martial_2 }
+		if = { limit = { has_trait = education_martial_3 } remove_trait = education_martial_3 }
+		if = { limit = { has_trait = education_martial_4 } remove_trait = education_martial_4 }
+		if = { limit = { NOT = { has_trait = education_martial_5 } } add_trait = education_martial_5 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_trait = education_stewardship_1
+				has_trait = education_stewardship_2
+				has_trait = education_stewardship_3
+				has_trait = education_stewardship_4
+			}
+		}
+		if = { limit = { has_trait = education_stewardship_1 } remove_trait = education_stewardship_1 }
+		if = { limit = { has_trait = education_stewardship_2 } remove_trait = education_stewardship_2 }
+		if = { limit = { has_trait = education_stewardship_3 } remove_trait = education_stewardship_3 }
+		if = { limit = { has_trait = education_stewardship_4 } remove_trait = education_stewardship_4 }
+		if = { limit = { NOT = { has_trait = education_stewardship_5 } } add_trait = education_stewardship_5 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_trait = education_intrigue_1
+				has_trait = education_intrigue_2
+				has_trait = education_intrigue_3
+				has_trait = education_intrigue_4
+			}
+		}
+		if = { limit = { has_trait = education_intrigue_1 } remove_trait = education_intrigue_1 }
+		if = { limit = { has_trait = education_intrigue_2 } remove_trait = education_intrigue_2 }
+		if = { limit = { has_trait = education_intrigue_3 } remove_trait = education_intrigue_3 }
+		if = { limit = { has_trait = education_intrigue_4 } remove_trait = education_intrigue_4 }
+		if = { limit = { NOT = { has_trait = education_intrigue_5 } } add_trait = education_intrigue_5 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_trait = education_learning_1
+				has_trait = education_learning_2
+				has_trait = education_learning_3
+				has_trait = education_learning_4
+			}
+		}
+		if = { limit = { has_trait = education_learning_1 } remove_trait = education_learning_1 }
+		if = { limit = { has_trait = education_learning_2 } remove_trait = education_learning_2 }
+		if = { limit = { has_trait = education_learning_3 } remove_trait = education_learning_3 }
+		if = { limit = { has_trait = education_learning_4 } remove_trait = education_learning_4 }
+		if = { limit = { NOT = { has_trait = education_learning_5 } } add_trait = education_learning_5 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_trait = education_martial_prowess_1
+				has_trait = education_martial_prowess_2
+				has_trait = education_martial_prowess_3
+				has_trait = education_martial_prowess_4
+			}
+		}
+		if = { limit = { has_trait = education_martial_prowess_1 } remove_trait = education_martial_prowess_1 }
+		if = { limit = { has_trait = education_martial_prowess_2 } remove_trait = education_martial_prowess_2 }
+		if = { limit = { has_trait = education_martial_prowess_3 } remove_trait = education_martial_prowess_3 }
+		if = { limit = { has_trait = education_martial_prowess_4 } remove_trait = education_martial_prowess_4 }
+		if = { limit = { NOT = { has_trait = education_martial_prowess_5 } } add_trait = education_martial_prowess_5 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_trait = education_republican_knowledge_1
+				has_trait = education_republican_knowledge_2
+				has_trait = education_republican_knowledge_3
+				has_trait = education_republican_knowledge_4
+			}
+		}
+		if = { limit = { has_trait = education_republican_knowledge_1 } remove_trait = education_republican_knowledge_1 }
+		if = { limit = { has_trait = education_republican_knowledge_2 } remove_trait = education_republican_knowledge_2 }
+		if = { limit = { has_trait = education_republican_knowledge_3 } remove_trait = education_republican_knowledge_3 }
+		if = { limit = { has_trait = education_republican_knowledge_4 } remove_trait = education_republican_knowledge_4 }
+		if = { limit = { NOT = { has_trait = education_republican_knowledge_5 } } add_trait = education_republican_knowledge_5 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_trait = education_heir_training_1
+				has_trait = education_heir_training_2
+				has_trait = education_heir_training_3
+			}
+		}
+		if = { limit = { has_trait = education_heir_training_1 } remove_trait = education_heir_training_1 }
+		if = { limit = { has_trait = education_heir_training_2 } remove_trait = education_heir_training_2 }
+		if = { limit = { has_trait = education_heir_training_3 } remove_trait = education_heir_training_3 }
+		if = { limit = { NOT = { has_trait = education_heir_training_4 } } add_trait = education_heir_training_4 }
+	}
+}
+# Removes the requested congenital and genetic drawbacks when they are present.
+agot_di_rusbar_human_correction_effect = {
+	if = { limit = { has_trait = beauty_bad_1 } remove_trait = beauty_bad_1 }
+	if = { limit = { has_trait = beauty_bad_2 } remove_trait = beauty_bad_2 }
+	if = { limit = { has_trait = beauty_bad_3 } remove_trait = beauty_bad_3 }
+	if = { limit = { has_trait = intellect_bad_1 } remove_trait = intellect_bad_1 }
+	if = { limit = { has_trait = intellect_bad_2 } remove_trait = intellect_bad_2 }
+	if = { limit = { has_trait = intellect_bad_3 } remove_trait = intellect_bad_3 }
+	if = { limit = { has_trait = physique_bad_1 } remove_trait = physique_bad_1 }
+	if = { limit = { has_trait = physique_bad_2 } remove_trait = physique_bad_2 }
+	if = { limit = { has_trait = physique_bad_3 } remove_trait = physique_bad_3 }
+	if = { limit = { has_trait = depressed_genetic } remove_trait = depressed_genetic }
+	if = { limit = { has_trait = lunatic_genetic } remove_trait = lunatic_genetic }
+	if = { limit = { has_trait = possessed_genetic } remove_trait = possessed_genetic }
+	if = { limit = { has_trait = clubfooted } remove_trait = clubfooted }
+	if = { limit = { has_trait = hunchbacked } remove_trait = hunchbacked }
+	if = { limit = { has_trait = lisping } remove_trait = lisping }
+	if = { limit = { has_trait = stuttering } remove_trait = stuttering }
+	if = { limit = { has_trait = dwarf } remove_trait = dwarf }
+	if = { limit = { has_trait = giant } remove_trait = giant }
+	if = { limit = { has_trait = spindly } remove_trait = spindly }
+	if = { limit = { has_trait = scaly } remove_trait = scaly }
+	if = { limit = { has_trait = albino } remove_trait = albino }
+	if = { limit = { has_trait = wheezing } remove_trait = wheezing }
+	if = { limit = { has_trait = bleeder } remove_trait = bleeder }
+	if = { limit = { has_trait = infertile } remove_trait = infertile }
+	if = { limit = { has_trait = inbred } remove_trait = inbred }
+}
+
+# Replaces lower or detrimental congenital traits with the requested optimal traits.
+agot_di_rusbar_human_enhancement_effect = {
+	if = { limit = { has_trait = beauty_bad_1 } remove_trait = beauty_bad_1 }
+	if = { limit = { has_trait = beauty_bad_2 } remove_trait = beauty_bad_2 }
+	if = { limit = { has_trait = beauty_bad_3 } remove_trait = beauty_bad_3 }
+	if = { limit = { has_trait = beauty_good_1 } remove_trait = beauty_good_1 }
+	if = { limit = { has_trait = beauty_good_2 } remove_trait = beauty_good_2 }
+	if = { limit = { has_trait = intellect_bad_1 } remove_trait = intellect_bad_1 }
+	if = { limit = { has_trait = intellect_bad_2 } remove_trait = intellect_bad_2 }
+	if = { limit = { has_trait = intellect_bad_3 } remove_trait = intellect_bad_3 }
+	if = { limit = { has_trait = intellect_good_1 } remove_trait = intellect_good_1 }
+	if = { limit = { has_trait = intellect_good_2 } remove_trait = intellect_good_2 }
+	if = { limit = { has_trait = dull } remove_trait = dull }
+	if = { limit = { has_trait = physique_bad_1 } remove_trait = physique_bad_1 }
+	if = { limit = { has_trait = physique_bad_2 } remove_trait = physique_bad_2 }
+	if = { limit = { has_trait = physique_bad_3 } remove_trait = physique_bad_3 }
+	if = { limit = { has_trait = physique_good_1 } remove_trait = physique_good_1 }
+	if = { limit = { has_trait = physique_good_2 } remove_trait = physique_good_2 }
+	if = { limit = { has_trait = weak } remove_trait = weak }
+	if = { limit = { has_trait = depressed_genetic } remove_trait = depressed_genetic }
+	if = { limit = { has_trait = lunatic_genetic } remove_trait = lunatic_genetic }
+	if = { limit = { has_trait = possessed_genetic } remove_trait = possessed_genetic }
+	if = { limit = { has_trait = clubfooted } remove_trait = clubfooted }
+	if = { limit = { has_trait = hunchbacked } remove_trait = hunchbacked }
+	if = { limit = { has_trait = lisping } remove_trait = lisping }
+	if = { limit = { has_trait = stuttering } remove_trait = stuttering }
+	if = { limit = { has_trait = dwarf } remove_trait = dwarf }
+	if = { limit = { has_trait = giant } remove_trait = giant }
+	if = { limit = { has_trait = spindly } remove_trait = spindly }
+	if = { limit = { has_trait = scaly } remove_trait = scaly }
+	if = { limit = { has_trait = albino } remove_trait = albino }
+	if = { limit = { has_trait = wheezing } remove_trait = wheezing }
+	if = { limit = { has_trait = bleeder } remove_trait = bleeder }
+	if = { limit = { has_trait = infertile } remove_trait = infertile }
+	if = { limit = { has_trait = inbred } remove_trait = inbred }
+
+	if = { limit = { NOT = { has_trait = beauty_good_3 } } add_trait = beauty_good_3 }
+	if = { limit = { NOT = { has_trait = intellect_good_3 } } add_trait = intellect_good_3 }
+	if = { limit = { NOT = { has_trait = physique_good_3 } } add_trait = physique_good_3 }
+	if = { limit = { NOT = { has_trait = fecund } } add_trait = fecund }
+	if = { limit = { NOT = { has_trait = pure_blooded } } add_trait = pure_blooded }
+}
+
+agot_di_rusbar_dragon_correction_effect = {
+	if = { limit = { has_trait = dragon_physique_bad_1 } remove_trait = dragon_physique_bad_1 }
+	if = { limit = { has_trait = dragon_physique_bad_2 } remove_trait = dragon_physique_bad_2 }
+	if = { limit = { has_trait = dragon_physique_bad_3 } remove_trait = dragon_physique_bad_3 }
+	if = { limit = { has_trait = dragon_slow } remove_trait = dragon_slow }
+	if = { limit = { has_trait = dragon_ugly } remove_trait = dragon_ugly }
+}
+agot_di_rusbar_dragon_enhancement_effect = {
+	agot_di_rusbar_dragon_correction_effect = yes
+	if = { limit = { has_trait = dragon_physique_good_1 } remove_trait = dragon_physique_good_1 }
+	if = { limit = { has_trait = dragon_physique_good_2 } remove_trait = dragon_physique_good_2 }
+	if = { limit = { NOT = { has_trait = dragon_physique_good_3 } } add_trait = dragon_physique_good_3 }
+	if = { limit = { NOT = { has_trait = dragon_swift } } add_trait = dragon_swift }
+	if = { limit = { NOT = { has_trait = dragon_majestic } } add_trait = dragon_majestic }
+	# Follow AGOT's hidden fertility convention; do not reveal dragon sex.
+	if = {
+	    limit = { OR = { is_male = yes NOT = { has_trait = dragon_fertile } } }
+	    make_trait_inactive = dragon_fertile
+	    if = {
+	        limit = { is_female = yes }
+	        set_variable = { name = dragon_is_fertile value = yes }
+	    }
+	}
+}
+agot_di_rusbar_all_skills_effect = {
+	add_diplomacy_skill = $AMOUNT$
+	add_martial_skill = $AMOUNT$
+	add_stewardship_skill = $AMOUNT$
+	add_intrigue_skill = $AMOUNT$
+	add_learning_skill = $AMOUNT$
+	add_prowess_skill = $AMOUNT$
+}
+agot_di_rusbar_max_skills_effect = {
+	add_diplomacy_skill = define:NSkills|MAX_DIPLOMACY
+	add_martial_skill = define:NSkills|MAX_MARTIAL
+	add_stewardship_skill = define:NSkills|MAX_STEWARDSHIP
+	add_intrigue_skill = define:NSkills|MAX_INTRIGUE
+	add_learning_skill = define:NSkills|MAX_LEARNING
+	add_prowess_skill = define:NSkills|MAX_PROWESS
+}
+agot_di_rusbar_rejuvenation_effect = {
+	if = { limit = { age > 16 } change_age = agot_di_rusbar_rejuvenation_delta }
+}

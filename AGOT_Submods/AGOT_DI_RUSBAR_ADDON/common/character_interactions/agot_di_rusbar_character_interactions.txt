@@ -1,0 +1,267 @@
+agot_di_rusbar_education_interaction = {
+	interface_priority = 245
+	category = interaction_category_cheat_menu
+	icon = religious
+	desc = agot_di_rusbar_education_interaction_desc
+	common_interaction = no
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+	is_available = { is_ai = no }
+	ai_will_do = { base = 0 }
+	is_shown = {
+		agot_di_rusbar_human_context_trigger = yes
+		scope:recipient = { is_adult = yes agot_di_rusbar_lower_education_trigger = yes }
+	}
+	can_send = {
+		agot_di_rusbar_human_context_trigger = yes
+		scope:recipient = { is_adult = yes agot_di_rusbar_lower_education_trigger = yes }
+	}
+	on_accept = {
+		if = {
+			limit = {
+				agot_di_rusbar_human_context_trigger = yes
+				scope:recipient = { is_adult = yes agot_di_rusbar_lower_education_trigger = yes }
+			}
+			scope:recipient = {
+				agot_di_rusbar_education_effect = yes
+			}
+		}
+	}
+}
+agot_di_rusbar_skills_interaction = {
+	interface_priority = 245
+	category = interaction_category_cheat_menu
+	icon = religious
+	desc = agot_di_rusbar_skills_interaction_desc
+	common_interaction = no
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+	is_available = { is_ai = no }
+	ai_will_do = { base = 0 }
+	is_shown = {
+		agot_di_rusbar_human_context_trigger = yes
+	}
+	send_options_exclusive = yes
+	can_send = {
+		custom_tooltip = {
+			text = agot_di_rusbar_choose_option_tt
+			agot_di_rusbar_human_context_trigger = yes
+			OR = {
+				scope:agot_di_rusbar_skills_10 = yes
+				scope:agot_di_rusbar_skills_20 = yes
+				scope:agot_di_rusbar_skills_30 = yes
+				scope:agot_di_rusbar_skills_40 = yes
+				scope:agot_di_rusbar_skills_50 = yes
+				scope:agot_di_rusbar_skills_max = yes
+			}
+		}
+	}
+	send_option = {
+		flag = agot_di_rusbar_skills_10
+		localization = agot_di_rusbar_skills_10
+	}
+	send_option = {
+		flag = agot_di_rusbar_skills_20
+		localization = agot_di_rusbar_skills_20
+	}
+	send_option = {
+		flag = agot_di_rusbar_skills_30
+		localization = agot_di_rusbar_skills_30
+	}
+	send_option = {
+		flag = agot_di_rusbar_skills_40
+		localization = agot_di_rusbar_skills_40
+	}
+	send_option = {
+		flag = agot_di_rusbar_skills_50
+		localization = agot_di_rusbar_skills_50
+	}
+	send_option = {
+		flag = agot_di_rusbar_skills_max
+		localization = agot_di_rusbar_skills_max
+	}
+	on_accept = {
+		if = {
+			limit = {
+				agot_di_rusbar_human_context_trigger = yes
+				OR = {
+					scope:agot_di_rusbar_skills_10 = yes
+					scope:agot_di_rusbar_skills_20 = yes
+					scope:agot_di_rusbar_skills_30 = yes
+					scope:agot_di_rusbar_skills_40 = yes
+					scope:agot_di_rusbar_skills_50 = yes
+					scope:agot_di_rusbar_skills_max = yes
+				}
+			}
+			scope:recipient = {
+				if = {
+					limit = { scope:agot_di_rusbar_skills_10 = yes }
+					agot_di_rusbar_all_skills_effect = { AMOUNT = 10 }
+				}
+				else_if = {
+					limit = { scope:agot_di_rusbar_skills_20 = yes }
+					agot_di_rusbar_all_skills_effect = { AMOUNT = 20 }
+				}
+				else_if = {
+					limit = { scope:agot_di_rusbar_skills_30 = yes }
+					agot_di_rusbar_all_skills_effect = { AMOUNT = 30 }
+				}
+				else_if = {
+					limit = { scope:agot_di_rusbar_skills_40 = yes }
+					agot_di_rusbar_all_skills_effect = { AMOUNT = 40 }
+				}
+				else_if = {
+					limit = { scope:agot_di_rusbar_skills_50 = yes }
+					agot_di_rusbar_all_skills_effect = { AMOUNT = 50 }
+				}
+				else_if = {
+					limit = { scope:agot_di_rusbar_skills_max = yes }
+					agot_di_rusbar_max_skills_effect = yes
+				}
+			}
+		}
+	}
+}
+agot_di_rusbar_rejuvenate_interaction = {
+	interface_priority = 245
+	category = interaction_category_cheat_menu
+	icon = religious
+	desc = agot_di_rusbar_rejuvenate_interaction_desc
+	common_interaction = no
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+	is_available = { is_ai = no }
+	ai_will_do = { base = 0 }
+	is_shown = {
+		agot_di_rusbar_human_context_trigger = yes
+		scope:recipient = { age > 16 }
+	}
+	can_send = {
+		agot_di_rusbar_human_context_trigger = yes
+		scope:recipient = { age > 16 }
+	}
+	on_accept = {
+		if = {
+			limit = {
+				agot_di_rusbar_human_context_trigger = yes
+				scope:recipient = { age > 16 }
+			}
+			scope:recipient = {
+				agot_di_rusbar_rejuvenation_effect = yes
+			}
+		}
+	}
+}
+agot_di_rusbar_human_blood_interaction = {
+	interface_priority = 245
+	category = interaction_category_cheat_menu
+	icon = religious
+	desc = agot_di_rusbar_human_blood_interaction_desc
+	common_interaction = no
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+	is_available = { is_ai = no }
+	ai_will_do = { base = 0 }
+	is_shown = {
+		agot_di_rusbar_human_context_trigger = yes
+	}
+	send_options_exclusive = yes
+	can_send = {
+		custom_tooltip = {
+			text = agot_di_rusbar_choose_option_tt
+			agot_di_rusbar_human_context_trigger = yes
+			OR = {
+				scope:agot_di_rusbar_redeemer_blood = yes
+				scope:agot_di_rusbar_lord_blood = yes
+			}
+		}
+	}
+	send_option = {
+		flag = agot_di_rusbar_redeemer_blood
+		localization = agot_di_rusbar_redeemer_blood
+	}
+	send_option = {
+		flag = agot_di_rusbar_lord_blood
+		localization = agot_di_rusbar_lord_blood
+	}
+	on_accept = {
+		if = {
+			limit = {
+				agot_di_rusbar_human_context_trigger = yes
+				OR = {
+					scope:agot_di_rusbar_redeemer_blood = yes
+					scope:agot_di_rusbar_lord_blood = yes
+				}
+			}
+			scope:recipient = {
+				if = {
+					limit = { scope:agot_di_rusbar_redeemer_blood = yes }
+					agot_di_rusbar_human_correction_effect = yes
+				}
+				else_if = {
+					limit = { scope:agot_di_rusbar_lord_blood = yes }
+					agot_di_rusbar_human_enhancement_effect = yes
+				}
+			}
+		}
+	}
+}
+agot_di_rusbar_dragon_blood_interaction = {
+	interface_priority = 245
+	category = interaction_category_cheat_menu
+	icon = religious
+	desc = agot_di_rusbar_dragon_blood_interaction_desc
+	common_interaction = no
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+	is_available = { is_ai = no }
+	ai_will_do = { base = 0 }
+	is_shown = {
+		agot_di_rusbar_dragon_context_trigger = yes
+	}
+	send_options_exclusive = yes
+	can_send = {
+		custom_tooltip = {
+			text = agot_di_rusbar_choose_option_tt
+			agot_di_rusbar_dragon_context_trigger = yes
+			OR = {
+				scope:agot_di_rusbar_mothers_mercy = yes
+				scope:agot_di_rusbar_mothers_blessing = yes
+			}
+		}
+	}
+	send_option = {
+		flag = agot_di_rusbar_mothers_mercy
+		localization = agot_di_rusbar_mothers_mercy
+	}
+	send_option = {
+		flag = agot_di_rusbar_mothers_blessing
+		localization = agot_di_rusbar_mothers_blessing
+	}
+	on_accept = {
+		if = {
+			limit = {
+				agot_di_rusbar_dragon_context_trigger = yes
+				OR = {
+					scope:agot_di_rusbar_mothers_mercy = yes
+					scope:agot_di_rusbar_mothers_blessing = yes
+				}
+			}
+			scope:recipient = {
+				if = {
+					limit = { scope:agot_di_rusbar_mothers_mercy = yes }
+					agot_di_rusbar_dragon_correction_effect = yes
+				}
+				else_if = {
+					limit = { scope:agot_di_rusbar_mothers_blessing = yes }
+					agot_di_rusbar_dragon_enhancement_effect = yes
+				}
+			}
+		}
+	}
+}

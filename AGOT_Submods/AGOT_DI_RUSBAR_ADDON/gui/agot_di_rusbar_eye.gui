@@ -1,0 +1,1105 @@
+window = {
+ name = "agot_di_rusbar_eye_window"
+ parentanchor = center
+ layer = windows_layer
+ size = { 1100 820 }
+ filter_mouse = all
+ allow_outside = yes
+ using = Window_Background
+ using = Window_Decoration
+ movable = yes
+ visible = "[GetPlayer.MakeScope.Var('agot_di_rusbar_eye_open').IsSet]"
+ datacontext = "[GetPlayer.MakeScope.Var('agot_di_rusbar_eye_target').Char]"
+ state = { name = _show using = Animation_FadeIn_Quick
+  on_finish = "[GetVariableSystem.Set('agot_di_rusbar_eye_tab', 'base')]"
+  on_finish = "[GetVariableSystem.Set('agot_di_rusbar_eye_panel', 'offices')]"
+  on_finish = "[GetVariableSystem.Set('agot_di_rusbar_culture_search', '')]"
+  on_finish = "[GetVariableSystem.Set('agot_di_rusbar_faith_search', '')]"
+  on_finish = "[PdxGuiWidget.StackTop]"
+ }
+ vbox = {
+  using = Window_Margins
+  spacing = 8
+  header_pattern = {
+   layoutpolicy_horizontal = expanding
+   blockoverride "header_text" { text = "agot_di_rusbar_eye_interaction" }
+   blockoverride "button_close" { onclick = "[GetScriptedGui('agot_di_rusbar_eye_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+  }
+  text_single = { layoutpolicy_horizontal = expanding text = "[Character.GetUINameNoTooltip]" default_format = "#bold" }
+  text_multi = { layoutpolicy_horizontal = expanding text = "agot_di_rusbar_eye_lore" }
+  text_multi = { layoutpolicy_horizontal = expanding text = "agot_di_rusbar_eye_settings_hint" default_format = "#low" }
+  hbox = {
+   spacing = 8
+   button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "−"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_age_less').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_age_less').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+}
+
+   text_single = { text = "agot_di_rusbar_eye_age" }
+   text_single = { text = "[GetPlayer.MakeScope.Var('agot_di_rusbar_eye_age').GetValue|0]" }
+   button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "+"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_age_more').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_age_more').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+}
+
+   button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "agot_di_rusbar_eye_gender_random"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_gender_random').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('agot_di_rusbar_eye_gender').GetValue, '(CFixedPoint)50'))]"
+}
+
+   button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "agot_di_rusbar_eye_gender_male"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_gender_male').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('agot_di_rusbar_eye_gender').GetValue, '(CFixedPoint)0'))]"
+}
+
+   button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "agot_di_rusbar_eye_gender_female"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_gender_female').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('agot_di_rusbar_eye_gender').GetValue, '(CFixedPoint)100'))]"
+}
+
+  }
+  hbox = {
+   spacing = 8
+   button_standard = { layoutpolicy_horizontal = expanding
+    text = "[GetPlayer.MakeScope.Var('agot_di_rusbar_eye_culture').Culture.GetNameNoTooltip]"
+    tooltip = "agot_di_rusbar_eye_culture"
+    onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_panel', 'culture')]"
+   }
+   button_standard = { layoutpolicy_horizontal = expanding
+    text = "[GetPlayer.MakeScope.Var('agot_di_rusbar_eye_faith').Faith.GetNameNoTooltip]"
+    tooltip = "agot_di_rusbar_eye_faith"
+    onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_panel', 'faith')]"
+   }
+   button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "agot_di_rusbar_eye_reset_origin"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_reset_origin').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+}
+
+  }
+  vbox = {
+   layoutpolicy_horizontal = expanding
+   layoutpolicy_vertical = expanding
+   visible = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_panel', 'offices')]"
+   hbox = { layoutpolicy_horizontal = expanding
+button_tab = { layoutpolicy_horizontal = expanding
+ onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_tab', 'base')]"
+ down = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'base')]"
+ text_single = { parentanchor = center text = "agot_di_rusbar_tab_base" default_format = "#small" }
+}
+button_tab = { layoutpolicy_horizontal = expanding
+ onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_tab', 'general')]"
+ down = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'general')]"
+ text_single = { parentanchor = center text = "agot_di_rusbar_tab_general" default_format = "#small" }
+}
+button_tab = { layoutpolicy_horizontal = expanding
+ onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_tab', 'cultural')]"
+ down = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'cultural')]"
+ text_single = { parentanchor = center text = "agot_di_rusbar_tab_cultural" default_format = "#small" }
+}
+button_tab = { layoutpolicy_horizontal = expanding
+ onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_tab', 'titular')]"
+ down = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'titular')]"
+ text_single = { parentanchor = center text = "agot_di_rusbar_tab_titular" default_format = "#small" }
+}
+   }
+   hbox = { layoutpolicy_horizontal = expanding
+button_tab = { layoutpolicy_horizontal = expanding
+ onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_tab', 'crownlands')]"
+ down = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'crownlands')]"
+ text_single = { parentanchor = center text = "agot_di_rusbar_tab_crownlands" default_format = "#small" }
+}
+button_tab = { layoutpolicy_horizontal = expanding
+ onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_tab', 'watch')]"
+ down = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'watch')]"
+ text_single = { parentanchor = center text = "agot_di_rusbar_tab_watch" default_format = "#small" }
+}
+button_tab = { layoutpolicy_horizontal = expanding
+ onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_tab', 'camp')]"
+ down = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'camp')]"
+ text_single = { parentanchor = center text = "agot_di_rusbar_tab_camp" default_format = "#small" }
+}
+   }
+scrollbox = {
+ layoutpolicy_horizontal = expanding
+ layoutpolicy_vertical = expanding
+ visible = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'base')]"
+ blockoverride "scrollbox_content" { vbox = { layoutpolicy_horizontal = expanding spacing = 4
+ text_multi = { layoutpolicy_horizontal = expanding text = "agot_di_rusbar_eye_empty" visible = "[Not(GetScriptedGui('agot_di_rusbar_eye_tab_base_available').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('royal_architect_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_royal_architect_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_royal_architect_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_royal_architect_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_royal_architect_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('grand_preceptor_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_grand_preceptor_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_grand_preceptor_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_grand_preceptor_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_grand_preceptor_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('grand_guardian_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_grand_guardian_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_grand_guardian_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_grand_guardian_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_grand_guardian_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('grand_mentor_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_grand_mentor_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_grand_mentor_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_grand_mentor_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_grand_mentor_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('cupbearer_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_cupbearer_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_cupbearer_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_cupbearer_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_cupbearer_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('high_almoner_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_high_almoner_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_high_almoner_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_high_almoner_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_high_almoner_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('master_of_horse_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_master_of_horse_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_master_of_horse_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_master_of_horse_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_master_of_horse_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('master_of_hunt_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_master_of_hunt_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_master_of_hunt_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_master_of_hunt_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_master_of_hunt_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('food_taster_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_food_taster_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_food_taster_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_food_taster_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_food_taster_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('yeke_jarquchi_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_yeke_jarquchi_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_yeke_jarquchi_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_yeke_jarquchi_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_yeke_jarquchi_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('foreign_emissary_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_foreign_emissary_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_foreign_emissary_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_foreign_emissary_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_foreign_emissary_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('eparch_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_eparch_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_eparch_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_eparch_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_eparch_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('travel_leader_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_travel_leader_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_travel_leader_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_travel_leader_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_travel_leader_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('keeper_of_the_horses_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_keeper_of_the_horses_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_keeper_of_the_horses_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_keeper_of_the_horses_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_keeper_of_the_horses_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('wet_nurse_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_wet_nurse_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_wet_nurse_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_wet_nurse_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_wet_nurse_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('cultural_emissary_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_cultural_emissary_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_cultural_emissary_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_cultural_emissary_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_cultural_emissary_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('champion_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_champion_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_champion_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_champion_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_champion_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('master_assassin_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_master_assassin_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_master_assassin_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_master_assassin_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_master_assassin_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('court_tutor_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_court_tutor_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_court_tutor_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_court_tutor_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_court_tutor_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('boyan_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_boyan_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_boyan_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_boyan_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_boyan_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('siege_engineer_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_siege_engineer_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_siege_engineer_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_siege_engineer_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_siege_engineer_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('executioner_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_executioner_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_executioner_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_executioner_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_executioner_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('lady_in_waiting_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_lady_in_waiting_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_lady_in_waiting_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_lady_in_waiting_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_lady_in_waiting_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('court_musician_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_court_musician_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_court_musician_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_court_musician_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_court_musician_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('court_physician_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_court_physician_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_court_physician_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_court_physician_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_court_physician_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('court_astrologer_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_court_astrologer_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_court_astrologer_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_court_astrologer_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_court_astrologer_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('court_artificer_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_court_artificer_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_court_artificer_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_court_artificer_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_court_artificer_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('court_brewmaster_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_court_brewmaster_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_court_brewmaster_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_court_brewmaster_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_court_brewmaster_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('court_poet_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_court_poet_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_court_poet_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_court_poet_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_court_poet_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('court_gardener_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_court_gardener_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_court_gardener_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_court_gardener_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_court_gardener_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('court_scholar_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_court_scholar_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_court_scholar_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_court_scholar_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_court_scholar_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('chronicler_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_chronicler_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_chronicler_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_chronicler_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_chronicler_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('court_jester_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_court_jester_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_court_jester_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_court_jester_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_court_jester_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('bodyguard_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_bodyguard_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_bodyguard_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_bodyguard_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_bodyguard_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('cave_hermit_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_cave_hermit_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_cave_hermit_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_cave_hermit_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_cave_hermit_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('seneschal_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_seneschal_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_seneschal_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_seneschal_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_seneschal_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('keeper_of_swans_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_keeper_of_swans_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_keeper_of_swans_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_keeper_of_swans_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_keeper_of_swans_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('chief_eunuch_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_chief_eunuch_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_chief_eunuch_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_chief_eunuch_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_chief_eunuch_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('khlon_glan_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_khlon_glan_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_khlon_glan_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_khlon_glan_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_khlon_glan_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('keeper_of_the_harem_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_keeper_of_the_harem_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_keeper_of_the_harem_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_keeper_of_the_harem_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_keeper_of_the_harem_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('antiquarian_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_antiquarian_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_antiquarian_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_antiquarian_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_antiquarian_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('cherbi_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_cherbi_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_cherbi_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_cherbi_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_cherbi_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('yurtchi_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_yurtchi_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_yurtchi_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_yurtchi_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_yurtchi_court_position_tt"
+	size = { 0 38 }
+}
+
+ } }
+}
+scrollbox = {
+ layoutpolicy_horizontal = expanding
+ layoutpolicy_vertical = expanding
+ visible = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'general')]"
+ blockoverride "scrollbox_content" { vbox = { layoutpolicy_horizontal = expanding spacing = 4
+ text_multi = { layoutpolicy_horizontal = expanding text = "agot_di_rusbar_eye_empty" visible = "[Not(GetScriptedGui('agot_di_rusbar_eye_tab_general_available').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('admiral_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_admiral_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_admiral_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_admiral_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_admiral_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('head_dragonkeeper_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_head_dragonkeeper_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_head_dragonkeeper_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_head_dragonkeeper_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_head_dragonkeeper_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('household_guard_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_household_guard_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_household_guard_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_household_guard_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_household_guard_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('maester_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_maester_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_maester_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_maester_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_maester_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('harbormaster_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_harbormaster_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_harbormaster_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_harbormaster_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_harbormaster_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('court_smith_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_court_smith_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_court_smith_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_court_smith_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_court_smith_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('gaoler_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_gaoler_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_gaoler_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_gaoler_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_gaoler_court_position_tt"
+	size = { 0 38 }
+}
+
+ } }
+}
+scrollbox = {
+ layoutpolicy_horizontal = expanding
+ layoutpolicy_vertical = expanding
+ visible = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'cultural')]"
+ blockoverride "scrollbox_content" { vbox = { layoutpolicy_horizontal = expanding spacing = 4
+ text_multi = { layoutpolicy_horizontal = expanding text = "agot_di_rusbar_eye_empty" visible = "[Not(GetScriptedGui('agot_di_rusbar_eye_tab_cultural_available').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('bloodrider_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_bloodrider_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_bloodrider_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_bloodrider_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_bloodrider_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('master_at_arms_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_master_at_arms_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_master_at_arms_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_master_at_arms_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_master_at_arms_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('septa_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_septa_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_septa_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_septa_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_septa_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('septon_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_septon_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_septon_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_septon_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_septon_court_position_tt"
+	size = { 0 38 }
+}
+
+ } }
+}
+scrollbox = {
+ layoutpolicy_horizontal = expanding
+ layoutpolicy_vertical = expanding
+ visible = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'titular')]"
+ blockoverride "scrollbox_content" { vbox = { layoutpolicy_horizontal = expanding spacing = 4
+ text_multi = { layoutpolicy_horizontal = expanding text = "agot_di_rusbar_eye_empty" visible = "[Not(GetScriptedGui('agot_di_rusbar_eye_tab_titular_available').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('crimson_cloaks_commander_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_crimson_cloaks_commander_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_crimson_cloaks_commander_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_crimson_cloaks_commander_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_crimson_cloaks_commander_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('grey_cloaks_commander_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_grey_cloaks_commander_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_grey_cloaks_commander_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_grey_cloaks_commander_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_grey_cloaks_commander_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('first_sword_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_first_sword_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_first_sword_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_first_sword_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_first_sword_court_position_tt"
+	size = { 0 38 }
+}
+
+ } }
+}
+scrollbox = {
+ layoutpolicy_horizontal = expanding
+ layoutpolicy_vertical = expanding
+ visible = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'crownlands')]"
+ blockoverride "scrollbox_content" { vbox = { layoutpolicy_horizontal = expanding spacing = 4
+ text_multi = { layoutpolicy_horizontal = expanding text = "agot_di_rusbar_eye_empty" visible = "[Not(GetScriptedGui('agot_di_rusbar_eye_tab_crownlands_available').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('high_reeve_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_high_reeve_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_high_reeve_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_high_reeve_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_high_reeve_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('sea_watch_commander_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_sea_watch_commander_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_sea_watch_commander_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_sea_watch_commander_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_sea_watch_commander_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('royal_counter_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_royal_counter_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_royal_counter_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_royal_counter_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_royal_counter_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('royal_scales_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_royal_scales_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_royal_scales_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_royal_scales_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_royal_scales_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('keeper_of_keys_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_keeper_of_keys_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_keeper_of_keys_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_keeper_of_keys_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_keeper_of_keys_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('royal_mint_officer_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_royal_mint_officer_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_royal_mint_officer_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_royal_mint_officer_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_royal_mint_officer_court_position_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('justiciar_court_position').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_justiciar_court_position').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_justiciar_court_position').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_justiciar_court_position').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_justiciar_court_position_tt"
+	size = { 0 38 }
+}
+
+ } }
+}
+scrollbox = {
+ layoutpolicy_horizontal = expanding
+ layoutpolicy_vertical = expanding
+ visible = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'watch')]"
+ blockoverride "scrollbox_content" { vbox = { layoutpolicy_horizontal = expanding spacing = 4
+ text_multi = { layoutpolicy_horizontal = expanding text = "agot_di_rusbar_eye_empty" visible = "[Not(GetScriptedGui('agot_di_rusbar_eye_tab_watch_available').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('nw_septon').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_nw_septon').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_nw_septon').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_nw_septon').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_nw_septon_tt"
+	size = { 0 38 }
+}
+
+ } }
+}
+scrollbox = {
+ layoutpolicy_horizontal = expanding
+ layoutpolicy_vertical = expanding
+ visible = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_tab', 'camp')]"
+ blockoverride "scrollbox_content" { vbox = { layoutpolicy_horizontal = expanding spacing = 4
+ text_multi = { layoutpolicy_horizontal = expanding text = "agot_di_rusbar_eye_empty" visible = "[Not(GetScriptedGui('agot_di_rusbar_eye_tab_camp_available').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('armorer_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_armorer_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_armorer_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_armorer_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_armorer_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('chief_engineer_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_chief_engineer_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_chief_engineer_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_chief_engineer_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_chief_engineer_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('head_groom_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_head_groom_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_head_groom_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_head_groom_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_head_groom_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('camp_cook_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_camp_cook_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_camp_cook_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_camp_cook_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_camp_cook_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('camelry_captain_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_camelry_captain_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_camelry_captain_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_camelry_captain_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_camelry_captain_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('horse_archer_captain_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_horse_archer_captain_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_horse_archer_captain_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_horse_archer_captain_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_horse_archer_captain_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('light_cavalry_captain_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_light_cavalry_captain_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_light_cavalry_captain_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_light_cavalry_captain_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_light_cavalry_captain_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('light_infantry_captain_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_light_infantry_captain_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_light_infantry_captain_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_light_infantry_captain_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_light_infantry_captain_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('archer_captain_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_archer_captain_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_archer_captain_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_archer_captain_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_archer_captain_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('pike_captain_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_pike_captain_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_pike_captain_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_pike_captain_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_pike_captain_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('heavy_cavalry_captain_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_heavy_cavalry_captain_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_heavy_cavalry_captain_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_heavy_cavalry_captain_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_heavy_cavalry_captain_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('heavy_infantry_captain_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_heavy_infantry_captain_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_heavy_infantry_captain_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_heavy_infantry_captain_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_heavy_infantry_captain_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('elephantry_captain_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_elephantry_captain_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_elephantry_captain_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_elephantry_captain_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_elephantry_captain_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('quartermaster_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_quartermaster_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_quartermaster_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_quartermaster_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_quartermaster_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('camp_priest_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_camp_priest_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_camp_priest_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_camp_priest_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_camp_priest_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('laureate_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_laureate_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_laureate_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_laureate_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_laureate_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('person_haggler_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_person_haggler_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_person_haggler_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_person_haggler_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_person_haggler_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('master_bard_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_master_bard_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_master_bard_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_master_bard_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_master_bard_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('master_thief_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_master_thief_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_master_thief_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_master_thief_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_master_thief_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('witness_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_witness_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_witness_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_witness_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_witness_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('huntperson_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_huntperson_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_huntperson_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_huntperson_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_huntperson_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('second_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_second_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_second_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_second_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_second_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('stooge_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_stooge_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_stooge_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_stooge_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_stooge_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('kennelperson_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_kennelperson_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_kennelperson_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_kennelperson_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_kennelperson_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('master_of_spoils_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_master_of_spoils_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_master_of_spoils_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_master_of_spoils_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_master_of_spoils_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('head_porter_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_head_porter_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_head_porter_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_head_porter_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_head_porter_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('master_of_arms_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_master_of_arms_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_master_of_arms_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_master_of_arms_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_master_of_arms_camp_officer_tt"
+	size = { 0 38 }
+}
+button_standard = {
+	layoutpolicy_horizontal = expanding
+	text = "[GetCourtPositionType('chief_forager_camp_officer').GetName]"
+	onclick = "[GetScriptedGui('agot_di_rusbar_eye_create_chief_forager_camp_officer').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	visible = "[GetScriptedGui('agot_di_rusbar_eye_create_chief_forager_camp_officer').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	enabled = "[GetScriptedGui('agot_di_rusbar_eye_create_chief_forager_camp_officer').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+	tooltip = "agot_di_rusbar_profile_chief_forager_camp_officer_tt"
+	size = { 0 38 }
+}
+
+ } }
+}
+  }
+vbox = {
+ layoutpolicy_horizontal = expanding layoutpolicy_vertical = expanding spacing = 8
+ visible = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_panel', 'culture')]"
+ text_multi = { layoutpolicy_horizontal = expanding text = "agot_di_rusbar_eye_search_hint" }
+ hbox = { layoutpolicy_horizontal = expanding spacing = 6
+  editbox_search_field = { layoutpolicy_horizontal = expanding
+   blockoverride "editbox_properties" {
+    name = "agot_di_rusbar_culture_search_box"
+    text = "[GetVariableSystem.Get('agot_di_rusbar_culture_search')]"
+    ontextedited = "[GetVariableSystem.Set('agot_di_rusbar_culture_search')]"
+   }
+  }
+  button_standard = { text = "agot_di_rusbar_eye_search_clear" onclick = "[GetVariableSystem.Set('agot_di_rusbar_culture_search', '')]" }
+  button_standard = { text = "agot_di_rusbar_eye_back" onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_panel', 'offices')]" }
+ }
+ scrollbox = { layoutpolicy_horizontal = expanding layoutpolicy_vertical = expanding
+  blockoverride "scrollbox_content" {
+   vbox = { layoutpolicy_horizontal = expanding
+    datamodel = "[GetPlayer.MakeScope.GetList('agot_di_rusbar_eye_cultures')]"
+    item = { button_standard = {
+     layoutpolicy_horizontal = expanding size = { 0 34 }
+     visible = "[Or(StringIsEmpty(GetVariableSystem.Get('agot_di_rusbar_culture_search')), EqualTo_string(GetVariableSystem.Get('agot_di_rusbar_culture_search'), Scope.Culture.GetNameNoTooltip))]"
+     text = "[Scope.Culture.GetNameNoTooltip]"
+     onclick = "[GetScriptedGui('agot_di_rusbar_eye_select_culture').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('agot_di_rusbar_selection', Scope.Culture.MakeScope).End)]"
+     onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_panel', 'offices')]"
+    } }
+   }
+  }
+ }
+}
+vbox = {
+ layoutpolicy_horizontal = expanding layoutpolicy_vertical = expanding spacing = 8
+ visible = "[GetVariableSystem.HasValue('agot_di_rusbar_eye_panel', 'faith')]"
+ text_multi = { layoutpolicy_horizontal = expanding text = "agot_di_rusbar_eye_search_hint" }
+ hbox = { layoutpolicy_horizontal = expanding spacing = 6
+  editbox_search_field = { layoutpolicy_horizontal = expanding
+   blockoverride "editbox_properties" {
+    name = "agot_di_rusbar_faith_search_box"
+    text = "[GetVariableSystem.Get('agot_di_rusbar_faith_search')]"
+    ontextedited = "[GetVariableSystem.Set('agot_di_rusbar_faith_search')]"
+   }
+  }
+  button_standard = { text = "agot_di_rusbar_eye_search_clear" onclick = "[GetVariableSystem.Set('agot_di_rusbar_faith_search', '')]" }
+  button_standard = { text = "agot_di_rusbar_eye_back" onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_panel', 'offices')]" }
+ }
+ scrollbox = { layoutpolicy_horizontal = expanding layoutpolicy_vertical = expanding
+  blockoverride "scrollbox_content" {
+   vbox = { layoutpolicy_horizontal = expanding
+    datamodel = "[GetPlayer.MakeScope.GetList('agot_di_rusbar_eye_faiths')]"
+    item = { button_standard = {
+     layoutpolicy_horizontal = expanding size = { 0 34 }
+     visible = "[Or(StringIsEmpty(GetVariableSystem.Get('agot_di_rusbar_faith_search')), EqualTo_string(GetVariableSystem.Get('agot_di_rusbar_faith_search'), Scope.Faith.GetNameNoTooltip))]"
+     text = "[Scope.Faith.GetNameNoTooltip]"
+     onclick = "[GetScriptedGui('agot_di_rusbar_eye_select_faith').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('agot_di_rusbar_selection', Scope.Faith.MakeScope).End)]"
+     onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_panel', 'offices')]"
+    } }
+   }
+  }
+ }
+}
+hbox = { layoutpolicy_horizontal = expanding
+ visible = "[GetPlayer.MakeScope.Var('agot_di_rusbar_eye_last').IsSet]"
+ datacontext = "[GetPlayer.MakeScope.Var('agot_di_rusbar_eye_last').Char]"
+ portrait_head = {}
+ vbox = { layoutpolicy_horizontal = expanding
+  text_single = { text = "agot_di_rusbar_eye_created" }
+  text_single = { text = "[Character.GetUIName]" }
+  text_multi = { layoutpolicy_horizontal = expanding text = "agot_di_rusbar_eye_failed" visible = "[GetPlayer.MakeScope.Var('agot_di_rusbar_eye_failed').IsSet]" }
+ }
+}
+ }
+}

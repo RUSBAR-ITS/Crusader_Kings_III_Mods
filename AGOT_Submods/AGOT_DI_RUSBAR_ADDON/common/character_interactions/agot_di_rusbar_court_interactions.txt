@@ -1,0 +1,66 @@
+agot_di_rusbar_eye_interaction = {
+	interface_priority = 248
+	category = interaction_category_cheat_menu
+	icon = religious
+	desc = agot_di_rusbar_eye_interaction_desc
+	common_interaction = no
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+	is_available = { is_ai = no }
+	ai_will_do = { base = 0 }
+	is_shown = {
+		agot_di_rusbar_human_context_trigger = yes
+	}
+	can_send = {
+		custom_tooltip = {
+			text = agot_di_rusbar_eye_target_tt
+			agot_di_rusbar_human_context_trigger = yes
+			scope:recipient = { is_ruler = yes }
+		}
+	}
+	on_accept = {
+		if = {
+			limit = {
+				agot_di_rusbar_human_context_trigger = yes
+				scope:recipient = { is_ruler = yes }
+			}
+			scope:actor = {
+				agot_di_rusbar_eye_open_effect = yes
+			}
+		}
+	}
+}
+agot_di_rusbar_treatises_interaction = {
+	interface_priority = 248
+	category = interaction_category_cheat_menu
+	icon = religious
+	desc = agot_di_rusbar_treatises_interaction_desc
+	common_interaction = no
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+	is_available = { is_ai = no }
+	ai_will_do = { base = 0 }
+	is_shown = {
+		agot_di_rusbar_human_context_trigger = yes
+	}
+	can_send = {
+		custom_tooltip = {
+			text = agot_di_rusbar_treatises_valid_tt
+			agot_di_rusbar_human_context_trigger = yes
+			scope:recipient = { agot_di_rusbar_supported_court_position_trigger = yes }
+		}
+	}
+	on_accept = {
+		if = {
+			limit = {
+				agot_di_rusbar_human_context_trigger = yes
+				scope:recipient = { agot_di_rusbar_supported_court_position_trigger = yes }
+			}
+			scope:recipient = {
+				agot_di_rusbar_treatises_effect = yes
+			}
+		}
+	}
+}
