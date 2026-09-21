@@ -14,6 +14,11 @@ agot_di_rusbar_prepare_admiral_court_position_effect = {
 	add_stewardship_skill = 50
 	if = { limit = { has_trait = humble } remove_trait = humble }
 	if = { limit = { NOT = { has_trait = authoritative } } add_trait = authoritative }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_admiral_court_position_personality_effect
+	}
 }
 
 # antiquarian_court_position: Хранитель древностей
@@ -29,6 +34,11 @@ agot_di_rusbar_prepare_antiquarian_court_position_effect = {
 	if = { limit = { NOT = { has_trait = diligent } } add_trait = diligent }
 	if = { limit = { NOT = { has_trait = administrator } } add_trait = administrator }
 	if = { limit = { NOT = { has_trait = overseer } } add_trait = overseer }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_antiquarian_court_position_personality_effect
+	}
 }
 
 # archer_captain_camp_officer: Капитан лучников
@@ -48,6 +58,11 @@ agot_di_rusbar_prepare_archer_captain_camp_officer_effect = {
 		if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
 		add_trait_xp = { trait = organizer value = 100 }
 	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # armorer_camp_officer: Бронник
@@ -61,6 +76,11 @@ agot_di_rusbar_prepare_armorer_camp_officer_effect = {
 	# Raise base learning to at least 60; engine clamps base skills at zero.
 	add_learning_skill = -60
 	add_learning_skill = 60
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_deep_lake_keeper: Командующий Глубокого Озера
@@ -76,6 +96,11 @@ agot_di_rusbar_prepare_b_deep_lake_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_eastwatch_by_the_sea_keeper: Командующий Восточного Дозора-у-Моря
@@ -91,6 +116,11 @@ agot_di_rusbar_prepare_b_eastwatch_by_the_sea_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_greenguard_keeper: Командующий Зелёного Стража
@@ -106,6 +136,11 @@ agot_di_rusbar_prepare_b_greenguard_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_greyguard_keeper: Командующий Серого Стража
@@ -121,6 +156,11 @@ agot_di_rusbar_prepare_b_greyguard_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_hoarfrost_hill_keeper: Командующий Морозного Холма
@@ -136,6 +176,11 @@ agot_di_rusbar_prepare_b_hoarfrost_hill_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_icemark_keeper: Командующий Ледового Порога
@@ -151,6 +196,11 @@ agot_di_rusbar_prepare_b_icemark_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_long_barrow_keeper: Командующий Длинного Холма
@@ -166,6 +216,11 @@ agot_di_rusbar_prepare_b_long_barrow_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_oakenshield_keeper: Командующий Дубового Щита
@@ -181,6 +236,11 @@ agot_di_rusbar_prepare_b_oakenshield_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_queensgate_keeper: Командующий Врат Королевы
@@ -196,6 +256,11 @@ agot_di_rusbar_prepare_b_queensgate_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_rimegate_keeper: Командующий Инистых Врат
@@ -211,6 +276,11 @@ agot_di_rusbar_prepare_b_rimegate_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_sable_hall_keeper: Командующий Собольего замка
@@ -226,6 +296,11 @@ agot_di_rusbar_prepare_b_sable_hall_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_sentinel_stand_keeper: Командующий Сторожевой Вышки
@@ -241,6 +316,11 @@ agot_di_rusbar_prepare_b_sentinel_stand_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_stonedoor_keeper: Командующий Каменной Двери
@@ -256,6 +336,11 @@ agot_di_rusbar_prepare_b_stonedoor_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_the_nightfort_keeper: Командующий Твердыни Ночи
@@ -271,6 +356,11 @@ agot_di_rusbar_prepare_b_the_nightfort_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_the_shadow_tower_keeper: Командующий Сумеречной Башни
@@ -286,6 +376,11 @@ agot_di_rusbar_prepare_b_the_shadow_tower_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_the_torches_keeper: Командующий Факела
@@ -301,6 +396,11 @@ agot_di_rusbar_prepare_b_the_torches_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_westwatch_by_the_bridge_keeper: Командующий Западного Дозора-у-Моста
@@ -316,6 +416,11 @@ agot_di_rusbar_prepare_b_westwatch_by_the_bridge_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # b_woodswatch_by_the_pool_keeper: Командующий Лесного Дозора-у-Пруда
@@ -331,6 +436,11 @@ agot_di_rusbar_prepare_b_woodswatch_by_the_pool_keeper_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # bloodrider_court_position: Кровный всадник
@@ -352,6 +462,11 @@ agot_di_rusbar_prepare_bloodrider_court_position_effect = {
 	if = { limit = { NOT = { has_trait = brave } } add_trait = brave }
 	if = { limit = { has_trait = trusting } remove_trait = trusting }
 	if = { limit = { NOT = { has_trait = paranoid } } add_trait = paranoid }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # bodyguard_court_position: Присяжный щит
@@ -371,6 +486,11 @@ agot_di_rusbar_prepare_bodyguard_court_position_effect = {
 	if = { limit = { NOT = { has_trait = brave } } add_trait = brave }
 	if = { limit = { has_trait = trusting } remove_trait = trusting }
 	if = { limit = { NOT = { has_trait = paranoid } } add_trait = paranoid }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # boyan_court_position: Ноян
@@ -439,6 +559,11 @@ agot_di_rusbar_prepare_boyan_court_position_effect = {
 	add_trait_xp = { trait = organizer value = 100 }
 	if = { limit = { NOT = { has_trait = winter_soldier } } add_trait = winter_soldier }
 	add_trait_xp = { trait = winter_soldier value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # camelry_captain_camp_officer: Капитан верблюжьей кавалерии
@@ -458,6 +583,11 @@ agot_di_rusbar_prepare_camelry_captain_camp_officer_effect = {
 		if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
 		add_trait_xp = { trait = organizer value = 100 }
 	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # camp_cook_camp_officer: Главный повар
@@ -476,6 +606,11 @@ agot_di_rusbar_prepare_camp_cook_camp_officer_effect = {
 	if = { limit = { NOT = { has_trait = lifestyle_herbalist } } add_trait = lifestyle_herbalist }
 	if = { limit = { NOT = { has_trait = lifestyle_reveler } } add_trait = lifestyle_reveler }
 	add_trait_xp = { trait = lifestyle_reveler value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_camp_cook_camp_officer_personality_effect
+	}
 }
 
 # camp_priest_camp_officer: Лагерный священник
@@ -490,6 +625,11 @@ agot_di_rusbar_prepare_camp_priest_camp_officer_effect = {
 	if = { limit = { NOT = { has_trait = scholar } } add_trait = scholar }
 	if = { limit = { NOT = { has_trait = lifestyle_mystic } } add_trait = lifestyle_mystic }
 	add_trait_xp = { trait = lifestyle_mystic value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # cave_hermit_court_position: Садовый отшельник
@@ -503,6 +643,11 @@ agot_di_rusbar_prepare_cave_hermit_court_position_effect = {
 	add_trait_xp = { trait = lifestyle_mystic value = 100 }
 	if = { limit = { NOT = { has_trait = lifestyle_herbalist } } add_trait = lifestyle_herbalist }
 	if = { limit = { NOT = { has_trait = lifestyle_gardener } } add_trait = lifestyle_gardener }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # champion_court_position: Личный воитель
@@ -521,6 +666,11 @@ agot_di_rusbar_prepare_champion_court_position_effect = {
 	if = { limit = { NOT = { has_trait = shieldmaiden } } add_trait = shieldmaiden }
 	if = { limit = { has_trait = craven } remove_trait = craven }
 	if = { limit = { NOT = { has_trait = brave } } add_trait = brave }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # cherbi_court_position: Черби
@@ -546,6 +696,11 @@ agot_di_rusbar_prepare_cherbi_court_position_effect = {
 	if = { limit = { NOT = { has_trait = diligent } } add_trait = diligent }
 	if = { limit = { has_trait = craven } remove_trait = craven }
 	if = { limit = { NOT = { has_trait = brave } } add_trait = brave }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # chief_engineer_camp_officer: Главный инженер
@@ -560,6 +715,11 @@ agot_di_rusbar_prepare_chief_engineer_camp_officer_effect = {
 	add_martial_skill = -60
 	add_martial_skill = 60
 	if = { limit = { NOT = { has_trait = strategist } } add_trait = strategist }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # chief_eunuch_court_position: Старший евнух
@@ -577,6 +737,11 @@ agot_di_rusbar_prepare_chief_eunuch_court_position_effect = {
 		limit = { is_eunuch_trigger = no }
 		if = { limit = { has_trait = beardless_eunuch } remove_trait = beardless_eunuch }
 		if = { limit = { NOT = { has_trait = eunuch_1 } } add_trait = eunuch_1 }
+	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
 	}
 }
 
@@ -597,6 +762,11 @@ agot_di_rusbar_prepare_chief_forager_camp_officer_effect = {
 	if = { limit = { NOT = { has_trait = lifestyle_traveler } } add_trait = lifestyle_traveler }
 	add_trait_xp = { trait = lifestyle_traveler track = travel value = 100 }
 	add_trait_xp = { trait = lifestyle_traveler track = danger value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # chronicler_court_position: Придворный хронист
@@ -614,6 +784,11 @@ agot_di_rusbar_prepare_chronicler_court_position_effect = {
 	if = { limit = { has_trait = shy } remove_trait = shy }
 	if = { limit = { NOT = { has_trait = gregarious } } add_trait = gregarious }
 	if = { limit = { NOT = { has_trait = diplomat } } add_trait = diplomat }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # court_artificer_court_position: Придворный мастер
@@ -804,6 +979,11 @@ agot_di_rusbar_prepare_court_artificer_court_position_effect = {
 			}
 		}
 	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # court_astrologer_court_position: Придворный звездочет
@@ -841,6 +1021,11 @@ agot_di_rusbar_prepare_court_astrologer_court_position_effect = {
 	if = { limit = { has_trait = education_stewardship_4 } remove_trait = education_stewardship_4 }
 	if = { limit = { has_trait = education_stewardship_5 } remove_trait = education_stewardship_5 }
 	if = { limit = { NOT = { has_trait = education_learning_5 } } add_trait = education_learning_5 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # court_brewmaster_court_position: Придворный пивовар
@@ -863,6 +1048,11 @@ agot_di_rusbar_prepare_court_brewmaster_court_position_effect = {
 	if = { limit = { NOT = { has_trait = humble } } add_trait = humble }
 	if = { limit = { NOT = { has_trait = lifestyle_reveler } } add_trait = lifestyle_reveler }
 	add_trait_xp = { trait = lifestyle_reveler value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_court_brewmaster_court_position_personality_effect
+	}
 }
 
 # court_gardener_court_position: Придворный садовник
@@ -877,6 +1067,11 @@ agot_di_rusbar_prepare_court_gardener_court_position_effect = {
 	if = { limit = { has_trait = impatient } remove_trait = impatient }
 	if = { limit = { NOT = { has_trait = patient } } add_trait = patient }
 	if = { limit = { NOT = { has_trait = architect } } add_trait = architect }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # court_jester_court_position: Придворный шут
@@ -900,6 +1095,11 @@ agot_di_rusbar_prepare_court_jester_court_position_effect = {
 	if = { limit = { NOT = { has_trait = lifestyle_poet } } add_trait = lifestyle_poet }
 	add_trait_xp = { trait = lifestyle_poet value = 100 }
 	if = { limit = { NOT = { has_trait = athletic } } add_trait = athletic }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # court_musician_court_position: Придворный бард
@@ -916,6 +1116,11 @@ agot_di_rusbar_prepare_court_musician_court_position_effect = {
 	add_trait_xp = { trait = lifestyle_poet value = 100 }
 	if = { limit = { NOT = { has_trait = lifestyle_reveler } } add_trait = lifestyle_reveler }
 	add_trait_xp = { trait = lifestyle_reveler value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # court_physician_court_position: Придворный врач
@@ -956,6 +1161,11 @@ agot_di_rusbar_prepare_court_physician_court_position_effect = {
 	if = { limit = { has_trait = education_stewardship_4 } remove_trait = education_stewardship_4 }
 	if = { limit = { has_trait = education_stewardship_5 } remove_trait = education_stewardship_5 }
 	if = { limit = { NOT = { has_trait = education_learning_5 } } add_trait = education_learning_5 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # court_poet_court_position: Придворный поэт
@@ -975,6 +1185,11 @@ agot_di_rusbar_prepare_court_poet_court_position_effect = {
 	if = { limit = { NOT = { has_trait = diplomat } } add_trait = diplomat }
 	if = { limit = { NOT = { has_trait = lifestyle_poet } } add_trait = lifestyle_poet }
 	add_trait_xp = { trait = lifestyle_poet value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # court_scholar_court_position: Придворный ученый
@@ -997,6 +1212,11 @@ agot_di_rusbar_prepare_court_scholar_court_position_effect = {
 	if = { limit = { NOT = { has_trait = intellect_good_3 } } add_trait = intellect_good_3 }
 	if = { limit = { has_trait = zealous } remove_trait = zealous }
 	if = { limit = { NOT = { has_trait = inquisitive } } add_trait = inquisitive }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_court_scholar_court_position_personality_effect
+	}
 }
 
 # court_smith_court_position: Придворный кузнец
@@ -1029,6 +1249,11 @@ agot_di_rusbar_prepare_court_smith_court_position_effect = {
 	if = { limit = { has_trait = weak } remove_trait = weak }
 	if = { limit = { NOT = { has_trait = physique_good_3 } } add_trait = physique_good_3 }
 	add_character_flag = can_reforge_valyrian_steel
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_antiquarian_court_position_personality_effect
+	}
 }
 
 # court_tutor_court_position: Наставник
@@ -1066,6 +1291,11 @@ agot_di_rusbar_prepare_court_tutor_court_position_effect = {
 	if = { limit = { NOT = { has_trait = intellect_good_3 } } add_trait = intellect_good_3 }
 	if = { limit = { has_trait = zealous } remove_trait = zealous }
 	if = { limit = { NOT = { has_trait = inquisitive } } add_trait = inquisitive }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_court_scholar_court_position_personality_effect
+	}
 }
 
 # crimson_cloaks_commander_court_position: Командующий Алых плащей
@@ -1088,6 +1318,11 @@ agot_di_rusbar_prepare_crimson_cloaks_commander_court_position_effect = {
 	if = { limit = { NOT = { has_trait = diligent } } add_trait = diligent }
 	if = { limit = { has_trait = arbitrary } remove_trait = arbitrary }
 	if = { limit = { NOT = { has_trait = just } } add_trait = just }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # cultural_emissary_court_position: Культурный эмиссар
@@ -1127,6 +1362,11 @@ agot_di_rusbar_prepare_cultural_emissary_court_position_effect = {
 	if = { limit = { NOT = { knows_language = language_agot_summer } } learn_language = language_agot_summer }
 	if = { limit = { NOT = { knows_language = language_agot_trade } } learn_language = language_agot_trade }
 	if = { limit = { NOT = { knows_language = language_agot_yiti } } learn_language = language_agot_yiti }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # cupbearer_court_position: Виночерпий
@@ -1142,6 +1382,11 @@ agot_di_rusbar_prepare_cupbearer_court_position_effect = {
 	if = { limit = { NOT = { has_trait = honest } } add_trait = honest }
 	if = { limit = { has_trait = paranoid } remove_trait = paranoid }
 	if = { limit = { NOT = { has_trait = trusting } } add_trait = trusting }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # elephantry_captain_camp_officer: Капитан элефантерии
@@ -1160,6 +1405,11 @@ agot_di_rusbar_prepare_elephantry_captain_camp_officer_effect = {
 		limit = { has_commander_trait_trigger = no }
 		if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
 		add_trait_xp = { trait = organizer value = 100 }
+	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
 	}
 }
 
@@ -1192,6 +1442,11 @@ agot_di_rusbar_prepare_eparch_court_position_effect = {
 	if = { limit = { has_trait = education_republican_knowledge_3 } remove_trait = education_republican_knowledge_3 }
 	if = { limit = { has_trait = education_republican_knowledge_5 } remove_trait = education_republican_knowledge_5 }
 	if = { limit = { NOT = { has_trait = education_republican_knowledge_4 } } add_trait = education_republican_knowledge_4 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # executioner_court_position: Палач
@@ -1209,6 +1464,11 @@ agot_di_rusbar_prepare_executioner_court_position_effect = {
 	if = { limit = { has_trait = callous } remove_trait = callous }
 	if = { limit = { has_trait = compassionate } remove_trait = compassionate }
 	if = { limit = { NOT = { has_trait = sadistic } } add_trait = sadistic }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # favored_minister_court_position: Приближенный министр
@@ -1243,6 +1503,11 @@ agot_di_rusbar_prepare_favored_minister_court_position_effect = {
 		add_learning_skill = -50
 		add_learning_skill = 50
 	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # first_sword_court_position: Первый Меч Браавоса
@@ -1261,6 +1526,11 @@ agot_di_rusbar_prepare_first_sword_court_position_effect = {
 	if = { limit = { NOT = { has_trait = brave } } add_trait = brave }
 	if = { limit = { has_trait = trusting } remove_trait = trusting }
 	if = { limit = { NOT = { has_trait = paranoid } } add_trait = paranoid }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # food_taster_court_position: Дегустатор блюд
@@ -1279,6 +1549,11 @@ agot_di_rusbar_prepare_food_taster_court_position_effect = {
 	if = { limit = { NOT = { has_trait = lifestyle_gardener } } add_trait = lifestyle_gardener }
 	if = { limit = { has_trait = paranoid } remove_trait = paranoid }
 	if = { limit = { NOT = { has_trait = trusting } } add_trait = trusting }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_camp_cook_camp_officer_personality_effect
+	}
 }
 
 # foreign_emissary_court_position: Иноземный эмиссар
@@ -1306,6 +1581,11 @@ agot_di_rusbar_prepare_foreign_emissary_court_position_effect = {
 	if = { limit = { has_trait = eccentric } remove_trait = eccentric }
 	if = { limit = { has_trait = fickle } remove_trait = fickle }
 	if = { limit = { NOT = { has_trait = stubborn } } add_trait = stubborn }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_court_brewmaster_court_position_personality_effect
+	}
 }
 
 # gaoler_court_position: Тюремщик
@@ -1327,6 +1607,11 @@ agot_di_rusbar_prepare_gaoler_court_position_effect = {
 		if = { limit = { has_trait = sadistic } remove_trait = sadistic }
 		if = { limit = { NOT = { has_trait = callous } } add_trait = callous }
 	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_gaoler_court_position_personality_effect
+	}
 }
 
 # goldcloaks_court_position: Командующий Городской стражей
@@ -1339,6 +1624,11 @@ agot_di_rusbar_prepare_goldcloaks_court_position_effect = {
 	add_martial_skill = 25
 	if = { limit = { NOT = { has_trait = administrator } } add_trait = administrator }
 	if = { limit = { NOT = { has_trait = overseer } } add_trait = overseer }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # grand_guardian_court_position: Верховный защитник
@@ -1371,6 +1661,11 @@ agot_di_rusbar_prepare_grand_guardian_court_position_effect = {
 	if = { limit = { has_trait = intellect_bad_2 } remove_trait = intellect_bad_2 }
 	if = { limit = { has_trait = intellect_bad_3 } remove_trait = intellect_bad_3 }
 	if = { limit = { NOT = { has_trait = shrewd } } add_trait = shrewd }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # grand_mentor_court_position: Верховный наставник
@@ -1403,6 +1698,11 @@ agot_di_rusbar_prepare_grand_mentor_court_position_effect = {
 	if = { limit = { has_trait = intellect_bad_2 } remove_trait = intellect_bad_2 }
 	if = { limit = { has_trait = intellect_bad_3 } remove_trait = intellect_bad_3 }
 	if = { limit = { NOT = { has_trait = shrewd } } add_trait = shrewd }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # grand_preceptor_court_position: Великий учитель
@@ -1435,6 +1735,11 @@ agot_di_rusbar_prepare_grand_preceptor_court_position_effect = {
 	if = { limit = { has_trait = intellect_bad_2 } remove_trait = intellect_bad_2 }
 	if = { limit = { has_trait = intellect_bad_3 } remove_trait = intellect_bad_3 }
 	if = { limit = { NOT = { has_trait = shrewd } } add_trait = shrewd }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # grey_cloaks_commander_court_position: Командующий Брусчатовой стражей
@@ -1457,6 +1762,11 @@ agot_di_rusbar_prepare_grey_cloaks_commander_court_position_effect = {
 	if = { limit = { NOT = { has_trait = diligent } } add_trait = diligent }
 	if = { limit = { has_trait = arbitrary } remove_trait = arbitrary }
 	if = { limit = { NOT = { has_trait = just } } add_trait = just }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # harbormaster_court_position: Начальник порта
@@ -1478,6 +1788,11 @@ agot_di_rusbar_prepare_harbormaster_court_position_effect = {
 	if = { limit = { NOT = { has_trait = just } } add_trait = just }
 	if = { limit = { NOT = { has_trait = lifestyle_mariner } } add_trait = lifestyle_mariner }
 	add_trait_xp = { trait = lifestyle_mariner value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_harbormaster_court_position_personality_effect
+	}
 }
 
 # head_dragonkeeper_court_position: Главный драконоблюститель
@@ -1494,6 +1809,11 @@ agot_di_rusbar_prepare_head_dragonkeeper_court_position_effect = {
 	add_prowess_skill = -50
 	add_prowess_skill = 50
 	if = { limit = { NOT = { knows_language = language_agot_valyrian } } learn_language = language_agot_valyrian }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # head_groom_camp_officer: Главный конюх
@@ -1519,6 +1839,11 @@ agot_di_rusbar_prepare_head_groom_camp_officer_effect = {
 	if = { limit = { NOT = { has_trait = lifestyle_traveler } } add_trait = lifestyle_traveler }
 	add_trait_xp = { trait = lifestyle_traveler track = travel value = 100 }
 	add_trait_xp = { trait = lifestyle_traveler track = danger value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # head_porter_camp_officer: Старший дежурный
@@ -1534,6 +1859,11 @@ agot_di_rusbar_prepare_head_porter_camp_officer_effect = {
 	add_stewardship_skill = 60
 	if = { limit = { NOT = { has_trait = logistician } } add_trait = logistician }
 	add_trait_xp = { trait = logistician value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # heavy_cavalry_captain_camp_officer: Капитан тяжелой кавалерии
@@ -1553,6 +1883,11 @@ agot_di_rusbar_prepare_heavy_cavalry_captain_camp_officer_effect = {
 		if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
 		add_trait_xp = { trait = organizer value = 100 }
 	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # heavy_infantry_captain_camp_officer: Капитан тяжелой пехоты
@@ -1571,6 +1906,11 @@ agot_di_rusbar_prepare_heavy_infantry_captain_camp_officer_effect = {
 		limit = { has_commander_trait_trigger = no }
 		if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
 		add_trait_xp = { trait = organizer value = 100 }
+	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
 	}
 }
 
@@ -1595,6 +1935,11 @@ agot_di_rusbar_prepare_high_almoner_court_position_effect = {
 		limit = { culture = { has_cultural_parameter = devoted_trait_bonuses } }
 		if = { limit = { NOT = { has_trait = devoted } } add_trait = devoted }
 	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_high_almoner_court_position_personality_effect
+	}
 }
 
 # high_reeve_court_position: Верховный рив
@@ -1618,6 +1963,11 @@ agot_di_rusbar_prepare_high_reeve_court_position_effect = {
 	if = { limit = { NOT = { has_trait = just } } add_trait = just }
 	if = { limit = { has_trait = impatient } remove_trait = impatient }
 	if = { limit = { NOT = { has_trait = patient } } add_trait = patient }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_high_almoner_court_position_personality_effect
+	}
 }
 
 # horse_archer_captain_camp_officer: Капитан конных лучников
@@ -1636,6 +1986,11 @@ agot_di_rusbar_prepare_horse_archer_captain_camp_officer_effect = {
 		limit = { has_commander_trait_trigger = no }
 		if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
 		add_trait_xp = { trait = organizer value = 100 }
+	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
 	}
 }
 
@@ -1657,6 +2012,11 @@ agot_di_rusbar_prepare_household_guard_court_position_effect = {
 	add_trait_xp = { trait = lifestyle_blademaster value = 100 }
 	if = { limit = { has_trait = trusting } remove_trait = trusting }
 	if = { limit = { NOT = { has_trait = paranoid } } add_trait = paranoid }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_admiral_court_position_personality_effect
+	}
 }
 
 # huntperson_camp_officer: Охотник
@@ -1675,6 +2035,11 @@ agot_di_rusbar_prepare_huntperson_camp_officer_effect = {
 	add_trait_xp = { trait = lifestyle_hunter track = hunter value = 100 }
 	if = { limit = { has_trait = craven } remove_trait = craven }
 	if = { limit = { NOT = { has_trait = brave } } add_trait = brave }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # justiciar_court_position: Юстициарий
@@ -1699,6 +2064,11 @@ agot_di_rusbar_prepare_justiciar_court_position_effect = {
 	if = { limit = { NOT = { has_trait = just } } add_trait = just }
 	if = { limit = { has_trait = impatient } remove_trait = impatient }
 	if = { limit = { NOT = { has_trait = patient } } add_trait = patient }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_high_almoner_court_position_personality_effect
+	}
 }
 
 # keeper_of_keys_court_position: Хранитель ключей
@@ -1714,6 +2084,11 @@ agot_di_rusbar_prepare_keeper_of_keys_court_position_effect = {
 	if = { limit = { NOT = { has_trait = overseer } } add_trait = overseer }
 	if = { limit = { has_trait = lazy } remove_trait = lazy }
 	if = { limit = { NOT = { has_trait = diligent } } add_trait = diligent }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # keeper_of_swans_court_position: Смотрители лебедей
@@ -1726,6 +2101,11 @@ agot_di_rusbar_prepare_keeper_of_swans_court_position_effect = {
 	add_stewardship_skill = 50
 	if = { limit = { NOT = { has_trait = lifestyle_hunter } } add_trait = lifestyle_hunter }
 	add_trait_xp = { trait = lifestyle_hunter track = hunter value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # keeper_of_the_harem_court_position: Хранитель гарема
@@ -1759,6 +2139,11 @@ agot_di_rusbar_prepare_keeper_of_the_harem_court_position_effect = {
 	if = { limit = { has_trait = intellect_bad_2 } remove_trait = intellect_bad_2 }
 	if = { limit = { has_trait = intellect_bad_3 } remove_trait = intellect_bad_3 }
 	if = { limit = { NOT = { has_trait = shrewd } } add_trait = shrewd }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # keeper_of_the_horses_court_position: Конюший
@@ -1791,6 +2176,11 @@ agot_di_rusbar_prepare_keeper_of_the_horses_court_position_effect = {
 	if = { limit = { NOT = { has_trait = lifestyle_traveler } } add_trait = lifestyle_traveler }
 	add_trait_xp = { trait = lifestyle_traveler track = travel value = 100 }
 	add_trait_xp = { trait = lifestyle_traveler track = danger value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_high_almoner_court_position_personality_effect
+	}
 }
 
 # kennelperson_camp_officer: Псарь
@@ -1804,6 +2194,11 @@ agot_di_rusbar_prepare_kennelperson_camp_officer_effect = {
 	# Raise base prowess to at least 60; engine clamps base skills at zero.
 	add_prowess_skill = -60
 	add_prowess_skill = 60
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # khlon_glan_court_position: Хлон Глан
@@ -1820,6 +2215,11 @@ agot_di_rusbar_prepare_khlon_glan_court_position_effect = {
 	if = { limit = { NOT = { has_trait = overseer } } add_trait = overseer }
 	if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
 	add_trait_xp = { trait = organizer value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # lady_in_waiting_court_position: Придворная дама
@@ -1833,6 +2233,11 @@ agot_di_rusbar_prepare_lady_in_waiting_court_position_effect = {
 	if = { limit = { NOT = { has_trait = gregarious } } add_trait = gregarious }
 	if = { limit = { has_trait = deceitful } remove_trait = deceitful }
 	if = { limit = { NOT = { has_trait = honest } } add_trait = honest }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # laureate_camp_officer: Лауреат
@@ -1851,6 +2256,11 @@ agot_di_rusbar_prepare_laureate_camp_officer_effect = {
 	add_intrigue_skill = 60
 	if = { limit = { NOT = { has_trait = lifestyle_poet } } add_trait = lifestyle_poet }
 	add_trait_xp = { trait = lifestyle_poet value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # light_cavalry_captain_camp_officer: Капитан легкой кавалерии
@@ -1870,6 +2280,11 @@ agot_di_rusbar_prepare_light_cavalry_captain_camp_officer_effect = {
 		if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
 		add_trait_xp = { trait = organizer value = 100 }
 	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # light_infantry_captain_camp_officer: Капитан легкой пехоты
@@ -1888,6 +2303,11 @@ agot_di_rusbar_prepare_light_infantry_captain_camp_officer_effect = {
 		limit = { has_commander_trait_trigger = no }
 		if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
 		add_trait_xp = { trait = organizer value = 100 }
+	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
 	}
 }
 
@@ -1910,6 +2330,11 @@ agot_di_rusbar_prepare_maester_court_position_effect = {
 	if = { limit = { has_trait = disgraced_maester } remove_trait = disgraced_maester }
 	if = { limit = { NOT = { has_trait = maester } } add_trait = maester }
 	add_trait_xp = { trait = maester value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_court_scholar_court_position_personality_effect
+	}
 }
 
 # master_assassin_court_position: Мастер-ассасин
@@ -1938,6 +2363,11 @@ agot_di_rusbar_prepare_master_assassin_court_position_effect = {
 	if = { limit = { NOT = { has_trait = zealous } } add_trait = zealous }
 	if = { limit = { has_trait = craven } remove_trait = craven }
 	if = { limit = { NOT = { has_trait = brave } } add_trait = brave }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_master_assassin_court_position_personality_effect
+	}
 }
 
 # master_at_arms_court_position: Мастер над оружием
@@ -1950,6 +2380,11 @@ agot_di_rusbar_prepare_master_at_arms_court_position_effect = {
 	add_stewardship_skill = 50
 	if = { limit = { NOT = { has_trait = lifestyle_hunter } } add_trait = lifestyle_hunter }
 	add_trait_xp = { trait = lifestyle_hunter track = hunter value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # master_bard_camp_officer: Мастер-бард
@@ -1972,6 +2407,11 @@ agot_di_rusbar_prepare_master_bard_camp_officer_effect = {
 	add_trait_xp = { trait = lifestyle_reveler value = 100 }
 	if = { limit = { has_trait = celibate } remove_trait = celibate }
 	if = { limit = { NOT = { has_trait = seducer } } add_trait = seducer }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # master_of_arms_camp_officer: Старший оружейник
@@ -1990,6 +2430,11 @@ agot_di_rusbar_prepare_master_of_arms_camp_officer_effect = {
 		limit = { has_commander_trait_trigger = no }
 		if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
 		add_trait_xp = { trait = organizer value = 100 }
+	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
 	}
 }
 
@@ -2010,6 +2455,11 @@ agot_di_rusbar_prepare_master_of_horse_court_position_effect = {
 	if = { limit = { NOT = { has_trait = gallant } } add_trait = gallant }
 	if = { limit = { has_trait = humble } remove_trait = humble }
 	if = { limit = { NOT = { has_trait = authoritative } } add_trait = authoritative }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_admiral_court_position_personality_effect
+	}
 }
 
 # master_of_hunt_court_position: Главный охотник
@@ -2028,6 +2478,11 @@ agot_di_rusbar_prepare_master_of_hunt_court_position_effect = {
 	add_trait_xp = { trait = lifestyle_hunter track = hunter value = 100 }
 	if = { limit = { has_trait = craven } remove_trait = craven }
 	if = { limit = { NOT = { has_trait = brave } } add_trait = brave }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # master_of_spoils_camp_officer: Распределитель добычи
@@ -2051,6 +2506,11 @@ agot_di_rusbar_prepare_master_of_spoils_camp_officer_effect = {
 	if = { limit = { NOT = { has_trait = reaver } } add_trait = reaver }
 	add_trait_xp = { trait = reaver value = 100 }
 	if = { limit = { NOT = { has_trait = avaricious } } add_trait = avaricious }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_harbormaster_court_position_personality_effect
+	}
 }
 
 # master_thief_camp_officer: Мастер-вор
@@ -2068,6 +2528,11 @@ agot_di_rusbar_prepare_master_thief_camp_officer_effect = {
 	if = { limit = { NOT = { has_trait = schemer } } add_trait = schemer }
 	if = { limit = { has_trait = honest } remove_trait = honest }
 	if = { limit = { NOT = { has_trait = deceitful } } add_trait = deceitful }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # nw_septon: Септон Ночного Дозора
@@ -2086,6 +2551,11 @@ agot_di_rusbar_prepare_nw_septon_effect = {
 	if = { limit = { has_trait = deserter } remove_trait = deserter }
 	if = { limit = { NOT = { has_trait = nightswatch } } add_trait = nightswatch }
 	add_trait_xp = { trait = nightswatch value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_nw_septon_personality_effect
+	}
 }
 
 # person_haggler_camp_officer: Мастер выкупа
@@ -2112,6 +2582,11 @@ agot_di_rusbar_prepare_person_haggler_camp_officer_effect = {
 	if = { limit = { NOT = { has_trait = gregarious } } add_trait = gregarious }
 	if = { limit = { has_trait = impatient } remove_trait = impatient }
 	if = { limit = { NOT = { has_trait = patient } } add_trait = patient }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # pike_captain_camp_officer: Капитан пикинеров
@@ -2130,6 +2605,11 @@ agot_di_rusbar_prepare_pike_captain_camp_officer_effect = {
 		limit = { has_commander_trait_trigger = no }
 		if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
 		add_trait_xp = { trait = organizer value = 100 }
+	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
 	}
 }
 
@@ -2152,6 +2632,11 @@ agot_di_rusbar_prepare_princes_pass_court_position_effect = {
 	if = { limit = { NOT = { has_trait = patient } } add_trait = patient }
 	if = { limit = { has_trait = arbitrary } remove_trait = arbitrary }
 	if = { limit = { NOT = { has_trait = just } } add_trait = just }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # quartermaster_camp_officer: Квартирмейстер
@@ -2171,6 +2656,11 @@ agot_di_rusbar_prepare_quartermaster_camp_officer_effect = {
 	if = { limit = { NOT = { has_trait = greedy } } add_trait = greedy }
 	if = { limit = { NOT = { has_trait = avaricious } } add_trait = avaricious }
 	if = { limit = { NOT = { has_trait = administrator } } add_trait = administrator }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_harbormaster_court_position_personality_effect
+	}
 }
 
 # royal_architect_court_position: Архитектор
@@ -2182,6 +2672,11 @@ agot_di_rusbar_prepare_royal_architect_court_position_effect = {
 	if = { limit = { NOT = { has_trait = architect } } add_trait = architect }
 	if = { limit = { has_trait = humble } remove_trait = humble }
 	if = { limit = { NOT = { has_trait = authoritative } } add_trait = authoritative }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_admiral_court_position_personality_effect
+	}
 }
 
 # royal_counter_court_position: Королевский счетовод
@@ -2202,6 +2697,11 @@ agot_di_rusbar_prepare_royal_counter_court_position_effect = {
 	if = { limit = { NOT = { has_trait = honest } } add_trait = honest }
 	if = { limit = { has_trait = generous } remove_trait = generous }
 	if = { limit = { NOT = { has_trait = greedy } } add_trait = greedy }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_royal_counter_court_position_personality_effect
+	}
 }
 
 # royal_mint_officer_court_position: Хранитель королевского монетного двора
@@ -2214,6 +2714,11 @@ agot_di_rusbar_prepare_royal_mint_officer_court_position_effect = {
 	if = { limit = { NOT = { has_trait = overseer } } add_trait = overseer }
 	if = { limit = { has_trait = lazy } remove_trait = lazy }
 	if = { limit = { NOT = { has_trait = diligent } } add_trait = diligent }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # royal_scales_court_position: Королевский хранитель весов
@@ -2229,6 +2734,11 @@ agot_di_rusbar_prepare_royal_scales_court_position_effect = {
 	if = { limit = { NOT = { has_trait = overseer } } add_trait = overseer }
 	if = { limit = { has_trait = lazy } remove_trait = lazy }
 	if = { limit = { NOT = { has_trait = diligent } } add_trait = diligent }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # sea_watch_commander_court_position: Командующий морской стражей
@@ -2253,6 +2763,11 @@ agot_di_rusbar_prepare_sea_watch_commander_court_position_effect = {
 	if = { limit = { NOT = { has_trait = just } } add_trait = just }
 	if = { limit = { NOT = { has_trait = lifestyle_mariner } } add_trait = lifestyle_mariner }
 	add_trait_xp = { trait = lifestyle_mariner value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # second_camp_officer: Помощник
@@ -2287,6 +2802,11 @@ agot_di_rusbar_prepare_second_camp_officer_effect = {
 		if = { limit = { has_trait = sadistic } remove_trait = sadistic }
 		if = { limit = { NOT = { has_trait = callous } } add_trait = callous }
 	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_high_almoner_court_position_personality_effect
+	}
 }
 
 # seneschal_court_position: Сенешаль
@@ -2300,6 +2820,11 @@ agot_di_rusbar_prepare_seneschal_court_position_effect = {
 	if = { limit = { NOT = { has_trait = overseer } } add_trait = overseer }
 	if = { limit = { NOT = { has_trait = organizer } } add_trait = organizer }
 	add_trait_xp = { trait = organizer value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # septa_court_position: Септа
@@ -2336,6 +2861,11 @@ agot_di_rusbar_prepare_septa_court_position_effect = {
 		if = { limit = { NOT = { has_trait = devoted } } add_trait = devoted }
 	}
 	if = { limit = { NOT = { has_trait = septon } } add_trait = septon }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_septa_court_position_personality_effect
+	}
 }
 
 # septon_court_position: Септон
@@ -2359,6 +2889,11 @@ agot_di_rusbar_prepare_septon_court_position_effect = {
 		if = { limit = { NOT = { has_trait = devoted } } add_trait = devoted }
 	}
 	if = { limit = { NOT = { has_trait = septon } } add_trait = septon }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_high_almoner_court_position_personality_effect
+	}
 }
 
 # siege_engineer_court_position: Осадный инженер
@@ -2384,6 +2919,11 @@ agot_di_rusbar_prepare_siege_engineer_court_position_effect = {
 	if = { limit = { NOT = { has_trait = patient } } add_trait = patient }
 	if = { limit = { NOT = { has_trait = military_engineer } } add_trait = military_engineer }
 	add_trait_xp = { trait = military_engineer value = 100 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # stone_way_court_position: Хранитель Каменного пути
@@ -2405,6 +2945,11 @@ agot_di_rusbar_prepare_stone_way_court_position_effect = {
 	if = { limit = { NOT = { has_trait = patient } } add_trait = patient }
 	if = { limit = { has_trait = arbitrary } remove_trait = arbitrary }
 	if = { limit = { NOT = { has_trait = just } } add_trait = just }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # stooge_camp_officer: Прислуга
@@ -2416,6 +2961,10 @@ agot_di_rusbar_prepare_stooge_camp_officer_effect = {
 	add_learning_skill = -1000
 	add_prowess_skill = -1000
 	if = { limit = { NOT = { has_character_modifier = agot_di_rusbar_valyrian_slave } } add_character_modifier = { modifier = agot_di_rusbar_valyrian_slave } }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # travel_leader_court_position: Караванщик
@@ -2489,6 +3038,11 @@ agot_di_rusbar_prepare_travel_leader_court_position_effect = {
 	if = { limit = { NOT = { knows_language = language_agot_summer } } learn_language = language_agot_summer }
 	if = { limit = { NOT = { knows_language = language_agot_trade } } learn_language = language_agot_trade }
 	if = { limit = { NOT = { knows_language = language_agot_yiti } } learn_language = language_agot_yiti }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # warden_of_the_east_court_position: Хранитель Востока
@@ -2509,6 +3063,11 @@ agot_di_rusbar_prepare_warden_of_the_east_court_position_effect = {
 		# Raise base martial to at least 40; engine clamps base skills at zero.
 		add_martial_skill = -40
 		add_martial_skill = 40
+	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
 	}
 }
 
@@ -2531,6 +3090,11 @@ agot_di_rusbar_prepare_warden_of_the_north_court_position_effect = {
 		add_martial_skill = -40
 		add_martial_skill = 40
 	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # warden_of_the_south_court_position: Хранитель Юга
@@ -2551,6 +3115,11 @@ agot_di_rusbar_prepare_warden_of_the_south_court_position_effect = {
 		# Raise base martial to at least 40; engine clamps base skills at zero.
 		add_martial_skill = -40
 		add_martial_skill = 40
+	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
 	}
 }
 
@@ -2573,6 +3142,11 @@ agot_di_rusbar_prepare_warden_of_the_west_court_position_effect = {
 		add_martial_skill = -40
 		add_martial_skill = 40
 	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # wet_nurse_court_position: Кормилица
@@ -2593,6 +3167,11 @@ agot_di_rusbar_prepare_wet_nurse_court_position_effect = {
 	if = { limit = { has_trait = spindly } remove_trait = spindly }
 	if = { limit = { has_trait = weak } remove_trait = weak }
 	if = { limit = { NOT = { has_trait = physique_good_3 } } add_trait = physique_good_3 }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
+	}
 }
 
 # white_knife_court_position: Хранитель Белого Ножа
@@ -2611,6 +3190,11 @@ agot_di_rusbar_prepare_white_knife_court_position_effect = {
 		if = { limit = { NOT = { has_trait = overseer } } add_trait = overseer }
 		if = { limit = { has_trait = arbitrary } remove_trait = arbitrary }
 		if = { limit = { NOT = { has_trait = just } } add_trait = just }
+	}
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect
 	}
 }
 
@@ -2634,6 +3218,11 @@ agot_di_rusbar_prepare_witness_camp_officer_effect = {
 	if = { limit = { has_trait = rude } remove_trait = rude }
 	if = { limit = { NOT = { has_trait = humble } } add_trait = humble }
 	if = { limit = { NOT = { has_trait = flagellant } } add_trait = flagellant }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_court_brewmaster_court_position_personality_effect
+	}
 }
 
 # yeke_jarquchi_court_position: Еке джаркучи
@@ -2659,6 +3248,11 @@ agot_di_rusbar_prepare_yeke_jarquchi_court_position_effect = {
 	if = { limit = { NOT = { has_trait = just } } add_trait = just }
 	if = { limit = { has_trait = deceitful } remove_trait = deceitful }
 	if = { limit = { NOT = { has_trait = honest } } add_trait = honest }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_high_almoner_court_position_personality_effect
+	}
 }
 
 # yurtchi_court_position: Юртчи
@@ -2679,4 +3273,9 @@ agot_di_rusbar_prepare_yurtchi_court_position_effect = {
 	if = { limit = { NOT = { has_trait = diligent } } add_trait = diligent }
 	if = { limit = { has_trait = generous } remove_trait = generous }
 	if = { limit = { NOT = { has_trait = greedy } } add_trait = greedy }
+	# Complete general skills and personality after the role-specific preparation.
+	agot_di_rusbar_court_base_skill_floor_effect = yes
+	agot_di_rusbar_fill_court_personality_effect = {
+		PICKER = agot_di_rusbar_pick_harbormaster_court_position_personality_effect
+	}
 }

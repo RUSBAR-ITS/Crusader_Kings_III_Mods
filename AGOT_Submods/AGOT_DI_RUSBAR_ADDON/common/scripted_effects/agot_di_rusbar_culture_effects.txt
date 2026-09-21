@@ -1,0 +1,101 @@
+# Adapted from ACR_RE; all IDs are local to this addon.
+# Root: culture
+#
+# Keeps exactly one rule innovation on every culture. The effect is idempotent
+# and also removes stale innovations if the rule configuration of a save was
+# changed outside the normal game-rule interface.
+agot_di_rusbar_apply_culture_tradition_slots_effect = {
+	# Also repairs saves affected by the engine's handling of
+	# set_variable = { years = 0 } in vanilla on_tradition_added.
+	agot_di_rusbar_clear_disabled_tradition_cooldown_effect = yes
+
+	if = {
+		limit = {
+			has_innovation = agot_di_rusbar_innovation_tradition_slots_plus_5
+			NOT = { has_game_rule = agot_di_rusbar_tradition_slots_plus_5 }
+		}
+		remove_innovation = agot_di_rusbar_innovation_tradition_slots_plus_5
+	}
+	if = {
+		limit = {
+			has_innovation = agot_di_rusbar_innovation_tradition_slots_plus_10
+			NOT = { has_game_rule = agot_di_rusbar_tradition_slots_plus_10 }
+		}
+		remove_innovation = agot_di_rusbar_innovation_tradition_slots_plus_10
+	}
+	if = {
+		limit = {
+			has_innovation = agot_di_rusbar_innovation_tradition_slots_plus_15
+			NOT = { has_game_rule = agot_di_rusbar_tradition_slots_plus_15 }
+		}
+		remove_innovation = agot_di_rusbar_innovation_tradition_slots_plus_15
+	}
+	if = {
+		limit = {
+			has_innovation = agot_di_rusbar_innovation_tradition_slots_plus_45
+			NOT = { has_game_rule = agot_di_rusbar_tradition_slots_plus_45 }
+		}
+		remove_innovation = agot_di_rusbar_innovation_tradition_slots_plus_45
+	}
+	if = {
+		limit = {
+			has_innovation = agot_di_rusbar_innovation_tradition_slots_plus_95
+			NOT = { has_game_rule = agot_di_rusbar_tradition_slots_plus_95 }
+		}
+		remove_innovation = agot_di_rusbar_innovation_tradition_slots_plus_95
+	}
+
+	if = {
+		limit = {
+			has_game_rule = agot_di_rusbar_tradition_slots_plus_5
+			NOT = { has_innovation = agot_di_rusbar_innovation_tradition_slots_plus_5 }
+		}
+		add_innovation = agot_di_rusbar_innovation_tradition_slots_plus_5
+	}
+	if = {
+		limit = {
+			has_game_rule = agot_di_rusbar_tradition_slots_plus_10
+			NOT = { has_innovation = agot_di_rusbar_innovation_tradition_slots_plus_10 }
+		}
+		add_innovation = agot_di_rusbar_innovation_tradition_slots_plus_10
+	}
+	if = {
+		limit = {
+			has_game_rule = agot_di_rusbar_tradition_slots_plus_15
+			NOT = { has_innovation = agot_di_rusbar_innovation_tradition_slots_plus_15 }
+		}
+		add_innovation = agot_di_rusbar_innovation_tradition_slots_plus_15
+	}
+	if = {
+		limit = {
+			has_game_rule = agot_di_rusbar_tradition_slots_plus_45
+			NOT = { has_innovation = agot_di_rusbar_innovation_tradition_slots_plus_45 }
+		}
+		add_innovation = agot_di_rusbar_innovation_tradition_slots_plus_45
+	}
+	if = {
+		limit = {
+			has_game_rule = agot_di_rusbar_tradition_slots_plus_95
+			NOT = { has_innovation = agot_di_rusbar_innovation_tradition_slots_plus_95 }
+		}
+		add_innovation = agot_di_rusbar_innovation_tradition_slots_plus_95
+	}
+}
+
+# Root: culture
+#
+# A zero-year timed variable remains present and permanently blocks the
+# vanilla can_add_tradition rule. This effect is intentionally limited to the
+# human culture-head rule so AI cultures and every non-zero setting retain the
+# standard cooldown behavior.
+agot_di_rusbar_clear_disabled_tradition_cooldown_effect = {
+	if = {
+		limit = {
+			has_game_rule = agot_di_rusbar_tradition_cooldown_none
+			exists = culture_head
+			culture_head = { is_ai = no }
+			has_variable = tradition_cooldown
+		}
+		remove_variable = tradition_cooldown
+	}
+}

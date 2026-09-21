@@ -1,0 +1,12 @@
+types agot_di_rusbar_holding_types {
+	type agot_di_rusbar_holding_slot_button = button_icon {
+		name = "agot_di_rusbar_add_holding_slot_button"
+		datacontext = "[GetScriptedGui('agot_di_rusbar_add_holding_slot')]"
+		texture = "gfx/interface/icons/flat_icons/plus.dds"
+		size = { 35 35 }
+		visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
+		enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
+		onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
+		tooltip = "agot_di_rusbar_add_holding_slot_tt"
+	}
+}

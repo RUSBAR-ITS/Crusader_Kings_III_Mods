@@ -1,0 +1,91 @@
+# Character scope. Applies equally to players, AI rulers and unlanded courtiers.
+agot_di_rusbar_process_lifestyle_mastery_effect = {
+	if = {
+		limit = { agot_di_rusbar_diplomacy_mastered_trigger = yes }
+		if = {
+			limit = { NOT = { has_character_modifier = agot_di_rusbar_valyrian_diplomat } }
+			add_character_modifier = { modifier = agot_di_rusbar_valyrian_diplomat }
+		}
+		# Native perk-point subtraction clamps at zero; acquired perks are untouched.
+		add_diplomacy_lifestyle_perk_points = -1000000
+	}
+	else_if = {
+		limit = { has_character_modifier = agot_di_rusbar_valyrian_diplomat }
+		remove_character_modifier = agot_di_rusbar_valyrian_diplomat
+	}
+	if = {
+		limit = { agot_di_rusbar_martial_mastered_trigger = yes }
+		if = {
+			limit = { NOT = { has_character_modifier = agot_di_rusbar_valyrian_warrior } }
+			add_character_modifier = { modifier = agot_di_rusbar_valyrian_warrior }
+		}
+		# Native perk-point subtraction clamps at zero; acquired perks are untouched.
+		add_martial_lifestyle_perk_points = -1000000
+	}
+	else_if = {
+		limit = { has_character_modifier = agot_di_rusbar_valyrian_warrior }
+		remove_character_modifier = agot_di_rusbar_valyrian_warrior
+	}
+	if = {
+		limit = { agot_di_rusbar_stewardship_mastered_trigger = yes }
+		if = {
+			limit = { NOT = { has_character_modifier = agot_di_rusbar_dragon_lord } }
+			add_character_modifier = { modifier = agot_di_rusbar_dragon_lord }
+		}
+		# Native perk-point subtraction clamps at zero; acquired perks are untouched.
+		add_stewardship_lifestyle_perk_points = -1000000
+	}
+	else_if = {
+		limit = { has_character_modifier = agot_di_rusbar_dragon_lord }
+		remove_character_modifier = agot_di_rusbar_dragon_lord
+	}
+	if = {
+		limit = { agot_di_rusbar_intrigue_mastered_trigger = yes }
+		if = {
+			limit = { NOT = { has_character_modifier = agot_di_rusbar_valyrian_spy } }
+			add_character_modifier = { modifier = agot_di_rusbar_valyrian_spy }
+		}
+		# Native perk-point subtraction clamps at zero; acquired perks are untouched.
+		add_intrigue_lifestyle_perk_points = -1000000
+	}
+	else_if = {
+		limit = { has_character_modifier = agot_di_rusbar_valyrian_spy }
+		remove_character_modifier = agot_di_rusbar_valyrian_spy
+	}
+	if = {
+		limit = { agot_di_rusbar_learning_mastered_trigger = yes }
+		if = {
+			limit = { NOT = { has_character_modifier = agot_di_rusbar_valyrian_sage } }
+			add_character_modifier = { modifier = agot_di_rusbar_valyrian_sage }
+		}
+		# Native perk-point subtraction clamps at zero; acquired perks are untouched.
+		add_learning_lifestyle_perk_points = -1000000
+	}
+	else_if = {
+		limit = { has_character_modifier = agot_di_rusbar_valyrian_sage }
+		remove_character_modifier = agot_di_rusbar_valyrian_sage
+	}
+	if = {
+		limit = { agot_di_rusbar_wanderer_mastered_trigger = yes }
+		if = {
+			limit = { NOT = { has_character_modifier = agot_di_rusbar_valyria_returned } }
+			add_character_modifier = { modifier = agot_di_rusbar_valyria_returned }
+		}
+		# Native perk-point subtraction clamps at zero; acquired perks are untouched.
+		add_wanderer_lifestyle_perk_points = -1000000
+	}
+	else_if = {
+		limit = { has_character_modifier = agot_di_rusbar_valyria_returned }
+		remove_character_modifier = agot_di_rusbar_valyria_returned
+	}
+}
+
+# Refund hook must not consume the points being returned by the base-game effect.
+agot_di_rusbar_remove_lifestyle_mastery_effect = {
+	remove_character_modifier = agot_di_rusbar_valyrian_diplomat
+	remove_character_modifier = agot_di_rusbar_valyrian_warrior
+	remove_character_modifier = agot_di_rusbar_dragon_lord
+	remove_character_modifier = agot_di_rusbar_valyrian_spy
+	remove_character_modifier = agot_di_rusbar_valyrian_sage
+	remove_character_modifier = agot_di_rusbar_valyria_returned
+}

@@ -1,0 +1,54 @@
+# Append named children only: preserve every existing native/AGOT effect block.
+on_game_start_after_lobby = {
+    on_actions = { agot_di_rusbar_start_mastery_loop }
+}
+yearly_global_pulse = {
+    on_actions = { agot_di_rusbar_start_mastery_loop }
+}
+# Existing-save / lost-schedule fallback. Cheap global lease check; not a scan per ruler.
+quarterly_playable_pulse = {
+    on_actions = { agot_di_rusbar_start_mastery_loop }
+}
+on_perks_refunded = {
+    on_actions = { agot_di_rusbar_mastery_perks_refunded }
+}
+
+agot_di_rusbar_start_mastery_loop = {
+    trigger = {
+        NOT = { has_global_variable = agot_di_rusbar_mastery_loop_lease }
+    }
+    effect = {
+        # Set before scheduling, so simultaneous startup/fallback calls cannot fork the loop.
+        set_global_variable = { name = agot_di_rusbar_mastery_loop_lease value = yes months = 3 }
+        trigger_event = { on_action = agot_di_rusbar_mastery_monthly days = 1 }
+    }
+}
+
+# One scheduled on_action for the whole world. Its root is deliberately never used;
+# processing/scheduling do not depend on a player, ruler, living owner or DI menu state.
+agot_di_rusbar_mastery_monthly = {
+    trigger = {
+        # Drop an accidentally duplicated schedule instead of letting it start another loop.
+        NOT = { has_global_variable = agot_di_rusbar_mastery_recent_scan }
+    }
+    effect = {
+        # 27 days is shorter than every game month, including February.
+        set_global_variable = { name = agot_di_rusbar_mastery_recent_scan value = yes days = 27 }
+        set_global_variable = { name = agot_di_rusbar_mastery_loop_lease value = yes months = 3 }
+        every_living_character = {
+            limit = {
+                is_human = yes
+                agot_di_rusbar_mastery_candidate_trigger = yes
+            }
+            agot_di_rusbar_process_lifestyle_mastery_effect = yes
+        }
+        trigger_event = { on_action = agot_di_rusbar_mastery_monthly months = 1 }
+    }
+}
+
+agot_di_rusbar_mastery_perks_refunded = {
+    effect = {
+        # Runs alongside the native refund; no assumptions about effect ordering.
+        agot_di_rusbar_remove_lifestyle_mastery_effect = yes
+    }
+}

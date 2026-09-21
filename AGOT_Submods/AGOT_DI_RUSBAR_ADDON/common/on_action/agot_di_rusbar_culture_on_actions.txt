@@ -1,0 +1,67 @@
+# Apply the slot rule to cultures present at campaign initialization.
+on_game_start = {
+	on_actions = {
+		agot_di_rusbar_on_action_apply_culture_rules_on_game_start
+	}
+}
+
+# Apply the same rule to every later hybrid or divergent culture.
+on_culture_created = {
+	on_actions = {
+		agot_di_rusbar_on_action_apply_culture_rules_on_culture_created
+	}
+}
+
+# Vanilla always creates tradition_cooldown, even when its calculated duration
+# is zero. In that edge case the variable does not expire correctly, so remove
+# it after the vanilla on_tradition_added effect has run.
+on_tradition_added = {
+	on_actions = {
+		agot_di_rusbar_on_action_clear_disabled_tradition_cooldown
+	}
+}
+
+agot_di_rusbar_on_action_apply_culture_rules_on_game_start = {
+	effect = {
+		every_culture_global = {
+			agot_di_rusbar_apply_culture_tradition_slots_effect = yes
+		}
+	}
+}
+
+agot_di_rusbar_on_action_apply_culture_rules_on_culture_created = {
+	effect = {
+		agot_di_rusbar_apply_culture_tradition_slots_effect = yes
+	}
+}
+
+agot_di_rusbar_on_action_clear_disabled_tradition_cooldown = {
+	effect = {
+		agot_di_rusbar_clear_disabled_tradition_cooldown_effect = yes
+	}
+}
+
+# Native Jan 1st pulse has no root. Visit each culture only once, including in
+# multiplayer; never run a separate completion for every player of a culture.
+yearly_global_pulse = {
+	on_actions = { agot_di_rusbar_culture_yearly }
+}
+
+agot_di_rusbar_culture_yearly = {
+	effect = {
+		every_culture_global = {
+			# Also initializes rules when the addon is added to an existing save.
+			agot_di_rusbar_apply_culture_tradition_slots_effect = yes
+			if = {
+				limit = {
+					exists = culture_head
+					culture_head = { is_ai = no is_alive = yes }
+					culture_has_any_fascination = yes
+				}
+				# DICM_RBE uses this native effect monthly. Here: once a year,
+				# only the fascination selected at the moment of the yearly pulse.
+				add_fascination_progress = 100
+			}
+		}
+	}
+}

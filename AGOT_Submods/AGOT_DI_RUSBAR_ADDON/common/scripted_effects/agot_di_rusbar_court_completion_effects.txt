@@ -1,0 +1,961 @@
+# Shared completion for the Eye and Treatises. Character scope.
+# The stooge profile deliberately does not call the base-skill floor.
+agot_di_rusbar_court_base_skill_floor_effect = {
+	add_diplomacy_skill = -25
+	add_diplomacy_skill = 25
+	add_martial_skill = -25
+	add_martial_skill = 25
+	add_stewardship_skill = -25
+	add_stewardship_skill = 25
+	add_intrigue_skill = -25
+	add_intrigue_skill = 25
+	add_learning_skill = -25
+	add_learning_skill = 25
+	add_prowess_skill = -25
+	add_prowess_skill = 25
+}
+
+# Bounded loop: successful choices add one new personality trait.
+# Existing personality traits, including counts above four, are not pruned.
+agot_di_rusbar_fill_court_personality_effect = {
+	while = {
+		count = 4
+		limit = { number_of_personality_traits < 4 }
+		$PICKER$ = yes
+	}
+}
+
+# Candidate pools: no penalties to any of the six skills; exclude all traits
+# removed by the profile (including conditional removals). Personality only.
+# The stooge slave modifier suppresses all six skills by 100; its base stays zero.
+# Opposite checks are symmetric and include non-personality trait definitions.
+
+# Used by: admiral_court_position, household_guard_court_position, master_of_horse_court_position, royal_architect_court_position
+agot_di_rusbar_pick_admiral_court_position_personality_effect = {
+	random_list = {
+		1 = {
+			trigger = { NOR = { has_trait = ambitious has_trait = content } }
+			add_trait = ambitious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = humble } }
+			add_trait = arrogant
+		}
+		1 = {
+			trigger = { NOR = { has_trait = authoritative has_trait = humble } }
+			add_trait = authoritative
+		}
+		1 = {
+			trigger = { NOR = { has_trait = brave has_trait = craven } }
+			add_trait = brave
+		}
+		1 = {
+			trigger = { NOR = { has_trait = calm has_trait = wrathful } }
+			add_trait = calm
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = chaste
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = zealous } }
+			add_trait = cynical
+		}
+		1 = {
+			trigger = { NOR = { has_trait = diligent has_trait = lazy } }
+			add_trait = diligent
+		}
+		1 = {
+			trigger = { NOR = { has_trait = generous has_trait = greedy } }
+			add_trait = generous
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gregarious has_trait = shy } }
+			add_trait = gregarious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = inquisitive has_trait = zealous } }
+			add_trait = inquisitive
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = lustful
+		}
+		1 = {
+			trigger = { NOR = { has_trait = impatient has_trait = patient } }
+			add_trait = patient
+		}
+		1 = {
+			trigger = { NOR = { has_trait = callous has_trait = compassionate has_trait = sadistic } }
+			add_trait = sadistic
+		}
+		1 = {
+			trigger = { NOR = { has_trait = eccentric has_trait = fickle has_trait = stubborn } }
+			add_trait = stubborn
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gluttonous has_trait = temperate } }
+			add_trait = temperate
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = inquisitive has_trait = zealous } }
+			add_trait = zealous
+		}
+	}
+}
+
+# Used by: antiquarian_court_position, court_smith_court_position
+agot_di_rusbar_pick_antiquarian_court_position_personality_effect = {
+	random_list = {
+		1 = {
+			trigger = { NOR = { has_trait = ambitious has_trait = content } }
+			add_trait = ambitious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = humble } }
+			add_trait = arrogant
+		}
+		1 = {
+			trigger = { NOR = { has_trait = authoritative has_trait = humble } }
+			add_trait = authoritative
+		}
+		1 = {
+			trigger = { NOR = { has_trait = brave has_trait = craven } }
+			add_trait = brave
+		}
+		1 = {
+			trigger = { NOR = { has_trait = calm has_trait = wrathful } }
+			add_trait = calm
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = chaste
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = zealous } }
+			add_trait = cynical
+		}
+		1 = {
+			trigger = { NOR = { has_trait = diligent has_trait = lazy } }
+			add_trait = diligent
+		}
+		1 = {
+			trigger = { NOR = { has_trait = generous has_trait = greedy } }
+			add_trait = generous
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = authoritative has_trait = humble has_trait = rude } }
+			add_trait = humble
+		}
+		1 = {
+			trigger = { NOR = { has_trait = inquisitive has_trait = zealous } }
+			add_trait = inquisitive
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = lustful
+		}
+		1 = {
+			trigger = { NOR = { has_trait = impatient has_trait = patient } }
+			add_trait = patient
+		}
+		1 = {
+			trigger = { NOR = { has_trait = callous has_trait = compassionate has_trait = sadistic } }
+			add_trait = sadistic
+		}
+		1 = {
+			trigger = { NOR = { has_trait = eccentric has_trait = fickle has_trait = stubborn } }
+			add_trait = stubborn
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gluttonous has_trait = temperate } }
+			add_trait = temperate
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = inquisitive has_trait = zealous } }
+			add_trait = zealous
+		}
+	}
+}
+
+# Used by: archer_captain_camp_officer, armorer_camp_officer, b_deep_lake_keeper, b_eastwatch_by_the_sea_keeper, b_greenguard_keeper, b_greyguard_keeper, b_hoarfrost_hill_keeper, b_icemark_keeper, b_long_barrow_keeper, b_oakenshield_keeper, b_queensgate_keeper, b_rimegate_keeper, b_sable_hall_keeper, b_sentinel_stand_keeper, b_stonedoor_keeper, b_the_nightfort_keeper, b_the_shadow_tower_keeper, b_the_torches_keeper, b_westwatch_by_the_bridge_keeper, b_woodswatch_by_the_pool_keeper, bloodrider_court_position, bodyguard_court_position, boyan_court_position, camelry_captain_camp_officer, camp_priest_camp_officer, cave_hermit_court_position, champion_court_position, cherbi_court_position, chief_engineer_camp_officer, chief_eunuch_court_position, chief_forager_camp_officer, chronicler_court_position, court_artificer_court_position, court_astrologer_court_position, court_gardener_court_position, court_jester_court_position, court_musician_court_position, court_physician_court_position, court_poet_court_position, crimson_cloaks_commander_court_position, cultural_emissary_court_position, cupbearer_court_position, elephantry_captain_camp_officer, eparch_court_position, executioner_court_position, favored_minister_court_position, first_sword_court_position, goldcloaks_court_position, grand_guardian_court_position, grand_mentor_court_position, grand_preceptor_court_position, grey_cloaks_commander_court_position, head_dragonkeeper_court_position, head_groom_camp_officer, head_porter_camp_officer, heavy_cavalry_captain_camp_officer, heavy_infantry_captain_camp_officer, horse_archer_captain_camp_officer, huntperson_camp_officer, keeper_of_keys_court_position, keeper_of_swans_court_position, keeper_of_the_harem_court_position, kennelperson_camp_officer, khlon_glan_court_position, lady_in_waiting_court_position, laureate_camp_officer, light_cavalry_captain_camp_officer, light_infantry_captain_camp_officer, master_at_arms_court_position, master_bard_camp_officer, master_of_arms_camp_officer, master_of_hunt_court_position, master_thief_camp_officer, person_haggler_camp_officer, pike_captain_camp_officer, princes_pass_court_position, royal_mint_officer_court_position, royal_scales_court_position, sea_watch_commander_court_position, seneschal_court_position, siege_engineer_court_position, stone_way_court_position, stooge_camp_officer, travel_leader_court_position, warden_of_the_east_court_position, warden_of_the_north_court_position, warden_of_the_south_court_position, warden_of_the_west_court_position, wet_nurse_court_position, white_knife_court_position
+agot_di_rusbar_pick_archer_captain_camp_officer_personality_effect = {
+	random_list = {
+		1 = {
+			trigger = { NOR = { has_trait = ambitious has_trait = content } }
+			add_trait = ambitious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = humble } }
+			add_trait = arrogant
+		}
+		1 = {
+			trigger = { NOR = { has_trait = authoritative has_trait = humble } }
+			add_trait = authoritative
+		}
+		1 = {
+			trigger = { NOR = { has_trait = brave has_trait = craven } }
+			add_trait = brave
+		}
+		1 = {
+			trigger = { NOR = { has_trait = calm has_trait = wrathful } }
+			add_trait = calm
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = chaste
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = zealous } }
+			add_trait = cynical
+		}
+		1 = {
+			trigger = { NOR = { has_trait = diligent has_trait = lazy } }
+			add_trait = diligent
+		}
+		1 = {
+			trigger = { NOR = { has_trait = generous has_trait = greedy } }
+			add_trait = generous
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gregarious has_trait = shy } }
+			add_trait = gregarious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = authoritative has_trait = humble has_trait = rude } }
+			add_trait = humble
+		}
+		1 = {
+			trigger = { NOR = { has_trait = inquisitive has_trait = zealous } }
+			add_trait = inquisitive
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = lustful
+		}
+		1 = {
+			trigger = { NOR = { has_trait = impatient has_trait = patient } }
+			add_trait = patient
+		}
+		1 = {
+			trigger = { NOR = { has_trait = callous has_trait = compassionate has_trait = sadistic } }
+			add_trait = sadistic
+		}
+		1 = {
+			trigger = { NOR = { has_trait = eccentric has_trait = fickle has_trait = stubborn } }
+			add_trait = stubborn
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gluttonous has_trait = temperate } }
+			add_trait = temperate
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = inquisitive has_trait = zealous } }
+			add_trait = zealous
+		}
+	}
+}
+
+# Used by: camp_cook_camp_officer, food_taster_court_position
+agot_di_rusbar_pick_camp_cook_camp_officer_personality_effect = {
+	random_list = {
+		1 = {
+			trigger = { NOR = { has_trait = ambitious has_trait = content } }
+			add_trait = ambitious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = humble } }
+			add_trait = arrogant
+		}
+		1 = {
+			trigger = { NOR = { has_trait = authoritative has_trait = humble } }
+			add_trait = authoritative
+		}
+		1 = {
+			trigger = { NOR = { has_trait = brave has_trait = craven } }
+			add_trait = brave
+		}
+		1 = {
+			trigger = { NOR = { has_trait = calm has_trait = wrathful } }
+			add_trait = calm
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = chaste
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = zealous } }
+			add_trait = cynical
+		}
+		1 = {
+			trigger = { NOR = { has_trait = diligent has_trait = lazy } }
+			add_trait = diligent
+		}
+		1 = {
+			trigger = { NOR = { has_trait = generous has_trait = greedy } }
+			add_trait = generous
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gregarious has_trait = shy } }
+			add_trait = gregarious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = authoritative has_trait = humble has_trait = rude } }
+			add_trait = humble
+		}
+		1 = {
+			trigger = { NOR = { has_trait = inquisitive has_trait = zealous } }
+			add_trait = inquisitive
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = lustful
+		}
+		1 = {
+			trigger = { NOR = { has_trait = impatient has_trait = patient } }
+			add_trait = patient
+		}
+		1 = {
+			trigger = { NOR = { has_trait = callous has_trait = compassionate has_trait = sadistic } }
+			add_trait = sadistic
+		}
+		1 = {
+			trigger = { NOR = { has_trait = eccentric has_trait = fickle has_trait = stubborn } }
+			add_trait = stubborn
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = inquisitive has_trait = zealous } }
+			add_trait = zealous
+		}
+	}
+}
+
+# Used by: court_brewmaster_court_position, foreign_emissary_court_position, witness_camp_officer
+agot_di_rusbar_pick_court_brewmaster_court_position_personality_effect = {
+	random_list = {
+		1 = {
+			trigger = { NOR = { has_trait = ambitious has_trait = content } }
+			add_trait = ambitious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = brave has_trait = craven } }
+			add_trait = brave
+		}
+		1 = {
+			trigger = { NOR = { has_trait = calm has_trait = wrathful } }
+			add_trait = calm
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = chaste
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = zealous } }
+			add_trait = cynical
+		}
+		1 = {
+			trigger = { NOR = { has_trait = diligent has_trait = lazy } }
+			add_trait = diligent
+		}
+		1 = {
+			trigger = { NOR = { has_trait = generous has_trait = greedy } }
+			add_trait = generous
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gregarious has_trait = shy } }
+			add_trait = gregarious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = authoritative has_trait = humble has_trait = rude } }
+			add_trait = humble
+		}
+		1 = {
+			trigger = { NOR = { has_trait = inquisitive has_trait = zealous } }
+			add_trait = inquisitive
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = lustful
+		}
+		1 = {
+			trigger = { NOR = { has_trait = impatient has_trait = patient } }
+			add_trait = patient
+		}
+		1 = {
+			trigger = { NOR = { has_trait = callous has_trait = compassionate has_trait = sadistic } }
+			add_trait = sadistic
+		}
+		1 = {
+			trigger = { NOR = { has_trait = eccentric has_trait = fickle has_trait = stubborn } }
+			add_trait = stubborn
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gluttonous has_trait = temperate } }
+			add_trait = temperate
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = inquisitive has_trait = zealous } }
+			add_trait = zealous
+		}
+	}
+}
+
+# Used by: court_scholar_court_position, court_tutor_court_position, maester_court_position
+agot_di_rusbar_pick_court_scholar_court_position_personality_effect = {
+	random_list = {
+		1 = {
+			trigger = { NOR = { has_trait = ambitious has_trait = content } }
+			add_trait = ambitious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = humble } }
+			add_trait = arrogant
+		}
+		1 = {
+			trigger = { NOR = { has_trait = authoritative has_trait = humble } }
+			add_trait = authoritative
+		}
+		1 = {
+			trigger = { NOR = { has_trait = brave has_trait = craven } }
+			add_trait = brave
+		}
+		1 = {
+			trigger = { NOR = { has_trait = calm has_trait = wrathful } }
+			add_trait = calm
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = chaste
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = zealous } }
+			add_trait = cynical
+		}
+		1 = {
+			trigger = { NOR = { has_trait = diligent has_trait = lazy } }
+			add_trait = diligent
+		}
+		1 = {
+			trigger = { NOR = { has_trait = generous has_trait = greedy } }
+			add_trait = generous
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gregarious has_trait = shy } }
+			add_trait = gregarious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = authoritative has_trait = humble has_trait = rude } }
+			add_trait = humble
+		}
+		1 = {
+			trigger = { NOR = { has_trait = inquisitive has_trait = zealous } }
+			add_trait = inquisitive
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = lustful
+		}
+		1 = {
+			trigger = { NOR = { has_trait = impatient has_trait = patient } }
+			add_trait = patient
+		}
+		1 = {
+			trigger = { NOR = { has_trait = callous has_trait = compassionate has_trait = sadistic } }
+			add_trait = sadistic
+		}
+		1 = {
+			trigger = { NOR = { has_trait = eccentric has_trait = fickle has_trait = stubborn } }
+			add_trait = stubborn
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gluttonous has_trait = temperate } }
+			add_trait = temperate
+		}
+	}
+}
+
+# Used by: gaoler_court_position
+agot_di_rusbar_pick_gaoler_court_position_personality_effect = {
+	random_list = {
+		1 = {
+			trigger = { NOR = { has_trait = ambitious has_trait = content } }
+			add_trait = ambitious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = humble } }
+			add_trait = arrogant
+		}
+		1 = {
+			trigger = { NOR = { has_trait = authoritative has_trait = humble } }
+			add_trait = authoritative
+		}
+		1 = {
+			trigger = { NOR = { has_trait = brave has_trait = craven } }
+			add_trait = brave
+		}
+		1 = {
+			trigger = { NOR = { has_trait = calm has_trait = wrathful } }
+			add_trait = calm
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = chaste
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = zealous } }
+			add_trait = cynical
+		}
+		1 = {
+			trigger = { NOR = { has_trait = diligent has_trait = lazy } }
+			add_trait = diligent
+		}
+		1 = {
+			trigger = { NOR = { has_trait = generous has_trait = greedy } }
+			add_trait = generous
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = authoritative has_trait = humble has_trait = rude } }
+			add_trait = humble
+		}
+		1 = {
+			trigger = { NOR = { has_trait = inquisitive has_trait = zealous } }
+			add_trait = inquisitive
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = lustful
+		}
+		1 = {
+			trigger = { NOR = { has_trait = impatient has_trait = patient } }
+			add_trait = patient
+		}
+		1 = {
+			trigger = { NOR = { has_trait = eccentric has_trait = fickle has_trait = stubborn } }
+			add_trait = stubborn
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gluttonous has_trait = temperate } }
+			add_trait = temperate
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = inquisitive has_trait = zealous } }
+			add_trait = zealous
+		}
+	}
+}
+
+# Used by: harbormaster_court_position, master_of_spoils_camp_officer, quartermaster_camp_officer, yurtchi_court_position
+agot_di_rusbar_pick_harbormaster_court_position_personality_effect = {
+	random_list = {
+		1 = {
+			trigger = { NOR = { has_trait = ambitious has_trait = content } }
+			add_trait = ambitious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = humble } }
+			add_trait = arrogant
+		}
+		1 = {
+			trigger = { NOR = { has_trait = authoritative has_trait = humble } }
+			add_trait = authoritative
+		}
+		1 = {
+			trigger = { NOR = { has_trait = brave has_trait = craven } }
+			add_trait = brave
+		}
+		1 = {
+			trigger = { NOR = { has_trait = calm has_trait = wrathful } }
+			add_trait = calm
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = chaste
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = zealous } }
+			add_trait = cynical
+		}
+		1 = {
+			trigger = { NOR = { has_trait = diligent has_trait = lazy } }
+			add_trait = diligent
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gregarious has_trait = shy } }
+			add_trait = gregarious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = authoritative has_trait = humble has_trait = rude } }
+			add_trait = humble
+		}
+		1 = {
+			trigger = { NOR = { has_trait = inquisitive has_trait = zealous } }
+			add_trait = inquisitive
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = lustful
+		}
+		1 = {
+			trigger = { NOR = { has_trait = impatient has_trait = patient } }
+			add_trait = patient
+		}
+		1 = {
+			trigger = { NOR = { has_trait = callous has_trait = compassionate has_trait = sadistic } }
+			add_trait = sadistic
+		}
+		1 = {
+			trigger = { NOR = { has_trait = eccentric has_trait = fickle has_trait = stubborn } }
+			add_trait = stubborn
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gluttonous has_trait = temperate } }
+			add_trait = temperate
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = inquisitive has_trait = zealous } }
+			add_trait = zealous
+		}
+	}
+}
+
+# Used by: high_almoner_court_position, high_reeve_court_position, justiciar_court_position, keeper_of_the_horses_court_position, second_camp_officer, septon_court_position, yeke_jarquchi_court_position
+agot_di_rusbar_pick_high_almoner_court_position_personality_effect = {
+	random_list = {
+		1 = {
+			trigger = { NOR = { has_trait = ambitious has_trait = content } }
+			add_trait = ambitious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = humble } }
+			add_trait = arrogant
+		}
+		1 = {
+			trigger = { NOR = { has_trait = authoritative has_trait = humble } }
+			add_trait = authoritative
+		}
+		1 = {
+			trigger = { NOR = { has_trait = brave has_trait = craven } }
+			add_trait = brave
+		}
+		1 = {
+			trigger = { NOR = { has_trait = calm has_trait = wrathful } }
+			add_trait = calm
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = chaste
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = zealous } }
+			add_trait = cynical
+		}
+		1 = {
+			trigger = { NOR = { has_trait = diligent has_trait = lazy } }
+			add_trait = diligent
+		}
+		1 = {
+			trigger = { NOR = { has_trait = generous has_trait = greedy } }
+			add_trait = generous
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gregarious has_trait = shy } }
+			add_trait = gregarious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = authoritative has_trait = humble has_trait = rude } }
+			add_trait = humble
+		}
+		1 = {
+			trigger = { NOR = { has_trait = inquisitive has_trait = zealous } }
+			add_trait = inquisitive
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = lustful
+		}
+		1 = {
+			trigger = { NOR = { has_trait = impatient has_trait = patient } }
+			add_trait = patient
+		}
+		1 = {
+			trigger = { NOR = { has_trait = eccentric has_trait = fickle has_trait = stubborn } }
+			add_trait = stubborn
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gluttonous has_trait = temperate } }
+			add_trait = temperate
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = inquisitive has_trait = zealous } }
+			add_trait = zealous
+		}
+	}
+}
+
+# Used by: master_assassin_court_position
+agot_di_rusbar_pick_master_assassin_court_position_personality_effect = {
+	random_list = {
+		1 = {
+			trigger = { NOR = { has_trait = ambitious has_trait = content } }
+			add_trait = ambitious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = humble } }
+			add_trait = arrogant
+		}
+		1 = {
+			trigger = { NOR = { has_trait = authoritative has_trait = humble } }
+			add_trait = authoritative
+		}
+		1 = {
+			trigger = { NOR = { has_trait = brave has_trait = craven } }
+			add_trait = brave
+		}
+		1 = {
+			trigger = { NOR = { has_trait = calm has_trait = wrathful } }
+			add_trait = calm
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = chaste
+		}
+		1 = {
+			trigger = { NOR = { has_trait = diligent has_trait = lazy } }
+			add_trait = diligent
+		}
+		1 = {
+			trigger = { NOR = { has_trait = generous has_trait = greedy } }
+			add_trait = generous
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gregarious has_trait = shy } }
+			add_trait = gregarious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = authoritative has_trait = humble has_trait = rude } }
+			add_trait = humble
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = lustful
+		}
+		1 = {
+			trigger = { NOR = { has_trait = impatient has_trait = patient } }
+			add_trait = patient
+		}
+		1 = {
+			trigger = { NOR = { has_trait = callous has_trait = compassionate has_trait = sadistic } }
+			add_trait = sadistic
+		}
+		1 = {
+			trigger = { NOR = { has_trait = eccentric has_trait = fickle has_trait = stubborn } }
+			add_trait = stubborn
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gluttonous has_trait = temperate } }
+			add_trait = temperate
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = inquisitive has_trait = zealous } }
+			add_trait = zealous
+		}
+	}
+}
+
+# Used by: nw_septon
+agot_di_rusbar_pick_nw_septon_personality_effect = {
+	random_list = {
+		1 = {
+			trigger = { NOR = { has_trait = ambitious has_trait = content } }
+			add_trait = ambitious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = humble } }
+			add_trait = arrogant
+		}
+		1 = {
+			trigger = { NOR = { has_trait = authoritative has_trait = humble } }
+			add_trait = authoritative
+		}
+		1 = {
+			trigger = { NOR = { has_trait = brave has_trait = craven } }
+			add_trait = brave
+		}
+		1 = {
+			trigger = { NOR = { has_trait = calm has_trait = wrathful } }
+			add_trait = calm
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = chaste
+		}
+		1 = {
+			trigger = { NOR = { has_trait = diligent has_trait = lazy } }
+			add_trait = diligent
+		}
+		1 = {
+			trigger = { NOR = { has_trait = generous has_trait = greedy } }
+			add_trait = generous
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gregarious has_trait = shy } }
+			add_trait = gregarious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = authoritative has_trait = humble has_trait = rude } }
+			add_trait = humble
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = lustful
+		}
+		1 = {
+			trigger = { NOR = { has_trait = impatient has_trait = patient } }
+			add_trait = patient
+		}
+		1 = {
+			trigger = { NOR = { has_trait = eccentric has_trait = fickle has_trait = stubborn } }
+			add_trait = stubborn
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gluttonous has_trait = temperate } }
+			add_trait = temperate
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = inquisitive has_trait = zealous } }
+			add_trait = zealous
+		}
+	}
+}
+
+# Used by: royal_counter_court_position
+agot_di_rusbar_pick_royal_counter_court_position_personality_effect = {
+	random_list = {
+		1 = {
+			trigger = { NOR = { has_trait = ambitious has_trait = content } }
+			add_trait = ambitious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = humble } }
+			add_trait = arrogant
+		}
+		1 = {
+			trigger = { NOR = { has_trait = authoritative has_trait = humble } }
+			add_trait = authoritative
+		}
+		1 = {
+			trigger = { NOR = { has_trait = brave has_trait = craven } }
+			add_trait = brave
+		}
+		1 = {
+			trigger = { NOR = { has_trait = calm has_trait = wrathful } }
+			add_trait = calm
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = chaste
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = zealous } }
+			add_trait = cynical
+		}
+		1 = {
+			trigger = { NOR = { has_trait = diligent has_trait = lazy } }
+			add_trait = diligent
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gregarious has_trait = shy } }
+			add_trait = gregarious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = authoritative has_trait = humble has_trait = rude } }
+			add_trait = humble
+		}
+		1 = {
+			trigger = { NOR = { has_trait = inquisitive has_trait = zealous } }
+			add_trait = inquisitive
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = lustful
+		}
+		1 = {
+			trigger = { NOR = { has_trait = impatient has_trait = patient } }
+			add_trait = patient
+		}
+		1 = {
+			trigger = { NOR = { has_trait = callous has_trait = compassionate has_trait = sadistic } }
+			add_trait = sadistic
+		}
+		1 = {
+			trigger = { NOR = { has_trait = eccentric has_trait = fickle has_trait = stubborn } }
+			add_trait = stubborn
+		}
+		1 = {
+			trigger = { NOR = { has_trait = cynical has_trait = inquisitive has_trait = zealous } }
+			add_trait = zealous
+		}
+	}
+}
+
+# Used by: septa_court_position
+agot_di_rusbar_pick_septa_court_position_personality_effect = {
+	random_list = {
+		1 = {
+			trigger = { NOR = { has_trait = ambitious has_trait = content } }
+			add_trait = ambitious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = humble } }
+			add_trait = arrogant
+		}
+		1 = {
+			trigger = { NOR = { has_trait = authoritative has_trait = humble } }
+			add_trait = authoritative
+		}
+		1 = {
+			trigger = { NOR = { has_trait = brave has_trait = craven } }
+			add_trait = brave
+		}
+		1 = {
+			trigger = { NOR = { has_trait = calm has_trait = wrathful } }
+			add_trait = calm
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = chaste
+		}
+		1 = {
+			trigger = { NOR = { has_trait = diligent has_trait = lazy } }
+			add_trait = diligent
+		}
+		1 = {
+			trigger = { NOR = { has_trait = generous has_trait = greedy } }
+			add_trait = generous
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gregarious has_trait = shy } }
+			add_trait = gregarious
+		}
+		1 = {
+			trigger = { NOR = { has_trait = arrogant has_trait = authoritative has_trait = humble has_trait = rude } }
+			add_trait = humble
+		}
+		1 = {
+			trigger = { NOR = { has_trait = chaste has_trait = lustful } }
+			add_trait = lustful
+		}
+		1 = {
+			trigger = { NOR = { has_trait = impatient has_trait = patient } }
+			add_trait = patient
+		}
+		1 = {
+			trigger = { NOR = { has_trait = eccentric has_trait = fickle has_trait = stubborn } }
+			add_trait = stubborn
+		}
+		1 = {
+			trigger = { NOR = { has_trait = gluttonous has_trait = temperate } }
+			add_trait = temperate
+		}
+	}
+}

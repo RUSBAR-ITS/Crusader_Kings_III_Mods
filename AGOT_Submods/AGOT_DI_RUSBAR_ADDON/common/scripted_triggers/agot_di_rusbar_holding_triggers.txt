@@ -1,0 +1,32 @@
+# Character scope: the player opening the holding view.
+# gui_holding: the currently selected province, passed by the GUI on every call.
+agot_di_rusbar_holding_slot_context_trigger = {
+	is_ai = no
+	is_alive = yes
+	exists = scope:gui_holding
+	scope:gui_holding = {
+		has_holding = yes
+		exists = province_owner
+		NOR = {
+			has_holding_type = unknown_holding
+			has_holding_type = wilderness_holding
+			has_holding_type = ruin_holding
+			has_holding_type = nomad_holding
+			has_holding_type = herder_holding
+		}
+	}
+	# HM_RE's realm check includes indirect vassals, but not the player's liege
+	# or fellow vassals. A shared top liege alone must never grant access.
+	OR = {
+		scope:gui_holding.province_owner = root
+		is_liege_or_above_of = scope:gui_holding.province_owner
+	}
+}
+
+agot_di_rusbar_can_add_holding_slot_trigger = {
+	agot_di_rusbar_holding_slot_context_trigger = yes
+	gold >= agot_di_rusbar_holding_slot_cost
+	scope:gui_holding = {
+		building_slots < define:NProvince|MAX_BUILDINGS
+	}
+}

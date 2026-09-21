@@ -5,6 +5,7 @@ Reference-trait checks use the installed vanilla/AGOT traits when available.
 """
 from pathlib import Path
 import copy
+import random
 import re
 import unittest
 
@@ -64,8 +65,33 @@ EFFECTS = definitions('common/scripted_effects')
 TRIGGERS = definitions('common/scripted_triggers')
 INTERACTIONS = definitions('common/character_interactions')
 SGUIS = definitions('common/scripted_guis')
+GAME_RULES = definitions('common/game_rules')
+INNOVATIONS = definitions('common/culture/innovations')
+
+
+def on_action_definitions():
+    """CK3 appends child on_actions from separate files to the same native hook."""
+    result = {}
+    for path in (BASE / 'common/on_action').glob('*.txt'):
+        for name, _, nodes in parse(path):
+            if name in result:
+                assert not name.startswith(PREFIX), ('Duplicate addon handler', name)
+                assert all(k == 'on_actions' for k, _, _ in nodes + result[name]), name
+                children = field(result[name], 'on_actions') + field(nodes, 'on_actions')
+                result[name] = [('on_actions', '=', children)]
+            else:
+                result[name] = nodes
+    return result
+
+
+ON_ACTIONS = on_action_definitions()
 SKILLS = ('diplomacy', 'martial', 'stewardship', 'intrigue', 'learning', 'prowess')
 PROFILES = {k: v for k, v in EFFECTS.items() if k.startswith(PREFIX + 'prepare_')}
+# AGOT 0.5.2.1 human personality category, independently checked against the installation.
+PERSONALITY_TRAITS = set('''ambitious arbitrary arrogant authoritative brave callous calm
+chaste compassionate content craven cynical deceitful diligent eccentric fickle forgiving
+generous gluttonous greedy gregarious honest humble impatient inquisitive just lazy lustful
+paranoid patient rude sadistic shy stubborn temperate trusting vengeful wrathful zealous'''.split())
 
 
 class Character:
@@ -75,7 +101,7 @@ class Character:
     Tests of those paths below check the presence/order of the native guards instead.
     """
 
-    def __init__(self, base=0, traits=(), female=True, monastic=False):
+    def __init__(self, base=0, traits=(), female=True, monastic=False, seed=0):
         self.skills = dict.fromkeys(SKILLS, base)
         self.traits = set(traits)
         self.xp = {}
@@ -85,6 +111,8 @@ class Character:
         self.modifiers = set()
         self.female = female
         self.monastic = monastic
+        self.seed = seed
+        self.random_choices = 0
 
     def test(self, nodes):
         def one(k, op, v):
@@ -100,6 +128,9 @@ class Character:
                 return True
             if k == 'has_trait':
                 return v in self.traits
+            if k == 'number_of_personality_traits':
+                count = len(self.traits & PERSONALITY_TRAITS)
+                return {'<': count < int(v), '>=': count >= int(v), '=': count == int(v)}[op]
             if k == 'is_eunuch_trigger':
                 return bool(self.traits & {'eunuch_1', 'beardless_eunuch'}) == (v == 'yes')
             if k == 'has_commander_trait_trigger':
@@ -124,8 +155,15 @@ class Character:
 
         return all(one(*n) for n in nodes)
 
-    def run(self, name):
-        self.apply(EFFECTS[name])
+    def run(self, name, parameters=None):
+        def substitute(nodes):
+            def string(value):
+                for key, replacement in parameters.items():
+                    value = value.replace('$' + key + '$', replacement)
+                return value
+            return [(string(k), op, substitute(v) if isinstance(v, list) else string(v) if isinstance(v, str) else v)
+                    for k, op, v in nodes]
+        self.apply(substitute(EFFECTS[name]) if parameters else EFFECTS[name])
         return self
 
     def apply(self, nodes):
@@ -139,7 +177,7 @@ class Character:
                     taken = True
                 continue
             if k in EFFECTS:
-                self.run(k)
+                self.run(k, {key: value for key, _, value in v} if isinstance(v, list) else None)
             elif k.startswith('add_') and k.endswith('_skill'):
                 stat = k[4:-6]
                 delta = 100 if v.startswith('define:NSkills|MAX_') else int(v)
@@ -164,7 +202,18 @@ class Character:
             elif k == 'set_variable':
                 self.variables[field(v, 'name')] = field(v, 'value')
             elif k == 'random_list':
-                self.apply(v[0][2])  # Other branches are checked structurally.
+                eligible = [(int(weight), branch) for weight, _, branch in v
+                            if self.test(field(branch, 'trigger', []))]
+                if eligible:
+                    rng = random.Random(self.seed + self.random_choices)
+                    branch = rng.choices([b for _, b in eligible], weights=[w for w, _ in eligible])[0]
+                    self.random_choices += 1
+                    self.apply([n for n in branch if n[0] != 'trigger'])
+            elif k == 'while':
+                for _ in range(int(field(v, 'count'))):
+                    if not self.test(field(v, 'limit', [])):
+                        break
+                    self.apply([n for n in v if n[0] not in ('count', 'limit')])
             else:
                 raise AssertionError(('Unhandled model effect', k, v))
 
@@ -182,6 +231,9 @@ class AddonTests(unittest.TestCase):
                 data = f.read_bytes()
                 self.assertTrue(data.startswith(b'\xef\xbb\xbf'))
                 self.assertNotIn(b'\r', data)
+                decoded = data.decode('utf-8-sig')
+                self.assertNotIn('\ufffd', decoded, f)
+                self.assertNotRegex(decoded, r'\?{3,}', f)
 
     def test_localization_and_internal_symbols(self):
         languages = {}
@@ -196,7 +248,9 @@ class AddonTests(unittest.TestCase):
             text = f.read_text(encoding='utf-8-sig')
             self.assertNotIn('\r', f.read_bytes().decode('utf-8-sig'))
             for name in re.findall(r"GetScriptedGui\('([^']+)'\)", text):
-                self.assertIn(name, SGUIS, f)
+                # The county-view override also retains AGOT's own GUI calls.
+                if name.startswith(PREFIX):
+                    self.assertIn(name, SGUIS, f)
             for name in re.findall(r'(?:text|tooltip)\s*=\s*"(agot_di_rusbar_[^"\s]+)"', text):
                 self.assertIn(name, languages['russian'], f)
             level = 0
@@ -211,11 +265,12 @@ class AddonTests(unittest.TestCase):
             for k, _, v in walk(parse(f)):
                 if k in ('desc', 'text', 'localization', 'custom_tooltip', 'options_heading') and isinstance(v, str) and v.startswith(PREFIX):
                     self.assertIn(v, languages['russian'], (f, k))
-        self.assertEqual(len(INTERACTIONS), 8)
-        symbols = set(EFFECTS) | set(TRIGGERS)
+        self.assertEqual(len(INTERACTIONS), 10)
+        symbols = set(EFFECTS) | set(TRIGGERS) | set(GAME_RULES) | set(INNOVATIONS)
+        symbols |= {k for nodes in GAME_RULES.values() for k, _, v in nodes if isinstance(v, list) and k.startswith(PREFIX)}
         for f in (BASE / 'common').rglob('*.txt'):
             for k, op, v in walk(parse(f)):
-                if k.startswith(PREFIX) and op and k not in INTERACTIONS and k not in SGUIS:
+                if k.startswith(PREFIX) and op and k not in INTERACTIONS and k not in SGUIS and k not in ON_ACTIONS:
                     self.assertIn(k, symbols | set(definitions('common/modifiers')) | set(definitions('common/script_values')), f)
 
     def test_high_skills_and_repeated_profiles(self):

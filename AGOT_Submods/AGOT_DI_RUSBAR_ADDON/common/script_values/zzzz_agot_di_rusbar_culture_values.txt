@@ -1,0 +1,59 @@
+# The sole culture-value override: preserve AGOT 0.5.2.1 base and Kurultai
+# discount, then cap the cooldown for a human culture head. No prestige changes.
+
+add_tradition_cooldown = {
+	value = 50
+	if = {
+		limit = {
+			culture_head ?= {
+				has_variable = kurultai_culture_variable_value
+			}
+		}
+		multiply = {
+			value = 100
+			subtract = culture_head.var:kurultai_culture_variable_value
+			divide = 100
+		}
+	}
+
+	if = {
+		limit = {
+			exists = culture_head
+			culture_head = { is_ai = no }
+			has_game_rule = agot_di_rusbar_tradition_cooldown_25_years
+		}
+		max = 25
+	}
+	if = {
+		limit = {
+			exists = culture_head
+			culture_head = { is_ai = no }
+			has_game_rule = agot_di_rusbar_tradition_cooldown_10_years
+		}
+		max = 10
+	}
+	if = {
+		limit = {
+			exists = culture_head
+			culture_head = { is_ai = no }
+			has_game_rule = agot_di_rusbar_tradition_cooldown_5_years
+		}
+		max = 5
+	}
+	if = {
+		limit = {
+			exists = culture_head
+			culture_head = { is_ai = no }
+			has_game_rule = agot_di_rusbar_tradition_cooldown_1_year
+		}
+		max = 1
+	}
+	if = {
+		limit = {
+			exists = culture_head
+			culture_head = { is_ai = no }
+			has_game_rule = agot_di_rusbar_tradition_cooldown_none
+		}
+		multiply = 0
+	}
+}

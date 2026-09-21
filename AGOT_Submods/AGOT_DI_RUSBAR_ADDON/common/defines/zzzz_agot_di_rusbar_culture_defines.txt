@@ -1,0 +1,10 @@
+# Global engine settings: apply to player and AI cultures alike.
+# Copy the current ACR_RE values for slowdown/cap/replacement; use ~12 months
+# of base progress instead of the local ACR_RE value of 50 per month.
+NCulture = {
+	REFORMATION_PROGRESS_GAIN_BASE = 8.34
+	REFORMATION_PROGRESS_SLOWDOWN_PER_COUNTY_WITH_CULTURE = 0.01
+	REFORMATION_MAX_YEARS = 1
+	# Deliberately preserved: replacing a tradition takes ~16 months, not 12.
+	REFORMATION_PROGRESS_REPLACE_TRADITION_MULT = 0.75
+}

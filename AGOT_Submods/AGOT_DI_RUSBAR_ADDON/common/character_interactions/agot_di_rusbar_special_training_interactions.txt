@@ -1,0 +1,59 @@
+agot_di_rusbar_military_retraining_interaction = {
+	interface_priority = 245
+	category = interaction_category_cheat_menu
+	icon = religious
+	desc = agot_di_rusbar_military_retraining_interaction_desc
+	common_interaction = no
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+	is_available = { is_ai = no }
+	ai_will_do = { base = 0 }
+	is_shown = {
+		agot_di_rusbar_human_context_trigger = yes
+		scope:recipient = { is_adult = yes }
+	}
+	can_send = {
+		agot_di_rusbar_human_context_trigger = yes
+		scope:recipient = { is_adult = yes }
+	}
+	on_accept = {
+		if = {
+			limit = {
+				agot_di_rusbar_human_context_trigger = yes
+				scope:recipient = { is_adult = yes }
+			}
+			scope:recipient = { agot_di_rusbar_military_retraining_effect = yes }
+		}
+	}
+}
+
+agot_di_rusbar_valyrian_secrets_interaction = {
+	interface_priority = 245
+	category = interaction_category_cheat_menu
+	icon = religious
+	desc = agot_di_rusbar_valyrian_secrets_interaction_desc
+	common_interaction = no
+	auto_accept = yes
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+	is_available = { is_ai = no }
+	ai_will_do = { base = 0 }
+	is_shown = {
+		agot_di_rusbar_human_context_trigger = yes
+		scope:recipient = { is_adult = yes }
+	}
+	can_send = {
+		agot_di_rusbar_human_context_trigger = yes
+		scope:recipient = { is_adult = yes }
+	}
+	on_accept = {
+		if = {
+			limit = {
+				agot_di_rusbar_human_context_trigger = yes
+				scope:recipient = { is_adult = yes }
+			}
+			scope:recipient = { agot_di_rusbar_valyrian_secrets_effect = yes }
+		}
+	}
+}

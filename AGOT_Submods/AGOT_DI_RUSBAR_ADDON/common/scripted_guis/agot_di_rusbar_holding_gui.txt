@@ -1,0 +1,24 @@
+# Adapted from HM_RE_add_slot_button. Fixed personal gold cost; no HM_RE rules.
+agot_di_rusbar_add_holding_slot = {
+	scope = character
+	saved_scopes = { gui_holding }
+	is_shown = {
+		agot_di_rusbar_holding_slot_context_trigger = yes
+	}
+	is_valid = {
+		agot_di_rusbar_can_add_holding_slot_trigger = yes
+	}
+	effect = {
+		# Check again when executed: the selected holding or its owner may change
+		# between drawing the button and processing the click.
+		if = {
+			limit = { agot_di_rusbar_can_add_holding_slot_trigger = yes }
+			# The player pays, including when expanding a vassal's holding.
+			remove_long_term_gold = agot_di_rusbar_holding_slot_cost
+			scope:gui_holding = {
+				# Native CK3 modifier, also used by HM_RE: stacking, +1, permanent.
+				add_province_modifier = extra_building_slot
+			}
+		}
+	}
+}
