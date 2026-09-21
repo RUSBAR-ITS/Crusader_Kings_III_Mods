@@ -1,0 +1,11 @@
+﻿l_english:
+ rbhm_main_upgrade_desc:0 "#T Upgrade the holding#!\nInstantly upgrade the primary building by one level, at ten times its base cost.\n\n#bold Upgrade:#!"
+ rbhm_regular_build_desc:0 "#T Build ordinary buildings#!\nInstantly build the eligible ordinary buildings below, at ten times their base cost. Additional slots cost 1000 @gold_icon! each.\nConflicting options use a random compatible selection, fixed for this holding.\n\n#bold Buildings:#!"
+ rbhm_regular_upgrade_desc:0 "#T Upgrade ordinary buildings#!\nInstantly upgrade the listed ordinary buildings by one level, at ten times their base cost.\n\n#bold Upgrades:#!"
+ rbhm_duchy_desc:0 "#T Duchy building#!\nBuild in the duchy slot or upgrade its existing building by one level, at ten times the base cost. Multiple available options open a selection list.\n\n#bold Available options:#!"
+ rbhm_special_desc:0 "#T Special building#!\nBuild or upgrade the holding's special building by one level, at ten times its base cost. Multiple available options open a selection list.\n\n#bold Available options:#!"
+ rbhm_great_desc:0 "#T Great building#!\nBuild or upgrade a great building by one level. Pay ten times the project's full base cost, including all contributions. Includes the building and its geographic improvements, without project events or separate character rewards.\n\n#bold Available options:#!"
+ rbhm_total:0 "\n#bold Total:#! [SCOPE.GetValue('rbhm_total_gold')|0] @gold_icon! · [SCOPE.GetValue('rbhm_total_prestige')|0] @prestige_icon! · [SCOPE.GetValue('rbhm_total_piety')|0] @piety_icon!\nAdditional slots: [SCOPE.GetValue('rbhm_slot_count')|0] (included in the price)."
+ rbhm_conditions:0 "\nAll building requirements must be met. The player pays. Unavailable during construction or without sufficient resources for the entire list."
+ rbhm_choose:0 "Choose a building"
+ rbhm_legacy_add_slot_tt:0 "#T Add a building slot#!\nAdd #P 1#! ordinary building slot in this holding.\n\nCost: #bold 1000#! @gold_icon!\nAvailable in your realm, including vassal holdings. Maximum ordinary slots: 200."

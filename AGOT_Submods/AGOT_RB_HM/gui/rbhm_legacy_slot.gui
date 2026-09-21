@@ -1,0 +1,12 @@
+types rbhm_legacy_types {
+	type rbhm_legacy_slot_button = button_icon {
+		name = "rbhm_legacy_add_slot_button"
+		datacontext = "[GetScriptedGui('rbhm_legacy_add_slot')]"
+		texture = "gfx/interface/icons/flat_icons/plus.dds"
+		size = { 35 35 }
+		visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
+		enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
+		onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
+		tooltip = "rbhm_legacy_add_slot_tt"
+	}
+}

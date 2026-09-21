@@ -1,0 +1,94 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "purpose": "AGOT_RB_HM holding view buttons; artwork only",
+  "assets": [
+    {
+      "file": "agot_rb_hm_main_upgrade_active.png",
+      "prompt": "Use case: ui-mockup. Asset type: ONE finished square button texture for a Crusader Kings III AGOT holding-management interface, active/enabled state. Subject: UPGRADE THE MAIN HOLDING BUILDING. Draw one large, extremely simple frontal crenellated castle tower with a broad upward arrow on its right, clearly distinguishable at 56 x 56 pixels. Square 1:1 composition, front view, no perspective. A very thin plain antique-bronze rectangular frame inset 5% from the image edge, enclosing a flat near-black charcoal-blue panel (#171d23). Centered pictogram fills about 68% of the canvas. Pictogram is solid warm light bronze (#c9ad75) with restrained pale edge highlights, broad clean silhouettes and minimal engraved shading. Tower has three large battlements and a single dark arched opening; arrow is bold and unmistakable, not another turret. Match sober medieval strategy-game UI, tiny amount of material texture only, high readability. No elaborate ornaments, no dragons, no heraldry, no scenery, no people, no text, no letters, no numbers, no watermark, no extra icons, no presentation sheet. Background is the opaque dark button panel, not transparency. Output only this single button, square, 1024 x 1024.",
+      "references": []
+    },
+    {
+      "file": "agot_rb_hm_main_upgrade_inactive.png",
+      "prompt": "Use case: precise-object-edit. Turn the provided square game button into its DISABLED / unavailable state. Preserve the image geometry EXACTLY: same tower silhouette, same upward arrow on the right, same positions, edges, frame, padding, background, size, and all carved details. Change ONLY the color, brightness and material highlights of the bronze symbol and frame: muted desaturated slate-grey pewter (#626c72), softer darker highlights, markedly less contrast than the active gold version, but still readable on the SAME near-black charcoal-blue background. No redesign, no blur, no new objects, no cross-out, no lock, no text, no watermark. One square button only, not a side-by-side comparison.",
+      "references": [
+        "agot_rb_hm_main_upgrade_active.png"
+      ]
+    },
+    {
+      "file": "agot_rb_hm_regular_build_active.png",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE square enabled button texture in the same Crusader Kings III AGOT UI set. Input image is the frame, background, materials and scale reference. Preserve exactly its square canvas, frame position and thickness, near-black charcoal-blue panel, bronze pictogram color, light direction and material finish. Replace ONLY the central tower-and-arrow pictogram. New pictogram: THREE simple medieval house silhouettes grouped together, with a LARGE PLUS SIGN on their right. Plain peaked roofs and tiny dark door cutouts. The three-house group is unmistakably several ordinary buildings. No towers, no upward arrow. Use bold simple silhouettes, minimal cuts, a front elevation, not perspective, readable at 56 x 56 pixels. Center this compact emblem within the same 68 percent area. No text, no letters, no numbers, no labels, no captions, no extra unrelated symbols, no landscapes, no people, no presentation sheet. Output only ONE finished square button.",
+      "references": [
+        "agot_rb_hm_main_upgrade_active.png"
+      ]
+    },
+    {
+      "file": "agot_rb_hm_regular_build_inactive.png",
+      "prompt": "Use case: precise-object-edit. Input image 1 is the edit target: one enabled gold game button. Input image 2 is ONLY the reference for the desired disabled slate-grey color palette. Produce ONE disabled version of image 1. Preserve image 1's geometry EXACTLY: same pictogram silhouettes, placement, proportions, edges, frame, padding, background, canvas and all architectural details. Change ONLY the gold material of the pictogram and border to match the muted grey pewter of image 2: dark desaturated slate-grey, soft restrained highlights, clearly lower contrast than gold, still legible at 56px. Do not copy the tower or arrow from image 2. Do not redesign, move, scale, blur, crop, or add a lock, cross-out or text. Keep the near-black charcoal-blue background. One square button only, not a comparison.",
+      "references": [
+        "agot_rb_hm_regular_build_active.png",
+        "agot_rb_hm_main_upgrade_inactive.png"
+      ]
+    },
+    {
+      "file": "agot_rb_hm_regular_upgrade_active.png",
+      "prompt": "Use case: precise-object-edit. Input image is an enabled Crusader Kings III AGOT BUILD ALL ordinary buildings button. Create its matching UPGRADE ALL ordinary buildings button. Keep EXACTLY the same THREE HOUSE silhouettes and their positions, same dark panel, square thin bronze frame, canvas, lighting, palette, material and edges. Change ONLY the large PLUS SIGN on the right into ONE bold UPWARD ARROW, in the same warm light-bronze material and approximately the same bounding area. The three houses must remain the exact same three houses, not towers. Maintain a clear separation between houses and arrow. No other edits, no additional symbols, no text, no labels. Output one square active button.",
+      "references": [
+        "agot_rb_hm_regular_build_active.png"
+      ]
+    },
+    {
+      "file": "agot_rb_hm_regular_upgrade_inactive.png",
+      "prompt": "Use case: precise-object-edit. Input image 1 is the edit target: the gold UPGRADE ALL ordinary buildings button, showing THREE HOUSES and an UPWARD ARROW on the right. Input image 2 is ONLY a reference for disabled slate-grey colors. Produce ONE disabled version of image 1, preserving its geometry exactly: same three houses, same arrow, same size, positions, frame, background, margins and architectural cutouts. Change only the symbol and frame from gold to muted grey pewter matching image 2, with reduced contrast and soft grey highlights. Do not copy the tower from image 2. Keep all background and outside-frame margins clean near-black charcoal-blue. No blur, no text, no extra symbols or badges, no comparison sheet. Output one square button.",
+      "references": [
+        "agot_rb_hm_regular_upgrade_active.png",
+        "agot_rb_hm_main_upgrade_inactive.png"
+      ]
+    },
+    {
+      "file": "agot_rb_hm_duchy_active.png",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE square enabled button texture in the same Crusader Kings III AGOT UI set. Input image is the frame, background, materials and scale reference. Preserve exactly its square canvas, frame position and thickness, near-black charcoal-blue panel, bronze pictogram color, light direction and material finish. Replace ONLY the central tower-and-arrow pictogram. New pictogram: ONE squat crenellated tower beneath a broad THREE-POINT OPEN CROWN, a unified emblem meaning duchy building. The crown floats just above the tower with a clear gap, and must be obvious at tiny size. No plus sign and no upgrade arrow. Use bold simple silhouettes, minimal cuts, a front elevation, not perspective, readable at 56 x 56 pixels. Center this compact emblem within the same 68 percent area. No text, no letters, no numbers, no labels, no captions, no extra unrelated symbols, no landscapes, no people, no presentation sheet. Output only ONE finished square button.",
+      "references": [
+        "agot_rb_hm_main_upgrade_active.png"
+      ]
+    },
+    {
+      "file": "agot_rb_hm_duchy_inactive.png",
+      "prompt": "Use case: precise-object-edit. Input image 1 is the edit target: one enabled gold game button. Input image 2 is ONLY the reference for the desired disabled slate-grey color palette. Produce ONE disabled version of image 1. Preserve image 1's geometry EXACTLY: same pictogram silhouettes, placement, proportions, edges, frame, padding, background, canvas and all architectural details. Change ONLY the gold material of the pictogram and border to match the muted grey pewter of image 2: dark desaturated slate-grey, soft restrained highlights, clearly lower contrast than gold, still legible at 56px. Do not copy the tower or arrow from image 2. Do not redesign, move, scale, blur, crop, or add a lock, cross-out or text. Keep the near-black charcoal-blue background. One square button only, not a comparison.",
+      "references": [
+        "agot_rb_hm_duchy_active.png",
+        "agot_rb_hm_main_upgrade_inactive.png"
+      ]
+    },
+    {
+      "file": "agot_rb_hm_special_active.png",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE square enabled button texture in the same Crusader Kings III AGOT UI set. Input image is the frame, background, materials and scale reference. Preserve exactly its square canvas, frame position and thickness, near-black charcoal-blue panel, bronze pictogram color, light direction and material finish. Replace ONLY the central tower-and-arrow pictogram. New pictogram: ONE simple peaked-roof stone building with a LARGE FIVE-POINT STAR above the roof, a unified emblem meaning special building. Make the star and building equally easy to recognize; no plus, no arrow, no crown. Use bold simple silhouettes, minimal cuts, a front elevation, not perspective, readable at 56 x 56 pixels. Center this compact emblem within the same 68 percent area. No text, no letters, no numbers, no labels, no captions, no extra unrelated symbols, no landscapes, no people, no presentation sheet. Output only ONE finished square button.",
+      "references": [
+        "agot_rb_hm_main_upgrade_active.png"
+      ]
+    },
+    {
+      "file": "agot_rb_hm_special_inactive.png",
+      "prompt": "Use case: precise-object-edit. Input image 1 is the edit target: one enabled gold game button. Input image 2 is ONLY the reference for the desired disabled slate-grey color palette. Produce ONE disabled version of image 1. Preserve image 1's geometry EXACTLY: same pictogram silhouettes, placement, proportions, edges, frame, padding, background, canvas and all architectural details. Change ONLY the gold material of the pictogram and border to match the muted grey pewter of image 2: dark desaturated slate-grey, soft restrained highlights, clearly lower contrast than gold, still legible at 56px. Do not copy the tower or arrow from image 2. Do not redesign, move, scale, blur, crop, or add a lock, cross-out or text. Keep the near-black charcoal-blue background. One square button only, not a comparison.",
+      "references": [
+        "agot_rb_hm_special_active.png",
+        "agot_rb_hm_main_upgrade_inactive.png"
+      ]
+    },
+    {
+      "file": "agot_rb_hm_great_active.png",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE square enabled button texture in the same Crusader Kings III AGOT UI set. Input image is the frame, background, materials and scale reference. Preserve exactly its square canvas, frame position and thickness, near-black charcoal-blue panel, bronze pictogram color, light direction and material finish. Replace ONLY the central tower-and-arrow pictogram. New pictogram: ONE imposing symmetrical monumental gateway with two broad square piers, a heavy horizontal lintel and a three-step foundation, all a single clean silhouette with ONE large open archway. Visibly grand and distinct from the small tower or house: monumental portal with stepped base. No crown, star, plus, arrow or tiny architectural ornament. Use bold simple silhouettes, minimal cuts, a front elevation, not perspective, readable at 56 x 56 pixels. Center this compact emblem within the same 68 percent area. No text, no letters, no numbers, no labels, no captions, no extra unrelated symbols, no landscapes, no people, no presentation sheet. Output only ONE finished square button.",
+      "references": [
+        "agot_rb_hm_main_upgrade_active.png"
+      ]
+    },
+    {
+      "file": "agot_rb_hm_great_inactive.png",
+      "prompt": "Use case: precise-object-edit. Input image 1 is the edit target: one enabled gold game button. Input image 2 is ONLY the reference for the desired disabled slate-grey color palette. Produce ONE disabled version of image 1. Preserve image 1's geometry EXACTLY: same pictogram silhouettes, placement, proportions, edges, frame, padding, background, canvas and all architectural details. Change ONLY the gold material of the pictogram and border to match the muted grey pewter of image 2: dark desaturated slate-grey, soft restrained highlights, clearly lower contrast than gold, still legible at 56px. Do not copy the tower or arrow from image 2. Do not redesign, move, scale, blur, crop, or add a lock, cross-out or text. Keep the near-black charcoal-blue background. One square button only, not a comparison.",
+      "references": [
+        "agot_rb_hm_great_active.png",
+        "agot_rb_hm_main_upgrade_inactive.png"
+      ]
+    }
+  ]
+}

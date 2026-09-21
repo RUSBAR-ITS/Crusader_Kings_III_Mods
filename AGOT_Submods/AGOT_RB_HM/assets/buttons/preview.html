@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AGOT Holding Manager — кнопки</title>
+<style>
+  :root { color-scheme: dark; --button-size: 56px; }
+  * { box-sizing: border-box; }
+  body { margin: 0 auto; padding: 32px 24px 48px; max-width: 1100px; background: #10161c; color: #ded8c9; font: 16px/1.5 system-ui, sans-serif; }
+  h1 { margin: 0 0 8px; font: 30px/1.2 Georgia, serif; color: #d5bb86; }
+  h2 { font-size: 18px; font-weight: 500; }
+  p { color: #adb4b8; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; margin: 24px 0; }
+  label { display: flex; align-items: center; gap: 10px; }
+  select { padding: 6px; background: #202a31; color: #ded8c9; border: 1px solid #697178; }
+  input, select { accent-color: #d5bb86; }
+  .panel { display: inline-grid; grid-template-columns: repeat(2, var(--button-size)); gap: 10px; padding: 24px; border: 1px solid #3b444c; background: linear-gradient(140deg, #202b32, #10161a); }
+  .panel img { display: block; width: var(--button-size); height: var(--button-size); }
+  .panel a { display: block; border-radius: 2px; }
+  a { color: #d5bb86; text-decoration: none; }
+  a:focus-visible { outline: 2px solid #eee3cc; outline-offset: 3px; }
+  .catalogue { display: grid; grid-template-columns: repeat(auto-fit, minmax(282px, 1fr)); gap: 16px; margin-top: 24px; }
+  article { background: #192129; border: 1px solid #343f48; padding: 16px; }
+  article h2 { min-height: 54px; margin: 0 0 14px; }
+  .pair { display: flex; justify-content: center; gap: 12px; }
+  figure { margin: 0; text-align: center; }
+  figure img { display: block; width: 120px; height: 120px; }
+  figcaption { font-size: 13px; margin-top: 8px; color: #adb4b8; }
+  small { color: #919ba3; }
+</style>
+<h1>Кнопки управления владением</h1>
+<p>Шесть рисунков, два состояния. Нажатие на изображение открывает исходный PNG.</p>
+<div class="toolbar">
+  <label>Размер <input id="size" type="range" min="32" max="112" value="56" step="4"><output id="size-label">56 px</output></label>
+  <label>Состояние <select id="state"><option value="active">Активное</option><option value="inactive">Неактивное</option></select></label>
+</div>
+<div class="panel" id="panel" aria-label="Предлагаемое расположение: два столбца по три кнопки"></div>
+<p><small>Это просмотр графики. В игре кнопки герцогских, особых и великих построек будут скрываться при отсутствии доступного действия.</small></p>
+<div class="catalogue" id="catalogue"></div>
+<script>
+  const buttons = [
+    ['main_upgrade', 'Улучшить главную постройку'],
+    ['regular_build', 'Построить обычные здания'],
+    ['regular_upgrade', 'Улучшить обычные здания'],
+    ['duchy', 'Герцогская постройка'],
+    ['special', 'Особая постройка'],
+    ['great', 'Великая постройка']
+  ];
+  const path = (id, state) => `agot_rb_hm_${id}_${state}.png`;
+  const panelOrder = [0, 3, 1, 4, 2, 5];
+  const panel = document.querySelector('#panel');
+  const catalogue = document.querySelector('#catalogue');
+  function linkedImage(id, state, title) {
+    const link = document.createElement('a');
+    link.href = path(id, state);
+    link.title = title;
+    const img = document.createElement('img');
+    img.src = link.href;
+    img.alt = title;
+    link.append(img);
+    return link;
+  }
+  function renderPanel() {
+    panel.replaceChildren(...panelOrder.map(i => linkedImage(buttons[i][0], document.querySelector('#state').value, buttons[i][1])));
+  }
+  for (const [id, title] of buttons) {
+    const card = document.createElement('article');
+    const heading = document.createElement('h2');
+    heading.textContent = title;
+    const pair = document.createElement('div');
+    pair.className = 'pair';
+    for (const [state, label] of [['active', 'Активная'], ['inactive', 'Неактивная']]) {
+      const figure = document.createElement('figure');
+      const caption = document.createElement('figcaption');
+      caption.textContent = label;
+      figure.append(linkedImage(id, state, `${title} — ${label.toLowerCase()}`), caption);
+      pair.append(figure);
+    }
+    card.append(heading, pair);
+    catalogue.append(card);
+  }
+  document.querySelector('#size').addEventListener('input', event => {
+    document.documentElement.style.setProperty('--button-size', `${event.target.value}px`);
+    document.querySelector('#size-label').value = `${event.target.value} px`;
+  });
+  document.querySelector('#state').addEventListener('change', renderPanel);
+  renderPanel();
+</script>
+</html>

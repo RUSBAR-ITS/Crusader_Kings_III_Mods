@@ -1,0 +1,654 @@
+{
+  "base": "agot",
+  "comparison": "active-playset",
+  "note": "Definition/price/condition/history changes, not visual assets or localization. Shared dependency changes are listed separately.",
+  "added_buildings": [
+    "24castamere_01",
+    "24castamere_02",
+    "24castamere_03",
+    "agot_breakwater_01",
+    "agot_castamere_02",
+    "agot_castamere_03",
+    "agot_lonely_light_02",
+    "agot_lonely_light_03",
+    "agot_lonely_light_04",
+    "agot_lonely_light_05",
+    "agot_whitegrove_01",
+    "ashemark_01",
+    "broadarch_01",
+    "cow_duskendale_01",
+    "cow_rooks_rest_01",
+    "cow_runestone_01",
+    "crag_01",
+    "crag_02",
+    "crag_03",
+    "crag_full",
+    "deepwood_motte_01",
+    "fanghill_01",
+    "flint_tower_01",
+    "high_hermitage_01",
+    "hornhill_01",
+    "ironwrath_01",
+    "oldstones_old_final",
+    "oldstones_old_new",
+    "oldstones_restored_final",
+    "palestone_sword_01",
+    "planky_town_special",
+    "seagard_01",
+    "the_arbor_01",
+    "yronwood_01"
+  ],
+  "removed_buildings": [],
+  "changed_buildings": [
+    {
+      "id": "agot_blackhaven_01",
+      "fields": [
+        "construction_cost"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 2754
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 804
+      }
+    },
+    {
+      "id": "agot_castamere_01",
+      "fields": [
+        "upgrade",
+        "construction_cost",
+        "flags"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 1990
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 1841
+      }
+    },
+    {
+      "id": "agot_castamere_ruins_01",
+      "fields": [
+        "construction_cost",
+        "flags"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 2042
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 2004
+      }
+    },
+    {
+      "id": "agot_castamere_ruins_02",
+      "fields": [
+        "requirements",
+        "construction_cost",
+        "flags",
+        "construction_callbacks"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 2092
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 2054
+      }
+    },
+    {
+      "id": "agot_dunstonbury_01",
+      "fields": [
+        "requirements",
+        "construction_cost",
+        "construction_time_days"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 6313
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 986
+      }
+    },
+    {
+      "id": "agot_duskendale_01",
+      "fields": [
+        "requirements",
+        "construction_cost"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 7853
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 1487
+      }
+    },
+    {
+      "id": "agot_evenfall_hall_01",
+      "fields": [
+        "construction_cost"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 3004
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 1691
+      }
+    },
+    {
+      "id": "agot_griffins_roost_01",
+      "fields": [
+        "construction_cost",
+        "flags"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 2718
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 1395
+      }
+    },
+    {
+      "id": "agot_hightide_01",
+      "fields": [
+        "requirements",
+        "construction_cost",
+        "construction_callbacks"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 7895
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 2310
+      }
+    },
+    {
+      "id": "agot_hoare_castle_02",
+      "fields": [
+        "requirements"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 7165
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 36
+      }
+    },
+    {
+      "id": "agot_karhold_01",
+      "fields": [
+        "construction_cost",
+        "construction_callbacks"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 3981
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 2588
+      }
+    },
+    {
+      "id": "agot_lonely_light_01",
+      "fields": [
+        "upgrade",
+        "requirements",
+        "flags"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 7213
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 131
+      }
+    },
+    {
+      "id": "agot_lordsport_01",
+      "fields": [
+        "requirements",
+        "construction_cost",
+        "flags"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 7299
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 521
+      }
+    },
+    {
+      "id": "agot_oldstones_01",
+      "fields": [
+        "requirements",
+        "construction_cost",
+        "flags"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 1258
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 2841
+      }
+    },
+    {
+      "id": "agot_oldstones_02",
+      "fields": [
+        "requirements",
+        "construction_cost",
+        "construction_callbacks"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 1305
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 2886
+      }
+    },
+    {
+      "id": "agot_plankytown_01",
+      "fields": [
+        "construction_cost",
+        "flags"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 570
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 1729
+      }
+    },
+    {
+      "id": "agot_raventree_hall_01",
+      "fields": [
+        "construction_cost"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 926
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 1440
+      }
+    },
+    {
+      "id": "agot_rodriks_gift_01",
+      "fields": [
+        "requirements"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 4427
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 704
+      }
+    },
+    {
+      "id": "agot_rooks_rest_01",
+      "fields": [
+        "requirements"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 8080
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 896
+      }
+    },
+    {
+      "id": "agot_ruins_hightide_02",
+      "fields": [
+        "requirements",
+        "construction_cost"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 7984
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 2381
+      }
+    },
+    {
+      "id": "agot_ruins_spicetown_02",
+      "fields": [
+        "requirements",
+        "construction_cost",
+        "flags",
+        "construction_callbacks"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 7641
+      },
+      "playset_source": {
+        "layer": "ugc_3388366564",
+        "path": "common/buildings/00_mde_buildings_override.txt",
+        "line": 1
+      }
+    },
+    {
+      "id": "agot_runestone_01",
+      "fields": [
+        "construction_cost"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 6571
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 3404
+      }
+    },
+    {
+      "id": "agot_seagard_01",
+      "fields": [
+        "construction_cost"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 1131
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 3210
+      }
+    },
+    {
+      "id": "agot_starfall_01",
+      "fields": [
+        "requirements",
+        "construction_cost"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 203
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 3109
+      }
+    },
+    {
+      "id": "agot_starpike_01",
+      "fields": [
+        "construction_cost"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 5632
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 1027
+      }
+    },
+    {
+      "id": "agot_summerhall_ruins_02",
+      "fields": [
+        "construction_callbacks"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 3116
+      },
+      "playset_source": {
+        "layer": "ugc_3388366564",
+        "path": "common/buildings/00_mde_buildings_override.txt",
+        "line": 73
+      }
+    },
+    {
+      "id": "agot_ten_towers_01",
+      "fields": [
+        "requirements",
+        "construction_cost",
+        "flags"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_special_buildings_westeros.txt",
+        "line": 7081
+      },
+      "playset_source": {
+        "layer": "AGOT_SUBMODS_FIX",
+        "path": "common/buildings/yy_agotcities_special_buildings_westeros.txt",
+        "line": 1603
+      }
+    },
+    {
+      "id": "large_ruin_04",
+      "fields": [
+        "requirements",
+        "construction_callbacks"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_ruin_buildings.txt",
+        "line": 367
+      },
+      "playset_source": {
+        "layer": "ugc_2971198450",
+        "path": "common/buildings/zz_cowagot_ruin_buildings.txt",
+        "line": 372
+      }
+    },
+    {
+      "id": "medium_ruin_04",
+      "fields": [
+        "requirements",
+        "construction_callbacks"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_ruin_buildings.txt",
+        "line": 252
+      },
+      "playset_source": {
+        "layer": "ugc_2971198450",
+        "path": "common/buildings/zz_cowagot_ruin_buildings.txt",
+        "line": 260
+      }
+    },
+    {
+      "id": "small_ruin_04",
+      "fields": [
+        "construction_callbacks"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/00_agot_ruin_buildings.txt",
+        "line": 140
+      },
+      "playset_source": {
+        "layer": "ugc_2971198450",
+        "path": "common/buildings/zz_cowagot_ruin_buildings.txt",
+        "line": 157
+      }
+    },
+    {
+      "id": "walls_00",
+      "fields": [
+        "requirements"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/99_background_graphics_buildings.txt",
+        "line": 4
+      },
+      "playset_source": {
+        "layer": "ugc_2971198450",
+        "path": "common/buildings/99_background_graphics_buildings.txt",
+        "line": 4
+      }
+    },
+    {
+      "id": "walls_01",
+      "fields": [
+        "requirements"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/99_background_graphics_buildings.txt",
+        "line": 120
+      },
+      "playset_source": {
+        "layer": "ugc_2971198450",
+        "path": "common/buildings/99_background_graphics_buildings.txt",
+        "line": 433
+      }
+    },
+    {
+      "id": "walls_01_tribal",
+      "fields": [
+        "requirements"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/99_background_graphics_buildings.txt",
+        "line": 47
+      },
+      "playset_source": {
+        "layer": "ugc_2971198450",
+        "path": "common/buildings/99_background_graphics_buildings.txt",
+        "line": 205
+      }
+    },
+    {
+      "id": "walls_02",
+      "fields": [
+        "requirements"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/99_background_graphics_buildings.txt",
+        "line": 2443
+      },
+      "playset_source": {
+        "layer": "ugc_2971198450",
+        "path": "common/buildings/99_background_graphics_buildings.txt",
+        "line": 2912
+      }
+    },
+    {
+      "id": "walls_03",
+      "fields": [
+        "requirements"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/99_background_graphics_buildings.txt",
+        "line": 4854
+      },
+      "playset_source": {
+        "layer": "ugc_2971198450",
+        "path": "common/buildings/99_background_graphics_buildings.txt",
+        "line": 5477
+      }
+    },
+    {
+      "id": "walls_04",
+      "fields": [
+        "requirements"
+      ],
+      "base_source": {
+        "layer": "agot",
+        "path": "common/buildings/99_background_graphics_buildings.txt",
+        "line": 7233
+      },
+      "playset_source": {
+        "layer": "ugc_2971198450",
+        "path": "common/buildings/99_background_graphics_buildings.txt",
+        "line": 8001
+      }
+    }
+  ],
+  "changed_shared_definitions": [
+    "scripted_trigger:building_quarries_requirement_terrain"
+  ]
+}

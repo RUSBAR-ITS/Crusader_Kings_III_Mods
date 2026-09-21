@@ -1,0 +1,57 @@
+﻿# Standalone equivalent of the existing Valyrian addon '+' control.
+rbhm_legacy_add_slot = {
+    scope = character
+    saved_scopes = { gui_holding }
+    is_shown = {
+        is_ai = no
+        is_alive = yes
+        exists = scope:gui_holding
+        scope:gui_holding = {
+            has_holding = yes
+            exists = province_owner
+            NOR = {
+                has_holding_type = unknown_holding
+                has_holding_type = wilderness_holding
+                has_holding_type = ruin_holding
+                has_holding_type = nomad_holding
+                has_holding_type = herder_holding
+            }
+        }
+        OR = {
+            scope:gui_holding.province_owner = root
+            is_liege_or_above_of = scope:gui_holding.province_owner
+        }
+    }
+    is_valid = {
+        gold >= 1000
+        scope:gui_holding = { building_slots < define:NProvince|MAX_BUILDINGS }
+    }
+    effect = {
+        if = {
+            limit = {
+                is_ai = no
+                is_alive = yes
+                gold >= 1000
+                exists = scope:gui_holding
+                scope:gui_holding = {
+                    has_holding = yes
+                    exists = province_owner
+                    building_slots < define:NProvince|MAX_BUILDINGS
+                    NOR = {
+                        has_holding_type = unknown_holding
+                        has_holding_type = wilderness_holding
+                        has_holding_type = ruin_holding
+                        has_holding_type = nomad_holding
+                        has_holding_type = herder_holding
+                    }
+                }
+                OR = {
+                    scope:gui_holding.province_owner = root
+                    is_liege_or_above_of = scope:gui_holding.province_owner
+                }
+            }
+            remove_long_term_gold = 1000
+            scope:gui_holding = { add_province_modifier = extra_building_slot }
+        }
+    }
+}
