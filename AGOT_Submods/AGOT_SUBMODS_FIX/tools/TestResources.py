@@ -27,6 +27,10 @@ def validate(candidate=False):
         return json.loads((b.REPO/REPORT/name).read_text(encoding='utf-8'))
 
     before = json.loads((b.MOD/'docs/resources-before-source-manifest.json').read_text(encoding='utf-8'))
+    excluded = json.loads((b.MOD/'docs/disabled-crowns-2026-09-22/manifest.json').read_text(encoding='utf-8'))['files']
+    ok('Only archived Crowns files removed since resource baseline',
+       set(before)-set(b.OUTPUTS) == set(excluded))
+    before = {p:v for p,v in before.items() if p not in excluded}
     changed = {p for p,v in before.items() if b.digest(b.OUTPUTS[p]) != v['sha256']}
     ok('Exactly two earlier COW files extended', changed == {
         'common/on_action/cowagot_province_on_actions.txt',
@@ -148,15 +152,15 @@ def validate(candidate=False):
     # Resolve patched files through the actual playset, including descriptor replace_path.
     profile = Path('C:/Users/RUSBAR/Documents/Paradox Interactive/Crusader Kings III')
     enabled = json.loads((profile/'dlc_load.json').read_text(encoding='utf-8-sig'))['enabled_mods']
-    recorded = report('active-mods.json')
-    ok('Playset order matches resource research',enabled == [m['Descriptor'] for m in recorded if 'Descriptor' in m])
+    # Inspect the current playset read-only; it can differ from the historical
+    # resource audit and can contain later mods that do not override these files.
     mods = [dict(Path=str(b.GAME),Replace=[])]
-    for mod in [m for m in recorded if 'Descriptor' in m]:
-        text = (profile/mod['Descriptor']).read_text(encoding='utf-8-sig')
+    for descriptor in enabled:
+        text = (profile/descriptor).read_text(encoding='utf-8-sig')
         path = re.search(r'(?m)^\s*path\s*=\s*"([^"]+)"',text)[1]
-        ok('Mod root matches research: '+mod['Descriptor'],Path(path).resolve() == Path(mod['Path']).resolve())
+        ok('Current mod root exists: '+descriptor,Path(path).is_dir())
         mods.append(dict(Path=path,Replace=re.findall(r'(?m)^\s*replace_path\s*=\s*"([^"]+)"',text)))
-    ok('Unified patch enabled last',Path(mods[-1]['Path']).resolve() == b.MOD.resolve())
+    ok('Unified patch enabled',any(Path(mod['Path']).resolve() == b.MOD.resolve() for mod in mods))
     def provider(rel):
         found = None
         for mod in mods:

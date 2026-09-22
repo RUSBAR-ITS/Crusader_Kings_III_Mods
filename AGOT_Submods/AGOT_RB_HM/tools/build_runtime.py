@@ -226,7 +226,12 @@ trigger_else = {
                     earlier.append(bid)
             for bid in group:
                 tests = [block("AND", f"var:rbhm_order_{gi} = {pi}\nrbhm_order_{gi}_{pi}_{bid} = yes") for pi, _ in enumerate(itertools.permutations(group))]
-                self.add_trigger("pick_" + bid, block("OR", "\n".join(tests)))
+                # GUI conditions can be evaluated before the initialization
+                # state runs. AND does not guarantee a short circuit in CK3;
+                # a conditional branch must guard every missing-variable read.
+                ready = block("trigger_if", block("limit", f"has_variable = rbhm_order_{gi}") + block("OR", "\n".join(tests)))
+                ready += block("trigger_else", "always = no")
+                self.add_trigger("pick_" + bid, ready)
 
     def project_presence(self, node, earlier, gi, pi):
         for child in node.get("children", []):
@@ -319,18 +324,26 @@ trigger_else = {
         b = self.buildings[bid]
         if bid in self.projects:
             project, definition, _ = self.projects[bid]
-            effect = ("set_great_building" if b["upgrade"]["previous"] else "add_great_building") + " = " + bid
+            effect = ("replace_building_effect" if b["upgrade"]["previous"] else "add_great_building") + " = " + bid
             if bid == "mandala_capital_01":
                 effect = "if = { limit = { NOT = { has_holding_type = temple_citadel_holding } } set_holding_type = temple_citadel_holding }\n" + effect
                 effect += "\nadd_to_global_variable_list = { name = mandala_poi_list target = this }"
             # The building and all purchased geographic contribution improvements.
+            improvements = ""
             for n in sections(definition["syntax"], "project_contributions"):
                 for part in n["children"]:
                     for completed in sections(part, "on_complete"):
-                        effect += "\n" + project_physical(completed)
+                        improvements += "\n" + project_physical(completed)
+            improvements = "\n".join(line for line in improvements.splitlines() if line.strip())
+            if improvements:
+                effect += "\n" + block("if", block("limit", "has_building = " + bid) + improvements)
             return effect
-        # Native effect places upgrades in their existing slots. Do not replay
-        # on_complete manually: it belongs to the engine's building lifecycle.
+        # add_building upgrades regular slots, but rejects an occupied duchy
+        # slot (confirmed by the 07:52 log). Use the native replacement effect
+        # for unique-slot upgrades, after the exact predecessor was validated.
+        if b["category"] in ("duchy", "special") and b["upgrade"]["previous"]:
+            return "replace_building_effect = " + bid
+        # Do not replay on_complete manually: it belongs to the engine.
         return "add_building = " + bid
 
     def compile_effects(self):
@@ -370,7 +383,7 @@ trigger_else = {
                     valid = f"{menu}\nrbhm_idle = yes\nrbhm_pick_{bid} = yes\nrbhm_afford_{bid} = yes"
                     prices = "\n".join(f"save_temporary_scope_value_as = {{ name = rbhm_line_{c} value = rbhm_price_{bid}_{c} }}" for c in CURRENCIES)
                     effect = block("show_as_tooltip", prices + f"\ncustom_tooltip = rbhm_line_{bid}")
-                    effect += block("hidden_effect", block("if", block("limit", valid) + self.pay_single(bid) + self.apply_building(bid) + "\nscope:actor = { remove_variable = rbhm_menu remove_variable = rbhm_menu_province }"))
+                    effect += block("hidden_effect", block("if", block("limit", valid) + self.execute_single(bid, close_menu=True)))
                     self.gui("select_" + bid, f"{menu}\nrbhm_pick_{bid} = yes", valid, effect)
 
     @staticmethod
@@ -385,11 +398,18 @@ trigger_else = {
             payments.append(f"if = {{ limit = {{ scope:rbhm_pay_{c} > 0 }} {pay} }}")
         return block("scope:actor", "\n".join(payments))
 
-    def pay_single(self, bid):
-        return "\n".join(f"save_scope_value_as = {{ name = rbhm_pay_{c} value = rbhm_price_{bid}_{c} }}" for c in CURRENCIES) + "\n" + self.pay()
+    def execute_single(self, bid, close_menu=False):
+        # Freeze dynamic prices before construction changes province income.
+        # Only pay (and close the picker) after the requested building exists;
+        # a rejected engine effect must not consume the quoted resources.
+        prices = "\n".join(f"save_scope_value_as = {{ name = rbhm_pay_{c} value = rbhm_price_{bid}_{c} }}" for c in CURRENCIES)
+        success = self.pay().rstrip()
+        if close_menu:
+            success += "\nscope:actor = { remove_variable = rbhm_menu remove_variable = rbhm_menu_province }"
+        return prices + "\n" + self.apply_building(bid).rstrip() + "\n" + block("if", block("limit", "has_building = " + bid) + success)
 
     def execute_selected(self, bids):
-        return "\n".join(block("if", block("limit", f"exists = scope:rbhm_selected_{bid}") + self.pay_single(bid) + self.apply_building(bid)) for bid in bids)
+        return "\n".join(block("if", block("limit", f"exists = scope:rbhm_selected_{bid}") + self.execute_single(bid)) for bid in bids)
 
     def compile_context(self):
         self.add_trigger("context", """has_holding = yes
@@ -469,22 +489,61 @@ def call(name, method="IsValid"):
     return f"GetScriptedGui('rbhm_{name}').{method}({gui_scope()})"
 
 
+def window_bounds(source, name):
+    """Locate one named top-level window, ignoring braces in strings/comments.
+
+    window_county_view.gui also contains holding_tracks_view and holding_type_selection_view.
+    The last brace before TYPES belongs to a different window, not holding_view.
+    """
+    matches = list(re.finditer(r'(?m)^window\s*=\s*\{\s*name\s*=\s*"' + re.escape(name) + r'"', source))
+    if len(matches) != 1:
+        raise ValueError(f"Expected exactly one top-level window named {name}")
+    start = matches[0].start()
+    depth = 0
+    for token in re.finditer(r'"(?:\\.|[^"\\])*"|\#[^\n]*|[{}]', source[start:]):
+        depth += (token.group() == "{") - (token.group() == "}")
+        if token.group() == "}" and depth == 0:
+            return start, start + token.start()
+    raise ValueError(f"Unclosed GUI window {name}")
+
+
 def build_gui(c):
-    panel = 'name = "rbhm_controls"\nsize = { 112 174 }\nparentanchor = bottom|left\nposition = { 18 -70 }\n'
-    panel += f'visible = "[And(Not(HoldingView.IsSelectingBuildingToConstruct), {call("main_upgrade", "IsShown")})]"\n'
-    panel += block("state", f'name = rbhm_initialize\ntrigger_when = "[{call("initialize")}]"\non_finish = "[{call("initialize", "Execute")}]"')
+    # A plain widget has no margin_left/margin_bottom properties. Reserve
+    # padding inside its size and offset the buttons, using supported fields.
+    panel = 'name = "rbhm_controls"\nsize = { 116 184 }\nalwaystransparent = no\n'
+    # Use the same minimal realm check as the working '+' control. Optional
+    # construction scopes must not hide the entire panel of ordinary actions.
+    shown = "GetScriptedGui('rbhm_legacy_add_slot').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)"
+    panel += f'visible = "[{shown}]"\n'
+    panel += block("state", f'name = rbhm_initialize\ntrigger_when = "[{call("initialize")}]"\non_start = "[{call("initialize", "Execute")}]"')
     for idx, mode in enumerate(MODES):
-        x, y = (0, idx * 58) if idx < 3 else (58, (idx - 3) * 58)
+        x, y = (4, idx * 58) if idx < 3 else (62, (idx - 3) * 58)
         valid = call(mode)
         button = f'name = "rbhm_{mode}_button"\nsize = {{ 52 52 }}\nposition = {{ {x} {y} }}\n'
-        button += f'visible = "[{call(mode, "IsShown")}]"\nenabled = "[{valid}]"\nonclick = "[{call(mode, "Execute")}]"\n'
-        button += f'texture = "[Select_CString({valid}, \'gfx/interface/icons/rbhm/{mode}_active.dds\', \'gfx/interface/icons/rbhm/{mode}_inactive.dds\')]"\n'
+        if idx >= 3:
+            button += f'visible = "[{call(mode, "IsShown")}]"\n'
+        button += f'enabled = "[{valid}]"\nonclick = "[{call(mode, "Execute")}]"\n'
+        # Literal texture paths go through the GUI asset loader, as on the
+        # working '+' button. Do not return a filename string as a texture.
+        # Keep a visible inactive base and overlay the active artwork only when
+        # the same condition that enables the button succeeds.
+        button += f'texture = "gfx/interface/icons/rbhm/{mode}_inactive.dds"\n'
+        # These are finished, single-image RGBA artworks. Native button_icon
+        # instead shades flat masks through a separate multi-frame color atlas.
+        # Do not inherit that tint or request any frame outside our 128px image.
+        button += 'framesize = { 128 128 }\nblockoverride "button_icon_modify_texture" {}\n'
+        button += 'blockoverride "button_frames" {\n\tgfxtype = togglepushbuttongfx\n\teffectname = "NoHighlight"\n'
+        button += "".join(f"\t{state} = 1\n" for state in ("upframe", "uphoverframe", "uppressedframe", "downframe", "downhoverframe", "downpressedframe", "disableframe")) + '}\n'
+        button += block("icon", f'name = "rbhm_{mode}_active_artwork"\nsize = {{ 100% 100% }}\nalwaystransparent = yes\nvisible = "[{valid}]"\ntexture = "gfx/interface/icons/rbhm/{mode}_active.dds"')
         button += f'tooltip = "[{call(mode, "BuildTooltip")}]"\nusing = tooltip_ne\n'
         # A full batch can exceed the screen height. Keep the native pinnable
-        # tooltip but provide a scrollable body instead of dropping list entries.
-        scrolltext = block("text_multi", f'layoutpolicy_horizontal = expanding\nautoresize = yes\ntext = "[{call(mode, "BuildTooltip")}]"')
-        scroll = block("scrollbox", 'size = { 520 440 }\n' + block('blockoverride "scrollbox_content"', scrolltext).replace('blockoverride "scrollbox_content" =', 'blockoverride "scrollbox_content"'))
-        button += block("tooltipwidget", block("container", "using = GeneralTooltipSetup\n" + scroll))
+        # tooltip with the same background widget as DefaultTooltipWidget.
+        # GeneralTooltipSetup alone only wires mouse/close handling, not a frame.
+        scrolltext = block("textbox", f'using = DefaultTooltipText\nusing = Font_Type_Standard\nusing = Font_Size_Small\nmax_width = 440\nfonttintcolor = "[TooltipInfo.GetTintColor]"\ntext = "[{call(mode, "BuildTooltip")}]"')
+        scroll = block("scrollbox", 'size = { 480 400 }\n' + block('blockoverride "scrollbox_content"', scrolltext).replace('blockoverride "scrollbox_content" =', 'blockoverride "scrollbox_content"'))
+        background = block("widget", 'name = "background"\nusing = DefaultTooltipBackground\nsize = { 100% 100% }\nalwaystransparent = no')
+        content = block("flowcontainer", 'direction = vertical\nmargin = { 20 12 }\n' + scroll)
+        button += block("tooltipwidget", block("container", "using = GeneralTooltipSetup\nalwaystransparent = no\n" + background + content))
         panel += block("button_icon", button)
     types = block("types rbhm_types", block("type rbhm_controls = widget", panel))
     # block() already adds '=', while type declarations use their own '='.
@@ -510,10 +569,18 @@ def build_gui(c):
             row += f'tooltip = "[{call("select_" + bid, "BuildTooltip")}]"\n'
             rows += block("button_standard", row)
     picker += block("scrollbox", 'position = { 15 55 }\nsize = { 570 435 }\n' + block('blockoverride "scrollbox_content"', block("vbox", "layoutpolicy_horizontal = expanding\nignoreinvisible = yes\nspacing = 4\n" + rows)).replace('blockoverride "scrollbox_content" =', 'blockoverride "scrollbox_content"'))
-    # Insert before the closing brace of the top-level window, not the types block.
-    source = source.replace("\n}\n\n######################################################\n################ TYPES", "\n\trbhm_controls = {}\n" + block("widget", picker) + "}\n\n######################################################\n################ TYPES", 1)
-    if 'name = "rbhm_picker"' not in source:
-        raise ValueError("Picker insertion point changed")
+    # Place the controls in the actual left-hand holding layout, alongside the
+    # building grid. The outer window is only a host for the expanding content.
+    left_column = "\t\t\t\t\tvbox = {\n\t\t\t\t\t\tlayoutpolicy_vertical = expanding\n\t\t\t\t\t\tallow_outside = yes\n\n\t\t\t\t\t\texpand = {}"
+    start, closing = window_bounds(source, "holding_view")
+    if source[start:closing].count(left_column) != 1:
+        raise ValueError("Holding view left-hand column changed; review placement")
+    source = source[:start] + source[start:closing].replace(left_column,
+        left_column.replace("\t\t\t\t\t\texpand = {}", "\t\t\t\t\t\trbhm_controls = {}\n\t\t\t\t\t\texpand = {}"), 1) + source[closing:]
+    # The picker remains a floating child of this same holding screen.
+    _, closing = window_bounds(source, "holding_view")
+    insertion = block("widget", picker)
+    source = source[:closing] + insertion + source[closing:]
     write("gui/window_county_view.gui", source)
     # Keep existing '+' available without making this mod depend on the DI addon.
     write("gui/rbhm_legacy_slot.gui", (ROOT.parent / "AGOT_DI_RUSBAR_ADDON/gui/agot_di_rusbar_holding_controls.gui").read_text(encoding="utf-8-sig").replace("agot_di_rusbar_holding_types", "rbhm_legacy_types").replace("agot_di_rusbar_holding_slot_button", "rbhm_legacy_slot_button").replace("agot_di_rusbar_add_holding_slot", "rbhm_legacy_add_slot"))
@@ -538,7 +605,8 @@ def build_localization(c):
                 if "treasury_or_gold" in currencies:
                     currencies = (currencies - {"treasury_or_gold"}) | {"gold", "treasury"}
             cost = "  ".join(f"[SCOPE.GetValue('rbhm_line_{cur}')|0] @{icons[cur]}_icon!" for cur in CURRENCIES if cur in currencies)
-            lines.append(f' rbhm_line_{bid}:0 "• {name}: {cost}"')
+            # custom_tooltip effect already supplies the list marker in CK3.
+            lines.append(f' rbhm_line_{bid}:0 "{name}: {cost}"')
             if bid in c.projects:
                 label_cost = "×10 цены проекта" if language == "russian" else "×10 project cost"
             else:

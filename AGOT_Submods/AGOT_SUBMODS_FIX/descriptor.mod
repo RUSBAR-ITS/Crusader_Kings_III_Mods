@@ -11,7 +11,6 @@ dependencies={
     "AGOT Bookmarked"
     "Valyrian Steel"
     "COW-AGOT: 3D Models & Bigger Castles"
-    "AGOT - Crowns of Westeros"
     "Legacy Of The Dragon"
     "Divine Intervention AGOT Cheat Menu"
     "AGOT | Исправления русификатора"

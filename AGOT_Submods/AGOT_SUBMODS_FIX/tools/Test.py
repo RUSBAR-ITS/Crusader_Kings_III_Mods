@@ -1,7 +1,6 @@
 """Static contracts and finite-state checks, not an emulator or a CK3 run."""
 import collections
 import csv
-import difflib
 import hashlib
 import itertools
 import json
@@ -132,41 +131,18 @@ def main():
     event=one(patched('events/decisions_events/buy_ruby_crown_events.txt'),'buy_ruby_crown.0999')
     ok('Ruby crown costs exactly the decision fee',cost=='450' and not any(n.key=='remove_short_term_gold' for n in walk(event.value)))
 
-    # Event relocation preserves the whole addon and every base event line.
-    oldpath='events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt'
-    newpath='events/activities/agot_coronation_activity/agot_coronation_crown_commission_events.txt'
-    old=source('crowns',oldpath);base=source('agot',newpath);new=patched(newpath)
-    ok('Crowns commission moved intact',old==new)
-    ok('Old commission path has no active event',not parse(patched(oldpath)))
-    op=difflib.SequenceMatcher(None,base.splitlines(True),new.splitlines(True),autojunk=False).get_opcodes()
-    ok('No AGOT event logic removed or changed',all(x[0] in ('equal','insert') for x in op))
-
-    # Reachability and all normal terminal exits of the actual Roland event graph.
-    p='events/ntc_find_lost_crown_events.txt'
-    t=patched(p);old=source('crowns',p)
-    events={int(n.key.rsplit('.',1)[-1]):n for n in parse(t) if n.key.startswith('ntc_find_lost_crown_event.')}
-    terminals={3,4,6,7,8}
-    graph={}
-    for i,n in events.items():
-        graph[i]={int(x.one('id').value.rsplit('.',1)[-1]) for x in walk(n.value) if x.key=='trigger_event' and isinstance(x.value,list)}
-        original=one(old,n.key)
-        ok('Roland options preserved: '+str(i),[semantic(x) for x in n.children('option')]==[semantic(x) for x in original.children('option')])
-    reachable={1};pending=[1]
-    while pending:
-        i=pending.pop()
-        if i in terminals:continue
-        for j in graph[i]:
-            if j not in reachable:reachable.add(j);pending.append(j)
-    ok('Roland terminal outcomes accounted for',reachable=={1,2,3,4,5,6,7,8})
-    for i in terminals:
-        ok('Roland lock cleared after every option: '+str(i),events[i].one('after').one('remove_character_flag').value=='usf_roland_search_active')
-    ok('Roland lock acquired when chain starts',sum(n.value=='usf_roland_search_active' for n in events[1].one('immediate').children('add_character_flag'))==1)
-    gate=events[1].one('trigger').one('NOR')
-    for crown,active,alive,recent in itertools.product([False,True],repeat=4):
-        state=dict(artifacts=[{'roland_arryn_crown_artifact'}] if crown else [],
-                   character=dict(flags={'had_ntc_find_lost_crown_event_1_event_recently'} if recent else set()),
-                   characters=[dict(alive=alive,flags={'usf_roland_search_active'} if active else set())])
-        ok(f'Roland eligibility {crown,active,alive,recent}',evaluate(gate,state)==not_blocked(crown,active,alive,recent))
+    # Excluding Crowns must remove its base-event override as well as its own files.
+    archive = b.MOD/'docs/disabled-crowns-2026-09-22'
+    excluded = json.loads((archive/'manifest.json').read_text(encoding='utf-8'))['files']
+    ok('Exactly eight Crowns outputs archived', len(excluded) == 8)
+    for rel, record in excluded.items():
+        ok('Crowns output absent from runtime: '+rel, rel not in outputs and not (b.MOD/rel).exists())
+        ok('Archived Crowns bytes preserved: '+rel,
+           b.digest((archive/'runtime'/rel).read_bytes()) == record['sha256'])
+    ok('Crowns sources no longer required by build', not any(k.startswith('crowns/') for k in b.INPUTS))
+    for descriptor in [b.MOD/'descriptor.mod', b.MOD.parent/'AGOT_SUBMODS_FIX.mod']:
+        ok('Crowns dependency removed: '+descriptor.name,
+           '"AGOT - Crowns of Westeros"' not in descriptor.read_text(encoding='utf-8'))
 
     p='common/scripted_guis/cow_custom_mapmodes_gui.txt'
     gate=one(patched(p),'highlight_cow_provinces_map').one('is_shown')
@@ -252,10 +228,6 @@ def main():
                 limitation='Static syntax/contract/finite-state checks only; CK3 has not been run with the new patch.',checks_passed=checks)
     (b.MOD/'docs/validation.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
     print('PASS:',len(checks),'checks;',len(outputs),'runtime files; protected original sources unchanged.')
-
-
-def not_blocked(crown,active,alive,recent):
-    return not crown and not (active and alive) and not recent
 
 
 if __name__=='__main__':

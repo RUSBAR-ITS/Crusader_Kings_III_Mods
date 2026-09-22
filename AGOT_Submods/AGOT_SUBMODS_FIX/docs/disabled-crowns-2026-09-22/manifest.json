@@ -1,0 +1,138 @@
+{
+  "date": "2026-09-22",
+  "reason": "User excludes Crowns of Westeros from the unified fix; load order and game profile are untouched.",
+  "files": {
+    "common/modifiers/ntc_artifact_modifiers.txt": {
+      "bytes": 23783,
+      "sha256": "1673631ca8b4923aa23c72a13cd076d4d61db2ada4b639ac192ec9a5f6bba117"
+    },
+    "common/on_action/ntc_artifacts_startdate.txt": {
+      "bytes": 3801,
+      "sha256": "92fe361fbbf716e9afbdaed4344e8d1d5d406f8ca11868ab7131d70e4ac7f24b"
+    },
+    "common/artifacts/templates/ntc_artifacts_templates.txt": {
+      "bytes": 62876,
+      "sha256": "f20c3fe74951b15b3309b528efd1d652776d24088b008e65483399fd426f9855"
+    },
+    "common/scripted_effects/00_ntc_scripted_effects_crowns.txt": {
+      "bytes": 155467,
+      "sha256": "ab3a3558320328bbe8586ffa32c911f22cbc64dbbd051512a9cffde710234171"
+    },
+    "common/scripted_triggers/00_ntc_crown_commission_triggers.txt": {
+      "bytes": 44273,
+      "sha256": "df3e09a0bc82046875f5737f4bb2d532357ea2d16c3858e9c38c3c9b52da93c0"
+    },
+    "events/activities/agot_coronation_activity/agot_coronation_crown_commission_events.txt": {
+      "bytes": 140187,
+      "sha256": "b80e83f60c95c624249bbbe437ffbd00d0900bc3e5b1479675ccf46e105abed1"
+    },
+    "events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt": {
+      "bytes": 148,
+      "sha256": "9a4b339a78433f87077fa17a667f814969151665b90f464180723d3c6ffb5bb4"
+    },
+    "events/ntc_find_lost_crown_events.txt": {
+      "bytes": 16618,
+      "sha256": "5816e960a492e1ae3d2a6a89a60a2b47b753bce57923c30c56c778a2ef45fff3"
+    }
+  },
+  "fixes": [
+    {
+      "file": "common/modifiers/ntc_artifact_modifiers.txt",
+      "source": "crowns/common/modifiers/ntc_artifact_modifiers.txt",
+      "reason": "Use current Vale culture without changing bonus amounts."
+    },
+    {
+      "file": "common/on_action/ntc_artifacts_startdate.txt",
+      "source": "crowns/common/on_action/ntc_artifacts_startdate.txt",
+      "reason": "Preserve intended dissolution of empires into kingdoms."
+    },
+    {
+      "file": "common/artifacts/templates/ntc_artifacts_templates.txt",
+      "source": "crowns/common/artifacts/templates/ntc_artifacts_templates.txt",
+      "reason": "Correct Myrcella identity flag case."
+    },
+    {
+      "file": "common/scripted_effects/00_ntc_scripted_effects_crowns.txt",
+      "source": "crowns/common/scripted_effects/00_ntc_scripted_effects_crowns.txt",
+      "reason": "Comment only two creation-history entries for missing Gardener_75; keep descriptions, campaign owners, artifact properties and later history."
+    },
+    {
+      "file": "common/scripted_triggers/00_ntc_crown_commission_triggers.txt",
+      "source": "crowns/common/scripted_triggers/00_ntc_crown_commission_triggers.txt",
+      "reason": "Recognize the exact existing historical Baldric; do not invent a birth chain."
+    },
+    {
+      "file": "events/activities/agot_coronation_activity/agot_coronation_crown_commission_events.txt",
+      "source": "crowns/events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
+      "reason": "Verified exact AGOT baseline plus eight additive Crowns blocks; use current canonical filename."
+    },
+    {
+      "file": "events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
+      "source": "crowns/events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
+      "reason": "Suppress duplicate old filename without dropping any crown choices."
+    },
+    {
+      "file": "events/ntc_find_lost_crown_events.txt",
+      "source": "crowns/events/ntc_find_lost_crown_events.txt",
+      "reason": "Use actual crown existence and a live-participant lock; release on success, failure, refusal and scripted death."
+    }
+  ],
+  "removed_source_inputs": {
+    "crowns/common/modifiers/ntc_artifact_modifiers.txt": {
+      "owner": "crowns",
+      "relative": "common/modifiers/ntc_artifact_modifiers.txt",
+      "path": "E:/SteamLibrary/steamapps/workshop/content/1158310/2995674648/common/modifiers/ntc_artifact_modifiers.txt",
+      "sha256": "bef9756f993e237614ecedbd37773f71684c3628ed0706d7bdf03e9933c1fa4f",
+      "bom": true
+    },
+    "crowns/common/on_action/ntc_artifacts_startdate.txt": {
+      "owner": "crowns",
+      "relative": "common/on_action/ntc_artifacts_startdate.txt",
+      "path": "E:/SteamLibrary/steamapps/workshop/content/1158310/2995674648/common/on_action/ntc_artifacts_startdate.txt",
+      "sha256": "d5296d572ccee4832b90ef15f0970613351e72e159536a1fd0e39738ed03773f",
+      "bom": true
+    },
+    "crowns/common/artifacts/templates/ntc_artifacts_templates.txt": {
+      "owner": "crowns",
+      "relative": "common/artifacts/templates/ntc_artifacts_templates.txt",
+      "path": "E:/SteamLibrary/steamapps/workshop/content/1158310/2995674648/common/artifacts/templates/ntc_artifacts_templates.txt",
+      "sha256": "4a6a2270954c02502aad32c281d183edd45faee06d0ac478448ff1d8c5e482a6",
+      "bom": true
+    },
+    "crowns/common/scripted_effects/00_ntc_scripted_effects_crowns.txt": {
+      "owner": "crowns",
+      "relative": "common/scripted_effects/00_ntc_scripted_effects_crowns.txt",
+      "path": "E:/SteamLibrary/steamapps/workshop/content/1158310/2995674648/common/scripted_effects/00_ntc_scripted_effects_crowns.txt",
+      "sha256": "c8c1f43f4e89af3f3bd24f6114147113741214e44a6d4809f48d9dd1691d6719",
+      "bom": true
+    },
+    "crowns/common/scripted_triggers/00_ntc_crown_commission_triggers.txt": {
+      "owner": "crowns",
+      "relative": "common/scripted_triggers/00_ntc_crown_commission_triggers.txt",
+      "path": "E:/SteamLibrary/steamapps/workshop/content/1158310/2995674648/common/scripted_triggers/00_ntc_crown_commission_triggers.txt",
+      "sha256": "a32c297dc92b89478a5a2c8fab634c871ef58b0f203fd5fb630d52adc992c5a4",
+      "bom": true
+    },
+    "crowns/events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt": {
+      "owner": "crowns",
+      "relative": "events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
+      "path": "E:/SteamLibrary/steamapps/workshop/content/1158310/2995674648/events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
+      "sha256": "5eaf7e15b3864107f66db670aa38ff784cf5c4ca06932cd2c03e41ff4ce91291",
+      "bom": true
+    },
+    "agot/events/activities/agot_coronation_activity/agot_coronation_crown_commission_events.txt": {
+      "owner": "agot",
+      "relative": "events/activities/agot_coronation_activity/agot_coronation_crown_commission_events.txt",
+      "path": "E:/SteamLibrary/steamapps/workshop/content/1158310/2962333032/events/activities/agot_coronation_activity/agot_coronation_crown_commission_events.txt",
+      "sha256": "78d7761dcebb9e9cf0656f396ab7585cb15c9c547f4e699844212e81292e8626",
+      "bom": true
+    },
+    "crowns/events/ntc_find_lost_crown_events.txt": {
+      "owner": "crowns",
+      "relative": "events/ntc_find_lost_crown_events.txt",
+      "path": "E:/SteamLibrary/steamapps/workshop/content/1158310/2995674648/events/ntc_find_lost_crown_events.txt",
+      "sha256": "ac4da624378e5ca428a6d341719c2889df8cc3d3e28dbf1097e6cea4033ffae2",
+      "bom": true
+    }
+  }
+}

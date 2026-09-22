@@ -1,35 +1,67 @@
 types rbhm_types {
 	type rbhm_controls = widget {
 		name = "rbhm_controls"
-		size = { 112 174 }
-		parentanchor = bottom|left
-		position = { 18 -70 }
-		visible = "[And(Not(HoldingView.IsSelectingBuildingToConstruct), GetScriptedGui('rbhm_main_upgrade').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End))]"
+		size = { 116 184 }
+		alwaystransparent = no
+		visible = "[GetScriptedGui('rbhm_legacy_add_slot').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('gui_holding', HoldingView.GetProvince.MakeScope).End)]"
 		state = {
 			name = rbhm_initialize
 			trigger_when = "[GetScriptedGui('rbhm_initialize').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
-			on_finish = "[GetScriptedGui('rbhm_initialize').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+			on_start = "[GetScriptedGui('rbhm_initialize').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 		}
 		button_icon = {
 			name = "rbhm_main_upgrade_button"
 			size = { 52 52 }
-			position = { 0 0 }
-			visible = "[GetScriptedGui('rbhm_main_upgrade').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+			position = { 4 0 }
 			enabled = "[GetScriptedGui('rbhm_main_upgrade').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			onclick = "[GetScriptedGui('rbhm_main_upgrade').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
-			texture = "[Select_CString(GetScriptedGui('rbhm_main_upgrade').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End), 'gfx/interface/icons/rbhm/main_upgrade_active.dds', 'gfx/interface/icons/rbhm/main_upgrade_inactive.dds')]"
+			texture = "gfx/interface/icons/rbhm/main_upgrade_inactive.dds"
+			framesize = { 128 128 }
+			blockoverride "button_icon_modify_texture" {}
+			blockoverride "button_frames" {
+				gfxtype = togglepushbuttongfx
+				effectname = "NoHighlight"
+				upframe = 1
+				uphoverframe = 1
+				uppressedframe = 1
+				downframe = 1
+				downhoverframe = 1
+				downpressedframe = 1
+				disableframe = 1
+			}
+			icon = {
+				name = "rbhm_main_upgrade_active_artwork"
+				size = { 100% 100% }
+				alwaystransparent = yes
+				visible = "[GetScriptedGui('rbhm_main_upgrade').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+				texture = "gfx/interface/icons/rbhm/main_upgrade_active.dds"
+			}
 			tooltip = "[GetScriptedGui('rbhm_main_upgrade').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			using = tooltip_ne
 			tooltipwidget = {
 				container = {
 					using = GeneralTooltipSetup
-					scrollbox = {
-						size = { 520 440 }
-						blockoverride "scrollbox_content" {
-							text_multi = {
-								layoutpolicy_horizontal = expanding
-								autoresize = yes
-								text = "[GetScriptedGui('rbhm_main_upgrade').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+					alwaystransparent = no
+					widget = {
+						name = "background"
+						using = DefaultTooltipBackground
+						size = { 100% 100% }
+						alwaystransparent = no
+					}
+					flowcontainer = {
+						direction = vertical
+						margin = { 20 12 }
+						scrollbox = {
+							size = { 480 400 }
+							blockoverride "scrollbox_content" {
+								textbox = {
+									using = DefaultTooltipText
+									using = Font_Type_Standard
+									using = Font_Size_Small
+									max_width = 440
+									fonttintcolor = "[TooltipInfo.GetTintColor]"
+									text = "[GetScriptedGui('rbhm_main_upgrade').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+								}
 							}
 						}
 					}
@@ -39,23 +71,56 @@ types rbhm_types {
 		button_icon = {
 			name = "rbhm_regular_build_button"
 			size = { 52 52 }
-			position = { 0 58 }
-			visible = "[GetScriptedGui('rbhm_regular_build').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+			position = { 4 58 }
 			enabled = "[GetScriptedGui('rbhm_regular_build').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			onclick = "[GetScriptedGui('rbhm_regular_build').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
-			texture = "[Select_CString(GetScriptedGui('rbhm_regular_build').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End), 'gfx/interface/icons/rbhm/regular_build_active.dds', 'gfx/interface/icons/rbhm/regular_build_inactive.dds')]"
+			texture = "gfx/interface/icons/rbhm/regular_build_inactive.dds"
+			framesize = { 128 128 }
+			blockoverride "button_icon_modify_texture" {}
+			blockoverride "button_frames" {
+				gfxtype = togglepushbuttongfx
+				effectname = "NoHighlight"
+				upframe = 1
+				uphoverframe = 1
+				uppressedframe = 1
+				downframe = 1
+				downhoverframe = 1
+				downpressedframe = 1
+				disableframe = 1
+			}
+			icon = {
+				name = "rbhm_regular_build_active_artwork"
+				size = { 100% 100% }
+				alwaystransparent = yes
+				visible = "[GetScriptedGui('rbhm_regular_build').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+				texture = "gfx/interface/icons/rbhm/regular_build_active.dds"
+			}
 			tooltip = "[GetScriptedGui('rbhm_regular_build').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			using = tooltip_ne
 			tooltipwidget = {
 				container = {
 					using = GeneralTooltipSetup
-					scrollbox = {
-						size = { 520 440 }
-						blockoverride "scrollbox_content" {
-							text_multi = {
-								layoutpolicy_horizontal = expanding
-								autoresize = yes
-								text = "[GetScriptedGui('rbhm_regular_build').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+					alwaystransparent = no
+					widget = {
+						name = "background"
+						using = DefaultTooltipBackground
+						size = { 100% 100% }
+						alwaystransparent = no
+					}
+					flowcontainer = {
+						direction = vertical
+						margin = { 20 12 }
+						scrollbox = {
+							size = { 480 400 }
+							blockoverride "scrollbox_content" {
+								textbox = {
+									using = DefaultTooltipText
+									using = Font_Type_Standard
+									using = Font_Size_Small
+									max_width = 440
+									fonttintcolor = "[TooltipInfo.GetTintColor]"
+									text = "[GetScriptedGui('rbhm_regular_build').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+								}
 							}
 						}
 					}
@@ -65,23 +130,56 @@ types rbhm_types {
 		button_icon = {
 			name = "rbhm_regular_upgrade_button"
 			size = { 52 52 }
-			position = { 0 116 }
-			visible = "[GetScriptedGui('rbhm_regular_upgrade').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+			position = { 4 116 }
 			enabled = "[GetScriptedGui('rbhm_regular_upgrade').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			onclick = "[GetScriptedGui('rbhm_regular_upgrade').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
-			texture = "[Select_CString(GetScriptedGui('rbhm_regular_upgrade').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End), 'gfx/interface/icons/rbhm/regular_upgrade_active.dds', 'gfx/interface/icons/rbhm/regular_upgrade_inactive.dds')]"
+			texture = "gfx/interface/icons/rbhm/regular_upgrade_inactive.dds"
+			framesize = { 128 128 }
+			blockoverride "button_icon_modify_texture" {}
+			blockoverride "button_frames" {
+				gfxtype = togglepushbuttongfx
+				effectname = "NoHighlight"
+				upframe = 1
+				uphoverframe = 1
+				uppressedframe = 1
+				downframe = 1
+				downhoverframe = 1
+				downpressedframe = 1
+				disableframe = 1
+			}
+			icon = {
+				name = "rbhm_regular_upgrade_active_artwork"
+				size = { 100% 100% }
+				alwaystransparent = yes
+				visible = "[GetScriptedGui('rbhm_regular_upgrade').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+				texture = "gfx/interface/icons/rbhm/regular_upgrade_active.dds"
+			}
 			tooltip = "[GetScriptedGui('rbhm_regular_upgrade').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			using = tooltip_ne
 			tooltipwidget = {
 				container = {
 					using = GeneralTooltipSetup
-					scrollbox = {
-						size = { 520 440 }
-						blockoverride "scrollbox_content" {
-							text_multi = {
-								layoutpolicy_horizontal = expanding
-								autoresize = yes
-								text = "[GetScriptedGui('rbhm_regular_upgrade').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+					alwaystransparent = no
+					widget = {
+						name = "background"
+						using = DefaultTooltipBackground
+						size = { 100% 100% }
+						alwaystransparent = no
+					}
+					flowcontainer = {
+						direction = vertical
+						margin = { 20 12 }
+						scrollbox = {
+							size = { 480 400 }
+							blockoverride "scrollbox_content" {
+								textbox = {
+									using = DefaultTooltipText
+									using = Font_Type_Standard
+									using = Font_Size_Small
+									max_width = 440
+									fonttintcolor = "[TooltipInfo.GetTintColor]"
+									text = "[GetScriptedGui('rbhm_regular_upgrade').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+								}
 							}
 						}
 					}
@@ -91,23 +189,57 @@ types rbhm_types {
 		button_icon = {
 			name = "rbhm_duchy_button"
 			size = { 52 52 }
-			position = { 58 0 }
+			position = { 62 0 }
 			visible = "[GetScriptedGui('rbhm_duchy').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			enabled = "[GetScriptedGui('rbhm_duchy').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			onclick = "[GetScriptedGui('rbhm_duchy').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
-			texture = "[Select_CString(GetScriptedGui('rbhm_duchy').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End), 'gfx/interface/icons/rbhm/duchy_active.dds', 'gfx/interface/icons/rbhm/duchy_inactive.dds')]"
+			texture = "gfx/interface/icons/rbhm/duchy_inactive.dds"
+			framesize = { 128 128 }
+			blockoverride "button_icon_modify_texture" {}
+			blockoverride "button_frames" {
+				gfxtype = togglepushbuttongfx
+				effectname = "NoHighlight"
+				upframe = 1
+				uphoverframe = 1
+				uppressedframe = 1
+				downframe = 1
+				downhoverframe = 1
+				downpressedframe = 1
+				disableframe = 1
+			}
+			icon = {
+				name = "rbhm_duchy_active_artwork"
+				size = { 100% 100% }
+				alwaystransparent = yes
+				visible = "[GetScriptedGui('rbhm_duchy').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+				texture = "gfx/interface/icons/rbhm/duchy_active.dds"
+			}
 			tooltip = "[GetScriptedGui('rbhm_duchy').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			using = tooltip_ne
 			tooltipwidget = {
 				container = {
 					using = GeneralTooltipSetup
-					scrollbox = {
-						size = { 520 440 }
-						blockoverride "scrollbox_content" {
-							text_multi = {
-								layoutpolicy_horizontal = expanding
-								autoresize = yes
-								text = "[GetScriptedGui('rbhm_duchy').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+					alwaystransparent = no
+					widget = {
+						name = "background"
+						using = DefaultTooltipBackground
+						size = { 100% 100% }
+						alwaystransparent = no
+					}
+					flowcontainer = {
+						direction = vertical
+						margin = { 20 12 }
+						scrollbox = {
+							size = { 480 400 }
+							blockoverride "scrollbox_content" {
+								textbox = {
+									using = DefaultTooltipText
+									using = Font_Type_Standard
+									using = Font_Size_Small
+									max_width = 440
+									fonttintcolor = "[TooltipInfo.GetTintColor]"
+									text = "[GetScriptedGui('rbhm_duchy').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+								}
 							}
 						}
 					}
@@ -117,23 +249,57 @@ types rbhm_types {
 		button_icon = {
 			name = "rbhm_special_button"
 			size = { 52 52 }
-			position = { 58 58 }
+			position = { 62 58 }
 			visible = "[GetScriptedGui('rbhm_special').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			enabled = "[GetScriptedGui('rbhm_special').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			onclick = "[GetScriptedGui('rbhm_special').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
-			texture = "[Select_CString(GetScriptedGui('rbhm_special').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End), 'gfx/interface/icons/rbhm/special_active.dds', 'gfx/interface/icons/rbhm/special_inactive.dds')]"
+			texture = "gfx/interface/icons/rbhm/special_inactive.dds"
+			framesize = { 128 128 }
+			blockoverride "button_icon_modify_texture" {}
+			blockoverride "button_frames" {
+				gfxtype = togglepushbuttongfx
+				effectname = "NoHighlight"
+				upframe = 1
+				uphoverframe = 1
+				uppressedframe = 1
+				downframe = 1
+				downhoverframe = 1
+				downpressedframe = 1
+				disableframe = 1
+			}
+			icon = {
+				name = "rbhm_special_active_artwork"
+				size = { 100% 100% }
+				alwaystransparent = yes
+				visible = "[GetScriptedGui('rbhm_special').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+				texture = "gfx/interface/icons/rbhm/special_active.dds"
+			}
 			tooltip = "[GetScriptedGui('rbhm_special').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			using = tooltip_ne
 			tooltipwidget = {
 				container = {
 					using = GeneralTooltipSetup
-					scrollbox = {
-						size = { 520 440 }
-						blockoverride "scrollbox_content" {
-							text_multi = {
-								layoutpolicy_horizontal = expanding
-								autoresize = yes
-								text = "[GetScriptedGui('rbhm_special').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+					alwaystransparent = no
+					widget = {
+						name = "background"
+						using = DefaultTooltipBackground
+						size = { 100% 100% }
+						alwaystransparent = no
+					}
+					flowcontainer = {
+						direction = vertical
+						margin = { 20 12 }
+						scrollbox = {
+							size = { 480 400 }
+							blockoverride "scrollbox_content" {
+								textbox = {
+									using = DefaultTooltipText
+									using = Font_Type_Standard
+									using = Font_Size_Small
+									max_width = 440
+									fonttintcolor = "[TooltipInfo.GetTintColor]"
+									text = "[GetScriptedGui('rbhm_special').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+								}
 							}
 						}
 					}
@@ -143,23 +309,57 @@ types rbhm_types {
 		button_icon = {
 			name = "rbhm_great_button"
 			size = { 52 52 }
-			position = { 58 116 }
+			position = { 62 116 }
 			visible = "[GetScriptedGui('rbhm_great').IsShown(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			enabled = "[GetScriptedGui('rbhm_great').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			onclick = "[GetScriptedGui('rbhm_great').Execute(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
-			texture = "[Select_CString(GetScriptedGui('rbhm_great').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End), 'gfx/interface/icons/rbhm/great_active.dds', 'gfx/interface/icons/rbhm/great_inactive.dds')]"
+			texture = "gfx/interface/icons/rbhm/great_inactive.dds"
+			framesize = { 128 128 }
+			blockoverride "button_icon_modify_texture" {}
+			blockoverride "button_frames" {
+				gfxtype = togglepushbuttongfx
+				effectname = "NoHighlight"
+				upframe = 1
+				uphoverframe = 1
+				uppressedframe = 1
+				downframe = 1
+				downhoverframe = 1
+				downpressedframe = 1
+				disableframe = 1
+			}
+			icon = {
+				name = "rbhm_great_active_artwork"
+				size = { 100% 100% }
+				alwaystransparent = yes
+				visible = "[GetScriptedGui('rbhm_great').IsValid(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+				texture = "gfx/interface/icons/rbhm/great_active.dds"
+			}
 			tooltip = "[GetScriptedGui('rbhm_great').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
 			using = tooltip_ne
 			tooltipwidget = {
 				container = {
 					using = GeneralTooltipSetup
-					scrollbox = {
-						size = { 520 440 }
-						blockoverride "scrollbox_content" {
-							text_multi = {
-								layoutpolicy_horizontal = expanding
-								autoresize = yes
-								text = "[GetScriptedGui('rbhm_great').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+					alwaystransparent = no
+					widget = {
+						name = "background"
+						using = DefaultTooltipBackground
+						size = { 100% 100% }
+						alwaystransparent = no
+					}
+					flowcontainer = {
+						direction = vertical
+						margin = { 20 12 }
+						scrollbox = {
+							size = { 480 400 }
+							blockoverride "scrollbox_content" {
+								textbox = {
+									using = DefaultTooltipText
+									using = Font_Type_Standard
+									using = Font_Size_Small
+									max_width = 440
+									fonttintcolor = "[TooltipInfo.GetTintColor]"
+									text = "[GetScriptedGui('rbhm_great').BuildTooltip(GuiScope.SetRoot(HoldingView.GetProvince.MakeScope).AddScope('province', HoldingView.GetProvince.MakeScope).AddScope('actor', GetPlayer.MakeScope).AddScope('character', GetPlayer.MakeScope).AddScope('holder', HoldingView.GetHolder.MakeScope).AddScope('founder', HoldingView.GetHolder.MakeScope).AddScope('owner', HoldingView.GetHolder.MakeScope).AddScope('county', HoldingView.GetCountyTitle.MakeScope).AddScope('duchy_slot', MakeScopeBool(HoldingView.HasDuchyCapitalBuildingSlot)).AddScope('special_slot', MakeScopeFlag(Select_CString(HoldingView.HasSpecialBuildingSlot, HoldingView.GetGUISpecialBuilding.GetCurrentOrConstrucingBuilding.GetKey, 'none'))).End)]"
+								}
 							}
 						}
 					}

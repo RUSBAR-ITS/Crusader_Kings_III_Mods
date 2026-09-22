@@ -1,0 +1,36 @@
+    # Event relocation preserves the whole addon and every base event line.
+    oldpath='events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt'
+    newpath='events/activities/agot_coronation_activity/agot_coronation_crown_commission_events.txt'
+    old=source('crowns',oldpath);base=source('agot',newpath);new=patched(newpath)
+    ok('Crowns commission moved intact',old==new)
+    ok('Old commission path has no active event',not parse(patched(oldpath)))
+    op=difflib.SequenceMatcher(None,base.splitlines(True),new.splitlines(True),autojunk=False).get_opcodes()
+    ok('No AGOT event logic removed or changed',all(x[0] in ('equal','insert') for x in op))
+
+    # Reachability and all normal terminal exits of the actual Roland event graph.
+    p='events/ntc_find_lost_crown_events.txt'
+    t=patched(p);old=source('crowns',p)
+    events={int(n.key.rsplit('.',1)[-1]):n for n in parse(t) if n.key.startswith('ntc_find_lost_crown_event.')}
+    terminals={3,4,6,7,8}
+    graph={}
+    for i,n in events.items():
+        graph[i]={int(x.one('id').value.rsplit('.',1)[-1]) for x in walk(n.value) if x.key=='trigger_event' and isinstance(x.value,list)}
+        original=one(old,n.key)
+        ok('Roland options preserved: '+str(i),[semantic(x) for x in n.children('option')]==[semantic(x) for x in original.children('option')])
+    reachable={1};pending=[1]
+    while pending:
+        i=pending.pop()
+        if i in terminals:continue
+        for j in graph[i]:
+            if j not in reachable:reachable.add(j);pending.append(j)
+    ok('Roland terminal outcomes accounted for',reachable=={1,2,3,4,5,6,7,8})
+    for i in terminals:
+        ok('Roland lock cleared after every option: '+str(i),events[i].one('after').one('remove_character_flag').value=='usf_roland_search_active')
+    ok('Roland lock acquired when chain starts',sum(n.value=='usf_roland_search_active' for n in events[1].one('immediate').children('add_character_flag'))==1)
+    gate=events[1].one('trigger').one('NOR')
+    for crown,active,alive,recent in itertools.product([False,True],repeat=4):
+        state=dict(artifacts=[{'roland_arryn_crown_artifact'}] if crown else [],
+                   character=dict(flags={'had_ntc_find_lost_crown_event_1_event_recently'} if recent else set()),
+                   characters=[dict(alive=alive,flags={'usf_roland_search_active'} if active else set())])
+        ok(f'Roland eligibility {crown,active,alive,recent}',evaluate(gate,state)==not_blocked(crown,active,alive,recent))
+

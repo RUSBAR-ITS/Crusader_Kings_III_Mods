@@ -1,0 +1,345 @@
+# Character scope. Court wrappers only: Eye and Treatises.
+# Reuse the military retraining cleanup without its main-education replacement.
+agot_di_rusbar_court_knighthood_effect = {
+	if = { limit = { has_trait = education_martial_prowess_1 } remove_trait = education_martial_prowess_1 }
+	if = { limit = { has_trait = education_martial_prowess_2 } remove_trait = education_martial_prowess_2 }
+	if = { limit = { has_trait = education_martial_prowess_3 } remove_trait = education_martial_prowess_3 }
+	if = { limit = { has_trait = education_martial_prowess_4 } remove_trait = education_martial_prowess_4 }
+	if = { limit = { NOT = { has_trait = education_martial_prowess_5 } } add_trait = education_martial_prowess_5 }
+	agot_di_rusbar_complete_knighthood_effect = yes
+}
+
+# Only the five main education families; retain auxiliary AGOT education.
+agot_di_rusbar_clear_court_main_education_effect = {
+	if = { limit = { has_trait = education_diplomacy_1 } remove_trait = education_diplomacy_1 }
+	if = { limit = { has_trait = education_diplomacy_2 } remove_trait = education_diplomacy_2 }
+	if = { limit = { has_trait = education_diplomacy_3 } remove_trait = education_diplomacy_3 }
+	if = { limit = { has_trait = education_diplomacy_4 } remove_trait = education_diplomacy_4 }
+	if = { limit = { has_trait = education_diplomacy_5 } remove_trait = education_diplomacy_5 }
+	if = { limit = { has_trait = education_martial_1 } remove_trait = education_martial_1 }
+	if = { limit = { has_trait = education_martial_2 } remove_trait = education_martial_2 }
+	if = { limit = { has_trait = education_martial_3 } remove_trait = education_martial_3 }
+	if = { limit = { has_trait = education_martial_4 } remove_trait = education_martial_4 }
+	if = { limit = { has_trait = education_martial_5 } remove_trait = education_martial_5 }
+	if = { limit = { has_trait = education_stewardship_1 } remove_trait = education_stewardship_1 }
+	if = { limit = { has_trait = education_stewardship_2 } remove_trait = education_stewardship_2 }
+	if = { limit = { has_trait = education_stewardship_3 } remove_trait = education_stewardship_3 }
+	if = { limit = { has_trait = education_stewardship_4 } remove_trait = education_stewardship_4 }
+	if = { limit = { has_trait = education_stewardship_5 } remove_trait = education_stewardship_5 }
+	if = { limit = { has_trait = education_intrigue_1 } remove_trait = education_intrigue_1 }
+	if = { limit = { has_trait = education_intrigue_2 } remove_trait = education_intrigue_2 }
+	if = { limit = { has_trait = education_intrigue_3 } remove_trait = education_intrigue_3 }
+	if = { limit = { has_trait = education_intrigue_4 } remove_trait = education_intrigue_4 }
+	if = { limit = { has_trait = education_intrigue_5 } remove_trait = education_intrigue_5 }
+	if = { limit = { has_trait = education_learning_1 } remove_trait = education_learning_1 }
+	if = { limit = { has_trait = education_learning_2 } remove_trait = education_learning_2 }
+	if = { limit = { has_trait = education_learning_3 } remove_trait = education_learning_3 }
+	if = { limit = { has_trait = education_learning_4 } remove_trait = education_learning_4 }
+	if = { limit = { has_trait = education_learning_5 } remove_trait = education_learning_5 }
+}
+
+# Eye only: equal chances among positive role skills, before appointment.
+# Prowess is granted separately. Prowess-only roles use martial education.
+# Wet nurse/stooge have no positive skill profile: choose any main education.
+# The general skill floor must not influence this selection.
+# Keep a matching V education already assigned by the profile (e.g. artificer).
+
+# Roles: court_jester_court_position, court_musician_court_position, cultural_emissary_court_position, cupbearer_court_position, justiciar_court_position, lady_in_waiting_court_position, witness_camp_officer
+agot_di_rusbar_court_education_diplomacy_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_diplomacy_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		add_trait = education_diplomacy_5
+	}
+}
+
+# Roles: chief_eunuch_court_position, keeper_of_the_harem_court_position
+agot_di_rusbar_court_education_diplomacy_intrigue_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_diplomacy_5
+				has_trait = education_intrigue_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		random_list = {
+			100 = { add_trait = education_diplomacy_5 }
+			100 = { add_trait = education_intrigue_5 }
+		}
+	}
+}
+
+# Roles: laureate_camp_officer
+agot_di_rusbar_court_education_diplomacy_intrigue_learning_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_diplomacy_5
+				has_trait = education_intrigue_5
+				has_trait = education_learning_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		random_list = {
+			100 = { add_trait = education_diplomacy_5 }
+			100 = { add_trait = education_intrigue_5 }
+			100 = { add_trait = education_learning_5 }
+		}
+	}
+}
+
+# Roles: chronicler_court_position, court_poet_court_position, high_reeve_court_position, master_bard_camp_officer, yeke_jarquchi_court_position
+agot_di_rusbar_court_education_diplomacy_learning_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_diplomacy_5
+				has_trait = education_learning_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		random_list = {
+			100 = { add_trait = education_diplomacy_5 }
+			100 = { add_trait = education_learning_5 }
+		}
+	}
+}
+
+# Roles: crimson_cloaks_commander_court_position, grey_cloaks_commander_court_position, keeper_of_the_horses_court_position, sea_watch_commander_court_position
+agot_di_rusbar_court_education_diplomacy_martial_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_diplomacy_5
+				has_trait = education_martial_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		random_list = {
+			100 = { add_trait = education_diplomacy_5 }
+			100 = { add_trait = education_martial_5 }
+		}
+	}
+}
+
+# Roles: court_artificer_court_position, court_tutor_court_position, second_camp_officer, stooge_camp_officer, wet_nurse_court_position
+agot_di_rusbar_court_education_diplomacy_martial_stewardship_intrigue_learning_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_diplomacy_5
+				has_trait = education_martial_5
+				has_trait = education_stewardship_5
+				has_trait = education_intrigue_5
+				has_trait = education_learning_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		random_list = {
+			100 = { add_trait = education_diplomacy_5 }
+			100 = { add_trait = education_martial_5 }
+			100 = { add_trait = education_stewardship_5 }
+			100 = { add_trait = education_intrigue_5 }
+			100 = { add_trait = education_learning_5 }
+		}
+	}
+}
+
+# Roles: eparch_court_position, foreign_emissary_court_position, royal_scales_court_position
+agot_di_rusbar_court_education_diplomacy_stewardship_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_diplomacy_5
+				has_trait = education_stewardship_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		random_list = {
+			100 = { add_trait = education_diplomacy_5 }
+			100 = { add_trait = education_stewardship_5 }
+		}
+	}
+}
+
+# Roles: person_haggler_camp_officer
+agot_di_rusbar_court_education_diplomacy_stewardship_intrigue_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_diplomacy_5
+				has_trait = education_stewardship_5
+				has_trait = education_intrigue_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		random_list = {
+			100 = { add_trait = education_diplomacy_5 }
+			100 = { add_trait = education_stewardship_5 }
+			100 = { add_trait = education_intrigue_5 }
+		}
+	}
+}
+
+# Roles: camp_cook_camp_officer, executioner_court_position, food_taster_court_position, gaoler_court_position, master_assassin_court_position, master_thief_camp_officer
+agot_di_rusbar_court_education_intrigue_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_intrigue_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		add_trait = education_intrigue_5
+	}
+}
+
+# Roles: antiquarian_court_position, camp_priest_camp_officer, cave_hermit_court_position, chief_forager_camp_officer, court_astrologer_court_position, court_brewmaster_court_position, court_physician_court_position, court_scholar_court_position, grand_mentor_court_position, grand_preceptor_court_position, high_almoner_court_position, huntperson_camp_officer, maester_court_position, master_of_hunt_court_position, nw_septon, septa_court_position, septon_court_position
+agot_di_rusbar_court_education_learning_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_learning_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		add_trait = education_learning_5
+	}
+}
+
+# Roles: archer_captain_camp_officer, bloodrider_court_position, bodyguard_court_position, camelry_captain_camp_officer, champion_court_position, elephantry_captain_camp_officer, first_sword_court_position, grand_guardian_court_position, heavy_cavalry_captain_camp_officer, heavy_infantry_captain_camp_officer, horse_archer_captain_camp_officer, household_guard_court_position, kennelperson_camp_officer, light_cavalry_captain_camp_officer, light_infantry_captain_camp_officer, master_of_arms_camp_officer, master_of_horse_court_position, pike_captain_camp_officer
+agot_di_rusbar_court_education_martial_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_martial_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		add_trait = education_martial_5
+	}
+}
+
+# Roles: cherbi_court_position
+agot_di_rusbar_court_education_martial_intrigue_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_martial_5
+				has_trait = education_intrigue_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		random_list = {
+			100 = { add_trait = education_martial_5 }
+			100 = { add_trait = education_intrigue_5 }
+		}
+	}
+}
+
+# Roles: chief_engineer_camp_officer
+agot_di_rusbar_court_education_martial_learning_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_martial_5
+				has_trait = education_learning_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		random_list = {
+			100 = { add_trait = education_martial_5 }
+			100 = { add_trait = education_learning_5 }
+		}
+	}
+}
+
+# Roles: admiral_court_position, head_porter_camp_officer, khlon_glan_court_position
+agot_di_rusbar_court_education_martial_stewardship_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_martial_5
+				has_trait = education_stewardship_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		random_list = {
+			100 = { add_trait = education_martial_5 }
+			100 = { add_trait = education_stewardship_5 }
+		}
+	}
+}
+
+# Roles: master_of_spoils_camp_officer
+agot_di_rusbar_court_education_martial_stewardship_intrigue_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_martial_5
+				has_trait = education_stewardship_5
+				has_trait = education_intrigue_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		random_list = {
+			100 = { add_trait = education_martial_5 }
+			100 = { add_trait = education_stewardship_5 }
+			100 = { add_trait = education_intrigue_5 }
+		}
+	}
+}
+
+# Roles: boyan_court_position, siege_engineer_court_position
+agot_di_rusbar_court_education_martial_stewardship_learning_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_martial_5
+				has_trait = education_stewardship_5
+				has_trait = education_learning_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		random_list = {
+			100 = { add_trait = education_martial_5 }
+			100 = { add_trait = education_stewardship_5 }
+			100 = { add_trait = education_learning_5 }
+		}
+	}
+}
+
+# Roles: court_gardener_court_position, court_smith_court_position, keeper_of_keys_court_position, keeper_of_swans_court_position, master_at_arms_court_position, quartermaster_camp_officer, royal_architect_court_position, royal_counter_court_position, royal_mint_officer_court_position, seneschal_court_position
+agot_di_rusbar_court_education_stewardship_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_stewardship_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		add_trait = education_stewardship_5
+	}
+}
+
+# Roles: armorer_camp_officer, harbormaster_court_position, head_dragonkeeper_court_position, head_groom_camp_officer, travel_leader_court_position, yurtchi_court_position
+agot_di_rusbar_court_education_stewardship_learning_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = education_stewardship_5
+				has_trait = education_learning_5
+			}
+		}
+		agot_di_rusbar_clear_court_main_education_effect = yes
+		random_list = {
+			100 = { add_trait = education_stewardship_5 }
+			100 = { add_trait = education_learning_5 }
+		}
+	}
+}

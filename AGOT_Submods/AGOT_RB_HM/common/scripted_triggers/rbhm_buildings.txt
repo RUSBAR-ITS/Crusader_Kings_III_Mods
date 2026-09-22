@@ -34265,104 +34265,128 @@ rbhm_order_0_5_apiaries_01 = {
 }
 
 rbhm_pick_apiaries_01 = {
-	OR = {
-		AND = {
-			var:rbhm_order_0 = 0
-			rbhm_order_0_0_apiaries_01 = yes
+	trigger_if = {
+		limit = {
+			has_variable = rbhm_order_0
 		}
-		
-		AND = {
-			var:rbhm_order_0 = 1
-			rbhm_order_0_1_apiaries_01 = yes
+		OR = {
+			AND = {
+				var:rbhm_order_0 = 0
+				rbhm_order_0_0_apiaries_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 1
+				rbhm_order_0_1_apiaries_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 2
+				rbhm_order_0_2_apiaries_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 3
+				rbhm_order_0_3_apiaries_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 4
+				rbhm_order_0_4_apiaries_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 5
+				rbhm_order_0_5_apiaries_01 = yes
+			}
 		}
-		
-		AND = {
-			var:rbhm_order_0 = 2
-			rbhm_order_0_2_apiaries_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_0 = 3
-			rbhm_order_0_3_apiaries_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_0 = 4
-			rbhm_order_0_4_apiaries_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_0 = 5
-			rbhm_order_0_5_apiaries_01 = yes
-		}
+	}
+	trigger_else = {
+		always = no
 	}
 }
 
 rbhm_pick_agot_gold_mines_01 = {
-	OR = {
-		AND = {
-			var:rbhm_order_0 = 0
-			rbhm_order_0_0_agot_gold_mines_01 = yes
+	trigger_if = {
+		limit = {
+			has_variable = rbhm_order_0
 		}
-		
-		AND = {
-			var:rbhm_order_0 = 1
-			rbhm_order_0_1_agot_gold_mines_01 = yes
+		OR = {
+			AND = {
+				var:rbhm_order_0 = 0
+				rbhm_order_0_0_agot_gold_mines_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 1
+				rbhm_order_0_1_agot_gold_mines_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 2
+				rbhm_order_0_2_agot_gold_mines_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 3
+				rbhm_order_0_3_agot_gold_mines_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 4
+				rbhm_order_0_4_agot_gold_mines_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 5
+				rbhm_order_0_5_agot_gold_mines_01 = yes
+			}
 		}
-		
-		AND = {
-			var:rbhm_order_0 = 2
-			rbhm_order_0_2_agot_gold_mines_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_0 = 3
-			rbhm_order_0_3_agot_gold_mines_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_0 = 4
-			rbhm_order_0_4_agot_gold_mines_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_0 = 5
-			rbhm_order_0_5_agot_gold_mines_01 = yes
-		}
+	}
+	trigger_else = {
+		always = no
 	}
 }
 
 rbhm_pick_agot_silver_mines_01 = {
-	OR = {
-		AND = {
-			var:rbhm_order_0 = 0
-			rbhm_order_0_0_agot_silver_mines_01 = yes
+	trigger_if = {
+		limit = {
+			has_variable = rbhm_order_0
 		}
-		
-		AND = {
-			var:rbhm_order_0 = 1
-			rbhm_order_0_1_agot_silver_mines_01 = yes
+		OR = {
+			AND = {
+				var:rbhm_order_0 = 0
+				rbhm_order_0_0_agot_silver_mines_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 1
+				rbhm_order_0_1_agot_silver_mines_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 2
+				rbhm_order_0_2_agot_silver_mines_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 3
+				rbhm_order_0_3_agot_silver_mines_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 4
+				rbhm_order_0_4_agot_silver_mines_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_0 = 5
+				rbhm_order_0_5_agot_silver_mines_01 = yes
+			}
 		}
-		
-		AND = {
-			var:rbhm_order_0 = 2
-			rbhm_order_0_2_agot_silver_mines_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_0 = 3
-			rbhm_order_0_3_agot_silver_mines_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_0 = 4
-			rbhm_order_0_4_agot_silver_mines_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_0 = 5
-			rbhm_order_0_5_agot_silver_mines_01 = yes
-		}
+	}
+	trigger_else = {
+		always = no
 	}
 }
 
@@ -34487,30 +34511,46 @@ rbhm_order_1_1_building_moat_01 = {
 }
 
 rbhm_pick_building_moat_01 = {
-	OR = {
-		AND = {
-			var:rbhm_order_1 = 0
-			rbhm_order_1_0_building_moat_01 = yes
+	trigger_if = {
+		limit = {
+			has_variable = rbhm_order_1
 		}
-		
-		AND = {
-			var:rbhm_order_1 = 1
-			rbhm_order_1_1_building_moat_01 = yes
+		OR = {
+			AND = {
+				var:rbhm_order_1 = 0
+				rbhm_order_1_0_building_moat_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_1 = 1
+				rbhm_order_1_1_building_moat_01 = yes
+			}
 		}
+	}
+	trigger_else = {
+		always = no
 	}
 }
 
 rbhm_pick_curtain_walls_01 = {
-	OR = {
-		AND = {
-			var:rbhm_order_1 = 0
-			rbhm_order_1_0_curtain_walls_01 = yes
+	trigger_if = {
+		limit = {
+			has_variable = rbhm_order_1
 		}
-		
-		AND = {
-			var:rbhm_order_1 = 1
-			rbhm_order_1_1_curtain_walls_01 = yes
+		OR = {
+			AND = {
+				var:rbhm_order_1 = 0
+				rbhm_order_1_0_curtain_walls_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_1 = 1
+				rbhm_order_1_1_curtain_walls_01 = yes
+			}
 		}
+	}
+	trigger_else = {
+		always = no
 	}
 }
 
@@ -36483,104 +36523,128 @@ rbhm_order_2_5_watermills_01 = {
 }
 
 rbhm_pick_watermills_01 = {
-	OR = {
-		AND = {
-			var:rbhm_order_2 = 0
-			rbhm_order_2_0_watermills_01 = yes
+	trigger_if = {
+		limit = {
+			has_variable = rbhm_order_2
 		}
-		
-		AND = {
-			var:rbhm_order_2 = 1
-			rbhm_order_2_1_watermills_01 = yes
+		OR = {
+			AND = {
+				var:rbhm_order_2 = 0
+				rbhm_order_2_0_watermills_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 1
+				rbhm_order_2_1_watermills_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 2
+				rbhm_order_2_2_watermills_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 3
+				rbhm_order_2_3_watermills_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 4
+				rbhm_order_2_4_watermills_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 5
+				rbhm_order_2_5_watermills_01 = yes
+			}
 		}
-		
-		AND = {
-			var:rbhm_order_2 = 2
-			rbhm_order_2_2_watermills_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_2 = 3
-			rbhm_order_2_3_watermills_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_2 = 4
-			rbhm_order_2_4_watermills_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_2 = 5
-			rbhm_order_2_5_watermills_01 = yes
-		}
+	}
+	trigger_else = {
+		always = no
 	}
 }
 
 rbhm_pick_windmills_01 = {
-	OR = {
-		AND = {
-			var:rbhm_order_2 = 0
-			rbhm_order_2_0_windmills_01 = yes
+	trigger_if = {
+		limit = {
+			has_variable = rbhm_order_2
 		}
-		
-		AND = {
-			var:rbhm_order_2 = 1
-			rbhm_order_2_1_windmills_01 = yes
+		OR = {
+			AND = {
+				var:rbhm_order_2 = 0
+				rbhm_order_2_0_windmills_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 1
+				rbhm_order_2_1_windmills_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 2
+				rbhm_order_2_2_windmills_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 3
+				rbhm_order_2_3_windmills_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 4
+				rbhm_order_2_4_windmills_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 5
+				rbhm_order_2_5_windmills_01 = yes
+			}
 		}
-		
-		AND = {
-			var:rbhm_order_2 = 2
-			rbhm_order_2_2_windmills_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_2 = 3
-			rbhm_order_2_3_windmills_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_2 = 4
-			rbhm_order_2_4_windmills_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_2 = 5
-			rbhm_order_2_5_windmills_01 = yes
-		}
+	}
+	trigger_else = {
+		always = no
 	}
 }
 
 rbhm_pick_caravanserai_01 = {
-	OR = {
-		AND = {
-			var:rbhm_order_2 = 0
-			rbhm_order_2_0_caravanserai_01 = yes
+	trigger_if = {
+		limit = {
+			has_variable = rbhm_order_2
 		}
-		
-		AND = {
-			var:rbhm_order_2 = 1
-			rbhm_order_2_1_caravanserai_01 = yes
+		OR = {
+			AND = {
+				var:rbhm_order_2 = 0
+				rbhm_order_2_0_caravanserai_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 1
+				rbhm_order_2_1_caravanserai_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 2
+				rbhm_order_2_2_caravanserai_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 3
+				rbhm_order_2_3_caravanserai_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 4
+				rbhm_order_2_4_caravanserai_01 = yes
+			}
+			
+			AND = {
+				var:rbhm_order_2 = 5
+				rbhm_order_2_5_caravanserai_01 = yes
+			}
 		}
-		
-		AND = {
-			var:rbhm_order_2 = 2
-			rbhm_order_2_2_caravanserai_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_2 = 3
-			rbhm_order_2_3_caravanserai_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_2 = 4
-			rbhm_order_2_4_caravanserai_01 = yes
-		}
-		
-		AND = {
-			var:rbhm_order_2 = 5
-			rbhm_order_2_5_caravanserai_01 = yes
-		}
+	}
+	trigger_else = {
+		always = no
 	}
 }
 

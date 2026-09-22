@@ -65,46 +65,6 @@
     "reason": "Match the actual map mode variable and its existing flag value."
   },
   {
-    "file": "common/modifiers/ntc_artifact_modifiers.txt",
-    "source": "crowns/common/modifiers/ntc_artifact_modifiers.txt",
-    "reason": "Use current Vale culture without changing bonus amounts."
-  },
-  {
-    "file": "common/on_action/ntc_artifacts_startdate.txt",
-    "source": "crowns/common/on_action/ntc_artifacts_startdate.txt",
-    "reason": "Preserve intended dissolution of empires into kingdoms."
-  },
-  {
-    "file": "common/artifacts/templates/ntc_artifacts_templates.txt",
-    "source": "crowns/common/artifacts/templates/ntc_artifacts_templates.txt",
-    "reason": "Correct Myrcella identity flag case."
-  },
-  {
-    "file": "common/scripted_effects/00_ntc_scripted_effects_crowns.txt",
-    "source": "crowns/common/scripted_effects/00_ntc_scripted_effects_crowns.txt",
-    "reason": "Comment only two creation-history entries for missing Gardener_75; keep descriptions, campaign owners, artifact properties and later history."
-  },
-  {
-    "file": "common/scripted_triggers/00_ntc_crown_commission_triggers.txt",
-    "source": "crowns/common/scripted_triggers/00_ntc_crown_commission_triggers.txt",
-    "reason": "Recognize the exact existing historical Baldric; do not invent a birth chain."
-  },
-  {
-    "file": "events/activities/agot_coronation_activity/agot_coronation_crown_commission_events.txt",
-    "source": "crowns/events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
-    "reason": "Verified exact AGOT baseline plus eight additive Crowns blocks; use current canonical filename."
-  },
-  {
-    "file": "events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
-    "source": "crowns/events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt",
-    "reason": "Suppress duplicate old filename without dropping any crown choices."
-  },
-  {
-    "file": "events/ntc_find_lost_crown_events.txt",
-    "source": "crowns/events/ntc_find_lost_crown_events.txt",
-    "reason": "Use actual crown existence and a live-participant lock; release on success, failure, refusal and scripted death."
-  },
-  {
     "file": "common/scripted_effects/usf_bookmarked_april_scenario.txt",
     "source": "agot/common/scripted_effects/00_agot_scenario_clash_of_kings_effects.txt",
     "reason": "Copy exact AGOT April effect under a unique path; preserve Bookmarked June scenario."

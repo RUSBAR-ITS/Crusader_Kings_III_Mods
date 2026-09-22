@@ -7,8 +7,8 @@ agot_di_rusbar_eye_close_effect = {
 	remove_variable = agot_di_rusbar_eye_gender
 	remove_variable = agot_di_rusbar_eye_last
 	remove_variable = agot_di_rusbar_eye_failed
-	clear_variable_list = agot_di_rusbar_eye_cultures
-	clear_variable_list = agot_di_rusbar_eye_faiths
+	clear_variable_list = agot_di_rusbar_eye_heritages
+	clear_variable_list = agot_di_rusbar_eye_religions
 }
 agot_di_rusbar_eye_open_effect = {
 	agot_di_rusbar_eye_close_effect = yes
@@ -19,12 +19,24 @@ agot_di_rusbar_eye_open_effect = {
 	set_variable = { name = agot_di_rusbar_eye_age value = 16 }
 	set_variable = { name = agot_di_rusbar_eye_gender value = 50 }
 	every_culture_global = {
-		scope:agot_di_rusbar_operator = { add_to_variable_list = { name = agot_di_rusbar_eye_cultures target = prev } }
+		# One representative per heritage, as in DI; lists belong to this player.
+		save_scope_as = agot_di_rusbar_list_culture
+		scope:agot_di_rusbar_operator = {
+			if = {
+				limit = {
+					NOT = {
+						any_in_list = {
+							variable = agot_di_rusbar_eye_heritages
+							has_same_culture_heritage = scope:agot_di_rusbar_list_culture
+						}
+					}
+				}
+				add_to_variable_list = { name = agot_di_rusbar_eye_heritages target = scope:agot_di_rusbar_list_culture }
+			}
+		}
 	}
 	every_religion_global = {
-		every_faith = {
-			scope:agot_di_rusbar_operator = { add_to_variable_list = { name = agot_di_rusbar_eye_faiths target = prev } }
-		}
+		scope:agot_di_rusbar_operator = { add_to_variable_list = { name = agot_di_rusbar_eye_religions target = prev } }
 	}
 	set_variable = { name = agot_di_rusbar_eye_open value = yes }
 }
@@ -36,6 +48,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_admiral_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = antiquarian_court_position }
@@ -44,6 +57,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_antiquarian_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = archer_captain_camp_officer }
@@ -52,6 +66,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_archer_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = armorer_camp_officer }
@@ -60,6 +75,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_armorer_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_deep_lake_keeper }
@@ -68,6 +84,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_deep_lake_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_eastwatch_by_the_sea_keeper }
@@ -76,6 +93,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_eastwatch_by_the_sea_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_greenguard_keeper }
@@ -84,6 +102,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_greenguard_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_greyguard_keeper }
@@ -92,6 +111,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_greyguard_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_hoarfrost_hill_keeper }
@@ -100,6 +120,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_hoarfrost_hill_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_icemark_keeper }
@@ -108,6 +129,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_icemark_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_long_barrow_keeper }
@@ -116,6 +138,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_long_barrow_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_oakenshield_keeper }
@@ -124,6 +147,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_oakenshield_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_queensgate_keeper }
@@ -132,6 +156,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_queensgate_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_rimegate_keeper }
@@ -140,6 +165,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_rimegate_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_sable_hall_keeper }
@@ -148,6 +174,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_sable_hall_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_sentinel_stand_keeper }
@@ -156,6 +183,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_sentinel_stand_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_stonedoor_keeper }
@@ -164,6 +192,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_stonedoor_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_the_nightfort_keeper }
@@ -172,6 +201,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_the_nightfort_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_the_shadow_tower_keeper }
@@ -180,6 +210,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_the_shadow_tower_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_the_torches_keeper }
@@ -188,6 +219,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_the_torches_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_westwatch_by_the_bridge_keeper }
@@ -196,6 +228,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_westwatch_by_the_bridge_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = b_woodswatch_by_the_pool_keeper }
@@ -204,6 +237,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_b_woodswatch_by_the_pool_keeper_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = bloodrider_court_position }
@@ -212,6 +246,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_bloodrider_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = bodyguard_court_position }
@@ -220,6 +255,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_bodyguard_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = boyan_court_position }
@@ -228,6 +264,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_boyan_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = camelry_captain_camp_officer }
@@ -236,6 +273,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_camelry_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = camp_cook_camp_officer }
@@ -244,6 +282,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_camp_cook_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = camp_priest_camp_officer }
@@ -252,6 +291,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_camp_priest_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = cave_hermit_court_position }
@@ -260,6 +300,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_cave_hermit_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = champion_court_position }
@@ -268,6 +309,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_champion_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = cherbi_court_position }
@@ -276,6 +318,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_cherbi_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = chief_engineer_camp_officer }
@@ -284,6 +327,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_chief_engineer_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = chief_eunuch_court_position }
@@ -292,6 +336,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_chief_eunuch_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = chief_forager_camp_officer }
@@ -300,6 +345,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_chief_forager_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = chronicler_court_position }
@@ -308,6 +354,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_chronicler_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = court_artificer_court_position }
@@ -316,6 +363,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_court_artificer_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = court_astrologer_court_position }
@@ -324,6 +372,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_court_astrologer_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = court_brewmaster_court_position }
@@ -332,6 +381,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_court_brewmaster_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = court_gardener_court_position }
@@ -340,6 +390,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_court_gardener_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = court_jester_court_position }
@@ -348,6 +399,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_court_jester_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = court_musician_court_position }
@@ -356,6 +408,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_court_musician_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = court_physician_court_position }
@@ -364,6 +417,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_court_physician_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = court_poet_court_position }
@@ -372,6 +426,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_court_poet_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = court_scholar_court_position }
@@ -380,6 +435,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_court_scholar_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = court_smith_court_position }
@@ -388,6 +444,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_court_smith_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = court_tutor_court_position }
@@ -396,6 +453,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_court_tutor_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = crimson_cloaks_commander_court_position }
@@ -404,6 +462,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_crimson_cloaks_commander_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = cultural_emissary_court_position }
@@ -412,6 +471,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_cultural_emissary_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = cupbearer_court_position }
@@ -420,6 +480,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_cupbearer_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = elephantry_captain_camp_officer }
@@ -428,6 +489,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_elephantry_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = eparch_court_position }
@@ -436,6 +498,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_eparch_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = executioner_court_position }
@@ -444,6 +507,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_executioner_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = favored_minister_court_position }
@@ -452,6 +516,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_favored_minister_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = first_sword_court_position }
@@ -460,6 +525,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_first_sword_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = food_taster_court_position }
@@ -468,6 +534,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_food_taster_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = foreign_emissary_court_position }
@@ -476,6 +543,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_foreign_emissary_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = gaoler_court_position }
@@ -484,6 +552,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_gaoler_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = goldcloaks_court_position }
@@ -492,6 +561,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_goldcloaks_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = grand_guardian_court_position }
@@ -500,6 +570,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_grand_guardian_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = grand_mentor_court_position }
@@ -508,6 +579,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_grand_mentor_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = grand_preceptor_court_position }
@@ -516,6 +588,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_grand_preceptor_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = grey_cloaks_commander_court_position }
@@ -524,6 +597,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_grey_cloaks_commander_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = harbormaster_court_position }
@@ -532,6 +606,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_harbormaster_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = head_dragonkeeper_court_position }
@@ -540,6 +615,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_head_dragonkeeper_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = head_groom_camp_officer }
@@ -548,6 +624,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_head_groom_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = head_porter_camp_officer }
@@ -556,6 +633,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_head_porter_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = heavy_cavalry_captain_camp_officer }
@@ -564,6 +642,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_heavy_cavalry_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = heavy_infantry_captain_camp_officer }
@@ -572,6 +651,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_heavy_infantry_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = high_almoner_court_position }
@@ -580,6 +660,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_high_almoner_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = high_reeve_court_position }
@@ -588,6 +669,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_high_reeve_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = horse_archer_captain_camp_officer }
@@ -596,6 +678,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_horse_archer_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = household_guard_court_position }
@@ -604,6 +687,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_household_guard_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = huntperson_camp_officer }
@@ -612,6 +696,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_huntperson_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = justiciar_court_position }
@@ -620,6 +705,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_justiciar_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = keeper_of_keys_court_position }
@@ -628,6 +714,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_keeper_of_keys_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = keeper_of_swans_court_position }
@@ -636,6 +723,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_keeper_of_swans_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = keeper_of_the_harem_court_position }
@@ -644,6 +732,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_keeper_of_the_harem_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = keeper_of_the_horses_court_position }
@@ -652,6 +741,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_keeper_of_the_horses_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = kennelperson_camp_officer }
@@ -660,6 +750,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_kennelperson_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = khlon_glan_court_position }
@@ -668,6 +759,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_khlon_glan_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = lady_in_waiting_court_position }
@@ -676,6 +768,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_lady_in_waiting_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = laureate_camp_officer }
@@ -684,6 +777,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_laureate_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = light_cavalry_captain_camp_officer }
@@ -692,6 +786,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_light_cavalry_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = light_infantry_captain_camp_officer }
@@ -700,6 +795,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_light_infantry_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = maester_court_position }
@@ -708,6 +804,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_maester_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = master_assassin_court_position }
@@ -716,6 +813,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_master_assassin_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = master_at_arms_court_position }
@@ -724,6 +822,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_master_at_arms_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = master_bard_camp_officer }
@@ -732,6 +831,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_master_bard_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = master_of_arms_camp_officer }
@@ -740,6 +840,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_master_of_arms_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = master_of_horse_court_position }
@@ -748,6 +849,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_master_of_horse_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = master_of_hunt_court_position }
@@ -756,6 +858,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_master_of_hunt_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = master_of_spoils_camp_officer }
@@ -764,6 +867,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_master_of_spoils_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = master_thief_camp_officer }
@@ -772,6 +876,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_master_thief_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = nw_septon }
@@ -780,6 +885,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_nw_septon_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = person_haggler_camp_officer }
@@ -788,6 +894,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_person_haggler_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = pike_captain_camp_officer }
@@ -796,6 +903,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_pike_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = princes_pass_court_position }
@@ -804,6 +912,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_princes_pass_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = quartermaster_camp_officer }
@@ -812,6 +921,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_quartermaster_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = royal_architect_court_position }
@@ -820,6 +930,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_royal_architect_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = royal_counter_court_position }
@@ -828,6 +939,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_royal_counter_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = royal_mint_officer_court_position }
@@ -836,6 +948,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_royal_mint_officer_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = royal_scales_court_position }
@@ -844,6 +957,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_royal_scales_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = sea_watch_commander_court_position }
@@ -852,6 +966,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_sea_watch_commander_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = second_camp_officer }
@@ -860,6 +975,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_second_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = seneschal_court_position }
@@ -868,6 +984,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_seneschal_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = septa_court_position }
@@ -876,6 +993,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_septa_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = septon_court_position }
@@ -884,6 +1002,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_septon_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = siege_engineer_court_position }
@@ -892,6 +1011,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_siege_engineer_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = stone_way_court_position }
@@ -900,6 +1020,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_stone_way_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = stooge_camp_officer }
@@ -908,6 +1029,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_stooge_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = travel_leader_court_position }
@@ -916,6 +1038,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_travel_leader_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = warden_of_the_east_court_position }
@@ -924,6 +1047,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_warden_of_the_east_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = warden_of_the_north_court_position }
@@ -932,6 +1056,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_warden_of_the_north_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = warden_of_the_south_court_position }
@@ -940,6 +1065,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_warden_of_the_south_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = warden_of_the_west_court_position }
@@ -948,6 +1074,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_warden_of_the_west_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = wet_nurse_court_position }
@@ -956,6 +1083,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_wet_nurse_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = white_knife_court_position }
@@ -964,6 +1092,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_white_knife_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = witness_camp_officer }
@@ -972,6 +1101,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_witness_camp_officer_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = yeke_jarquchi_court_position }
@@ -980,6 +1110,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_yeke_jarquchi_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 	else_if = {
 		limit = { has_court_position = yurtchi_court_position }
@@ -988,6 +1119,7 @@ agot_di_rusbar_treatises_effect = {
 			save_scope_as = liege
 		}
 		agot_di_rusbar_prepare_yurtchi_court_position_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 	}
 }
 agot_di_rusbar_spawn_admiral_court_position_effect = {
@@ -1058,6 +1190,8 @@ agot_di_rusbar_spawn_admiral_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_admiral_court_position_effect = yes
+		agot_di_rusbar_court_education_martial_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -1104,6 +1238,8 @@ agot_di_rusbar_spawn_antiquarian_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_antiquarian_court_position_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -1191,6 +1327,8 @@ agot_di_rusbar_spawn_archer_captain_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_archer_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -1237,6 +1375,8 @@ agot_di_rusbar_spawn_armorer_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_armorer_camp_officer_effect = yes
+		agot_di_rusbar_court_education_stewardship_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -1329,6 +1469,8 @@ agot_di_rusbar_spawn_bloodrider_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_bloodrider_court_position_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -1420,6 +1562,8 @@ agot_di_rusbar_spawn_bodyguard_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_bodyguard_court_position_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -1506,6 +1650,8 @@ agot_di_rusbar_spawn_boyan_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_boyan_court_position_effect = yes
+		agot_di_rusbar_court_education_martial_stewardship_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -1593,6 +1739,8 @@ agot_di_rusbar_spawn_camelry_captain_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_camelry_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -1639,6 +1787,8 @@ agot_di_rusbar_spawn_camp_cook_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_camp_cook_camp_officer_effect = yes
+		agot_di_rusbar_court_education_intrigue_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -1694,6 +1844,8 @@ agot_di_rusbar_spawn_camp_priest_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_camp_priest_camp_officer_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -1740,6 +1892,8 @@ agot_di_rusbar_spawn_cave_hermit_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_cave_hermit_court_position_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -1827,6 +1981,8 @@ agot_di_rusbar_spawn_champion_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_champion_court_position_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -1914,6 +2070,8 @@ agot_di_rusbar_spawn_cherbi_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_cherbi_court_position_effect = yes
+		agot_di_rusbar_court_education_martial_intrigue_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -1960,6 +2118,8 @@ agot_di_rusbar_spawn_chief_engineer_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_chief_engineer_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2006,6 +2166,8 @@ agot_di_rusbar_spawn_chief_eunuch_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_chief_eunuch_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_intrigue_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2052,6 +2214,8 @@ agot_di_rusbar_spawn_chief_forager_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_chief_forager_camp_officer_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2098,6 +2262,8 @@ agot_di_rusbar_spawn_chronicler_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_chronicler_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2144,6 +2310,8 @@ agot_di_rusbar_spawn_court_artificer_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_court_artificer_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_martial_stewardship_intrigue_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 		create_inspiration = { type = weapon_inspiration gold = 0 }
 	}
@@ -2191,6 +2359,8 @@ agot_di_rusbar_spawn_court_astrologer_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_court_astrologer_court_position_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2237,6 +2407,8 @@ agot_di_rusbar_spawn_court_brewmaster_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_court_brewmaster_court_position_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2283,6 +2455,8 @@ agot_di_rusbar_spawn_court_gardener_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_court_gardener_court_position_effect = yes
+		agot_di_rusbar_court_education_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2329,6 +2503,8 @@ agot_di_rusbar_spawn_court_jester_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_court_jester_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2375,6 +2551,8 @@ agot_di_rusbar_spawn_court_musician_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_court_musician_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2421,6 +2599,8 @@ agot_di_rusbar_spawn_court_physician_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_court_physician_court_position_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2467,6 +2647,8 @@ agot_di_rusbar_spawn_court_poet_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_court_poet_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2513,6 +2695,8 @@ agot_di_rusbar_spawn_court_scholar_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_court_scholar_court_position_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2559,6 +2743,8 @@ agot_di_rusbar_spawn_court_smith_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_court_smith_court_position_effect = yes
+		agot_di_rusbar_court_education_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2605,6 +2791,8 @@ agot_di_rusbar_spawn_court_tutor_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_court_tutor_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_martial_stewardship_intrigue_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2678,6 +2866,8 @@ agot_di_rusbar_spawn_crimson_cloaks_commander_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_crimson_cloaks_commander_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2724,6 +2914,8 @@ agot_di_rusbar_spawn_cultural_emissary_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_cultural_emissary_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2770,6 +2962,8 @@ agot_di_rusbar_spawn_cupbearer_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_cupbearer_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2857,6 +3051,8 @@ agot_di_rusbar_spawn_elephantry_captain_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_elephantry_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2903,6 +3099,8 @@ agot_di_rusbar_spawn_eparch_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_eparch_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -2949,6 +3147,8 @@ agot_di_rusbar_spawn_executioner_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_executioner_court_position_effect = yes
+		agot_di_rusbar_court_education_intrigue_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3036,6 +3236,8 @@ agot_di_rusbar_spawn_first_sword_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_first_sword_court_position_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3109,6 +3311,8 @@ agot_di_rusbar_spawn_food_taster_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_food_taster_court_position_effect = yes
+		agot_di_rusbar_court_education_intrigue_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3162,6 +3366,8 @@ agot_di_rusbar_spawn_foreign_emissary_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_foreign_emissary_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3208,6 +3414,8 @@ agot_di_rusbar_spawn_gaoler_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_gaoler_court_position_effect = yes
+		agot_di_rusbar_court_education_intrigue_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3254,6 +3462,8 @@ agot_di_rusbar_spawn_grand_guardian_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_grand_guardian_court_position_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3300,6 +3510,8 @@ agot_di_rusbar_spawn_grand_mentor_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_grand_mentor_court_position_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3346,6 +3558,8 @@ agot_di_rusbar_spawn_grand_preceptor_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_grand_preceptor_court_position_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3419,6 +3633,8 @@ agot_di_rusbar_spawn_grey_cloaks_commander_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_grey_cloaks_commander_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3465,6 +3681,8 @@ agot_di_rusbar_spawn_harbormaster_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_harbormaster_court_position_effect = yes
+		agot_di_rusbar_court_education_stewardship_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3511,6 +3729,8 @@ agot_di_rusbar_spawn_head_dragonkeeper_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_head_dragonkeeper_court_position_effect = yes
+		agot_di_rusbar_court_education_stewardship_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3557,6 +3777,8 @@ agot_di_rusbar_spawn_head_groom_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_head_groom_camp_officer_effect = yes
+		agot_di_rusbar_court_education_stewardship_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3603,6 +3825,8 @@ agot_di_rusbar_spawn_head_porter_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_head_porter_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3690,6 +3914,8 @@ agot_di_rusbar_spawn_heavy_cavalry_captain_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_heavy_cavalry_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3777,6 +4003,8 @@ agot_di_rusbar_spawn_heavy_infantry_captain_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_heavy_infantry_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3823,6 +4051,8 @@ agot_di_rusbar_spawn_high_almoner_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_high_almoner_court_position_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3869,6 +4099,8 @@ agot_di_rusbar_spawn_high_reeve_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_high_reeve_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -3956,6 +4188,8 @@ agot_di_rusbar_spawn_horse_archer_captain_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_horse_archer_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4043,6 +4277,8 @@ agot_di_rusbar_spawn_household_guard_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_household_guard_court_position_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4089,6 +4325,8 @@ agot_di_rusbar_spawn_huntperson_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_huntperson_camp_officer_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4175,6 +4413,8 @@ agot_di_rusbar_spawn_justiciar_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_justiciar_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4221,6 +4461,8 @@ agot_di_rusbar_spawn_keeper_of_keys_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_keeper_of_keys_court_position_effect = yes
+		agot_di_rusbar_court_education_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4267,6 +4509,8 @@ agot_di_rusbar_spawn_keeper_of_swans_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_keeper_of_swans_court_position_effect = yes
+		agot_di_rusbar_court_education_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4313,6 +4557,8 @@ agot_di_rusbar_spawn_keeper_of_the_harem_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_keeper_of_the_harem_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_intrigue_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 		if = {
 			limit = { is_male = yes is_eunuch_trigger = no }
@@ -4363,6 +4609,8 @@ agot_di_rusbar_spawn_keeper_of_the_horses_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_keeper_of_the_horses_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4409,6 +4657,8 @@ agot_di_rusbar_spawn_kennelperson_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_kennelperson_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4455,6 +4705,8 @@ agot_di_rusbar_spawn_khlon_glan_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_khlon_glan_court_position_effect = yes
+		agot_di_rusbar_court_education_martial_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4502,6 +4754,8 @@ agot_di_rusbar_spawn_lady_in_waiting_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_lady_in_waiting_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4548,6 +4802,8 @@ agot_di_rusbar_spawn_laureate_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_laureate_camp_officer_effect = yes
+		agot_di_rusbar_court_education_diplomacy_intrigue_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4635,6 +4891,8 @@ agot_di_rusbar_spawn_light_cavalry_captain_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_light_cavalry_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4722,6 +4980,8 @@ agot_di_rusbar_spawn_light_infantry_captain_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_light_infantry_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4768,6 +5028,8 @@ agot_di_rusbar_spawn_maester_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_maester_court_position_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 		if = {
 			limit = { scope:agot_di_rusbar_employer = { has_title = title:h_the_iron_throne } }
@@ -4863,6 +5125,8 @@ agot_di_rusbar_spawn_master_assassin_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_master_assassin_court_position_effect = yes
+		agot_di_rusbar_court_education_intrigue_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4909,6 +5173,8 @@ agot_di_rusbar_spawn_master_at_arms_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_master_at_arms_court_position_effect = yes
+		agot_di_rusbar_court_education_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -4955,6 +5221,8 @@ agot_di_rusbar_spawn_master_bard_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_master_bard_camp_officer_effect = yes
+		agot_di_rusbar_court_education_diplomacy_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5042,6 +5310,8 @@ agot_di_rusbar_spawn_master_of_arms_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_master_of_arms_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5088,6 +5358,8 @@ agot_di_rusbar_spawn_master_of_horse_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_master_of_horse_court_position_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5175,6 +5447,8 @@ agot_di_rusbar_spawn_master_of_hunt_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_master_of_hunt_court_position_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5221,6 +5495,8 @@ agot_di_rusbar_spawn_master_of_spoils_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_master_of_spoils_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_stewardship_intrigue_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5267,6 +5543,8 @@ agot_di_rusbar_spawn_master_thief_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_master_thief_camp_officer_effect = yes
+		agot_di_rusbar_court_education_intrigue_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5318,6 +5596,8 @@ agot_di_rusbar_spawn_nw_septon_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_nw_septon_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5364,6 +5644,8 @@ agot_di_rusbar_spawn_person_haggler_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_person_haggler_camp_officer_effect = yes
+		agot_di_rusbar_court_education_diplomacy_stewardship_intrigue_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5451,6 +5733,8 @@ agot_di_rusbar_spawn_pike_captain_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_pike_captain_camp_officer_effect = yes
+		agot_di_rusbar_court_education_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5497,6 +5781,8 @@ agot_di_rusbar_spawn_quartermaster_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_quartermaster_camp_officer_effect = yes
+		agot_di_rusbar_court_education_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5543,6 +5829,8 @@ agot_di_rusbar_spawn_royal_architect_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_royal_architect_court_position_effect = yes
+		agot_di_rusbar_court_education_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5589,6 +5877,8 @@ agot_di_rusbar_spawn_royal_counter_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_royal_counter_court_position_effect = yes
+		agot_di_rusbar_court_education_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5635,6 +5925,8 @@ agot_di_rusbar_spawn_royal_mint_officer_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_royal_mint_officer_court_position_effect = yes
+		agot_di_rusbar_court_education_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5681,6 +5973,8 @@ agot_di_rusbar_spawn_royal_scales_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_royal_scales_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5754,6 +6048,8 @@ agot_di_rusbar_spawn_sea_watch_commander_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_sea_watch_commander_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_martial_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5800,6 +6096,8 @@ agot_di_rusbar_spawn_second_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_second_camp_officer_effect = yes
+		agot_di_rusbar_court_education_diplomacy_martial_stewardship_intrigue_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5846,6 +6144,8 @@ agot_di_rusbar_spawn_seneschal_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_seneschal_court_position_effect = yes
+		agot_di_rusbar_court_education_stewardship_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5897,6 +6197,8 @@ agot_di_rusbar_spawn_septa_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_septa_court_position_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5948,6 +6250,8 @@ agot_di_rusbar_spawn_septon_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_septon_court_position_effect = yes
+		agot_di_rusbar_court_education_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -5994,6 +6298,8 @@ agot_di_rusbar_spawn_siege_engineer_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_siege_engineer_court_position_effect = yes
+		agot_di_rusbar_court_education_martial_stewardship_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -6040,6 +6346,8 @@ agot_di_rusbar_spawn_stooge_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_stooge_camp_officer_effect = yes
+		agot_di_rusbar_court_education_diplomacy_martial_stewardship_intrigue_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -6086,6 +6394,8 @@ agot_di_rusbar_spawn_travel_leader_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_travel_leader_court_position_effect = yes
+		agot_di_rusbar_court_education_stewardship_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -6137,6 +6447,8 @@ agot_di_rusbar_spawn_wet_nurse_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_wet_nurse_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_martial_stewardship_intrigue_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -6183,6 +6495,8 @@ agot_di_rusbar_spawn_witness_camp_officer_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_witness_camp_officer_effect = yes
+		agot_di_rusbar_court_education_diplomacy_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -6229,6 +6543,8 @@ agot_di_rusbar_spawn_yeke_jarquchi_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_yeke_jarquchi_court_position_effect = yes
+		agot_di_rusbar_court_education_diplomacy_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }
@@ -6275,6 +6591,8 @@ agot_di_rusbar_spawn_yurtchi_court_position_effect = {
 	scope:agot_di_rusbar_new_courtier = {
 		save_scope_as = employee
 		agot_di_rusbar_prepare_yurtchi_court_position_effect = yes
+		agot_di_rusbar_court_education_stewardship_learning_effect = yes
+		agot_di_rusbar_court_knighthood_effect = yes
 		add_trait = loyal
 	}
 	set_variable = { name = agot_di_rusbar_eye_last value = scope:agot_di_rusbar_new_courtier }

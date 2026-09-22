@@ -1,0 +1,162 @@
+# DI-style groups with Eye-only state and selection actions.
+# Do not use Button_Select_Culture/Faith: those also call the ruler designer.
+# Override content on a nested scrollbox instance, as DI does. Deriving the
+# list type directly from scrollbox left its default debug_square visible.
+types agot_di_rusbar_eye_origin_types {
+ type agot_di_rusbar_eye_culture_list = vbox {
+  layoutpolicy_horizontal = expanding
+  layoutpolicy_vertical = expanding
+  scrollbox = {
+   layoutpolicy_horizontal = expanding
+   layoutpolicy_vertical = expanding
+   blockoverride "scrollbox_content" {
+    vbox = {
+     layoutpolicy_horizontal = expanding
+     datamodel = "[GetPlayer.MakeScope.GetList('agot_di_rusbar_eye_heritages')]"
+     item = {
+      vbox = {
+       layoutpolicy_horizontal = expanding
+       datacontext = "[Scope.Culture.GetHeritage]"
+       button_standard_hover = {
+        layoutpolicy_horizontal = expanding
+        size = { 0 40 }
+        onclick = "[GetVariableSystem.Toggle(ConcatIfNeitherEmpty('agot_di_rusbar_eye_heritage_', CulturePillar.GetNameNoTooltip))]"
+        hbox = {
+         layoutpolicy_horizontal = expanding
+         margin = { 5 0 }
+         spacing = 10
+         button_list_expand = {
+          checked = "[GetVariableSystem.Exists(ConcatIfNeitherEmpty('agot_di_rusbar_eye_heritage_', CulturePillar.GetNameNoTooltip))]"
+          onclick = "[GetVariableSystem.Toggle(ConcatIfNeitherEmpty('agot_di_rusbar_eye_heritage_', CulturePillar.GetNameNoTooltip))]"
+         }
+         text_single = {
+          layoutpolicy_horizontal = expanding
+          text = "[CulturePillar.GetNameNoTooltip]"
+          default_format = "#clickable"
+          autoresize = no
+          align = nobaseline
+         }
+        }
+       }
+       vbox = {
+        layoutpolicy_horizontal = expanding
+        datamodel = "[CulturePillar.GetCulturesWithPillar]"
+        visible = "[GetVariableSystem.Exists(ConcatIfNeitherEmpty('agot_di_rusbar_eye_heritage_', CulturePillar.GetNameNoTooltip))]"
+        item = {
+         button_standard_hover = {
+          layoutpolicy_horizontal = expanding
+          size = { 0 38 }
+          down = "[ObjectsEqual(Culture.Self, GetPlayer.MakeScope.Var('agot_di_rusbar_eye_culture').Culture)]"
+          tooltipwidget = { culture_tooltip = {} }
+          onclick = "[GetScriptedGui('agot_di_rusbar_eye_select_culture').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('agot_di_rusbar_selection', Culture.MakeScope).End)]"
+          onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_panel', 'offices')]"
+          hbox = {
+           layoutpolicy_horizontal = expanding
+           margin = { 8 0 }
+           margin_left = 50
+           spacing = 10
+           text_single = {
+            layoutpolicy_horizontal = expanding
+            text = "[Culture.GetNameNoTooltip]"
+            default_format = "#clickable"
+            autoresize = no
+            align = nobaseline
+           }
+           text_single = {
+            text = "agot_di_rusbar_eye_origin_selected"
+            visible = "[ObjectsEqual(Culture.Self, GetPlayer.MakeScope.Var('agot_di_rusbar_eye_culture').Culture)]"
+            default_format = "#positive"
+            align = nobaseline
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+
+ type agot_di_rusbar_eye_faith_list = vbox {
+  layoutpolicy_horizontal = expanding
+  layoutpolicy_vertical = expanding
+  scrollbox = {
+   layoutpolicy_horizontal = expanding
+   layoutpolicy_vertical = expanding
+   blockoverride "scrollbox_content" {
+    vbox = {
+     layoutpolicy_horizontal = expanding
+     datamodel = "[GetPlayer.MakeScope.GetList('agot_di_rusbar_eye_religions')]"
+     item = {
+      vbox = {
+       layoutpolicy_horizontal = expanding
+       datacontext = "[Scope.Religion]"
+       visible = "[DataModelHasItems(Religion.GetFaiths)]"
+       button_standard_hover = {
+        layoutpolicy_horizontal = expanding
+        size = { 0 40 }
+        onclick = "[GetVariableSystem.Toggle(ConcatIfNeitherEmpty('agot_di_rusbar_eye_religion_', Religion.GetNameNoTooltip))]"
+        hbox = {
+         layoutpolicy_horizontal = expanding
+         margin = { 5 0 }
+         spacing = 10
+         button_list_expand = {
+          checked = "[GetVariableSystem.Exists(ConcatIfNeitherEmpty('agot_di_rusbar_eye_religion_', Religion.GetNameNoTooltip))]"
+          onclick = "[GetVariableSystem.Toggle(ConcatIfNeitherEmpty('agot_di_rusbar_eye_religion_', Religion.GetNameNoTooltip))]"
+         }
+         text_single = {
+          layoutpolicy_horizontal = expanding
+          text = "[Religion.GetNameNoTooltip]"
+          default_format = "#clickable"
+          autoresize = no
+          align = nobaseline
+         }
+        }
+       }
+       vbox = {
+        layoutpolicy_horizontal = expanding
+        datamodel = "[Religion.GetFaiths]"
+        visible = "[GetVariableSystem.Exists(ConcatIfNeitherEmpty('agot_di_rusbar_eye_religion_', Religion.GetNameNoTooltip))]"
+        item = {
+         button_standard_hover = {
+          layoutpolicy_horizontal = expanding
+          size = { 0 55 }
+          down = "[ObjectsEqual(Faith.Self, GetPlayer.MakeScope.Var('agot_di_rusbar_eye_faith').Faith)]"
+          tooltipwidget = { faith_tooltip = {} }
+          onclick = "[GetScriptedGui('agot_di_rusbar_eye_select_faith').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('agot_di_rusbar_selection', Faith.MakeScope).End)]"
+          onclick = "[GetVariableSystem.Set('agot_di_rusbar_eye_panel', 'offices')]"
+          hbox = {
+           layoutpolicy_horizontal = expanding
+           margin = { 8 0 }
+           margin_left = 30
+           spacing = 10
+           icon = {
+            size = { 45 45 }
+            texture = "[Faith.GetIcon]"
+           }
+           text_single = {
+            layoutpolicy_horizontal = expanding
+            text = "[Faith.GetNameNoTooltip]"
+            default_format = "#clickable"
+            autoresize = no
+            align = nobaseline
+           }
+           text_single = {
+            text = "agot_di_rusbar_eye_origin_selected"
+            visible = "[ObjectsEqual(Faith.Self, GetPlayer.MakeScope.Var('agot_di_rusbar_eye_faith').Faith)]"
+            default_format = "#positive"
+            align = nobaseline
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -274,6 +274,10 @@ def build_resources(b):
     # Descriptors are tracked separately from runtime files in the builder.
     template = b.read('repo', 'AGOT_Submods/AGOT_SUBMODS_FIX/docs/resources-before-descriptor.mod')
     assert 'replace_path' not in template
+    # The historical template stays intact; current patch no longer contains Crowns.
+    dependency = '    "AGOT - Crowns of Westeros"\n'
+    assert template.count(dependency) == 1
+    template = template.replace(dependency, '')
     internal = template+''.join('replace_path="'+p+'"\n' for p in REPLACE_PATHS)
     b.DESCRIPTORS = {
         b.MOD/'descriptor.mod':internal.encode('utf-8'),

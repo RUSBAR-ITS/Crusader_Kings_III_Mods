@@ -4,7 +4,6 @@ Writes only this mod and its adjacent descriptor. --check performs no writes.
 Workshop and AGOT_PLUS_FIX are never changed. No integration branches removed.
 """
 import argparse
-import difflib
 import hashlib
 import json
 from pathlib import Path
@@ -199,57 +198,9 @@ usf_learn_four_available_languages_effect = {
         ('exists = global_var:highlight_cow_provinces_map','exists = global_var:cow_custom_map_mode'),
         ('global_var:cow_custom_map_mode = flag:highlight_special_buildings_map','global_var:cow_custom_map_mode = flag:highlight_cow_provinces_map')], 'Match the actual map mode variable and its existing flag value.')
 
-    simple('crowns','common/modifiers/ntc_artifact_modifiers.txt',[
-        ('valeman_opinion =','valeman_main_opinion =',3)], 'Use current Vale culture without changing bonus amounts.')
-    simple('crowns','common/on_action/ntc_artifacts_startdate.txt',[
-        ('has_game_rule = agot_shatter_empires','has_game_rule = agot_shatter_to_kingdoms')], 'Preserve intended dissolution of empires into kingdoms.')
-    simple('crowns','common/artifacts/templates/ntc_artifacts_templates.txt',[
-        ('is_baratheon_6','is_Baratheon_6')], 'Correct Myrcella identity flag case.')
-    p = 'common/scripted_effects/00_ntc_scripted_effects_crowns.txt'
-    t = read('crowns', p)
-    changes = []
-    for kind in ['war', 'peace']:
-        creation = one(t, 'create_artifact_gardener_' + kind + '_crown_effect').one('create_artifact')
-        history = creation.one('history')
-        assert len(history.value) == 4
-        assert history.one('type').value == 'created'
-        assert history.one('date').value == '7692.1.8'
-        assert history.one('recipient').value == 'character:Gardener_75'
-        assert history.one('location').value == 'province:3237'
-        changes.append((history.start, history.end, comment(t[history.start:history.end],
-            'Gardener_75 has no verified current equivalent; preserve the original account in the crown description.')))
-    output(p, edit(t, changes), 'crowns', reason='Comment only two creation-history entries for missing Gardener_75; keep descriptions, campaign owners, artifact properties and later history.')
-    simple('crowns','common/scripted_triggers/00_ntc_crown_commission_triggers.txt',[
-        ('has_character_flag = is_Durrandon_51 #Baldric the Cunning',
-         '# USF: no dynamic identity flag is assigned for Baldric.\n\t# has_character_flag = is_Durrandon_51 #Baldric the Cunning\n\texists = character:Durrandon_51\n\tthis = character:Durrandon_51')], 'Recognize the exact existing historical Baldric; do not invent a birth chain.')
-    oldpath = 'events/activities/agot_coronation_activity/agot_activity_events_crown_commission.txt'
-    newpath = 'events/activities/agot_coronation_activity/agot_coronation_crown_commission_events.txt'
-    original = read('crowns',oldpath)
-    base = read('agot',newpath)
-    ops = difflib.SequenceMatcher(None,base.splitlines(True),original.splitlines(True),autojunk=False).get_opcodes()
-    assert all(op[0] in ['equal','insert'] for op in ops), 'Crowns now changes baseline logic; re-review merge.'
-    assert sum(op[0]=='insert' for op in ops) == 8
-    output(newpath,original,'crowns',oldpath,'Verified exact AGOT baseline plus eight additive Crowns blocks; use current canonical filename.')
-    output(oldpath,'# USF: event moved intact to agot_coronation_crown_commission_events.txt.\n# This same-path stub prevents loading its old filename a second time.\n','crowns',reason='Suppress duplicate old filename without dropping any crown choices.')
-
-    # A short, synchronous travel event chain: mark its living participant,
-    # clear in every terminal after-block; a dead participant cannot block others.
-    p = 'events/ntc_find_lost_crown_events.txt'
-    t = read('crowns',p)
-    first = one(t,'ntc_find_lost_crown_event.1')
-    bad = first.one('trigger').one('NOR').one('is_target_in_global_variable_list')
-    old = t[bad.start:bad.end]
-    t = edit(t,[(bad.start,bad.end,comment(old,'unwritten flag replaced by real artifact and live participant checks')+'''
-            any_artifact = { has_variable = roland_arryn_crown_artifact }
-            any_living_character = { has_character_flag = usf_roland_search_active }''')])
-    first = one(t,'ntc_find_lost_crown_event.1')
-    immediate = first.one('immediate')
-    t = edit(t,[(immediate.opening+1,immediate.opening+1,'\n        add_character_flag = usf_roland_search_active')])
-    changes=[]
-    for event in [3,4,6,7,8]:
-        after = one(t,'ntc_find_lost_crown_event.'+str(event)).one('after')
-        changes.append((after.opening+1,after.opening+1,'\n        # USF: every normal terminal outcome releases the search.\n        remove_character_flag = usf_roland_search_active'))
-    output(p,edit(t,changes),'crowns',reason='Use actual crown existence and a live-participant lock; release on success, failure, refusal and scripted death.')
+    # Crowns of Westeros is excluded from this patch. Its eight former outputs
+    # and build fragment are retained under docs/disabled-crowns-2026-09-22.
+    # AGOT crown helpers used by Legacy of the Dragon remain enabled above.
 
     p='common/scripted_effects/00_agot_scenario_clash_of_kings_effects.txt'
     base=read('agot',p)
