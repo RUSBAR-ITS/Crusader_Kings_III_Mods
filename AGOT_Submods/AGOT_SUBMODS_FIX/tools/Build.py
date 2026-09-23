@@ -110,7 +110,7 @@ usf_learn_four_available_languages_effect = {
 
     p = 'common/scripted_effects/00_agot_artifact_vs_sword_effects_override.txt'
     t = read('lotd', p)
-    for name in ['blackfyre','seafoam','pincer']:
+    for name in ['blackfyre','dark_sister','seafoam','pincer']:
         t = replace(t, 'template = vs_' + name + '_template', 'template = valyrian_steel_template', 2)
     changes = []
     for n in walk(parse(t)):
@@ -119,7 +119,7 @@ usf_learn_four_available_languages_effect = {
             if names and names[0].value in ['blackfyre_artifact','seafoam_artifact','pincer_artifact']:
                 changes.append((n.start,n.end,comment(t[n.start:n.end], 'unused legacy marker; artifact modifier identifies the weapon')))
     assert len(changes) == 3
-    output(p, edit(t,changes), 'lotd', reason='Use modern templates; comment three unused markers without altering visuals, modifiers or history.')
+    output(p, edit(t,changes), 'lotd', reason='Use modern templates for Blackfyre, Dark Sister, Seafoam and Pincer; comment three unused markers without altering visuals, modifiers or history.')
     p = 'common/scripted_effects/00_lotd_artifact_creation_effects.txt'
     simple('lotd', p, [('modifier = artifact_personal_scheme_power_add_5_modifier',
                        '# USF: obsolete bonus; modifier = artifact_personal_scheme_power_add_5_modifier')], 'Keep remaining Subterfuge bonuses; do not duplicate its existing +5 bonus.')

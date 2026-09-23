@@ -6,7 +6,7 @@ from pathlib import Path
 import re
 import sys
 import Build as b
-from ScriptBlocks import parse, one, walk, semantic
+from ScriptBlocks import parse, one, walk, semantic, edit
 from ResourceMesh import parse_spans, has_area
 from Resources import REPORT, REPLACE_PATHS
 
@@ -31,6 +31,19 @@ def validate(candidate=False):
     ok('Only archived Crowns files removed since resource baseline',
        set(before)-set(b.OUTPUTS) == set(excluded))
     before = {p:v for p,v in before.items() if p not in excluded}
+    # Later script repair: only the two Dark Sister template references differ
+    # from the historical resource baseline; all other bytes must still match.
+    sword_path = 'common/scripted_effects/00_agot_artifact_vs_sword_effects_override.txt'
+    sword_text = new(sword_path)
+    dark_sister = one(sword_text, 'agot_create_artifact_vs_dark_sister_effect')
+    templates = [n for n in walk(dark_sister.value) if n.key == 'template']
+    ok('Exactly two modern Dark Sister templates',
+       len(templates) == 2 and all(n.value == 'valyrian_steel_template' for n in templates))
+    restored = edit(sword_text, [(n.start,n.end,'template = vs_dark_sister_template') for n in templates])
+    bom = b'\xef\xbb\xbf' if b.OUTPUTS[sword_path].startswith(b'\xef\xbb\xbf') else b''
+    ok('Sword file differs from historical baseline only by Dark Sister templates',
+       b.digest(bom+restored.encode('utf-8')) == before[sword_path]['sha256'])
+    before = {p:v for p,v in before.items() if p != sword_path}
     changed = {p for p,v in before.items() if b.digest(b.OUTPUTS[p]) != v['sha256']}
     ok('Exactly two earlier COW files extended', changed == {
         'common/on_action/cowagot_province_on_actions.txt',

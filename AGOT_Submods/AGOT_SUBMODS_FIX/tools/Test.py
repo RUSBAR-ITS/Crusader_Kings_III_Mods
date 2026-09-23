@@ -95,6 +95,12 @@ def main():
     t=source('agot','common/artifacts/templates/00_agot_historical_artifacts_equipment.txt')
     one(t,'valyrian_steel_template')
     ok('Replacement valyrian steel template exists')
+    dark_sister = one(new, 'agot_create_artifact_vs_dark_sister_effect')
+    dark_creates = [n for n in walk(dark_sister.value) if n.key == 'create_artifact']
+    ok('Both Dark Sister visual branches use the supported template',
+       len(dark_creates) == 2 and all(n.one('template').value == 'valyrian_steel_template' for n in dark_creates))
+    ok('Dark Sister HOTD and AGOT visuals preserved',
+       [n.one('visuals').value for n in dark_creates] == ['darksister', 'vs_dark_sister_visuals'])
 
     # Read the actual modified Maekar trigger and exhaust absence/presence/list cases.
     p='events/decisions_events/rediscover_events.txt'
